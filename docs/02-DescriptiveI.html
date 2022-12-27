@@ -142,6 +142,11 @@ div.csl-indent {
     "search-submit-button-title": "Submit"
   }
 }</script>
+<style>
+    .quarto-title-block .quarto-title-banner {
+      background: #000000;
+    }
+    </style>
 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
 
@@ -161,7 +166,23 @@ div.csl-indent {
   </nav>
 </header>
 <!-- content -->
-<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Descriptive Stats I</span></h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
 <!-- sidebar -->
   <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
@@ -291,6 +312,11 @@ div.csl-indent {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
     </ul>
     </div>
 </nav>
@@ -322,24 +348,10 @@ div.csl-indent {
 </nav>
     </div>
 <!-- main -->
-<main class="content" id="quarto-document-content">
-
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title d-none d-lg-block"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Descriptive Stats I</span></h1>
-</div>
+<main class="content quarto-banner-title-block" id="quarto-document-content">
 
 
 
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-</header>
 
 <section id="concepts" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="concepts"><span class="header-section-number">1.1</span> Concepts</h2>
@@ -385,7 +397,7 @@ div.csl-indent {
 <li>The <code>summary()</code> function returns a collection of descriptive statistics from a data frame (or vector). The function also returns whether there are any missing values (NA) in a variable.</li>
 <li>The <code>as.integer()</code>, <code>as.factor()</code>, <code>as.double()</code>, are functions used to coerce your data into a different scale of measurement.</li>
 </ul>
-<p>The <code>dplyr</code> package has a collection of functions that are useful for data manipulation and transformation. If you are interested in this package you can refer to <span class="citation" data-cites="R4DS">Wickham (<a href="#ref-R4DS" role="doc-biblioref">2017</a>)</span>. To install, run the following command in the console <code>install.packages("dplyr")</code>.</p>
+<p>The <code>dplyr</code> package has a collection of functions that are useful for data manipulation and transformation. If you are interested in this package you can refer to <span class="citation" data-cites="R4DS">Wickham (<a href="references.html#ref-R4DS" role="doc-biblioref">2017</a>)</span>. To install, run the following command in the console <code>install.packages("dplyr")</code>.</p>
 <ul>
 <li>The <code>arrange()</code> function allows you to sort data frames in ascending order. Pair with the <code>desc()</code> function to sort the data in descending order.</li>
 <li>The <code>filter()</code> function allows you to subset the rows of your data based on a condition.</li>
@@ -662,7 +674,7 @@ div.csl-indent {
 </div>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography">
+<div id="refs" class="references csl-bib-body hanging-indent" role="doc-bibliography" style="display: none">
 <div id="ref-R4DS" class="csl-entry" role="doc-biblioentry">
 Wickham, Hadley. 2017. <span>“R for Data Science.”</span> <a href="https://r4ds.hadley.nz">https://r4ds.hadley.nz</a>.
 </div>
@@ -817,6 +829,12 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </nav>
 </div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Business Stats by J. Alejandro Gelves.</div>   
+    <div class="nav-footer-right">This book was built with <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
 
 
 
