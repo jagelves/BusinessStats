@@ -1,0 +1,302 @@
+# Descriptive Statistics III
+
+## Concepts
+
+### Measures of Central Location {.unnumbered}
+
+Measures of Central Location determine where the center of a distribution lies.
+
+-   The **mean** is the average value for a numerical variable. The sample statistic is estimated by $\bar{x}=\sum x_{i}/n$, where $x_i$ is observation $i$, and $n$ is the number of observations. The population parameter is defined as $\mu=\sum x_{i}/N$.
+
+-   The **median** is the value in the middle when data is organized in ascending order. When $n$ is even, the median is the average between the two middle values.
+
+-   The **mode** is the value with highest frequency from a set of observations.
+
+-   The **weighted mean** uses weights to determine the importance of each data point of a variable. It is calculated by $\frac{\sum w_{i}x_{i}}{\sum w_{i}}$, where $w_{i}$ are the weights associated to the values $x_{i}$.
+
+-   The **geometric mean** is a multiplicative average that is less sensitive to outliers. It is used to average growth rates or rated of return. It is calculated by $\sqrt[n]{(1+r_1)*(1+r_2)...(1+r_n)}-1$, where $\sqrt[n]{}$ is the $n_{th}$ root, and $r_i$ are the returns or growth rates.
+
+### Useful R functions {.unnumbered}
+
+Base R has a collection of functions that calculate measures of central location.
+
+-   The `mean()` function calculates the average of a vector of values.
+
+-   The `median()` function returns the median of a vector of values.
+
+-   The `table()` function provides us with a frequency distribution. We can then identify the mode(s) of the vector provided.
+
+-   The `summary()` function returns a collection of descriptive statistics for a vector or data frame.
+
+## Exercises
+
+The following exercises will help you practice the measures of central location. In particular, the exercises work on:
+
+-   Calculating the mean, median, and the mode.
+
+-   Calculating the weighted average.
+
+-   Applying the geometric mean for growth rates and returns.
+
+Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.
+
+### Exercise 1 {.unnumbered}
+
+For the following exercises, make your calculations by hand and verify results using R functions when possible.
+
+1.  Use the following observations to calculate the mean, the median, and the mode.
+
+    |     |     |     |     |     |
+    |:---:|:---:|:---:|:---:|:---:|
+    |  8  | 10  |  9  | 12  | 12  |
+
+2.  Use following observations to calculate the mean, the median, and the mode.
+
+    |     |     |     |     |     |     |
+    |:---:|:---:|:---:|:---:|:---:|:---:|
+    | -4  |  0  | -6  |  1  | -3  | -4  |
+
+3.  Use the following observations, calculate the mean, the median, and the mode.
+
+    |     |     |     |     |     |     |     |     |     |
+    |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+    | 20  | 15  | 25  | 20  | 10  | 15  | 25  | 20  | 15  |
+
+### Exercise 2 {.unnumbered}
+
+Download the `ISLR2` package. You will need the **OJ** data set to answer this question.
+
+1.  Find the mean price for Country Hill (*PriceCH*) and Minute Maid (*PriceMM*).
+
+2.  Find the mean price of Country Hill (*PriceCH*) in store 1 and store 2 (*StoreID*). Which store had the better price?
+
+3.  Find the mean price paid by Country Hill (*PriceCH*) purchasers (*Purchase*) in store 1 (*StoreID*)? How about store 2? Which store had the better price?
+
+### Exercise 3 {.unnumbered}
+
+1.  Over the past year an investor bought TSLA. She made these purchases on three occasions at the prices shown in the table below. Calculate the average price per share.
+
+|   Date   | Price Per Share | Number of Shares |
+|:--------:|:---------------:|:----------------:|
+| February |     250.34      |        80        |
+|  April   |     234.59      |       120        |
+|   Aug    |     270.45      |        50        |
+
+2.  What would have been the average price per share if the investor would have bought equal amounts of shares each month?
+
+### Exercise 4 {.unnumbered}
+
+1.  Consider the following observations for the consumer price index (CPI). Calculate the inflation rate (Growth Rate of the CPI) for each period.
+
+    |     |     |     |     |     |
+    |:---:|:---:|:---:|:---:|:---:|
+    | 1.0 | 1.3 | 1.6 | 1.8 | 2.1 |
+
+2.  Suppose that you want to invest \$1000 dollars in a stock that is predicted to yield the following returns in the next four years. Calculate both the arithmetic mean and the geometric mean. Use the geometric mean to estimate how much money you would have by the end of year 4.
+
+    | Year | Annual Return |
+    |:----:|:-------------:|
+    |  1   |     17.3      |
+    |  2   |     19.6      |
+    |  3   |      6.8      |
+    |  4   |      8.2      |
+
+## Answers
+
+### Exercise 1 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  To find the mean we will use the following formula $( \frac{1}{n} \sum_{i=i}^{n} x_{i})$. The summation of the values is $51$ and the number of observations is $5$. The mean is $51/5=10.2$.
+
+    The median is found by locating the middle value when data is sorted in ascending order. The median in this example is $10$.
+
+    The mode is the value with the highest frequency. In this example the mode is $12$ since it is repeated twice and all other numbers appear only once.
+:::
+
+The mean can be easily verified in R by using the `mean()` function:
+
+```{r}
+mean(c(8,10,9,12,12))
+```
+
+Similarly, the median is easily verified by using the `median()` function:
+
+```{r}
+median(c(8,10,9,12,12))
+```
+
+We can use the `table()` function to calculate frequencies and easily identify the mode.
+
+```{r}
+table(c(8,10,9,12,12))
+```
+
+::: {.blackbox data-latex=""}
+2.  The mean is $-2.67$, the median is $-3.5$, the mode is $-4$.
+:::
+
+These mean is verified in R:
+
+```{r}
+mean(c(-4,0,-6,1,-3,-4))
+```
+
+The median in R:
+
+```{r}
+median(c(-4,0,-6,1,-3,-4))
+```
+
+Finally, the mode in R:
+
+```{r}
+table(c(-4,0,-6,1,-3,-4))
+```
+
+::: {.blackbox data-latex=""}
+3.  The mean is $18.33$, the median is $20$, the data is bimodal with both $15$ and $20$ being modes.
+:::
+
+These mean is verified in R:
+
+```{r}
+mean(c(20,15,25,20,10,15,25,20,15))
+```
+
+The median in R:
+
+```{r}
+median(c(20,15,25,20,10,15,25,20,15))
+```
+
+The frequency distribution identifies the modes:
+
+```{r}
+table(c(20,15,25,20,10,15,25,20,15))
+```
+
+### Exercise 2 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  The mean price for Country Hill is $1.87$. The mean price for Minute Maid is $2.09$.
+:::
+
+The means can be easily found with the `mean()` function:
+
+```{r}
+library(ISLR2)
+mean(OJ$PriceCH)
+mean(OJ$PriceMM)
+```
+
+::: {.blackbox data-latex=""}
+2.  The mean price at store 1 for Country Hill is $1.80$ vs. $1.84$ for store 2. The juice is cheaper at store 1.
+:::
+
+The means for each store can be found by using indexing and a logical statement. The Country Hill mean price at store 1 is given by:
+
+```{r}
+mean(OJ$PriceCH[OJ$StoreID==1])
+```
+
+The Country Hill mean price at store 2 is given by:
+
+```{r}
+mean(OJ$PriceCH[OJ$StoreID==2])
+```
+
+::: {.blackbox data-latex=""}
+3.  Purchasers of Country Hill at store 1 paid and average of $1.80$ for Country Hill juice. At store 2 they paid $1.86$. Once again the average price was lower at store 1.
+:::
+
+The mean for Country Hill purchasers at store 1 is given by:
+
+```{r}
+mean(OJ$PriceCH[OJ$StoreID==1 & OJ$Purchase=="CH"])
+```
+
+The mean for Country Hill purchasers at store 2 is:
+
+```{r}
+mean(OJ$PriceCH[OJ$StoreID==2 & OJ$Purchase=="CH"])
+```
+
+### Exercise 3 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  The average price of sale is found by using the weighted average formula. $\frac{\sum w_{i}x_{i}}{\sum w_{i}}$ The weights ($w_{i}$) are given by the number of shares bought and the values ($x_{i}$) are the prices. The weighted average is $246.802$.
+:::
+
+In R you can create two vectors. One holds the share price and the other one the number of shares bought.
+
+```{r}
+PricePerShare<-c(250.34,234.59,270.45)
+NumberOfShares<-c(80,120,50)
+```
+
+Next, you can multiply the *PricePerShare* and *NumberOfShares* vectors to find the numerator and then use `sum()` function to find the denominator. The weighted average is:
+
+```{r}
+(WeightedAverage<-
+  sum(PricePerShare*NumberOfShares)/sum(NumberOfShares))
+```
+
+::: {.blackbox data-latex=""}
+2.  The average if equal shares were bought would be $251.7933$.
+:::
+
+In R you can use the `mean()` function on the PricePerShare vector.
+
+```{r}
+(Average<-mean(PricePerShare))
+```
+
+### Exercise 4 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  The inflation rate for each period is shown in the table below:
+
+|     |        |       |        |
+|:---:|:------:|:-----:|:------:|
+| 30% | 23.08% | 12.5% | 16.67% |
+:::
+
+In R create an object to store the values of the CPI:
+
+```{r}
+CPI<-c(1,1.3,1.6,1.8,2.1)
+```
+
+Next use the `diff()` function to find the difference between the end value and start value. Divide the result by a vector of starting value and multiply times 100.
+
+```{r}
+(Inflation<-100*diff(CPI)/CPI[1:4])
+```
+
+::: {.blackbox data-latex=""}
+2.  At the end of 4 years it is predicted that you would have $1621.17$ dollars. Each year you would have gained $12.84$% on average.
+:::
+
+In R include the annual rates in a vector:
+
+```{r}
+growth<-c(0.173,0.196,0.068,0.082)
+```
+
+The arithmetic mean is:
+
+```{r}
+100*mean(growth)
+```
+
+The geometric mean is:
+
+```{r}
+(geom<-((prod(1+growth))^(1/4)-1)*100)
+```
+
+At the end of the four years we would have:
+
+```{r}
+1000*(1+geom/100)^4
+```

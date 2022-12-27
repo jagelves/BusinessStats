@@ -1,0 +1,237 @@
+# Probability III
+
+## Concepts
+
+### Continuous Random Variables {.unnumbered}
+
+Continuous random variables are characterized by their probability density function $f(x)$. The probability density function does not directly provide probabilities!
+
+The probability of a continuous random variable assuming a single value is zero. Instead, probabilities are defined for intervals. These are calculated by areas under the PDF curve (integral).
+
+### Uniform Distribution {.unnumbered}
+
+The **uniform** probability density function is given by $f(x)= \frac {1}{b-a}$ when $a \leq x \leq b$ and $0$ otherwise.
+
+The **expected value** of the uniform distribution is $E(x)= \frac {a+b}{2}$.
+
+The **variance** of the uniform distribution is $var(x)= \frac {(b-a)^2} {12}$
+
+### Normal Distribution {.unnumbered}
+
+The **normal** PDF is given by $f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1}{2} (\frac {x-\mu}{\sigma})}$, where $\mu$ is the mean, $\sigma$ is the standard deviation, $\pi$ is 3.1415... , and $e$ is 2.7282... . The normal distribution has the following properties:
+
+-   The normal curve is symmetrical about the mean $\mu$.
+
+-   The mean is at the middle and divides the area of the distribution into halves.
+
+-   The total area under the curve is equal to 1.
+
+-   The distribution is completely determined by its mean and standard deviation.
+
+The **standard normal** distribution has a mean of $0$ and a standard deviation of $1$.
+
+### Exponential Distribution {.unnumbered}
+
+The **exponential distribution** is useful in computing probabilities for the time it takes to complete a task. It describes the time between events in a Poisson process.
+
+The probability density function is given by $f(x)=\frac {1}{\mu}e^{ \frac {-x}{\mu}}$.
+
+### Triangular Distribution {.unnumbered}
+
+The **triangular distribution** is characterized by a single mode (the peak of the distribution) and two boundaries. It is often used in situations where the lower and upper bounds of a potential outcome are known, but the exact likelihood of the outcome is uncertain.
+
+The probability density function is given by $f(x)=\frac {2(x-a)}{(b-a)(c-a)}$ for $a \leq x < c$; $f(x)=\frac {2}{(b-a)}$ for $x=c$; $f(x)=\frac {2(b-x)}{(b-a)(b-c)}$ for $c < x \leq b$, and $f(x)=0$ otherwise.
+
+The **expected value** of the distribution is $E(x)= \frac {a+b+c}{3}$.\
+The **variance** of the triangular distribution is $var(x) = \frac {a^2+b^2+c^2-ab-ac-bc}{18}$.
+
+### Useful R Functions {.unnumbered}
+
+To calculate the density of continuous random variables use the `dunif()`, `dnorm()`, and `dexp()` functions. For the triangular distribution use the extraDistr package and the `dtriang()` function.
+
+To calculate probabilities of continuous random variables use the `punif()`, `pnorm()`, `pexp()`, and `ptriang()` functions.
+
+To calculate quartiles of continuous random variables use the `qunif()`, `qnorm()`,`qexp()`, and `qtriang()` functions.
+
+To calculate generate random variables based on continuous random variables use the `runif()`, `rnorm()`, `rexp()`, and `rtriang()` functions.
+
+## Exercises
+
+The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:
+
+-   Calculating probabilities for continuous random variables.
+
+-   Calculating the expected value and standard deviation.
+
+-   Applying the uniform, normal, and exponential distributions.
+
+Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.
+
+### Exercise 1 {.unnumbered}
+
+For the following exercises, make your calculations by hand and verify results with a calculator or R.
+
+1.  A random variable $X$ follows a continuous uniform distribution with minimum of $-2$ and maximum of $4$. Determine the height of the density function $f(x)$, the mean, the standard deviation, and calculate $P(X \leq -1)$.
+
+2.  Your internet provider will arrive sometime between 10:00 am and 12:00 pm. Suppose you have to run a quick errand at 10:00 am. If it takes $15$ minutes to run the errand, what is the probability that you will be back before the internet provider arrives? What if you take $30$ minutes?
+
+### Exercise 2 {.unnumbered}
+
+1.  A random variable $Z$ follows a standard normal distribution. Find $P(-0.67 \leq Z \leq -0.23)$, $P(0 \leq Z \leq 1.96)$, $P(-1.28 \leq Z \leq 0)$ and $P(Z > 4.2)$.
+
+2.  Let $Y$ be normally distributed with $\mu=2.5$ and $\sigma=2$. Find $P(Y>7.6)$, $P(7.4 \leq Y \leq 10.6)$, a $y$ such that $P(Y>y)=0.025$, and a $y$ such that $P(y \leq Y \leq 2.5)=0.4943$.
+
+3.  Assume that football game times are normally distributed with a mean of $3$ hours and a standard deviation of $0.4$ hour. What is the probability that the game lasts at most $2.5$ hours? Find the maximum value for a game to be in the bottom $1$% of the distribution.
+
+### Exercise 3 {.unnumbered}
+
+1.  Random variable $S$ is exponentially distributed with mean of $0.1$. What is the standard deviation of $S$? What is $P(0.10 \leq S \leq 0.2)$?
+
+2.  A tollbooth operator has observed that cars arrive randomly at a rate of $360$ cars per hour. What is the mean time between car arrivals? What is the probability that the next car will arrive within ten seconds?
+
+## Answers
+
+### Exercise 1 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  The height of the density function $f(x)=0.1667$, the mean is $1$, standard deviation is $1.73$, and $P(X \leq -1)=0.1667$.
+:::
+
+$f(x)$ can be easily estimated by using the formula of the continuous uniform random variable. $f(x)=\frac{1}{b-a}$. Using R as a calculator we find:
+
+```{r}
+1/(4-(-2))
+```
+
+The mean is given by $\mu = \frac{a+b}{2}$. In R we determine that the mean is:
+
+```{r}
+(-2+4)/2
+```
+
+The standard deviation is $\sigma = \sqrt {\frac{(b-a)^2}{12}}$. Using R we find:
+
+```{r}
+sqrt((4-(-2))^2/12)
+```
+
+Finally, we can find the probability of $Z$ being less than $-1$ by using the `punif()` function:
+
+```{r}
+punif(-1,-2,4)
+```
+
+::: {.blackbox data-latex=""}
+2.  The probability that you will arrive on time is $0.875$. If the time of the errand is 30 minutes, then the probability goes down to $0.75$.
+:::
+
+There is a $120$ minute interval in which the IP can arrive. The density function is given by $f(x)=1/120$. Using R we can find $P(X>15)$:
+
+```{r}
+punif(15,0,120,lower.tail=F)
+```
+
+Once more we can find $P(X>30)$:
+
+```{r}
+punif(30,0,120,lower.tail=F)
+```
+
+### Exercise 2 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  $P(-0.67 \leq Z \leq -0.23)=0.158$, $P(0 \leq Z \leq 1.96)=0.475$, $P(-1.28 \leq Z \leq 0)=0.4$ and $P(Z > 4.2) \approx 0$.
+:::
+
+Use the `pnorm()` function to find the probabilities. $P(-0.67 \leq Z \leq -0.23)$:
+
+```{r}
+pnorm(-0.23)-pnorm(-0.67)
+```
+
+$P(0 \leq Z \leq 1.96)$
+
+```{r}
+pnorm(1.96)-pnorm(0)
+```
+
+$P(-1.28 \leq Z \leq 0)$
+
+```{r}
+pnorm(0)-pnorm(-1.28)
+```
+
+$P(Z > 4.2)$
+
+```{r}
+options(scipen=999)
+pnorm(4.2,lower.tail = F)
+```
+
+::: {.blackbox data-latex=""}
+2.  $P(Y>7.6)=0.005386$, $P(7.4 \leq Y \leq 10.6)=0.0071$, a $y$ such that $P(Y>y)=0.025$ is $6.42$, and a $y$ such that $P(y \leq Y \leq 2.5)$ is $-2.56$.
+:::
+
+Let's use once more the `pnorm()` function in R.
+
+$P(Y>7.6)$
+
+```{r}
+pnorm(7.6,2.5,2,lower.tail = F)
+```
+
+$P(7.4 \leq Y \leq 10.6)$
+
+```{r}
+pnorm(10.6,2.5,2)-pnorm(7.4,2.5,2)
+```
+
+$y$ such that $P(Y>y)=0.025$
+
+```{r}
+qnorm(0.025,2.5,2,lower.tail = F)
+```
+
+$y$ such that $P(y \leq Y \leq 2.5)=0.4943$. Note that $2.5$ is the mean. Hence we are looking for a $y$ that has $0.5-0.4943=0.0057$ on the left:
+
+```{r}
+qnorm(0.0057,2.5,2)
+```
+
+::: {.blackbox data-latex=""}
+3.  The probability is $10.56$%. A game lasting no more than $2.069$ hours would be in the bottom $1$%.
+:::
+
+Let's use `pnorm()` once more in R.
+
+```{r}
+pnorm(2.5,3,0.4)
+```
+
+For the threshold we can use `qnorm()`
+
+```{r}
+qnorm(0.01,3,0.4)
+```
+
+### Exercise 3 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  The standard deviation is equal to the mean $0.1$. $P(0.10 \leq S \leq 0.2)=0.2325$
+:::
+
+Let's use `pexp()` in R:
+
+```{r}
+pexp(0.2,rate = 10)-pexp(0.1,rate = 10)
+```
+
+::: {.blackbox data-latex=""}
+2.  The mean time between car arrivals is $1/360=0.002778$. The probability that the next car will arrive within the next 10 seconds is $0.6321$.
+:::
+
+Once more we use `pexp()` in R
+
+```{r}
+pexp(1/360,360)
+```

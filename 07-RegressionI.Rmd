@@ -1,0 +1,230 @@
+# Regression I
+
+## Concepts
+
+### Measures of Association {.unnumbered}
+
+Measures of association determine whether there is a linear relationship between two variables. They also determine the strength of the relationship.
+
+-   The **covariance** is a measure that determines the direction of the relationship between two variables. It is calculated by $s_{xy}=\frac {\sum(x_i-\bar{x})(y_i-\bar{y})}{\sum (x_i-\bar{x})^2}$. If $s_{xy}>0$ there is a direct relationship, if $s_{xy}<0$ there is an inverse relationship, and if $s_{xy}=0$ there is no relationship.
+
+-   The **correlation** measures the strength of the linear relationship. It is calculated by $r= \frac {s_{xy}}{s_x s_y}$. The correlation coefficient is between $[-1,1]$. When the correlation coefficient is $1$ ($-1$), there is a perfect direct (inverse) relationship between the two variables.
+
+-   The **coefficient of determination** or $R^2$, measures the percent of variation in $y$ explained by variations in $x$. It is calculated by $R^2=r^2$. The next chapter expands on this measure.
+
+-   A **scatter plot** displays pairs of \[$x$,$y$\] as points on the Cartesian plane. The plot provides a visual aid to determine the relationship between two variables.
+
+### Useful R Functions {.unnumbered}
+
+`cov()`, `cor()`, etc.
+
+## Exercises
+
+The following exercises will help you understand statistical measures that establish the relationship between two variables. In particular, the exercises work on:
+
+-   Calculating covariance and correlation.
+
+-   Using R to plot scatter diagrams.
+
+-   Calculating the coefficient of determination.
+
+Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.
+
+### Exercise 1 {.unnumbered}
+
+For the following exercises, make your calculations by hand and verify results using R functions when possible.
+
+1.  Consider the data below. Calculate the covariance and correlation coefficient by finding deviations from the mean. Use R to verify your result. Is there a direct or inverse relationship between the two variables? How strong is the relationship?
+
+| **x** | 20  | 21  | 15  | 18  | 25  |
+|:-----:|:---:|:---:|:---:|:---:|:---:|
+| **y** | 17  | 19  | 12  | 13  | 22  |
+
+2.  Consider the data below. Calculate the covariance and correlation coefficient by finding deviations from the mean. Use R to verify your result. Is there a direct or inverse relationship between the two variables? How strong is the relationship?
+
+| **w** | 19  | 16  | 14  | 11  | 18  |
+|:-----:|:---:|:---:|:---:|:---:|:---:|
+| **z** | 17  | 20  | 20  | 16  | 18  |
+
+### Exercise 2 {.unnumbered}
+
+You will need the **mtcars** data set to answer this question. This data set is part of R. You don't need to download any files to access it.
+
+1.  Calculate the correlation coefficient between *hp* and *mpg*. Explain the results. Specifically, the direction of the relationship and the strength given the context of the problem.
+
+2.  Create a scatter diagram of the two variables. Is the scatter diagram what you expected after you calculated the correlation coefficient?
+
+3.  Calculate the coefficient of determination. How close is it to one? What else could be explaining the variation in the *mpg*? Let your dependent variable be *mpg*.
+
+### Exercise 3 {.unnumbered}
+
+You will need the **College** data set to answer this question. You can find this data set here: https://jagelves.github.io/Data/College.csv
+
+1.  Create a scatter diagram between *GRAD_DEBT_MDN* (Median Debt) and *MD_EARN_WNE_P10* (Median Earnings). What type of relationship do you observe between the variables?
+
+2.  Calculate the correlation coefficient and the coefficient of determination. According to the data, are higher debts correlated with higher earnings?
+
+## Answers
+
+### Exercise 1 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  The covariance is $14.9$ and the correlation is $0.96$. The results indicate that there is a strong direct relationship between the two variables.
+:::
+
+Let's start by finding the deviations from the mean for the *x* variable in R.
+
+```{r}
+x<-c(20,21,15,18,25)
+(devx<-x-mean(x))
+```
+
+We will do the same with y:
+
+```{r}
+y<-c(17,19,12,13,22)
+(devy<-y-mean(y))
+```
+
+Note that when the deviations in *x* are negative (positive), they are also negative (positive) in *y*. This is indicative of a direct relationship between the two variables. The covariance is given by:
+
+```{r}
+(Ex1Cov<-sum(devx*devy)/(length(devx)-1))
+```
+
+We can verify this by using `cov()` function in R.
+
+```{r}
+cov(x,y)
+```
+
+The correlation coefficient is found by dividing the covariance over the product of standard deviations. In R:
+
+```{r}
+(Ex1Cor<-Ex1Cov/(sd(x)*sd(y)))
+```
+
+We can once more verify the result in R with the built in function `cor()`.
+
+```{r}
+cor(x,y)
+```
+
+::: {.blackbox data-latex=""}
+2.  The covariance is $0.85$ and the correlation is $0.148$. The results indicate that there is a very weak direct relationship between the two variables. They might be unrelated.
+:::
+
+Let's start with *w* and finding the deviations from the mean in R.
+
+```{r}
+w<-c(19,16,14,11,18)
+(devw<-w-mean(w))
+```
+
+We will do the same with *z*:
+
+```{r}
+z<-c(17,20,20,16,18)
+(devz<-z-mean(z))
+```
+
+The covariance is given by:
+
+```{r}
+(Ex2Cov<-sum(devw*devz)/(length(devz)-1))
+```
+
+We can verify this with the `cov()` function in R.
+
+```{r}
+cov(w,z)
+```
+
+The correlation coefficient is found by dividing the covariance over the product of standard deviations. In R:
+
+```{r}
+(Ex2Cor<-Ex2Cov/(sd(z)*sd(w)))
+```
+
+We can once more verify the result in R with the built in function `cor()`.
+
+```{r}
+cor(w,z)
+```
+
+### Exercise 2 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  The correlation coefficient is $-0.78$. This is indicative of a moderately strong inverse relationship between *mpg* and *mp*.
+:::
+
+In R we can easily calculate the correlation coefficient with the `cor()` function.
+
+```{r}
+cor(mtcars$mpg,mtcars$hp)
+```
+
+::: {.blackbox data-latex=""}
+2.  The scatter diagram is downward sloping. Most points are close to the trend line. It is what was expected from a correlation coefficient of $-0.78$.
+:::
+
+```{r}
+plot(y=mtcars$mpg,x=mtcars$hp, main="", 
+     axes=F,pch=21, bg="blue",
+     xlab="Horse Power",
+     ylab="Miles Per Gallon", ylim=c(10,40),xlim=c(50,400))
+axis(side=1, labels=TRUE, font=1,las=1)
+axis(side=2, labels=TRUE, font=1,las=1)
+abline(lm(mtcars$mpg~mtcars$hp),
+       col="darkgray",lwd=2)
+```
+
+::: {.blackbox data-latex=""}
+3.  The coefficient of determination is $0.6$. This value is not very close to one. This is expected since miles per gallon can also vary because of the cars weight, and fuel efficiency. It makes sense that the *hp* only explains $60$% of the total variation.
+:::
+
+In R we can calculate the coefficient of determination by squaring the correlation coefficient.
+
+```{r}
+cor(mtcars$mpg,mtcars$hp)^2
+```
+
+### Exercise 3 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  It seems like there is a direct relationship between both variables. The more debt you take, the higher the salary.
+:::
+
+Start by loading the data. We'll use the `read.csv()` function:
+
+```{r}
+College<-read.csv("https://jagelves.github.io/Data/College.csv")
+```
+
+The two variables of interest are *GRAD_DEBT_MDN* and *MD_EARN_WNE_P10*. The following code creates the scatter plot:
+
+```{r}
+plot(y=College$MD_EARN_WNE_P10, x=College$GRAD_DEBT_MDN, 
+     main="", axes=F, pch=21, bg="blue",
+     xlab="Earnings",ylab="Debt")
+axis(side=1, labels=TRUE, font=1,las=1)
+axis(side=2, labels=TRUE, font=1,las=1)
+abline(lm(MD_EARN_WNE_P10~GRAD_DEBT_MDN, data=College),
+       col="darkgrey",lwd=2)
+```
+
+::: {.blackbox data-latex=""}
+2.  The correlation coefficient shows a moderate direct relationship between earnings and debt $0.43$. The coefficient of determination indicates that only $19$% of the variation in earnings can be explained by debt.
+:::
+
+In R we can start with the correlation coefficient:
+
+```{r}
+cor(College$MD_EARN_WNE_P10,College$GRAD_DEBT_MDN)
+```
+
+The coefficient of determination is:
+
+```{r}
+cor(College$MD_EARN_WNE_P10,College$GRAD_DEBT_MDN)^2
+```

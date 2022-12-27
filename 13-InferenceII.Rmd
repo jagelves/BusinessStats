@@ -1,0 +1,288 @@
+# Inference II
+
+## Concepts
+
+### Confidence Intervals {.unnumbered}
+
+A **confidence interval** provides a range of values that, with a certain level of confidence, contains the population parameter of interest. For proper confidence intervals ensure that the sampling distributions are normal.
+
+A $95$% **confidence level**, indicates that if the interval were constructed many times (from independent samples of the population), it would include the true population parameter $95$% of the time.
+
+A **significance level** ($\alpha$) of $5$%, means that the confidence interval would would not include the true population parameter $5$% of the time.
+
+The interval for the population mean when the population standard deviation is unknown is given by $\bar x \pm t_{\alpha/2} \frac {s}{n}$, where $\bar x$ is the point estimate, $t_{a/2} \frac {s}{n}$ is the margin of error, and $\alpha$ is the allowed probability that the interval does not include $\mu$.
+
+The interval for the population proportion mean is given by $\bar p \pm z_{\alpha/2} \sqrt{\frac {\bar p (1-\bar p)}{n}}$.
+
+### Useful R Functions {.unnumbered}
+
+The `qnorm()` and `qt()` functions calculate quartiles for the normal and $t$ distributions, respectively.
+
+The `if()` function creates a conditional statement in R.
+
+## Exercises
+
+The following exercises will help you test your knowledge on Statistical Inference. In particular, the exercises work on:
+
+-   Simulating confidence intervals.
+
+-   Estimating confidence intervals in R.
+
+-   Estimating confidence intervals for proportions.
+
+Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.
+
+### Exercise 1 {.unnumbered}
+
+In this exercise you will be simulating confidence intervals.
+
+1.  Set the seed to $9$. Create a random sample of 1000 data points and store it in an object called *Population*. Use the exponential distribution with rate of $0.02$ to generate the data. Calculate the mean and standard deviation of *Population* and call them *PopMean* and *PopSD* respectively. What are the mean and standard deviation of *Population*?
+
+2.  Create a for loop (with 10,000 iterations) that takes a sample of 50 points from *Population*, calculates the mean, and then stores the result in a vector called *SampleMeans*. What is the mean of the *SampleMeans*?
+
+3.  Create a $90$% confidence interval using the first data point in the *SampleMeans* vector. Does the confidence interval include *PopMean*?
+
+4.  Now take the minimum of the *SampleMeans* vector. Create a new $90$% confidence interval. Does the interval include *PopMean*? Out of the $10,000$ intervals that you could construct with the vector *SampleMeans*, how many would you expect to include *PopMean*?
+
+### Exercise 2 {.unnumbered}
+
+1.  A random sample of $24$ observations is used to estimate the population mean. The sample mean is $104.6$ and the standard deviation is $28.8$. The population is normally distributed. Construct a $90$% and $95$% confidence interval for the population mean. How does the confidence level affect the size of the interval?
+
+2.  A random sample from a normally distributed population yields a mean of $48.68$ and a standard deviation of $33.64$. Compute a $95$% confidence interval assuming a) that the sample size is $16$ and b) the sample size is $25$. What happens to the confidence interval as the sample size increases?
+
+### Exercise 3 {.unnumbered}
+
+You will need the **sleep** data set for this problem. The data is built into R, and displays the effect of two sleep inducing drugs on students. Calculate a $95$% confidence interval for group 1 and for group 2. Which drug would you expect to be more effective at increasing sleeping times?
+
+### Exercise 4 {.unnumbered}
+
+1.  A random sample of $100$ observations results in $40$ successes. Construct a $90$% and $95$% confidence interval for the population proportion. Can we conclude at either confidence level that the population proportion differs from $0.5$?
+
+2.  You will need the **HairEyeColor** data set for this problem. The data is built into R, and displays the distribution of hair and eye color for $592$ statistics students. Construct a $95$ confidence interval for the proportion of Hazel eye color students.
+
+## Answers
+
+### Exercise 1 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  The mean of *Population* is $48.61$. The standard deviation is $47.94$.
+:::
+
+Start by generating values from the exponential distribution. You can use the `rexp()` function in R to do this. Setting the seed to $9$ yields:
+
+```{r}
+set.seed(9)
+Population<-rexp(1000,0.02)
+```
+
+The population mean is:
+
+```{r}
+(PopMean<-mean(Population))
+```
+
+The standard deviation is:
+
+```{r}
+(PopSD<-sd(Population))
+```
+
+::: {.blackbox data-latex=""}
+2.  The mean is very close to the population mean $48.83$. The standard deviation is $6.83$.
+:::
+
+In R you can use a for loop to create the vector of sample means.
+
+```{r}
+nrep<-10000
+SampleMeans<-c()
+for (i in 1:nrep){
+  x<-sample(Population,50,replace=T)
+  SampleMeans<-c(SampleMeans,mean(x))
+}
+```
+
+The mean of *SampleMeans* is:
+
+```{r}
+(xbar<-mean(SampleMeans))
+```
+
+The standard deviation is:
+
+```{r}
+(Standard<-sd(SampleMeans))
+```
+
+::: {.blackbox data-latex=""}
+3.  The confidence interval is \[$47.71$,$70.17$\]. Since the population mean is equal to $48.61$, the confidence interval does include the population mean.
+:::
+
+Let's construct the upper an lower limits of the interval in R.
+
+```{r}
+(ll<-SampleMeans[1]+qnorm(0.05)*Standard)
+(ul<-SampleMeans[1]-qnorm(0.05)*Standard)
+```
+
+::: {.blackbox data-latex=""}
+4.  The confidence interval is \[$14.86$,$37.32$\]. This interval does not include the population mean of $48.61$. Out of the $10,000$ confidence intervals, one would expect about $9,000$ to include the population mean.
+:::
+
+Let's find the confidence interval limits using R.
+
+```{r}
+(Minll<-min(SampleMeans)+qnorm(0.05)*Standard)
+(Minul<-min(SampleMeans)-qnorm(0.05)*Standard)
+```
+
+We can confirm in R that about $9,000$ of the intervals include *PopMean*. Once more, let's use a for loop to construct confidence intervals for each element in *SampleMeans* and check whether the *PopMean* is included. The count variable keeps track of how many intervals include the population mean.
+
+```{r}
+count=0
+
+for (i in SampleMeans){
+  (ll<-i+qnorm(0.05)*Standard)
+  (ul<-i-qnorm(0.05)*Standard)
+  if (PopMean<=ul & PopMean>=ll){
+    count=count+1
+  }
+}
+
+count
+```
+
+### Exercise 2 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  The $90$% confidence interval is \[$94.52$,$114.67$\] and the $95$% confidence interval is \[$114.68$,$116.76$\]. The larger the confidence level, the larger the interval.
+:::
+
+Let's construct the intervals using R. Since the population standard deviation is unknown we will use the t-distribution. The interval is constructed as $\bar{x}\pm t_{\alpha/2} \frac{s}{\sqrt{n}}$.
+
+```{r}
+(ul90<-104.6-qt(0.05,23)*28.8/sqrt(24))
+(ll90<-104.6+qt(0.05,23)*28.8/sqrt(24))
+```
+
+For the $95$% confidence interval we adjust the significance level accordingly.
+
+```{r}
+(ul95<-104.6-qt(0.025,23)*28.8/sqrt(24))
+(ll95<-104.6+qt(0.025,23)*28.8/sqrt(24))
+```
+
+::: {.blackbox data-latex=""}
+2.  The confidence interval for a sample size of $16$ is \[$30.75$,$66.61$\]. The confidence interval when the sample size is $25$ is \[$34.79$,$62.57$\]. As the sample size gets larger, the confidence interval gets narrower and more precise.
+:::
+
+Let's use R again to calculate the confidence interval. For a sample size of $16$ the interval is:
+
+```{r}
+(ul16<-48.68-qt(0.025,15)*33.64/sqrt(16))
+(ll16<-48.68+qt(0.025,15)*33.64/sqrt(16))
+```
+
+Increasing the ample size to $25$ yields:
+
+```{r}
+(ul25<-48.68-qt(0.025,24)*33.64/sqrt(25))
+(ll25<-48.68+qt(0.025,24)*33.64/sqrt(25))
+```
+
+### Exercise 3 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  The 95% confidence interval for group 1 is \[$-0.36$,$1.86$\].
+:::
+
+Let's first calculate the standard error for group 1.
+
+```{r}
+(se1<-sd(sleep$extra[sleep$group==1])/sqrt(length(sleep$extra[sleep$group==1])))
+```
+
+We can now use the standard error to estimate the lower and upper limits of the confidence interval.
+
+```{r}
+(ll1<-mean(sleep$extra[sleep$group==1])+qnorm(0.025)*se1)
+(ul1<-mean(sleep$extra[sleep$group==1])-qnorm(0.025)*se1)
+```
+
+::: {.blackbox data-latex=""}
+2.  The 95% confidence interval for group 2 is \[$1.09$,$3.57$\].
+:::
+
+Let's repeat the procedure for group 2. Start by finding the standard error.
+
+```{r}
+(se2<-sd(sleep$extra[sleep$group==2])/sqrt(length(sleep$extra[sleep$group==2])))
+```
+
+Using the standard error we can complete the confidence interval.
+
+```{r}
+(ll2<-mean(sleep$extra[sleep$group==2])+qnorm(0.025)*se2)
+(ul2<-mean(sleep$extra[sleep$group==2])-qnorm(0.025)*se2)
+```
+
+::: {.blackbox data-latex=""}
+3.  Drug 2. Drug 2 does not include zero in the interval, and the interval is to the right of zero. It is unlikely, that drug 2 has no effect on students sleeping time. Additionally, Drug 2's mean increase in sleeping hours is $2.33$ vs. $0.75$ for drug 1.
+:::
+
+### Exercise 4 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  The 90% and 95% confidence intervals are \[$0.319$,$0.481$\], and \[$0.304$,$0.496$\] respectively. Since they do not include 0.5, we can conclude that the population proportion is significantly different from 0.5.
+:::
+
+We can create an object that stores the sample proportion and sample in R:
+
+```{r}
+(p<-0.4)
+(n<-100)
+```
+
+The $90$% confidence interval is given by:
+
+```{r}
+(Ex1ll90<-p+qnorm(0.05)*sqrt(p*(1-p)/100))
+(Ex1ul90<-p-qnorm(0.05)*sqrt(p*(1-p)/100))
+```
+
+The $95$% confidence interval is:
+
+```{r}
+(Ex1ll90<-p+qnorm(0.025)*sqrt(p*(1-p)/100))
+(Ex1ul90<-p-qnorm(0.025)*sqrt(p*(1-p)/100))
+```
+
+::: {.blackbox data-latex=""}
+2.  The $90$% confidence interval is \[$0.132$,$0.182$\].The $95$% confidence interval is \[$0.128$,$0.186$\].
+:::
+
+The data can easily be viewed by calling `HairEyeColor` in R.
+
+```{r}
+HairEyeColor
+```
+
+Note that there are three dimensions to this table (Hair, Eye, Sex). We can calculate the proportion of Hazel eye colored students with the following command that makes use of indexing:
+
+```{r}
+(p<-(sum(HairEyeColor[,3,1])+sum(HairEyeColor[,3,2]))/sum(HairEyeColor))
+```
+
+Now we can use this proportion to construct the intervals. Recall that for proportions the interval is calculated by $\bar{p} \pm z_{\alpha/2} \sqrt{\frac{\bar{p}(1-\bar{p})}{n}}$. The $90$% confidence interval is given by:
+
+```{r}
+(Ex2ll90<-p+qnorm(0.05)*sqrt(p*(1-p)/592))
+(Ex2ul90<-p-qnorm(0.05)*sqrt(p*(1-p)/592))
+```
+
+The 95% confidence interval is:
+
+```{r}
+(Ex2ll95<-p+qnorm(0.025)*sqrt(p*(1-p)/592))
+(Ex2ul95<-p-qnorm(0.025)*sqrt(p*(1-p)/592))
+```

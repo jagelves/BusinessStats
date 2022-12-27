@@ -1,0 +1,273 @@
+# Inference III
+
+## Concepts
+
+### Hypothesis Testing {.unnumbered}
+
+The **null hypothesis** is a statement about the population parameter. Usually, the status quo. In research, it states no effect or no relationship between variables. The null hypothesis includes some form of the equality sign (i.e., $\geq$, $\leq$, or $=$).
+
+The **alternative hypothesis** directly contradicts the null hypothesis. In research, it states the prediction of the effect or relationship. The alternative includes non-equality signs (i.e., $>$, $<$, or $\ne$).
+
+To conduct hypothesis testing:
+
+1.  Specify the null and alternate hypothesis.
+
+-   For means use:
+
+    -   $H_o: \mu \leq 0$; $Ha: \mu > \mu_o$ right-tail probability
+
+    -   $H_o: \mu \geq 0$; $Ha: \mu < \mu_o$ left-tail probability
+
+    -   $H_o: \mu = 0$; $Ha: \mu \ne \mu_o$ two-tail probability
+
+-   For proportions use:
+
+    -   $H_o: P \leq 0$; $Ha: P > P_o$ right-tail probability
+
+    -   $H_o: P \geq 0$; $Ha: P < P_o$ left-tail probability
+
+    -   $H_o: P = 0$; $Ha: P \ne P_o$ two-tail probability
+
+2.  Specify the **confidence level** (i.e., the proportion of times that the hypothesis would hold true). Usually, $0.90$, $0.95$, or $0.99$.
+
+3.  Calculate the test statistic.
+
+    -   For a test on means use $t_{df}= \frac {\bar x-\mu_o}{s/\sqrt{n}}$, where $df=n-1$, $\bar x$ is the sample mean, $\mu_o$ is the hypothesized value of $\mu$, $s$ is the sample standard deviation, and $n$ is the sample size.
+
+    -   For a test on proportions use $z= \frac {\bar p- P_o}{\sqrt {P_o(1-P_o)/ \sqrt{n}}}$, where $\bar p$ is the sample proportion, $P_o$ is the hypothesized value of the population proportion $P$, and $n$ is the sample size.
+
+4.  Find the **p-value** (i.e., the likelihood that the hypothesis was rejected by chance). (Substitute $t$ for $z$ if using proportions)
+
+    -   For a right-tail test, the $p$-value is $P(T\geq t)$.
+
+    -   For a left-tail test, the $p$-value is $P(T\leq t)$.
+
+    -   For a two-tail test, the $p$-value is $2P(T\geq t)$ if $t>0$ or $2P(T\leq t)$ if $t<0$.
+
+5.  The decision rule is to reject the null hypothesis when the $p-value<\alpha$, and not to reject when $p-value \geq alpha$.
+
+### Useful R Functions {.unnumbered}
+
+`t.test()` generates a $t$-test for a vector of values. Use the *alternative* argument to specify "right", "left" or "two-tailed" test. The *mu* argument specifies the hypothesized value for the mean. The *conf.level* sets the confidence level of the test.
+
+`prop.test()` generates a proportion test when provided the number of successes and sample size.
+
+## Exercises
+
+The following exercises will help you test your knowledge on Hypothesis Testing. In particular, the exercises work on:
+
+-   Stating Null and Alternate Hypothesis.
+
+-   Determine the statistical validity of the null hypothesis.
+
+-   Conducting t-tests in R.
+
+Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.
+
+### Exercise 1 {.unnumbered}
+
+1.  Consider the following hypothesis: $H_{o}: \mu=50$, $H_{a}: \mu \neq 50$. A sample of $16$ observations yields a mean of $46$ and a standard deviation of $10$. Calculate the value of the test statistic. At a $5$% significance level, does the population mean differ from $50$?
+
+2.  Consider the following hypothesis: $H_{o}: \mu \geq 100$, $H_{a}: \mu < 100$. You take a sample from a normally distributed population that yields the values in the table below. Conduct a test at a $1$% significance level to prove the hypothesis.
+
+|     |     |     |     |     |     |     |
+|-----|-----|-----|-----|-----|-----|-----|
+| 96  | 102 | 93  | 87  | 92  | 82  |     |
+
+3.  Consider the following hypothesis: $H_{o}: \mu \leq 210$, $H_{a}: \mu > 210$. You take a sample from a normally distributed population that yields the values in the table below. Conduct a test at a $10$% significance level to prove the hypothesis.
+
+|     |     |     |     |     |     |     |     |     |     |
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| 210 | 220 | 299 | 220 | 290 | 280 | 233 | 221 | 292 | 299 |
+
+### Exercise 2 {.unnumbered}
+
+According to a www.nps.gov, the period of time between Old Faithful's eruptions is on average is $92$ minutes. Use the built in **faithful** R data set and a two tail test to determine whether this claim is true.
+
+### Exercise 3 {.unnumbered}
+
+1.  To test if the population proportion differs from $0.4$, a scientist draws a random sample of $100$ observations and obtain a sample proportion of $0.48$. Specify the competing hypothesis. At a $5$% significance level, does the population proportion differ from $0.4$?
+
+2.  When taking a sample of $320$ observations, $128$ result in success.Test the following hypothesis $H_{o}: p \geq 0.45$, $H_{a}: p < 0.45$ at a $5$% significance level.
+
+3.  Determine if more than $50$% of the observations in a population are below $10$ with the sample data below. Conduct the test at a $1$% significance level.
+
+|     |     |     |     |     |     |     |     |     |     |
+|-----|-----|-----|-----|-----|-----|-----|-----|-----|-----|
+| 8   | 12  | 5   | 9   | 14  | 11  | 9   | 3   | 7   | 12  |
+
+### Exercise 4 {.unnumbered}
+
+According to www.worldatlas.com, $5$% of the population has hazel color eyes. Use the built in **HairEyeColor** R data set and a two tail test to determine whether this claim is true.
+
+## Answers
+
+### Exercise 1 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  The sample statistic is $-1.6$. The null hypothesis can't be rejected at a $5$% significance level since the p-value is $13.04$%. We conclude that the population mean is not statistically different from $50$.
+:::
+
+In R we can calculate the t-statistic.
+
+```{r}
+muEx1<-50
+sigmaEx1<-10
+n<-16
+
+(teststat<-(46-muEx1)/(sigmaEx1/sqrt(n)))
+(tcrit<-qt(0.025,n-1))
+```
+
+Since the t-statistic is greater than the critical value of $-2.13$, we can't reject the null. We can also estimate the p-value to confirm this finding. Recall that the P-value is the likelihood of obtaining a sample mean at least as extreme as the one derived from the given sample.
+
+```{r}
+2*pt(teststat,n-1)
+```
+
+::: {.blackbox data-latex=""}
+2.  The null hypothesis that $H_{o}: \mu \geq 100$ can't be rejected since the p-value of $1.9$% is greater than the $1$% significance level.
+:::
+
+Let's start by creating an object to store the values of our sample.
+
+```{r}
+sample2<-c(96,102,93,87,92,82)
+```
+
+Now we can construct the t-stat and calculate the critical value.
+
+```{r}
+mean2<-mean(sample2)
+standard2<-sd(sample2)
+n2<- length(sample2)
+(tstat2<-(mean2-100)/(standard2/sqrt(n2)))
+```
+
+Lastly, we can calculate the p-value.
+
+```{r}
+pt(tstat2,n2-1)
+```
+
+We can also verify our result using the `t.test()` function in R.
+
+```{r}
+t.test(sample2,alternative = "less",mu = 100,conf.level = 0.99)
+```
+
+::: {.blackbox data-latex=""}
+3.  The null hypothesis that $H_{o}: \mu \leq 210$ can be rejected since the p-value of $0.2$% is less than the $10$% significance level.
+:::
+
+Let's create the object in R with the data.
+
+```{r}
+sample3<-c(210,220,299,220,290,280,233,221,292,299)
+```
+
+Using the `t.test()` function we find:
+
+```{r}
+t.test(sample3,alternative="greater",mu=210,conf.level=0.9)
+```
+
+### Exercise 2 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+The claim that the duration between eruptions is $92$ minutes can be rejected at a $10$%, $5$%, and $1$% significance level.
+:::
+
+Once more calculate the t-test in R with the `t.test()` function.
+
+```{r}
+t.test(faithful$waiting,alternative = "two.sided",mu=92, conf.level = 0.99)
+```
+
+### Exercise 3 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  The competing hypothesis are $H_{o}: p = 0.4$, $H_{a}: p \neq 0.4$. At a $5$% significance level we can't reject the null hypothesis since the p-value of the test statistic ($0.102$) is greater than the significance level ($0.05$). We conclude that the population proportion is not significantly different from $0.4$.
+:::
+
+In R we can calculate the test statistic $\frac {\bar{p}-p_{o}}{\sqrt {p_{o}(1-p_{o})/n}}$.
+
+```{r}
+(pstat<-(0.48-0.4)/sqrt(0.4*(1-0.4)/100))
+```
+
+Now we can use the `pnorm()` function in R to get the p-value. Since it is a two-tailed test we multiply the probability by 2.
+
+```{r}
+2*pnorm(pstat,lower.tail = F)
+```
+
+::: {.blackbox data-latex=""}
+2.  From the sample $40$% are labeled as success. Testing the hypothesis reveals that we can reject the null at a $5$% significance level. We conclude that the population proportion is less than $0.45$.
+:::
+
+We once again create the test statistic in R.
+
+```{r}
+(pstat2<-(0.4-0.45)/sqrt(0.45*(1-0.45)/320))
+```
+
+With the statistic, we can now find the p-value:
+
+```{r}
+pnorm(pstat2,lower.tail = T)
+```
+
+::: {.blackbox data-latex=""}
+3.  The competing hypothesis are $H_{o}: p \leq 0.5$, $H_{a}: p > 0.5$. At a $1$% significance level we can't reject the null hypothesis since the p-value of the test statistic ($0.26$) is greater than the significance level ($0.01$). We conclude that more than 50% of the observations in the population are below 10.
+:::
+
+Let's create an object to store the values.
+
+```{r}
+values<-c(8,12,5,9,14,11,9,3,7,12)
+```
+
+Now, let's count how many values are below $10$ and calculate the proportion.
+
+```{r}
+sum(values<10)/length(values)
+```
+
+Lastly, we find the test-statistic and p-value:
+
+```{r}
+pstat3<-(0.6-0.5)/sqrt(0.5*(1-0.5)/10)
+pnorm(pstat3,lower.tail = F)
+```
+
+We can also use the `prop.test()` function in R to confirm our result.
+
+```{r}
+prop.test(6,10,p=0.5,alternative = "greater", conf.level = 0.99,
+            correct=F)
+```
+
+### Exercise 4 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  We reject the null hypothesis that $5$% of the population has hazel eyes with our sample.
+:::
+
+The number of people with Hazel eyes is calculated as:
+
+```{r}
+(s<-sum(HairEyeColor[,3,1]+HairEyeColor[,3,2]))
+```
+
+The total number of people in the survey is given by:
+
+```{r}
+(t<-sum(HairEyeColor))
+```
+
+We can use the `prop.test()` function once more:
+
+```{r}
+prop.test(93,592,p=0.05,alternative = "two.sided", conf.level = 0.95, correct=F)
+```

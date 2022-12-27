@@ -1,0 +1,336 @@
+# Regression II
+
+## Concepts
+
+### The Regression Line {.unnumbered}
+
+The regression line is fitted so that the average distance between the line and the sample points is as small as possible. The line is defined by a **slope** ($\beta$) and an **intercept** ($\alpha$). Mathematically, the regression line is expressed as $\hat{y_i}=\hat{\alpha}+\hat{\beta}x_i$, where $\hat{y_i}$ are the predicted values of $y$ given the $x$'s.
+
+-   The **slope** determines the steepness of the line. The estimate quantifies how much a unit increase in $x$ changes $y$. The estimate is given by $\hat{\beta}= \frac {s_{xy}}{s_{x}^2}$.
+
+-   The **intercept** determines where the line crosses the $y$ axis. It returns the value of $y$ when $x$ is zero. The estimate is given by $\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}$.
+
+### Goodness of Fit {.unnumbered}
+
+There are a couple of popular measures that determine the goodness of fit of the regression line.
+
+-   The **coefficient of determination** or $R^2$ is the percent of the variation in $y$ that is explained by changes in $x$. The higher the $R^2$ the better the explanatory power of the model. The $R^2$ is always between \[0,1\]. To calculate use $R^2=SSR/SST$.
+
+    -   $SSR$ (Sum of Squares due to Regression) is the part of the variation in $y$ explained by the model. Mathematically, $SSR=\sum{(\hat{y_i}-\bar{y})^2}$.
+
+    -   $SSE$ (Sum of Squares due to Error) is the part of the variation in $y$ that is unexplained by the model. Mathematically, $SSE=\sum{(y_i-\hat{y_i})^2}$.
+
+    -   SST (Sum of Squares Total) is the total variation of $y$ with respect to the mean. Mathematically, $SST=\sum{(y_i-\bar{y})^2}$.
+
+    -   Note that $SST=SSR+SSE$.
+
+-   The **adjusted** $R^2$ recognizes that the $R^2$ is a non-decreasing function of the number of explanatory variables in the model. This metric penalizes a model with more explanatory variables relative to a simpler model. It is calculated by $1-(1-R^2) \frac {n-1}{n-k-1}$, where $k$ is the number of explanatory variables used in the model and $n$ is the sample size.
+
+-   The **Residual Standard Error** estimates the average dispersion of the data points around the regression line. It is calculated by $s_e =\sqrt{\frac{SSE}{n-k-1}}$.
+
+### Useful R Functions {.unnumbered}
+
+The `lm()` function to estimates the linear regression model.
+
+The `predict()` function uses the linear model object to predict values. New data is entered as a data frame.
+
+The `coef()` function returns the model's coefficients.
+
+The `summary()` function returns the model's coefficients, and goodness of fit measures.
+
+## Exercises
+
+The following exercises will help you get practice on Regression Line estimation and interpretation. In particular, the exercises work on:
+
+-   Estimating the slope and intercept.
+
+-   Calculating measures of goodness of fit.
+
+-   Prediction using the regression line.
+
+Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.
+
+### Exercise 1 {.unnumbered}
+
+For the following exercises, make your calculations by hand and verify results using R functions when possible.
+
+1.  Consider the data below. Calculate the deviations from the mean for each variable and use the results to estimate the regression line. Use R to verify your result. On average by how much does *y* increase per unit increase of *x*?
+
+| **x** | 20  | 21  | 15  | 18  | 25  |
+|:-----:|:---:|:---:|:---:|:---:|:---:|
+| **y** | 17  | 19  | 12  | 13  | 22  |
+
+2.  Calculate *SST*, *SSR*, and *SSE*. Confirm your results in R. What is the $R^2$? What is the Standard Error estimate? Is the regression line a good fit for the data?
+
+3.  Assume that *x* is observed to be *32*, what is your prediction of *y*? How confident are you in this prediction?
+
+### Exercise 2 {.unnumbered}
+
+You will need the **Education** data set to answer this question. You can find the data set at https://jagelves.github.io/Data/Education.csv . The data shows the years of education (*Education*), and annual salary in thousands (*Salary*) for a sample of $100$ people.
+
+1.  Estimate the regression line using R. By how much does an extra year of education increase the annual salary on average? What is the salary of someone without any education?
+
+2.  Confirm that the regression line is a good fit for the data. What is the estimated salary of a person with $16$ years of education?
+
+### Exercise 3 {.unnumbered}
+
+You will need the **FoodSpend** data set to answer this question. You can find this data set at https://jagelves.github.io/Data/FoodSpend.csv .
+
+1.  Omit any NA's that the data has. Create a dummy variable that is equal to $1$ if an individual owns a home and $0$ if the individual doesn't. Find the mean of your dummy variable. What proportion of the sample owns a home?
+
+2.  Run a regression with *Food* being the dependent variable and your dummy variable as the independent variable. What is the interpretation of the intercept and slope?
+
+3.  Now run a regression with *Food* being the independent variable and your dummy variable as the dependent variable. What is the interpretation of the intercept and slope? Hint: you might want to plot the scatter diagram and the regression line.
+
+### Exercise 4 {.unnumbered}
+
+You will need the **Population** data set to answer this question. You can find this data set at https://jagelves.github.io/Data/Population.csv .
+
+1.  Run a regression of *Population* on *Year*. How well does the regression line fit the data?
+
+2.  Create a prediction for Japan's population in 2030. What is your prediction?
+
+3.  Create a scatter diagram and include the regression line. How confident are you of your prediction after looking at the diagram?
+
+## Answers
+
+### Exercise 1 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  The regression lines is $\hat{y}=-4.93+1.09x$. For each unit increase in *x*, *y* increases on average $1.09$.
+:::
+
+Start by generating the deviations from the mean for each variable. For *x* the deviations are:
+
+```{r}
+x<-c(20,21,15,18,25)
+(devx<-x-mean(x))
+```
+
+Next, find the deviations for *y*:
+
+```{r}
+y<-c(17,19,12,13,22)
+(devy<-y-mean(y))
+```
+
+For the slope we need to find the deviation squared of the *x*'s. This can easily be done in R:
+
+```{r}
+(devx2<-devx^2)
+```
+
+The slope is calculated by $\frac{\sum_{i=i}^{n} (x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=i}^{n} (x_{i}-\bar{x})^2}$. In R we can just find the ratio between the summations of *(devx)(devy)* and *devx2*.
+
+```{r}
+(slope<-sum(devx*devy)/sum(devx2))
+```
+
+The intercept is given by $\bar{y}-\beta(\bar{x})$. In R we find that the intercept is equal to:
+
+```{r}
+(intercept<-mean(y)-slope*mean(x))
+```
+
+Our results can be easily verified by using the `lm()` and `coef()` functions in R.
+
+```{r}
+fitEx1<-lm(y~x)
+coef(fitEx1)
+```
+
+::: {.blackbox data-latex=""}
+2.  *SST* is $69.2$, *SSR* is $64.82$ and *SSE* is $4.38$ (note that $SSR+SSE=SST$). The $R^2$ is just $\frac{SSR}{SST}=0.94$ and the Standard Error estimate is $1.21$. They both indicate a great fit of the regression line to the data.
+:::
+
+Let's start by calculating the *SST*. This is just $\sum{(y_{i}-\bar{y})^2}$.
+
+```{r}
+(SST<-sum((y-mean(y))^2))
+```
+
+Next, we can calculate *SSR*. This is calculated by the following formula $\sum{(\hat{y_{i}}-\bar{y})^2}$. To obtain the predicted values in R, we can use the output of the `lm()` function. Recall our *fitEx1* object created in Exercise 1. It has *fitted.values* included:
+
+```{r}
+(SSR<-sum((fitEx1$fitted.values-mean(y))^2))
+```
+
+The ratio of *SSR* to *SST* is the $R^2$:
+
+```{r}
+(R2<-SSR/SST)
+```
+
+Finally, let's calculate *SSE* $\sum{(y_{i}-\hat{y_{i}})^2}$:
+
+```{r}
+(SSE<-sum((y-fitEx1$fitted.values)^2))
+```
+
+With the *SSE* we can calculate the Standard Error estimate:
+
+```{r}
+sqrt(SSE/3)
+```
+
+We can confirm these results using the `summary()` function.
+
+```{r}
+summary(fitEx1)
+```
+
+::: {.blackbox data-latex=""}
+3.  If $x=32$ then $\hat{y}=29.87$. The regression is a good fit, so we can feel good about our prediction. However, we would be concerned about the sample size of the data.
+:::
+
+In R we can obtain a prediction by using the `predict()` function. This function requires a data frame as an input for new data.
+
+```{r}
+predict(fitEx1, newdata = data.frame(x=c(32)))
+```
+
+### Exercise 2 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  An extra year of education increases the annual salary about $5,300$ dollars (slope). A person that has no education would be expected to earn $17,2582$ dollars (intercept).
+:::
+
+Start by loading the data in R:
+
+```{r}
+Education<-read.csv("https://jagelves.github.io/Data/Education.csv")
+```
+
+Next, let's use the `lm()` function to estimate the regression line and obtain the coefficients:
+
+```{r}
+fitEducation<-lm(Salary~Education, data = Education)
+coefficients(fitEducation)
+```
+
+::: {.blackbox data-latex=""}
+2.  The $R^2$ is $0.668$ and the standard error is $21$. The line is a moderately good fit. If someone has $16$ years of experience, the regression line would predict a salary of $102,000$ dollars.
+:::
+
+Let's get the $R^2$ and the Standard Error estimate by using the `summary()` function and *fitEx1* object.
+
+```{r}
+summary(fitEducation)
+```
+
+Lastly, let's use the regression line to predict the salary for someone who has $16$ years of education.
+
+```{r}
+predict(fitEducation, newdata = data.frame(Education=c(16)))
+```
+
+### Exercise 3 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  Approximately, $46$% of the sample owns a home.
+:::
+
+Start by loading the data into R and removing all NA's:
+
+```{r}
+Spend<-read.csv("https://jagelves.github.io/Data/FoodSpend.csv")
+Spend<-na.omit(Spend)
+```
+
+To create a dummy variable for *OwnHome* we can use the `ifelse()` function:
+
+```{r}
+Spend$dummyOH<-ifelse(Spend$OwnHome=="Yes",1,0)
+```
+
+The average of the dummy variable is given by:
+
+```{r}
+mean(Spend$dummyOH)
+```
+
+::: {.blackbox data-latex=""}
+2.  The intercept is the average food expenditure of individuals without homes ($6417$). The slope, is the difference in food expenditures between individuals that do have homes minus those who don't. We then conclude that individuals that do have a home spend about $-2516$ less on food than those who don't have homes.
+:::
+
+To run the regression use the `lm()` function:
+
+```{r}
+lm(Food~dummyOH,data=Spend)
+```
+
+::: {.blackbox data-latex=""}
+3.  The scatter plot shows that most of the points for home owners are below $6000$. For non-home owners they are mainly above $6000$. The line can be used to predict the likelihood of owning a home given someones food expenditure. The intercept is above one, but still it gives us the indication that it is likely that low food expenditures are highly predictive of owning a home. The slope tells us how that likelihood changes as the food expenditures increase by 1. In general, the likelihood of owning a home decreases as the food expenditure increases.
+:::
+
+Run the `lm()` function once again:
+
+```{r}
+fitFood<-lm(dummyOH~Food,data=Spend)
+coefficients(fitFood)
+```
+
+For the scatter plot use the following code:
+
+```{r}
+plot(y=Spend$dummyOH,x=Spend$Food, 
+     main="", axes=F, pch=21, bg="blue",
+     xlab="Food",ylab="Dummy")
+axis(side=1, labels=TRUE, font=1,las=1)
+axis(side=2, labels=TRUE, font=1,las=1)
+abline(fitFood,
+       col="gray",lwd=2)
+```
+
+### Exercise 4 {.unnumbered}
+
+::: {.blackbox data-latex=""}
+1.  If we follow the $R^2=0.81$ the model fits the data very well.
+:::
+
+Let's load the data from the web:
+
+```{r}
+Population<-read.csv("https://jagelves.github.io/Data/Population.csv")
+```
+
+Now let's filter the data so that we can focus on the population for Japan.
+
+```{r}
+library(dplyr)
+Japan<-filter(Population,Country.Name=="Japan")
+```
+
+Next, we can run the regression of *Population* against the *Year*. Let's also run the `summary()` function to obtain the fit and the coefficients.
+
+```{r}
+fit<-lm(Population~Year,data=Japan)
+summary(fit)
+```
+
+::: {.blackbox data-latex=""}
+2.  The prediction for $2030$ is about $140$ million people.
+:::
+
+Let's use the `predict()` function:
+
+```{r}
+predict(fit,newdata=data.frame(Year=c(2030)))
+```
+
+::: {.blackbox data-latex=""}
+3.  After looking at the scatter plot, it seems unlikely that the population in Japan will hit $140$ million. Population has been decreasing in Japan!
+:::
+
+Use the `plot()` and `abline()` functions to create the figure.
+
+```{r}
+plot(y=Japan$Population,x=Japan$Year, main="", 
+     axes=F,pch=21, bg="#A7C7E7",
+     xlab="Year",
+     ylab="Population")
+axis(side=1, labels=TRUE, font=1,las=1)
+axis(side=2, labels=TRUE, font=1,las=1)
+abline(fit,
+       col="darkgray",lwd=2)
+```
