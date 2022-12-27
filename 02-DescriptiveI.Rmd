@@ -48,7 +48,7 @@ Base R has some important functions that are helpful when dealing with data. Bel
 -   The `summary()` function returns a collection of descriptive statistics from a data frame (or vector). The function also returns whether there are any missing values (NA) in a variable.
 -   The `as.integer()`, `as.factor()`, `as.double()`, are functions used to coerce your data into a different scale of measurement.
 
-The `dplyr` package has a collection of functions that are useful for data manipulation and transformation. To install, run the following command in the console `install.packages("dplyr")`.
+The `dplyr` package has a collection of functions that are useful for data manipulation and transformation. If you are interested in this package you can refer to @R4DS. To install, run the following command in the console `install.packages("dplyr")`.
 
 -   The `arrange()` function allows you to sort data frames in ascending order. Pair with the `desc()` function to sort the data in descending order.
 -   The `filter()` function allows you to subset the rows of your data based on a condition.

@@ -3,7 +3,7 @@ project:
   output-dir: docs
 
 book:
-  title: "Business Stats"
+  title: "Business Statistics"
   author: "J. Alejandro Gelves"
   date: "12/27/2022"
   cover-image: images/cover.png 
@@ -31,6 +31,7 @@ book:
           - 13-InferenceII.Rmd
           - 14-InferenceIII.Rmd
           - 15-InfReg.Rmd
+    - references.qmd
 
 bibliography: references.bib
 
