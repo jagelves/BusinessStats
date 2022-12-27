@@ -51,9 +51,31 @@ format:
     css: style.css
   pdf:
     documentclass: scrreprt
+    lof: true
+    lot: true
+    toc: true
+    toc-depth: 2
+    fig-cap-location: bottom
+    tbl-cap-location: bottom
+    geometry:
+      - margin=1in
+      - heightrounded
+    hyperrefoptions:
+      - linktoc=all
+    colorlinks: true
+    linkcolor: "blue"
+    biblio-style: apalike
+    keep-tex: true
+    code-block-bg: true
+    code-overflow: wrap
+    code-line-numbers: true
+    include-in-header:
+      text: |
+        \usepackage{makeidx}
+        \makeindex
+    include-after-body:
+      text: |
+        \printindex
 
 editor: visual
-
-
-
 
