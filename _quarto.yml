@@ -2,7 +2,15 @@ project:
   type: book
   output-dir: docs
 
+title-block-banner: "#000000"
+# title-block-banner-color: "#f5f5f5"
+
 book:
+  page-footer:
+    left: |
+      Business Stats by J. Alejandro Gelves.
+    right: |
+      This book was built with <a href="https://quarto.org/">Quarto</a>.
   title: "Business Statistics"
   author: "J. Alejandro Gelves"
   date: "12/27/2022"

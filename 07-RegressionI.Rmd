@@ -16,7 +16,11 @@ Measures of association determine whether there is a linear relationship between
 
 ### Useful R Functions {.unnumbered}
 
-`cov()`, `cor()`, etc.
+To calculate the covariance use the `cov()` function. 
+
+The correlation coefficient can be calculated using the `cor()` function.
+
+The `plot()` function will create scatter plots.
 
 ## Exercises
 
