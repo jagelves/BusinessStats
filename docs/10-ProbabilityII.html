@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.2.269">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Business Statistics - 9&nbsp; Probability II</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1.6em;
+  vertical-align: middle;
+}
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+    color: #aaaaaa;
+  }
+pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+code span.at { color: #7d9029; } /* Attribute */
+code span.bn { color: #40a070; } /* BaseN */
+code span.bu { color: #008000; } /* BuiltIn */
+code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+code span.ch { color: #4070a0; } /* Char */
+code span.cn { color: #880000; } /* Constant */
+code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+code span.dt { color: #902000; } /* DataType */
+code span.dv { color: #40a070; } /* DecVal */
+code span.er { color: #ff0000; font-weight: bold; } /* Error */
+code span.ex { } /* Extension */
+code span.fl { color: #40a070; } /* Float */
+code span.fu { color: #06287e; } /* Function */
+code span.im { color: #008000; font-weight: bold; } /* Import */
+code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+code span.op { color: #666666; } /* Operator */
+code span.ot { color: #007020; } /* Other */
+code span.pp { color: #bc7a00; } /* Preprocessor */
+code span.sc { color: #4070a0; } /* SpecialChar */
+code span.ss { color: #bb6688; } /* SpecialString */
+code span.st { color: #4070a0; } /* String */
+code span.va { color: #19177c; } /* Variable */
+code span.vs { color: #4070a0; } /* VerbatimString */
+code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./11-ProbabilityIII.html" rel="next">
+<link href="./09-ProbabilityI.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 20,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit"
+  }
+}</script>
+<style>
+    .quarto-title-block .quarto-title-banner {
+      background: #000000;
+    }
+    </style>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+    <div class="container-fluid d-flex justify-content-between">
+      <h1 class="quarto-secondary-nav-title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability II</span></h1>
+      <button type="button" class="quarto-btn-toggle btn" aria-label="Show secondary navigation">
+        <i class="bi bi-chevron-right"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<header id="title-block-header" class="quarto-title-block default page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-body">
+      <h1 class="title d-none d-lg-block"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability II</span></h1>
+                      </div>
+  </div>
+    
+  
+  <div class="quarto-title-meta">
+
+      
+    
+      
+    </div>
+    
+  
+  </header><div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Business Statistics</a> 
+        <div class="sidebar-tools-main">
+    <a href="./Business-Statistics.pdf" title="Download PDF" class="sidebar-tool px-1"><i class="bi bi-file-pdf"></i></a>
+</div>
+    </div>
+      </div>
+      <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+      </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">Introduction</a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">Descriptive Statistics</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./02-DescriptiveI.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Descriptive Stats I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./03-DescriptiveII.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Stats II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./04-DescriptiveIII.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descriptive Statistics III</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./05-DescriptiveIV.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Descriptive Stats IV</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./06-DescriptiveV.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Descriptive Stats V</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">Regression Estimation</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./07-RegressionI.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Regression I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./08-RegressionII.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Regression II</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">Probability</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./09-ProbabilityI.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./10-ProbabilityII.html" class="sidebar-item-text sidebar-link active"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./11-ProbabilityIII.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability III</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">Statistical Inference</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./12-InferenceI.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inference I</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./13-InferenceII.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Inference II</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./14-InferenceIII.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Inference III</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./15-InfReg.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression and Inference</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#concepts" id="toc-concepts" class="nav-link active" data-scroll-target="#concepts"><span class="toc-section-number">9.1</span>  Concepts</a>
+  <ul class="collapse">
+  <li><a href="#random-variables" id="toc-random-variables" class="nav-link" data-scroll-target="#random-variables">Random Variables</a></li>
+  <li><a href="#expected-value-and-variance" id="toc-expected-value-and-variance" class="nav-link" data-scroll-target="#expected-value-and-variance">Expected Value and Variance</a></li>
+  <li><a href="#discrete-uniform-distribution" id="toc-discrete-uniform-distribution" class="nav-link" data-scroll-target="#discrete-uniform-distribution">Discrete Uniform Distribution</a></li>
+  <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution">Binomial Distribution</a></li>
+  <li><a href="#the-hypergeometric-distribution" id="toc-the-hypergeometric-distribution" class="nav-link" data-scroll-target="#the-hypergeometric-distribution">The Hypergeometric Distribution</a></li>
+  <li><a href="#poisson-distribution" id="toc-poisson-distribution" class="nav-link" data-scroll-target="#poisson-distribution">Poisson Distribution</a></li>
+  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions">Useful R Functions</a></li>
+  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="toc-section-number">9.2</span>  Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
+  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
+  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
+  </ul></li>
+  <li><a href="#answers" id="toc-answers" class="nav-link" data-scroll-target="#answers"><span class="toc-section-number">9.3</span>  Answers</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1-1" id="toc-exercise-1-1" class="nav-link" data-scroll-target="#exercise-1-1">Exercise 1</a></li>
+  <li><a href="#exercise-2-1" id="toc-exercise-2-1" class="nav-link" data-scroll-target="#exercise-2-1">Exercise 2</a></li>
+  <li><a href="#exercise-3-1" id="toc-exercise-3-1" class="nav-link" data-scroll-target="#exercise-3-1">Exercise 3</a></li>
+  <li><a href="#exercise-4-1" id="toc-exercise-4-1" class="nav-link" data-scroll-target="#exercise-4-1">Exercise 4</a></li>
+  <li><a href="#exercise-5-1" id="toc-exercise-5-1" class="nav-link" data-scroll-target="#exercise-5-1">Exercise 5</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content quarto-banner-title-block" id="quarto-document-content">
+
+
+
+
+<section id="concepts" class="level2" data-number="9.1">
+<h2 data-number="9.1" class="anchored" data-anchor-id="concepts"><span class="header-section-number">9.1</span> Concepts</h2>
+<section id="random-variables" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="random-variables">Random Variables</h3>
+<p>A <strong>random variable</strong> associates a numerical value with each possible experimental outcome. Specifically, the random variable takes on a value with some probability.</p>
+<p>A random variable is fully characterized by its <strong>probability density function</strong> (PDF) if continuous or the <strong>probability mass function</strong> (PMF) if discrete.</p>
+</section>
+<section id="expected-value-and-variance" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="expected-value-and-variance">Expected Value and Variance</h3>
+<p>When summarizing a random variable, we are mostly interested in the variable’s central tendency (Expected Value) and dispersion (Variance).</p>
+<p>The <strong>expected value</strong> (mean) is a measure of central location. For a discrete random variable it is given by <span class="math inline">\(E(x)=\mu=\sum xf(x)\)</span>, where <span class="math inline">\(f(x)\)</span> is the probability mass function. For a continuous random variable it is given by <span class="math inline">\(E(x)= \int_{-\infty}^{\infty} x f(x) dx\)</span>, where <span class="math inline">\(f(x)\)</span> is the probability density function.</p>
+<p>The <strong>variance</strong> summarizes the deviation of the values of the random variable from the mean. It is calculated by <span class="math inline">\(var(x)=E[(x-E(x))^2]=E[x^2]-E[x]^2\)</span>. Note that this formula can be used for both discrete and continuous random variables.</p>
+</section>
+<section id="discrete-uniform-distribution" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="discrete-uniform-distribution">Discrete Uniform Distribution</h3>
+<p>The <strong>discrete uniform distribution</strong> is a probability distribution that assigns equal probability to each outcome in a finite set of possible outcomes. In other words, each outcome in the set is equally likely to occur.</p>
+<p>The <strong>probability mass function</strong> is given by <span class="math inline">\(f(x)=1/n\)</span>, where <span class="math inline">\(n\)</span> is the number of elements in the sample space (all possible outcomes).</p>
+<p>The <strong>expected value</strong> is given by <span class="math inline">\(E(x)=\frac {a+b}{2}\)</span>, where <span class="math inline">\(a\)</span> is the lower bound of the distribution, and <span class="math inline">\(b\)</span> is the upper bound.</p>
+<p>The <strong>variance</strong> is given by <span class="math inline">\(var(x)=\frac {(n^2-1)}{12}\)</span>.</p>
+</section>
+<section id="binomial-distribution" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="binomial-distribution">Binomial Distribution</h3>
+<p>The binomial distribution is a probability distribution that describes the outcome of a sequence of <span class="math inline">\(n\)</span> independent Bernoulli trials. In a Bernoulli trial, there are only two possible outcomes: “success” and “failure”. The probability of success is denoted by <span class="math inline">\(p\)</span>, and the probability of failure is denoted by <span class="math inline">\(q = 1 - p\)</span>. In a sequence of <span class="math inline">\(n\)</span> independent Bernoulli trials, the number of successes (<span class="math inline">\(x\)</span>) is a random variable that follows a binomial distribution.</p>
+<p>The <strong>probability mass function</strong> is given by <span class="math inline">\(f(x)=C_x^n (p^x)(1-p)^{n-x}\)</span>, where <span class="math inline">\(n\)</span> is the number of trials, <span class="math inline">\(x\)</span> is the number of successes, <span class="math inline">\(p\)</span> is the probability of success, and <span class="math inline">\(C_x^n\)</span> is the number of ways there can be <span class="math inline">\(x\)</span> successes in <span class="math inline">\(n\)</span> trials.</p>
+<p>The <strong>expected value</strong> of the binomial distribution is <span class="math inline">\(E(x)=np\)</span>.</p>
+<p>The <strong>variance</strong> of the binomial distribution is <span class="math inline">\(var(x)=np(1-p)\)</span>.</p>
+</section>
+<section id="the-hypergeometric-distribution" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="the-hypergeometric-distribution">The Hypergeometric Distribution</h3>
+<p>The <strong>hypergeometric distribution</strong> is a probability distribution that describes the outcome of drawing a sample from a population without replacement. It is used to calculate the probability of drawing a certain number of successes (<span class="math inline">\(x\)</span>) in a sample of a given size (<span class="math inline">\(n\)</span>), where the success or failure of each individual draw is not dependent on the success or failure of other draws.</p>
+<p>The <strong>hypergeometric</strong> experiment differs from the binomial since:</p>
+<ul>
+<li><p>trials are not independent.</p></li>
+<li><p>the probability of success changes from trial to trial.</p></li>
+</ul>
+<p>The <strong>probability mass function</strong> is given by <span class="math inline">\(f(x)=\frac {C_x^r C_{n-x}^{N-r}}{C_n^N}\)</span>, where <span class="math inline">\(n\)</span> is the number of trials, <span class="math inline">\(x\)</span> is the number of successes, <span class="math inline">\(r\)</span> is the number of elements in the population labeled as success, and <span class="math inline">\(N\)</span> is the number of elements in the population.</p>
+<p>The <strong>expected value</strong> of the hypergeometric distribution is <span class="math inline">\(E(x)=n \frac {r}{N}\)</span>.</p>
+<p>The <strong>variance</strong> of the hypergeometric distribution is <span class="math inline">\(var(x)= n \frac {r}{N} (1- \frac {r}{N}) (\frac {N-n}{N-1})\)</span>.</p>
+</section>
+<section id="poisson-distribution" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="poisson-distribution">Poisson Distribution</h3>
+<p>The <strong>Poisson distribution</strong> estimates the number of successes (<span class="math inline">\(x\)</span>) over a specified interval of time or space.</p>
+<p>The <strong>probability mass function</strong> is given by <span class="math inline">\(f(x)= \frac {\mu e^{-x}}{x!}\)</span>, where <span class="math inline">\(\mu\)</span> is the expected number of successes in any given interval and also the variance, and <span class="math inline">\(e\)</span> is Euler’s number (2.71828…).</p>
+<p>An experiment satisfies a Poisson process if:</p>
+<ul>
+<li><p>The number of successes with a specified time or space interval equals any integer between zero and infinity.</p></li>
+<li><p>The number of successes counted in non-overlapping intervals are independent.</p></li>
+<li><p>The probability of success in any interval is the same for all intervals of equal size and is proportional to the size of the interval.</p></li>
+</ul>
+</section>
+<section id="useful-r-functions" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="useful-r-functions">Useful R Functions</h3>
+<p>To calculate probabilities based on discrete random variables use the <code>pbinom()</code>, <code>phyper()</code>, and <code>ppois()</code> functions. For the uniform distribution use the <code>extraDistr</code> package and the <code>pdunif()</code> function.</p>
+<p>To calculate cumulative probabilities use the <code>dbinom()</code>, <code>dhyper()</code>, <code>dpois()</code>, and <code>ddunif()</code> functions.</p>
+<p>To calculate quantiles use the <code>qbinom()</code>, <code>qhyper()</code>, <code>qpois()</code>, and <code>qdunif()</code> functions.</p>
+<p>To generate random numbers use the <code>rbinom()</code>, <code>rhyper()</code>, <code>rpois()</code>, and <code>rdunif()</code> functions.</p>
+</section>
+</section>
+<section id="exercises" class="level2" data-number="9.2">
+<h2 data-number="9.2" class="anchored" data-anchor-id="exercises"><span class="header-section-number">9.2</span> Exercises</h2>
+<p>The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:</p>
+<ul>
+<li><p>Calculating probabilities for discrete random variables.</p></li>
+<li><p>Calculating the expected value and standard deviation.</p></li>
+<li><p>Applying the binomial, Poisson and hypergeometric probability distributions.</p></li>
+</ul>
+<p>Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.</p>
+<section id="exercise-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-1">Exercise 1</h3>
+<p>For the following exercises, make your calculations by hand and verify results with a calculator or R.</p>
+<ol type="1">
+<li>Consider the table below. Calculate the mean and standard deviation. What is the probability that <span class="math inline">\(x&lt;15\)</span>?</li>
+</ol>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(x\)</span></td>
+<td>5</td>
+<td>10</td>
+<td>15</td>
+<td>20</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(P(X=x)\)</span></td>
+<td>0.35</td>
+<td>0.3</td>
+<td>0.2</td>
+<td>0.15</td>
+</tr>
+</tbody>
+</table>
+<ol start="2" type="1">
+<li>Consider the table below. Calculate the mean and standard deviation. What is the probability that <span class="math inline">\(x\geq-9\)</span>?</li>
+</ol>
+<table class="table">
+<tbody>
+<tr class="odd">
+<td><span class="math inline">\(y\)</span></td>
+<td>-23</td>
+<td>-17</td>
+<td>-9</td>
+<td>-3</td>
+</tr>
+<tr class="even">
+<td><span class="math inline">\(P(Y=y)\)</span></td>
+<td>0.5</td>
+<td>0.25</td>
+<td>0.15</td>
+<td>0.1</td>
+</tr>
+</tbody>
+</table>
+<ol start="3" type="1">
+<li>The returns on a couple of funds depends on the state of the economy. The economy is expected to be Good with a probability of 20%, Fair with probability of 50% and Poor with probability of 30%. Which fund would you choose if you want to maximize your return? What would you choose if you really dislike risk?</li>
+</ol>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">State of Economy</th>
+<th style="text-align: center;">Fund 1</th>
+<th style="text-align: center;">Fund 2</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Good</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">40</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Fair</td>
+<td style="text-align: center;">10</td>
+<td style="text-align: center;">20</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Poor</td>
+<td style="text-align: center;">-10</td>
+<td style="text-align: center;">-40</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="exercise-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise 2</h3>
+<ol type="1">
+<li>Use the table below. A portfolio has 200,000 dollars invested in Asset <span class="math inline">\(X\)</span> and 300,000 dollars in asset <span class="math inline">\(Y\)</span>. If the correlation coefficient between the two investments is <span class="math inline">\(0.4\)</span>, what is the expected return and standard deviation of the portfolio?</li>
+</ol>
+<table class="table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Measure</th>
+<th style="text-align: center;">X</th>
+<th style="text-align: center;">Y</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Expected Return (%)</td>
+<td style="text-align: center;">8</td>
+<td style="text-align: center;">12</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Standard Deviation (%)</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;">20</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="exercise-3" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
+<ol type="1">
+<li><p>Let <span class="math inline">\(Z\)</span> be a binomial random variable with <span class="math inline">\(n=5\)</span> and <span class="math inline">\(p=0.35\)</span> use the binomial formula to find <span class="math inline">\(P(Z=1)\)</span>, <span class="math inline">\(P(Z \geq 2)\)</span>. What is the expected value and standard deviation of <span class="math inline">\(Z\)</span>?</p></li>
+<li><p>Let <span class="math inline">\(W\)</span> be a binomial random variable with <span class="math inline">\(n=200\)</span> and <span class="math inline">\(p=0.77\)</span> use the binomial formula to find <span class="math inline">\(P(W&gt;160)\)</span>, <span class="math inline">\(P(155 \leq W \leq 165)\)</span>. What is the expected value and standard deviation of <span class="math inline">\(W\)</span>?</p></li>
+<li><p>Sixty percent of a firm’s employees are men. Suppose four of the firm’s employees are randomly selected. What is more likely, finding three men and one woman, or two men and one woman? Does your answer change if the proportion falls to <span class="math inline">\(50\)</span>%?</p></li>
+</ol>
+</section>
+<section id="exercise-4" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h3>
+<ol type="1">
+<li><p>Assume that <span class="math inline">\(S\)</span> is a Poisson process with mean of <span class="math inline">\(\mu=1.5\)</span>. Calculate <span class="math inline">\(P(S=2)\)</span> and <span class="math inline">\(P(S \geq 2)\)</span>. What is the mean and standard deviation of <span class="math inline">\(S\)</span>?</p></li>
+<li><p>Assume that <span class="math inline">\(T\)</span> is a Poisson process with mean of <span class="math inline">\(\mu=20\)</span>. Calculate <span class="math inline">\(P(T=14)\)</span> and <span class="math inline">\(P(18 \leq T \leq 23)\)</span>.</p></li>
+<li><p>A local pharmacy administers on average <span class="math inline">\(84\)</span> Covid-19 vaccines per week. The vaccines shots are evenly administered across all days. Find the probability that the number of vaccine shots administered on a Wednesday is more than eight but less than <span class="math inline">\(12\)</span>.</p></li>
+</ol>
+</section>
+<section id="exercise-5" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-5">Exercise 5</h3>
+<ol type="1">
+<li><p>Assume that <span class="math inline">\(X\)</span> is a hypergeometric random variable with <span class="math inline">\(N=25\)</span>, <span class="math inline">\(S=3\)</span>, and <span class="math inline">\(n=4\)</span>. Calculate <span class="math inline">\(P(X=0)\)</span>, <span class="math inline">\(P(X=1)\)</span>, and <span class="math inline">\(P(X \leq 1)\)</span>.</p></li>
+<li><p>Compute the probability of at least eight successes in a random sample of <span class="math inline">\(20\)</span> items obtained from a population of <span class="math inline">\(100\)</span> items that contains <span class="math inline">\(25\)</span> successes. What are the expected value and standard deviation of the number of successes?</p></li>
+<li><p>For <span class="math inline">\(1\)</span> dollar a player gets to select six numbers for the base game of Powerball. In the game, five balls are randomly drawn from 59 consecutively numbered white balls. One ball, called the Powerball, is randomly drawn from <span class="math inline">\(39\)</span> consecutively numbered red balls. What is the probability that a player is able to match two out of five randomly drawn white balls? What is the probability of winning the jackpot?</p></li>
+</ol>
+</section>
+</section>
+<section id="answers" class="level2" data-number="9.3">
+<h2 data-number="9.3" class="anchored" data-anchor-id="answers"><span class="header-section-number">9.3</span> Answers</h2>
+<section id="exercise-1-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-1-1">Exercise 1</h3>
+<ol type="1">
+<li>The expected value is <span class="math inline">\(10.75\)</span> and the standard deviation is <span class="math inline">\(5.31\)</span>. The probability of <span class="math inline">\(x&lt;15\)</span> is <span class="math inline">\(0.65\)</span>.</li>
+</ol>
+<p>In R we can create vectors for both <span class="math inline">\(x\)</span> and the probabilities <span class="math inline">\(P(X=x)\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">20</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>px<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">0.35</span>,<span class="fl">0.3</span>,<span class="fl">0.2</span>,<span class="fl">0.15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The expected value is the sum product of probabilities and values. Formally, <span class="math inline">\(\sum_{i=1}^{n}x_{i}p_{i}\)</span> and in R:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(ex<span class="ot">&lt;-</span><span class="fu">sum</span>(x<span class="sc">*</span>px))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.75</code></pre>
+</div>
+</div>
+<p>The standard deviation is given by <span class="math inline">\(\sqrt{\sum_{i=1}^{n}(x_{i}-\mu)^2p_{i}}\)</span>. We can calculate it in R with the following code:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(sd<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">sum</span>((x<span class="sc">-</span>ex)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>px)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 5.30919</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>The expected value is <span class="math inline">\(-17.4\)</span> and the standard deviation is <span class="math inline">\(6.86\)</span>. The probability of is <span class="math inline">\(0.25\)</span>.</li>
+</ol>
+<p>Let’s create the vectors once more in R.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">23</span>,<span class="sc">-</span><span class="dv">17</span>,<span class="sc">-</span><span class="dv">9</span>,<span class="sc">-</span><span class="dv">3</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>py<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">0.5</span>,<span class="fl">0.25</span>,<span class="fl">0.15</span>,<span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>The expected value is given by:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(ey<span class="ot">&lt;-</span><span class="fu">sum</span>(y<span class="sc">*</span>py))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -17.4</code></pre>
+</div>
+</div>
+<p>The standard deviation is given by:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(sdy<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">sum</span>((y<span class="sc">-</span>ey)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>py)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6.858571</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>Both funds have the same expected return of <span class="math inline">\(6\)</span>. The safest return comes from fund 1 since the standard deviation is only <span class="math inline">\(11.14\)</span> vs.&nbsp;<span class="math inline">\(31.05\)</span> for fund 2.</li>
+</ol>
+<p>In R we can create a data frame with probabilities and the performance of the funds.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>funds<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">probs=</span><span class="fu">c</span>(<span class="fl">0.2</span>,<span class="fl">0.5</span>,<span class="fl">0.3</span>),<span class="at">fund1=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">10</span>,<span class="sc">-</span><span class="dv">10</span>), <span class="at">fund2=</span><span class="fu">c</span>(<span class="dv">40</span>,<span class="dv">20</span>,<span class="sc">-</span><span class="dv">40</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Let’s create a function for the expected value and standard deviation. For the expected value:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>Expected_Value<span class="ot">&lt;-</span><span class="cf">function</span>(x,p){</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(x<span class="sc">*</span>p)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Now we can use the formula to calculate the expected value of fund1:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Expected_Value</span>(funds<span class="sc">$</span>fund1,funds<span class="sc">$</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+</div>
+<p>and fund 2:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Expected_Value</span>(funds<span class="sc">$</span>fund2,funds<span class="sc">$</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 6</code></pre>
+</div>
+</div>
+<p>For the standard deviation we can create another function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>Standard_Deviation<span class="ot">&lt;-</span><span class="cf">function</span>(x,p){</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(<span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">Expected_Value</span>(x,p))<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>p))</span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p>Using the function to get the standard deviation of fund 1 we get:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Standard_Deviation</span>(funds<span class="sc">$</span>fund1,funds<span class="sc">$</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11.13553</code></pre>
+</div>
+</div>
+<p>and for fund 2:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Standard_Deviation</span>(funds<span class="sc">$</span>fund2,funds<span class="sc">$</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 31.04835</code></pre>
+</div>
+</div>
+</section>
+<section id="exercise-2-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-2-1">Exercise 2</h3>
+<ol type="1">
+<li>The expected return of the portfolio is <span class="math inline">\(10.4\)</span> and the standard deviation is <span class="math inline">\(14.60\)</span>.</li>
+</ol>
+<p>In R we can start by calculating the expected return. This is given by the formula <span class="math inline">\(\alpha R_{1} +\beta R_{2}\)</span>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(ER<span class="ot">&lt;-</span>(<span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>)<span class="sc">*</span><span class="dv">8</span><span class="sc">+</span>(<span class="dv">3</span><span class="sc">/</span><span class="dv">5</span>)<span class="sc">*</span><span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10.4</code></pre>
+</div>
+</div>
+<p>Next we can find the standard deviation with the formula <span class="math inline">\(\sqrt{\alpha^2 \sigma_{1}^2+\beta^2 \sigma_{2}+\alpha \beta \rho \sigma_{1} \sigma_{2}}\)</span>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>(Risk<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fl">0.4</span><span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">12</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fl">0.6</span><span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">20</span><span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span><span class="fl">0.4</span><span class="sc">*</span><span class="fl">0.6</span><span class="sc">*</span><span class="fl">0.4</span><span class="sc">*</span><span class="dv">12</span><span class="sc">*</span><span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14.59863</code></pre>
+</div>
+</div>
+</section>
+<section id="exercise-3-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-3-1">Exercise 3</h3>
+<ol type="1">
+<li><span class="math inline">\(P(Z=1)=0.31\)</span>, and <span class="math inline">\(P(Z \geq 2)=0.57\)</span>. The expected value is <span class="math inline">\(np=1.75\)</span> and the standard deviation is <span class="math inline">\(\sqrt{np(1-p)}=1.067\)</span>.</li>
+</ol>
+<p>Let’s use R and the <code>dbinom()</code> function to find <span class="math inline">\(P(Z=1)\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="fl">0.35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3123859</code></pre>
+</div>
+</div>
+<p>We can now use <code>pbinom()</code> to find the cumulative distribution. Since we want the right tale of the distribution, we will specify this with an argument.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="fl">0.35</span>, <span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.571585</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li><span class="math inline">\(P(W&gt;160)=0.14\)</span>, and <span class="math inline">\(P(155 \leq W \leq 165 )=0.45\)</span>. The expected value is <span class="math inline">\(np=154\)</span> and the standard deviation is <span class="math inline">\(\sqrt{np(1-p)}=5.95\)</span>.</li>
+</ol>
+<p>Using the <code>pbinom()</code> function we find that <span class="math inline">\(P(W&gt;160)\)</span>.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">160</span>,<span class="dv">200</span>,<span class="fl">0.77</span>, <span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.136611</code></pre>
+</div>
+</div>
+<p>We make two calculations to find the probability. First, <span class="math inline">\(P(W \leq 165)\)</span> and then <span class="math inline">\(P(W \geq 154)\)</span>. The difference between these two, gives us the desired outcome.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">165</span>,<span class="dv">200</span>,<span class="fl">0.77</span>, <span class="at">lower.tail=</span>T)<span class="sc">-</span><span class="fu">pbinom</span>(<span class="dv">154</span>,<span class="dv">200</span>,<span class="fl">0.77</span>, <span class="at">lower.tail=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4487104</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>The probabilities are the same. Each event has a probability of <span class="math inline">\(0.3456\)</span>. If the probability changes to <span class="math inline">\(0.5\)</span> now the event of two women and two men is more likely.</li>
+</ol>
+<p>Let’s calculate the probabilities in R. First, the probability of three men and one woman.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3456</code></pre>
+</div>
+</div>
+<p>Now the probability of two men and two women.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3456</code></pre>
+</div>
+</div>
+<p>Changing the probabilities reveals that:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.25</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.375</code></pre>
+</div>
+</div>
+<p>Having two of each is the most likely outcome.</p>
+</section>
+<section id="exercise-4-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-4-1">Exercise 4</h3>
+<ol type="1">
+<li>The <span class="math inline">\(P(S=2)=0.25\)</span> and <span class="math inline">\(P(S \geq 2)=0.44\)</span>. The expected value and the variance is <span class="math inline">\(1.5\)</span>.</li>
+</ol>
+<p>In R we will make use of the <code>dpois()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="dv">2</span>,<span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2510214</code></pre>
+</div>
+</div>
+<p>For the second probability we will use <code>ppois()</code>:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">1</span>,<span class="fl">1.5</span>, <span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4421746</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>The <span class="math inline">\(P(T=14)=0.039\)</span> and <span class="math inline">\(P(18 \leq T \leq 23)=0.49\)</span>.</li>
+</ol>
+<p>Using the <code>dpois()</code> function once more:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="dv">14</span>,<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.03873664</code></pre>
+</div>
+</div>
+<p>For the second probability we will find the difference between two probabilities:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">23</span>,<span class="dv">20</span>, <span class="at">lower.tail=</span>T)<span class="sc">-</span><span class="fu">ppois</span>(<span class="dv">17</span>,<span class="dv">20</span>, <span class="at">lower.tail=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.4904644</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>The probability of administering more than <span class="math inline">\(8\)</span> but less than <span class="math inline">\(12\)</span> shots is <span class="math inline">\(0.3\)</span>.</li>
+</ol>
+<p>Let’s first note that if <span class="math inline">\(84\)</span> shots are administered on average weekly, then <span class="math inline">\(12\)</span> are administered daily. Now we can use this average and the <code>ppois()</code> function to find the probability:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">11</span>,<span class="dv">12</span>)<span class="sc">-</span><span class="fu">ppois</span>(<span class="dv">8</span>,<span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3065696</code></pre>
+</div>
+</div>
+</section>
+<section id="exercise-5-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-5-1">Exercise 5</h3>
+<ol type="1">
+<li><span class="math inline">\(P(X=0)=0.58\)</span>, <span class="math inline">\(P(X=1)=0.37\)</span>, and <span class="math inline">\(P(X \leq 1)=0.94\)</span>.</li>
+</ol>
+<p>In R we can use the <code>dhyper()</code> function</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">22</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5782609</code></pre>
+</div>
+</div>
+<p>once more for the second probability:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">22</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.3652174</code></pre>
+</div>
+</div>
+<p>For the last probability we can add the previous probabilities or use the <code>phyper()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">phyper</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">22</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.9434783</code></pre>
+</div>
+</div>
+<ol start="2" type="1">
+<li>The probability is <span class="math inline">\(0.545\)</span>.</li>
+</ol>
+<p>In R we use the <code>dhyper()</code> function once more:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">0</span>, <span class="dv">2</span>, <span class="dv">10</span>, <span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.5454545</code></pre>
+</div>
+</div>
+<ol start="3" type="1">
+<li>The probability of matching two white balls is <span class="math inline">\(5%\)</span>. Winning the jackpot is extremely unlikely! A probability of <span class="math inline">\(0.00000000512\)</span>. It is more likely to be struck by lightning according to the CDC.</li>
+</ol>
+<p>In R use the <code>dhyper()</code> function:</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">54</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.04954472</code></pre>
+</div>
+</div>
+<p>For the jackpot we first calculate the probability of getting all of the white balls.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">5</span>,<span class="at">scipen=</span><span class="dv">999</span>)</span>
+<span id="cb62-2"><a href="#cb62-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">54</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.00000019974</code></pre>
+</div>
+</div>
+<p>Now the probability of getting the Powerball.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">38</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.025641</code></pre>
+</div>
+</div>
+<p>Since the two events are independent, we can multiply them to find the probability of a jackpot.</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">54</span>, <span class="dv">5</span>)<span class="sc">*</span><span class="fu">dhyper</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">38</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0000000051217</code></pre>
+</div>
+</div>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const clipboard = new window.ClipboardJS('.code-copy-button', {
+    target: function(trigger) {
+      return trigger.previousElementSibling;
+    }
+  });
+  clipboard.on('success', function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  });
+  function tippyHover(el, contentFn) {
+    const config = {
+      allowHTML: true,
+      content: contentFn,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start'
+    };
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      return note.innerHTML;
+    });
+  }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./09-ProbabilityI.html" class="pagination-link">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability I</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./11-ProbabilityIII.html" class="pagination-link">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability III</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">Business Stats by J. Alejandro Gelves.</div>   
+    <div class="nav-footer-right">This book was built with <a href="https://quarto.org/">Quarto</a>.</div>
+  </div>
+</footer>
+
+
+
+</body></html>

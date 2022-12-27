@@ -24,23 +24,23 @@ book:
         - 02-DescriptiveI.Rmd
         - 03-DescriptiveII.Rmd
         - 04-DescriptiveIII.Rmd
-    #       - 05-DescriptiveIV.Rmd
-    #       - 06-DescriptiveV.Rmd
-    # - part: "Regression Estimation"
-    #   chapters:
-    #       - 07-RegressionI.Rmd
-    #       - 08-RegressionII.Rmd
-    # - part: "Probability"
-    #   chapters:
-    #       - 09-ProbabilityI.Rmd
-    #       - 10-ProbabilityII.Rmd
-    #       - 11-ProbabilityIII.Rmd
-    # - part: "Statistical Inference"
-    #   chapters:
-    #       - 12-InferenceI.Rmd
-    #       - 13-InferenceII.Rmd
-    #       - 14-InferenceIII.Rmd
-    #       - 15-InfReg.Rmd
+        - 05-DescriptiveIV.Rmd
+        - 06-DescriptiveV.Rmd
+    - part: "Regression Estimation"
+      chapters:
+        - 07-RegressionI.Rmd
+        - 08-RegressionII.Rmd
+    - part: "Probability"
+      chapters:
+        - 09-ProbabilityI.Rmd
+        - 10-ProbabilityII.Rmd
+        - 11-ProbabilityIII.Rmd
+    - part: "Statistical Inference"
+      chapters:
+        - 12-InferenceI.Rmd
+        - 13-InferenceII.Rmd
+        - 14-InferenceIII.Rmd
+        - 15-InfReg.Rmd
     - references.qmd
 
 bibliography: references.bib
