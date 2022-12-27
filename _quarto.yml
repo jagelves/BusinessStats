@@ -12,10 +12,11 @@ book:
     right: |
       This book was built with <a href="https://quarto.org/">Quarto</a>.
   title: "Business Statistics"
-  subtitle: "A Reference for BUAD 231"
+  subtitle: "A Guide for BUAD 231"
   author: "J. Alejandro Gelves"
   date: "12/27/2022"
-  cover-image: images/cover.png 
+  cover-image: images/cover.png
+  downloads: [pdf, epub]
   chapters:
     - index.qmd
     - part: "Descriptive Statistics"
@@ -53,6 +54,6 @@ format:
 
 editor: visual
 
-downloads: pdf
+
 
 
