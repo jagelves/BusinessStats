@@ -112,33 +112,33 @@ Use the **airquality** data set included in R for this problem.
 
 ### Exercise 1 {.unnumbered}
 
-::: {.blackbox data-latex=""}
-1.  The variables Title and Rating are categorical whereas Price and Year are numerical.
-:::
 
-::: {.blackbox data-latex=""}
+1.  The variables Title and Rating are categorical whereas Price and Year are numerical.
+
+
+
 2.  The measurement scale is nominal for Title, ordinal for Ratio, ratio for Price, and interval for Year. Recall, that the nominal and ratio scales represent the least and most sophisticated levels of measurement, respectively.
-:::
+
 
 ### Exercise 2 {.unnumbered}
 
-::: {.blackbox data-latex=""}
+
 1.  The variable Year is measured on the interval scale because the observations can be ranked, categorized and measured when using this kind of scale. However, there is no true zero point so we cannot calculate meaningful ratios between years.
-:::
 
-::: {.blackbox data-latex=""}
+
+
 2.  The variable Quarter is measured on the nominal scale, even though it contains numbers. It is the least sophisticated level of measurement because if we are presented with nominal data, all we can do is categorize or group the data.
-:::
 
-::: {.blackbox data-latex=""}
+
+
 3.  The variable Deliveries is measured on the ratio scale. It is the strongest level of measurement because it allows us to categorize and rank the data as well as find meaningful differences between observations. Also, with a true zero point, we can interpret the ratios between observations.
-:::
+
 
 ### Exercise 3 {.unnumbered}
 
-::: {.blackbox data-latex=""}
+
 1.  The day and month of the first observation is August 28th.
-:::
+
 
 The easiest way to sort in R is by using the `dplyr` package. Specifically, the `arrange()` function within the package. Let's also use the `desc()` function to make sure that the data is sorted in descending order. We can use indexing to retrieve the first row of the sorted data set.
 
@@ -148,9 +148,9 @@ SortedAQ<-arrange(airquality,desc(Temp),desc(Ozone),desc(Wind))
 SortedAQ[1,]
 ```
 
-::: {.blackbox data-latex=""}
+
 2.  Of the $10$ hottest days only two were in July.
-:::
+
 
 We can use the `arrange()` function one more time for this question. Then we can use indexing to retrieve the top $10$ observations.
 
@@ -159,9 +159,9 @@ SortedAQ2<-arrange(airquality,desc(Temp))
 SortedAQ2[1:10,]
 ```
 
-::: {.blackbox data-latex=""}
+
 3.  There are a total of $44$ missing values. *Ozone* has $37$ and *Solar.R* has $7$. Rows $5$, $6$, $11$, $27$, $96$, $97$, $98$ are missing for *Solar.R*.
-:::
+
 
 We can easily identify missing values with the `summary()` function.
 
@@ -175,17 +175,17 @@ To view the rows that have NA's in them, we can use the `is.na()` function and i
 airquality[is.na(airquality$Solar.R),]
 ```
 
-::: {.blackbox data-latex=""}
+
 4.  To create the new object of complete observations we can use the `na.omit()` function.
-:::
+
 
 ```{r}
 CompleteAQ<-na.omit(airquality)
 ```
 
-::: {.blackbox data-latex=""}
+
 5.  There were $107$ days where the temperature was at least $60$.
-:::
+
 
 Using base R we have:
 
@@ -199,9 +199,9 @@ We can also use `dplyr` for this question. Specifically, using the `filter()` an
 nrow(filter(CompleteAQ,Temp>=60))
 ```
 
-::: {.blackbox data-latex=""}
+
 6.  There were $24$ days where the temperature was between $55$ and $75$ and the ozone level was below $20$.
-:::
+
 
 Using base R we have:
 

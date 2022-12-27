@@ -81,7 +81,7 @@ In this exercise we will be simulating the central limit theorem. You will need 
 2.  The production of Good Guy dolls has a $1$% defective rate. A quality inspector takes five samples of size $1000$. The proportions are shown in the table below. Is the production process under control?
 
 |        1        |        2        |        3        |        4        |        5         |
-|:--------------:|:------------:|:------------:|:------------:|:------------:|
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 | $\bar{p}=0.009$ | $\bar{p}=0.012$ | $\bar{p}=0.008$ | $\bar{p}=0.011$ | $\bar{p}=0.0102$ |
 
 ## Answers
@@ -154,9 +154,9 @@ There is a $72.59$% probability that the sample mean is between $140$ and $160$.
 
 ### Exercise 2 {.unnumbered}
 
-::: {.blackbox data-latex=""}
+
 1.  The expected value is $80$ since it is equal to the mean of the population. The standard error is $1.4$. The probability is $98.38$%.
-:::
+
 
 We can use R as a calculator to find the standard error.
 
@@ -170,9 +170,9 @@ We can use `pnorm()` to find the probability:
 pnorm(85,80,1.4)-pnorm(77,80,1.4)
 ```
 
-::: {.blackbox data-latex=""}
+
 2.  The probabilities are $24.66$% and $1.8$%.
-:::
+
 
 For the first probability we can use a sample size of $4$ and use the standard error in the `pnorm()` function.
 
@@ -194,9 +194,9 @@ p35^4
 
 ### Exercise 3 {.unnumbered}
 
-::: {.blackbox data-latex=""}
+
 1.  The expected value is $0.75$, the same as the population. The standard error is $\sqrt{p(1-p)/n}=0.03$. The probability for a sample of $200$ is $0.8975$.
-:::
+
 
 The standard error is given by:
 
@@ -210,9 +210,9 @@ In R we can use the `pnorm()` function one more time to find the probability.
 pnorm(0.8,0.75,sqrt(0.75*0.25/200))-pnorm(0.7,0.75,sqrt(0.75*0.25/200))
 ```
 
-::: {.blackbox data-latex=""}
+
 2.  The probability with a sample of $50$ is $69.29$%. When the sample is $200$ the probability is $84.33$%. As the sample size increases the standard error goes down. This means that the distribution of the sample proportions gets tighter and there is more area to the right of $\bar{p}=0.2$.
-:::
+
 
 In R we can use the `pnorm()` function one more time with a mean of $0.2$ and $n=50$.
 
@@ -228,9 +228,9 @@ pnorm(0.2,0.23,sqrt(0.23*0.77/200),lower.tail = F)
 
 ### Exercise 4 {.unnumbered}
 
-::: {.blackbox data-latex=""}
+
 1.  The process seems to be out of control. In the early samples, the machine is not filling the cans with enough drink. Although, in the later periods the machine reverts back to the expected performance, it seems unlikely that it will remain functioning correctly.
-:::
+
 
 Let's start by calculating the upper and lower limits in R.
 
@@ -249,9 +249,9 @@ abline(h=ulEx1,col="red")
 abline(h=llEx1,col="red")
 ```
 
-::: {.blackbox data-latex=""}
+
 2.  Good Dolls production looks good. All proportions fall between three standard errors of the mean.
-:::
+
 
 Once more we can calculate upper and lower limits for the proportions.
 

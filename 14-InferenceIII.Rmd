@@ -104,9 +104,9 @@ According to www.worldatlas.com, $5$% of the population has hazel color eyes. Us
 
 ### Exercise 1 {.unnumbered}
 
-::: {.blackbox data-latex=""}
+
 1.  The sample statistic is $-1.6$. The null hypothesis can't be rejected at a $5$% significance level since the p-value is $13.04$%. We conclude that the population mean is not statistically different from $50$.
-:::
+
 
 In R we can calculate the t-statistic.
 
@@ -125,9 +125,9 @@ Since the t-statistic is greater than the critical value of $-2.13$, we can't re
 2*pt(teststat,n-1)
 ```
 
-::: {.blackbox data-latex=""}
+
 2.  The null hypothesis that $H_{o}: \mu \geq 100$ can't be rejected since the p-value of $1.9$% is greater than the $1$% significance level.
-:::
+
 
 Let's start by creating an object to store the values of our sample.
 
@@ -156,9 +156,9 @@ We can also verify our result using the `t.test()` function in R.
 t.test(sample2,alternative = "less",mu = 100,conf.level = 0.99)
 ```
 
-::: {.blackbox data-latex=""}
+
 3.  The null hypothesis that $H_{o}: \mu \leq 210$ can be rejected since the p-value of $0.2$% is less than the $10$% significance level.
-:::
+
 
 Let's create the object in R with the data.
 
@@ -174,9 +174,9 @@ t.test(sample3,alternative="greater",mu=210,conf.level=0.9)
 
 ### Exercise 2 {.unnumbered}
 
-::: {.blackbox data-latex=""}
+
 The claim that the duration between eruptions is $92$ minutes can be rejected at a $10$%, $5$%, and $1$% significance level.
-:::
+
 
 Once more calculate the t-test in R with the `t.test()` function.
 
@@ -186,9 +186,9 @@ t.test(faithful$waiting,alternative = "two.sided",mu=92, conf.level = 0.99)
 
 ### Exercise 3 {.unnumbered}
 
-::: {.blackbox data-latex=""}
+
 1.  The competing hypothesis are $H_{o}: p = 0.4$, $H_{a}: p \neq 0.4$. At a $5$% significance level we can't reject the null hypothesis since the p-value of the test statistic ($0.102$) is greater than the significance level ($0.05$). We conclude that the population proportion is not significantly different from $0.4$.
-:::
+
 
 In R we can calculate the test statistic $\frac {\bar{p}-p_{o}}{\sqrt {p_{o}(1-p_{o})/n}}$.
 
@@ -202,9 +202,9 @@ Now we can use the `pnorm()` function in R to get the p-value. Since it is a two
 2*pnorm(pstat,lower.tail = F)
 ```
 
-::: {.blackbox data-latex=""}
+
 2.  From the sample $40$% are labeled as success. Testing the hypothesis reveals that we can reject the null at a $5$% significance level. We conclude that the population proportion is less than $0.45$.
-:::
+
 
 We once again create the test statistic in R.
 
@@ -218,9 +218,9 @@ With the statistic, we can now find the p-value:
 pnorm(pstat2,lower.tail = T)
 ```
 
-::: {.blackbox data-latex=""}
+
 3.  The competing hypothesis are $H_{o}: p \leq 0.5$, $H_{a}: p > 0.5$. At a $1$% significance level we can't reject the null hypothesis since the p-value of the test statistic ($0.26$) is greater than the significance level ($0.01$). We conclude that more than 50% of the observations in the population are below 10.
-:::
+
 
 Let's create an object to store the values.
 
@@ -250,9 +250,9 @@ prop.test(6,10,p=0.5,alternative = "greater", conf.level = 0.99,
 
 ### Exercise 4 {.unnumbered}
 
-::: {.blackbox data-latex=""}
+
 1.  We reject the null hypothesis that $5$% of the population has hazel eyes with our sample.
-:::
+
 
 The number of people with Hazel eyes is calculated as:
 

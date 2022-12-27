@@ -64,9 +64,9 @@ You will need the **sleep** data set for this problem. The data is built into R,
 
 ### Exercise 1 {.unnumbered}
 
-::: {.blackbox data-latex=""}
+
 1.  The mean of *Population* is $48.61$. The standard deviation is $47.94$.
-:::
+
 
 Start by generating values from the exponential distribution. You can use the `rexp()` function in R to do this. Setting the seed to $9$ yields:
 
@@ -87,9 +87,9 @@ The standard deviation is:
 (PopSD<-sd(Population))
 ```
 
-::: {.blackbox data-latex=""}
+
 2.  The mean is very close to the population mean $48.83$. The standard deviation is $6.83$.
-:::
+
 
 In R you can use a for loop to create the vector of sample means.
 
@@ -114,9 +114,9 @@ The standard deviation is:
 (Standard<-sd(SampleMeans))
 ```
 
-::: {.blackbox data-latex=""}
+
 3.  The confidence interval is \[$47.71$,$70.17$\]. Since the population mean is equal to $48.61$, the confidence interval does include the population mean.
-:::
+
 
 Let's construct the upper an lower limits of the interval in R.
 
@@ -125,9 +125,9 @@ Let's construct the upper an lower limits of the interval in R.
 (ul<-SampleMeans[1]-qnorm(0.05)*Standard)
 ```
 
-::: {.blackbox data-latex=""}
+
 4.  The confidence interval is \[$14.86$,$37.32$\]. This interval does not include the population mean of $48.61$. Out of the $10,000$ confidence intervals, one would expect about $9,000$ to include the population mean.
-:::
+
 
 Let's find the confidence interval limits using R.
 
@@ -154,9 +154,9 @@ count
 
 ### Exercise 2 {.unnumbered}
 
-::: {.blackbox data-latex=""}
+
 1.  The $90$% confidence interval is \[$94.52$,$114.67$\] and the $95$% confidence interval is \[$114.68$,$116.76$\]. The larger the confidence level, the larger the interval.
-:::
+
 
 Let's construct the intervals using R. Since the population standard deviation is unknown we will use the t-distribution. The interval is constructed as $\bar{x}\pm t_{\alpha/2} \frac{s}{\sqrt{n}}$.
 
@@ -172,9 +172,9 @@ For the $95$% confidence interval we adjust the significance level accordingly.
 (ll95<-104.6+qt(0.025,23)*28.8/sqrt(24))
 ```
 
-::: {.blackbox data-latex=""}
+
 2.  The confidence interval for a sample size of $16$ is \[$30.75$,$66.61$\]. The confidence interval when the sample size is $25$ is \[$34.79$,$62.57$\]. As the sample size gets larger, the confidence interval gets narrower and more precise.
-:::
+
 
 Let's use R again to calculate the confidence interval. For a sample size of $16$ the interval is:
 
@@ -192,9 +192,9 @@ Increasing the ample size to $25$ yields:
 
 ### Exercise 3 {.unnumbered}
 
-::: {.blackbox data-latex=""}
+
 1.  The 95% confidence interval for group 1 is \[$-0.36$,$1.86$\].
-:::
+
 
 Let's first calculate the standard error for group 1.
 
@@ -209,9 +209,9 @@ We can now use the standard error to estimate the lower and upper limits of the 
 (ul1<-mean(sleep$extra[sleep$group==1])-qnorm(0.025)*se1)
 ```
 
-::: {.blackbox data-latex=""}
+
 2.  The 95% confidence interval for group 2 is \[$1.09$,$3.57$\].
-:::
+
 
 Let's repeat the procedure for group 2. Start by finding the standard error.
 
@@ -226,15 +226,15 @@ Using the standard error we can complete the confidence interval.
 (ul2<-mean(sleep$extra[sleep$group==2])-qnorm(0.025)*se2)
 ```
 
-::: {.blackbox data-latex=""}
+
 3.  Drug 2. Drug 2 does not include zero in the interval, and the interval is to the right of zero. It is unlikely, that drug 2 has no effect on students sleeping time. Additionally, Drug 2's mean increase in sleeping hours is $2.33$ vs. $0.75$ for drug 1.
-:::
+
 
 ### Exercise 4 {.unnumbered}
 
-::: {.blackbox data-latex=""}
+
 1.  The 90% and 95% confidence intervals are \[$0.319$,$0.481$\], and \[$0.304$,$0.496$\] respectively. Since they do not include 0.5, we can conclude that the population proportion is significantly different from 0.5.
-:::
+
 
 We can create an object that stores the sample proportion and sample in R:
 
@@ -257,9 +257,9 @@ The $95$% confidence interval is:
 (Ex1ul90<-p-qnorm(0.025)*sqrt(p*(1-p)/100))
 ```
 
-::: {.blackbox data-latex=""}
+
 2.  The $90$% confidence interval is \[$0.132$,$0.182$\].The $95$% confidence interval is \[$0.128$,$0.186$\].
-:::
+
 
 The data can easily be viewed by calling `HairEyeColor` in R.
 

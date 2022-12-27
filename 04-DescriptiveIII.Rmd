@@ -105,13 +105,13 @@ Download the `ISLR2` package. You will need the **OJ** data set to answer this q
 
 ### Exercise 1 {.unnumbered}
 
-::: {.blackbox data-latex=""}
+
 1.  To find the mean we will use the following formula $( \frac{1}{n} \sum_{i=i}^{n} x_{i})$. The summation of the values is $51$ and the number of observations is $5$. The mean is $51/5=10.2$.
 
     The median is found by locating the middle value when data is sorted in ascending order. The median in this example is $10$.
 
     The mode is the value with the highest frequency. In this example the mode is $12$ since it is repeated twice and all other numbers appear only once.
-:::
+
 
 The mean can be easily verified in R by using the `mean()` function:
 
@@ -131,9 +131,9 @@ We can use the `table()` function to calculate frequencies and easily identify t
 table(c(8,10,9,12,12))
 ```
 
-::: {.blackbox data-latex=""}
+
 2.  The mean is $-2.67$, the median is $-3.5$, the mode is $-4$.
-:::
+
 
 These mean is verified in R:
 
@@ -153,9 +153,9 @@ Finally, the mode in R:
 table(c(-4,0,-6,1,-3,-4))
 ```
 
-::: {.blackbox data-latex=""}
+
 3.  The mean is $18.33$, the median is $20$, the data is bimodal with both $15$ and $20$ being modes.
-:::
+
 
 These mean is verified in R:
 
@@ -177,9 +177,9 @@ table(c(20,15,25,20,10,15,25,20,15))
 
 ### Exercise 2 {.unnumbered}
 
-::: {.blackbox data-latex=""}
+
 1.  The mean price for Country Hill is $1.87$. The mean price for Minute Maid is $2.09$.
-:::
+
 
 The means can be easily found with the `mean()` function:
 
@@ -189,9 +189,9 @@ mean(OJ$PriceCH)
 mean(OJ$PriceMM)
 ```
 
-::: {.blackbox data-latex=""}
+
 2.  The mean price at store 1 for Country Hill is $1.80$ vs. $1.84$ for store 2. The juice is cheaper at store 1.
-:::
+
 
 The means for each store can be found by using indexing and a logical statement. The Country Hill mean price at store 1 is given by:
 
@@ -205,9 +205,9 @@ The Country Hill mean price at store 2 is given by:
 mean(OJ$PriceCH[OJ$StoreID==2])
 ```
 
-::: {.blackbox data-latex=""}
+
 3.  Purchasers of Country Hill at store 1 paid and average of $1.80$ for Country Hill juice. At store 2 they paid $1.86$. Once again the average price was lower at store 1.
-:::
+
 
 The mean for Country Hill purchasers at store 1 is given by:
 
@@ -223,9 +223,9 @@ mean(OJ$PriceCH[OJ$StoreID==2 & OJ$Purchase=="CH"])
 
 ### Exercise 3 {.unnumbered}
 
-::: {.blackbox data-latex=""}
+
 1.  The average price of sale is found by using the weighted average formula. $\frac{\sum w_{i}x_{i}}{\sum w_{i}}$ The weights ($w_{i}$) are given by the number of shares bought and the values ($x_{i}$) are the prices. The weighted average is $246.802$.
-:::
+
 
 In R you can create two vectors. One holds the share price and the other one the number of shares bought.
 
@@ -241,9 +241,9 @@ Next, you can multiply the *PricePerShare* and *NumberOfShares* vectors to find 
   sum(PricePerShare*NumberOfShares)/sum(NumberOfShares))
 ```
 
-::: {.blackbox data-latex=""}
+
 2.  The average if equal shares were bought would be $251.7933$.
-:::
+
 
 In R you can use the `mean()` function on the PricePerShare vector.
 
@@ -253,13 +253,13 @@ In R you can use the `mean()` function on the PricePerShare vector.
 
 ### Exercise 4 {.unnumbered}
 
-::: {.blackbox data-latex=""}
+
 1.  The inflation rate for each period is shown in the table below:
 
 |     |        |       |        |
 |:---:|:------:|:-----:|:------:|
 | 30% | 23.08% | 12.5% | 16.67% |
-:::
+
 
 In R create an object to store the values of the CPI:
 
@@ -273,9 +273,9 @@ Next use the `diff()` function to find the difference between the end value and 
 (Inflation<-100*diff(CPI)/CPI[1:4])
 ```
 
-::: {.blackbox data-latex=""}
+
 2.  At the end of 4 years it is predicted that you would have $1621.17$ dollars. Each year you would have gained $12.84$% on average.
-:::
+
 
 In R include the annual rates in a vector:
 
