@@ -93,9 +93,7 @@ For the following exercises, make your calculations by hand and verify results w
 
 ### Exercise 1 {.unnumbered}
 
-
 1.  The height of the density function $f(x)=0.1667$, the mean is $1$, standard deviation is $1.73$, and $P(X \leq -1)=0.1667$.
-
 
 $f(x)$ can be easily estimated by using the formula of the continuous uniform random variable. $f(x)=\frac{1}{b-a}$. Using R as a calculator we find:
 
@@ -121,9 +119,7 @@ Finally, we can find the probability of $Z$ being less than $-1$ by using the `p
 punif(-1,-2,4)
 ```
 
-
 2.  The probability that you will arrive on time is $0.875$. If the time of the errand is 30 minutes, then the probability goes down to $0.75$.
-
 
 There is a $120$ minute interval in which the IP can arrive. The density function is given by $f(x)=1/120$. Using R we can find $P(X>15)$:
 
@@ -139,9 +135,7 @@ punif(30,0,120,lower.tail=F)
 
 ### Exercise 2 {.unnumbered}
 
-
 1.  $P(-0.67 \leq Z \leq -0.23)=0.158$, $P(0 \leq Z \leq 1.96)=0.475$, $P(-1.28 \leq Z \leq 0)=0.4$ and $P(Z > 4.2) \approx 0$.
-
 
 Use the `pnorm()` function to find the probabilities. $P(-0.67 \leq Z \leq -0.23)$:
 
@@ -168,9 +162,7 @@ options(scipen=999)
 pnorm(4.2,lower.tail = F)
 ```
 
-
 2.  $P(Y>7.6)=0.005386$, $P(7.4 \leq Y \leq 10.6)=0.0071$, a $y$ such that $P(Y>y)=0.025$ is $6.42$, and a $y$ such that $P(y \leq Y \leq 2.5)$ is $-2.56$.
-
 
 Let's use once more the `pnorm()` function in R.
 
@@ -198,9 +190,7 @@ $y$ such that $P(y \leq Y \leq 2.5)=0.4943$. Note that $2.5$ is the mean. Hence 
 qnorm(0.0057,2.5,2)
 ```
 
-
 3.  The probability is $10.56$%. A game lasting no more than $2.069$ hours would be in the bottom $1$%.
-
 
 Let's use `pnorm()` once more in R.
 
@@ -216,9 +206,7 @@ qnorm(0.01,3,0.4)
 
 ### Exercise 3 {.unnumbered}
 
-
 1.  The standard deviation is equal to the mean $0.1$. $P(0.10 \leq S \leq 0.2)=0.2325$
-
 
 Let's use `pexp()` in R:
 
@@ -226,9 +214,7 @@ Let's use `pexp()` in R:
 pexp(0.2,rate = 10)-pexp(0.1,rate = 10)
 ```
 
-
 2.  The mean time between car arrivals is $1/360=0.002778$. The probability that the next car will arrive within the next 10 seconds is $0.6321$.
-
 
 Once more we use `pexp()` in R
 
