@@ -108,37 +108,35 @@ Use the **airquality** data set included in R for this problem.
 5.  When using *CompleteAG*, how many days was the temperature at least $60$ degrees?
 6.  When using *CompleteAG*, how many days was the temperature within \[$55$,$75$\] degrees and an *Ozone* below $20$?
 
+### Exercise 4 {.unnumbered}
+
+Use the **Packers** data set for this problem. You can find the data set at https://jagelves.github.io/Data/Packers.csv
+
+1.  Remove the any observation that has a missing value with the `na.omit()` function. How many observations are left in the data set?
+
+2.  Determine the type of the *Experience* variable by using the `typeof()` function. What type is the variable?
+
+3.  Remove observations that have an "R" and coerce the *Experience* variable to an integer using the `as.integer()` function. What is the total sum of years of experience?
+
 ## Answers
 
 ### Exercise 1 {.unnumbered}
 
-
 1.  The variables Title and Rating are categorical whereas Price and Year are numerical.
-
-
 
 2.  The measurement scale is nominal for Title, ordinal for Ratio, ratio for Price, and interval for Year. Recall, that the nominal and ratio scales represent the least and most sophisticated levels of measurement, respectively.
 
-
 ### Exercise 2 {.unnumbered}
-
 
 1.  The variable Year is measured on the interval scale because the observations can be ranked, categorized and measured when using this kind of scale. However, there is no true zero point so we cannot calculate meaningful ratios between years.
 
-
-
 2.  The variable Quarter is measured on the nominal scale, even though it contains numbers. It is the least sophisticated level of measurement because if we are presented with nominal data, all we can do is categorize or group the data.
-
-
 
 3.  The variable Deliveries is measured on the ratio scale. It is the strongest level of measurement because it allows us to categorize and rank the data as well as find meaningful differences between observations. Also, with a true zero point, we can interpret the ratios between observations.
 
-
 ### Exercise 3 {.unnumbered}
 
-
 1.  The day and month of the first observation is August 28th.
-
 
 The easiest way to sort in R is by using the `dplyr` package. Specifically, the `arrange()` function within the package. Let's also use the `desc()` function to make sure that the data is sorted in descending order. We can use indexing to retrieve the first row of the sorted data set.
 
@@ -148,9 +146,7 @@ SortedAQ<-arrange(airquality,desc(Temp),desc(Ozone),desc(Wind))
 SortedAQ[1,]
 ```
 
-
 2.  Of the $10$ hottest days only two were in July.
-
 
 We can use the `arrange()` function one more time for this question. Then we can use indexing to retrieve the top $10$ observations.
 
@@ -159,9 +155,7 @@ SortedAQ2<-arrange(airquality,desc(Temp))
 SortedAQ2[1:10,]
 ```
 
-
 3.  There are a total of $44$ missing values. *Ozone* has $37$ and *Solar.R* has $7$. Rows $5$, $6$, $11$, $27$, $96$, $97$, $98$ are missing for *Solar.R*.
-
 
 We can easily identify missing values with the `summary()` function.
 
@@ -175,17 +169,13 @@ To view the rows that have NA's in them, we can use the `is.na()` function and i
 airquality[is.na(airquality$Solar.R),]
 ```
 
-
 4.  To create the new object of complete observations we can use the `na.omit()` function.
-
 
 ```{r}
 CompleteAQ<-na.omit(airquality)
 ```
 
-
 5.  There were $107$ days where the temperature was at least $60$.
-
 
 Using base R we have:
 
@@ -199,9 +189,7 @@ We can also use `dplyr` for this question. Specifically, using the `filter()` an
 nrow(filter(CompleteAQ,Temp>=60))
 ```
 
-
 6.  There were $24$ days where the temperature was between $55$ and $75$ and the ozone level was below $20$.
-
 
 Using base R we have:
 
@@ -213,4 +201,54 @@ Using the `filter()` function once more we get:
 
 ```{r}
 nrow(filter(CompleteAQ,Temp>55,Temp<75,Ozone<20))
+```
+
+### Exercise 4 {.unnumbered}
+
+1.  There are $84$ observations in the complete cases data set.
+
+Let's import the data to R by using the `read.csv()` function.
+
+```{r}
+Packers<-read.csv("https://jagelves.github.io/Data/Packers.csv")
+```
+
+We can remove any missing observation by using the `na.omit()` function. We can name this new object *Packers2*.
+
+```{r}
+Packers2<-na.omit(Packers)
+```
+
+To find the number of observations we can use the `dim()` function. It returns the number of observations and variables.
+
+```{r}
+dim(Packers2)
+```
+
+2.  The type is character.
+
+Use the `typeof()` function on the *Experience* variable.
+
+```{r}
+typeof(Packers2$Experience)
+```
+
+3.  The total sum of experience is $288$.
+
+First, remove any observation with an R by using indexing and logicals.
+
+```{r}
+Packers2<-Packers2[Packers2$Experience!="R",]
+```
+
+Now we can coerce the variable to an integer by using the `as.integer()` function.
+
+```{r}
+Packers2$Experience<-as.integer(Packers2$Experience)
+```
+
+Lastly, calculate the sum using the `sum()` function.
+
+```{r}
+sum(Packers2$Experience)
 ```

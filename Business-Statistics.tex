@@ -223,7 +223,7 @@
 
 \begin{document}
 \maketitle
-\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[boxrule=0pt, enhanced, colback={shadecolor}, breakable, frame hidden]}{\end{tcolorbox}}\fi
+\ifdefined\Shaded\renewenvironment{Shaded}{\begin{tcolorbox}[colback={shadecolor}, frame hidden, breakable, boxrule=0pt, enhanced]}{\end{tcolorbox}}\fi
 
 \renewcommand*\contentsname{Table of contents}
 {
@@ -649,6 +649,29 @@ Use the \textbf{airquality} data set included in R for this problem.
   {[}\(55\),\(75\){]} degrees and an \emph{Ozone} below \(20\)?
 \end{enumerate}
 
+\hypertarget{exercise-4}{%
+\subsection*{Exercise 4}\label{exercise-4}}
+\addcontentsline{toc}{subsection}{Exercise 4}
+
+Use the \textbf{Packers} data set for this problem. You can find the
+data set at https://jagelves.github.io/Data/Packers.csv
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  Remove the any observation that has a missing value with the
+  \texttt{na.omit()} function. How many observations are left in the
+  data set?
+\item
+  Determine the type of the \emph{Experience} variable by using the
+  \texttt{typeof()} function. What type is the variable?
+\item
+  Remove observations that have an ``R'' and coerce the
+  \emph{Experience} variable to an integer using the
+  \texttt{as.integer()} function. What is the total sum of years of
+  experience?
+\end{enumerate}
+
 \hypertarget{answers}{%
 \section{Answers}\label{answers}}
 
@@ -893,6 +916,104 @@ Using the \texttt{filter()} function once more we get:
 
 \begin{verbatim}
 [1] 24
+\end{verbatim}
+
+\hypertarget{exercise-4-1}{%
+\subsection*{Exercise 4}\label{exercise-4-1}}
+\addcontentsline{toc}{subsection}{Exercise 4}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  There are \(84\) observations in the complete cases data set.
+\end{enumerate}
+
+Let's import the data to R by using the \texttt{read.csv()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{Packers}\OtherTok{\textless{}{-}}\FunctionTok{read.csv}\NormalTok{(}\StringTok{"https://jagelves.github.io/Data/Packers.csv"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+We can remove any missing observation by using the \texttt{na.omit()}
+function. We can name this new object \emph{Packers2}.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{Packers2}\OtherTok{\textless{}{-}}\FunctionTok{na.omit}\NormalTok{(Packers)}
+\end{Highlighting}
+\end{Shaded}
+
+To find the number of observations we can use the \texttt{dim()}
+function. It returns the number of observations and variables.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{dim}\NormalTok{(Packers2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 84  8
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{1}
+\tightlist
+\item
+  The type is character.
+\end{enumerate}
+
+Use the \texttt{typeof()} function on the \emph{Experience} variable.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{typeof}\NormalTok{(Packers2}\SpecialCharTok{$}\NormalTok{Experience)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "character"
+\end{verbatim}
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\setcounter{enumi}{2}
+\tightlist
+\item
+  The total sum of experience is \(288\).
+\end{enumerate}
+
+First, remove any observation with an R by using indexing and logicals.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{Packers2}\OtherTok{\textless{}{-}}\NormalTok{Packers2[Packers2}\SpecialCharTok{$}\NormalTok{Experience}\SpecialCharTok{!=}\StringTok{"R"}\NormalTok{,]}
+\end{Highlighting}
+\end{Shaded}
+
+Now we can coerce the variable to an integer by using the
+\texttt{as.integer()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\NormalTok{Packers2}\SpecialCharTok{$}\NormalTok{Experience}\OtherTok{\textless{}{-}}\FunctionTok{as.integer}\NormalTok{(Packers2}\SpecialCharTok{$}\NormalTok{Experience)}
+\end{Highlighting}
+\end{Shaded}
+
+Lastly, calculate the sum using the \texttt{sum()} function.
+
+\begin{Shaded}
+\begin{Highlighting}[numbers=left,,]
+\FunctionTok{sum}\NormalTok{(Packers2}\SpecialCharTok{$}\NormalTok{Experience)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 288
 \end{verbatim}
 
 \hypertarget{descriptive-stats-ii}{%
@@ -1592,8 +1713,8 @@ Aug & 270.45 & 50 \\
   have bought equal amounts of shares each month?
 \end{enumerate}
 
-\hypertarget{exercise-4}{%
-\subsection*{Exercise 4}\label{exercise-4}}
+\hypertarget{exercise-4-2}{%
+\subsection*{Exercise 4}\label{exercise-4-2}}
 \addcontentsline{toc}{subsection}{Exercise 4}
 
 \begin{enumerate}
@@ -1950,8 +2071,8 @@ vector.
 [1] 251.7933
 \end{verbatim}
 
-\hypertarget{exercise-4-1}{%
-\subsection*{Exercise 4}\label{exercise-4-1}}
+\hypertarget{exercise-4-3}{%
+\subsection*{Exercise 4}\label{exercise-4-3}}
 \addcontentsline{toc}{subsection}{Exercise 4}
 
 \begin{enumerate}
@@ -3955,8 +4076,8 @@ https://jagelves.github.io/Data/FoodSpend.csv .
   plot the scatter diagram and the regression line.
 \end{enumerate}
 
-\hypertarget{exercise-4-2}{%
-\subsection*{Exercise 4}\label{exercise-4-2}}
+\hypertarget{exercise-4-4}{%
+\subsection*{Exercise 4}\label{exercise-4-4}}
 \addcontentsline{toc}{subsection}{Exercise 4}
 
 You will need the \textbf{Population} data set to answer this question.
@@ -4416,8 +4537,8 @@ For the scatter plot use the following code:
 
 \end{figure}
 
-\hypertarget{exercise-4-3}{%
-\subsection*{Exercise 4}\label{exercise-4-3}}
+\hypertarget{exercise-4-5}{%
+\subsection*{Exercise 4}\label{exercise-4-5}}
 \addcontentsline{toc}{subsection}{Exercise 4}
 
 \begin{enumerate}
@@ -4778,8 +4899,8 @@ results with a calculator or R.
 \bottomrule()
 \end{longtable}
 
-\hypertarget{exercise-4-4}{%
-\subsection*{Exercise 4}\label{exercise-4-4}}
+\hypertarget{exercise-4-6}{%
+\subsection*{Exercise 4}\label{exercise-4-6}}
 \addcontentsline{toc}{subsection}{Exercise 4}
 
 You will need the \textbf{Crash} data set and R to answer this question.
@@ -4919,8 +5040,8 @@ Total & 0.4 & 0.6 & 1 \\
 \bottomrule()
 \end{longtable}
 
-\hypertarget{exercise-4-5}{%
-\subsection*{Exercise 4}\label{exercise-4-5}}
+\hypertarget{exercise-4-7}{%
+\subsection*{Exercise 4}\label{exercise-4-7}}
 \addcontentsline{toc}{subsection}{Exercise 4}
 
 \begin{enumerate}
@@ -5133,11 +5254,12 @@ The \textbf{probability mass function} is given by \(f(x)=1/n\), where
 \(n\) is the number of elements in the sample space (all possible
 outcomes).
 
-The \textbf{expected value} is given by \(E(x)=\frac {a+b}{2}\), where
-\(a\) is the lower bound of the distribution, and \(b\) is the upper
-bound.
+The \textbf{expected value} is given by \(E(x)=\frac {\sum x_i}{n}\),
+where \(x_i\) are the possible values, and \(n\) is the number of
+possible values.
 
-The \textbf{variance} is given by \(var(x)=\frac {(n^2-1)}{12}\).
+The \textbf{variance} is given by
+\(var(x)=\frac {\sum (x_i-E(x))^2}{n-1}\).
 
 \hypertarget{binomial-distribution}{%
 \subsection*{Binomial Distribution}\label{binomial-distribution}}
@@ -5368,8 +5490,8 @@ Standard Deviation (\%) & 12 & 20 \\
   change if the proportion falls to \(50\)\%?
 \end{enumerate}
 
-\hypertarget{exercise-4-6}{%
-\subsection*{Exercise 4}\label{exercise-4-6}}
+\hypertarget{exercise-4-8}{%
+\subsection*{Exercise 4}\label{exercise-4-8}}
 \addcontentsline{toc}{subsection}{Exercise 4}
 
 \begin{enumerate}
@@ -5766,8 +5888,8 @@ Changing the probabilities reveals that:
 
 Having two of each is the most likely outcome.
 
-\hypertarget{exercise-4-7}{%
-\subsection*{Exercise 4}\label{exercise-4-7}}
+\hypertarget{exercise-4-9}{%
+\subsection*{Exercise 4}\label{exercise-4-9}}
 \addcontentsline{toc}{subsection}{Exercise 4}
 
 \begin{enumerate}
@@ -6649,8 +6771,8 @@ we take a sample of 50 employees, what is the probability that more than
 20\% of them are working from home? What if the sample increases to 200?
 Why does the probability change?
 
-\hypertarget{exercise-4-8}{%
-\subsection*{Exercise 4}\label{exercise-4-8}}
+\hypertarget{exercise-4-10}{%
+\subsection*{Exercise 4}\label{exercise-4-10}}
 \addcontentsline{toc}{subsection}{Exercise 4}
 
 \begin{enumerate}
@@ -7040,8 +7162,8 @@ Updating the code so that \(n=200\) yields:
 [1] 0.8433098
 \end{verbatim}
 
-\hypertarget{exercise-4-9}{%
-\subsection*{Exercise 4}\label{exercise-4-9}}
+\hypertarget{exercise-4-11}{%
+\subsection*{Exercise 4}\label{exercise-4-11}}
 \addcontentsline{toc}{subsection}{Exercise 4}
 
 \begin{enumerate}
@@ -7247,8 +7369,8 @@ students. Calculate a \(95\)\% confidence interval for group 1 and for
 group 2. Which drug would you expect to be more effective at increasing
 sleeping times?
 
-\hypertarget{exercise-4-10}{%
-\subsection*{Exercise 4}\label{exercise-4-10}}
+\hypertarget{exercise-4-12}{%
+\subsection*{Exercise 4}\label{exercise-4-12}}
 \addcontentsline{toc}{subsection}{Exercise 4}
 
 \begin{enumerate}
@@ -7668,8 +7790,8 @@ Using the standard error we can complete the confidence interval.
   sleeping hours is \(2.33\) vs.~\(0.75\) for drug 1.
 \end{enumerate}
 
-\hypertarget{exercise-4-11}{%
-\subsection*{Exercise 4}\label{exercise-4-11}}
+\hypertarget{exercise-4-13}{%
+\subsection*{Exercise 4}\label{exercise-4-13}}
 \addcontentsline{toc}{subsection}{Exercise 4}
 
 \begin{enumerate}
@@ -8057,8 +8179,8 @@ this claim is true.
 \bottomrule()
 \end{longtable}
 
-\hypertarget{exercise-4-12}{%
-\subsection*{Exercise 4}\label{exercise-4-12}}
+\hypertarget{exercise-4-14}{%
+\subsection*{Exercise 4}\label{exercise-4-14}}
 \addcontentsline{toc}{subsection}{Exercise 4}
 
 According to www.worldatlas.com, \(5\)\% of the population has hazel
@@ -8406,8 +8528,8 @@ sample estimates:
 0.6 
 \end{verbatim}
 
-\hypertarget{exercise-4-13}{%
-\subsection*{Exercise 4}\label{exercise-4-13}}
+\hypertarget{exercise-4-15}{%
+\subsection*{Exercise 4}\label{exercise-4-15}}
 \addcontentsline{toc}{subsection}{Exercise 4}
 
 \begin{enumerate}
@@ -8673,8 +8795,8 @@ your own answer and double checked your work for any mistakes.
   the drug is administered and after (\(2\)) the drug is administered.
 \end{enumerate}
 
-\hypertarget{exercise-4-14}{%
-\subsection*{Exercise 4}\label{exercise-4-14}}
+\hypertarget{exercise-4-16}{%
+\subsection*{Exercise 4}\label{exercise-4-16}}
 \addcontentsline{toc}{subsection}{Exercise 4}
 
 \begin{enumerate}
@@ -8890,8 +9012,8 @@ mean difference
           -1.58 
 \end{verbatim}
 
-\hypertarget{exercise-4-15}{%
-\subsection*{Exercise 4}\label{exercise-4-15}}
+\hypertarget{exercise-4-17}{%
+\subsection*{Exercise 4}\label{exercise-4-17}}
 \addcontentsline{toc}{subsection}{Exercise 4}
 
 \begin{enumerate}

@@ -88,9 +88,7 @@ Install the `ISLR2` package. You will need the **Portfolio** data set to answer 
 
 ### Exercise 1 {.unnumbered}
 
-
 1.  The mean is $60$, the Range is $94$, the MAD is $28$, the variance is $1186$ and the variance is $34.44$.
-
 
 Start by crating a vector to hold the values:
 
@@ -142,9 +140,7 @@ AbsoluteDeviations1<-abs(Ex1-Average1)
 mean(AbsoluteDeviations1)
 ```
 
-
 2.  The mean is $-2$, Range is $7$, the MAD is $2.33$, the variance is $7.6$ and the standard deviation is $2.76$.
-
 
 Here is the table of deviations from the mean:
 
@@ -184,9 +180,7 @@ diff(range(Ex2))
 
 ### Exercise 2 {.unnumbered}
 
-
 1.  For the sample taken, GBTC has the less variation. The standard deviation of GBTC is $9.43$, which is less than $16.57$ for VTI or $50.38$ for TSLA.
-
 
 Start by loading the data set from the website. Since the file is in csv format, we will use the `read.csv()` function.
 
@@ -212,9 +206,7 @@ Finally, let's calculate the standard deviation for GBTC or Bitcoin.
 sd(StockPrices$GBTC)
 ```
 
-
 2.  The answer is the same, since the MAD for GBTC is $8.46$ which is lower than $14.27$ for VTI or $41.67$ for TSLA.
-
 
 To calculate the MAD for TSLA we can use the following command:
 
@@ -234,9 +226,7 @@ The MAD for GBTC is:
 (MADGBTC<-mean(abs(StockPrices$GBTC-mean(StockPrices$GBTC))))
 ```
 
-
 3.  By considering the magnitudes of the stock prices, it seems like VTI is the less volatile stock. VTI has a CV of $0.08$ which is lower than $0.44$ for GBTC or $0.18$ for TSLA. In fact, by CV Bitcoin seems to be the most risky asset.
-
 
 The coefficients of variations are as follows. For TSLA the CV is:
 
@@ -258,9 +248,7 @@ For GBTC we get:
 
 ### Exercise 3 {.unnumbered}
 
-
 1.  The best performing stock on average is stock X. It has an average return of $-0.078$% vs. $0.097$% for stock Y. The safest stock is stock X as well, since the standard deviation is $1.062$ percentage points vs. $1.14$ percentage points for stock Y.
-
 
 Start by loading the `ISLR2` package:
 
@@ -292,9 +280,7 @@ and stock Y.
 sd(Portfolio$Y)
 ```
 
-
 2.  The Sharpe Ratio measures the excess return per unit of risk taken. Stock X has the better Sharpe Ratio. $-0.106$ vs. $-0.115$. Stock X is recommended since it provides a higher excess return per unit of risk taken.
-
 
 To calculate Sharpe Ratios use both the average return, and the standard deviation. For stock X, the Sharpe Ratio is:
 
@@ -308,9 +294,7 @@ The Sharpe Ratio for stock Y:
 (mean(Portfolio$Y)-0.035)/sd(Portfolio$Y)
 ```
 
-
 3.  The portfolio has an average return of $-0.091$ which is worse than stock X but better than stock Y. The standard deviation is $1.00$. This is better than stock X and Y separately. The Sharpe ratio of $-0.091$ is also better for the portfolio than for each stock individually.
-
 
 The mean of the portfolio is given by:
 
