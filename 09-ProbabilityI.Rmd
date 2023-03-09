@@ -2,7 +2,7 @@
 
 ## Concepts
 
-### Frequentist Vs. Bayesian
+### Frequentist Vs. Bayesian {.unnumbered}
 
 The **frequentist** interpretation assumes that probabilities represent proportions of specific events occurring over infinitely identical trials.
 
