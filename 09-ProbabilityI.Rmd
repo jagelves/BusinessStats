@@ -2,9 +2,17 @@
 
 ## Concepts
 
+### Frequentist Vs. Bayesian
+
+The **frequentist** interpretation assumes that probabilities represent proportions of specific events occurring over infinitely identical trials.
+
+The **Bayesian** interpretation assumes that probabilities are subjective beliefs about the relative likelihood of events.
+
 ### Experiments and Sets {.unnumbered}
 
 An **experiment** is a process that leads to one of several outcomes. Ex: Tossing a Die, Tossing a Coin, Drawing a Card, etc.
+
+An **outcome** is the result of an experiment. Ex: A coin landing on heads, drawing the ace of spades.
 
 The **sample space** $(S)$ of an experiment contains all possible outcomes of the experiment. Ex: $S$={$1$,$2$,$3$,$4$,$5$,$6$} is the sample space for tossing a die.
 
