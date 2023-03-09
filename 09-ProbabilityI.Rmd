@@ -16,7 +16,7 @@ An **outcome** is the result of an experiment. Ex: A coin landing on heads, draw
 
 The **sample space** $(S)$ of an experiment contains all possible outcomes of the experiment. Ex: $S$={$1$,$2$,$3$,$4$,$5$,$6$} is the sample space for tossing a die.
 
-An **event** is a subset of the sample space. $A$={$4$} is the event of tossing a $4$ when rolling a die.
+An **event** is a subset of the sample space. $A$={$2$,$4$,$6$} is the event of tossing an even number when rolling a die.
 
 ### Basic Probability Concepts {.unnumbered}
 
