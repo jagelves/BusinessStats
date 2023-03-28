@@ -108,7 +108,7 @@ For the following exercises, make your calculations by hand and verify results w
 
 1.  Let $P(A)=0.65$, $P(B)=0.3$, and $P(A|B)=0.45$. Calculate $P(A \cap B)$, $P(A \cup B)$, and $P(B|A)$.
 
-2.  Let $P(A)=0.4$, $P(B)=0.5$, and $P(A^c \cap B^c)=0.24$. Calculate $P(A^c|B^c)=0.24$, $P(A^c \cup B^c)$, and $P(A \cup B)$.
+2.  Let $P(A)=0.4$, $P(B)=0.5$, and $P(A^c \cap B^c)=0.24$. Calculate $P(A^c|B^c)$, $P(A^c \cup B^c)$, and $P(A \cup B)$.
 
 3.  Stock $A$ will rise in price with a probability of $0.4$, stock $B$ will rise with a probability of $0.6$. If stock $B$ rises in price, then $A$ will also rise with a probability of $0.5$. What is the probability that at least one of the stocks will rise in price? Prove that events $A$ and $B$ are (are not) mutually exclusive (independent).
 
