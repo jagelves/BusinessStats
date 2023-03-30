@@ -376,9 +376,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </ul>
 <p>To assign probabilities you can use the Empirical, Classical, or Subjective Methods.</p>
 <ul>
-<li><p>Empirical: calculated as a relative frequency of occurrence.</p></li>
-<li><p>Classical: based on logical analysis.</p></li>
-<li><p>Subjective: calculated by drawing on personal and subjective judgement.</p></li>
+<li><p><strong>Empirical</strong>: calculated as a relative frequency of occurrence.</p></li>
+<li><p><strong>Classical</strong>: based on logical analysis.</p></li>
+<li><p><strong>Subjective</strong>: calculated by drawing on personal and subjective judgement.</p></li>
 </ul>
 </section>
 <section id="probability-rules" class="level3 unnumbered">
@@ -398,7 +398,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>The <strong>Combination</strong> function counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. The order in which the <span class="math inline">\(x\)</span> objects are listed does not matter.</p>
 <ul>
 <li><p>If repetition is not allowed use <span class="math inline">\(C_n^x= \frac{n!}{(n-x)!x!}\)</span>.</p></li>
-<li><p>If repetition is allowed use <span class="math inline">\(\frac{(x+n-1)!}{(n-x)!x!}\)</span>.</p></li>
+<li><p>If repetition is allowed use <span class="math inline">\(\frac{(x+n-1)!}{(n-1)!x!}\)</span>.</p></li>
 </ul>
 <p>The <strong>Permutation</strong> function also counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. However, the order in which the <span class="math inline">\(x\)</span> objects are listed does matter.</p>
 <ul>
@@ -410,7 +410,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <h3 class="unnumbered anchored" data-anchor-id="useful-r-functions">Useful R Functions</h3>
 <p>The <code>table()</code> function can be used to construct frequency distributions.</p>
 <p>The <code>factorial()</code> function returns the factorial of a number.</p>
-<p>The <code>gtools</code> package contains the <code>combinations()</code> and <code>permutations()</code> functions used to calculate combinations and permutations. Use the <em>repeats.allowed</em> argument to specify counting with repetition or no repetition.</p>
+<p>The <code>gtools</code> package contains the <code>combinations()</code> and <code>permutations()</code> functions used to calculate combinations and permutations. Use the <em>repeats.allowed</em> argument to specify counting with repetition or no repetition. The <em>v</em> argument allows you to specify a vector of elements.</p>
 </section>
 </section>
 <section id="exercises" class="level2" data-number="8.2">

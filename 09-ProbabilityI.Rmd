@@ -36,11 +36,11 @@ To calculate **probabilities**, find the ratio between favorable outcomes and to
 
 To assign probabilities you can use the Empirical, Classical, or Subjective Methods.
 
--   Empirical: calculated as a relative frequency of occurrence.
+-   **Empirical**: calculated as a relative frequency of occurrence.
 
--   Classical: based on logical analysis.
+-   **Classical**: based on logical analysis.
 
--   Subjective: calculated by drawing on personal and subjective judgement.
+-   **Subjective**: calculated by drawing on personal and subjective judgement.
 
 ### Probability Rules {.unnumbered}
 
@@ -64,7 +64,7 @@ The **Combination** function counts the number of ways to choose $x$ objects fro
 
 -   If repetition is not allowed use $C_n^x= \frac{n!}{(n-x)!x!}$.
 
--   If repetition is allowed use $\frac{(x+n-1)!}{(n-x)!x!}$.
+-   If repetition is allowed use $\frac{(x+n-1)!}{(n-1)!x!}$.
 
 The **Permutation** function also counts the number of ways to choose $x$ objects from a total of $n$ objects. However, the order in which the $x$ objects are listed does matter.
 
@@ -78,7 +78,7 @@ The `table()` function can be used to construct frequency distributions.
 
 The `factorial()` function returns the factorial of a number.
 
-The `gtools` package contains the `combinations()` and `permutations()` functions used to calculate combinations and permutations. Use the *repeats.allowed* argument to specify counting with repetition or no repetition.
+The `gtools` package contains the `combinations()` and `permutations()` functions used to calculate combinations and permutations. Use the *repeats.allowed* argument to specify counting with repetition or no repetition. The *v* argument allows you to specify a vector of elements.
 
 ## Exercises
 
