@@ -198,10 +198,14 @@ Crash<-read.csv("https://jagelves.github.io/Data/Crash.csv")
 To create a contingency table use the `table()` command in R.
 
 ```{r}
-table(Crash$`Crash Type`,Crash$`Light Condition`)
+(freq<-table(Crash$Crash.Type,Crash$Light.Condition))
 ```
 
-This table is used to calculate probabilities.
+This table is used to calculate probabilities. We can pass it through the `prop.table()` function to get the contingency table.
+
+```{r}
+round(prop.table(freq),2)
+```
 
 2.  The two variables are dependent since $P(Head-On|Daylight) \neq P(Head-On)$, that is $0.048 \neq 0.56$.
 
