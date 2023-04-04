@@ -118,13 +118,13 @@ For the following exercises, make your calculations by hand and verify results w
 
 |     |       |       |
 |-----|-------|-------|
-|     | $A^c$ | $B^c$ |
+|     | $B$ | $B^c$ |
 | $A$ | 26    | 34    |
-| $B$ | 14    | 26    |
+| $A^c$ | 14    | 26    |
 
 ### Exercise 4 {.unnumbered}
 
-You will need the **Crash** data set and R to answer this question. The data shows information on several car crashes. Specifically, if the crash was Head-On or Not Head-On and whether there was Daylight or No Daylight.
+You will need the **Crash** data set and R to answer this question. The data shows information on several car crashes. Specifically, if the crash was Head-On or Not Head-On and whether there was Daylight or No Daylight. You can find the data here: https://jagelves.github.io/Data/Crash.csv 
 
 1.  Create a contingency table.
 
