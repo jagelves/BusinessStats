@@ -1,0 +1,45 @@
+# Objects and Vectors
+
+## Concepts
+
+### Objects {.unnumbered}
+
+An **object** is a data structure that stores a value or a set of values, along with information about the type of data and any associated attributes. Objects are usually created by assigning a value to a variable name. You can assign values by using either `=` or `<-`.\
+When naming objects in R use *PascalCase*, *camelCase*, *snake_case* or *dot.case*.
+
+```{r}
+ScreenTime<-120
+```
+
+### Vectors {.unnumbered}
+
+A **vector** is a one-dimensional array that can hold elements of any data type.\
+Some common data types are numeric, character, logical, and complex.\
+Use the `c()` function to concatenate (combine) elements and store them in a vector.
+
+```{r}
+ScreenTimeDays<-c(110,115,120,98,60)
+```
+
+### Functions {.unnumbered}
+In general, **functions** relate an input (arguments) to an output. For example, the `sum()` function takes as an input a vector with numeric values and returns the sum of the elements.
+
+```{r}
+SleepingHours<-c(10,9,6,8)
+sum(SleepingHours)
+```
+
+To learn more about a function you can use `?`. For example, to learn more about the `sum()` function, write `?sum` in the console. 
+
+### Data Types {.unnumbered}
+The main data types are numeric, character, logical, date, and complex. To identify the data type stored in a vector use the `class()` function.
+
+```{r}
+class(SleepingHours)
+```
+
+### Useful R Functions {.unnumbered}
+
+
+
+## Exercises

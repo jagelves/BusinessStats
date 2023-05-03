@@ -41,6 +41,9 @@ book:
         - 13-InferenceII.Rmd
         - 14-InferenceIII.Rmd
         - 15-InfReg.Rmd
+    - part: "Working with R"
+      chapters:
+        - 16-ObjectsVectors.Rmd
     - references.qmd
 
 bibliography: references.bib
