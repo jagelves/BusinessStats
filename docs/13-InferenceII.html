@@ -297,6 +297,21 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">Working with R</a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" aria-expanded="true">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./16-ObjectsVectors.html" class="sidebar-item-text sidebar-link"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Objects and Vectors</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">References</a>
@@ -346,7 +361,7 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <p>A <strong>confidence interval</strong> provides a range of values that, with a certain level of confidence, contains the population parameter of interest. For proper confidence intervals ensure that the sampling distributions are normal.</p>
 <p>A <span class="math inline">\(95\)</span>% <strong>confidence level</strong>, indicates that if the interval were constructed many times (from independent samples of the population), it would include the true population parameter <span class="math inline">\(95\)</span>% of the time.</p>
 <p>A <strong>significance level</strong> (<span class="math inline">\(\alpha\)</span>) of <span class="math inline">\(5\)</span>%, means that the confidence interval would would not include the true population parameter <span class="math inline">\(5\)</span>% of the time.</p>
-<p>The interval for the population mean when the population standard deviation is unknown is given by <span class="math inline">\(\bar x \pm t_{\alpha/2} \frac {s}{n}\)</span>, where <span class="math inline">\(\bar x\)</span> is the point estimate, <span class="math inline">\(t_{a/2} \frac {s}{n}\)</span> is the margin of error, and <span class="math inline">\(\alpha\)</span> is the allowed probability that the interval does not include <span class="math inline">\(\mu\)</span>.</p>
+<p>The interval for the population mean when the population standard deviation is unknown is given by <span class="math inline">\(\bar x \pm t_{\alpha/2, df} \frac {s}{\sqrt{n}}\)</span>, where <span class="math inline">\(\bar x\)</span> is the point estimate, <span class="math inline">\(t_{a/2, df} \frac {s}{\sqrt{n}}\)</span> is the margin of error, <span class="math inline">\(\alpha\)</span> is the allowed probability that the interval does not include <span class="math inline">\(\mu\)</span>, and <span class="math inline">\(df\)</span> are the degrees of freedom <span class="math inline">\(n-1\)</span>.</p>
 <p>The interval for the population proportion mean is given by <span class="math inline">\(\bar p \pm z_{\alpha/2} \sqrt{\frac {\bar p (1-\bar p)}{n}}\)</span>.</p>
 </section>
 <section id="useful-r-functions" class="level3 unnumbered">

@@ -10,7 +10,7 @@ A $95$% **confidence level**, indicates that if the interval were constructed ma
 
 A **significance level** ($\alpha$) of $5$%, means that the confidence interval would would not include the true population parameter $5$% of the time.
 
-The interval for the population mean when the population standard deviation is unknown is given by $\bar x \pm t_{\alpha/2} \frac {s}{n}$, where $\bar x$ is the point estimate, $t_{a/2} \frac {s}{n}$ is the margin of error, and $\alpha$ is the allowed probability that the interval does not include $\mu$.
+The interval for the population mean when the population standard deviation is unknown is given by $\bar x \pm t_{\alpha/2, df} \frac {s}{\sqrt{n}}$, where $\bar x$ is the point estimate, $t_{a/2, df} \frac {s}{\sqrt{n}}$ is the margin of error, $\alpha$ is the allowed probability that the interval does not include $\mu$, and $df$ are the degrees of freedom $n-1$.
 
 The interval for the population proportion mean is given by $\bar p \pm z_{\alpha/2} \sqrt{\frac {\bar p (1-\bar p)}{n}}$.
 

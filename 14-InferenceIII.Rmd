@@ -28,7 +28,7 @@ To conduct hypothesis testing:
 
     -   $H_o: P = 0$; $Ha: P \ne P_o$ two-tail probability
 
-2.  Specify the **confidence level** (i.e., the proportion of times that the hypothesis would hold true). Usually, $0.90$, $0.95$, or $0.99$.
+2.  Specify the **confidence level** (i.e., the proportion of times that the hypothesis would hold true) and **significance** level (i.e. the false positive tolerance). Confidence levels are usually set at, $0.90$, $0.95$, or $0.99$, which correspond to $10$%, $5$%, and $1$% significant levels, respectively.
 
 3.  Calculate the test statistic.
 
