@@ -96,9 +96,7 @@ You will need the **Population** data set to answer this question. You can find 
 
 ### Exercise 1 {.unnumbered}
 
-
 1.  The regression lines is $\hat{y}=-4.93+1.09x$. For each unit increase in *x*, *y* increases on average $1.09$.
-
 
 Start by generating the deviations from the mean for each variable. For *x* the deviations are:
 
@@ -139,9 +137,7 @@ fitEx1<-lm(y~x)
 coef(fitEx1)
 ```
 
-
 2.  *SST* is $69.2$, *SSR* is $64.82$ and *SSE* is $4.38$ (note that $SSR+SSE=SST$). The $R^2$ is just $\frac{SSR}{SST}=0.94$ and the Standard Error estimate is $1.21$. They both indicate a great fit of the regression line to the data.
-
 
 Let's start by calculating the *SST*. This is just $\sum{(y_{i}-\bar{y})^2}$.
 
@@ -179,9 +175,7 @@ We can confirm these results using the `summary()` function.
 summary(fitEx1)
 ```
 
-
 3.  If $x=32$ then $\hat{y}=29.87$. The regression is a good fit, so we can feel good about our prediction. However, we would be concerned about the sample size of the data.
-
 
 In R we can obtain a prediction by using the `predict()` function. This function requires a data frame as an input for new data.
 
@@ -191,9 +185,7 @@ predict(fitEx1, newdata = data.frame(x=c(32)))
 
 ### Exercise 2 {.unnumbered}
 
-
 1.  An extra year of education increases the annual salary about $5,300$ dollars (slope). A person that has no education would be expected to earn $17,2582$ dollars (intercept).
-
 
 Start by loading the data in R:
 
@@ -208,9 +200,7 @@ fitEducation<-lm(Salary~Education, data = Education)
 coefficients(fitEducation)
 ```
 
-
 2.  The $R^2$ is $0.668$ and the standard error is $21$. The line is a moderately good fit. If someone has $16$ years of experience, the regression line would predict a salary of $102,000$ dollars.
-
 
 Let's get the $R^2$ and the Standard Error estimate by using the `summary()` function and *fitEx1* object.
 
@@ -226,9 +216,7 @@ predict(fitEducation, newdata = data.frame(Education=c(16)))
 
 ### Exercise 3 {.unnumbered}
 
-
-1.  Approximately, $46$% of the sample owns a home.
-
+1.  Approximately, $36$% of the sample owns a home.
 
 Start by loading the data into R and removing all NA's:
 
@@ -249,9 +237,7 @@ The average of the dummy variable is given by:
 mean(Spend$dummyOH)
 ```
 
-
 2.  The intercept is the average food expenditure of individuals without homes ($6417$). The slope, is the difference in food expenditures between individuals that do have homes minus those who don't. We then conclude that individuals that do have a home spend about $-2516$ less on food than those who don't have homes.
-
 
 To run the regression use the `lm()` function:
 
@@ -259,9 +245,7 @@ To run the regression use the `lm()` function:
 lm(Food~dummyOH,data=Spend)
 ```
 
-
 3.  The scatter plot shows that most of the points for home owners are below $6000$. For non-home owners they are mainly above $6000$. The line can be used to predict the likelihood of owning a home given someones food expenditure. The intercept is above one, but still it gives us the indication that it is likely that low food expenditures are highly predictive of owning a home. The slope tells us how that likelihood changes as the food expenditures increase by 1. In general, the likelihood of owning a home decreases as the food expenditure increases.
-
 
 Run the `lm()` function once again:
 
@@ -284,9 +268,7 @@ abline(fitFood,
 
 ### Exercise 4 {.unnumbered}
 
-
 1.  If we follow the $R^2=0.81$ the model fits the data very well.
-
 
 Let's load the data from the web:
 
@@ -308,9 +290,7 @@ fit<-lm(Population~Year,data=Japan)
 summary(fit)
 ```
 
-
 2.  The prediction for $2030$ is about $140$ million people.
-
 
 Let's use the `predict()` function:
 
@@ -318,9 +298,7 @@ Let's use the `predict()` function:
 predict(fit,newdata=data.frame(Year=c(2030)))
 ```
 
-
 3.  After looking at the scatter plot, it seems unlikely that the population in Japan will hit $140$ million. Population has been decreasing in Japan!
-
 
 Use the `plot()` and `abline()` functions to create the figure.
 
