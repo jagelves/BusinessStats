@@ -34,7 +34,7 @@ To conduct hypothesis testing:
 
     -   For a test on means use $t_{df}= \frac {\bar x-\mu_o}{s/\sqrt{n}}$, where $df=n-1$, $\bar x$ is the sample mean, $\mu_o$ is the hypothesized value of $\mu$, $s$ is the sample standard deviation, and $n$ is the sample size.
 
-    -   For a test on proportions use $z= \frac {\bar p- P_o}{\sqrt {P_o(1-P_o)/ \sqrt{n}}}$, where $\bar p$ is the sample proportion, $P_o$ is the hypothesized value of the population proportion $P$, and $n$ is the sample size.
+    -   For a test on proportions use $z= \frac {\bar p- P_o}{\sqrt {P_o(1-P_o)/ n}}$, where $\bar p$ is the sample proportion, $P_o$ is the hypothesized value of the population proportion $P$, and $n$ is the sample size.
 
 4.  Find the **p-value** (i.e., the likelihood that the hypothesis was rejected by chance). (Substitute $t$ for $z$ if using proportions)
 
