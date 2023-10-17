@@ -24,7 +24,7 @@ The **probability mass function** is given by $f(x)=1/n$, where $n$ is the numbe
 
 The **expected value** is given by $E(x)=\frac {\sum x_i}{n}$, where $x_i$ are the possible values, and $n$ is the number of possible values.
 
-The **variance** is given by $var(x)=\frac {\sum (x_i-E(x))^2}{n-1}$.
+The **variance** is given by $var(x)=\frac {\sum (x_i-E(x))^2}{n}$.
 
 ### Binomial Distribution {.unnumbered}
 
