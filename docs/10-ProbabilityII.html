@@ -332,6 +332,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   <ul class="collapse">
   <li><a href="#random-variables" id="toc-random-variables" class="nav-link" data-scroll-target="#random-variables">Random Variables</a></li>
   <li><a href="#expected-value-and-variance" id="toc-expected-value-and-variance" class="nav-link" data-scroll-target="#expected-value-and-variance">Expected Value and Variance</a></li>
+  <li><a href="#properties-of-random-variables" id="toc-properties-of-random-variables" class="nav-link" data-scroll-target="#properties-of-random-variables">Properties of Random Variables</a></li>
   <li><a href="#discrete-uniform-distribution" id="toc-discrete-uniform-distribution" class="nav-link" data-scroll-target="#discrete-uniform-distribution">Discrete Uniform Distribution</a></li>
   <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution">Binomial Distribution</a></li>
   <li><a href="#the-hypergeometric-distribution" id="toc-the-hypergeometric-distribution" class="nav-link" data-scroll-target="#the-hypergeometric-distribution">The Hypergeometric Distribution</a></li>
@@ -375,6 +376,19 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <p>When summarizing a random variable, we are mostly interested in the variable’s central tendency (Expected Value) and dispersion (Variance).</p>
 <p>The <strong>expected value</strong> (mean) is a measure of central location. For a discrete random variable it is given by <span class="math inline">\(E(x)=\mu=\sum xf(x)\)</span>, where <span class="math inline">\(f(x)\)</span> is the probability mass function. For a continuous random variable it is given by <span class="math inline">\(E(x)= \int_{-\infty}^{\infty} x f(x) dx\)</span>, where <span class="math inline">\(f(x)\)</span> is the probability density function.</p>
 <p>The <strong>variance</strong> summarizes the deviation of the values of the random variable from the mean. It is calculated by <span class="math inline">\(var(x)=E[(x-E(x))^2]=E[x^2]-E[x]^2\)</span>. Note that this formula can be used for both discrete and continuous random variables.</p>
+</section>
+<section id="properties-of-random-variables" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="properties-of-random-variables">Properties of Random Variables</h3>
+<p>Here are some properties for the expectation, variance and covariance of random variables:</p>
+<ul>
+<li><span class="math inline">\(E(aX)=aE(X)\)</span></li>
+<li><span class="math inline">\(E(aX + b)=a(Ex)+b\)</span></li>
+<li><span class="math inline">\(E(X + Y)=E(X)+E(Y)\)</span></li>
+<li><span class="math inline">\(Var(aX)=a^2Var(X)\)</span></li>
+<li><span class="math inline">\(Var(aX+b)=a^2Var(X)\)</span></li>
+<li><span class="math inline">\(Var(X + Y)=Var(X)+Var(Y)+2Cov(X,Y)\)</span></li>
+<li><span class="math inline">\(Cov(aX,bY)=abCov(X,Y)\)</span></li>
+</ul>
 </section>
 <section id="discrete-uniform-distribution" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="discrete-uniform-distribution">Discrete Uniform Distribution</h3>
@@ -656,7 +670,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <section id="exercise-2-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-2-1">Exercise 2</h3>
 <ol type="1">
-<li>The expected return of the portfolio is <span class="math inline">\(10.4\)</span> and the standard deviation is <span class="math inline">\(14.60\)</span>.</li>
+<li>Following the properties of random variables, the expected return of the portfolio is <span class="math inline">\(10.4\)</span> and the standard deviation is <span class="math inline">\(14.60\)</span>.</li>
 </ol>
 <p>In R we can start by calculating the expected return. This is given by the formula <span class="math inline">\(\alpha R_{1} +\beta R_{2}\)</span>:</p>
 <div class="cell">
@@ -665,7 +679,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <pre><code>[1] 10.4</code></pre>
 </div>
 </div>
-<p>Next we can find the standard deviation with the formula <span class="math inline">\(\sqrt{\alpha^2 \sigma_{1}^2+\beta^2 \sigma_{2}+\alpha \beta \rho \sigma_{1} \sigma_{2}}\)</span>:</p>
+<p>Next we can find the standard deviation with the formula <span class="math inline">\(\sqrt{\alpha^2 \sigma_{1}^2+\beta^2 \sigma_{2}^2+2\alpha \beta \rho \sigma_{1} \sigma_{2}}\)</span>:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>(Risk<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fl">0.4</span><span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">12</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fl">0.6</span><span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">20</span><span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span><span class="fl">0.4</span><span class="sc">*</span><span class="fl">0.6</span><span class="sc">*</span><span class="fl">0.4</span><span class="sc">*</span><span class="dv">12</span><span class="sc">*</span><span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">

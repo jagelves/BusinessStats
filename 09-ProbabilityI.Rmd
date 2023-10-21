@@ -116,15 +116,15 @@ For the following exercises, make your calculations by hand and verify results w
 
 1.  Create a joint probability table from the contingency table below. Find $P(A)$, $P(A \cap B)$, $P(A|B)$, and $P(B|A^c)$. Determine whether the events are independent or mutually exclusive.
 
-|     |       |       |
-|-----|-------|-------|
-|     | $B$ | $B^c$ |
-| $A$ | 26    | 34    |
-| $A^c$ | 14    | 26    |
+|       |     |       |
+|-------|-----|-------|
+|       | $B$ | $B^c$ |
+| $A$   | 26  | 34    |
+| $A^c$ | 14  | 26    |
 
 ### Exercise 4 {.unnumbered}
 
-You will need the **Crash** data set and R to answer this question. The data shows information on several car crashes. Specifically, if the crash was Head-On or Not Head-On and whether there was Daylight or No Daylight. You can find the data here: https://jagelves.github.io/Data/Crash.csv 
+You will need the **Crash** data set and R to answer this question. The data shows information on several car crashes. Specifically, if the crash was Head-On or Not Head-On and whether there was Daylight or No Daylight. You can find the data here: https://jagelves.github.io/Data/Crash.csv
 
 1.  Create a contingency table.
 
@@ -145,6 +145,7 @@ You will need the **Crash** data set and R to answer this question. The data sho
 2.  There are 10 players in a local basketball team. If we chose 5 players to randomly start a game, in how many ways can we select the five players if order doesn't matter? What if order matters?
 
 ## Answers
+
 ### Exercise 1 {.unnumbered}
 
 1.  $P(D)=1/5=0.2$ since all events are equally likely. $P(B^c)=4/5=0.8$, and $P(A \cup C \cup E)=P(A + C + E)=3/5=0.6$.

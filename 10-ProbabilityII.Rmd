@@ -16,6 +16,18 @@ The **expected value** (mean) is a measure of central location. For a discrete r
 
 The **variance** summarizes the deviation of the values of the random variable from the mean. It is calculated by $var(x)=E[(x-E(x))^2]=E[x^2]-E[x]^2$. Note that this formula can be used for both discrete and continuous random variables.
 
+### Properties of Random Variables {.unnumbered}
+
+Here are some properties for the expectation, variance and covariance of random variables:
+
+- $E(aX)=aE(X)$
+- $E(aX + b)=a(Ex)+b$
+- $E(X + Y)=E(X)+E(Y)$
+- $Var(aX)=a^2Var(X)$
+- $Var(aX+b)=a^2Var(X)$
+- $Var(X + Y)=Var(X)+Var(Y)+2Cov(X,Y)$
+- $Cov(aX,bY)=abCov(X,Y)$
+
 ### Discrete Uniform Distribution {.unnumbered}
 
 The **discrete uniform distribution** is a probability distribution that assigns equal probability to each outcome in a finite set of possible outcomes. In other words, each outcome in the set is equally likely to occur.
@@ -243,7 +255,7 @@ Standard_Deviation(funds$fund2,funds$probs)
 
 ### Exercise 2 {.unnumbered}
 
-1.  The expected return of the portfolio is $10.4$ and the standard deviation is $14.60$.
+1.  Following the properties of random variables, the expected return of the portfolio is $10.4$ and the standard deviation is $14.60$.
 
 In R we can start by calculating the expected return. This is given by the formula $\alpha R_{1} +\beta R_{2}$:
 
@@ -251,7 +263,7 @@ In R we can start by calculating the expected return. This is given by the formu
 (ER<-(2/5)*8+(3/5)*12)
 ```
 
-Next we can find the standard deviation with the formula $\sqrt{\alpha^2 \sigma_{1}^2+\beta^2 \sigma_{2}+\alpha \beta \rho \sigma_{1} \sigma_{2}}$:
+Next we can find the standard deviation with the formula $\sqrt{\alpha^2 \sigma_{1}^2+\beta^2 \sigma_{2}^2+2\alpha \beta \rho \sigma_{1} \sigma_{2}}$:
 
 ```{r}
 (Risk<-sqrt(0.4^2*12^2 + 0.6^2*20^2+2*0.4*0.6*0.4*12*20))
