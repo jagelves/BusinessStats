@@ -104,7 +104,7 @@ A car company tracks the number of deliveries every quarter. A portion of the da
 
 Use the **airquality** data set included in R for this problem.
 
-1.  Sort the data by *Temp*, *Ozone*, and *Wind* all in descending order. What is the day and month of the first observation on the sorted data?
+1.  Sort the data by *Temp* in descending order. What is the day and month of the first observation on the sorted data?
 2.  Sort the data only by *Temp* in descending order. Of the $10$ hottest days, how many of them were in July?
 3.  How many missing values are there in the data set? What rows have missing values for *Solar.R*?
 4.  Remove all observations that have a missing values. Create a new object called *CompleteAG*.
@@ -145,7 +145,7 @@ The easiest way to sort in R is by using the `dplyr` package. Specifically, the 
 
 ```{r message=FALSE}
 library(dplyr)
-SortedAQ<-arrange(airquality,desc(Temp),desc(Ozone),desc(Wind))
+SortedAQ<-arrange(airquality,desc(Temp))
 SortedAQ[1,]
 ```
 
