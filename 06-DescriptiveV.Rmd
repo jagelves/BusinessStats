@@ -90,9 +90,7 @@ You will need the **mtcars** data set to answer this question. This data set is 
 
 ### Exercise 1 {.unnumbered}
 
-
 1.  The minimum is $0$, the first quartile is $2$, second quartile is $4$, third quartile is $8$, and maximum is $30$. $30$ is an outlier since it is beyond $Q_{3}+1.5*IQR$.
-
 
 Quartiles are calculated using the percentile formula $(n+1)P/100$. The data set has seven numbers. The first quartile's location is $8/4=2$, the second quartile's location is $8/2=4$ and the third quartile's location is $24/4=6$. The values at these location, when data is organized in ascending order, are $1$, $4$, and $10$.
 
@@ -105,9 +103,7 @@ quantile(Ex1,type = 6)
 
 The interquartile range is needed to determine if there are any outliers. The $IQR$ for this data set is $Q_{3}-Q_{1}=9$. This reveals that $30$ is and outlier, since $10+1.5*9=23.5$. Everything beyond $23.5$ is an outlier.
 
-
 2.  If we use the $z$-score instead we find that $30$ is not an outlier since the $z$-score is $Z_{30}=2.15$. This observation is only $2.15$ standard deviations away from the mean.
-
 
 In R we can make a quick calculation of the $z$-Score to confirm our results. The $z$-score is given by $Z_{i}=\frac{x_{30}-\mu}{\sigma}$.
 
@@ -115,9 +111,7 @@ In R we can make a quick calculation of the $z$-Score to confirm our results. Th
 (Z30<-(30-mean(Ex1))/sd(Ex1))
 ```
 
-
 3.  Chebyshev's theorem states that $1-\frac{1}{z_{2}}$ of the data lies between $z$ standard deviation from the mean.
-
 
 Substituting the $z$-score found in 2. we get $78.34$%. In R:
 
@@ -127,9 +121,7 @@ Substituting the $z$-score found in 2. we get $78.34$%. In R:
 
 ### Exercise 2 {.unnumbered}
 
-
 1.  The data is skewed to the right.
-
 
 Start by loading the data set:
 
@@ -148,9 +140,7 @@ axis(side=2, labels=TRUE, at=seq(140,260,20),font=1,las=1)
 
 The boxplot shows that there are no outliers. The data also looks like it has a slight skew to the right.
 
-
 2.  The mean is more sensitive to outliers than the median. Hence, when the data is skewed to the right we expect that the mean is larger than the median.
-
 
 Let's construct a histogram in R to search for skewness.
 
@@ -175,9 +165,7 @@ The lines are close to each other but the mean is slighlty larger than the media
 
 This indicates that there is a slight skew to the right of the data.
 
-
 3.  The line chart indicates that the data has a downward trend in the early periods. This creates a few points that are large. In later periods the stock price stabilizes to lower levels.
-
 
 ```{r}
 plot(y=StockPrices$VTI,x=seq(1,length(StockPrices$VTI)),
@@ -188,9 +176,7 @@ axis(side=2, labels=TRUE, at=seq(0,300,20),font=1,las=1)
 
 ### Exercise 3 {.unnumbered}
 
-
 1.  The outlier is the Masserati Bora. The horse power is $335$.
-
 
 In R we can construct a boxplot with the following command:
 
@@ -209,9 +195,7 @@ mtcars[mtcars$hp>275,]
 
 It's the Masserati Bora!
 
-
 2.  The histogram looks skewed to the right. This is confirmed by the estimation of a Pearson coefficient fo skewness of $1.04$.
-
 
 In R we can construct a histogram with vertical lines for the mean and median wit the following code:
 
@@ -234,9 +218,7 @@ The histogram looks skewed to the right. Pearson's Coefficient of Skewness is:
 (SkewHP<-3*(mean(mtcars$hp)-median(mtcars$hp))/sd(mtcars$hp))
 ```
 
-
 3.  The skew is still there, but the distribution now look more symmetrical and the Skew coefficient has decreased to $0.44$.
-
 
 In R we can create an new variable that captures the log transformation. The `log()` function takes the natural logarithm of a number or vector.
 
