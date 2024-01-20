@@ -89,9 +89,7 @@ You will need the **Portfolio** data set from the `ISLR2` package to answer this
 
 ### Exercise 1 {.unnumbered}
 
-
 1.  The most common diagnosis is Meningioma, a slow-growing tumor that forms from the membranous layers surrounding the brain and spinal cord. The diagnosis represents about $48.28$% of the sample.
-
 
 Start by loading the `ISLR2` package. To construct the frequency distribution table, use the `table()` function.
 
@@ -107,9 +105,7 @@ freq<-table(BrainCancer$diagnosis)
 prop.table(freq)
 ```
 
-
 2.  The majority of diagnosis are Meningioma. Low grade glioma is the least common of diagnosis. High grade glioma and other diagnosis have about the same frequency.
-
 
 To construct the bar chart use the `barplot()` function in R.
 
@@ -117,9 +113,7 @@ To construct the bar chart use the `barplot()` function in R.
 barplot(freq, col = "#F5F5F5", ylim=c(0,50))
 ```
 
-
 3.  $33$ people did not survive Meningioma. The survival rate of Meningioma is only $21.43$%.
-
 
 Use the `table()` function one more time to create the contingency table for the two variables.
 
@@ -133,9 +127,7 @@ To get the survival rates, we can use the `prop.table()` function once again.
 prop.table(freq2,margin = 2)
 ```
 
-
 4.  Meningioma and not surviving is the most common with $33$ occurrences. High grade glioma and surviving is the the second most common.
-
 
 Use the `barplot()` function one more time to construct the stacked column chart.
 
@@ -146,9 +138,7 @@ barplot(table(BrainCancer$status,BrainCancer$diagnosis),
 
 ### Exercise 2 {.unnumbered}
 
-
 1.  The highest frequency is in the $80 < x ≤ 90$ bin. $8$ temperatures were between $50 < x ≤ 60$ degrees.
-
 
 Create a vector containing the intervals desired by using the `seq()` function.
 
@@ -168,9 +158,7 @@ The frequency distribution can be obtained by using the `table()` function on th
 table(intervals.cut)
 ```
 
-
 2.  The temperature was $5.22$% of the time between $50$ and $60$; The temperature was $70$ or less $33$ times; The temperature was above $70$, $78.43$% of the time.
-
 
 To get the relative frequency table, start by saving the proportion table into an object.Then you can use the `prop.table()` function.
 
@@ -192,9 +180,7 @@ Lastly, for the relative cumulative distribution table, you can use the `cumsum(
 cumsum(prop.table(freq))
 ```
 
-
 3.  The distribution is not perfectly symmetric. It is skewed slightly to the left (see histogram.)
-
 
 Use the `hist()` function to create the histogram.
 
@@ -205,9 +191,7 @@ hist(airquality$Temp, breaks=intervals,
 
 ### Exercise 3 {.unnumbered}
 
-
 1.  From $1901$ through $2000$, both portfolios have behaved very similarly. Returns are between $-3$% and $3$%, there is no trend, and positive (negative) returns for X seem to match with positive (negative) returns of Y.
-
 
 You can use the `plot()` function to create a plot of Portfolio Y. The line for Portfolio X can be added with the `lines()` function.
 
