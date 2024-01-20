@@ -1,6 +1,8 @@
-# Objects and Vectors
+# R Basics
 
-## Concepts
+## Data Structures
+
+In R, data structures are used to store, organize, and manipulate data. Below are some common data structures in R:
 
 ### Objects {.unnumbered}
 
@@ -21,25 +23,74 @@ Use the `c()` function to concatenate (combine) elements and store them in a vec
 ScreenTimeDays<-c(110,115,120,98,60)
 ```
 
-### Functions {.unnumbered}
-In general, **functions** relate an input (arguments) to an output. For example, the `sum()` function takes as an input a vector with numeric values and returns the sum of the elements.
+### Data Frames
+
+**Data Frames** store data in rows and columns. Each columns stores a variable that can have its unique data type (i.e., character, boolean, numeric, etc.). The code below constructs a data frame called *Devices*:
+
+```{r}
+Devices<- data.frame(Device=c("iphone","ipad","computer",
+                              "kindle","watch"),
+                     Days=ScreenTimeDays)
+Devices
+```
+
+As you can see, *Devices* is made up of two vectors (*Device* and *Days*). The data frame holds information on five devices (rows), and two variables (the name of the device and the number of days engaged).
+
+To retrieve a variable from a data frame, we can use the `$` operator. For example, if we wanted to use the *Days* variable, we would write `Devices$Days` indicating to R to return the *Days* variable from the *Devices* data frame.
+
+```{r}
+Devices$Days
+```
+
+If instead we wanted to retrive the *Device* variable, we would write:
+
+```{r}
+Devices$Device
+```
+### Data Types {.unnumbered}
+
+The main data types are numeric, character, logical, date, and complex. To identify the data type stored in a vector use the `class()` function.
+
+```{r}
+class(Devices$Device)
+```
+
+
+## Functions
+
+In general, **functions** relate an input (arguments) to an output. Below are some common functions in R.
+
+### sum {.unnumbered}
+The `sum()` function takes as an input a vector with numeric values and returns the sum of the elements.
 
 ```{r}
 SleepingHours<-c(10,9,6,8)
 sum(SleepingHours)
 ```
 
-To learn more about a function you can use `?`. For example, to learn more about the `sum()` function, write `?sum` in the console. 
+The total number of sleeping hours is 33.
 
-### Data Types {.unnumbered}
-The main data types are numeric, character, logical, date, and complex. To identify the data type stored in a vector use the `class()` function.
+### mean {.unnumbered}
+
+The `mean()` function takes a numeric vector and returns the average. Let's try this with the *Devices* data frame.
 
 ```{r}
-class(SleepingHours)
+mean(Devices)
 ```
 
-### Useful R Functions {.unnumbered}
+Note that R returns an NA. This is because the `mean()` function expects a vector. Let's try again by supplying the *Device* vector:
 
+```{r}
+mean(Devices$Device)
+```
 
+Once again we get an error. In this case we have supplied a vector that contains characters. These can't be added up. The point here is to recognize that each function has requirements on the inputs it requires. When working with functions make sure to provide the correct inputs. Let's provide the `mean()` function with the *Days* variable:
 
-## Exercises
+```{r}
+mean(Devices$Days)
+```
+
+At last we have provided a numerical vector, and now R can calculate its mean.
+
+### Help {.unnumbered}
+To learn more about a function you can use `?`. For example, to learn more about the `sum()` function, write `?sum` in the console.

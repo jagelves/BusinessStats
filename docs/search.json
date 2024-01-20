@@ -345,9 +345,9 @@
   {
     "objectID": "16-ObjectsVectors.html#exercises",
     "href": "16-ObjectsVectors.html#exercises",
-    "title": "15  Objects and Vectors",
-    "section": "15.2 Exercises",
-    "text": "15.2 Exercises"
+    "title": "15  R Basics",
+    "section": "15.3 Exercises",
+    "text": "15.3 Exercises"
   },
   {
     "objectID": "16-ObjectsVectors.html#r-markdown",
@@ -362,5 +362,19 @@
     "title": "Untitled",
     "section": "15.4 Including Plots",
     "text": "15.4 Including Plots\nYou can also embed plots, for example:\n\n\n\n\n\nNote that the echo = FALSE parameter was added to the code chunk to prevent printing of the R code that generated the plot."
+  },
+  {
+    "objectID": "16-ObjectsVectors.html#data-structures",
+    "href": "16-ObjectsVectors.html#data-structures",
+    "title": "15  R Basics",
+    "section": "15.1 Data Structures",
+    "text": "15.1 Data Structures\nIn R, data structures are used to store, organize, and manipulate data. Below are some common data structures in R:\n\nObjects\nAn object is a data structure that stores a value or a set of values, along with information about the type of data and any associated attributes. Objects are usually created by assigning a value to a variable name. You can assign values by using either = or &lt;-.\nWhen naming objects in R use PascalCase, camelCase, snake_case or dot.case.\n\nScreenTime&lt;-120\n\n\n\nVectors\nA vector is a one-dimensional array that can hold elements of any data type.\nSome common data types are numeric, character, logical, and complex.\nUse the c() function to concatenate (combine) elements and store them in a vector.\n\nScreenTimeDays&lt;-c(110,115,120,98,60)\n\n\n\n15.1.1 Data Frames\nData Frames store data in rows and columns. Each columns stores a variable that can have its unique data type (i.e., character, boolean, numeric, etc.). The code below constructs a data frame called Devices:\n\nDevices&lt;- data.frame(Device=c(\"iphone\",\"ipad\",\"computer\",\n                              \"kindle\",\"watch\"),\n                     Days=ScreenTimeDays)\nDevices\n\n    Device Days\n1   iphone  110\n2     ipad  115\n3 computer  120\n4   kindle   98\n5    watch   60\n\n\nAs you can see, Devices is made up of two vectors (Device and Days). The data frame holds information on five devices (rows), and two variables (the name of the device and the number of days engaged).\nTo retrieve a variable from a data frame, we can use the $ operator. For example, if we wanted to use the Days variable, we would write Devices$Days indicating to R to return the Days variable from the Devices data frame.\n\nDevices$Days\n\n[1] 110 115 120  98  60\n\n\nIf instead we wanted to retrive the Device variable, we would write:\n\nDevices$Device\n\n[1] \"iphone\"   \"ipad\"     \"computer\" \"kindle\"   \"watch\"   \n\n\n\n\nData Types\nThe main data types are numeric, character, logical, date, and complex. To identify the data type stored in a vector use the class() function.\n\nclass(Devices$Device)\n\n[1] \"character\""
+  },
+  {
+    "objectID": "16-ObjectsVectors.html#functions",
+    "href": "16-ObjectsVectors.html#functions",
+    "title": "15  R Basics",
+    "section": "15.2 Functions",
+    "text": "15.2 Functions\nIn general, functions relate an input (arguments) to an output. Below are some common functions in R.\n\nsum\nThe sum() function takes as an input a vector with numeric values and returns the sum of the elements.\n\nSleepingHours&lt;-c(10,9,6,8)\nsum(SleepingHours)\n\n[1] 33\n\n\nThe total number of sleeping hours is 33.\n\n\nmean\nThe mean() function takes a numeric vector and returns the average. Let’s try this with the Devices data frame.\n\nmean(Devices)\n\nWarning in mean.default(Devices): argument is not numeric or logical: returning\nNA\n\n\n[1] NA\n\n\nNote that R returns an NA. This is because the mean() function expects a vector. Let’s try again by supplying the Device vector:\n\nmean(Devices$Device)\n\nWarning in mean.default(Devices$Device): argument is not numeric or logical:\nreturning NA\n\n\n[1] NA\n\n\nOnce again we get an error. In this case we have supplied a vector that contains characters. These can’t be added up. The point here is to recognize that each function has requirements on the inputs it requires. When working with functions make sure to provide the correct inputs. Let’s provide the mean() function with the Days variable:\n\nmean(Devices$Days)\n\n[1] 100.6\n\n\nAt last we have provided a numerical vector, and now R can calculate its mean.\n\n\nHelp\nTo learn more about a function you can use ?. For example, to learn more about the sum() function, write ?sum in the console."
   }
 ]
