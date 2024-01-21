@@ -75,13 +75,13 @@ In this exercise we will be simulating the central limit theorem. You will need 
 1.  A production process for energy drinks is being evaluated. The machine that fills the cans is calibrated so that each can has $350$ml of drink with a standard deviation of $10$ml. Every hour, ten cans are sampled and the average amount of drink is recorded (see table below). Is the machine working properly?
 
 |       1       |       2       |       3       |       4       |       5       |       6       |       7       |       8       |
-|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|:-------:|
+|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
 | $\bar{x}=310$ | $\bar{x}=315$ | $\bar{x}=325$ | $\bar{x}=330$ | $\bar{x}=328$ | $\bar{x}=347$ | $\bar{x}=339$ | $\bar{x}=350$ |
 
 2.  The production of Good Guy dolls has a $1$% defective rate. A quality inspector takes five samples of size $1000$. The proportions are shown in the table below. Is the production process under control?
 
 |        1        |        2        |        3        |        4        |        5         |
-|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+|:---------------:|:---------------:|:---------------:|:---------------:|:----------------:|
 | $\bar{p}=0.009$ | $\bar{p}=0.012$ | $\bar{p}=0.008$ | $\bar{p}=0.011$ | $\bar{p}=0.0102$ |
 
 ## Answers

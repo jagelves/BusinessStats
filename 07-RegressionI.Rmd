@@ -72,9 +72,7 @@ You will need the **College** data set to answer this question. You can find thi
 
 ### Exercise 1 {.unnumbered}
 
-
 1.  The covariance is $14.9$ and the correlation is $0.96$. The results indicate that there is a strong direct relationship between the two variables.
-
 
 Let's start by finding the deviations from the mean for the *x* variable in R.
 
@@ -114,9 +112,7 @@ We can once more verify the result in R with the built in function `cor()`.
 cor(x,y)
 ```
 
-
 2.  The covariance is $0.85$ and the correlation is $0.148$. The results indicate that there is a very weak direct relationship between the two variables. They might be unrelated.
-
 
 Let's start with *w* and finding the deviations from the mean in R.
 
@@ -158,9 +154,7 @@ cor(w,z)
 
 ### Exercise 2 {.unnumbered}
 
-
 1.  The correlation coefficient is $-0.78$. This is indicative of a moderately strong inverse relationship between *mpg* and *mp*.
-
 
 In R we can easily calculate the correlation coefficient with the `cor()` function.
 
@@ -168,9 +162,7 @@ In R we can easily calculate the correlation coefficient with the `cor()` functi
 cor(mtcars$mpg,mtcars$hp)
 ```
 
-
 2.  The scatter diagram is downward sloping. Most points are close to the trend line. It is what was expected from a correlation coefficient of $-0.78$.
-
 
 ```{r}
 plot(y=mtcars$mpg,x=mtcars$hp, main="", 
@@ -183,9 +175,7 @@ abline(lm(mtcars$mpg~mtcars$hp),
        col="darkgray",lwd=2)
 ```
 
-
 3.  The coefficient of determination is $0.6$. This value is not very close to one. This is expected since miles per gallon can also vary because of the cars weight, and fuel efficiency. It makes sense that the *hp* only explains $60$% of the total variation.
-
 
 In R we can calculate the coefficient of determination by squaring the correlation coefficient.
 
@@ -195,9 +185,7 @@ cor(mtcars$mpg,mtcars$hp)^2
 
 ### Exercise 3 {.unnumbered}
 
-
 1.  It seems like there is a direct relationship between both variables. The more debt you take, the higher the salary.
-
 
 Start by loading the data. We'll use the `read.csv()` function:
 
@@ -217,9 +205,7 @@ abline(lm(MD_EARN_WNE_P10~GRAD_DEBT_MDN, data=College),
        col="darkgrey",lwd=2)
 ```
 
-
 2.  The correlation coefficient shows a moderate direct relationship between earnings and debt $0.43$. The coefficient of determination indicates that only $19$% of the variation in earnings can be explained by debt.
-
 
 In R we can start with the correlation coefficient:
 

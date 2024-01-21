@@ -20,13 +20,13 @@ The **variance** summarizes the deviation of the values of the random variable f
 
 Here are some properties for the expectation, variance and covariance of random variables:
 
-- $E(aX)=aE(X)$
-- $E(aX + b)=a(Ex)+b$
-- $E(X + Y)=E(X)+E(Y)$
-- $Var(aX)=a^2Var(X)$
-- $Var(aX+b)=a^2Var(X)$
-- $Var(X + Y)=Var(X)+Var(Y)+2Cov(X,Y)$
-- $Cov(aX,bY)=abCov(X,Y)$
+-   $E(aX)=aE(X)$
+-   $E(aX + b)=a(Ex)+b$
+-   $E(X + Y)=E(X)+E(Y)$
+-   $Var(aX)=a^2Var(X)$
+-   $Var(aX+b)=a^2Var(X)$
+-   $Var(X + Y)=Var(X)+Var(Y)+2Cov(X,Y)$
+-   $Cov(aX,bY)=abCov(X,Y)$
 
 ### Discrete Uniform Distribution {.unnumbered}
 
