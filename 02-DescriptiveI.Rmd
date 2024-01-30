@@ -24,6 +24,13 @@ A **data set** contains all data collected for a particular study. Data sets are
 
 -   **Variables** are a set of characteristics collected for each element.
 
+| Elements  | Variable 1 | Variable 2 |
+|:---------:|:----------:|:----------:|
+| Element 1 |     \#     |     \#     |
+| Element 2 |     \#     |     \#     |
+| Element 3 |     \#     |     \#     |
+|    ...    |    ...     |    ...     |
+
 The **scales of measurements** determine the amount and type of information contained in each variable. In general, variables can be classified as **categorical** or **numerical**.
 
 -   **Categorical** (qualitative) data includes labels or names to identify an attribute of each element. Categorical data can be **nominal** or **ordinal**.
