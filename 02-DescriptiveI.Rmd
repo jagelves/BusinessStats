@@ -12,13 +12,13 @@
 
 -   **Structured Data** resides in a predefined row-column format (tidy).
 
--   **Unstructured Data** do not conform to a pre-defined row-column format. Ex: Text, video, and other multimedia.
+-   **Unstructured Data** do not conform to a pre-defined row-column format. *Ex: Text, video, and other multimedia.*
 
 ### Data Sets, Variables and Scales of Measurement {.unnumbered}
 
 A **data set** contains all data collected for a particular study. Data sets are composed of:
 
--   **Elements** are the entities on which data are collected. Ex: Football teams, countries, and individuals.
+-   **Elements** are the entities on which data are collected. *Ex: Football teams, countries, and individuals.*
 
 -   **Observations** are the set of measurements obtained for a particular element.
 
@@ -35,15 +35,15 @@ The **scales of measurements** determine the amount and type of information cont
 
 -   **Categorical** (qualitative) data includes labels or names to identify an attribute of each element. Categorical data can be **nominal** or **ordinal**.
 
-    -   With **nominal** data, the order of the categories is arbitrary. Ex: Marital Status, Race/Ethnicity, or NFL division.
+    -   With **nominal** data, the order of the categories is arbitrary. *Ex: Marital Status, Race/Ethnicity, or NFL division.*
 
-    -   With **ordinal** data, the order or rank of the categories is meaningful. Ex: Rating, Difficulty Level, or Spice Level.
+    -   With **ordinal** data, the order or rank of the categories is meaningful. *Ex: Rating, Difficulty Level, or Spice Level.*
 
 -   **Numerical** (quantitative) include numerical values that indicate how many (discrete) or how much (continuous). The data can be either **interval** or **ratio**.
 
-    -   With **interval** data, the distance between values is expressed in terms of a fixed unit of measure. The zero value is arbitrary and does not represent the absence of the characteristic. Ratios are not meaningful. Ex: Temperature or Dates.
+    -   With **interval** data, the distance between values is expressed in terms of a fixed unit of measure. The zero value is arbitrary and does not represent the absence of the characteristic. Ratios are not meaningful. *Ex: Temperature or Dates.*
 
-    -   With **ratio** data, the ratio between values is meaningful. The zero value is not arbitrary and represents the absence of the characteristic. Ex: Prices, Profits, Wins.
+    -   With **ratio** data, the ratio between values is meaningful. The zero value is not arbitrary and represents the absence of the characteristic. *Ex: Prices, Profits, Wins.*
 
 ### Useful R Functions {.unnumbered}
 
