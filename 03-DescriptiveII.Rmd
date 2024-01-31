@@ -8,7 +8,10 @@ A **frequency distribution** is a table/graph showing the number of items in eac
 
 -   The **relative frequency** is calculated by $f_{i}/n$, where $f_{i}$ is the frequency of class $i$ and $n$ is the total frequency.
 -   The **cumulative frequency** shows the number of data items in a class and all classes below.
+
 -   The **cumulative relative frequency** is given by $cf_{i}/n$, where $cf_{i}$ is the cumulative frequency of class $i$.
+
+A **contingency table** classifies outcomes for one variable in rows and the other in columns. The values at the row and column intersections are frequencies for each unique combination of the two variables.
 
 ### Plots {.unnumbered}
 
