@@ -4,10 +4,10 @@
 
 ### Frequency {.unnumbered}
 
-A **frequency distribution** is a tabular summary of data showing the number of items in each of several non-overlapping classes.
+A **frequency distribution** is a table/graph showing the number of items in each of several non-overlapping classes.
 
 -   The **relative frequency** is calculated by $f_{i}/n$, where $f_{i}$ is the frequency of class $i$ and $n$ is the total frequency.
--   The **cumulative frequency** shows the number of data items with values less than or equal to the upper class limit of each class.
+-   The **cumulative frequency** shows the number of data items in a class and all classes below.
 -   The **cumulative relative frequency** is given by $cf_{i}/n$, where $cf_{i}$ is the cumulative frequency of class $i$.
 
 ### Plots {.unnumbered}
@@ -19,6 +19,14 @@ A **bar plot** illustrates the frequency distribution of qualitative data.
 -   Includes the classes in the horizontal axis and frequencies or relative frequencies in the vertical axis.
 
 -   Has gaps between each bar.
+
+A **pie chart** illustrates the frequency distribution with a circle.
+
+-   Each slice of the circle represents a class.
+
+-   The size of each slice if proportionate to the size of the class.
+
+-   All slices must represent a single class in the frequency distribution. Hence, all slices add up to make the circle.
 
 A **histogram** illustrates the frequency distribution of quantitative data.
 
