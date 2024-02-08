@@ -124,6 +124,15 @@ To construct the bar chart use the `barplot()` function in R.
 barplot(freq, col = "#F5F5F5", ylim=c(0,50))
 ```
 
+If you wish to use `ggplot()`, load the `tidyverse` package and use the `geom_bar()` function.
+
+```{r message=FALSE}
+library(tidyverse)
+ggplot(data=BrainCancer) +
+  geom_bar(aes(diagnosis),
+           bg="#F5F5F5", col="black")
+```
+
 3.  $33$ people did not survive Meningioma. The survival rate of Meningioma is only $21.43$%.
 
 Use the `table()` function one more time to create the contingency table for the two variables.
