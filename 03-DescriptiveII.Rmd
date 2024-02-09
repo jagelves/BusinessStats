@@ -246,3 +246,13 @@ legend(x = "bottomleft",
        lwd = 2,
        bty="n")                
 ```
+
+We can once more recreate the plot using `ggplot`:
+
+```{r}
+ggplot(data=Portfolio) +
+  geom_line(aes(y=Y, x=1901:2000),col="black") +
+  geom_line(aes(y=X, x=1901:2000),col="grey") + 
+  labs(x="")+
+  theme_clean()
+```
