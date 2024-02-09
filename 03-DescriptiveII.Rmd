@@ -129,8 +129,10 @@ If you wish to use `ggplot()`, load the `tidyverse` package and use the `geom_ba
 ```{r message=FALSE}
 library(tidyverse)
 ggplot(data=BrainCancer) +
-  geom_bar(aes(diagnosis),
-           bg="#F5F5F5", col="black")
+  geom_bar(aes(x=diagnosis),
+           fill="#F5F5F5", 
+           col="black") +
+  labs(x="", y="Frequency")
 ```
 
 3.  $33$ people did not survive Meningioma. The survival rate of Meningioma is only $21.43$%.
@@ -209,6 +211,19 @@ hist(airquality$Temp, breaks=intervals,
      right=TRUE,col="#F5F5F5", main="Temperature in NY", xlab="")
 ```
 
+Alternately, the histogram may be constructed with `ggplot` using the code below:
+
+```{r}
+library(ggthemes)
+ggplot(data=airquality) +
+  geom_histogram(aes(x=Temp),
+                 fill="grey", 
+                 alpha=0.6, 
+                 bins=5,col="black",
+                 binwidth=10,
+                 boundary=10) +
+  theme_clean()
+```
 ### Exercise 3 {.unnumbered}
 
 1.  From $1901$ through $2000$, both portfolios have behaved very similarly. Returns are between $-3$% and $3$%, there is no trend, and positive (negative) returns for X seem to match with positive (negative) returns of Y.
