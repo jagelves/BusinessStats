@@ -144,8 +144,9 @@ You can also create a box plot using `ggplot()`.
 library(tidyverse)
 library(ggthemes)
 ggplot(data=StockPrices) +
-  geom_boxplot(aes(y=VTI), fill="#F5F5F5", outlier.color="red") +
-  scale_x_continuous(breaks=NULL) + theme_clean()
+  geom_boxplot(aes(y=VTI), fill="#F5F5F5", outlier.color="red",
+               width=0.1) +
+  scale_x_continuous(breaks=NULL,limits=c(-0.5,0.5)) + theme_clean()
 ```
 
 The boxplot shows that there are no outliers. The data also looks like it has a slight skew to the right.
@@ -184,6 +185,14 @@ axis(side=1, labels=TRUE, at=seq(0,250,50),font=1,las=1)
 axis(side=2, labels=TRUE, at=seq(0,300,20),font=1,las=1)
 ```
 
+This graph can also be generated using `ggplot()` with the code below:
+
+```{r}
+ggplot(data=StockPrices) +
+  geom_line(aes(y=VTI, x=1:length(VTI))) +
+  theme_clean() + labs(x="Period")
+```
+
 ### Exercise 3 {.unnumbered}
 
 1.  The outlier is the Masserati Bora. The horse power is $335$.
@@ -195,6 +204,16 @@ boxplot(mtcars$hp,axes=F, ylim=c(0,400),
         cex=1.5, col="#F5F5F5",pch=21,bg="red")
 axis(side=1, labels=c("HP"), at=seq(1))
 axis(side=2, labels=TRUE, at=seq(0,400,50),font=1,las=1)
+```
+
+Once again, the graph in `ggplot()` is given by:
+
+```{r}
+ggplot(data=mtcars) +
+  geom_boxplot(aes(y=hp), width=0.1, outlier.color = "red",
+               fill="#F5F5F5") +
+  theme_clean() + labs(y="Horse Power") +
+  scale_x_continuous(breaks=NULL, limits=c(-1,1))
 ```
 
 From the graph it seems like the outlier is beyond a horsepower of 275. Let's write an R command to retrieve the car.
