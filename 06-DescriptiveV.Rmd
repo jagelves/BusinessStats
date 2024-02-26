@@ -138,6 +138,16 @@ axis(side=1, labels=c("VTI"), at=seq(1))
 axis(side=2, labels=TRUE, at=seq(140,260,20),font=1,las=1)
 ```
 
+You can also create a box plot using `ggplot()`.
+
+```{r message=FALSE}
+library(tidyverse)
+library(ggthemes)
+ggplot(data=StockPrices) +
+  geom_boxplot(aes(y=VTI), fill="#F5F5F5", outlier.color="red") +
+  scale_x_continuous(breaks=NULL) + theme_clean()
+```
+
 The boxplot shows that there are no outliers. The data also looks like it has a slight skew to the right.
 
 2.  The mean is more sensitive to outliers than the median. Hence, when the data is skewed to the right we expect that the mean is larger than the median.
