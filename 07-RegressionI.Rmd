@@ -6,7 +6,7 @@
 
 Measures of association determine whether there is a linear relationship between two variables. They also determine the strength of the relationship.
 
--   The **covariance** is a measure that determines the direction of the relationship between two variables. It is calculated by $s_{xy}=\frac {\sum(x_i-\bar{x})(y_i-\bar{y})}{\sum (x_i-\bar{x})^2}$. If $s_{xy}>0$ there is a direct relationship, if $s_{xy}<0$ there is an inverse relationship, and if $s_{xy}=0$ there is no relationship.
+-   The **covariance** is a measure that determines the direction of the relationship between two variables. It is calculated by $s_{xy}=\frac {\sum(x_i-\bar{x})(y_i-\bar{y})}{n-1}$. If $s_{xy}>0$ there is a direct relationship, if $s_{xy}<0$ there is an inverse relationship, and if $s_{xy}=0$ there is no relationship.
 
 -   The **correlation** measures the strength of the linear relationship. It is calculated by $r= \frac {s_{xy}}{s_x s_y}$. The correlation coefficient is between $[-1,1]$. When the correlation coefficient is $1$ ($-1$), there is a perfect direct (inverse) relationship between the two variables.
 
@@ -189,13 +189,17 @@ cor(mtcars$mpg,mtcars$hp)^2
 
 Start by loading the data. We'll use the `read.csv()` function:
 
-```{r}
-College<-read.csv("https://jagelves.github.io/Data/College.csv")
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+College<-read_csv("https://jagelves.github.io/Data/College.csv")
+College %>% mutate(GRAD_DEBT_MDN=as.numeric(GRAD_DEBT_MDN))%>%
+  mutate(MD_EARN_WNE_P10=as.numeric(MD_EARN_WNE_P10)) ->
+  College
 ```
 
 The two variables of interest are *GRAD_DEBT_MDN* and *MD_EARN_WNE_P10*. The following code creates the scatter plot:
 
-```{r}
+```{r warning=FALSE}
 plot(y=College$MD_EARN_WNE_P10, x=College$GRAD_DEBT_MDN, 
      main="", axes=F, pch=21, bg="blue",
      xlab="Earnings",ylab="Debt")
