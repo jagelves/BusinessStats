@@ -68,7 +68,7 @@ The **variance** of the hypergeometric distribution is $var(x)= n \frac {r}{N} (
 
 The **Poisson distribution** estimates the number of successes ($x$) over a specified interval of time or space.
 
-The **probability mass function** is given by $f(x)= \frac {\mu e^{-x}}{x!}$, where $\mu$ is the expected number of successes in any given interval and also the variance, and $e$ is Euler's number (2.71828...).
+The **probability mass function** is given by $f(x)= \frac {\mu^{x} e^{-\mu}}{x!}$, where $\mu$ is the expected number of successes in any given interval and also the variance, and $e$ is Euler's number (2.71828...).
 
 An experiment satisfies a Poisson process if:
 
