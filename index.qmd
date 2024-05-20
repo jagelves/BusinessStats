@@ -22,7 +22,7 @@ We will be using R to apply the lessons we learn in BUAD 231. R is a language an
 
 Overall, R is a powerful and versatile tool for data analysis and data science, and it offers many benefits to users who want to work with data.
 
-## Installing R
+## Installing R.
 
 To install R, visit the R webpage at <https://www.r-project.org/>. Once in the website, click on the CRAN hyperlink.
 

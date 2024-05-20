@@ -391,5 +391,15 @@
     "title": "15  R Basics",
     "section": "15.2 Functions",
     "text": "15.2 Functions\nIn general, functions relate an input (arguments) to an output. Below are some common functions in R.\n\nsum\nThe sum() function takes as an input a vector with numeric values and returns the sum of the elements.\n\nSleepingHours&lt;-c(10,9,6,8)\nsum(SleepingHours)\n\n[1] 33\n\n\nThe total number of sleeping hours is 33.\n\n\nmean\nThe mean() function takes a numeric vector and returns the average. Let’s try this with the Devices data frame.\n\nmean(Devices)\n\nWarning in mean.default(Devices): argument is not numeric or logical: returning\nNA\n\n\n[1] NA\n\n\nNote that R returns an NA. This is because the mean() function expects a vector. Let’s try again by supplying the Device vector:\n\nmean(Devices$Device)\n\nWarning in mean.default(Devices$Device): argument is not numeric or logical:\nreturning NA\n\n\n[1] NA\n\n\nOnce again we get an error. In this case we have supplied a vector that contains characters. These can’t be added up. The point here is to recognize that each function has requirements on the inputs it requires. When working with functions make sure to provide the correct inputs. Let’s provide the mean() function with the Days variable:\n\nmean(Devices$Days)\n\n[1] 100.6\n\n\nAt last we have provided a numerical vector, and now R can calculate its mean.\n\n\nHelp\nTo learn more about a function you can use ?. For example, to learn more about the sum() function, write ?sum in the console."
+  },
+  {
+    "objectID": "index.html#installing-r.",
+    "href": "index.html#installing-r.",
+    "title": "Business Statistics",
+    "section": "Installing R.",
+    "text": "Installing R.\nTo install R, visit the R webpage at https://www.r-project.org/. Once in the website, click on the CRAN hyperlink.\n\n\n\n\n\n\n\n\n\nHere you can select the CRAN mirror. Scroll down until you see USA. You are free to choose any mirror you like, I recommend using the Duke University mirror.\n\n\n\n\n\n\n\n\n\nOnce you click on the hyperlink, you will be prompted to choose the download for your operating system. Depending on your operating system, choose either a Windows or Macintosh download.\n\n\n\n\n\n\n\n\n\nFollow all prompts and complete installation.",
+    "crumbs": [
+      "Introduction"
+    ]
   }
 ]
