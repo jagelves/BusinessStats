@@ -34,13 +34,21 @@ The **interquartile range** (IQR) is the difference between the third quartile a
 
 A **box plot** is a graph that shows the five point summary, outliers (if any), and the distribution of data.
 
-To determine if the data is skewed, calculate the **Pearson's Coefficient of Skew**. $Sk=\frac{3(\bar {x}- Median)}{s_x}$. The distribution is skewed to the left if $Sk<0$, skewed to the right is $Sk>0$, and symmetric if $Sk=0$.
+### Skewness and Kurtosis {.unnumbered}
+
+Skewness and Kurtosis are numerical measures that describe the shape of a distribution.
+
+**Skewness** measures the asymmetry in a distribution. To determine if the data is skewed (i.e. has a longer tail to the left or right), calculate the **Coefficient of Skew**. $Sk=\frac{\sum{(X_i-\bar{X})^3/N}}{s^3}$. The distribution is skewed to the left if $Sk<0$, skewed to the right is $Sk>0$, and symmetric if $Sk=0$.
+
+**Kurtosis** describes how the distribution peaks or flattens out. A distribution with low kurtosis would follow a horizontal line (*platykurtic*). One with high kurtosis would have a significant peak at the mean and a steep drop-off on both sides (*leptokurtic*). $Ku=\frac{\sum{(Y_i-\bar{Y})^4/N}}{s^4}$.  The distribution is platykurtic when $Ku<3$ and leptokurtic when $Ku>3$.
 
 ### Useful R Functions {.unnumbered}
 
 The `quantile()` function returns the five point summary when no arguments are specified. For a specific quantile, specify the *probs* argument.
 
 The `boxplot()` command returns a box plot for a vector of values.
+
+The library `moments` contains the functions `skewness()`  and `kurtosis()` that return the skewness and kurtosis when providing a vector of numbers.
 
 ## Exercises
 
