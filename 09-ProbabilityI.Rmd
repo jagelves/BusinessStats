@@ -4,9 +4,9 @@
 
 ### Frequentist Vs. Bayesian {.unnumbered}
 
-The **frequentist** interpretation assumes that probabilities represent proportions of specific events occurring over infinitely identical trials.
+The **frequentist** interpretation assumes that probabilities represent proportions of specific events occurring over infinitely identical trials. Frequentist statistics is concerned with the question, *how likely am I to see this data, assuming that the hypothesis is true?*
 
-The **Bayesian** interpretation assumes that probabilities are subjective beliefs about the relative likelihood of events.
+The **Bayesian** interpretation assumes that probabilities are subjective beliefs about the relative likelihood of events. Bayesian statistics is concerned with the question, *how likely is the hypothesis to be true, given the data i've seen?*
 
 ### Experiments and Sets {.unnumbered}
 
@@ -20,7 +20,7 @@ An **event** is a subset of the sample space. $A$={$2$,$4$,$6$} is the event of 
 
 ### Basic Probability Concepts {.unnumbered}
 
-A **probability** is a numerical value that measures the likelihood that an event occurs.
+A **probability** is a numerical value that measures the likelihood that an event occurs. Bayesianinsm treats probability as subjective: a statement about our ignorance about the world. Frequentists treat it as objective: a statement about ho often some outcome will happen, if we do it an infinite number of times. 
 
 To calculate **probabilities**, find the ratio between favorable outcomes and total outcomes. $p=favorable/total$.
 
