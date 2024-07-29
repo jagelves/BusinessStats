@@ -36,7 +36,7 @@ To conduct hypothesis testing:
 
     -   For a test on proportions use $z= \frac {\bar p- P_o}{\sqrt {P_o(1-P_o)/ n}}$, where $\bar p$ is the sample proportion, $P_o$ is the hypothesized value of the population proportion $P$, and $n$ is the sample size.
 
-4.  Find the **p-value** (i.e., the likelihood that the hypothesis was rejected by chance). (Substitute $t$ for $z$ if using proportions)
+4.  Find the **p-value** (i.e., the likelihood of getting the observed or more extreme data, assuming the null hypothesis is true). (Substitute $t$ for $z$ if using proportions)
 
     -   For a right-tail test, the $p$-value is $P(T\geq t)$.
 
