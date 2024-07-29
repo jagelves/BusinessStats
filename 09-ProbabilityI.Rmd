@@ -20,7 +20,7 @@ An **event** is a subset of the sample space. $A$={$2$,$4$,$6$} is the event of 
 
 ### Basic Probability Concepts {.unnumbered}
 
-A **probability** is a numerical value that measures the likelihood that an event occurs. Bayesianinsm treats probability as subjective: a statement about our ignorance about the world. Frequentists treat it as objective: a statement about ho often some outcome will happen, if we do it an infinite number of times. 
+A **probability** is a numerical value that measures the likelihood that an event occurs. Bayesianinsm treats probability as subjective: a statement about our ignorance about the world. Frequentists treat it as objective: a statement about ho often some outcome will happen, if we do it an infinite number of times.
 
 To calculate **probabilities**, find the ratio between favorable outcomes and total outcomes. $p=favorable/total$.
 
@@ -56,7 +56,9 @@ The **Multiplication Rule**:
 
 The **Law of Total Probability**: $P(A)=P(A|B)P(B)+P(A|B^c)P(B^c)$.
 
-**Bayes' Theorem**: $P(A|B)=P(B|A)P(A)/P(B)$.
+**Bayes' Theorem**: $P(A|B)=\frac{P(B|A)P(A)}{P(B)}$. 
+
+**Cromwell's Rule**: States that you should never assign a probability of one or zero when using Bayes'.
 
 ### Counting Rules {.unnumbered}
 
