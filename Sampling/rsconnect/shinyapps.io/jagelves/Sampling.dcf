@@ -1,0 +1,12 @@
+name: Sampling
+title: Sampling
+username: jagelves
+account: jagelves
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 14716090
+bundleId: 10257725
+url: https://jagelves.shinyapps.io/Sampling/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE

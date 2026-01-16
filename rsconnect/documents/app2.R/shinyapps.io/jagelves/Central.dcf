@@ -1,0 +1,13 @@
+name: Central
+title: Central
+username: jagelves
+account: jagelves
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 16076330
+bundleId: 11183570
+url: https://jagelves.shinyapps.io/Central/
+version: 1
+asMultiple: FALSE
+asStatic: FALSE
+ignoredFiles: _extensions/quarto-ext/shinylive/_extension.yml|_extensions/quarto-ext/shinylive/README.md|_extensions/quarto-ext/shinylive/resources/css/shinylive-quarto.css|_extensions/quarto-ext/shinylive/shinylive.lua|_quarto.yml|app.R|cover.png|custom-head.html|DescriptiveI.qmd|DescriptiveII.qmd|DescriptiveIII.qmd|DescriptiveIV.qmd|DescriptiveV.qmd|index.qmd|InferenceI.qmd|InferenceII.qmd|InferenceIII.qmd|InfReg.qmd|ProbabilityI.qmd|ProbabilityII.qmd|ProbabilityIII.qmd|R Basics.qmd|references.bib|references.qmd|RegressionI.qmd|RegressionII.qmd|Sampling/app.R|docs|images

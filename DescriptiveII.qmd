@@ -1,0 +1,458 @@
+```{=html}
+<style>
+details {
+  background-color: #F8F9FA;
+  padding: 5px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  margin: 10px 0; /* Spacing */
+}
+
+details summary {
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+</style>
+```
+
+# Descriptive Stats II
+
+Understanding and visualizing data distributions is a fundamental step in data analysis. It provides critical insights into the underlying characteristics of the data, which directly impact decision-making, model performance, and interpretation. Below, we introduce tabular and visual techniques to describe your data.
+
+## Frequency Distributions (Categorical)
+
+A **frequency distribution** is perhaps the most valuable tool for summarizing categorical data. It illustrates with a table the number of items within distinct, non-overlapping categories. An alternative known as the **relative frequency** quantifies the proportion of items in each category relative to the total number of observations. You can calculate it by taking the frequency of a particular class ($f_{i}$), and dividing it by the number of observations $n$. Relative frequency helps contextualize the data by highlighting the significance of each category compared to the whole.
+
+**Example:** Consider data on students' answers to the question, what is your favorite food? You can see the data below:
+
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/food.png")
+```
+
+Simply observing raw data can make identifying the most and least popular items challenging. A frequency distribution organizes this information into a clear table, showcasing the popularity of each item. The frequency distribution of the table is displayed below:
+
+```{r echo=FALSE, message=FALSE, fig.align='center'}
+library(ggthemes)
+library(tidyverse)
+library(gt)
+food<-c("Pizza","Sushi","Sushi","Chicken",
+        "Chicken","Pasta","Pasta","Pasta",
+        "Sushi","Pasta","Chicken","Pizza",
+        "Chicken","Sushi","Pizza","Sushi",
+        "Sushi","Sushi","Sushi","Pizza",
+        "Pizza","Chicken","Sushi","Pizza",
+        "Sushi")
+
+as_tibble(food) %>% rename(Food=value) %>% group_by(Food) %>% summarise(Frequency=n()) %>% 
+  mutate(Relative=Frequency/sum(Frequency)) %>% gt() %>% 
+  cols_align("center") %>% 
+  tab_style(
+    locations =cells_column_labels(columns = everything()),
+    style = list(cell_borders(sides = "bottom", weight = px(3)),
+                 cell_text(weight = "bold")))
+                                                  
+
+```
+
+Each food item is tallied up, and the result is shown in the frequency column. Alternately, we can show the tally as a proportion of the total (i.e., 25). For example, five students liked chicken; out of the 25 students surveyed, this represents 0.2 or 20%. This calculation is shown for each food item in the relative frequency column.
+
+Below, you can see the bar graph showing the frequency distribution of the food items data. Note that the visualization is constructed by showing each food item as a bar with a height equal to the frequency.
+
+```{r echo=FALSE, fig.align='center'}
+ggplot()+geom_bar(aes(food), alpha=0.5,col="black") +theme_clean()+
+  labs(x="",y="Frequency",title="Favorite Food Items",
+       subtitle="Class of 25 Students")
+```
+
+In sum, the **bar plot** illustrates the frequency distribution of categorical data. It includes the classes in the horizontal axis and frequencies or relative frequencies in the vertical axis and has gaps between each bar.
+
+## Frequency Distributions (Numerical) {#freqdistnum}
+
+When working with numerical data, building a frequency distributions requires additional steps compared to categorical data. The challenge lies in the absence of predefined categories or classes. To construct a frequency distribution for numerical data, it is essential to determine the number, width, and limits of the classes. Here are the steps to create a frequency distribution when data is numerical:
+
+**1. Determine the Number of Classes:** The number of classes can be estimated using the $2^k$ rule, where $k$ is the smallest integer such that $2^k$ exceeds the total number of observations by the least amount. This ensures the chosen number of classes provides a reasonable level of granularity for summarizing the data.
+
+**Ex1:** If a data set has 50 observations, we would choose six classes since $2^6=64$ is greater than $50$ by the least amount.
+
+Alternatively, you can use Sturges' rule to estimate the number of classes. This rule suggests using
+$k = \lceil 1 + 3.322 \log_{10}(n) \rceil$
+where $n$ is the number of observations and $\lceil \cdot \rceil$ denotes the ceiling function (round up to the nearest integer).
+
+**Ex2:** If a data set has 50 observations,
+$k = \lceil 1 + 3.322 \times 1.699 \approx 6.64 \rceil = 7$ so we would choose seven classes.
+
+**2. Calculate the Width of Each Class:** The width of a class is determined using the formula:
+
+$$
+Width = \frac{Max-Min}{Number\ of\ Classes}
+$$
+
+*Ex: If the data set has 50 observations and the minimum value 20 and the maximum is 78, then the width of each class is* $58/6 \approx 9.7$. Hence, we can round up and use a class width of 10. It is important to note to always round up, as this ensures that all data points are included in an class.
+
+**3. Establish Class Limits:** The class limits define the range of values in each class. These limits should be chosen such that each data point belongs to only one class.
+
+*Ex: Consider a data set of 50 observations where each class has a width of 10. Set the class limits of the first class to \[20,30). Note that the square bracket indicates that the point should be included in the class, whereas ) indicates that the point should not be included in the class. The six classes would be \[20,30), \[30,40), \[40,50), \[50,60), \[60,70), and \[70,80). By choosing these classes, each point belongs to only one class.*
+
+**Example:** Let's look at a snapshot of the Dow Jones Industrial 30 stock prices. Below you can see the data:
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("images/dow.png")
+```
+
+Let's follow the steps to build the frequency distribution.
+
+**1. Determine the Number of Classes:** Here we choose five classes since $2^5=32$ is greater than $30$ by the least amount.
+
+**2. Calculate the Width of Each Class:** The smallest values in the data set is $23$ and the maximum is $501$. This gives us a range of $478$. Now we can just take the range and divide by five to get $95.6$. To make things simple we can round to $100$ and use a class width of $100$.
+
+**3. Establish Class Limits:** Since we have rounded up we can be flexible with our class limits. The following class limits are suggested \[20,120), \[120,220), \[220,320), \[320,420), and \[420,520). Note that each class has a width of $100$, and that each data point belongs to one single class.
+
+## Frequency Distributions in R (Categorical)
+
+The process of constructing frequency distributions in R is straightforward. We will be mainly using the `table()` function. Let's start by saving the data in a vector:
+
+```{r}
+food<-c("Pizza","Sushi","Sushi","Chicken",
+        "Chicken","Pasta","Pasta","Pasta",
+        "Sushi","Pasta","Chicken","Pizza",
+        "Chicken","Sushi","Pizza","Sushi",
+        "Sushi","Sushi","Sushi","Pizza",
+        "Pizza","Chicken","Sushi","Pizza",
+        "Sushi")
+```
+
+Here we define a vector called food by assigning (`<-`) the combination (`c`) of all the food items. To generate the frequency distribution we simply pass the food vector into the `table()` command.
+
+```{r}
+table(food)
+```
+
+As you can see this tallies all the instances for each item. If instead we wanted to obtain the relative frequency we can use the `prop.table()` function. This function requires the frequency distribution created by the `table()` function. Hence, we can first create the frequency distribution, save it into an object, and then generate the relative frequency. The code is below:
+
+```{r}
+freq<-table(food)
+prop.table(freq)
+```
+
+As a last modification. If you want percent frequencies, you can multiply the `prop.table()` function by 100, as shown below:
+
+```{r}
+prop.table(freq)*100
+```
+
+## Bar Plot in R
+
+To create the bar plot we will be using the `geom_bar()` function within the `tidyverse` package. We start by loading the package:
+
+```{r message=FALSE, warning=FALSE}
+library(tidyverse)
+```
+
+Now R will identify the functions `ggplot()` and `geom_bar()` from the `ggplot` library. To construct the plot we will first call on `ggplot()` and then specify the type of graph we want by calling on `geom_bar()`. In the `aes()` function we will specify which variable (or vector) we want to plot.
+
+```{r}
+ggplot() + geom_bar(aes(food))
+```
+
+We can enhance the visualization by adding a title and changing the theme. The `labs()` function allows us to change the titles and the `ggthemes` package allows us to choose from a variety of themes.
+
+```{r}
+ggplot() + geom_bar(aes(food), col="black", alpha=0.5, bg="blue") +
+  labs(title="Favorite Food Items",
+       subtitle="Class of 25 Students",
+       x="", y="Frequency") + 
+  theme_clean()
+  
+```
+
+A few arguments are worth explaining in the code above. The arguments in the `geom_bar()` function change the background color (bg), the transparency of the color (alpha), and the color of the outline for the bars (col). Title and subtitles are added within the `labs()` function. To omit labels we can just open and close quotations. Hence, `x=""` omits the x label.
+
+## Frequency Distribution in R (Numerical)
+
+To construct the frequency distribution in R we will be first generating the classes and then using the `table()` function as we did in the categorical case. Let's first get the data into R:
+
+```{r}
+dow<-c(277,174,202,383,358,188,293,156,
+       212,42,149,410,303,165,203,103,
+       22,59,287,121,312,52,53,158,500,
+       96,95,43,188,200)
+```
+
+To generate the bins we will use the example and procedure found in [2.2](#freqdistnum). That is, we will be using five classes, of width 100. Below is the code to do this:
+
+```{r}
+intervals<-cut_width(dow, boundary=20, width=100)
+(dowfreq<-table(intervals))
+```
+
+The process involves two steps. First we place each observation in the dow, into the bins by using the `cut_width()` function. This involves specifying where we want to start our first bin (*boundary=20*) and the width of each bin (*width 100*). The function creates the bins and places each observation in the respective bin. The last step is to tally the results with the `table()` function.
+
+To obtain the cumulative distribution, we can use the `cumsum()` function. Below we just wrap the frequency distribution (freq) into the `cumsum()` function.
+
+```{r}
+cumsum(dowfreq)
+```
+
+## Histograms in R
+
+To generate the histogram in R we will use once again the `tidyverse` package. This time we will use the `geom_histogram()` function. Below is the code to generate the histogram for the dow data:
+
+```{r}
+ggplot() + 
+  geom_histogram(aes(dow), bg="blue", alpha=0.5, col="black",
+                 bins=5,
+                 binwidth = 100,
+                 boundary=20) +
+  labs(title="Dow Stock Prices",
+       y="Frequency", x="") + 
+  theme_clean()
+```
+
+Within the `geom_histogram()` command we can set the classes (or bins) for the histogram. The bins argument specifies the number of bins, bin.width specifies the bin width, and the boundary specifies where should the histogram starts. This histogram allows us to observe quickly that most stocks in the dow are priced between 20 and 220 dollars.
+
+## Exercises
+
+The following exercises will help you practice summarizing data with tables and simple graphs. In particular, the exercises work on:
+
+-   Developing frequency distributions for both categorical and numerical data.
+
+-   Constructing bar charts, histograms, and line charts.
+
+-   Creating contingency tables.
+
+Answers are provided below. Try not to peek until you have a formulated your own answer and double checked your work for any mistakes.
+
+### Exercise 1 {.unnumbered}
+
+Install the `ISLR2` package in R. You will need the **BrainCancer** data set to answer this question.
+
+1.  Construct a frequency and relative frequency table of the *Diagnosis* variable. What was the most common diagnosis? What percentage of the sample had this diagnosis?
+
+<details>
+
+<summary>Answer</summary>
+
+*The most common diagnosis is Meningioma, a slow-growing tumor that forms from the membranous layers surrounding the brain and spinal cord. The diagnosis represents about* $48.28$% of the sample.
+
+*Start by loading the `ISLR2` package. To construct the frequency distribution table, use the `table()` function.*
+
+```{r}
+library(ISLR2)
+table(BrainCancer$diagnosis)
+```
+
+*The relative frequency distribution can be easily retrieved by saving the frequency table in an object and then using the `prop.table()` function.*
+
+```{r}
+freq<-table(BrainCancer$diagnosis)
+prop.table(freq)
+```
+
+</details>
+
+2.  Construct a bar chart. Summarize the findings.
+
+<details>
+
+<summary>Answer</summary>
+
+*The majority of diagnosis are Meningioma. Low grade glioma is the least common of diagnosis. High grade glioma and other diagnosis have about the same frequency.*
+
+To construct the bar chart use the `geom_bar()` function from `tidyverse`.
+
+```{r}
+library(tidyverse)
+library(ggthemes)
+ggplot(data=BrainCancer) + 
+  geom_bar(aes(diagnosis), alpha=0.5, col="black") + 
+  theme_clean()
+```
+
+</details>
+
+3.  Construct a contingency table that shows the *Diagnosis* along with the *Status*. Which diagnosis had the highest number of non-survivals (0)? What was the survival rate of this diagnosis?
+
+<details>
+
+<summary>Answer</summary>
+
+$33$ people did not survive Meningioma. The survival rate of Meningioma is only $21.43$%.
+
+*Use the `table()` function one more time to create the contingency table for the two variables.*
+
+```{r}
+(freq2<-table(BrainCancer$status,BrainCancer$diagnosis))
+```
+
+*To get the survival rates, we can use the `prop.table()` function once again.*
+
+```{r}
+prop.table(freq2,margin = 2)
+```
+
+</details>
+
+### Exercise 2 {.unnumbered}
+
+You will need the **airquality** data set (in base R) to answer this question.
+
+1.  Construct a frequency distribution for *Temp*. Use five classes with widths of $50<x\le60$; $60<x\le70$; etc. Which interval had the highest frequency? How many times was the temperature between $50$ and $60$ degrees?
+
+<details>
+
+<summary>Answer</summary>
+
+*The highest frequency is in the* $80 < x ≤ 90$ bin. $8$ temperatures were between $50 < x ≤ 60$ degrees.
+
+*We can create the intervals using the `cut_width()` function:*
+
+```{r}
+intervals <- cut_width(airquality$Temp, width = 10,
+                       boundary=50)
+```
+
+*The frequency distribution can be obtained by using the `table()` function on the interval.cut object created above.*
+
+```{r}
+table(intervals)
+```
+
+</details>
+
+2.  Construct a relative frequency, cumulative frequency and the relative cumulative frequency distributions. What proportion of the time was *Temp* between $50$ and $60$ degrees? How many times was the *Temp* $70$ degrees or less? What proportion of the time was *Temp* more than $70$ degrees?
+
+<details>
+
+<summary>Answer</summary>
+
+*The temperature was* $5.22$% of the time between $50$ and $60$; The temperature was $70$ or less $33$ times; The temperature was above $70$, $78.43$% of the time.
+
+*To get the relative frequency table, start by saving the proportion table into an object.Then you can use the `prop.table()` function.*
+
+```{r}
+freq<-table(intervals) 
+prop.table(freq)
+```
+
+*For the cumulative distribution you can use the `cumsum()` function on the frequency distribution.*
+
+```{r}
+cumulfreq<-cumsum(freq)
+cumulfreq
+```
+
+*Lastly, for the relative cumulative distribution table, you can use the `cumsum()` function on the relative frequency table.*
+
+```{r}
+cumsum(prop.table(freq))
+```
+
+</details>
+
+3.  Construct the histogram. Is the distribution symmetric? If not, is it skewed to the left or right?
+
+<details>
+
+<summary>Answer</summary>
+
+*The distribution is not perfectly symmetric. It is skewed slightly to the left (see histogram.)*
+
+Use the `geom_histogram()` function to create the histogram.
+
+```{r}
+ggplot() + 
+  geom_histogram(aes(airquality$Temp), col="black", 
+                 bg="darkgreen",alpha=0.2,
+                 bins=5,
+                 binwidth = 10,
+                 boundary=0) + theme_clean() +
+  labs(x="Temperature", y="Frequency")
+```
+
+</details>
+
+### Exercise 3 {.unnumbered}
+
+You will need the **Portfolio** data set from the `ISLR2` package to answer this question.
+
+1.  Construct a line chart that shows the returns over time for each portfolio (X and Y) by using two lines each with a unique color. Assume the data is for the period $1901$ to $2000$. Include also a legend that matches colors to portfolios.
+
+<details>
+
+<summary>Answer</summary>
+
+*From* $1901$ through $2000$, both portfolios have behaved very similarly. Returns are between $-3$% and $3$%, there is no trend, and positive (negative) returns for X seem to match with positive (negative) returns of Y.
+
+*You can use the `geom_line()` function to create a line for each portfolio.*
+
+```{r}
+ggplot() +
+  geom_line(aes(y=Portfolio$Y,x=seq(1901,2000)), col="blue") +
+  geom_line(aes(y=Portfolio$X,x=seq(1901,2000)), col="grey") +
+  theme_clean() +
+  labs(x="Year", y="Return")
+```
+
+</details>
+
+### Exercise 4 {.unnumbered}
+
+A company surveyed 40 employees about their primary department. The responses are:
+```{r}
+dept <- c("Marketing", "Sales", "Finance", "Operations", "Marketing", "HR", "IT", "Finance", "Customer Service", "Marketing", "Sales", "Finance", "Operations", "R&D", "Marketing", "Finance", "Customer Service", "Operations", "Marketing", "Finance", "HR", "Sales", "Customer Service", "Operations", "Marketing", "Finance", "IT", "R&D", "Customer Service", "Operations", "Sales", "Finance", "Customer Service", "Marketing", "Finance", "HR", "Customer Service", "Operations", "R&D", "Sales")
+```
+1. Use R to create a frequency distribution table for these departments. 
+
+<details>
+<summary>Answer</summary>
+```{r}
+table(dept)
+```
+</details>
+
+2. Compute the relative frequencies (as percentages).
+
+<details>
+<summary>Answer</summary>
+```{r}
+prop.table(table(dept)) * 100
+```
+</details>
+
+3. Create a bar plot of the frequencies. Which department has the highest frequency? What is its relative frequency (percentage)?
+
+<details>
+<summary>Answer</summary>
+```{r}
+ggplot() +
+  geom_bar(aes(x=dept), bg="grey", 
+           col="black", alpha=0.5) +
+  theme_clean()
+```
+
+*The highest frequency is in the Finance department with 8 employees. The relative frequency is 20%.*
+
+</details>
+
+### Exercise 5 {.unnumbered}
+
+A class of 50 students took a business statistics exam (out of 100 points). Their scores were:
+```{r}
+scores <- c(75.6, 66.9, 83.4, 67.2, 95.3, 90.5, 54.4, 76.8, 88.5, 63.3, 95.1, 69.9, 80.4, 91.9, 66.7, 58.0, 81.9, 78.7, 51.9, 55.4, 94.5, 71.8, 65.8, 54.6, 92.6, 68.7, 76.4, 57.1, 72.4, 90.1, 54.4, 66.6, 84.2, 74.3, 95.6, 51.6, 79.9, 65.8, 89.5, 70.4, 88.4, 83.3, 87.7, 62.3, 59.1, 60.3, 53.5, 50.1, 51.1, 52.6)
+```
+
+1. Construct a histogram using 7 classes with width 10, starting at 50 (bins: [50,60), [60,70), etc.). Use `geom_histogram()` with appropriate parameters. In which bin is the highest frequency? How many students scored in that range?
+
+<details>
+<summary>Answer</summary>
+```{r}
+ggplot() + 
+  geom_histogram(aes(x=scores),
+                 breaks = seq(50, 100, by = 10),
+                 closed = "left",
+                 col="black", bg="grey") +
+  theme_clean()
+```
+*The highest frequency is in the bin (60,70] with 9 students.*
+
+</details>
+

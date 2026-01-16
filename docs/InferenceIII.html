@@ -1,0 +1,1202 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>13&nbsp; Inference III – Business Statistics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./InfReg.html" rel="next">
+<link href="./InferenceII.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-ed6da6eef3892af8a4b5ed59bfb951f5.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FWC3RCL4BF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FWC3RCL4BF');
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./InferenceIII.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Inference III</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Business Statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DescriptiveI.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Descriptive Stats I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DescriptiveII.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Stats II</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DescriptiveIII.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descriptive Statistics III</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DescriptiveIV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Descriptive Stats IV</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DescriptiveV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Descriptive Stats V</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RegressionI.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Regression I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RegressionII.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Regression II</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ProbabilityI.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ProbabilityII.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability II</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ProbabilityIII.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability III</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./InferenceI.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inference I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./InferenceII.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Inference II</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./InferenceIII.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Inference III</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./InfReg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression and Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./R Basics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">R Basics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#hypothesis-testing-intuition" id="toc-hypothesis-testing-intuition" class="nav-link active" data-scroll-target="#hypothesis-testing-intuition"><span class="header-section-number">13.1</span> Hypothesis Testing Intuition</a></li>
+  <li><a href="#testing-the-null-hypothesis" id="toc-testing-the-null-hypothesis" class="nav-link" data-scroll-target="#testing-the-null-hypothesis"><span class="header-section-number">13.2</span> Testing the Null Hypothesis</a></li>
+  <li><a href="#steps-to-perform-hypothesis-testing" id="toc-steps-to-perform-hypothesis-testing" class="nav-link" data-scroll-target="#steps-to-perform-hypothesis-testing"><span class="header-section-number">13.3</span> Steps to Perform Hypothesis Testing</a></li>
+  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions"><span class="header-section-number">13.4</span> Useful R Functions</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">13.5</span> Exercises</a>
+  <ul class="collapse">
+  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
+  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
+  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
+  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Inference III</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<style>
+details {
+  background-color: #F8F9FA;
+  padding: 5px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  margin: 10px 0; /* Spacing */
+}
+
+details summary {
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+</style>
+<p>In this chapter, you will begin mastering the concepts of null and alternative hypotheses, equipping you with the skills to draw reliable conclusions from sample data, effectively manage risks, and confidently justify strategic decisions.</p>
+<section id="hypothesis-testing-intuition" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="hypothesis-testing-intuition"><span class="header-section-number">13.1</span> Hypothesis Testing Intuition</h2>
+<p>The <strong>null hypothesis</strong> is a statement about the population parameter. Usually, the status quo. In research, it states no effect or no relationship between variables. The null hypothesis includes some form of the equality sign (i.e., <span class="math inline">\(\geq\)</span>, <span class="math inline">\(\leq\)</span>, or <span class="math inline">\(=\)</span>).</p>
+<p>For instance, consider the hypothesis that the average annual income of an individual in the U.S. is 50,000 dollars. When we take a sufficiently large sample from the population, the sample mean can be treated as a random variable following a normal distribution (central limit theorem). The hypothesized value, 50,000, represents the mean of this distribution. Our goal is to determine whether the calculated sample mean is likely to have been drawn from this hypothesized normal distribution with the specified mean. If the sample mean is “close” to the hypothesized mean then we would conclude that our sample is likely to have been drawn from such a distribution. If it is “far away” then we question whether the population mean is the one hypothesized and we should pivot to an alternative.</p>
+<p>The <strong>alternative hypothesis</strong> directly contradicts the null hypothesis. In research, it states the prediction of the effect or relationship. The alternative includes non-equality signs (i.e., <span class="math inline">\(&gt;\)</span>, <span class="math inline">\(&lt;\)</span>, or <span class="math inline">\(\ne\)</span>).</p>
+<p><strong>Example:</strong> We would like to test the hypothesis that the average income in the U.S. is $50,000. We take a sample of 100 people, and record their annual income. For this sample the mean is $48,000.</p>
+<p>Remember that any sample statistic is subject to sampling error. At first glance, a sample statistic close to the hypothesized value (e.g., a sample mean near $50,000) might suggest the null hypothesis is true. However, we must consider the <strong>standard error</strong> of the sampling distribution:</p>
+<ul>
+<li>If the standard error is small (e.g., $1), a sample mean even slightly away from $50,000 is many standard errors away → evidence <strong>against</strong> the hypothesis.</li>
+<li>If the standard error is large (e.g., $15,000), the same sample mean falls well within 2 standard errors → consistent with the hypothesis.</li>
+</ul>
+<p>Formally, we measure how far the sample statistic is from the hypothesized value in standard error units using the test statistic: <span class="math display">\[t_{calculated}=\frac{\bar{x}-\mu}{s/\sqrt{n}}\]</span> If this sample statistic is large for the given level of significance, then we can vote against the null hypothesis and favor the alternative.</p>
+</section>
+<section id="testing-the-null-hypothesis" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="testing-the-null-hypothesis"><span class="header-section-number">13.2</span> Testing the Null Hypothesis</h2>
+<p>There are two equivalent ways to decide whether this observed difference is too large to be explained by random sampling error alone:</p>
+<section id="a-the-critical-value-rejection-region-approach" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="a-the-critical-value-rejection-region-approach">a) The Critical Value (Rejection Region) Approach</h4>
+<ol type="1">
+<li>Choose a significance level (e.g., α = 0.05).</li>
+<li>With degrees of freedom df = n − 1 = 99 and α = 0.05 (two-tailed test), look up the <strong>critical t-values</strong> in a t-table: approximately ±1.984.</li>
+<li>If |t₍calculated₎| &gt; 1.984, reject the null hypothesis.
+<ul>
+<li>This means the sample mean is in the extreme 5% of the sampling distribution if the null were true.</li>
+</ul></li>
+</ol>
+</section>
+<section id="b-the-p-value-approach-most-common-today" class="level4 unnumbered">
+<h4 class="unnumbered anchored" data-anchor-id="b-the-p-value-approach-most-common-today">b) The p-value Approach (most common today)</h4>
+<ol type="1">
+<li>Calculate the t-statistic as above.</li>
+<li>Using software or a t-distribution calculator, find the probability of observing a t-value at least as extreme as the one calculated, assuming the null is true. This is the <strong>p-value</strong>.</li>
+<li>Decision rule:
+<ul>
+<li>If p-value ≤ α (e.g., ≤ 0.05) → reject the null hypothesis.</li>
+<li>If p-value &gt; α → fail to reject the null hypothesis.</li>
+</ul></li>
+</ol>
+<p><strong>Interpretation:</strong><br>
+A small p-value (e.g., 0.003) means the data are very unlikely under the null hypothesis → evidence against H₀.<br>
+A large p-value (e.g., 0.42) means the data are consistent with H₀ → not enough evidence to reject it.</p>
+<p>Both methods always lead to the same conclusion when using the same α level.</p>
+</section>
+</section>
+<section id="steps-to-perform-hypothesis-testing" class="level2" data-number="13.3">
+<h2 data-number="13.3" class="anchored" data-anchor-id="steps-to-perform-hypothesis-testing"><span class="header-section-number">13.3</span> Steps to Perform Hypothesis Testing</h2>
+<p>To conduct hypothesis testing:</p>
+<ol type="1">
+<li>Specify the null and alternate hypothesis.</li>
+</ol>
+<ul>
+<li><p>For means use:</p>
+<ul>
+<li><p><span class="math inline">\(H_o: \mu \leq 0\)</span>; <span class="math inline">\(Ha: \mu &gt; \mu_o\)</span> right-tail probability</p></li>
+<li><p><span class="math inline">\(H_o: \mu \geq 0\)</span>; <span class="math inline">\(Ha: \mu &lt; \mu_o\)</span> left-tail probability</p></li>
+<li><p><span class="math inline">\(H_o: \mu = 0\)</span>; <span class="math inline">\(Ha: \mu \ne \mu_o\)</span> two-tail probability</p></li>
+</ul></li>
+<li><p>For proportions use:</p>
+<ul>
+<li><p><span class="math inline">\(H_o: P \leq 0\)</span>; <span class="math inline">\(Ha: P &gt; P_o\)</span> right-tail probability</p></li>
+<li><p><span class="math inline">\(H_o: P \geq 0\)</span>; <span class="math inline">\(Ha: P &lt; P_o\)</span> left-tail probability</p></li>
+<li><p><span class="math inline">\(H_o: P = 0\)</span>; <span class="math inline">\(Ha: P \ne P_o\)</span> two-tail probability</p></li>
+</ul></li>
+</ul>
+<ol start="2" type="1">
+<li><p>Specify the <strong>confidence level</strong> (i.e., how likely you would be to see non-extreme data, when assuming the null is true. False negative tolerance) and <strong>significance</strong> level (i.e.&nbsp;how likely you would be to see extreme data, when assuming the null is true. False positive tolerance). Confidence levels are usually set at, <span class="math inline">\(0.90\)</span>, <span class="math inline">\(0.95\)</span>, or <span class="math inline">\(0.99\)</span>, which correspond to <span class="math inline">\(10\)</span>%, <span class="math inline">\(5\)</span>%, and <span class="math inline">\(1\)</span>% significant levels, respectively.</p></li>
+<li><p>Calculate the test statistic.</p>
+<ul>
+<li><p>For a test on means use <span class="math inline">\(t_{df}= \frac {\bar x-\mu_o}{s/\sqrt{n}}\)</span>, where <span class="math inline">\(df=n-1\)</span>, <span class="math inline">\(\bar x\)</span> is the sample mean, <span class="math inline">\(\mu_o\)</span> is the hypothesized value of <span class="math inline">\(\mu\)</span>, <span class="math inline">\(s\)</span> is the sample standard deviation, and <span class="math inline">\(n\)</span> is the sample size.</p></li>
+<li><p>For a test on proportions use <span class="math inline">\(z= \frac {\bar p- P_o}{\sqrt {P_o(1-P_o)/ n}}\)</span>, where <span class="math inline">\(\bar p\)</span> is the sample proportion, <span class="math inline">\(P_o\)</span> is the hypothesized value of the population proportion <span class="math inline">\(P\)</span>, and <span class="math inline">\(n\)</span> is the sample size.</p></li>
+</ul></li>
+<li><p>Find the <strong>p-value</strong> (i.e., the likelihood of getting the observed or more extreme data, assuming the null hypothesis is true). (Substitute <span class="math inline">\(t\)</span> for <span class="math inline">\(z\)</span> if using proportions)</p>
+<ul>
+<li><p>For a right-tail test, the <span class="math inline">\(p\)</span>-value is <span class="math inline">\(P(T\geq t)\)</span>.</p></li>
+<li><p>For a left-tail test, the <span class="math inline">\(p\)</span>-value is <span class="math inline">\(P(T\leq t)\)</span>.</p></li>
+<li><p>For a two-tail test, the <span class="math inline">\(p\)</span>-value is <span class="math inline">\(2P(T\geq t)\)</span> if <span class="math inline">\(t&gt;0\)</span> or <span class="math inline">\(2P(T\leq t)\)</span> if <span class="math inline">\(t&lt;0\)</span>.</p></li>
+</ul></li>
+<li><p>The decision rule is to reject the null hypothesis when the <span class="math inline">\(p-value&lt;\alpha\)</span>, and not to reject when <span class="math inline">\(p-value \geq alpha\)</span>.</p></li>
+</ol>
+</section>
+<section id="useful-r-functions" class="level2" data-number="13.4">
+<h2 data-number="13.4" class="anchored" data-anchor-id="useful-r-functions"><span class="header-section-number">13.4</span> Useful R Functions</h2>
+<p><code>t.test()</code> generates a <span class="math inline">\(t\)</span>-test for a vector of values. Use the <em>alternative</em> argument to specify “greater”, “less” or “two.sided” test. The <em>mu</em> argument specifies the hypothesized value for the mean. The <em>conf.level</em> sets the confidence level of the test (0.9,0.95,0.99, etc.).</p>
+<p><code>prop.test()</code> generates a proportion test when provided the number of successes and sample size.</p>
+</section>
+<section id="exercises" class="level2" data-number="13.5">
+<h2 data-number="13.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">13.5</span> Exercises</h2>
+<p>The following exercises will help you test your knowledge on Hypothesis Testing. In particular, the exercises work on:</p>
+<ul>
+<li>Stating Null and Alternate Hypothesis.</li>
+<li>Determine the statistical validity of the null hypothesis.</li>
+<li>Conducting t-tests in R.</li>
+</ul>
+<p>Try not to peek at the answers until you have formulated your own answer and double-checked your work for any mistakes.</p>
+<section id="exercise-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-1">Exercise 1</h3>
+<ol type="1">
+<li><p>Consider the following hypothesis: <span class="math inline">\(H_{o}: \mu=50\)</span>, <span class="math inline">\(H_{a}: \mu \neq 50\)</span>. A sample of <span class="math inline">\(16\)</span> observations yields a mean of <span class="math inline">\(46\)</span> and a standard deviation of <span class="math inline">\(10\)</span>. Calculate the value of the test statistic. At a <span class="math inline">\(5\)</span>% significance level, does the population mean differ from <span class="math inline">\(50\)</span>?</p>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p><em>The sample statistic is -1.6. The null hypothesis can’t be rejected at a 5% significance level since the p-value is 13.04%. We conclude that the population mean is not statistically different from 50.</em></p>
+<p><em>In R we can calculate the t-statistic.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>muEx1 <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>sigmaEx1 <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">16</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>(teststat <span class="ot">&lt;-</span> (<span class="dv">46</span> <span class="sc">-</span> muEx1) <span class="sc">/</span> (sigmaEx1 <span class="sc">/</span> <span class="fu">sqrt</span>(n)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.6</code></pre>
+</div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>(tcrit <span class="ot">&lt;-</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, n <span class="sc">-</span> <span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.13145</code></pre>
+</div>
+</div>
+<p><em>Since the t-statistic is greater than the critical value of -2.13, we can’t reject the null. We can also estimate the p-value to confirm this finding. Recall that the P-value is the likelihood of obtaining a sample mean at least as extreme as the one derived from the given sample.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">pt</span>(teststat, n <span class="sc">-</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.130445</code></pre>
+</div>
+</div>
+</details></li>
+<li><p>Consider the following hypothesis: <span class="math inline">\(H_{o}: \mu \geq 100\)</span>, <span class="math inline">\(H_{a}: \mu &lt; 100\)</span>. You take a sample from a normally distributed population that yields the values in the table below. Conduct a test at a <span class="math inline">\(1\)</span>% significance level to prove the hypothesis.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>96</td>
+<td>102</td>
+<td>93</td>
+<td>87</td>
+<td>92</td>
+<td>82</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p><em>The null hypothesis that (H_{o}:</em> ) can’t be rejected since the p-value of 1.9% is greater than the 1% significance level.</p>
+<p><em>Let’s start by creating an object to store the values of our sample.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>sample2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">96</span>, <span class="dv">102</span>, <span class="dv">93</span>, <span class="dv">87</span>, <span class="dv">92</span>, <span class="dv">82</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><em>Now we can construct the t-stat and calculate the critical value.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>mean2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(sample2)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>standard2 <span class="ot">&lt;-</span> <span class="fu">sd</span>(sample2)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>n2 <span class="ot">&lt;-</span> <span class="fu">length</span>(sample2)</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>(tstat2 <span class="ot">&lt;-</span> (mean2 <span class="sc">-</span> <span class="dv">100</span>) <span class="sc">/</span> (standard2 <span class="sc">/</span> <span class="fu">sqrt</span>(n2)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -2.816715</code></pre>
+</div>
+</div>
+<p><em>Lastly, we can calculate the p-value.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pt</span>(tstat2, n2 <span class="sc">-</span> <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0186262</code></pre>
+</div>
+</div>
+<p><em>We can also verify our result using the <code>t.test()</code> function in R.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(sample2, <span class="at">alternative =</span> <span class="st">"less"</span>, <span class="at">mu =</span> <span class="dv">100</span>, <span class="at">conf.level =</span> <span class="fl">0.99</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  sample2
+t = -2.8167, df = 5, p-value = 0.01863
+alternative hypothesis: true mean is less than 100
+99 percent confidence interval:
+    -Inf 101.557
+sample estimates:
+mean of x 
+       92 </code></pre>
+</div>
+</div>
+</details></li>
+<li><p>Consider the following hypothesis: <span class="math inline">\(H_{o}: \mu \leq 210\)</span>, <span class="math inline">\(H_{a}: \mu &gt; 210\)</span>. You take a sample from a normally distributed population that yields the values in the table below. Conduct a test at a <span class="math inline">\(10\)</span>% significance level to prove the hypothesis.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>210</td>
+<td>220</td>
+<td>299</td>
+<td>220</td>
+<td>290</td>
+<td>280</td>
+<td>233</td>
+<td>221</td>
+<td>292</td>
+<td>299</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p><em>The null hypothesis that (H_{o}:</em> ) can be rejected since the p-value of 0.2% is less than the 10% significance level.</p>
+<p><em>Let’s create the object in R with the data.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>sample3 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">210</span>, <span class="dv">220</span>, <span class="dv">299</span>, <span class="dv">220</span>, <span class="dv">290</span>, <span class="dv">280</span>, <span class="dv">233</span>, <span class="dv">221</span>, <span class="dv">292</span>, <span class="dv">299</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><em>Using the <code>t.test()</code> function we find:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(sample3, <span class="at">alternative =</span> <span class="st">"greater"</span>, <span class="at">mu =</span> <span class="dv">210</span>, <span class="at">conf.level =</span> <span class="fl">0.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  sample3
+t = 3.8333, df = 9, p-value = 0.002004
+alternative hypothesis: true mean is greater than 210
+90 percent confidence interval:
+ 239.6593      Inf
+sample estimates:
+mean of x 
+    256.4 </code></pre>
+</div>
+</div>
+</details></li>
+</ol>
+</section>
+<section id="exercise-2" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise 2</h3>
+<p>According to www.nps.gov, the period of time between Old Faithful’s eruptions is on average <span class="math inline">\(92\)</span> minutes. Use the built-in <strong>faithful</strong> R data set and a two-tail test to determine whether this claim is true.</p>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>The claim that the duration between eruptions is 92 minutes can be rejected at a 10%, 5%, and 1% significance level.</em></p>
+<p><em>Once more calculate the t-test in R with the <code>t.test()</code> function.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(faithful<span class="sc">$</span>waiting, <span class="at">alternative =</span> <span class="st">"two.sided"</span>, <span class="at">mu =</span> <span class="dv">92</span>, <span class="at">conf.level =</span> <span class="fl">0.99</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    One Sample t-test
+
+data:  faithful$waiting
+t = -25.601, df = 271, p-value &lt; 2.2e-16
+alternative hypothesis: true mean is not equal to 92
+99 percent confidence interval:
+ 68.75871 73.03541
+sample estimates:
+mean of x 
+ 70.89706 </code></pre>
+</div>
+</div>
+</details>
+</section>
+<section id="exercise-3" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
+<ol type="1">
+<li><p>To test if the population proportion differs from <span class="math inline">\(0.4\)</span>, a scientist draws a random sample of <span class="math inline">\(100\)</span> observations and obtains a sample proportion of <span class="math inline">\(0.48\)</span>. Specify the competing hypothesis. At a <span class="math inline">\(5\)</span>% significance level, does the population proportion differ from <span class="math inline">\(0.4\)</span>?</p>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p><em>The competing hypotheses are (H_{o}: p = 0.4), (H_{a}: p</em> ). At a 5% significance level, we can’t reject the null hypothesis since the p-value of the test statistic (0.102) is greater than the significance level (0.05). We conclude that the population proportion is not significantly different from 0.4.</p>
+<p><em>In R we can calculate the test statistic (</em>).</p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>(pstat <span class="ot">&lt;-</span> (<span class="fl">0.48</span> <span class="sc">-</span> <span class="fl">0.4</span>) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fl">0.4</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.4</span>) <span class="sc">/</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1.632993</code></pre>
+</div>
+</div>
+<p><em>Now we can use the <code>pnorm()</code> function in R to get the p-value. Since it is a two-tailed test, we multiply the probability by 2.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">pnorm</span>(pstat, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1024704</code></pre>
+</div>
+</div>
+</details></li>
+<li><p>When taking a sample of <span class="math inline">\(320\)</span> observations, <span class="math inline">\(128\)</span> result in success. Test the following hypothesis <span class="math inline">\(H_{o}: p \geq 0.45\)</span>, <span class="math inline">\(H_{a}: p &lt; 0.45\)</span> at a <span class="math inline">\(5\)</span>% significance level.</p>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p><em>From the sample, 40% are labeled as success. Testing the hypothesis reveals that we can reject the null at a 5% significance level. We conclude that the population proportion is less than 0.45.</em></p>
+<p><em>We once again create the test statistic in R.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(pstat2 <span class="ot">&lt;-</span> (<span class="fl">0.4</span> <span class="sc">-</span> <span class="fl">0.45</span>) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fl">0.45</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.45</span>) <span class="sc">/</span> <span class="dv">320</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] -1.797866</code></pre>
+</div>
+</div>
+<p><em>With the statistic, we can now find the p-value:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(pstat2, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.0360991</code></pre>
+</div>
+</div>
+</details></li>
+<li><p>Determine if more than <span class="math inline">\(50\)</span>% of the observations in a population are below <span class="math inline">\(10\)</span> with the sample data below. Conduct the test at a <span class="math inline">\(1\)</span>% significance level.</p>
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<td>8</td>
+<td>12</td>
+<td>5</td>
+<td>9</td>
+<td>14</td>
+<td>11</td>
+<td>9</td>
+<td>3</td>
+<td>7</td>
+<td>12</td>
+</tr>
+</tbody>
+</table>
+<details>
+<summary>
+<p>Answer</p>
+</summary>
+<p><em>The competing hypotheses are (H_{o}: p</em> ), (H_{a}: p &gt; 0.5). At a 1% significance level, we can’t reject the null hypothesis since the p-value of the test statistic (0.26) is greater than the significance level (0.01). We conclude that more than 50% of the observations in the population are below 10.</p>
+<p><em>Let’s create an object to store the values.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>values <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">8</span>, <span class="dv">12</span>, <span class="dv">5</span>, <span class="dv">9</span>, <span class="dv">14</span>, <span class="dv">11</span>, <span class="dv">9</span>, <span class="dv">3</span>, <span class="dv">7</span>, <span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+<p><em>Now, let’s count how many values are below 10 and calculate the proportion.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(values <span class="sc">&lt;</span> <span class="dv">10</span>) <span class="sc">/</span> <span class="fu">length</span>(values)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.6</code></pre>
+</div>
+</div>
+<p><em>Lastly, we find the test-statistic and p-value:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>pstat3 <span class="ot">&lt;-</span> (<span class="fl">0.6</span> <span class="sc">-</span> <span class="fl">0.5</span>) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fl">0.5</span> <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> <span class="fl">0.5</span>) <span class="sc">/</span> <span class="dv">10</span>)</span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">pnorm</span>(pstat3, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.2635446</code></pre>
+</div>
+</div>
+<p><em>We can also use the <code>prop.test()</code> function in R to confirm our result.</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="dv">6</span>, <span class="dv">10</span>, <span class="at">p =</span> <span class="fl">0.5</span>, <span class="at">alternative =</span> <span class="st">"greater"</span>, <span class="at">conf.level =</span> <span class="fl">0.99</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    1-sample proportions test without continuity correction
+
+data:  6 out of 10, null probability 0.5
+X-squared = 0.4, df = 1, p-value = 0.2635
+alternative hypothesis: true p is greater than 0.5
+99 percent confidence interval:
+ 0.2724654 1.0000000
+sample estimates:
+  p 
+0.6 </code></pre>
+</div>
+</div>
+</details></li>
+</ol>
+</section>
+<section id="exercise-4" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h3>
+<p>According to www.worldatlas.com, <span class="math inline">\(5\)</span>% of the population has hazel color eyes. Use the built-in <strong>HairEyeColor</strong> R data set and a two-tail test to determine whether this claim is true.</p>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>We reject the null hypothesis that 5% of the population has hazel eyes with our sample.</em></p>
+<p><em>The number of people with hazel eyes is calculated as:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>(s <span class="ot">&lt;-</span> <span class="fu">sum</span>(HairEyeColor[, <span class="dv">3</span>, <span class="dv">1</span>] <span class="sc">+</span> HairEyeColor[, <span class="dv">3</span>, <span class="dv">2</span>]))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 93</code></pre>
+</div>
+</div>
+<p><em>The total number of people in the survey is given by:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a>(t <span class="ot">&lt;-</span> <span class="fu">sum</span>(HairEyeColor))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 592</code></pre>
+</div>
+</div>
+<p><em>We can use the <code>prop.test()</code> function once more:</em></p>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">prop.test</span>(<span class="dv">93</span>, <span class="dv">592</span>, <span class="at">p =</span> <span class="fl">0.05</span>, <span class="at">alternative =</span> <span class="st">"two.sided"</span>, <span class="at">conf.level =</span> <span class="fl">0.95</span>, <span class="at">correct =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    1-sample proportions test without continuity correction
+
+data:  93 out of 592, null probability 0.05
+X-squared = 142.94, df = 1, p-value &lt; 2.2e-16
+alternative hypothesis: true p is not equal to 0.05
+95 percent confidence interval:
+ 0.1300037 0.1886070
+sample estimates:
+        p 
+0.1570946 </code></pre>
+</div>
+</div>
+</details>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./InferenceII.html" class="pagination-link" aria-label="Inference II">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Inference II</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./InfReg.html" class="pagination-link" aria-label="Regression and Inference">
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression and Inference</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Business Statistics by J. Alejandro Gelves.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

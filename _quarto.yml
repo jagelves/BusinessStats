@@ -2,79 +2,46 @@ project:
   type: book
   output-dir: docs
 
-title-block-banner: "#000000"
-# title-block-banner-color: "#f5f5f5"
-
 book:
   page-footer:
-    left: |
-      Business Stats by J. Alejandro Gelves.
+    left: | 
+      Business Statistics by J. Alejandro Gelves.
     right: |
       This book was built with <a href="https://quarto.org/">Quarto</a>.
+  
   title: "Business Statistics"
-  subtitle: "A Guide for BUAD 231"
   author: "J. Alejandro Gelves"
-  date: "12/27/2022"
-  cover-image: images/cover.png
-  downloads: [pdf]
+  date: "09/6/2024"
+  cover-image: cover.png
   chapters:
     - index.qmd
-    - part: "Descriptive Statistics"
-      chapters:
-        - 02-DescriptiveI.Rmd
-        - 03-DescriptiveII.Rmd
-        - 04-DescriptiveIII.Rmd
-        - 05-DescriptiveIV.Rmd
-        - 06-DescriptiveV.Rmd
-    - part: "Regression Estimation"
-      chapters:
-        - 07-RegressionI.Rmd
-        - 08-RegressionII.Rmd
-    - part: "Probability"
-      chapters:
-        - 09-ProbabilityI.Rmd
-        - 10-ProbabilityII.Rmd
-        - 11-ProbabilityIII.Rmd
-    - part: "Statistical Inference"
-      chapters:
-        - 12-InferenceI.Rmd
-        - 13-InferenceII.Rmd
-        - 14-InferenceIII.Rmd
-        - 15-InfReg.Rmd
-    - part: "Working with R"
-      chapters:
-        - 16-ObjectsVectors.Rmd
+    - DescriptiveI.qmd
+    - DescriptiveII.qmd
+    - DescriptiveIII.qmd
+    - DescriptiveIV.qmd
+    - DescriptiveV.qmd
+    - RegressionI.qmd
+    - RegressionII.qmd
+    - ProbabilityI.qmd
+    - ProbabilityII.qmd
+    - ProbabilityIII.qmd
+    - InferenceI.qmd
+    - InferenceII.qmd
+    - InferenceIII.qmd
+    - InfReg.qmd
+    - R Basics.qmd
     - references.qmd
-
+    
 bibliography: references.bib
 
 format:
   html:
     theme: cosmo
-    css: style.css
+    include-in-header: custom-head.html
   pdf:
     documentclass: scrreprt
-    toc: true
-    toc-depth: 2
-    geometry:
-      - margin=1in
-      - heightrounded
-    hyperrefoptions:
-      - linktoc=all
-    colorlinks: true
-    linkcolor: "blue"
-    biblio-style: apalike
-    keep-tex: true
-    code-block-bg: true
-    code-overflow: wrap
-    code-line-numbers: true
-    include-in-header:
-      text: |
-        \usepackage{makeidx}
-        \makeindex
-    include-after-body:
-      text: |
-        \printindex
-
+filters:
+  - shinylive
+  
 editor: visual
 

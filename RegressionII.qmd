@@ -1,0 +1,534 @@
+```{=html}
+<style>
+details {
+  background-color: #F8F9FA;
+  padding: 5px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  margin: 10px 0; /* Spacing */
+}
+
+details summary {
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+</style>
+```
+
+# Regression II
+
+Quantifying relationships between variables is an important skill in business analytics. The regression line, representing the best linear fit between two variables, enables businesses to make predictions, identify trends, and optimize strategies using data-driven insights. Understanding how to calculate and interpret a regression line provides the foundation for analyzing business relationships, such as the effect of advertising on sales or customer satisfaction on revenue. Below, we delve into generating and analyzing a regression line.
+
+## The Regression Line
+
+The regression line is calculated to minimize the average distance (or errors) between the line and the observed data points. It is defined by two key components: a **slope** ($\beta$) and an **intercept** ($\alpha$). Mathematically, the regression line is expressed as: $$\hat{y_i}=\hat{\alpha}+\hat{\beta}x_i$$
+
+where $\hat{y_i}$ are the predicted values of $y$ given the $x$'s. The **slope** determines the steepness of the line. The estimate quantifies how much a unit increase in $x$ changes $y$. We can easily calculate the slope by using the covariance between $y$ and $x$, and the variance of $x$. Mathematically we have:
+
+$$\hat{\beta}= \frac {s_{xy}}{s_{x}^2}$$
+
+The **intercept** determines where the line crosses the $y$ axis. In other words it returns the value of $y$ when $x$ is zero. Once we have the slope of the regression line we can estimate the intercept by: $$\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}$$
+
+**Example:** Let’s examine a data set on Price and Advertisement. In general, one expects that when a company advertises, it can convince consumers to pay more for their product. Below is the data used to calculate the regression line, followed by its interpretation.
+
+| Advertisement (x) | Price (y) |
+|:-----------------:|:---------:|
+|         2         |     7     |
+|         1         |     3     |
+|         3         |     8     |
+|         4         |    10     |
+
+The data shows a clear relationship between advertisement and price: when advertisement spending is high, price also tends to be high. This suggests a direct relationship between the two variables. In a previous chapter, we learned to quantify such relationships using covariance and the correlation coefficient.
+
+In this section, we aim to answer two key questions:
+
+1.  Effectiveness: How much can we increase the price for every additional dollar spent on advertisement?
+2.  Prediction: What is the predicted price if we have a budget of 6 for advertisement?
+
+The regression line allows us to answer these questions by quantifying the relationship between the two variables. Specifically, if we can estimate the regression line, as shown below, we can answer these questions.
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("images/reg.png")
+```
+
+Let’s start by calculating the slope of the regression line, as this will help us answer the effectiveness question. The slope measures how much the price increases for every additional dollar spent on advertisement. It is calculated using the formula: $\hat{\beta}= \frac {s_{xy}}{s_{x}^2}$. Given that the covariance is $3.67$ and the variance of $x$ is $1.67$, the slope of the regression line is $\hat{\beta}= \frac{3.67}{1.67}=2.2$. This tells us that for every additional dollar spent on advertisement, price increases by $2.2$ on average. Thus, we have answered the effectiveness question.
+
+Next, we calculate the intercept to complete the regression line and answer the prediction question. The intercept represents the predicted price when advertisement spending is zero. It is calculated as: $\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}$. Since the mean of advertisement is $2.5$ and the mean of price is $7$, the intercept is $\hat{\alpha}=7-2.2(2.5)=1.5$. This means that if we do not advertise, the predicted price is 1.5.
+
+The regression line can be completed by using the intercept and slope that we have estimated above. In particular, the regression line is $\hat{y_i}=1.5+2.2x_i$. With this equation we can now establish that if we had a budget of $6$ for advertisement, our predicted price would be $\hat{y_i}=1.5+2.2(6)=14.7$. This answers our prediction question.
+
+In conclusion regression line has allowed us to answer both questions: 1. The effectiveness of advertisement: For every dollar spent on advertisment, the price increases by $2.2$. 2. The predicted price: With an advertisement budget of $6$, the predicted price is $14.7$.
+
+This demonstrates the value of regression analysis in quantifying relationships and making informed predictions.
+
+## Measures of Goodness of Fit
+
+When analyzing the effectiveness of a regression model, it is crucial to assess how well the model fits the data. This is where measures of goodness of fit come into play. Below we revisit the coefficient of determination or $R^2$.
+
+### Coefficient of Determination {.unnumbered}
+
+The **coefficient of determination** or $R^2$ is the percent of the variation in $y$ that is explained by changes in $x$. The higher the $R^2$ the better the explanatory power of the model. The $R^2$ is always between \[0,1\]. To calculate use $R^2=SSR/SST$. Below you can find how to calculate each component of the $R^2$.
+
+-   $SSR$ (Sum of Squares due to Regression) is the part of the variation in $y$ explained by the model. Mathematically, $SSR=\sum{(\hat{y_i}-\bar{y})^2}$.
+
+-   $SSE$ (Sum of Squares due to Error) is the part of the variation in $y$ that is unexplained by the model. Mathematically, $SSE=\sum{(y_i-\hat{y_i})^2}$.
+
+-   $SST$ (Sum of Squares Total) is the total variation of $y$ with respect to the mean. Mathematically, $SST=\sum{(y_i-\bar{y})^2}$.
+
+-   Note that $SST=SSR+SSE$.
+
+**Example:** Let's consider data on the Weight ($y$) and Exercise ($x$) of a particular person.
+
+| Weight (y) | Exercise (x) |
+|:----------:|:------------:|
+|    165     |      45      |
+|    170     |      10      |
+|    168     |      25      |
+|    164     |      30      |
+|    165     |      40      |
+
+Now, if we were to predict the weight of this person, we could consider just using the mean value (i.e., $166.4$). If this were our guess, then the mistakes (errors) we would have made with this prediction are quantified by the $SST=25.2$. Below, you can see these mistakes visually.
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("images/rs2.png")
+```
+
+For example, in day $1$ the mean prediction is $166.4$, but the actual measure is $165$. We have made a mistake of $-1.4$ by using the mean as our predicted weight. To get a sense of the overall mistake we have made, we add up all of the squared errors made by using the mean as a prediction. Hence, $SST= (-1.4)^2 + (3.6)^2 + (1.6)^2 + (-2.4)^2 + (-1.4)^2= 25.2$.
+
+The idea behind regression is that another variable related to weight can help us make a better prediction. Generally speaking, you burn calories if you exercise, so your weight should be lower when exercising. Hence, adding information on how many minutes a person exercises in a day should allow us to predict someone’s weight better. The $SSE$ quantifies the mistakes made by a prediction generated from regression. To understand this, let's start by looking at the regression line for Weight and Exercise.
+
+```{r echo=FALSE, fig.align='center'}
+knitr::include_graphics("images/rs3.png")
+```
+
+The image highlights how the regression line can reduce the errors in our prediction. Consider the point with $y$ coordinate $168$. The error using the mean is $1.6$ (the green and yellow lines). However, if we update our prediction using the regression line, the mistake is reduced to $168-167.17=0.83$ (the green line). Squaring all these deviations from the line and adding them gives us $SSE=0.81+0.29+0.69+5.76+0.02=7.57$. Note how using the regression line has helped us reduce the errors in our prediction.
+
+If regression has helped us make smaller mistakes, it has also helped us explain more of the variation in Weight ($y$). In the graph, the gap between the mean and the $168$ point has been reduced by the amount highlighted in yellow ($0.77$). If we square and add up all of the "improvements," we get $SSR=5.29+9.4+0.59+0+2.35=17.63$. In sum, the regression line has closed the gap of the prediction errors made by using the mean by $R^2=\frac{SSR}{SST} \approx 0.7$ or 70%.
+
+## Multiple Regression
+
+If we were to predict weight we could use several other variables that are related to get a better prediction. *Multiple regression* is a technique used predict a variable using more than one independent variable. Mathematically, you would be estimating $\hat{y_i}=\hat{\beta_0}+\hat{\beta_1}x_1+\hat{\beta_2}x_2...+\hat{\beta_k}x_k$, where $k$ is the total number of independent variables included in the regression model.
+
+**Example:** Let's consider an additional variable in our Weight and Exercise example. The table below includes information on Calories (z).
+
+| Weight (y) | Exercise (x) | Calories (z) |
+|:----------:|:------------:|:------------:|
+|    165     |      45      |     1200     |
+|    170     |      10      |     1260     |
+|    168     |      25      |     1220     |
+|    164     |      30      |     1180     |
+|    165     |      40      |     1190     |
+
+The regression line can be estimated using computer software and is given by $\hat{y_i}=83.96-0.025x+0.069z$. A few things can be concluded from the regression line. First, as the amount of exercise increases our weight tends to go down, but as we consume more calories the weight tends to go up. Second, the effectiveness of calories seems to be better that that of exercise. For every minute exercise our weight goes down on average by 0.025 pounds. However, if we reduce our calorie consumption by 1, then our weight goes down by 0.069 pounds.
+
+### Anova {.unnumbered}
+
+We can further explore the importance of each variable using the Anova table. This table helps us understand how well our regression model explains the dependent variable. For now, we will use this table to show the $SSR$ generated by each variable as well as to track the errors. Using computer software we get the following table:
+
+|  Source   | Sum Squares |
+|:---------:|:-----------:|
+|     x     |    17.63    |
+|     z     |    6.55     |
+| Residuals |    1.01     |
+
+The table shows that x "closes the gap" with respect to the mean prediction by $17.63$. If we add calories to our model, we further decrease the gap by another $6.55$. In sum, using them together increases the $SSR$ to about $24.18$, which in turn reduced the $SSE$ to only $1.01$. Finally, the $R^2$ also increases from $0.7$ to now $0.96$, $R^2= \frac{17.63+6.55}{25.2}$.
+
+### Adjusted $R^2$ {.unnumbered}
+
+The **adjusted** $R^2$ recognizes that the $R^2$ is a non-decreasing function of the number of independent variables included in the model. This metric penalizes a model with more explanatory variables relative to a simpler model. It is calculated by $1-(1-R^2) \frac {n-1}{n-k-1}$, where $k$ is the number of explanatory variables used in the model and $n$ is the sample size. For our weight example $adjusted R^2=1-(1-0.96) \frac{5-1}{5-2-1}=0.9196$.
+
+### Residual Standard Error {.unnumbered}
+
+The **Residual Standard Error** estimates the average dispersion of the data points around the regression line. Recall, that we have calculated the squared deviation from the regression line by using $SSE$. Hence if we want to find an average deviation we can divide using the number of observations and then find a square root to go back to linear values. In particular you can use $s_e =\sqrt{\frac{SSE}{n-k-1}}$, where $k$ is the number of independent variables used in your regression. For our example with only exercise in our model $s_e=\sqrt{\frac{7.57}{5-1-1}}=1.59$. If we include both calories and exercise then $s_e=\sqrt{\frac{1.01}{5-2-1}}=0.71$.
+
+## Regression in R
+
+Below we conduct regression analysis in R, using the weight data. Let's start by creating a tibble to store the data.
+
+```{r message=FALSE}
+library(tidyverse)
+library(ggthemes)
+d<-tibble(y=c(165,170,168,164,165),
+          x=c(45,10,25,30,40),
+          z=c(1200,1260,1220,1180,1190))
+```
+
+We can first visualize the relationship between x and y using `ggplot`.
+
+```{r}
+d %>% ggplot() +
+  geom_point(aes(y=y,x=x),
+             pch=21, col="black", bg="blue", alpha=0.5) +
+  theme_clean() +
+  geom_smooth(aes(y=y,x=x),
+              method="lm",se=F,formula=y~x)
+```
+
+The regression line is estimated using the `lm()` command as shown below:
+
+```{r}
+fit<-lm(y~x, data=d)
+```
+
+We can retrieve the coefficients by either using the `coef()` function or the `summary()` function.
+
+```{r}
+summary(fit)
+```
+
+The summary function confirms our results for the $R^2$ and coefficients. If we wanted to make a prediction we can use the `predict()` function with the fit object as input. Below we predict y when x is equal to 4.
+
+```{r}
+predict(fit,newdata = tibble(x=c(4)))
+```
+
+Note that the values of $x$ must be entered as a tibble in the function. We can run multiple regression by just adding z to our fit object.
+
+```{r}
+fit<-lm(y~x+z, data=d)
+summary(fit)
+```
+
+Lastly, to obtain the Anova table we can use the `anova()` command.
+
+```{r}
+anova(fit)
+```
+
+Below we summarize the R functions: - The `lm()` function to estimates the linear regression model.
+
+-   The `predict()` function uses the linear model object to predict values. New data is entered as a data frame or tibble.
+
+-   The `coef()` function returns the model's coefficients.
+
+-   The `summary()` function returns the model's coefficients, and goodness of fit measures.
+
+-   The `Anova()` function creates the anova table for a regression. you must provide an object that contains the result of the `lm()` function.
+
+## Exercises
+
+The following exercises will help you get practice on Regression Line estimation and interpretation. In particular, the exercises work on:
+
+-   Estimating the slope and intercept.
+
+-   Calculating measures of goodness of fit.
+
+-   Prediction using the regression line.
+
+Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.
+
+### Exercise 1 {.unnumbered}
+
+For the following exercises, make your calculations by hand and verify results using R functions when possible.
+
+1.  Consider the data below. Calculate the deviations from the mean for each variable and use the results to estimate the regression line. Use R to verify your result. On average by how much does *y* increase per unit increase of *x*?
+
+| **x** | 20  | 21  | 15  | 18  | 25  |
+|:-----:|:---:|:---:|:---:|:---:|:---:|
+| **y** | 17  | 19  | 12  | 13  | 22  |
+
+<details>
+
+<summary>Answer</summary>
+
+*The regression lines is* $\hat{y}=-4.93+1.09x$. For each unit increase in x, y increases on average $1.09$.
+
+*Start by generating the deviations from the mean for each variable. For x the deviations are:*
+
+```{r}
+x<-c(20,21,15,18,25)
+(devx<-x-mean(x))
+```
+
+*Next, find the deviations for y:*
+
+```{r}
+y<-c(17,19,12,13,22)
+(devy<-y-mean(y))
+```
+
+*For the slope we need to find the deviation squared of the x's. This can easily be done in R:*
+
+```{r}
+(devx2<-devx^2)
+```
+
+*The slope is calculated by* $\frac{\sum_{i=i}^{n} (x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=i}^{n} (x_{i}-\bar{x})^2}$. In R we can just find the ratio between the summations of (devx)(devy) and devx2.
+
+```{r}
+(slope<-sum(devx*devy)/sum(devx2))
+```
+
+*The intercept is given by* $\bar{y}-\beta(\bar{x})$. In R we find that the intercept is equal to:
+
+```{r}
+(intercept<-mean(y)-slope*mean(x))
+```
+
+*Our results can be easily verified by using the `lm()` and `coef()` functions in R.*
+
+```{r}
+fitEx1<-lm(y~x)
+coef(fitEx1)
+```
+
+</details>
+
+2.  Calculate *SST*, *SSR*, and *SSE*. Confirm your results in R. What is the $R^2$? What is the Standard Error estimate? Is the regression line a good fit for the data?
+
+<details>
+
+<summary>Answer</summary>
+
+*SST is* $69.2$, SSR is $64.82$ and SSE is $4.38$ (note that $SSR+SSE=SST$). The $R^2$ is just $\frac{SSR}{SST}=0.94$ and the Standard Error estimate is $1.21$. They both indicate a great fit of the regression line to the data.
+
+*Let's start by calculating the SST. This is just* $\sum{(y_{i}-\bar{y})^2}$.
+
+```{r}
+(SST<-sum((y-mean(y))^2))
+```
+
+*Next, we can calculate SSR. This is calculated by the following formula* $\sum{(\hat{y_{i}}-\bar{y})^2}$. To obtain the predicted values in R, we can use the output of the `lm()` function. Recall our fitEx1 object created in Exercise 1. It has fitted.values included:
+
+```{r}
+(SSR<-sum((fitEx1$fitted.values-mean(y))^2))
+```
+
+*The ratio of SSR to SST is the* $R^2$:
+
+```{r}
+(R2<-SSR/SST)
+```
+
+*Finally, let's calculate SSE* $\sum{(y_{i}-\hat{y_{i}})^2}$:
+
+```{r}
+(SSE<-sum((y-fitEx1$fitted.values)^2))
+```
+
+*With the SSE we can calculate the Standard Error estimate:*
+
+```{r}
+sqrt(SSE/3)
+```
+
+*We can confirm these results using the `summary()` function.*
+
+```{r}
+summary(fitEx1)
+```
+
+</details>
+
+3.  Assume that *x* is observed to be *32*, what is your prediction of *y*? How confident are you in this prediction?
+
+<details>
+
+<summary>Answer</summary>
+
+*If* $x=32$ then $\hat{y}=29.87$. The regression is a good fit, so we can feel good about our prediction. However, we would be concerned about the sample size of the data.
+
+*In R we can obtain a prediction by using the `predict()` function. This function requires a data frame as an input for new data.*
+
+```{r}
+predict(fitEx1, newdata = data.frame(x=c(32)))
+```
+
+</details>
+
+### Exercise 2 {.unnumbered}
+
+You will need the **Education** data set to answer this question. You can find the data set at https://jagelves.github.io/Data/Education.csv . The data shows the years of education (*Education*), and annual salary in thousands (*Salary*) for a sample of $100$ people.
+
+1.  Estimate the regression line using R. By how much does an extra year of education increase the annual salary on average? What is the salary of someone without any education?
+
+<details>
+
+<summary>Answer</summary>
+
+*An extra year of education increases the annual salary about* $5,300$ dollars (slope). A person that has no education would be expected to earn $17,2582$ dollars (intercept).
+
+*Start by loading the data in R:*
+
+```{r message=FALSE}
+library(tidyverse)
+Education<-read_csv("https://jagelves.github.io/Data/Education.csv")
+```
+
+*Next, let's use the `lm()` function to estimate the regression line and obtain the coefficients:*
+
+```{r}
+fitEducation<-lm(Salary~Education, data = Education)
+coefficients(fitEducation)
+```
+
+</details>
+
+2.  Confirm that the regression line is a good fit for the data. What is the estimated salary of a person with $16$ years of education?
+
+<details>
+
+<summary>Answer</summary>
+
+*The* $R^2$ is $0.668$ and the standard error is $21$. The line is a moderately good fit. If someone has $16$ years of experience, the regression line would predict a salary of $102,000$ dollars.
+
+*Let's get the* $R^2$ and the Standard Error estimate by using the `summary()` function and fitEx1 object.
+
+```{r}
+summary(fitEducation)
+```
+
+*Lastly, let's use the regression line to predict the salary for someone who has* $16$ years of education.
+
+```{r}
+predict(fitEducation, newdata = data.frame(Education=c(16)))
+```
+
+</details>
+
+### Exercise 3 {.unnumbered}
+
+You will need the **FoodSpend** data set to answer this question. You can find this data set at https://jagelves.github.io/Data/FoodSpend.csv .
+
+1.  Omit any NA's that the data has. Create a dummy variable that is equal to $1$ if an individual owns a home and $0$ if the individual doesn't. Find the mean of your dummy variable. What proportion of the sample owns a home?
+
+<details>
+
+<summary>Answer</summary>
+
+*Approximately,* $36$% of the sample owns a home.
+
+*Start by loading the data into R and removing all NA's:*
+
+```{r}
+Spend<-read_csv("https://jagelves.github.io/Data/FoodSpend.csv")
+Spend<-na.omit(Spend)
+```
+
+*To create a dummy variable for OwnHome we can use the `ifelse()` function:*
+
+```{r}
+Spend$dummyOH<-ifelse(Spend$OwnHome=="Yes",1,0)
+```
+
+*The average of the dummy variable is given by:*
+
+```{r}
+mean(Spend$dummyOH)
+```
+
+</details>
+
+2.  Run a regression with *Food* being the dependent variable and your dummy variable as the independent variable. What is the interpretation of the intercept and slope?
+
+<details>
+
+<summary>Answer</summary>
+
+*The intercept is the average food expenditure of individuals without homes (*$6417$). The slope, is the difference in food expenditures between individuals that do have homes minus those who don't. We then conclude that individuals that do have a home spend about $-2516$ less on food than those who don't have homes.
+
+*To run the regression use the `lm()` function:*
+
+```{r}
+lm(Food~dummyOH,data=Spend)
+```
+
+</details>
+
+3.  Now run a regression with *Food* being the independent variable and your dummy variable as the dependent variable. What is the interpretation of the intercept and slope? Hint: you might want to plot the scatter diagram and the regression line.
+
+<details>
+
+<summary>Answer</summary>
+
+*The scatter plot shows that most of the points for home owners are below* $6000$. For non-home owners they are mainly above $6000$. The line can be used to predict the likelihood of owning a home given someones food expenditure. The intercept is above one, but still it gives us the indication that it is likely that low food expenditures are highly predictive of owning a home. The slope tells us how that likelihood changes as the food expenditures increase by 1. In general, the likelihood of owning a home decreases as the food expenditure increases.
+
+*Run the `lm()` function once again:*
+
+```{r}
+fitFood<-lm(dummyOH~Food,data=Spend)
+coefficients(fitFood)
+```
+
+*For the scatter plot use the following code:*
+
+```{r}
+library(ggthemes)
+Spend %>% ggplot() + 
+  geom_point(aes(y=dummyOH,x=Food), 
+             col="black", pch=21, bg="grey") +
+  geom_smooth(aes(y=dummyOH,x=Food), method="lm",
+              formula=y~x, se=F) + 
+  theme_clean()
+```
+
+</details>
+
+### Exercise 4 {.unnumbered}
+
+You will need the **Population** data set to answer this question. You can find this data set at https://jagelves.github.io/Data/Population.csv .
+
+1.  Run a regression of *Population* on *Year*. How well does the regression line fit the data?
+
+<details>
+
+<summary>Answer</summary>
+
+*If we follow the* $R^2=0.81$ the model fits the data very well.
+
+*Let's load the data from the web:*
+
+```{r}
+Population<-read_csv("https://jagelves.github.io/Data/Population.csv")
+```
+
+*Now let's filter the data so that we can focus on the population for Japan.*
+
+```{r message=FALSE}
+Japan<-filter(Population,Country.Name=="Japan")
+```
+
+*Next, we can run the regression of Population against the Year. Let's also run the `summary()` function to obtain the fit and the coefficients.*
+
+```{r}
+fit<-lm(Population~Year,data=Japan)
+summary(fit)
+```
+
+</details>
+
+2.  Create a prediction for Japan's population in 2030. What is your prediction?
+
+<details>
+
+<summary>Answer</summary>
+
+*The prediction for* $2030$ is about $140$ million people.
+
+*Let's use the `predict()` function:*
+
+```{r}
+predict(fit,newdata=data.frame(Year=c(2030)))
+```
+
+</details>
+
+3.  Create a scatter diagram and include the regression line. How confident are you of your prediction after looking at the diagram?
+
+<details>
+
+<summary>Answer</summary>
+
+*After looking at the scatter plot, it seems unlikely that the population in Japan will hit* $140$ million. Population has been decreasing in Japan!
+
+*Use the `plot()` and `abline()` functions to create the figure.*
+
+```{r}
+Japan %>% ggplot() +
+  geom_point(aes(y=Population,x=Year), 
+             col="black", pch=21, bg="grey") +
+  geom_smooth(aes(y=Population,x=Year), 
+              formula=y~x, method="lm", se=F) +
+  theme_clean()
+```
+
+</details>

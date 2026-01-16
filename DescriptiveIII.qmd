@@ -1,0 +1,500 @@
+```{=html}
+<style>
+details {
+  background-color: #F8F9FA;
+  padding: 5px;
+  border: 1px solid #ddd; /* Light border */
+  border-radius: 5px; /* Rounded corners */
+  margin: 10px 0; /* Spacing */
+}
+
+details summary {
+  cursor: pointer; /* Pointer cursor for interactivity */
+}
+</style>
+```
+
+# Descriptive Statistics III
+
+Understanding where the "center" of a dataset lies is a fundamental step when interpreting and analyzing data. Measures of central location provide different ways to identify the "typical" value in a dataset, each with its unique strengths and limitations.
+
+## The Mean
+
+The **mean** is the average value for a numerical variable. It is a widely understood and straightforward measure to calculate. It incorporates all data points, providing a comprehensive representation of the data set. However, its reliance on every value also makes it sensitive to outliers or skewed distributions, which may cause it to not accurately reflect the true center of the data.
+
+The sample statistic is estimated by:
+
+$$
+\bar{x}=\frac{\sum x_{i}}{n}
+$$
+
+where $x_i$ is observation $i$, and $n$ is the number of observations in the sample. The formula instructs you to add up all of the values in a variable and then divide by the sample size. If you wish to estimate the population parameter you can use:
+
+$$
+\mu=\frac{\sum x_{i}}{N}
+$$
+
+where $N$ is the population size.
+
+*Ex 1: Consider the following sample of numbers* $x=\{1,4,2,1\}$. *The mean would be equal to* $\bar{x}=\frac{1+4+2+1}{4}$ *or* $\bar{x}=2$.
+
+*Ex 2: Consider the following sample of numbers* $x=\{1,4,2,1,100\}$. The mean is $\bar{x}=21.6$. Although most of the numbers are in the range $(1,4)$, the $100$ biases the mean to $21.6$.
+
+## The Median
+
+The **median** is the value in the middle when data is organized in ascending order. When $n$ is even, the median is the average between the two middle values. The median is resistant to outliers, making it an ideal measure for skewed data or data sets with irregular distributions. It is particularly useful for ordinal data, where precise ranking is important. However, the median does not utilize all data points, which can lead to less precise comparisons compared to other measures like the mean.
+
+*Ex 1: Consider the following numbers* $x=\{1,4,2,1\}$. We first sort the data to obtain $x_{sorted}=\{1,1,2,4\}$. Since the number of observations is even ($n=4$), the median is the average of the two middle numbers $(1,2)$. $median_x=\frac{1+2}{2}$ or $1.5$.
+
+*Ex 2: Consider the following numbers* $x=\{1,4,2,1,100\}$. We once again sort the number obtaining $x_{sorted}=\{1,1,2,4,100\}$. Since $n=5$ in this case we can identify the median as the third value in $x_{sorted}$. $median_x=2$. Note that the inclusion of $100$ in the data did not change much the measure of central location.
+
+## The Mode
+
+The **mode** is the value with highest frequency from a set of observations. This measure is particularly useful for categorical data as it helps determine popularity of values. It can be applied to both numerical and non-numerical data sets. The mode has its limitations; it may not exist in cases where all values occur with equal frequency, and there may be multiple modes, which can complicate interpretation. Additionally, since the mode focuses only on the most frequent value, it does not account for other data points, limiting its overall utility as a comprehensive measure.
+
+*Ex 1: Consider the following numbers* $x=\{1,4,2,1\}$. Since $1$ is repeated twice and all other numbers just repeated once, $x_{mode}=1$.
+
+*Ex 2: Consider the following numbers* $x=\{1,4,2,1,4\}$. Now $4$ is also repeated twice. The variable has two modes $x_{mode}=\{1,2\}$. $x$ is said to be bimodal.
+
+## The Weighted Mean
+
+The weighted mean is useful in scenarios where some data points are more significant than others, such as in financial portfolios, grade point averages, or survey results, as it accounts for variability in importance across observations. This measure requires additional information in the form of weights ($w_i$), which may not always be available or accurate. It is calculated the sum product of values ($x_i$) and weights ($w_i$) and then dividing by the sum of weights. Mathematically, the weighted average is:
+
+$$
+\bar{x}_w=\frac{\sum w_{i}x_{i}}{\sum w_{i}}
+$$
+
+*Ex: Consider three different stocks* $S=\{T, C, X\}$ with stock returns of $R=\{2,4,10\}$. Each stock has a weight in the portfolio of $W=\{0.3,0.2,0.5\}$. The average return of the portfolio is $\bar{x}_{weighted}=\frac{0.6+0.8+5}{1}$ or $\bar{x}_{weighted}=6.4$.
+
+## The Geometric Mean
+
+The **geometric mean** is a multiplicative average that is less sensitive to outliers relative to the arithmetic mean. It is useful when averaging growth rates or rates of return. It is calculated by:
+
+$$
+\bar{x}_g=\sqrt[n]{(1+r_1)*(1+r_2)...(1+r_n)}-1
+$$
+
+where $\sqrt[n]{}$ is the $n_{th}$ root, and $r_i$ are the returns or growth rates. When working with growth rates or rates of return, you add 1 to each rate because these metrics represent changes relative to a base value.
+
+When dealing with proportions, these already reflect a standalone quantity, not a relative change. As a consequence, there is no need to add 1. In this case the geometric mean simplifies to:
+
+$$
+\bar{x}_g=\sqrt[n]{(x_1) \times (x_2)...(x_n)}
+$$
+
+*Ex: Consider the variable* $x=\{0.2,0.3,0.1,0.1\}$. The geometric mean is equal to $\bar{x}_g=\sqrt[4]{(1.2 \times 1.3 \times 1.1 \times 1.1)}-1$ or $\bar{x_g}=0.17$ if x represents growth rates. When x represents ratios from a whole, the geometric mean is $\bar{x}_g=\sqrt[4]{0.2 \times 0.3 \times 0.1 \times 0.1)}$ or $0.156$.
+
+## Measures of Central Location in R
+
+Base R has a collection of functions that calculate measures of central location. Let's consider the following data on approval ratings:
+
+```{r message=FALSE}
+library(tidyverse)
+(poll<-tibble(date=c("01/01/24", "02/01/24", 
+                    "03/01/24", "04/01/24"),
+             people=c(50,100,30,250),
+             approval=c(0.25,0.25,0.7,0.85)))
+```
+
+To calculate the mean we can just pass a vector into the `mean()` function. Hence, the mean approval is:
+
+```{r}
+mean(poll$approval)
+```
+
+To calculate the mode we will use the `table()` function, as there is no mode function in base R.
+
+```{r}
+table(poll$approval)
+```
+
+For the median we will use the `median()` function.
+
+```{r}
+median(poll$approval)
+```
+
+The weighted average can be calculated using the `weighted.mean()` function. Let the approval be the value and number of people surveyed the weight.
+
+```{r}
+weighted.mean(x=poll$approval,w = poll$people)
+```
+
+Lastly, the geometric mean has no built in function in base R. However, we can easily calculate it with the command:
+
+```{r}
+geometric_mean <- prod(poll$approval)^(1/length(poll$approval))
+```
+
+Since the approval rating is a percentage of the total people polled there is no need to add one to these numbers. The `summary()` function calculates a collection of summary statistics for a vector or data frame. Below we apply it to the entire data set:
+
+```{r}
+summary(poll)
+```
+
+Below a list of the functions used:
+
+-   The `mean()` function calculates the average for a vector of numbers.
+
+-   The `median()` function calculates the median for a vector of numbers.
+
+-   The `table()` function generates the frequency distribution so that we can identify the mode or modes.
+
+-   The `weighted.mean()` function calculates the weighted mean for a vector of numbers, and corresponding vector of weights.
+
+-   The `length()` function calculates the length of a vector.
+
+-   The `summary()` function provides measures of location for a vector of numbers.
+
+## Exercises
+
+The following exercises will help you practice the measures of central location. In particular, the exercises work on:
+
+-   Calculating the mean, median, and the mode.
+
+-   Calculating the weighted average.
+
+-   Applying the geometric mean for growth rates and returns.
+
+Answers are provided below. Try not to peek until you have a formulated your own answer and double checked your work for any mistakes.
+
+### Exercise 1 {.unnumbered}
+
+For the following exercises, make your calculations by hand and verify results using R functions when possible.
+
+1.  Use the following observations to calculate the mean, the median, and the mode.
+
+    |     |     |     |     |     |
+    |:---:|:---:|:---:|:---:|:---:|
+    |  8  | 10  |  9  | 12  | 12  |
+
+<details>
+
+<summary>Answer</summary>
+
+*To find the mean we will use the following formula* $( \frac{1}{n} \sum_{i=i}^{n} x_{i})$. The summation of the values is $51$ and the number of observations is $5$. The mean is $51/5=10.2$.
+
+*The median is found by locating the middle value when data is sorted in ascending order. The median in this example is* $10$.
+
+*The mode is the value with the highest frequency. In this example the mode is* $12$ since it is repeated twice and all other numbers appear only once.
+
+*The mean can be easily verified in R by using the `mean()` function:*
+
+```{r}
+mean(c(8,10,9,12,12))
+```
+
+*Similarly, the median is easily verified by using the `median()` function:*
+
+```{r}
+median(c(8,10,9,12,12))
+```
+
+*We can use the `table()` function to calculate frequencies and easily identify the mode.*
+
+```{r}
+table(c(8,10,9,12,12))
+```
+
+</details>
+
+2.  Use following observations to calculate the mean, the median, and the mode.
+
+    |     |     |     |     |     |     |
+    |:---:|:---:|:---:|:---:|:---:|:---:|
+    | -4  |  0  | -6  |  1  | -3  | -4  |
+
+<details>
+
+<summary>Answer</summary>
+
+*The mean is* $-2.67$, the median is $-3.5$, the mode is $-4$.
+
+*The mean is verified in R:*
+
+```{r}
+mean(c(-4,0,-6,1,-3,-4))
+```
+
+*The median in R:*
+
+```{r}
+median(c(-4,0,-6,1,-3,-4))
+```
+
+*Finally, the mode in R:*
+
+```{r}
+table(c(-4,0,-6,1,-3,-4))
+```
+
+</details>
+
+3.  Use the following observations, calculate the mean, the median, and the mode.
+
+    |     |     |     |     |     |     |     |     |     |
+    |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+    | 20  | 15  | 25  | 20  | 10  | 15  | 25  | 20  | 15  |
+
+<details>
+
+<summary>Answer</summary>
+
+*The mean is* $18.33$, the median is $20$, the data is bimodal with both $15$ and $20$ being modes.
+
+*The mean is verified in R:*
+
+```{r}
+mean(c(20,15,25,20,10,15,25,20,15))
+```
+
+*The median in R:*
+
+```{r}
+median(c(20,15,25,20,10,15,25,20,15))
+```
+
+*The frequency distribution identifies the modes:*
+
+```{r}
+table(c(20,15,25,20,10,15,25,20,15))
+```
+
+</details>
+
+### Exercise 2 {.unnumbered}
+
+Download the `ISLR2` package. You will need the **OJ** data set to answer this question.
+
+1.  Find the mean price for Country Hill (*PriceCH*) and Minute Maid (*PriceMM*).
+
+<details>
+
+<summary>Answer</summary>
+
+*The mean price for Country Hill is* $1.87$. The mean price for Minute Maid is $2.09$.
+
+*The means can be easily found with the `mean()` function:*
+
+```{r}
+library(ISLR2)
+OJ=OJ
+mean(OJ$PriceCH)
+mean(OJ$PriceMM)
+```
+
+</details>
+
+2.  Find the mean price of Country Hill (*PriceCH*) at each store (*StoreID*). Which store provides the better price?
+
+<details>
+
+<summary>Answer</summary>
+
+*The mean price at store 1 for Country Hill is* $1.80$. The juice is cheaper at store 1.
+
+*The means for each store can be found by using `group_by()` and `summarise()`.The mean price at each store is:*
+
+```{r}
+OJ %>% group_by(StoreID) %>% summarise(MeanCH=mean(PriceCH))
+```
+
+</details>
+
+3.  Find the median price paid by Country Hill (*PriceCH*) purchasers (*Purchase*) in all stores? Which store had the better median price?
+
+<details>
+
+<summary>Answer</summary>
+
+*Purchasers of Country Hill at store 1 paid a median price of* $1.76$ for Country Hill juice. This once again was the lowest price.
+
+*The median price for Country Hill purchasers at each store is given by:*
+
+```{r}
+OJ %>% filter(Purchase=="CH") %>% group_by(StoreID) %>% summarise(MedianCH=median(PriceCH))
+```
+
+</details>
+
+### Exercise 3 {.unnumbered}
+
+1.  Over the past year an investor bought TSLA. She made these purchases on three occasions at the prices shown in the table below. Calculate the average price per share.
+
+|   Date   | Price Per Share | Number of Shares |
+|:--------:|:---------------:|:----------------:|
+| February |     250.34      |        80        |
+|  April   |     234.59      |       120        |
+|   Aug    |     270.45      |        50        |
+
+<details>
+
+<summary>Answer</summary>
+
+*The average price of sale is found by using the weighted average formula.* $\frac{\sum w_{i}x_{i}}{\sum w_{i}}$ The weights ($w_{i}$) are given by the number of shares bought and the values ($x_{i}$) are the prices. The weighted average is $246.802$.
+
+*In R you can create two vectors. One holds the share price and the other one the number of shares bought.*
+
+```{r}
+PricePerShare<-c(250.34,234.59,270.45)
+NumberOfShares<-c(80,120,50)
+```
+
+*Next, can use the `weighted.mean()` function in R, with PricePerShare as the value and NumberOfShares as the weights. The weighted average is:*
+
+```{r}
+(WeightedAverage<-weighted.mean(PricePerShare,NumberOfShares))
+```
+
+</details>
+
+2.  What would have been the average price per share if the investor would have bought equal amounts of shares each month?
+
+<details>
+
+<summary>Answer</summary>
+
+*The average if equal shares were bought would be* $251.7933$.
+
+*In R you can use the `mean()` function on the PricePerShare vector.*
+
+```{r}
+(Average<-mean(PricePerShare))
+```
+
+</details>
+
+### Exercise 4 {.unnumbered}
+
+1.  Consider the following observations for the consumer price index (CPI). Calculate the inflation rate (Growth Rate of the CPI) for each period.
+
+    |     |     |     |     |     |
+    |:---:|:---:|:---:|:---:|:---:|
+    | 1.0 | 1.3 | 1.6 | 1.8 | 2.1 |
+
+<details>
+
+<summary>Answer</summary>
+
+*The inflation rate is the percentage change in the CPI. The inflation rate for each period is shown in the table below:*
+
+|     |        |       |        |
+|:---:|:------:|:-----:|:------:|
+| 30% | 23.08% | 12.5% | 16.67% |
+
+*In R create an object to store the values of the CPI:*
+
+```{r}
+CPI<-c(1,1.3,1.6,1.8,2.1)
+```
+
+*Next use the `diff()` function to find the difference between the end value and start value. Divide the result by a vector of starting value and multiply times 100.*
+
+```{r}
+(Inflation<-100*diff(CPI)/CPI[1:4])
+```
+
+</details>
+
+2.  What is the average growth rate for the inflation rate?
+
+<details>
+
+<summary>Answer</summary>
+
+*The average growth rate is* $31.61%$
+
+*We can use the geometric mean formula with compounding. In R:*
+
+```{r}
+(Growth<-prod(1.3,1.2308,1.125,1.1667)^(1/4)-1)
+```
+
+</details>
+
+2.  Suppose that you want to invest \$1000 dollars in a stock that is predicted to yield the following returns in the next four years. Calculate both the arithmetic mean and the geometric mean. Use the geometric mean to estimate how much money you would have by the end of year 4.
+
+    | Year | Annual Return |
+    |:----:|:-------------:|
+    |  1   |     17.3      |
+    |  2   |     19.6      |
+    |  3   |      6.8      |
+    |  4   |      8.2      |
+
+<details>
+
+<summary>Answer</summary>
+
+*At the end of 4 years it is predicted that you would have* $1621.17$ dollars. Each year you would have gained $12.84$% on average.
+
+*In R include the annual rates in a vector:*
+
+```{r}
+growth<-c(0.173,0.196,0.068,0.082)
+```
+
+*The arithmetic mean is:*
+
+```{r}
+100*mean(growth)
+```
+
+*The geometric mean is:*
+
+```{r}
+(geom<-((prod(1+growth))^(1/length(growth))-1)*100)
+```
+
+*At the end of the four years we would have:*
+
+```{r}
+1000*(1+geom/100)^4
+```
+
+</details>
+
+### Exercise 5 {.unnumbered}
+
+The `ISLR2` package includes a dataset called **Hitters** containing data on Major League Baseball players, including their salaries (in thousands of dollars) from 1987.  
+
+1. Load the Hitters dataset using data(Hitters) from the `ISLR2` package. Compute the overall mean and median salary for all players. Which measure (mean or median) better represents the typical salary?
+
+<details>
+
+<summary>Answer</summary>
+
+*Start by loading the libraries and previewing the data.*
+```{r}
+library(ISLR2)
+library(dplyr)
+data(Hitters)
+
+glimpse(Hitters)
+```
+
+We can now find the mean and the median.
+
+```{r}
+mean(Hitters$Salary, na.rm = TRUE)
+median(Hitters$Salary, na.rm = TRUE)
+```
+*Overall: mean ≈ 536 (thousand dollars), median = 425. Due to right-skew from superstar salaries, the median better represents the typical player.*
+
+</details>
+
+2. filter to only players with at least one home run (HmRun >= 1) and compute the mean and median salary for this subgroup. 
+
+<details>
+
+<summary>Answer</summary>
+
+*Filter the data using `dplyr`:*
+```{r}
+
+Hitters %>%
+  filter(HmRun >= 1) %>%
+  summarise(mean_salary = mean(Salary, na.rm = TRUE),
+            median_salary = median(Salary, na.rm = TRUE))
+```
+*For players with ≥1 home run: mean higher (around 600+), median still lower than mean — skewness persists, median again more representative.*
+</details>
