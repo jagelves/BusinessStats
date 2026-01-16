@@ -22,27 +22,7 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
-  margin-bottom: 0em;
-}
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
-}
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
-}
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -250,10 +230,8 @@ div.csl-indent {
   <ul>
   <li><a href="#introduction" id="toc-introduction" class="nav-link active" data-scroll-target="#introduction">Introduction</a>
   <ul class="collapse">
-  <li><a href="#why-r" id="toc-why-r" class="nav-link" data-scroll-target="#why-r">Why R?</a></li>
-  <li><a href="#installing-r." id="toc-installing-r." class="nav-link" data-scroll-target="#installing-r.">Installing R.</a></li>
-  <li><a href="#installing-rstudio" id="toc-installing-rstudio" class="nav-link" data-scroll-target="#installing-rstudio">Installing RStudio</a></li>
-  <li><a href="#posit-cloud" id="toc-posit-cloud" class="nav-link" data-scroll-target="#posit-cloud">Posit Cloud</a></li>
+  <li><a href="#installing-excel." id="toc-installing-excel." class="nav-link" data-scroll-target="#installing-excel.">Installing Excel.</a></li>
+  <li><a href="#why-excel" id="toc-why-excel" class="nav-link" data-scroll-target="#why-excel">Why Excel?</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -296,118 +274,17 @@ div.csl-indent {
 <section id="introduction" class="level1 unnumbered">
 <h1 class="unnumbered">Introduction</h1><p><img src="cover.png" title="Business Statistics" class="quarto-cover-image img-fluid"></p>
 <p>“Whatever you would make habitual, practice it; and if you would not make a thing habitual, do not practice it, but accustom yourself to something else.” – <em>Epictetus</em></p>
-<p>This course companion aims to build your mastery of statistics and its applications in R through consistent practice. Each chapter starts with key concepts to steer your learning, followed by problems designed to solidify these ideas through hands-on work. For extra R support, see <span class="citation" data-cites="HOP">Grolemund (<a href="#ref-HOP" role="doc-biblioref">2014</a>)</span>. I thank my business statistics students and Haipei Liu for their valuable comments and reviews—all remaining errors are mine. Take your time, enjoy the journey, and make practice a habit!</p>
-<section id="why-r" class="level2">
-<h2 class="anchored" data-anchor-id="why-r">Why R?</h2>
-<p>We will be using R to apply the lessons we learn in BUAD 231. R is a language and environment for statistical computing and graphics. There are several advantages to using the R software for statistical analysis and data science. Some of the main benefits include:</p>
-<ul>
-<li><p>R is a <strong>powerful and flexible programming language</strong> that allows users to manipulate and analyze data in many different ways.</p></li>
-<li><p>R has a large and <strong>active community of users</strong>, who have developed a wide range of packages and tools for data analysis and visualization.</p></li>
-<li><p>R is <strong>free and open-source</strong>, which makes it accessible to anyone who wants to use it.</p></li>
-<li><p>R is <strong>widely used</strong> in academia and industry, which means that there are many resources and tutorials available to help users learn how to use it.</p></li>
-<li><p>R is well-suited for working with <strong>large and complex datasets</strong>, and it can handle data from many different sources.</p></li>
-<li><p>R can be <strong>easily integrated</strong> with other tools and software, such as databases, visualization tools, and machine learning algorithms.</p></li>
-</ul>
-<p>Overall, R is a powerful and versatile tool for data analysis and data science, and it offers many benefits to users who want to work with data.</p>
+<p>This course companion aims to build your mastery of statistics and its applications in Excel through consistent practice. Each chapter starts with key concepts to steer your learning, followed by problems designed to solidify these ideas through hands-on work. I thank my business statistics students and Haipei Liu for their valuable comments and reviews—all remaining errors are mine. Take your time, enjoy the journey, and make practice a habit!</p>
+<section id="installing-excel." class="level2">
+<h2 class="anchored" data-anchor-id="installing-excel.">Installing Excel.</h2>
+<p>All William &amp; Mary students can download Office 365, which includes Excel, at: https://software.wm.edu/office_365_d1/</p>
 </section>
-<section id="installing-r." class="level2">
-<h2 class="anchored" data-anchor-id="installing-r.">Installing R.</h2>
-<p>To install R, visit the R webpage at <a href="https://www.r-project.org/" class="uri">https://www.r-project.org/</a>. Once in the website, click on the CRAN hyperlink.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/CRAN.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Here you can select the CRAN mirror. Scroll down until you see USA. You are free to choose any mirror you like, I recommend using the Duke University mirror.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/DukeCRAN.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Once you click on the hyperlink, you will be prompted to choose the download for your operating system. Depending on your operating system, choose either a Windows or Macintosh download.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/OSDownload.jpeg" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Follow all prompts and complete installation.</p>
-</section>
-<section id="installing-rstudio" class="level2">
-<h2 class="anchored" data-anchor-id="installing-rstudio">Installing RStudio</h2>
-<p>Visit the Posit website at <a href="https://posit.co" class="uri">https://posit.co</a>. Once on the website, hover to the top of the screen and select “Open Source” from the drop down menus.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/RStudio1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Next, choose “R Studio IDE”.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/RStudio2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Scroll down until you see the products. You want to download “RStudio Desktop” and make sure it is the free version.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/RStudio3.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Finally, select “Download RStudio” and follow the instructions for installation.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/RStudio4.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>It is important to note that RStudio will not work if R is not installed. You can think of R as the engine and RStudio as the interface.</p>
-</section>
-<section id="posit-cloud" class="level2">
-<h2 class="anchored" data-anchor-id="posit-cloud">Posit Cloud</h2>
-<p>If you do not wish to install R, you can always use the cloud version. To do this, visit <a href="https://posit.cloud/" class="uri">https://posit.cloud/</a>. On the main page click on the “Get Started” button.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Cloud.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Choose the “Cloud Free” option and log in using your Google credentials (if you have a Google account) or sign up if you want to create a new account.</p>
+<section id="why-excel" class="level2">
+<h2 class="anchored" data-anchor-id="why-excel">Why Excel?</h2>
+<p>Excel provides a powerful set of tools for data analysis, including: - Descriptive statistics - Data visualization - Pivot tables - Probability functions - Regression and forecasting - Data cleaning and transformation</p>
+<p>Throughout this book, you will learn how to perform each statistical technique directly in Excel. Screenshots, step‑by‑step instructions, and downloadable datasets will guide you through the process. No programming experience is required!</p>
 
 
-<div id="refs" class="references csl-bib-body hanging-indent" data-entry-spacing="0" role="list">
-<div id="ref-HOP" class="csl-entry" role="listitem">
-Grolemund, Garret. 2014. <span>“Hands-on Programming with r.”</span> <a href="https://jjallaire.github.io/hopr/">https://jjallaire.github.io/hopr/</a>.
-</div>
-</div>
 </section>
 </section>
 

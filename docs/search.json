@@ -1,0 +1,32 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Business Statistics",
+    "section": "",
+    "text": "Introduction\n“Whatever you would make habitual, practice it; and if you would not make a thing habitual, do not practice it, but accustom yourself to something else.” – Epictetus\nThis course companion aims to build your mastery of statistics and its applications in Excel through consistent practice. Each chapter starts with key concepts to steer your learning, followed by problems designed to solidify these ideas through hands-on work. I thank my business statistics students and Haipei Liu for their valuable comments and reviews—all remaining errors are mine. Take your time, enjoy the journey, and make practice a habit!",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#installing-excel.",
+    "href": "index.html#installing-excel.",
+    "title": "Business Statistics",
+    "section": "Installing Excel.",
+    "text": "Installing Excel.\nAll William & Mary students can download Office 365, which includes Excel, at: https://software.wm.edu/office_365_d1/",
+    "crumbs": [
+      "Introduction"
+    ]
+  },
+  {
+    "objectID": "index.html#why-excel",
+    "href": "index.html#why-excel",
+    "title": "Business Statistics",
+    "section": "Why Excel?",
+    "text": "Why Excel?\nExcel provides a powerful set of tools for data analysis, including: - Descriptive statistics - Data visualization - Pivot tables - Probability functions - Regression and forecasting - Data cleaning and transformation\nThroughout this book, you will learn how to perform each statistical technique directly in Excel. Screenshots, step‑by‑step instructions, and downloadable datasets will guide you through the process. No programming experience is required!",
+    "crumbs": [
+      "Introduction"
+    ]
+  }
+]
