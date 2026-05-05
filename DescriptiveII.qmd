@@ -103,16 +103,20 @@ Let's follow the steps to build the frequency distribution.
 
 ## Frequency Distributions in Excel (Categorical)
 
-To construct frequency distributions in Excel, we will use pivot
-tables. 
+To construct frequency distributions in Excel, we will use **pivot tables**. A pivot table is an Excel tool that automatically summarizes and counts data, making it ideal for building frequency distributions. It allows you to quickly organize raw data into a structured table without writing any formulas.
 
-[{{< fa file-excel >}} Download Data](food_data.xlsx){.btn .btn-success}
+**Example:** Let's use the food data to construct a frequency distribution. Download the data below and follow the steps to build the pivot table. [{{< fa file-excel >}} Download Data](food_data.xlsx){.btn .btn-success}
 
-## Bar Plot in Excel
+**1. Select the Data:** Select the data range in Excel while including the headers.
 
-To create the bar plot we will use the pivot table. Let's first get the data.
+**2. Insert a Pivot Table:** Go to **Insert → Pivot Chart**. In the dialog box, confirm the data range and choose **Existing Worksheet** to place the pivot table next to the data. Click **OK**.
 
+**3. Configure the Pivot Table:** In the PivotTable Fields panel on the right, drag the **Favorite Food** field to the **Categories** area and drag it again to the **Values** area. Excel will automatically count the occurrences of each food 
+item, giving you the frequency distribution.
 
+The video below illustrates each of these steps:
+
+{{< video BarPlot.mov >}}
 
 
 ## Frequency Distribution in Excel (Numerical)
