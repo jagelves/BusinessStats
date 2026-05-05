@@ -105,7 +105,8 @@ Let's follow the steps to build the frequency distribution.
 
 To construct frequency distributions in Excel, we will use **pivot tables**. A pivot table is an Excel tool that automatically summarizes and counts data, making it ideal for building frequency distributions. It allows you to quickly organize raw data into a structured table without writing any formulas.
 
-**Example:** Let's use the food data to construct a frequency distribution. Download the data below and follow the steps to build the pivot table. [{{< fa file-excel >}} Download Data](food_data.xlsx){.btn .btn-success}
+**Example:** Let's use the food data to construct a frequency distribution. Download the data below and follow the steps to build the pivot table. 
+[{{< fa file-excel >}} Download Data](food_data.xlsx){.btn .btn-success}
 
 **1. Select the Data:** Select the data range in Excel while including the headers.
 
