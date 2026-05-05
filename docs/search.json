@@ -24,7 +24,7 @@
     "href": "index.html#why-excel",
     "title": "Business Statistics",
     "section": "Why Excel?",
-    "text": "Why Excel?\nExcel provides a powerful set of tools for data analysis, including: - Descriptive statistics - Data visualization - Pivot tables - Probability functions - Regression and forecasting - Data cleaning and transformation\nThroughout this book, you will learn how to perform each statistical technique directly in Excel. Screenshots, step‑by‑step instructions, and downloadable datasets will guide you through the process. No programming experience is required!",
+    "text": "Why Excel?\nExcel is the common language of business. From finance and accounting to marketing and operations, professionals across every industry rely on it daily to organize data, uncover patterns, and communicate results.\nUnlike specialized statistical software, Excel is accessible, widely available, and immediately applicable — skills you build here will be useful from your very first internship.\nExcel also provides a powerful and comprehensive set of tools for data analysis, including:\n\nDescriptive statistics\nData visualization\nPivot tables\nProbability functions\nRegression and forecasting\nData cleaning and transformation\n\nThroughout this book, you will learn how to perform each statistical technique directly in Excel. Screenshots, step-by-step instructions, and downloadable datasets will guide you through the process. No programming experience is required!",
     "crumbs": [
       "Introduction"
     ]
@@ -33,8 +33,8 @@
     "objectID": "index.html#excel-in-the-era-of-ai",
     "href": "index.html#excel-in-the-era-of-ai",
     "title": "Business Statistics",
-    "section": "Excel in the era of AI?",
-    "text": "Excel in the era of AI?\nProficiency in Excel remains a foundational skill in business, even in an era increasingly shaped by artificial intelligence. While AI tools can automate analysis and generate insights at speed, they are most effective in the hands of someone who understands the underlying data and logic — and Excel builds exactly that understanding. Spreadsheets are the universal language of business: from financial modeling and budgeting to operations and marketing, nearly every professional role involves working with data in Excel at some level. Learning Excel also develops broader analytical habits — organizing information clearly, checking assumptions, and thinking systematically about problems — that transfer directly to working with AI tools and interpreting their outputs critically. In short, Excel is not made obsolete by AI; it is the foundation that makes AI more useful.",
+    "section": "Excel in the Era of AI?",
+    "text": "Excel in the Era of AI?\nProficiency in Excel remains a foundational skill in business, even in an era increasingly shaped by artificial intelligence. While AI tools can automate analysis and generate insights at speed, they are most effective in the hands of someone who understands the underlying data and logic — and Excel builds exactly that understanding. Spreadsheets are the universal language of business: from financial modeling and budgeting to operations and marketing, nearly every professional role involves working with data in Excel at some level. Learning Excel also develops broader analytical habits — organizing information clearly, checking assumptions, and thinking systematically about problems — that transfer directly to working with AI tools and interpreting their outputs critically. In short, Excel is not made obsolete by AI; it is the foundation that makes AI more useful.",
     "crumbs": [
       "Introduction"
     ]
@@ -43,8 +43,8 @@
     "objectID": "index.html#how-do-i-get-excel",
     "href": "index.html#how-do-i-get-excel",
     "title": "Business Statistics",
-    "section": "How do I get Excel",
-    "text": "How do I get Excel\nAll William & Mary students can download Office 365, which includes Excel, at: https://software.wm.edu/office_365_d1/",
+    "section": "How do I get Excel?",
+    "text": "How do I get Excel?\nAll William & Mary students can download Office 365, which includes Excel, at: https://software.wm.edu/office_365_d1/",
     "crumbs": [
       "Introduction"
     ]
