@@ -2,14 +2,15 @@
 
 “Whatever you would make habitual, practice it; and if you would not make a thing habitual, do not practice it, but accustom yourself to something else.” – *Epictetus*
 
-This course companion aims to build your mastery of statistics and its applications in Excel through consistent practice. Each chapter starts with key concepts to steer your learning, followed by problems designed to solidify these ideas through hands-on work. I thank my business statistics students and Haipei Liu for their valuable comments and reviews—all remaining errors are mine. Take your time, enjoy the journey, and make practice a habit!
+This course companion is designed to build your mastery of statistics and its real-world applications in Excel through consistent, deliberate practice. Each chapter opens with key concepts to guide your learning, followed by carefully crafted problems that reinforce these ideas through hands-on work.
 
-## Installing Excel.
-All William & Mary students can download Office 365, which includes Excel, at:
-https://software.wm.edu/office_365_d1/
+I would like to extend my sincere thanks to my business statistics students — particularly Haipei Liu, Addison Alvine, and Sara Blair — for their invaluable feedback and thoughtful reviews. Any remaining errors are entirely my own.
+
+Take your time, enjoy the journey, and make practice a habit!
 
 ## Why Excel?
 Excel provides a powerful set of tools for data analysis, including:
+
 - Descriptive statistics
 - Data visualization
 - Pivot tables
@@ -18,3 +19,9 @@ Excel provides a powerful set of tools for data analysis, including:
 - Data cleaning and transformation
 
 Throughout this book, you will learn how to perform each statistical technique directly in Excel. Screenshots, step‑by‑step instructions, and downloadable datasets will guide you through the process. No programming experience is required!
+
+## Excel in the Era of AI?
+Proficiency in Excel remains a foundational skill in business, even in an era increasingly shaped by artificial intelligence. While AI tools can automate analysis and generate insights at speed, they are most effective in the hands of someone who understands the underlying data and logic — and Excel builds exactly that understanding. Spreadsheets are the universal language of business: from financial modeling and budgeting to operations and marketing, nearly every professional role involves working with data in Excel at some level. Learning Excel also develops broader analytical habits — organizing information clearly, checking assumptions, and thinking systematically about problems — that transfer directly to working with AI tools and interpreting their outputs critically. In short, Excel is not made obsolete by AI; it is the foundation that makes AI more useful.
+
+## How do I get Excel?
+All William & Mary students can download Office 365, which includes Excel, at: <https://software.wm.edu/office_365_d1/>
