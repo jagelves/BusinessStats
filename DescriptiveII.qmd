@@ -120,12 +120,41 @@ The video below illustrates each of these steps:
 
 {{< video BarPlot.mov >}}
 
+## Frequency Distributions in Excel (Numerical)
 
-## Frequency Distribution in Excel (Numerical)
+To construct a frequency distribution for numerical data in Excel, we need an extra step compared to the categorical case. Since numerical data has no predefined categories, we must first create the bins manually using a helper column. Once the bins are in place, we can use a pivot table to count the observations in each class.
 
+**Example:** Let's use the Dow Jones stock price data to construct a frequency distribution. Download the data below and follow the steps.
 
+[{{< fa file-excel >}} Download Data](dow.xlsx){.btn .btn-success}
 
-## Histograms in Excel
+**1. Create a Bin Column:** In column C, add the header "Bins". In cell C2, enter the following `IFS` formula to assign each stock price to its corresponding class:
+
+```
+=IFS(B2<120,"[20,120)",B2<220,"[120,220)",B2<320,"[220,320)",
+B2<420,"[320,420)",B2<=520,"[420,520)")
+```
+
+Copy the formula down for all 30 rows. Each stock price will now be assigned to one of the five classes defined in @sec-freqdistnum. Press `Ctrl + ~` to verify the formulas are correct, then press `Ctrl + ~` again to return to normal view.
+
+**2. Insert a Pivot Table:** Select the data. Go to **Insert → PivotTable**, confirm the data range, and select **Existing Worksheet**. Click **OK**.
+
+**3. Configure the Pivot Table:** In the PivotTable Fields panel, drag the **Bins** field to the **Rows** area and drag it again to the **Values** area. Excel will count the number of stock prices in each bin, giving you the frequency distribution. You should obtain the following result:
+
+| Bin | Frequency |
+|-----------|-----------|
+| [20,120)  | 9         |
+| [120,220) | 12        |
+| [220,320) | 5         |
+| [320,420) | 3         |
+| [420,520) | 1         |
+
+**4. Insert a Histogram:** With the pivot table selected, go to 
+**Insert → Charts → Clustered Column**. Excel will generate a bar chart. To convert it into a proper histogram, right-click on any bar and select **Format Data Series**. Set the **Gap Width** to **0%**. This removes the spaces between bars, which is the key visual distinction between a bar chart (used for categorical data) and a histogram (used for numerical data).
+
+The video below walks you through each of these steps:
+
+{{< video Histogram.mov >}}
 
 
 ## Exercises
