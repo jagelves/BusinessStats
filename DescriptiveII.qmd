@@ -73,18 +73,13 @@ When working with numerical data, building a frequency distributions requires ad
 
 **Ex1:** If a data set has 50 observations, we would choose six classes since $2^6=64$ is greater than $50$ by the least amount.
 
-Alternatively, you can use Sturges' rule to estimate the number of classes. This rule suggests using
-$k = \lceil 1 + 3.322 \log_{10}(n) \rceil$
-where $n$ is the number of observations and $\lceil \cdot \rceil$ denotes the ceiling function (round up to the nearest integer).
+Alternatively, you can use Sturges' rule to estimate the number of classes. This rule suggests using $k = \lceil 1 + 3.322 \log_{10}(n) \rceil$ where $n$ is the number of observations and $\lceil \cdot \rceil$ denotes the ceiling function (round up to the nearest integer).
 
-**Ex2:** If a data set has 50 observations,
-$k = \lceil 1 + 3.322 \times 1.699 \approx 6.64 \rceil = 7$ so we would choose seven classes.
+**Ex2:** If a data set has 50 observations, $k = \lceil 1 + 3.322 \times 1.699 \approx 6.64 \rceil = 7$ so we would choose seven classes.
 
 **2. Calculate the Width of Each Class:** The width of a class is determined using the formula:
 
-$$
-Width = \frac{Max-Min}{Number\ of\ Classes}
-$$
+$$Width = \frac{Max-Min}{Number\ of\ Classes}$$
 
 *Ex: If the data set has 50 observations and the minimum value 20 and the maximum is 78, then the width of each class is* $58/6 \approx 9.7$. Hence, we can round up and use a class width of 10. It is important to note to always round up, as this ensures that all data points are included in an class.
 
@@ -106,118 +101,34 @@ Let's follow the steps to build the frequency distribution.
 
 **3. Establish Class Limits:** Since we have rounded up we can be flexible with our class limits. The following class limits are suggested \[20,120), \[120,220), \[220,320), \[320,420), and \[420,520). Note that each class has a width of $100$, and that each data point belongs to one single class.
 
-## Frequency Distributions in R (Categorical)
+## Frequency Distributions in Excel (Categorical)
 
-The process of constructing frequency distributions in R is straightforward. We will be mainly using the `table()` function. Let's start by saving the data in a vector:
+To construct frequency distributions in Excel, we will use pivot
+tables. 
 
-```{r}
-food<-c("Pizza","Sushi","Sushi","Chicken",
-        "Chicken","Pasta","Pasta","Pasta",
-        "Sushi","Pasta","Chicken","Pizza",
-        "Chicken","Sushi","Pizza","Sushi",
-        "Sushi","Sushi","Sushi","Pizza",
-        "Pizza","Chicken","Sushi","Pizza",
-        "Sushi")
-```
+## Bar Plot in Excel
 
-Here we define a vector called food by assigning (`<-`) the combination (`c`) of all the food items. To generate the frequency distribution we simply pass the food vector into the `table()` command.
+To create the bar plot we will use the pivot table. Let's first get the data.
 
-```{r}
-table(food)
-```
 
-As you can see this tallies all the instances for each item. If instead we wanted to obtain the relative frequency we can use the `prop.table()` function. This function requires the frequency distribution created by the `table()` function. Hence, we can first create the frequency distribution, save it into an object, and then generate the relative frequency. The code is below:
 
-```{r}
-freq<-table(food)
-prop.table(freq)
-```
 
-As a last modification. If you want percent frequencies, you can multiply the `prop.table()` function by 100, as shown below:
+## Frequency Distribution in Excel (Numerical)
 
-```{r}
-prop.table(freq)*100
-```
 
-## Bar Plot in R
 
-To create the bar plot we will be using the `geom_bar()` function within the `tidyverse` package. We start by loading the package:
+## Histograms in Excel
 
-```{r message=FALSE, warning=FALSE}
-library(tidyverse)
-```
-
-Now R will identify the functions `ggplot()` and `geom_bar()` from the `ggplot` library. To construct the plot we will first call on `ggplot()` and then specify the type of graph we want by calling on `geom_bar()`. In the `aes()` function we will specify which variable (or vector) we want to plot.
-
-```{r}
-ggplot() + geom_bar(aes(food))
-```
-
-We can enhance the visualization by adding a title and changing the theme. The `labs()` function allows us to change the titles and the `ggthemes` package allows us to choose from a variety of themes.
-
-```{r}
-ggplot() + geom_bar(aes(food), col="black", alpha=0.5, bg="blue") +
-  labs(title="Favorite Food Items",
-       subtitle="Class of 25 Students",
-       x="", y="Frequency") + 
-  theme_clean()
-  
-```
-
-A few arguments are worth explaining in the code above. The arguments in the `geom_bar()` function change the background color (bg), the transparency of the color (alpha), and the color of the outline for the bars (col). Title and subtitles are added within the `labs()` function. To omit labels we can just open and close quotations. Hence, `x=""` omits the x label.
-
-## Frequency Distribution in R (Numerical)
-
-To construct the frequency distribution in R we will be first generating the classes and then using the `table()` function as we did in the categorical case. Let's first get the data into R:
-
-```{r}
-dow<-c(277,174,202,383,358,188,293,156,
-       212,42,149,410,303,165,203,103,
-       22,59,287,121,312,52,53,158,500,
-       96,95,43,188,200)
-```
-
-To generate the bins we will use the example and procedure found in [2.2](#freqdistnum). That is, we will be using five classes, of width 100. Below is the code to do this:
-
-```{r}
-intervals<-cut_width(dow, boundary=20, width=100)
-(dowfreq<-table(intervals))
-```
-
-The process involves two steps. First we place each observation in the dow, into the bins by using the `cut_width()` function. This involves specifying where we want to start our first bin (*boundary=20*) and the width of each bin (*width 100*). The function creates the bins and places each observation in the respective bin. The last step is to tally the results with the `table()` function.
-
-To obtain the cumulative distribution, we can use the `cumsum()` function. Below we just wrap the frequency distribution (freq) into the `cumsum()` function.
-
-```{r}
-cumsum(dowfreq)
-```
-
-## Histograms in R
-
-To generate the histogram in R we will use once again the `tidyverse` package. This time we will use the `geom_histogram()` function. Below is the code to generate the histogram for the dow data:
-
-```{r}
-ggplot() + 
-  geom_histogram(aes(dow), bg="blue", alpha=0.5, col="black",
-                 bins=5,
-                 binwidth = 100,
-                 boundary=20) +
-  labs(title="Dow Stock Prices",
-       y="Frequency", x="") + 
-  theme_clean()
-```
-
-Within the `geom_histogram()` command we can set the classes (or bins) for the histogram. The bins argument specifies the number of bins, bin.width specifies the bin width, and the boundary specifies where should the histogram starts. This histogram allows us to observe quickly that most stocks in the dow are priced between 20 and 220 dollars.
 
 ## Exercises
 
 The following exercises will help you practice summarizing data with tables and simple graphs. In particular, the exercises work on:
 
--   Developing frequency distributions for both categorical and numerical data.
+- Developing frequency distributions for both categorical and numerical data.
 
--   Constructing bar charts, histograms, and line charts.
+- Constructing bar charts, histograms, and line charts.
 
--   Creating contingency tables.
+- Creating contingency tables.
 
 Answers are provided below. Try not to peek until you have a formulated your own answer and double checked your work for any mistakes.
 
@@ -397,31 +308,41 @@ ggplot() +
 ### Exercise 4 {.unnumbered}
 
 A company surveyed 40 employees about their primary department. The responses are:
+
 ```{r}
 dept <- c("Marketing", "Sales", "Finance", "Operations", "Marketing", "HR", "IT", "Finance", "Customer Service", "Marketing", "Sales", "Finance", "Operations", "R&D", "Marketing", "Finance", "Customer Service", "Operations", "Marketing", "Finance", "HR", "Sales", "Customer Service", "Operations", "Marketing", "Finance", "IT", "R&D", "Customer Service", "Operations", "Sales", "Finance", "Customer Service", "Marketing", "Finance", "HR", "Customer Service", "Operations", "R&D", "Sales")
 ```
-1. Use R to create a frequency distribution table for these departments. 
+
+1.  Use R to create a frequency distribution table for these departments.
 
 <details>
+
 <summary>Answer</summary>
+
 ```{r}
 table(dept)
 ```
+
 </details>
 
-2. Compute the relative frequencies (as percentages).
+2.  Compute the relative frequencies (as percentages).
 
 <details>
+
 <summary>Answer</summary>
+
 ```{r}
 prop.table(table(dept)) * 100
 ```
+
 </details>
 
-3. Create a bar plot of the frequencies. Which department has the highest frequency? What is its relative frequency (percentage)?
+3.  Create a bar plot of the frequencies. Which department has the highest frequency? What is its relative frequency (percentage)?
 
 <details>
+
 <summary>Answer</summary>
+
 ```{r}
 ggplot() +
   geom_bar(aes(x=dept), bg="grey", 
@@ -436,14 +357,17 @@ ggplot() +
 ### Exercise 5 {.unnumbered}
 
 A class of 50 students took a business statistics exam (out of 100 points). Their scores were:
+
 ```{r}
 scores <- c(75.6, 66.9, 83.4, 67.2, 95.3, 90.5, 54.4, 76.8, 88.5, 63.3, 95.1, 69.9, 80.4, 91.9, 66.7, 58.0, 81.9, 78.7, 51.9, 55.4, 94.5, 71.8, 65.8, 54.6, 92.6, 68.7, 76.4, 57.1, 72.4, 90.1, 54.4, 66.6, 84.2, 74.3, 95.6, 51.6, 79.9, 65.8, 89.5, 70.4, 88.4, 83.3, 87.7, 62.3, 59.1, 60.3, 53.5, 50.1, 51.1, 52.6)
 ```
 
-1. Construct a histogram using 7 classes with width 10, starting at 50 (bins: [50,60), [60,70), etc.). Use `geom_histogram()` with appropriate parameters. In which bin is the highest frequency? How many students scored in that range?
+1.  Construct a histogram using 7 classes with width 10, starting at 50 (bins: \[50,60), \[60,70), etc.). Use `geom_histogram()` with appropriate parameters. In which bin is the highest frequency? How many students scored in that range?
 
 <details>
+
 <summary>Answer</summary>
+
 ```{r}
 ggplot() + 
   geom_histogram(aes(x=scores),
@@ -452,7 +376,7 @@ ggplot() +
                  col="black", bg="grey") +
   theme_clean()
 ```
-*The highest frequency is in the bin (60,70] with 9 students.*
+
+*The highest frequency is in the bin (60,70\] with 9 students.*
 
 </details>
-
