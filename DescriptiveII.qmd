@@ -106,6 +106,8 @@ Let's follow the steps to build the frequency distribution.
 To construct frequency distributions in Excel, we will use pivot
 tables. 
 
+[{{< fa file-excel >}} Download Data](food_data.xlsx){.btn .btn-success}
+
 ## Bar Plot in Excel
 
 To create the bar plot we will use the pivot table. Let's first get the data.
