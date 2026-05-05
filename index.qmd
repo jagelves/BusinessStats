@@ -35,5 +35,9 @@ programming experience is required!
 ## Excel in the Era of AI?
 Proficiency in Excel remains a foundational skill in business, even in an era increasingly shaped by artificial intelligence. While AI tools can automate analysis and generate insights at speed, they are most effective in the hands of someone who understands the underlying data and logic — and Excel builds exactly that understanding. Spreadsheets are the universal language of business: from financial modeling and budgeting to operations and marketing, nearly every professional role involves working with data in Excel at some level. Learning Excel also develops broader analytical habits — organizing information clearly, checking assumptions, and thinking systematically about problems — that transfer directly to working with AI tools and interpreting their outputs critically. In short, Excel is not made obsolete by AI; it is the foundation that makes AI more useful.
 
+## Roadmap
+This book follows a deliberate sequence designed to build your skills 
+progressively. We begin with **Descriptive Statistics**, where you will learn to summarize, visualize, and explore data in Excel. Here you will develop the foundation of all statistical thinking. Next, we move to **Regression**, giving you a powerful tool for identifying relationships between variables and making predictions. With these analytical skills in hand, we then develop your understanding of **Probability**, which provides the theoretical backbone for drawing conclusions from data. Finally, we bring everything together in **Inference**, where you will learn to make rigorous, evidence-based decisions from samples. Each stage builds on the last, so that by the end you will have a complete statistical toolkit.
+
 ## How do I get Excel?
 All William & Mary students can download Office 365, which includes Excel, at: <https://software.wm.edu/office_365_d1/>
