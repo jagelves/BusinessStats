@@ -2,11 +2,9 @@
 
 “Whatever you would make habitual, practice it; and if you would not make a thing habitual, do not practice it, but accustom yourself to something else.” – *Epictetus*
 
-This course companion is designed to build your mastery of statistics and its real-world applications in Excel through consistent, deliberate practice. Each chapter opens with key concepts to guide your learning, followed by carefully crafted problems that reinforce these ideas through hands-on work.
+This course companion is designed to build your mastery of statistics and its real-world applications in Excel through consistent, deliberate practice. Each chapter opens with key concepts to guide your learning, followed by carefully crafted problems that reinforce these ideas through hands-on work. The material is challenging but approachable — steady effort and attention to detail will take you far.
 
 I would like to extend my sincere thanks to my business statistics students — particularly Haipei Liu, Addison Alvine, and Sara Blair — for their invaluable feedback and thoughtful reviews. Any remaining errors are entirely my own.
-
-Take your time, enjoy the journey, and make practice a habit!
 
 ## Why Excel?
 
