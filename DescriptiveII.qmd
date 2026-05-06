@@ -207,11 +207,11 @@ prop.table(freq)
 
 <summary>Answer</summary>
 
+<div style="padding-left: 1.5em;">
+
 *The majority of diagnosis are Meningioma. Low grade glioma is the least common of diagnosis. High grade glioma and other diagnosis have about the same frequency.*
 
-To construct the bar chart use the `geom_bar()` function from `tidyverse`.
-
-```{r}
+```{r echo=FALSE}
 library(tidyverse)
 library(ggthemes)
 ggplot(data=BrainCancer) + 
@@ -219,6 +219,7 @@ ggplot(data=BrainCancer) +
   theme_clean()
 ```
 
+</div>
 </details>
 
 3.  Construct a contingency table that shows the *Diagnosis* along with the *Status*. Which diagnosis had the highest number of non-survivals (0)? What was the survival rate of this diagnosis?
@@ -227,20 +228,23 @@ ggplot(data=BrainCancer) +
 
 <summary>Answer</summary>
 
+<div style="padding-left: 1.5em;">
+
 $33$ people did not survive Meningioma. The survival rate of Meningioma is only $21.43$%.
 
-*Use the `table()` function one more time to create the contingency table for the two variables.*
+*tThe contingency table for the two variables should have the following numbers:*
 
-```{r}
+```{r echo=FALSE}
 (freq2<-table(BrainCancer$status,BrainCancer$diagnosis))
 ```
 
-*To get the survival rates, we can use the `prop.table()` function once again.*
+*The survival rates are:*
 
-```{r}
+```{r echo=FALSE}
 prop.table(freq2,margin = 2)
 ```
 
+</div>
 </details>
 
 ### Exercise 2 {.unnumbered}
