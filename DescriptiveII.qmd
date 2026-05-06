@@ -65,7 +65,7 @@ ggplot()+geom_bar(aes(food), alpha=0.5,col="black") +theme_clean()+
 
 In sum, the **bar plot** illustrates the frequency distribution of categorical data. It includes the classes in the horizontal axis and frequencies or relative frequencies in the vertical axis and has gaps between each bar.
 
-## Frequency Distributions (Numerical) {#freqdistnum}
+## Frequency Distributions (Numerical) {#sec-freqdistnum}
 
 When working with numerical data, building a frequency distributions requires additional steps compared to categorical data. The challenge lies in the absence of predefined categories or classes. To construct a frequency distribution for numerical data, it is essential to determine the number, width, and limits of the classes. Here are the steps to create a frequency distribution when data is numerical:
 
