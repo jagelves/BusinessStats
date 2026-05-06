@@ -1,0 +1,105 @@
+/*-- scss:defaults --*/
+
+// Fonts
+$font-family-sans-serif: "Inter", sans-serif;
+$headings-font-family: "Playfair Display", serif;
+
+// Colors
+$body-bg: #F5F0EB;
+$body-color: #1a1a1a;
+$link-color: #C9856A;
+
+/*-- scss:rules --*/
+
+// Import Google Fonts
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500&display=swap');
+
+// Headings
+h1, h2, h3 {
+  font-family: "Playfair Display", serif;
+  font-weight: 900;
+  color: #4A4A4A;
+  letter-spacing: -0.5px;
+}
+
+h1 {
+  font-size: 2.6rem;
+}
+
+h2 {
+  font-size: 1.9rem;
+  border-bottom: 3px solid #C9856A;
+  padding-bottom: 6px;
+  margin-top: 2rem;
+}
+
+// Body text
+body {
+  font-family: "Inter", sans-serif;
+  font-size: 1rem;
+  line-height: 1.8;
+  background-color: #F5F0EB;
+  color: #1a1a1a;
+}
+
+// Bold text
+strong {
+  color: #C9856A;
+}
+
+// Sidebar
+.sidebar {
+  background-color: #EDEAE5;
+  border-right: 2px solid #C9856A;
+}
+
+// Table of contents active indicator
+.sidebar nav[role="doc-toc"] ul > li > a.active {
+  border-left: 2px solid #C9856A;
+  color: #C9856A;
+}
+
+// Code blocks
+pre {
+  background-color: #EDEAE5;
+  border-left: 4px solid #C9856A;
+  border-radius: 4px;
+  padding: 12px;
+}
+
+// Details/Answer boxes
+details {
+  background-color: #EDEAE5;
+  padding: 10px 16px;
+  border: 1px solid #ccc;
+  border-left: 4px solid #C9856A;
+  border-radius: 4px;
+  margin: 14px 0;
+}
+
+details summary {
+  cursor: pointer;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+}
+
+// Download button
+.btn-success {
+  background-color: #C9856A !important;
+  border-color: #C9856A !important;
+  color: white !important;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+}
+
+.btn-success:hover {
+  background-color: #1a1a1a !important;
+  border-color: #1a1a1a !important;
+}
+
+// Page footer
+.nav-footer {
+  border-top: 2px solid #C9856A;
+  font-size: 0.85rem;
+  color: #555;
+}

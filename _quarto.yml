@@ -36,12 +36,12 @@ bibliography: references.bib
 
 format:
   html:
-    theme: cosmo
+    theme: [cosmo, custom.scss]
     include-in-header: custom-head.html
   pdf:
     documentclass: scrreprt
+
 filters:
   - shinylive
   
 editor: visual
-
