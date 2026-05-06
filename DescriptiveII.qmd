@@ -116,9 +116,15 @@ To construct frequency distributions in Excel, we will use **pivot tables**. A p
 **3. Configure the Pivot Table:** In the PivotTable Fields panel on the right, drag the **Favorite Food** field to the **Categories** area and drag it again to the **Values** area. Excel will automatically count the occurrences of each food 
 item, giving you the frequency distribution.
 
-The video below illustrates each of these steps:
+If you need more guidance please refer to the video demonstration below:
+
+<details>
+
+<summary>Video</summary>
 
 {{< video BarPlot.mov >}}
+
+</details>
 
 ## Frequency Distributions in Excel (Numerical)
 
@@ -154,8 +160,13 @@ Copy the formula down for all 30 rows. Each stock price will now be assigned to 
 
 The video below walks you through each of these steps:
 
+<details>
+
+<summary>Video</summary>
+
 {{< video Histogram.mov >}}
 
+</details>
 
 ## Exercises
 
