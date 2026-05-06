@@ -171,7 +171,9 @@ Answers are provided below. Try not to peek until you have a formulated your own
 
 ### Exercise 1 {.unnumbered}
 
-Install the `ISLR2` package in R. You will need the **BrainCancer** data set to answer this question.
+You will need the **Brain Cancer** data set to answer this question. You can get the data using the link below:
+
+[{{< fa file-excel >}} Download Data](dow.xlsx){.btn .btn-success}
 
 1.  Construct a frequency and relative frequency table of the *Diagnosis* variable. What was the most common diagnosis? What percentage of the sample had this diagnosis?
 
@@ -179,22 +181,24 @@ Install the `ISLR2` package in R. You will need the **BrainCancer** data set to 
 
 <summary>Answer</summary>
 
+<div style="padding-left: 1.5em;">
+
 *The most common diagnosis is Meningioma, a slow-growing tumor that forms from the membranous layers surrounding the brain and spinal cord. The diagnosis represents about* $48.28$% of the sample.
 
-*Start by loading the `ISLR2` package. To construct the frequency distribution table, use the `table()` function.*
+*The frequency distribution should have the following numbers:*
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 library(ISLR2)
 table(BrainCancer$diagnosis)
 ```
 
-*The relative frequency distribution can be easily retrieved by saving the frequency table in an object and then using the `prop.table()` function.*
+*The relative frequency distribution has the following numbers:*
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 freq<-table(BrainCancer$diagnosis)
 prop.table(freq)
 ```
-
+</div>
 </details>
 
 2.  Construct a bar chart. Summarize the findings.
