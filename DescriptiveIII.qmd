@@ -173,63 +173,74 @@ the arithmetic mean of the returns would give $(10 + 25 - 8 + 15)/4 = 10.5\%$, w
 
 Excel has a collection of functions that calculate measures of central location. Let's consider the following data on approval ratings:
 
-```{r message=FALSE}
+```{r echo=FALSE, message=FALSE}
 library(tidyverse)
-(poll<-tibble(date=c("01/01/24", "02/01/24", 
-                    "03/01/24", "04/01/24"),
-             people=c(50,100,30,250),
-             approval=c(0.25,0.25,0.7,0.85)))
+library(gt)
+
+poll <- tibble(
+  date = c("01/01/24", "02/01/24", "03/01/24", "04/01/24"),
+  people = c(50, 100, 30, 250),
+  approval = c(0.25, 0.25, 0.7, 0.85)
+)
+
+poll %>%
+  gt() %>%
+  cols_label(
+    date = "Date",
+    people = "People",
+    approval = "Approval"
+  ) %>%
+  cols_align("center") %>%
+  fmt_percent(columns = approval, decimals = 0) %>%
+  tab_style(
+    locations = cells_column_labels(columns = everything()),
+    style = list(
+      cell_borders(sides = "bottom", weight = px(3)),
+      cell_text(weight = "bold")
+    )
+  ) %>%
+  tab_style(
+    locations = cells_body(),
+    style = cell_borders(sides = "all", 
+                        color = "#CCCCCC", 
+                        weight = px(1))
+  ) %>%
+  tab_options(
+    table.width = pct(50),
+    column_labels.background.color = "#EDE8E3"
+  )
 ```
 
-To calculate the mean we can just pass a vector into the `mean()` function. Hence, the mean approval is:
+You can also download the data here:
 
-```{r}
-mean(poll$approval)
-```
+[{{< fa file-excel >}} Download Data](poll.xlsx){.btn .btn-success}
 
-To calculate the mode we will use the `table()` function, as there is no mode function in base R.
+**Mean:** To calculate the mean in Excel use `=AVERAGE(C2:C5)`, where column C contains the approval ratings. The mean approval rating is `r mean(poll$approval)`.
 
-```{r}
-table(poll$approval)
-```
+**Median:** To calculate the median in Excel use `=MEDIAN(C2:C5)`. The median approval rating is `r median(poll$approval)`.
 
-For the median we will use the `median()` function.
+**Mode:** To calculate the mode in Excel use `=MODE(C2:C5)`. Note that `MODE` only returns one value even if there are multiple modes. For the approval data, the mode is 0.25.
 
-```{r}
-median(poll$approval)
-```
+**Weighted Mean:** To calculate the weighted mean in Excel use 
+`=SUMPRODUCT(B2:B5, C2:C5) / SUM(B2:B5)`, where column B contains the number of people surveyed and column C contains the approval ratings. This formula multiplies each approval rating by its corresponding weight and divides by the total number of people. The weighted mean approval rating is `r weighted.mean(x=poll$approval, w=poll$people)`.
 
-The weighted average can be calculated using the `weighted.mean()` function. Let the approval be the value and number of people surveyed the weight.
+**Geometric Mean:** To calculate the geometric mean in Excel use 
+`=GEOMEAN(C2:C5)`. Note that since approval ratings are already 
+proportions there is no need to add 1 to each value before applying 
+the formula. The geometric mean approval rating is 0.4391.
 
-```{r}
-weighted.mean(x=poll$approval,w = poll$people)
-```
+## Excel Function Summary
 
-Lastly, the geometric mean has no built in function in base R. However, we can easily calculate it with the command:
+- `=AVERAGE()` calculates the mean for a range of numbers.
 
-```{r}
-geometric_mean <- prod(poll$approval)^(1/length(poll$approval))
-```
+- `=MEDIAN()` calculates the median for a range of numbers.
 
-Since the approval rating is a percentage of the total people polled there is no need to add one to these numbers. The `summary()` function calculates a collection of summary statistics for a vector or data frame. Below we apply it to the entire data set:
+- `=MODE()` returns the most frequently occurring value in a range.
 
-```{r}
-summary(poll)
-```
-
-Below a list of the functions used:
-
--   The `average()` function calculates the average for a vector of numbers.
-
--   The `median()` function calculates the median for a vector of numbers.
-
--   The `()` function generates the frequency distribution so that we can identify the mode or modes.
-
--   The `weighted.mean()` function calculates the weighted mean for a vector of numbers, and corresponding vector of weights.
-
--   The `length()` function calculates the length of a vector.
-
--   The `summary()` function provides measures of location for a vector of numbers.
+- `=SUMPRODUCT()` multiplies corresponding values in two ranges and 
+  returns their sum, useful for calculating the weighted mean.
+  
+- `=GEOMEAN()` calculates the geometric mean for a range of numbers.
 
 ## Exercises
 
