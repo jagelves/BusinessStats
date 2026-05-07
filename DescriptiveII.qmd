@@ -98,6 +98,9 @@ $$Width = \frac{Max-Min}{Number\ of\ Classes}$$
 :::
 
 ## Determining the Classes for the Dow Jones Industrial
+
+The **Dow Jones Industrial Average (DJIA)** is one of the most widely followed stock market indexes in the world. It tracks the stock prices of 30 large, well-known U.S. companies — such as Apple, Microsoft, and Goldman Sachs — and summarizes their collective performance into a single number. When people say "the market was up today," they are often referring to the Dow. It serves as a barometer of the overall health of the U.S. economy and is updated continuously during trading hours.
+
 Let's look at a snapshot of the Dow Jones Industrial 30 stock prices. Below you can see the data:
 
 ```{r echo=FALSE, fig.align='center'}
