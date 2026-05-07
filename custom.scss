@@ -28,7 +28,7 @@ h1 {
 
 h2 {
   font-size: 1.9rem;
-  border-bottom: 3px solid #C9856A;
+  border-bottom: 3px solid #4A4A4A;
   padding-bottom: 6px;
   margin-top: 2rem;
 }
@@ -44,25 +44,25 @@ body {
 
 // Bold text
 strong {
-  color: #C9856A;
+  color: #A0522D;
 }
 
 // Sidebar
 .sidebar {
   background-color: #EDEAE5;
-  border-right: 2px solid #C9856A;
+  border-right: 2px solid #ccc;
 }
 
 // Table of contents active indicator
 .sidebar nav[role="doc-toc"] ul > li > a.active {
-  border-left: 2px solid #C9856A;
-  color: #C9856A;
+  border-left: 2px solid #ccc;
+  color: #A0522D;
 }
 
 // Code blocks
 pre {
   background-color: #EDEAE5;
-  border-left: 4px solid #C9856A;
+  border-left: 4px solid #ccc;
   border-radius: 4px;
   padding: 12px;
 }
@@ -72,7 +72,7 @@ details {
   background-color: #EDEAE5;
   padding: 10px 16px;
   border: 1px solid #ccc;
-  border-left: 4px solid #C9856A;
+  border-left: 4px solid #ccc;
   border-radius: 4px;
   margin: 14px 0;
 }
@@ -85,8 +85,8 @@ details summary {
 
 // Download button
 .btn-success {
-  background-color: #C9856A !important;
-  border-color: #C9856A !important;
+  background-color: #A0522D !important;
+  border-color: #A0522D !important;
   color: white !important;
   font-family: "Inter", sans-serif;
   font-weight: 500;
@@ -99,7 +99,7 @@ details summary {
 
 // Page footer
 .nav-footer {
-  border-top: 2px solid #C9856A;
+  border-top: 2px solid #A0522D;
   font-size: 0.85rem;
   color: #555;
 }
