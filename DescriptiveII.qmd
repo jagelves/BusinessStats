@@ -120,7 +120,7 @@ Let's follow the steps to build the frequency distribution.
 
 ## Frequency Distributions and Bar Graphs in Excel (Categorical)
 
-To construct frequency distributions in Excel, we will use **pivot tables**. A pivot table is an Excel tool that automatically summarizes and counts data, making it ideal for building frequency distributions. It allows you to quickly organize raw data into a structured table without writing any formulas.
+To construct frequency distributions in Excel, we will use pivot tables. A **pivot table** is an Excel tool that automatically summarizes and counts data, making it ideal for building frequency distributions. It allows you to quickly organize raw data into a structured table without writing any formulas.
 
 Let's use the food data to construct a frequency distribution. Download the data below and follow the steps to build the pivot table. 
 
@@ -128,10 +128,11 @@ Let's use the food data to construct a frequency distribution. Download the data
 
 **1. Select the Data:** Select the data range in Excel while including the headers.
 
-**2. Insert a Pivot Table:** Go to **Insert → Pivot Chart**. In the dialog box, confirm the data range and choose **Existing Worksheet** to place the pivot table next to the data. Click **OK**.
+**2. Insert a Pivot Table:** Go to `Insert → Pivot Chart`. In the dialog box, confirm the data range and choose `Existing Worksheet` to place the pivot table next to the data. Click `OK`.
 
-**3. Configure the Pivot Table:** In the PivotTable Fields panel on the right, drag the **Favorite Food** field to the **Categories** area and drag it again to the **Values** area. Excel will automatically count the occurrences of each food 
-item, giving you the frequency distribution.
+**3. Configure the Pivot Table:** In the PivotTable Fields panel on the right, drag the `Favorite Food` field to the `Categories` area and drag it again to the `Values` area. Excel will automatically count the occurrences of each food item, giving you the frequency distribution.
+
+**4. Add the Relative Frequency:** Next to the frequency column in the pivot table, add a new column labeled "Relative Frequency". In the first cell, enter the formula `=B2/SUM($B$2:$B$5)`, where column B contains the frequencies. The `$` signs lock the denominator so it does not change as you copy the formula down. Copy the formula down for all food items. Each value represents the proportion of students who selected that food item out of the total of 25.
 
 If you need more guidance please refer to the video demonstration below:
 
@@ -430,7 +431,7 @@ A class of 50 students took a business statistics exam (out of 100 points). Thei
 [{{< fa file-excel >}} Download Data](Busstat.xlsx){.btn .btn-success}
 
 
-1.  Construct a histogram using 7 classes with width 10, starting at 50 (bins: \[50,60), \[60,70), etc.). Use `geom_histogram()` with appropriate parameters. In which bin is the highest frequency? How many students scored in that range?
+1.  Construct a histogram using 7 classes with width 10, starting at 50 (bins: \[50,60), \[60,70), etc.). In which bin is the highest frequency? How many students scored in that range?
 
 <details>
 
