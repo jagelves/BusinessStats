@@ -348,7 +348,10 @@ ggplot() +
 
 ### Exercise 3 {.unnumbered}
 
-You will need the **Portfolio** data set from the `ISLR2` package to answer this question.
+You will need the **Portfolio** data set. You can get the data using the link below:
+
+[{{< fa file-excel >}} Download Data](port.xlsx){.btn .btn-success}
+
 
 1.  Construct a line chart that shows the returns over time for each portfolio (X and Y) by using two lines each with a unique color. Assume the data is for the period $1901$ to $2000$. Include also a legend that matches colors to portfolios.
 
@@ -357,8 +360,6 @@ You will need the **Portfolio** data set from the `ISLR2` package to answer this
 <summary>Answer</summary>
 
 *From* $1901$ through $2000$, both portfolios have behaved very similarly. Returns are between $-3$% and $3$%, there is no trend, and positive (negative) returns for X seem to match with positive (negative) returns of Y.
-
-*You can use the `geom_line()` function to create a line for each portfolio.*
 
 ```{r}
 ggplot() +
