@@ -83,12 +83,15 @@ Alternatively, you can use **Sturges' rule** to estimate the number of classes. 
 **Example:** If a data set has 50 observations, $k = \lceil 1 + 3.322 \times 1.699 \approx 6.64 \rceil = 7$ so we would choose seven classes.
 :::
 
+Note that the $2^k$ rule and Sturges' rule do not always produce the same number of classes. Either method is acceptable — what matters is that you choose one and apply it consistently throughout the rest of the frequency distribution construction.
+
+
 **2. Calculate the Width of Each Class:** The width of a class is determined using the formula:
 
 $$Width = \frac{Max-Min}{Number\ of\ Classes}$$
 
 ::: {.callout-example}
-**Example**: If the data set has 50 observations and the minimum value 20 and the maximum is 78, then the width of each class is $58/6 \approx 9.7$. Hence, we can round up and use a class width of 10. It is important to note to always round up, as this ensures that all data points are included in an class.
+**Example**: If the data set has 50 observations and the minimum value 20 and the maximum is 78, then the width of each class is $58/6 \approx 9.7$ when using the $6$ classes suggested by the $2^k$ rule. We can round up and use a class width of 10. It is important to note to always round up, as this ensures that all data points are included in an class.
 :::
 
 **3. Establish Class Limits:** The class limits define the range of values in each class. These limits should be chosen such that each data point belongs to only one class.
@@ -288,7 +291,7 @@ You will need the **Air Quality** data set to answer this question. You can get 
 
 *The frequency distribution should have the following numbers:*
 
-```{r}
+```{r echo=FALSE}
 intervals <- cut_width(airquality$Temp, width = 10,
                        boundary=50)
 table(intervals)
@@ -306,21 +309,21 @@ table(intervals)
 
 *The relative frequency distribution is given by:*
 
-```{r}
+```{r echo=FALSE}
 freq<-table(intervals) 
 prop.table(freq)
 ```
 
 *Below the cumulative distribution numbers:*
 
-```{r}
+```{r echo=FALSE}
 cumulfreq<-cumsum(freq)
 cumulfreq
 ```
 
 *Lastly, the relative cumulative distribution:*
 
-```{r}
+```{r echo=FALSE}
 cumsum(prop.table(freq))
 ```
 
@@ -337,7 +340,7 @@ cumsum(prop.table(freq))
 ```{r echo=FALSE}
 ggplot() + 
   geom_histogram(aes(airquality$Temp), col="black", 
-                 bg="darkgreen",alpha=0.2,
+                 bg="grey",alpha=0.2,
                  bins=5,
                  binwidth = 10,
                  boundary=0) + theme_clean() +
