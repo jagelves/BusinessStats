@@ -364,7 +364,7 @@ You will need the **Portfolio** data set. You can get the data using the link be
 
 *From* $1901$ through $2000$, both portfolios have behaved very similarly. Returns are between $-3$% and $3$%, there is no trend, and positive (negative) returns for X seem to match with positive (negative) returns of Y.
 
-```{r}
+```{r echo=FALSE}
 ggplot() +
   geom_line(aes(y=Portfolio$Y,x=seq(1901,2000)), col="blue") +
   geom_line(aes(y=Portfolio$X,x=seq(1901,2000)), col="grey") +
@@ -376,11 +376,11 @@ ggplot() +
 
 ### Exercise 4 {.unnumbered}
 
-A company surveyed 40 employees about their primary department. The responses are:
+A company surveyed 40 employees about their primary department. The responses are saved in the Excel file below:
 
-```{r}
-dept <- c("Marketing", "Sales", "Finance", "Operations", "Marketing", "HR", "IT", "Finance", "Customer Service", "Marketing", "Sales", "Finance", "Operations", "R&D", "Marketing", "Finance", "Customer Service", "Operations", "Marketing", "Finance", "HR", "Sales", "Customer Service", "Operations", "Marketing", "Finance", "IT", "R&D", "Customer Service", "Operations", "Sales", "Finance", "Customer Service", "Marketing", "Finance", "HR", "Customer Service", "Operations", "R&D", "Sales")
-```
+[{{< fa file-excel >}} Download Data](Survey.xlsx){.btn .btn-success}
+
+
 
 1.  Use R to create a frequency distribution table for these departments.
 
@@ -388,7 +388,8 @@ dept <- c("Marketing", "Sales", "Finance", "Operations", "Marketing", "HR", "IT"
 
 <summary>Answer</summary>
 
-```{r}
+```{r echo=FALSE}
+dept <- c("Marketing", "Sales", "Finance", "Operations", "Marketing", "HR", "IT", "Finance", "Customer Service", "Marketing", "Sales", "Finance", "Operations", "R&D", "Marketing", "Finance", "Customer Service", "Operations", "Marketing", "Finance", "HR", "Sales", "Customer Service", "Operations", "Marketing", "Finance", "IT", "R&D", "Customer Service", "Operations", "Sales", "Finance", "Customer Service", "Marketing", "Finance", "HR", "Customer Service", "Operations", "R&D", "Sales")
 table(dept)
 ```
 
@@ -400,7 +401,7 @@ table(dept)
 
 <summary>Answer</summary>
 
-```{r}
+```{r echo=FALSE}
 prop.table(table(dept)) * 100
 ```
 
@@ -412,7 +413,7 @@ prop.table(table(dept)) * 100
 
 <summary>Answer</summary>
 
-```{r}
+```{r echo=FALSE}
 ggplot() +
   geom_bar(aes(x=dept), bg="grey", 
            col="black", alpha=0.5) +
