@@ -22,6 +22,9 @@ Understanding and visualizing data distributions is a fundamental step in data a
 
 A **frequency distribution** is perhaps the most valuable tool for summarizing categorical data. It illustrates with a table the number of items within distinct, non-overlapping categories. An alternative known as the **relative frequency** quantifies the proportion of items in each category relative to the total number of observations. You can calculate it by taking the frequency of a particular class ($f_{i}$), and dividing it by the number of observations $n$. Relative frequency helps contextualize the data by highlighting the significance of each category compared to the whole.
 
+The frequency distribution can be illustrated by using a bar plot. A **bar plot** illustrates the frequency distribution (or relative frequency) of categorical data. It includes the classes in the horizontal axis and frequencies or relative frequencies in the vertical axis and has gaps between each bar.
+
+::: {.callout-example}
 **Example:** Consider data on students' answers to the question, what is your favorite food? You can see the data below:
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
@@ -62,8 +65,7 @@ ggplot()+geom_bar(aes(food), alpha=0.5,col="black") +theme_clean()+
   labs(x="",y="Frequency",title="Favorite Food Items",
        subtitle="Class of 25 Students")
 ```
-
-In sum, the **bar plot** illustrates the frequency distribution of categorical data. It includes the classes in the horizontal axis and frequencies or relative frequencies in the vertical axis and has gaps between each bar.
+:::
 
 ## Frequency Distributions (Numerical) {#sec-freqdistnum}
 
@@ -71,23 +73,32 @@ When working with numerical data, building a frequency distributions requires ad
 
 **1. Determine the Number of Classes:** The number of classes can be estimated using the $2^k$ rule, where $k$ is the smallest integer such that $2^k$ exceeds the total number of observations by the least amount. This ensures the chosen number of classes provides a reasonable level of granularity for summarizing the data.
 
-**Ex1:** If a data set has 50 observations, we would choose six classes since $2^6=64$ is greater than $50$ by the least amount.
+::: {.callout-example}
+**Example:** If a data set has 50 observations, we would choose six classes since $2^6=64$ is greater than $50$ by the least amount.
+:::
 
-Alternatively, you can use Sturges' rule to estimate the number of classes. This rule suggests using $k = \lceil 1 + 3.322 \log_{10}(n) \rceil$ where $n$ is the number of observations and $\lceil \cdot \rceil$ denotes the ceiling function (round up to the nearest integer).
+Alternatively, you can use **Sturges' rule** to estimate the number of classes. This rule suggests using $k = \lceil 1 + 3.322 \log_{10}(n) \rceil$ where $n$ is the number of observations and $\lceil \cdot \rceil$ denotes the ceiling function (round up to the nearest integer).
 
-**Ex2:** If a data set has 50 observations, $k = \lceil 1 + 3.322 \times 1.699 \approx 6.64 \rceil = 7$ so we would choose seven classes.
+::: {.callout-example}
+**Example:** If a data set has 50 observations, $k = \lceil 1 + 3.322 \times 1.699 \approx 6.64 \rceil = 7$ so we would choose seven classes.
+:::
 
 **2. Calculate the Width of Each Class:** The width of a class is determined using the formula:
 
 $$Width = \frac{Max-Min}{Number\ of\ Classes}$$
 
-*Ex: If the data set has 50 observations and the minimum value 20 and the maximum is 78, then the width of each class is* $58/6 \approx 9.7$. Hence, we can round up and use a class width of 10. It is important to note to always round up, as this ensures that all data points are included in an class.
+::: {.callout-example}
+**Example**: If the data set has 50 observations and the minimum value 20 and the maximum is 78, then the width of each class is $58/6 \approx 9.7$. Hence, we can round up and use a class width of 10. It is important to note to always round up, as this ensures that all data points are included in an class.
+:::
 
 **3. Establish Class Limits:** The class limits define the range of values in each class. These limits should be chosen such that each data point belongs to only one class.
 
-*Ex: Consider a data set of 50 observations where each class has a width of 10. Set the class limits of the first class to \[20,30). Note that the square bracket indicates that the point should be included in the class, whereas ) indicates that the point should not be included in the class. The six classes would be \[20,30), \[30,40), \[40,50), \[50,60), \[60,70), and \[70,80). By choosing these classes, each point belongs to only one class.*
+::: {.callout-example}
+**Example:** Consider a data set of 50 observations where each class has a width of 10. Set the class limits of the first class to \[20,30). Note that the square bracket indicates that the point should be included in the class, whereas ) indicates that the point should not be included in the class. The six classes would be \[20,30), \[30,40), \[40,50), \[50,60), \[60,70), and \[70,80). By choosing these classes, each point belongs to only one class.
+:::
 
-**Example:** Let's look at a snapshot of the Dow Jones Industrial 30 stock prices. Below you can see the data:
+## Determining the Classes for the Dow Jones Industrial
+Let's look at a snapshot of the Dow Jones Industrial 30 stock prices. Below you can see the data:
 
 ```{r echo=FALSE, fig.align='center'}
 knitr::include_graphics("images/dow.png")
@@ -101,11 +112,11 @@ Let's follow the steps to build the frequency distribution.
 
 **3. Establish Class Limits:** Since we have rounded up we can be flexible with our class limits. The following class limits are suggested \[20,120), \[120,220), \[220,320), \[320,420), and \[420,520). Note that each class has a width of $100$, and that each data point belongs to one single class.
 
-## Frequency Distributions in Excel (Categorical)
+## Frequency Distributions and Bar Graphs in Excel (Categorical)
 
 To construct frequency distributions in Excel, we will use **pivot tables**. A pivot table is an Excel tool that automatically summarizes and counts data, making it ideal for building frequency distributions. It allows you to quickly organize raw data into a structured table without writing any formulas.
 
-**Example:** Let's use the food data to construct a frequency distribution. Download the data below and follow the steps to build the pivot table. 
+Let's use the food data to construct a frequency distribution. Download the data below and follow the steps to build the pivot table. 
 
 [{{< fa file-excel >}} Download Data](food_data.xlsx){.btn .btn-success}
 
@@ -126,11 +137,11 @@ If you need more guidance please refer to the video demonstration below:
 
 </details>
 
-## Frequency Distributions in Excel (Numerical)
+## Frequency Distributions and Histograms in Excel (Numerical)
 
 To construct a frequency distribution for numerical data in Excel, we need an extra step compared to the categorical case. Since numerical data has no predefined categories, we must first create the bins manually using a helper column. Once the bins are in place, we can use a pivot table to count the observations in each class.
 
-**Example:** Let's use the Dow Jones stock price data to construct a frequency distribution. Download the data below and follow the steps.
+Let's use the Dow Jones stock price data to construct a frequency distribution. Download the data below and follow the steps.
 
 [{{< fa file-excel >}} Download Data](dow.xlsx){.btn .btn-success}
 

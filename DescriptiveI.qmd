@@ -16,7 +16,7 @@ details summary {
 
 # Descriptive Stats I
 
-Understanding the nature and classification of data is crucial for effective analysis and decision-making. Data are the building blocks of insights, providing a foundation for businesses, researchers, and policymakers to make informed choices. How we collect and categorize data significantly impacts how it is analyzed and interpreted. Below we highlight key types of data and their unique characteristics to help you get started with data analysis.
+Understanding the nature and classification of data is crucial for effective analysis and decision-making. Data are the building blocks of insights, providing a foundation for businesses, researchers, and policymakers to make informed choices. How we collect and categorize data significantly impacts how it is analyzed and interpreted. Below I highlight key types of data and their unique characteristics to help you get started with data analysis.
 
 ## Data and Types of Data
 
@@ -30,7 +30,9 @@ Let's start by defining data and the types of data structures that you might enc
 
 -   **Unstructured Data** does not conform to a pre-defined row-column format. *Ex: Text, video, and other multimedia.*
 
+::: {.callout-example}
 **Example:** Consider a retail store analyzing its sales performance. If the store collects data on the total revenue generated *by each location* on Black Friday, it is cross-sectional data. On the other hand, if the store tracks *weekly sales for the past year* to observe trends, it is time series data. Structured data, like sales figures stored in *spreadsheets*, allows for easy comparison and analysis. Meanwhile, customer feedback gathered from *social media posts and video reviews* represents unstructured data, requiring advanced tools to extract meaningful insights.
+:::
 
 ## Data Sets
 
@@ -49,11 +51,18 @@ A **data set** contains all data collected for a particular study. Understanding
 | Element 3 |     \#     |     \#     |
 |    ...    |    ...     |    ...     |
 
+::: {.callout-example}
 **Example:** Consider the dataset on electric vehicles (EVs) displayed below:
 
-```{r echo=FALSE, out.width="75%", fig.align='center'}
-knitr::include_graphics("images/EVs.png")
-```
+| Make   | Model       | Range_km | TopSpeed_kmh | Price_pounds | Charge_kmh |
+|--------|-------------|----------|--------------|--------------|------------|
+| Tesla  | Model 3     | 415      | 201          | 39,990       | 690        |
+| Tesla  | Model S     | 652      | 250          | 79,990       | 750        |
+| Nissan | Leaf        | 270      | 144          | 26,995       | 100        |
+| BMW    | i3          | 260      | 150          | 37,955       | 100        |
+| Audi   | e-tron      | 400      | 200          | 60,000       | 470        |
+| Ford   | Mustang     | 483      | 180          | 42,995       | 750        |
+| ...    | ...         | ...      | ...          | ...          | ...        |
 
 In this data set, each row represents an electric vehicle model, making the elements the specific EV models rather than the manufacturers. The variables collected for each model include:
 
@@ -65,6 +74,7 @@ In this data set, each row represents an electric vehicle model, making the elem
 -   Charge_kmh: Charging speed in kilometers per hour.
 
 An example observation is "Tesla Model 3," with the following data: Make: Tesla, Model: Model 3, Range_km: 415, TopSpeed_kmh: 201, Price_pounds: 39,990, Charge_kmh: 690.
+:::
 
 ## Scales of Measurement
 
@@ -84,11 +94,18 @@ The **scales of measurements** determine the amount and type of information cont
 
     -   With **ratio** data, the ratio between values is meaningful. The zero value is not arbitrary and represents the absence of the characteristic. All statistics are permissable including geometric mean, and the coefficient of variation. *Ex: Prices, Profits, Wins.*
 
+::: {.callout-example}
 **Example:** Let's keep using the EV example. Consider the new data set below:
 
-```{r echo=FALSE, out.width="75%", fig.align='center'}
-knitr::include_graphics("images/EVs2.png")
-```
+| Car          | Brand  | Range | Rating | Year |
+|--------------|--------|-------|--------|------|
+| Model 3      | Tesla  | 415   | 4      | 2021 |
+| Model S      | Tesla  | 652   | 5      | 2021 |
+| Leaf         | Nissan | 270   | 3      | 2021 |
+| i3           | BMW    | 260   | 3      | 2021 |
+| e-tron       | Audi   | 400   | 4      | 2021 |
+| Mustang      | Ford   | 483   | 4      | 2021 |
+| ...          | ...    | ...   | ...    | ...  |
 
 The variables can be classified as follows:
 
@@ -101,6 +118,7 @@ The variables can be classified as follows:
 -   Rating (Categorical - Ordinal) represents a rank or score (e.g., 4, 3, 2). The order matters, as higher ratings indicate better performance. However, the intervals between ratings are not consistent, so it is ordinal data.
 
 -   Year (Numerical - Interval) represents a point in time. While numerical, it is interval data because the zero point is arbitrary (e.g., year 0 does not indicate the "absence" of time), and ratios are not meaningful (e.g., 2020 is not "twice as late" as 1010).
+:::
 
 ## Exercises
 

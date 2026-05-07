@@ -74,7 +74,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-64ceb912cc357be7afec3ea88009646a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0540fb4dadadcc1d9f6579ae80c10607.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="site_libs/quarto-contrib/videojs/video.min.js"></script>
 <link href="site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
@@ -296,9 +296,10 @@ window.Quarto = {
   <ul>
   <li><a href="#frequency-distributions-categorical" id="toc-frequency-distributions-categorical" class="nav-link active" data-scroll-target="#frequency-distributions-categorical"><span class="header-section-number">2.1</span> Frequency Distributions (Categorical)</a></li>
   <li><a href="#sec-freqdistnum" id="toc-sec-freqdistnum" class="nav-link" data-scroll-target="#sec-freqdistnum"><span class="header-section-number">2.2</span> Frequency Distributions (Numerical)</a></li>
-  <li><a href="#frequency-distributions-in-excel-categorical" id="toc-frequency-distributions-in-excel-categorical" class="nav-link" data-scroll-target="#frequency-distributions-in-excel-categorical"><span class="header-section-number">2.3</span> Frequency Distributions in Excel (Categorical)</a></li>
-  <li><a href="#frequency-distributions-in-excel-numerical" id="toc-frequency-distributions-in-excel-numerical" class="nav-link" data-scroll-target="#frequency-distributions-in-excel-numerical"><span class="header-section-number">2.4</span> Frequency Distributions in Excel (Numerical)</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.5</span> Exercises</a>
+  <li><a href="#determining-the-classes-for-the-dow-jones-industrial" id="toc-determining-the-classes-for-the-dow-jones-industrial" class="nav-link" data-scroll-target="#determining-the-classes-for-the-dow-jones-industrial"><span class="header-section-number">2.3</span> Determining the Classes for the Dow Jones Industrial</a></li>
+  <li><a href="#frequency-distributions-and-bar-graphs-in-excel-categorical" id="toc-frequency-distributions-and-bar-graphs-in-excel-categorical" class="nav-link" data-scroll-target="#frequency-distributions-and-bar-graphs-in-excel-categorical"><span class="header-section-number">2.4</span> Frequency Distributions and Bar Graphs in Excel (Categorical)</a></li>
+  <li><a href="#frequency-distributions-and-histograms-in-excel-numerical" id="toc-frequency-distributions-and-histograms-in-excel-numerical" class="nav-link" data-scroll-target="#frequency-distributions-and-histograms-in-excel-numerical"><span class="header-section-number">2.5</span> Frequency Distributions and Histograms in Excel (Numerical)</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">2.6</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -348,6 +349,8 @@ details summary {
 <section id="frequency-distributions-categorical" class="level2" data-number="2.1">
 <h2 data-number="2.1" class="anchored" data-anchor-id="frequency-distributions-categorical"><span class="header-section-number">2.1</span> Frequency Distributions (Categorical)</h2>
 <p>A <strong>frequency distribution</strong> is perhaps the most valuable tool for summarizing categorical data. It illustrates with a table the number of items within distinct, non-overlapping categories. An alternative known as the <strong>relative frequency</strong> quantifies the proportion of items in each category relative to the total number of observations. You can calculate it by taking the frequency of a particular class (<span class="math inline">\(f_{i}\)</span>), and dividing it by the number of observations <span class="math inline">\(n\)</span>. Relative frequency helps contextualize the data by highlighting the significance of each category compared to the whole.</p>
+<p>The frequency distribution can be illustrated by using a bar plot. A <strong>bar plot</strong> illustrates the frequency distribution (or relative frequency) of categorical data. It includes the classes in the horizontal axis and frequencies or relative frequencies in the vertical axis and has gaps between each bar.</p>
+<div class="callout-example">
 <p><strong>Example:</strong> Consider data on students’ answers to the question, what is your favorite food? You can see the data below:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -361,23 +364,23 @@ details summary {
 <p>Simply observing raw data can make identifying the most and least popular items challenging. A frequency distribution organizes this information into a clear table, showcasing the popularity of each item. The frequency distribution of the table is displayed below:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
-<div id="ricuzsqefm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ricuzsqefm table {
+<div id="soohxshmvb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#soohxshmvb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ricuzsqefm thead, #ricuzsqefm tbody, #ricuzsqefm tfoot, #ricuzsqefm tr, #ricuzsqefm td, #ricuzsqefm th {
+#soohxshmvb thead, #soohxshmvb tbody, #soohxshmvb tfoot, #soohxshmvb tr, #soohxshmvb td, #soohxshmvb th {
   border-style: none;
 }
 
-#ricuzsqefm p {
+#soohxshmvb p {
   margin: 0;
   padding: 0;
 }
 
-#ricuzsqefm .gt_table {
+#soohxshmvb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -403,12 +406,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#ricuzsqefm .gt_caption {
+#soohxshmvb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ricuzsqefm .gt_title {
+#soohxshmvb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -420,7 +423,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#ricuzsqefm .gt_subtitle {
+#soohxshmvb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -432,7 +435,7 @@ details summary {
   border-top-width: 0;
 }
 
-#ricuzsqefm .gt_heading {
+#soohxshmvb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -444,13 +447,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#ricuzsqefm .gt_bottom_border {
+#soohxshmvb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ricuzsqefm .gt_col_headings {
+#soohxshmvb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -465,7 +468,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#ricuzsqefm .gt_col_heading {
+#soohxshmvb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -485,7 +488,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#ricuzsqefm .gt_column_spanner_outer {
+#soohxshmvb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -497,15 +500,15 @@ details summary {
   padding-right: 4px;
 }
 
-#ricuzsqefm .gt_column_spanner_outer:first-child {
+#soohxshmvb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ricuzsqefm .gt_column_spanner_outer:last-child {
+#soohxshmvb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ricuzsqefm .gt_column_spanner {
+#soohxshmvb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -517,11 +520,11 @@ details summary {
   width: 100%;
 }
 
-#ricuzsqefm .gt_spanner_row {
+#soohxshmvb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ricuzsqefm .gt_group_heading {
+#soohxshmvb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -547,7 +550,7 @@ details summary {
   text-align: left;
 }
 
-#ricuzsqefm .gt_empty_group_heading {
+#soohxshmvb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -562,15 +565,15 @@ details summary {
   vertical-align: middle;
 }
 
-#ricuzsqefm .gt_from_md > :first-child {
+#soohxshmvb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ricuzsqefm .gt_from_md > :last-child {
+#soohxshmvb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ricuzsqefm .gt_row {
+#soohxshmvb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -589,7 +592,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#ricuzsqefm .gt_stub {
+#soohxshmvb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -602,7 +605,7 @@ details summary {
   padding-right: 5px;
 }
 
-#ricuzsqefm .gt_stub_row_group {
+#soohxshmvb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -616,15 +619,15 @@ details summary {
   vertical-align: top;
 }
 
-#ricuzsqefm .gt_row_group_first td {
+#soohxshmvb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ricuzsqefm .gt_row_group_first th {
+#soohxshmvb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ricuzsqefm .gt_summary_row {
+#soohxshmvb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -634,16 +637,16 @@ details summary {
   padding-right: 5px;
 }
 
-#ricuzsqefm .gt_first_summary_row {
+#soohxshmvb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ricuzsqefm .gt_first_summary_row.thick {
+#soohxshmvb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ricuzsqefm .gt_last_summary_row {
+#soohxshmvb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -653,7 +656,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#ricuzsqefm .gt_grand_summary_row {
+#soohxshmvb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -663,7 +666,7 @@ details summary {
   padding-right: 5px;
 }
 
-#ricuzsqefm .gt_first_grand_summary_row {
+#soohxshmvb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -673,7 +676,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#ricuzsqefm .gt_last_grand_summary_row_top {
+#soohxshmvb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -683,11 +686,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#ricuzsqefm .gt_striped {
+#soohxshmvb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ricuzsqefm .gt_table_body {
+#soohxshmvb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -696,7 +699,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#ricuzsqefm .gt_footnotes {
+#soohxshmvb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -710,7 +713,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#ricuzsqefm .gt_footnote {
+#soohxshmvb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -719,7 +722,7 @@ details summary {
   padding-right: 5px;
 }
 
-#ricuzsqefm .gt_sourcenotes {
+#soohxshmvb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -733,7 +736,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#ricuzsqefm .gt_sourcenote {
+#soohxshmvb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -741,72 +744,72 @@ details summary {
   padding-right: 5px;
 }
 
-#ricuzsqefm .gt_left {
+#soohxshmvb .gt_left {
   text-align: left;
 }
 
-#ricuzsqefm .gt_center {
+#soohxshmvb .gt_center {
   text-align: center;
 }
 
-#ricuzsqefm .gt_right {
+#soohxshmvb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ricuzsqefm .gt_font_normal {
+#soohxshmvb .gt_font_normal {
   font-weight: normal;
 }
 
-#ricuzsqefm .gt_font_bold {
+#soohxshmvb .gt_font_bold {
   font-weight: bold;
 }
 
-#ricuzsqefm .gt_font_italic {
+#soohxshmvb .gt_font_italic {
   font-style: italic;
 }
 
-#ricuzsqefm .gt_super {
+#soohxshmvb .gt_super {
   font-size: 65%;
 }
 
-#ricuzsqefm .gt_footnote_marks {
+#soohxshmvb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ricuzsqefm .gt_asterisk {
+#soohxshmvb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ricuzsqefm .gt_indent_1 {
+#soohxshmvb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ricuzsqefm .gt_indent_2 {
+#soohxshmvb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ricuzsqefm .gt_indent_3 {
+#soohxshmvb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ricuzsqefm .gt_indent_4 {
+#soohxshmvb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ricuzsqefm .gt_indent_5 {
+#soohxshmvb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ricuzsqefm .katex-display {
+#soohxshmvb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ricuzsqefm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#soohxshmvb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -857,21 +860,32 @@ details summary {
 </div>
 </div>
 </div>
-<p>In sum, the <strong>bar plot</strong> illustrates the frequency distribution of categorical data. It includes the classes in the horizontal axis and frequencies or relative frequencies in the vertical axis and has gaps between each bar.</p>
+</div>
 </section>
 <section id="sec-freqdistnum" class="level2" data-number="2.2">
 <h2 data-number="2.2" class="anchored" data-anchor-id="sec-freqdistnum"><span class="header-section-number">2.2</span> Frequency Distributions (Numerical)</h2>
 <p>When working with numerical data, building a frequency distributions requires additional steps compared to categorical data. The challenge lies in the absence of predefined categories or classes. To construct a frequency distribution for numerical data, it is essential to determine the number, width, and limits of the classes. Here are the steps to create a frequency distribution when data is numerical:</p>
 <p><strong>1. Determine the Number of Classes:</strong> The number of classes can be estimated using the <span class="math inline">\(2^k\)</span> rule, where <span class="math inline">\(k\)</span> is the smallest integer such that <span class="math inline">\(2^k\)</span> exceeds the total number of observations by the least amount. This ensures the chosen number of classes provides a reasonable level of granularity for summarizing the data.</p>
-<p><strong>Ex1:</strong> If a data set has 50 observations, we would choose six classes since <span class="math inline">\(2^6=64\)</span> is greater than <span class="math inline">\(50\)</span> by the least amount.</p>
-<p>Alternatively, you can use Sturges’ rule to estimate the number of classes. This rule suggests using <span class="math inline">\(k = \lceil 1 + 3.322 \log_{10}(n) \rceil\)</span> where <span class="math inline">\(n\)</span> is the number of observations and <span class="math inline">\(\lceil \cdot \rceil\)</span> denotes the ceiling function (round up to the nearest integer).</p>
-<p><strong>Ex2:</strong> If a data set has 50 observations, <span class="math inline">\(k = \lceil 1 + 3.322 \times 1.699 \approx 6.64 \rceil = 7\)</span> so we would choose seven classes.</p>
+<div class="callout-example">
+<p><strong>Example:</strong> If a data set has 50 observations, we would choose six classes since <span class="math inline">\(2^6=64\)</span> is greater than <span class="math inline">\(50\)</span> by the least amount.</p>
+</div>
+<p>Alternatively, you can use <strong>Sturges’ rule</strong> to estimate the number of classes. This rule suggests using <span class="math inline">\(k = \lceil 1 + 3.322 \log_{10}(n) \rceil\)</span> where <span class="math inline">\(n\)</span> is the number of observations and <span class="math inline">\(\lceil \cdot \rceil\)</span> denotes the ceiling function (round up to the nearest integer).</p>
+<div class="callout-example">
+<p><strong>Example:</strong> If a data set has 50 observations, <span class="math inline">\(k = \lceil 1 + 3.322 \times 1.699 \approx 6.64 \rceil = 7\)</span> so we would choose seven classes.</p>
+</div>
 <p><strong>2. Calculate the Width of Each Class:</strong> The width of a class is determined using the formula:</p>
 <p><span class="math display">\[Width = \frac{Max-Min}{Number\ of\ Classes}\]</span></p>
-<p><em>Ex: If the data set has 50 observations and the minimum value 20 and the maximum is 78, then the width of each class is</em> <span class="math inline">\(58/6 \approx 9.7\)</span>. Hence, we can round up and use a class width of 10. It is important to note to always round up, as this ensures that all data points are included in an class.</p>
+<div class="callout-example">
+<p><strong>Example</strong>: If the data set has 50 observations and the minimum value 20 and the maximum is 78, then the width of each class is <span class="math inline">\(58/6 \approx 9.7\)</span>. Hence, we can round up and use a class width of 10. It is important to note to always round up, as this ensures that all data points are included in an class.</p>
+</div>
 <p><strong>3. Establish Class Limits:</strong> The class limits define the range of values in each class. These limits should be chosen such that each data point belongs to only one class.</p>
-<p><em>Ex: Consider a data set of 50 observations where each class has a width of 10. Set the class limits of the first class to [20,30). Note that the square bracket indicates that the point should be included in the class, whereas ) indicates that the point should not be included in the class. The six classes would be [20,30), [30,40), [40,50), [50,60), [60,70), and [70,80). By choosing these classes, each point belongs to only one class.</em></p>
-<p><strong>Example:</strong> Let’s look at a snapshot of the Dow Jones Industrial 30 stock prices. Below you can see the data:</p>
+<div class="callout-example">
+<p><strong>Example:</strong> Consider a data set of 50 observations where each class has a width of 10. Set the class limits of the first class to [20,30). Note that the square bracket indicates that the point should be included in the class, whereas ) indicates that the point should not be included in the class. The six classes would be [20,30), [30,40), [40,50), [50,60), [60,70), and [70,80). By choosing these classes, each point belongs to only one class.</p>
+</div>
+</section>
+<section id="determining-the-classes-for-the-dow-jones-industrial" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="determining-the-classes-for-the-dow-jones-industrial"><span class="header-section-number">2.3</span> Determining the Classes for the Dow Jones Industrial</h2>
+<p>Let’s look at a snapshot of the Dow Jones Industrial 30 stock prices. Below you can see the data:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -886,10 +900,10 @@ details summary {
 <p><strong>2. Calculate the Width of Each Class:</strong> The smallest values in the data set is <span class="math inline">\(23\)</span> and the maximum is <span class="math inline">\(501\)</span>. This gives us a range of <span class="math inline">\(478\)</span>. Now we can just take the range and divide by five to get <span class="math inline">\(95.6\)</span>. To make things simple we can round to <span class="math inline">\(100\)</span> and use a class width of <span class="math inline">\(100\)</span>.</p>
 <p><strong>3. Establish Class Limits:</strong> Since we have rounded up we can be flexible with our class limits. The following class limits are suggested [20,120), [120,220), [220,320), [320,420), and [420,520). Note that each class has a width of <span class="math inline">\(100\)</span>, and that each data point belongs to one single class.</p>
 </section>
-<section id="frequency-distributions-in-excel-categorical" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="frequency-distributions-in-excel-categorical"><span class="header-section-number">2.3</span> Frequency Distributions in Excel (Categorical)</h2>
+<section id="frequency-distributions-and-bar-graphs-in-excel-categorical" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="frequency-distributions-and-bar-graphs-in-excel-categorical"><span class="header-section-number">2.4</span> Frequency Distributions and Bar Graphs in Excel (Categorical)</h2>
 <p>To construct frequency distributions in Excel, we will use <strong>pivot tables</strong>. A pivot table is an Excel tool that automatically summarizes and counts data, making it ideal for building frequency distributions. It allows you to quickly organize raw data into a structured table without writing any formulas.</p>
-<p><strong>Example:</strong> Let’s use the food data to construct a frequency distribution. Download the data below and follow the steps to build the pivot table.</p>
+<p>Let’s use the food data to construct a frequency distribution. Download the data below and follow the steps to build the pivot table.</p>
 <p><a href="food_data.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <p><strong>1. Select the Data:</strong> Select the data range in Excel while including the headers.</p>
 <p><strong>2. Insert a Pivot Table:</strong> Go to <strong>Insert → Pivot Chart</strong>. In the dialog box, confirm the data range and choose <strong>Existing Worksheet</strong> to place the pivot table next to the data. Click <strong>OK</strong>.</p>
@@ -902,10 +916,10 @@ Video
 <div class="quarto-video"><video id="video_shortcode_videojs_video1" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="BarPlot.mov"></video></div>
 </details>
 </section>
-<section id="frequency-distributions-in-excel-numerical" class="level2" data-number="2.4">
-<h2 data-number="2.4" class="anchored" data-anchor-id="frequency-distributions-in-excel-numerical"><span class="header-section-number">2.4</span> Frequency Distributions in Excel (Numerical)</h2>
+<section id="frequency-distributions-and-histograms-in-excel-numerical" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="frequency-distributions-and-histograms-in-excel-numerical"><span class="header-section-number">2.5</span> Frequency Distributions and Histograms in Excel (Numerical)</h2>
 <p>To construct a frequency distribution for numerical data in Excel, we need an extra step compared to the categorical case. Since numerical data has no predefined categories, we must first create the bins manually using a helper column. Once the bins are in place, we can use a pivot table to count the observations in each class.</p>
-<p><strong>Example:</strong> Let’s use the Dow Jones stock price data to construct a frequency distribution. Download the data below and follow the steps.</p>
+<p>Let’s use the Dow Jones stock price data to construct a frequency distribution. Download the data below and follow the steps.</p>
 <p><a href="dow.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <p><strong>1. Create a Bin Column:</strong> In column C, add the header “Bins”. In cell C2, enter the following <code>IFS</code> formula to assign each stock price to its corresponding class:</p>
 <pre><code>=IFS(B2&lt;120,"[20,120)",B2&lt;220,"[120,220)",B2&lt;320,"[220,320)",
@@ -952,8 +966,8 @@ Video
 <div class="quarto-video"><video id="video_shortcode_videojs_video2" class="video-js vjs-default-skin vjs-fluid" controls="" preload="auto" data-setup="{}" title=""><source src="Histogram.mov"></video></div>
 </details>
 </section>
-<section id="exercises" class="level2" data-number="2.5">
-<h2 data-number="2.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.5</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="2.6">
+<h2 data-number="2.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">2.6</span> Exercises</h2>
 <p>The following exercises will help you practice summarizing data with tables and simple graphs. In particular, the exercises work on:</p>
 <ul>
 <li><p>Developing frequency distributions for both categorical and numerical data.</p></li>

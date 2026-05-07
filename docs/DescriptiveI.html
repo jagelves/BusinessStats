@@ -40,7 +40,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-64ceb912cc357be7afec3ea88009646a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0540fb4dadadcc1d9f6579ae80c10607.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -274,7 +274,7 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>Understanding the nature and classification of data is crucial for effective analysis and decision-making. Data are the building blocks of insights, providing a foundation for businesses, researchers, and policymakers to make informed choices. How we collect and categorize data significantly impacts how it is analyzed and interpreted. Below we highlight key types of data and their unique characteristics to help you get started with data analysis.</p>
+<p>Understanding the nature and classification of data is crucial for effective analysis and decision-making. Data are the building blocks of insights, providing a foundation for businesses, researchers, and policymakers to make informed choices. How we collect and categorize data significantly impacts how it is analyzed and interpreted. Below I highlight key types of data and their unique characteristics to help you get started with data analysis.</p>
 <section id="data-and-types-of-data" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="data-and-types-of-data"><span class="header-section-number">1.1</span> Data and Types of Data</h2>
 <p>Let’s start by defining data and the types of data structures that you might encounter when conducting analysis. <strong>Data</strong> are facts and figures collected, analyzed and summarized for presentation and interpretation. Data can be classified as:</p>
@@ -284,7 +284,9 @@ details summary {
 <li><p><strong>Structured Data</strong> resides in a predefined row-column format (tidy). <em>Ex: spreadsheet data.</em></p></li>
 <li><p><strong>Unstructured Data</strong> does not conform to a pre-defined row-column format. <em>Ex: Text, video, and other multimedia.</em></p></li>
 </ul>
+<div class="callout-example">
 <p><strong>Example:</strong> Consider a retail store analyzing its sales performance. If the store collects data on the total revenue generated <em>by each location</em> on Black Friday, it is cross-sectional data. On the other hand, if the store tracks <em>weekly sales for the past year</em> to observe trends, it is time series data. Structured data, like sales figures stored in <em>spreadsheets</em>, allows for easy comparison and analysis. Meanwhile, customer feedback gathered from <em>social media posts and video reviews</em> represents unstructured data, requiring advanced tools to extract meaningful insights.</p>
+</div>
 </section>
 <section id="data-sets" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="data-sets"><span class="header-section-number">1.2</span> Data Sets</h2>
@@ -325,16 +327,86 @@ details summary {
 </tr>
 </tbody>
 </table>
+<div class="callout-example">
 <p><strong>Example:</strong> Consider the dataset on electric vehicles (EVs) displayed below:</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/EVs.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
-</div>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 18%">
+<col style="width: 14%">
+<col style="width: 19%">
+<col style="width: 19%">
+<col style="width: 16%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Make</th>
+<th>Model</th>
+<th>Range_km</th>
+<th>TopSpeed_kmh</th>
+<th>Price_pounds</th>
+<th>Charge_kmh</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tesla</td>
+<td>Model 3</td>
+<td>415</td>
+<td>201</td>
+<td>39,990</td>
+<td>690</td>
+</tr>
+<tr class="even">
+<td>Tesla</td>
+<td>Model S</td>
+<td>652</td>
+<td>250</td>
+<td>79,990</td>
+<td>750</td>
+</tr>
+<tr class="odd">
+<td>Nissan</td>
+<td>Leaf</td>
+<td>270</td>
+<td>144</td>
+<td>26,995</td>
+<td>100</td>
+</tr>
+<tr class="even">
+<td>BMW</td>
+<td>i3</td>
+<td>260</td>
+<td>150</td>
+<td>37,955</td>
+<td>100</td>
+</tr>
+<tr class="odd">
+<td>Audi</td>
+<td>e-tron</td>
+<td>400</td>
+<td>200</td>
+<td>60,000</td>
+<td>470</td>
+</tr>
+<tr class="even">
+<td>Ford</td>
+<td>Mustang</td>
+<td>483</td>
+<td>180</td>
+<td>42,995</td>
+<td>750</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
 <p>In this data set, each row represents an electric vehicle model, making the elements the specific EV models rather than the manufacturers. The variables collected for each model include:</p>
 <ul>
 <li>Make: The manufacturer of the EV.</li>
@@ -345,6 +417,7 @@ details summary {
 <li>Charge_kmh: Charging speed in kilometers per hour.</li>
 </ul>
 <p>An example observation is “Tesla Model 3,” with the following data: Make: Tesla, Model: Model 3, Range_km: 415, TopSpeed_kmh: 201, Price_pounds: 39,990, Charge_kmh: 690.</p>
+</div>
 </section>
 <section id="scales-of-measurement" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="scales-of-measurement"><span class="header-section-number">1.3</span> Scales of Measurement</h2>
@@ -362,16 +435,70 @@ details summary {
 <li><p>With <strong>ratio</strong> data, the ratio between values is meaningful. The zero value is not arbitrary and represents the absence of the characteristic. All statistics are permissable including geometric mean, and the coefficient of variation. <em>Ex: Prices, Profits, Wins.</em></p></li>
 </ul></li>
 </ul>
+<div class="callout-example">
 <p><strong>Example:</strong> Let’s keep using the EV example. Consider the new data set below:</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/EVs2.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
-</div>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Car</th>
+<th>Brand</th>
+<th>Range</th>
+<th>Rating</th>
+<th>Year</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Model 3</td>
+<td>Tesla</td>
+<td>415</td>
+<td>4</td>
+<td>2021</td>
+</tr>
+<tr class="even">
+<td>Model S</td>
+<td>Tesla</td>
+<td>652</td>
+<td>5</td>
+<td>2021</td>
+</tr>
+<tr class="odd">
+<td>Leaf</td>
+<td>Nissan</td>
+<td>270</td>
+<td>3</td>
+<td>2021</td>
+</tr>
+<tr class="even">
+<td>i3</td>
+<td>BMW</td>
+<td>260</td>
+<td>3</td>
+<td>2021</td>
+</tr>
+<tr class="odd">
+<td>e-tron</td>
+<td>Audi</td>
+<td>400</td>
+<td>4</td>
+<td>2021</td>
+</tr>
+<tr class="even">
+<td>Mustang</td>
+<td>Ford</td>
+<td>483</td>
+<td>4</td>
+<td>2021</td>
+</tr>
+<tr class="odd">
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+<td>…</td>
+</tr>
+</tbody>
+</table>
 <p>The variables can be classified as follows:</p>
 <ul>
 <li><p>Car (Categorical - Nominal), consists of names of cars, which are labels used to identify each row. The order of these names does not matter, making it nominal data.</p></li>
@@ -380,6 +507,7 @@ details summary {
 <li><p>Rating (Categorical - Ordinal) represents a rank or score (e.g., 4, 3, 2). The order matters, as higher ratings indicate better performance. However, the intervals between ratings are not consistent, so it is ordinal data.</p></li>
 <li><p>Year (Numerical - Interval) represents a point in time. While numerical, it is interval data because the zero point is arbitrary (e.g., year 0 does not indicate the “absence” of time), and ratios are not meaningful (e.g., 2020 is not “twice as late” as 1010).</p></li>
 </ul>
+</div>
 </section>
 <section id="exercises" class="level2" data-number="1.4">
 <h2 data-number="1.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">1.4</span> Exercises</h2>
