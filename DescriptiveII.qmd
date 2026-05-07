@@ -381,7 +381,6 @@ A company surveyed 40 employees about their primary department. The responses ar
 [{{< fa file-excel >}} Download Data](Survey.xlsx){.btn .btn-success}
 
 
-
 1.  Use R to create a frequency distribution table for these departments.
 
 <details>
@@ -426,11 +425,10 @@ ggplot() +
 
 ### Exercise 5 {.unnumbered}
 
-A class of 50 students took a business statistics exam (out of 100 points). Their scores were:
+A class of 50 students took a business statistics exam (out of 100 points). Their scores were recorded in Excel:
 
-```{r}
-scores <- c(75.6, 66.9, 83.4, 67.2, 95.3, 90.5, 54.4, 76.8, 88.5, 63.3, 95.1, 69.9, 80.4, 91.9, 66.7, 58.0, 81.9, 78.7, 51.9, 55.4, 94.5, 71.8, 65.8, 54.6, 92.6, 68.7, 76.4, 57.1, 72.4, 90.1, 54.4, 66.6, 84.2, 74.3, 95.6, 51.6, 79.9, 65.8, 89.5, 70.4, 88.4, 83.3, 87.7, 62.3, 59.1, 60.3, 53.5, 50.1, 51.1, 52.6)
-```
+[{{< fa file-excel >}} Download Data](Busstat.xlsx){.btn .btn-success}
+
 
 1.  Construct a histogram using 7 classes with width 10, starting at 50 (bins: \[50,60), \[60,70), etc.). Use `geom_histogram()` with appropriate parameters. In which bin is the highest frequency? How many students scored in that range?
 
@@ -438,7 +436,9 @@ scores <- c(75.6, 66.9, 83.4, 67.2, 95.3, 90.5, 54.4, 76.8, 88.5, 63.3, 95.1, 69
 
 <summary>Answer</summary>
 
-```{r}
+```{r echo=FALSE}
+scores <- c(75.6, 66.9, 83.4, 67.2, 95.3, 90.5, 54.4, 76.8, 88.5, 63.3, 95.1, 69.9, 80.4, 91.9, 66.7, 58.0, 81.9, 78.7, 51.9, 55.4, 94.5, 71.8, 65.8, 54.6, 92.6, 68.7, 76.4, 57.1, 72.4, 90.1, 54.4, 66.6, 84.2, 74.3, 95.6, 51.6, 79.9, 65.8, 89.5, 70.4, 88.4, 83.3, 87.7, 62.3, 59.1, 60.3, 53.5, 50.1, 51.1, 52.6)
+
 ggplot() + 
   geom_histogram(aes(x=scores),
                  breaks = seq(50, 100, by = 10),
