@@ -381,7 +381,7 @@ A company surveyed 40 employees about their primary department. The responses ar
 [{{< fa file-excel >}} Download Data](Survey.xlsx){.btn .btn-success}
 
 
-1.  Use R to create a frequency distribution table for these departments.
+1.  Create a frequency distribution table for these departments.
 
 <details>
 
