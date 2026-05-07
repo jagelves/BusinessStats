@@ -161,20 +161,22 @@ B2<420,"[320,420)",B2<=520,"[420,520)")
 
 Copy the formula down for all 30 rows. Each stock price will now be assigned to one of the five classes defined in @sec-freqdistnum. Press `Ctrl + ~` to verify the formulas are correct, then press `Ctrl + ~` again to return to normal view.
 
-**2. Insert a Pivot Table:** Select the data. Go to **Insert → PivotTable**, confirm the data range, and select **Existing Worksheet**. Click **OK**.
+**2. Insert a Pivot Table:** Select the data. Go to `Insert → PivotTable`, confirm the data range, and select `Existing Worksheet`. Click `OK`.
 
-**3. Configure the Pivot Table:** In the PivotTable Fields panel, drag the **Bins** field to the **Rows** area and drag it again to the **Values** area. Excel will count the number of stock prices in each bin, giving you the frequency distribution. You should obtain the following result:
+**3. Configure the Pivot Table:** In the PivotTable Fields panel, drag the `Bins` field to the `Rows` area and drag it again to the `Values` area. Excel will count the number of stock prices in each bin, giving you the frequency distribution. Since the bin labels are text, Excel may sort them alphabetically, placing `[120,220)` before `[20,120)`. To fix this, right-click on the `[20,120)` bin in the pivot table and select `Move → Move to Beginning`. The bins should now appear in the correct numerical order.
 
-| Bin | Frequency |
-|-----------|-----------|
-| [20,120)  | 9         |
-| [120,220) | 12        |
-| [220,320) | 5         |
-| [320,420) | 3         |
-| [420,520) | 1         |
+**4. Add the Cumulative Distribution:** Drag the `Bins` field to the `Values` area a second time. Click on the field in the `Values` area and select `Value Field Settings`. Click on the `Show Values As` tab and choose `% Running Total In` from the dropdown menu. Make sure the base field is set to `Bins`. Click `OK`. Excel will display the cumulative percentage for each bin, showing the proportion of stock prices that fall at or below each class.  You should obtain the following frequency distribution:
 
-**4. Insert a Histogram:** With the pivot table selected, go to 
-**Insert → Charts → Clustered Column**. Excel will generate a bar chart. To convert it into a proper histogram, right-click on any bar and select **Format Data Series**. Set the **Gap Width** to **0%**. This removes the spaces between bars, which is the key visual distinction between a bar chart (used for categorical data) and a histogram (used for numerical data).
+| Bin           | Frequency | Cumulative % |
+|---------------|-----------|--------------|
+| 1. [20,120)   | 9         | 30.00%       |
+| 2. [120,220)  | 12        | 70.00%       |
+| 3. [220,320)  | 5         | 86.67%       |
+| 4. [320,420)  | 3         | 96.67%       |
+| 5. [420,520)  | 1         | 100.00%      |
+
+**5. Insert a Histogram:** With the pivot table selected, go to 
+`Insert → Charts → Clustered Column`. Excel will generate a bar chart. To convert it into a proper histogram, right-click on any bar and select `Format Data Series`. Set the `Gap Width` to `0%`. This removes the spaces between bars, which is the key visual distinction between a bar chart (used for categorical data) and a histogram (used for numerical data).
 
 The video below walks you through each of these steps:
 
