@@ -16,7 +16,7 @@ details summary {
 
 # Descriptive Statistics III
 
-Understanding where the "center" of a dataset lies is a fundamental step when interpreting and analyzing data. Measures of central location provide different ways to identify the "typical" value in a dataset, each with its unique strengths and limitations.
+Understanding where the "center" of a dataset lies is a fundamental step when interpreting and analyzing data. Measures of central location provide different ways to identify the "typical" value in a dataset, each with its unique strengths and limitations. Below I survey some of the most popular measures of central location.
 
 ## The Mean
 
@@ -24,47 +24,78 @@ The **mean** is the average value for a numerical variable. It is a widely under
 
 The sample statistic is estimated by:
 
+::: {.callout-example}
 $$
 \bar{x}=\frac{\sum x_{i}}{n}
 $$
 
-where $x_i$ is observation $i$, and $n$ is the number of observations in the sample. The formula instructs you to add up all of the values in a variable and then divide by the sample size. If you wish to estimate the population parameter you can use:
+where $x_i$ is observation $i$, and $n$ is the number of observations in the sample. 
+:::
 
+The formula instructs you to add up all of the values in a variable and then divide by the sample size. If you wish to estimate the population parameter you can use:
+
+::: {.callout-example}
 $$
 \mu=\frac{\sum x_{i}}{N}
 $$
 
 where $N$ is the population size.
+:::
 
-*Ex 1: Consider the following sample of numbers* $x=\{1,4,2,1\}$. *The mean would be equal to* $\bar{x}=\frac{1+4+2+1}{4}$ *or* $\bar{x}=2$.
+Let's consider a couple of example to highlight how the formula works.
 
-*Ex 2: Consider the following sample of numbers* $x=\{1,4,2,1,100\}$. The mean is $\bar{x}=21.6$. Although most of the numbers are in the range $(1,4)$, the $100$ biases the mean to $21.6$.
+::: {.callout-example}
+**Example 1:** Consider the following sample of numbers $x=\{1,4,2,1\}$. The mean would be equal to $\bar{x}=\frac{1+4+2+1}{4}$ or $\bar{x}=2$.
+:::
+
+::: {.callout-example}
+**Example 2:** Consider the following sample of numbers $x=\{1,4,2,1,100\}$. The mean is $\bar{x}=21.6$. Although most of the numbers are in the range $(1,4)$, the $100$ biases the mean to $21.6$.
+:::
 
 ## The Median
 
 The **median** is the value in the middle when data is organized in ascending order. When $n$ is even, the median is the average between the two middle values. The median is resistant to outliers, making it an ideal measure for skewed data or data sets with irregular distributions. It is particularly useful for ordinal data, where precise ranking is important. However, the median does not utilize all data points, which can lead to less precise comparisons compared to other measures like the mean.
 
-*Ex 1: Consider the following numbers* $x=\{1,4,2,1\}$. We first sort the data to obtain $x_{sorted}=\{1,1,2,4\}$. Since the number of observations is even ($n=4$), the median is the average of the two middle numbers $(1,2)$. $median_x=\frac{1+2}{2}$ or $1.5$.
+::: {.callout-example}
+**Example 1:** Consider the following numbers $x=\{1,4,2,1\}$. We first sort the data to obtain $x_{sorted}=\{1,1,2,4\}$. Since the number of observations is even ($n=4$), the median is the average of the two middle numbers $(1,2)$. $median_x=\frac{1+2}{2}$ or $1.5$.
+:::
 
-*Ex 2: Consider the following numbers* $x=\{1,4,2,1,100\}$. We once again sort the number obtaining $x_{sorted}=\{1,1,2,4,100\}$. Since $n=5$ in this case we can identify the median as the third value in $x_{sorted}$. $median_x=2$. Note that the inclusion of $100$ in the data did not change much the measure of central location.
+::: {.callout-example}
+**Example 2:** Consider the following numbers $x=\{1,4,2,1,100\}$. We once again sort the number obtaining $x_{sorted}=\{1,1,2,4,100\}$. Since $n=5$ in this case we can identify the median as the third value in $x_{sorted}$. $median_x=2$. Note that the inclusion of $100$ in the data did not change much the measure of central location.
+:::
 
 ## The Mode
 
 The **mode** is the value with highest frequency from a set of observations. This measure is particularly useful for categorical data as it helps determine popularity of values. It can be applied to both numerical and non-numerical data sets. The mode has its limitations; it may not exist in cases where all values occur with equal frequency, and there may be multiple modes, which can complicate interpretation. Additionally, since the mode focuses only on the most frequent value, it does not account for other data points, limiting its overall utility as a comprehensive measure.
 
-*Ex 1: Consider the following numbers* $x=\{1,4,2,1\}$. Since $1$ is repeated twice and all other numbers just repeated once, $x_{mode}=1$.
+::: {.callout-example}
+**Example 1:** Consider the following numbers $x=\{1,4,2,1\}$. Since $1$ is repeated twice and all other numbers just repeated once, $x_{mode}=1$.
+:::
 
-*Ex 2: Consider the following numbers* $x=\{1,4,2,1,4\}$. Now $4$ is also repeated twice. The variable has two modes $x_{mode}=\{1,2\}$. $x$ is said to be bimodal.
+::: {.callout-example}
+**Example 2:** Consider the following numbers $x=\{1,4,2,1,4\}$. Now $4$ is also repeated twice. The variable has two modes $x_{mode}=\{1,2\}$. $x$ is said to be bimodal.
+:::
 
 ## The Weighted Mean
 
 The weighted mean is useful in scenarios where some data points are more significant than others, such as in financial portfolios, grade point averages, or survey results, as it accounts for variability in importance across observations. This measure requires additional information in the form of weights ($w_i$), which may not always be available or accurate. It is calculated the sum product of values ($x_i$) and weights ($w_i$) and then dividing by the sum of weights. Mathematically, the weighted average is:
 
+::: {.callout-example}
 $$
 \bar{x}_w=\frac{\sum w_{i}x_{i}}{\sum w_{i}}
 $$
+where $w_{i}$ represents the weight of the ith observation.
+:::
 
-*Ex: Consider three different stocks* $S=\{T, C, X\}$ with stock returns of $R=\{2,4,10\}$. Each stock has a weight in the portfolio of $W=\{0.3,0.2,0.5\}$. The average return of the portfolio is $\bar{x}_{weighted}=\frac{0.6+0.8+5}{1}$ or $\bar{x}_{weighted}=6.4$.
+Let's consider once more a couple of examples.
+
+::: {.callout-example}
+**Example 1: Consider three different stocks** $S=\{T, C, X\}$ with stock returns of $R=\{2,4,10\}$. Each stock has a weight in the portfolio of $W=\{0.3,0.2,0.5\}$. The average return of the portfolio is $\bar{x}_{weighted}=\frac{0.6+0.8+5}{1}$ or $\bar{x}_{weighted}=6.4$.
+:::
+
+::: {.callout-example}
+**Example 2:**
+:::
 
 ## The Geometric Mean
 
