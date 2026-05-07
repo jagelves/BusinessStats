@@ -132,7 +132,7 @@ Let's use the food data to construct a frequency distribution. Download the data
 
 **3. Configure the Pivot Table:** In the PivotTable Fields panel on the right, drag the `Favorite Food` field to the `Categories` area and drag it again to the `Values` area. Excel will automatically count the occurrences of each food item, giving you the frequency distribution.
 
-**4. Add the Relative Frequency:** Next to the frequency column in the pivot table, add a new column labeled "Relative Frequency". In the first cell, enter the formula `=B2/SUM($B$2:$B$5)`, where column B contains the frequencies. The `$` signs lock the denominator so it does not change as you copy the formula down. Copy the formula down for all food items. Each value represents the proportion of students who selected that food item out of the total of 25.
+**4. Add the Relative Frequency:** Drag the `Favorite Food` field to the `Values` area a second time. By default, Excel will show it as a count. To convert it to a percentage, click on the field in the `Values` area and select `Value Field Settings`. Then click on the `Show Values As` tab and choose `% of Column Total` from the dropdown menu. Click `OK`. Excel will automatically display the proportion of each food item relative to the total, giving you the relative frequency distribution directly in the pivot table.
 
 If you need more guidance please refer to the video demonstration below:
 
