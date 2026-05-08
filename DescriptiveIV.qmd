@@ -25,7 +25,7 @@ In this book you will find formulas for calculating sample statistics and popula
 
 This is the simplest measure of dispersion, defined as the difference between the largest and smallest values in a variable. While straightforward, the range only accounts for the extremes and does not reflect the variability within the variable. The **range** is calculated by:
 
-::: {.callout-example}
+::: {.callout-formula}
 $$Range=Maximum-Minimum$$
 :::
 
