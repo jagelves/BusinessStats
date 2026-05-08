@@ -25,21 +25,30 @@ In this book you will find formulas for calculating sample statistics and popula
 
 This is the simplest measure of dispersion, defined as the difference between the largest and smallest values in a variable. While straightforward, the range only accounts for the extremes and does not reflect the variability within the variable. The **range** is calculated by:
 
+::: {.callout-example}
 $$Range=Maximum-Minimum$$
-
-*Ex: Consider the data* $x=\{480, 1050, 1400, 2500, 3200\}$. The range is given by $Range=3200-480=2720$.
+:::
+**Example:** Consider the data $x=\{480, 1050, 1400, 2500, 3200\}$. The range is given by $Range=3200-480=2720$.
+:::
 
 ## The Variance
 
 The variance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by finding their average.The population parameter is given by:
 
+::: {.callout-example}
 $$\sigma^2= \frac{\sum (x_i-\mu)^2}{N}$$
+where $\mu$ is the population mean and $N$ is the population size.
+:::
 
-while the sample statistic is
+The sample statistic is given by:
 
+::: {.callout-example}
 $$s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}$$
+where $\bar{x}$ is the sample mean and $n$ is the sample size.
+:::
 
-**Example:** Let's consider a sample of the price of Ether (a famous cryptocurrency). Below is a graph of the prices:
+
+**Example 1:** Let's consider a sample of the price of Ether (a famous cryptocurrency). Below is a graph of the prices:
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/Ether.png")
