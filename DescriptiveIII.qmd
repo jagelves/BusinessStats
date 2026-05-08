@@ -459,12 +459,13 @@ You can use the command `GEOMEAN(1.3,1.2308,1.125,1.1667)-1` in Excel to verify 
 
 Suppose that you want to invest \$1000 dollars in a stock that is predicted to yield the following returns in the next four years. Calculate both the arithmetic mean and the geometric mean. Use the geometric mean to estimate how much money you would have by the end of year 4.
 
-    | Year | Annual Return |
-    |:----:|:-------------:|
-    |  1   |     17.3      |
-    |  2   |     19.6      |
-    |  3   |      6.8      |
-    |  4   |      8.2      |
+
+| Year | Annual Return |
+|:----:|:-------------:|
+|  1   |     17.3      |
+|  2   |     19.6      |
+|  3   |      6.8      |
+|  4   |      8.2      |
 
 <details>
 
