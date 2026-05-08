@@ -18,9 +18,6 @@ details summary {
 
 Measures of dispersion provide insights into how much the values in a data set deviate from the central tendency. In a business context, understanding variability is essential for assessing risk, as it helps decision-makers anticipate fluctuations in revenue, costs, and market conditions. Below, we explore the main statistics that help us quantify variability and use them to make better business decisions.
 
-## Sample Vs. Population Statistics
-In this book you will find formulas for calculating sample statistics and population parameters. In general, you will use population formulas when you have data for the entire group you care about or when you are working with a theoretical distribution and the parameter is known; population formulas use $N$ in denominators and estimate parameters. Use sample formulas when your data are a subset drawn from a larger population and you want unbiased estimators of the population parameters; sample formulas use $n$ and the degrees of freedom correction. In practice most empirical work uses sample formulas because we rarely observe entire populations; below you will see both population and sample versions so you can choose the correct one depending on whether your data represent the full population or a sample.
-
 ## The Range
 
 This is the simplest measure of dispersion, defined as the difference between the largest and smallest values in a variable. While straightforward, the range only accounts for the extremes and does not reflect the variability within the variable. The **range** is calculated by:
@@ -38,14 +35,14 @@ $$Range=Maximum-Minimum$$
 
 The variance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by finding their average.The **variance population parameter** is given by:
 
-::: {.callout-example}
+::: {.callout-formula}
 $$\sigma^2= \frac{\sum (x_i-\mu)^2}{N}$$
 where $\mu$ is the population mean and $N$ is the population size.
 :::
 
 The **variance sample statistic** is given by:
 
-::: {.callout-example}
+::: {.callout-formula}
 $$s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}$$
 where $\bar{x}$ is the sample mean and $n$ is the sample size.
 :::
@@ -120,13 +117,13 @@ The standard deviation is derived by taking the square root of the variance. Rem
 
 To find the **population standard deviation**, take the square root of the variance. For the population parameter use: 
 
-::: {.callout-example}
+::: {.callout-formula}
 $$\sigma=\sqrt{\sigma^2}$$
 :::
 
 For the **sample standard deviation** use: 
 
-::: {.callout-example}
+::: {.callout-formula}
 $$s=\sqrt{s^2}$$
 :::
 
@@ -138,14 +135,14 @@ $$s=\sqrt{s^2}$$
 
 Another measure of data variability is the Mean Absolute Deviation (MAD), which calculates variability using absolute deviations from the mean. This approach not only keeps the measure in the same units as the data but also makes it less sensitive to large deviations. Practically, the **Mean Absolute Deviation** measures the average deviation from the mean, by using absolute deviations. It is calculated by:
 
-::: {.callout-example}
+::: {.callout-formula}
 $$MAD=\frac{\sum |x_i-\mu|}{N}$$ 
 where the \| \| operator indicates absolute value. 
 :::
 
 You can estimates the mad for a sample with:
 
-::: {.callout-example}
+::: {.callout-formula}
 $$mad=\frac{\sum |x_i-\bar{x}|}{n}$$
 :::
 
@@ -161,7 +158,7 @@ For the MAD, focus on the fourth column which lists the absolute deviations from
 
 The **Coefficient of Variation** simplifies comparisons of variability across variables with different units or scales, by dividing the standard deviation by the mean. It is calculated by:
 
-::: {.callout-example}
+::: {.callout-formula}
 $$CV=\frac{s}{\bar{x}}$$
 :::
 
@@ -179,7 +176,7 @@ The Sharpe Ratio measures how much excess return an investor receives for the ex
 
 In sum, the **Sharpe ratio** quantifies the excess return of an investment over the risk free return. It is calculated by:
 
-::: {.callout-example}
+::: {.callout-formula}
 $$\frac{\bar{R_p}-R_f}{s}$$ 
 where $\bar{R_p}$ is the mean return of the portfolio, $R_f$ is the risk free return, and $s$ is the standard deviation.
 :::
@@ -192,7 +189,7 @@ knitr::include_graphics("images/Sharpe.png")
 
 The table shows four investments (Apple, Bitcoin, Shiba, and S&P). Just looking at the daily return, it is clear that Shiba provides the best returns. However, the cost for that high return is reflected in variability (22% for Shiba). The S&P is clearly the safest investment with a standard deviation of only 0.9%. The Sharpe Ratio, marries these two metrics showing the return per unit of risk taken over the free rate. If we assume a 0% risk free rate, the investment with the highest Sharpe Ratio is the S&P at 0.11.
 
-## Measures of Dispersion in R
+## Measures of Dispersion in Excel
 
 Let's use some stock returns to explore R functions that allow us to calculate measures of dispersion. You can run the following command to get the data into R:
 

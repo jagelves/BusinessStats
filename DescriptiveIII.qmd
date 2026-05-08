@@ -18,13 +18,17 @@ details summary {
 
 Understanding where the "center" of a dataset lies is a fundamental step when interpreting and analyzing data. Measures of central location provide different ways to identify the "typical" value in a dataset, each with its unique strengths and limitations. Below I survey some of the most popular measures of central location.
 
+## Sample Vs. Population Statistics
+In this book you will find formulas for calculating sample statistics and population parameters. In general, you will use population formulas when you have data for the entire group you care about or when you are working with a theoretical distribution and the parameter is known; population formulas use $N$ in denominators and estimate parameters. Use sample formulas when your data are a subset drawn from a larger population and you want unbiased estimators of the population parameters; sample formulas use $n$ and the degrees of freedom correction. In practice most empirical work uses sample formulas because we rarely observe entire populations; below you will see both population and sample versions so you can choose the correct one depending on whether your data represent the full population or a sample.
+
 ## The Mean
 
 The **mean** is the average value for a numerical variable. It is a widely understood and straightforward measure to calculate. It incorporates all data points, providing a comprehensive representation of the data set. However, its reliance on every value also makes it sensitive to outliers or skewed distributions, which may cause it to not accurately reflect the true center of the data.
 
 The sample statistic is estimated by:
 
-::: {.callout-example}
+::: {.callout-formula}
+**THE MEAN (Sample)**
 $$
 \bar{x}=\frac{\sum x_{i}}{n}
 $$
@@ -34,7 +38,8 @@ where $\Sigma$ is the summation operator, $x_i$ is observation $i$, and $n$ is t
 
 The formula instructs you to add up all of the values in a variable and then divide by the sample size. If you wish to estimate the population parameter you can use:
 
-::: {.callout-example}
+::: {.callout-formula}
+**THE MEAN (Population)**
 $$
 \mu=\frac{\sum x_{i}}{N}
 $$
@@ -80,7 +85,8 @@ The **mode** is the value with highest frequency from a set of observations. Thi
 
 The weighted mean is useful in scenarios where some data points are more significant than others, such as in financial portfolios, grade point averages, or survey results, as it accounts for variability in importance across observations. This measure requires additional information in the form of weights ($w_i$), which may not always be available or accurate. It is calculated the sum product of values ($x_i$) and weights ($w_i$) and then dividing by the sum of weights. Mathematically, the weighted average is:
 
-::: {.callout-example}
+::: {.callout-formula}
+**THE WEIGHTED MEAN**
 $$
 \bar{x}_w=\frac{\sum w_{i}x_{i}}{\sum w_{i}}
 $$
@@ -115,7 +121,8 @@ The candidate's overall score is $83.2$ out of $100$. Note that a simple average
 
 The **geometric mean** is a multiplicative average that is less sensitive to outliers relative to the arithmetic mean. It is useful when averaging growth rates or rates of return. It is calculated by:
 
-::: {.callout-example}
+::: {.callout-formula}
+**THE GEOMETRIC MEAN (GROWTH)**
 $$
 \bar{x}_g=\sqrt[n]{(1+r_1)*(1+r_2)...(1+r_n)}-1
 $$
@@ -127,7 +134,8 @@ When working with growth rates or rates of return, you add 1 to each rate becaus
 
 When dealing with proportions, these already reflect a standalone quantity, not a relative change. As a consequence, there is no need to add 1. In this case the geometric mean simplifies to:
 
-::: {.callout-example}
+::: {.callout-formula}
+**THE GEOMETRIC MEAN (Proportion)**
 $$
 \bar{x}_g=\sqrt[n]{(x_1) \times (x_2)...(x_n)}
 $$

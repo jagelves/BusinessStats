@@ -290,19 +290,18 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#sample-vs.-population-statistics" id="toc-sample-vs.-population-statistics" class="nav-link active" data-scroll-target="#sample-vs.-population-statistics"><span class="header-section-number">4.1</span> Sample Vs. Population Statistics</a></li>
-  <li><a href="#the-range" id="toc-the-range" class="nav-link" data-scroll-target="#the-range"><span class="header-section-number">4.2</span> The Range</a></li>
-  <li><a href="#the-variance" id="toc-the-variance" class="nav-link" data-scroll-target="#the-variance"><span class="header-section-number">4.3</span> The Variance</a>
+  <li><a href="#the-range" id="toc-the-range" class="nav-link active" data-scroll-target="#the-range"><span class="header-section-number">4.1</span> The Range</a></li>
+  <li><a href="#the-variance" id="toc-the-variance" class="nav-link" data-scroll-target="#the-variance"><span class="header-section-number">4.2</span> The Variance</a>
   <ul class="collapse">
-  <li><a href="#variance-intuition" id="toc-variance-intuition" class="nav-link" data-scroll-target="#variance-intuition"><span class="header-section-number">4.3.1</span> Variance Intuition</a></li>
-  <li><a href="#variance-step-by-step-calculation" id="toc-variance-step-by-step-calculation" class="nav-link" data-scroll-target="#variance-step-by-step-calculation"><span class="header-section-number">4.3.2</span> Variance Step By Step Calculation</a></li>
+  <li><a href="#variance-intuition" id="toc-variance-intuition" class="nav-link" data-scroll-target="#variance-intuition"><span class="header-section-number">4.2.1</span> Variance Intuition</a></li>
+  <li><a href="#variance-step-by-step-calculation" id="toc-variance-step-by-step-calculation" class="nav-link" data-scroll-target="#variance-step-by-step-calculation"><span class="header-section-number">4.2.2</span> Variance Step By Step Calculation</a></li>
   </ul></li>
-  <li><a href="#the-standard-deviation" id="toc-the-standard-deviation" class="nav-link" data-scroll-target="#the-standard-deviation"><span class="header-section-number">4.4</span> The Standard Deviation</a></li>
-  <li><a href="#mean-absolute-deviation" id="toc-mean-absolute-deviation" class="nav-link" data-scroll-target="#mean-absolute-deviation"><span class="header-section-number">4.5</span> Mean Absolute Deviation</a></li>
-  <li><a href="#coefficient-of-variation" id="toc-coefficient-of-variation" class="nav-link" data-scroll-target="#coefficient-of-variation"><span class="header-section-number">4.6</span> Coefficient of Variation</a></li>
-  <li><a href="#the-sharpe-ratio" id="toc-the-sharpe-ratio" class="nav-link" data-scroll-target="#the-sharpe-ratio"><span class="header-section-number">4.7</span> The Sharpe Ratio</a></li>
-  <li><a href="#measures-of-dispersion-in-r" id="toc-measures-of-dispersion-in-r" class="nav-link" data-scroll-target="#measures-of-dispersion-in-r"><span class="header-section-number">4.8</span> Measures of Dispersion in R</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.9</span> Exercises</a>
+  <li><a href="#the-standard-deviation" id="toc-the-standard-deviation" class="nav-link" data-scroll-target="#the-standard-deviation"><span class="header-section-number">4.3</span> The Standard Deviation</a></li>
+  <li><a href="#mean-absolute-deviation" id="toc-mean-absolute-deviation" class="nav-link" data-scroll-target="#mean-absolute-deviation"><span class="header-section-number">4.4</span> Mean Absolute Deviation</a></li>
+  <li><a href="#coefficient-of-variation" id="toc-coefficient-of-variation" class="nav-link" data-scroll-target="#coefficient-of-variation"><span class="header-section-number">4.5</span> Coefficient of Variation</a></li>
+  <li><a href="#the-sharpe-ratio" id="toc-the-sharpe-ratio" class="nav-link" data-scroll-target="#the-sharpe-ratio"><span class="header-section-number">4.6</span> The Sharpe Ratio</a></li>
+  <li><a href="#measures-of-dispersion-in-excel" id="toc-measures-of-dispersion-in-excel" class="nav-link" data-scroll-target="#measures-of-dispersion-in-excel"><span class="header-section-number">4.7</span> Measures of Dispersion in Excel</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.8</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -348,12 +347,8 @@ details summary {
 }
 </style>
 <p>Measures of dispersion provide insights into how much the values in a data set deviate from the central tendency. In a business context, understanding variability is essential for assessing risk, as it helps decision-makers anticipate fluctuations in revenue, costs, and market conditions. Below, we explore the main statistics that help us quantify variability and use them to make better business decisions.</p>
-<section id="sample-vs.-population-statistics" class="level2" data-number="4.1">
-<h2 data-number="4.1" class="anchored" data-anchor-id="sample-vs.-population-statistics"><span class="header-section-number">4.1</span> Sample Vs. Population Statistics</h2>
-<p>In this book you will find formulas for calculating sample statistics and population parameters. In general, you will use population formulas when you have data for the entire group you care about or when you are working with a theoretical distribution and the parameter is known; population formulas use <span class="math inline">\(N\)</span> in denominators and estimate parameters. Use sample formulas when your data are a subset drawn from a larger population and you want unbiased estimators of the population parameters; sample formulas use <span class="math inline">\(n\)</span> and the degrees of freedom correction. In practice most empirical work uses sample formulas because we rarely observe entire populations; below you will see both population and sample versions so you can choose the correct one depending on whether your data represent the full population or a sample.</p>
-</section>
-<section id="the-range" class="level2" data-number="4.2">
-<h2 data-number="4.2" class="anchored" data-anchor-id="the-range"><span class="header-section-number">4.2</span> The Range</h2>
+<section id="the-range" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="the-range"><span class="header-section-number">4.1</span> The Range</h2>
 <p>This is the simplest measure of dispersion, defined as the difference between the largest and smallest values in a variable. While straightforward, the range only accounts for the extremes and does not reflect the variability within the variable. The <strong>range</strong> is calculated by:</p>
 <div class="callout-formula">
 <p><span class="math display">\[Range=Maximum-Minimum\]</span></p>
@@ -362,18 +357,18 @@ details summary {
 <p><strong>Example:</strong> Consider the data <span class="math inline">\(x=\{480, 1050, 1400, 2500, 3200\}\)</span>. The range is given by <span class="math inline">\(Range=3200-480=2720\)</span>.</p>
 </div>
 </section>
-<section id="the-variance" class="level2" data-number="4.3">
-<h2 data-number="4.3" class="anchored" data-anchor-id="the-variance"><span class="header-section-number">4.3</span> The Variance</h2>
+<section id="the-variance" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="the-variance"><span class="header-section-number">4.2</span> The Variance</h2>
 <p>The variance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by finding their average.The <strong>variance population parameter</strong> is given by:</p>
-<div class="callout-example">
+<div class="callout-formula">
 <p><span class="math display">\[\sigma^2= \frac{\sum (x_i-\mu)^2}{N}\]</span> where <span class="math inline">\(\mu\)</span> is the population mean and <span class="math inline">\(N\)</span> is the population size.</p>
 </div>
 <p>The <strong>variance sample statistic</strong> is given by:</p>
-<div class="callout-example">
+<div class="callout-formula">
 <p><span class="math display">\[s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}\]</span> where <span class="math inline">\(\bar{x}\)</span> is the sample mean and <span class="math inline">\(n\)</span> is the sample size.</p>
 </div>
-<section id="variance-intuition" class="level3" data-number="4.3.1">
-<h3 data-number="4.3.1" class="anchored" data-anchor-id="variance-intuition"><span class="header-section-number">4.3.1</span> Variance Intuition</h3>
+<section id="variance-intuition" class="level3" data-number="4.2.1">
+<h3 data-number="4.2.1" class="anchored" data-anchor-id="variance-intuition"><span class="header-section-number">4.2.1</span> Variance Intuition</h3>
 <p>Let’s consider a sample of the price of Ether (a famous cryptocurrency). Below is a graph of the prices:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -407,8 +402,8 @@ details summary {
 </div>
 <p>The second column shows the deviations from the mean. You can convince yourself that these add up to zero. The third column squares the deviations. The sample variance, averages the numbers in the third column using the degrees of freedom (<span class="math inline">\(n-1\)</span>). The result is <span class="math inline">\(s^2=1221880\)</span>, which means that the price of Ether varies on average <span class="math inline">\(1221880\)</span> squared deviations from the mean. The result by itself is not very intuitive as it is measured in squared dollars. We can, however, compare the variances from different variables to assess which variable has the most dispersion.</p>
 </section>
-<section id="variance-step-by-step-calculation" class="level3" data-number="4.3.2">
-<h3 data-number="4.3.2" class="anchored" data-anchor-id="variance-step-by-step-calculation"><span class="header-section-number">4.3.2</span> Variance Step By Step Calculation</h3>
+<section id="variance-step-by-step-calculation" class="level3" data-number="4.2.2">
+<h3 data-number="4.2.2" class="anchored" data-anchor-id="variance-step-by-step-calculation"><span class="header-section-number">4.2.2</span> Variance Step By Step Calculation</h3>
 <p>Consider the data <span class="math inline">\(x=\{480, 1050, 1400, 2500, 3200\}\)</span>. Treating this as a sample, we calculate the variance step by step.</p>
 <p><strong>Step 1 — Calculate the sample mean:</strong></p>
 <p><span class="math display">\[\bar{x} = \frac{480 + 1050 + 1400 + 2500 + 3200}{5} = \frac{8630}{5} = 1726\]</span></p>
@@ -487,29 +482,29 @@ details summary {
 <p>The sample variance is <span class="math inline">\(s^2=1{,}221{,}880\)</span>. Note that the variance is expressed in squared units of the original data, which makes it difficult to interpret directly. This motivates the use of the standard deviation, which brings the measure back to the original units.</p>
 </section>
 </section>
-<section id="the-standard-deviation" class="level2" data-number="4.4">
-<h2 data-number="4.4" class="anchored" data-anchor-id="the-standard-deviation"><span class="header-section-number">4.4</span> The Standard Deviation</h2>
+<section id="the-standard-deviation" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="the-standard-deviation"><span class="header-section-number">4.3</span> The Standard Deviation</h2>
 <p>The standard deviation is derived by taking the square root of the variance. Remember, the variance employs squared deviations to eliminate negative values and calculate spread. By taking the square root, the standard deviation reverts the measure of dispersion back to the original units of the variable. This transformation makes the standard deviation more intuitive; it directly quantifies how much each data point deviates from the mean in the same units as the variable itself. Consequently, the standard deviation is a clear and intuitive measure of variability.</p>
 <p>To find the <strong>population standard deviation</strong>, take the square root of the variance. For the population parameter use:</p>
-<div class="callout-example">
+<div class="callout-formula">
 <p><span class="math display">\[\sigma=\sqrt{\sigma^2}\]</span></p>
 </div>
 <p>For the <strong>sample standard deviation</strong> use:</p>
-<div class="callout-example">
+<div class="callout-formula">
 <p><span class="math display">\[s=\sqrt{s^2}\]</span></p>
 </div>
 <div class="callout-example">
 <p><strong>Example:</strong> Consider once more the price of Ether. That is. <span class="math inline">\(x=\{480, 1050, 1400, 2500, 3200\}\)</span>. In the previous section we found that the variance <span class="math inline">\(s^2=1221880\)</span>. Using the square root we find that <span class="math inline">\(s=\sqrt{1221880}=1105.387\)</span>. If the price of Ether is in dollars, then, the price varies from the mean 1105.39 dollars on average.</p>
 </div>
 </section>
-<section id="mean-absolute-deviation" class="level2" data-number="4.5">
-<h2 data-number="4.5" class="anchored" data-anchor-id="mean-absolute-deviation"><span class="header-section-number">4.5</span> Mean Absolute Deviation</h2>
+<section id="mean-absolute-deviation" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="mean-absolute-deviation"><span class="header-section-number">4.4</span> Mean Absolute Deviation</h2>
 <p>Another measure of data variability is the Mean Absolute Deviation (MAD), which calculates variability using absolute deviations from the mean. This approach not only keeps the measure in the same units as the data but also makes it less sensitive to large deviations. Practically, the <strong>Mean Absolute Deviation</strong> measures the average deviation from the mean, by using absolute deviations. It is calculated by:</p>
-<div class="callout-example">
+<div class="callout-formula">
 <p><span class="math display">\[MAD=\frac{\sum |x_i-\mu|}{N}\]</span> where the | | operator indicates absolute value.</p>
 </div>
 <p>You can estimates the mad for a sample with:</p>
-<div class="callout-example">
+<div class="callout-formula">
 <p><span class="math display">\[mad=\frac{\sum |x_i-\bar{x}|}{n}\]</span></p>
 </div>
 <p><strong>Example:</strong> Let’s consider once more the price of Ether. Recall, that if we calculate the deviations from the mean we obtain the second column in the table below:</p>
@@ -524,10 +519,10 @@ details summary {
 </div>
 <p>For the MAD, focus on the fourth column which lists the absolute deviations from the mean. Averaging these gives us the Mean Absolute Deviation (MAD), which equals <span class="math inline">\(mad=899.2\)</span>. This result states that, on average, each data point is roughly <span class="math inline">\(900\)</span> dollars away from the mean. Note that the standard deviation is higher (<span class="math inline">\(988.73\)</span>) since the squaring of deviations disproportionately amplifies larger ones, pushing the standard deviation above the MAD.</p>
 </section>
-<section id="coefficient-of-variation" class="level2" data-number="4.6">
-<h2 data-number="4.6" class="anchored" data-anchor-id="coefficient-of-variation"><span class="header-section-number">4.6</span> Coefficient of Variation</h2>
+<section id="coefficient-of-variation" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="coefficient-of-variation"><span class="header-section-number">4.5</span> Coefficient of Variation</h2>
 <p>The <strong>Coefficient of Variation</strong> simplifies comparisons of variability across variables with different units or scales, by dividing the standard deviation by the mean. It is calculated by:</p>
-<div class="callout-example">
+<div class="callout-formula">
 <p><span class="math display">\[CV=\frac{s}{\bar{x}}\]</span></p>
 </div>
 <p><strong>Example:</strong> Consider the table below, that shows information on two different stocks:</p>
@@ -542,11 +537,11 @@ details summary {
 </div>
 <p>The third column shows the standard deviation of each stock. One could conclude that both stocks vary the same as they have the same standard deviation of one. Recall that the coefficient of variation considers the variable’s scale by incorporating the mean into its calculation. Since one stock is centered around 1 dollar and the other around 100 dollars (second column), it is clear that they do not vary similarly percentage-wise. Stock A varies 100% from the mean, whereas Stock B only varies 1%. Hence, the coefficient of variation would identify Stock A as the more variable stock.</p>
 </section>
-<section id="the-sharpe-ratio" class="level2" data-number="4.7">
-<h2 data-number="4.7" class="anchored" data-anchor-id="the-sharpe-ratio"><span class="header-section-number">4.7</span> The Sharpe Ratio</h2>
+<section id="the-sharpe-ratio" class="level2" data-number="4.6">
+<h2 data-number="4.6" class="anchored" data-anchor-id="the-sharpe-ratio"><span class="header-section-number">4.6</span> The Sharpe Ratio</h2>
 <p>The Sharpe Ratio measures how much excess return an investor receives for the extra volatility (risk) taken on beyond the risk-free rate. It essentially uses the same principle of normalization as the CV but adds the dimension of risk-adjusted performance. If the CV tells you the variability of returns in relation to their mean, the Sharpe Ratio tells you if that variability is worth it by comparing it against what you could safely earn without risk. In essence, while the CV highlights variability, the Sharpe Ratio motivates investment choices by rewarding higher returns per unit of risk taken.</p>
 <p>In sum, the <strong>Sharpe ratio</strong> quantifies the excess return of an investment over the risk free return. It is calculated by:</p>
-<div class="callout-example">
+<div class="callout-formula">
 <p><span class="math display">\[\frac{\bar{R_p}-R_f}{s}\]</span> where <span class="math inline">\(\bar{R_p}\)</span> is the mean return of the portfolio, <span class="math inline">\(R_f\)</span> is the risk free return, and <span class="math inline">\(s\)</span> is the standard deviation.</p>
 </div>
 <p><strong>Example:</strong> Consider the table below that includes a collection of investments.</p>
@@ -561,8 +556,8 @@ details summary {
 </div>
 <p>The table shows four investments (Apple, Bitcoin, Shiba, and S&amp;P). Just looking at the daily return, it is clear that Shiba provides the best returns. However, the cost for that high return is reflected in variability (22% for Shiba). The S&amp;P is clearly the safest investment with a standard deviation of only 0.9%. The Sharpe Ratio, marries these two metrics showing the return per unit of risk taken over the free rate. If we assume a 0% risk free rate, the investment with the highest Sharpe Ratio is the S&amp;P at 0.11.</p>
 </section>
-<section id="measures-of-dispersion-in-r" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="measures-of-dispersion-in-r"><span class="header-section-number">4.8</span> Measures of Dispersion in R</h2>
+<section id="measures-of-dispersion-in-excel" class="level2" data-number="4.7">
+<h2 data-number="4.7" class="anchored" data-anchor-id="measures-of-dispersion-in-excel"><span class="header-section-number">4.7</span> Measures of Dispersion in Excel</h2>
 <p>Let’s use some stock returns to explore R functions that allow us to calculate measures of dispersion. You can run the following command to get the data into R:</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
@@ -633,8 +628,8 @@ $ Return &lt;dbl&gt; -0.009769540, 0.007936685, -0.004714194, 0.015958317, 0.021
 <li><p>The <code>sd()</code> function calculates the sample standard deviation.</p></li>
 </ul>
 </section>
-<section id="exercises" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.9</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.8</span> Exercises</h2>
 <p>The following exercises will help you practice the measures of dispersion. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating the range, MAD, variance, and the standard deviation.</p></li>
