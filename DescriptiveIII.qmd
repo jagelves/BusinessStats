@@ -360,7 +360,9 @@ table(c(20,15,25,20,10,15,25,20,15))
 
 ### Exercise 2 {.unnumbered}
 
-Download the `ISLR2` package. You will need the **OJ** data set to answer this question.
+You will need the **OJ** data set to answer this question. You can get the dataset here:
+
+[{{< fa file-excel >}} Download Data](OJ.xlsx){.btn .btn-success}
 
 1.  Find the mean price for Country Hill (*PriceCH*) and Minute Maid (*PriceMM*).
 
@@ -370,15 +372,6 @@ Download the `ISLR2` package. You will need the **OJ** data set to answer this q
 
 *The mean price for Country Hill is* $1.87$. The mean price for Minute Maid is $2.09$.
 
-*The means can be easily found with the `mean()` function:*
-
-```{r}
-library(ISLR2)
-OJ=OJ
-mean(OJ$PriceCH)
-mean(OJ$PriceMM)
-```
-
 </details>
 
 2.  Find the mean price of Country Hill (*PriceCH*) at each store (*StoreID*). Which store provides the better price?
@@ -387,11 +380,10 @@ mean(OJ$PriceMM)
 
 <summary>Answer</summary>
 
-*The mean price at store 1 for Country Hill is* $1.80$. The juice is cheaper at store 1.
+*The mean price at store 1 for Country Hill is* $1.80$. *The juice is cheaper at store 1.The mean price at each store is:*
 
-*The means for each store can be found by using `group_by()` and `summarise()`.The mean price at each store is:*
-
-```{r}
+```{r echo=FALSE}
+library(ISLR2)
 OJ %>% group_by(StoreID) %>% summarise(MeanCH=mean(PriceCH))
 ```
 
@@ -403,11 +395,9 @@ OJ %>% group_by(StoreID) %>% summarise(MeanCH=mean(PriceCH))
 
 <summary>Answer</summary>
 
-*Purchasers of Country Hill at store 1 paid a median price of* $1.76$ for Country Hill juice. This once again was the lowest price.
+*Purchasers of Country Hill at store 1 paid a median price of $1.76$ for Country Hill juice. This once again was the lowest price.The median price for Country Hill purchasers at each store is given by:*
 
-*The median price for Country Hill purchasers at each store is given by:*
-
-```{r}
+```{r echo=FALSE}
 OJ %>% filter(Purchase=="CH") %>% group_by(StoreID) %>% summarise(MedianCH=median(PriceCH))
 ```
 
@@ -551,30 +541,19 @@ growth<-c(0.173,0.196,0.068,0.082)
 
 ### Exercise 5 {.unnumbered}
 
-The `ISLR2` package includes a dataset called **Hitters** containing data on Major League Baseball players, including their salaries (in thousands of dollars) from 1987.  
+You will need the **Hitters** dataset containing data on Major League Baseball players, including their salaries (in thousands of dollars) from 1987. You can get the dataset here:
 
-1. Load the Hitters dataset using data(Hitters) from the `ISLR2` package. Compute the overall mean and median salary for all players. Which measure (mean or median) better represents the typical salary?
+[{{< fa file-excel >}} Download Data](Hitters.xlsx){.btn .btn-success}
+
+
+1. Compute the overall mean and median salary for all players. Which measure (mean or median) better represents the typical salary?
 
 <details>
 
 <summary>Answer</summary>
 
-*Start by loading the libraries and previewing the data.*
-```{r}
-library(ISLR2)
-library(dplyr)
-data(Hitters)
 
-glimpse(Hitters)
-```
-
-We can now find the mean and the median.
-
-```{r}
-mean(Hitters$Salary, na.rm = TRUE)
-median(Hitters$Salary, na.rm = TRUE)
-```
-*Overall: mean ≈ 536 (thousand dollars), median = 425. Due to right-skew from superstar salaries, the median better represents the typical player.*
+*The mean and the median salary of the hitters is 535 and 425 respectively.Due to right-skew from superstar salaries, the median better represents the typical player.*
 
 </details>
 
@@ -584,13 +563,6 @@ median(Hitters$Salary, na.rm = TRUE)
 
 <summary>Answer</summary>
 
-*Filter the data using `dplyr`:*
-```{r}
-
-Hitters %>%
-  filter(HmRun >= 1) %>%
-  summarise(mean_salary = mean(Salary, na.rm = TRUE),
-            median_salary = median(Salary, na.rm = TRUE))
-```
 *For players with ≥1 home run: mean higher (around 600+), median still lower than mean — skewness persists, median again more representative.*
+
 </details>
