@@ -411,23 +411,20 @@ details summary {
 </section>
 <section id="the-geometric-mean" class="level2" data-number="3.6">
 <h2 data-number="3.6" class="anchored" data-anchor-id="the-geometric-mean"><span class="header-section-number">3.6</span> The Geometric Mean</h2>
-<p>The <strong>geometric mean</strong> is a multiplicative average that is less sensitive to outliers relative to the arithmetic mean. It is useful when averaging growth rates or rates of return. It is calculated by:</p>
+<p>The <strong>geometric mean</strong> is a multiplicative average that is less sensitive to outliers relative to the arithmetic mean. It is particularly useful when averaging rates or levels that compound over time. The formula depends on whether the data represents rates or levels.</p>
+<p>When working with rates, we add 1 to each value because rates represent changes relative to a base value. The geometric mean is given by:</p>
 <div class="callout-formula">
-<p><strong>THE GEOMETRIC MEAN (RATES)</strong> <span class="math display">\[
-\bar{x}_g=\sqrt[n]{(1+r_1)*(1+r_2)...(1+r_n)}-1
-\]</span></p>
-<p>where <span class="math inline">\(\sqrt[n]{}\)</span> is the <span class="math inline">\(n_{th}\)</span> root, and <span class="math inline">\(r_i\)</span> are the returns or growth rates.</p>
+<p><strong>THE GEOMETRIC MEAN (Rates)</strong> <span class="math display">\[\bar{x}_g=\sqrt[n]{(1+r_1)\times(1+r_2)\times...\times(1+r_n)}-1\]</span> where <span class="math inline">\(r_i\)</span> are rates of change and <span class="math inline">\(n\)</span> is the number of periods.</p>
 </div>
-<p>When working with growth rates or rates of return, you add 1 to each rate because these metrics represent changes relative to a base value.</p>
-<p>When dealing with proportions, these already reflect a standalone quantity, not a relative change. As a consequence, there is no need to add 1. In this case the geometric mean simplifies to:</p>
+<p>When working with levels, the values already reflect standalone quantities rather than relative changes, so no adjustment is needed. The geometric mean simplifies to:</p>
 <div class="callout-formula">
-<p><strong>THE GEOMETRIC MEAN (LEVELS)</strong> <span class="math display">\[
-\bar{x}_g=\sqrt[n]{(x_1) \times (x_2)...(x_n)}
-\]</span></p>
+<p><strong>THE GEOMETRIC MEAN (Levels)</strong> <span class="math display">\[\bar{x}_g=\sqrt[n]{x_1 \times x_2 \times ... \times x_n}\]</span> where <span class="math inline">\(x_i\)</span> are positive values such as prices, proportions, or index values.</p>
 </div>
-<p>To illustrate, we work through two examples below.</p>
+<p>To illustrate the distinction, we work through two examples below.</p>
 <div class="callout-example">
-<p><strong>Example 1:</strong> Consider the variable <span class="math inline">\(x=\{0.2,0.3,0.1,0.1\}\)</span>. The geometric mean is equal to <span class="math inline">\(\bar{x}_g=\sqrt[4]{(1.2 \times 1.3 \times 1.1 \times 1.1)}-1\)</span> or <span class="math inline">\(\bar{x_g}=0.17\)</span> if x represents growth rates. When x represents ratios from a whole, the geometric mean is <span class="math inline">\(\bar{x}_g=\sqrt[4]{0.2 \times 0.3 \times 0.1 \times 0.1)}\)</span> or <span class="math inline">\(0.156\)</span>.</p>
+<p><strong>Example 1:</strong> A company tracks its market share across four regions: <span class="math inline">\(x=\{0.20, 0.30, 0.10, 0.10\}\)</span>. Since market share is a proportion of the whole — a level, not a rate of change — we apply the levels formula directly:</p>
+<p><span class="math display">\[\bar{x}_g=\sqrt[4]{0.20 \times 0.30 \times 0.10 \times 0.10}\]</span> <span class="math display">\[=\sqrt[4]{0.0006}=0.156\]</span></p>
+<p>The geometric mean market share across the four regions is <span class="math inline">\(15.6\%\)</span>.</p>
 </div>
 <div class="callout-example">
 <p><strong>Example 2:</strong> An investment fund reports the following annual returns over four years:</p>
@@ -436,57 +433,35 @@ details summary {
 <tr class="header">
 <th>Year</th>
 <th>Return</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>2020</td>
-<td>10%</td>
-</tr>
-<tr class="even">
-<td>2021</td>
-<td>25%</td>
-</tr>
-<tr class="odd">
-<td>2022</td>
-<td>-8%</td>
-</tr>
-<tr class="even">
-<td>2023</td>
-<td>15%</td>
-</tr>
-</tbody>
-</table>
-<p>To find the average annual growth rate, we use the geometric mean. First, convert each return to a growth factor by adding 1:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Year</th>
 <th>Growth Factor</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td>2020</td>
+<td>10%</td>
 <td>1.10</td>
 </tr>
 <tr class="even">
 <td>2021</td>
+<td>25%</td>
 <td>1.25</td>
 </tr>
 <tr class="odd">
 <td>2022</td>
+<td>-8%</td>
 <td>0.92</td>
 </tr>
 <tr class="even">
 <td>2023</td>
+<td>15%</td>
 <td>1.15</td>
 </tr>
 </tbody>
 </table>
-<p>The geometric mean is then:</p>
-<p><span class="math display">\[\bar{x}_g = \sqrt[4]{1.10 \times 1.25 \times 0.92 \times 1.15}\]</span> <span class="math display">\[= \sqrt[4]{1.4539} = 1.0977\]</span></p>
-<p>This corresponds to an average annual return of <span class="math inline">\(9.77\%\)</span>. Note that the arithmetic mean of the returns would give <span class="math inline">\((10 + 25 - 8 + 15)/4 = 10.5\%\)</span>, which overstates the true average growth rate. The geometric mean is the correct measure when calculating average rates of change over time, as it accounts for the compounding effect of returns.</p>
+<p>Since these are rates of return, we add 1 to each value to obtain the growth factor before applying the formula. The geometric mean is:</p>
+<p><span class="math display">\[\bar{x}_g = \sqrt[4]{1.10 \times 1.25 \times 0.92 \times 1.15}-1\]</span> <span class="math display">\[= \sqrt[4]{1.4539}-1 = 0.0977\]</span></p>
+<p>The average annual return is <span class="math inline">\(9.77\%\)</span>. Note that the arithmetic mean gives <span class="math inline">\((10 + 25 - 8 + 15)/4 = 10.5\%\)</span>, which overstates the true average. The geometric mean is the appropriate measure here because it accounts for the compounding effect of returns over time.</p>
 </div>
 </section>
 <section id="measures-of-central-location-in-excel" class="level2" data-number="3.7">
@@ -494,23 +469,23 @@ details summary {
 <p>Excel has a collection of functions that calculate measures of central location. Let’s consider the following data on approval ratings:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="kcgwegnpln" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#kcgwegnpln table {
+<div id="iojaqcgzut" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#iojaqcgzut table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#kcgwegnpln thead, #kcgwegnpln tbody, #kcgwegnpln tfoot, #kcgwegnpln tr, #kcgwegnpln td, #kcgwegnpln th {
+#iojaqcgzut thead, #iojaqcgzut tbody, #iojaqcgzut tfoot, #iojaqcgzut tr, #iojaqcgzut td, #iojaqcgzut th {
   border-style: none;
 }
 
-#kcgwegnpln p {
+#iojaqcgzut p {
   margin: 0;
   padding: 0;
 }
 
-#kcgwegnpln .gt_table {
+#iojaqcgzut .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -536,12 +511,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#kcgwegnpln .gt_caption {
+#iojaqcgzut .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#kcgwegnpln .gt_title {
+#iojaqcgzut .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -553,7 +528,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#kcgwegnpln .gt_subtitle {
+#iojaqcgzut .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -565,7 +540,7 @@ details summary {
   border-top-width: 0;
 }
 
-#kcgwegnpln .gt_heading {
+#iojaqcgzut .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -577,13 +552,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#kcgwegnpln .gt_bottom_border {
+#iojaqcgzut .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#kcgwegnpln .gt_col_headings {
+#iojaqcgzut .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -598,7 +573,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#kcgwegnpln .gt_col_heading {
+#iojaqcgzut .gt_col_heading {
   color: #333333;
   background-color: #EDE8E3;
   font-size: 100%;
@@ -618,7 +593,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#kcgwegnpln .gt_column_spanner_outer {
+#iojaqcgzut .gt_column_spanner_outer {
   color: #333333;
   background-color: #EDE8E3;
   font-size: 100%;
@@ -630,15 +605,15 @@ details summary {
   padding-right: 4px;
 }
 
-#kcgwegnpln .gt_column_spanner_outer:first-child {
+#iojaqcgzut .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#kcgwegnpln .gt_column_spanner_outer:last-child {
+#iojaqcgzut .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#kcgwegnpln .gt_column_spanner {
+#iojaqcgzut .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -650,11 +625,11 @@ details summary {
   width: 100%;
 }
 
-#kcgwegnpln .gt_spanner_row {
+#iojaqcgzut .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#kcgwegnpln .gt_group_heading {
+#iojaqcgzut .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -680,7 +655,7 @@ details summary {
   text-align: left;
 }
 
-#kcgwegnpln .gt_empty_group_heading {
+#iojaqcgzut .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -695,15 +670,15 @@ details summary {
   vertical-align: middle;
 }
 
-#kcgwegnpln .gt_from_md > :first-child {
+#iojaqcgzut .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#kcgwegnpln .gt_from_md > :last-child {
+#iojaqcgzut .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#kcgwegnpln .gt_row {
+#iojaqcgzut .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -722,7 +697,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#kcgwegnpln .gt_stub {
+#iojaqcgzut .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -735,7 +710,7 @@ details summary {
   padding-right: 5px;
 }
 
-#kcgwegnpln .gt_stub_row_group {
+#iojaqcgzut .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -749,15 +724,15 @@ details summary {
   vertical-align: top;
 }
 
-#kcgwegnpln .gt_row_group_first td {
+#iojaqcgzut .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#kcgwegnpln .gt_row_group_first th {
+#iojaqcgzut .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#kcgwegnpln .gt_summary_row {
+#iojaqcgzut .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -767,16 +742,16 @@ details summary {
   padding-right: 5px;
 }
 
-#kcgwegnpln .gt_first_summary_row {
+#iojaqcgzut .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#kcgwegnpln .gt_first_summary_row.thick {
+#iojaqcgzut .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#kcgwegnpln .gt_last_summary_row {
+#iojaqcgzut .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -786,7 +761,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#kcgwegnpln .gt_grand_summary_row {
+#iojaqcgzut .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -796,7 +771,7 @@ details summary {
   padding-right: 5px;
 }
 
-#kcgwegnpln .gt_first_grand_summary_row {
+#iojaqcgzut .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -806,7 +781,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#kcgwegnpln .gt_last_grand_summary_row_top {
+#iojaqcgzut .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -816,11 +791,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#kcgwegnpln .gt_striped {
+#iojaqcgzut .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#kcgwegnpln .gt_table_body {
+#iojaqcgzut .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -829,7 +804,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#kcgwegnpln .gt_footnotes {
+#iojaqcgzut .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -843,7 +818,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#kcgwegnpln .gt_footnote {
+#iojaqcgzut .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -852,7 +827,7 @@ details summary {
   padding-right: 5px;
 }
 
-#kcgwegnpln .gt_sourcenotes {
+#iojaqcgzut .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -866,7 +841,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#kcgwegnpln .gt_sourcenote {
+#iojaqcgzut .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -874,72 +849,72 @@ details summary {
   padding-right: 5px;
 }
 
-#kcgwegnpln .gt_left {
+#iojaqcgzut .gt_left {
   text-align: left;
 }
 
-#kcgwegnpln .gt_center {
+#iojaqcgzut .gt_center {
   text-align: center;
 }
 
-#kcgwegnpln .gt_right {
+#iojaqcgzut .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#kcgwegnpln .gt_font_normal {
+#iojaqcgzut .gt_font_normal {
   font-weight: normal;
 }
 
-#kcgwegnpln .gt_font_bold {
+#iojaqcgzut .gt_font_bold {
   font-weight: bold;
 }
 
-#kcgwegnpln .gt_font_italic {
+#iojaqcgzut .gt_font_italic {
   font-style: italic;
 }
 
-#kcgwegnpln .gt_super {
+#iojaqcgzut .gt_super {
   font-size: 65%;
 }
 
-#kcgwegnpln .gt_footnote_marks {
+#iojaqcgzut .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#kcgwegnpln .gt_asterisk {
+#iojaqcgzut .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#kcgwegnpln .gt_indent_1 {
+#iojaqcgzut .gt_indent_1 {
   text-indent: 5px;
 }
 
-#kcgwegnpln .gt_indent_2 {
+#iojaqcgzut .gt_indent_2 {
   text-indent: 10px;
 }
 
-#kcgwegnpln .gt_indent_3 {
+#iojaqcgzut .gt_indent_3 {
   text-indent: 15px;
 }
 
-#kcgwegnpln .gt_indent_4 {
+#iojaqcgzut .gt_indent_4 {
   text-indent: 20px;
 }
 
-#kcgwegnpln .gt_indent_5 {
+#iojaqcgzut .gt_indent_5 {
   text-indent: 25px;
 }
 
-#kcgwegnpln .katex-display {
+#iojaqcgzut .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#kcgwegnpln div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#iojaqcgzut div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
