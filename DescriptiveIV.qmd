@@ -23,6 +23,7 @@ Measures of dispersion provide insights into how much the values in a data set d
 This is the simplest measure of dispersion, defined as the difference between the largest and smallest values in a variable. While straightforward, the range only accounts for the extremes and does not reflect the variability within the variable. The **range** is calculated by:
 
 ::: {.callout-formula}
+**THE RANGE**
 $$Range=Maximum-Minimum$$
 :::
 
@@ -36,6 +37,7 @@ $$Range=Maximum-Minimum$$
 The variance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by finding their average.The **variance population parameter** is given by:
 
 ::: {.callout-formula}
+**THE VARIANCE (POPULATION)**
 $$\sigma^2= \frac{\sum (x_i-\mu)^2}{N}$$
 where $\mu$ is the population mean and $N$ is the population size.
 :::
@@ -43,13 +45,14 @@ where $\mu$ is the population mean and $N$ is the population size.
 The **variance sample statistic** is given by:
 
 ::: {.callout-formula}
+**THE VARIANCE (SAMPLE)**
 $$s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}$$
 where $\bar{x}$ is the sample mean and $n$ is the sample size.
 :::
 
 
 ### Variance Intuition
-Let's consider a sample of the price of Ether (a famous cryptocurrency). Below is a graph of the prices:
+Let's consider a sample of the price of Ether, the native cryptocurrency of the Ethereum blockchain. Ether is one of the largest cryptocurrencies by market capitalization and is widely used to pay for transactions and services on the Ethereum network. Unlike traditional assets such as stocks or bonds, cryptocurrencies like Ether are not backed by earnings or government guarantees, which makes their prices highly sensitive to speculation, regulatory news, and shifts in investor sentiment. As a result, Ether is known for dramatic price swings — sometimes gaining or losing double-digit percentages within a single day — making it an ideal case study for measures of dispersion. Below is a graph of the prices:
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/Ether.png")
@@ -61,19 +64,11 @@ The y axis represents the price, while the x axis represents the period of time.
 knitr::include_graphics("images/Ether2.png")
 ```
 
-Ideally, our measure of dispersion would simply average the distances from each data point to the mean, giving us a clear indication of how much the data varies around this central point. Since the mean is a measure that balances the distances from the mean, the sum of all deviations is equal to zero. This "balancing" effect is visually apparent in the graph, where positive deviations are exactly offset by negative ones.
-
-To address this issue, the variance squares each deviation from the mean before finding their average. This squaring eliminates negative values, ensuring a non-zero measure of spread. The table below illustrates these calculations:
-
-```{r echo=FALSE, out.width="75%", fig.align='center'}
-knitr::include_graphics("images/Var1.png")
-```
-
-The second column shows the deviations from the mean. You can convince yourself that these add up to zero. The third column squares the deviations. The sample variance, averages the numbers in the third column using the degrees of freedom ($n-1$). The result is $s^2=1221880$, which means that the price of Ether varies on average $1221880$ squared deviations from the mean. The result by itself is not very intuitive as it is measured in squared dollars. We can, however, compare the variances from different variables to assess which variable has the most dispersion.
+Ideally, our measure of dispersion would simply average the distances from each data point to the mean, giving us a clear indication of how much the data varies around this central point. Since the mean is a measure that balances the distances from the mean, the sum of all deviations is equal to zero. This "balancing" effect is visually apparent in the graph, where positive deviations are exactly offset by negative ones. To address this issue, the variance squares each deviation from the mean before finding the average.
 
 ### Variance Step By Step Calculation
 Consider the data $x=\{480, 1050, 1400, 2500, 3200\}$. 
-Treating this as a sample, we calculate the variance step by step.
+Treating this as a sample, let's calculate the variance step by step.
 
 **Step 1 — Calculate the sample mean:**
 
@@ -118,12 +113,14 @@ The standard deviation is derived by taking the square root of the variance. Rem
 To find the **population standard deviation**, take the square root of the variance. For the population parameter use: 
 
 ::: {.callout-formula}
+**THE STANDARD DEVIATION (POPULATION)**
 $$\sigma=\sqrt{\sigma^2}$$
 :::
 
 For the **sample standard deviation** use: 
 
 ::: {.callout-formula}
+**THE STANDARD DEVIATION (SAMPLE)**
 $$s=\sqrt{s^2}$$
 :::
 
@@ -136,6 +133,7 @@ $$s=\sqrt{s^2}$$
 Another measure of data variability is the Mean Absolute Deviation (MAD), which calculates variability using absolute deviations from the mean. This approach not only keeps the measure in the same units as the data but also makes it less sensitive to large deviations. Practically, the **Mean Absolute Deviation** measures the average deviation from the mean, by using absolute deviations. It is calculated by:
 
 ::: {.callout-formula}
+**THE MEAN ABSOLUTE DEVIATION (POPULATION)**
 $$MAD=\frac{\sum |x_i-\mu|}{N}$$ 
 where the \| \| operator indicates absolute value. 
 :::
@@ -143,6 +141,7 @@ where the \| \| operator indicates absolute value.
 You can estimates the mad for a sample with:
 
 ::: {.callout-formula}
+**THE MEAN ABSOLUTE DEVIATION (SAMPLE)**
 $$mad=\frac{\sum |x_i-\bar{x}|}{n}$$
 :::
 

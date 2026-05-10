@@ -351,7 +351,7 @@ details summary {
 <h2 data-number="4.1" class="anchored" data-anchor-id="the-range"><span class="header-section-number">4.1</span> The Range</h2>
 <p>This is the simplest measure of dispersion, defined as the difference between the largest and smallest values in a variable. While straightforward, the range only accounts for the extremes and does not reflect the variability within the variable. The <strong>range</strong> is calculated by:</p>
 <div class="callout-formula">
-<p><span class="math display">\[Range=Maximum-Minimum\]</span></p>
+<p><strong>THE RANGE</strong> <span class="math display">\[Range=Maximum-Minimum\]</span></p>
 </div>
 <div class="callout-example">
 <p><strong>Example:</strong> Consider the data <span class="math inline">\(x=\{480, 1050, 1400, 2500, 3200\}\)</span>. The range is given by <span class="math inline">\(Range=3200-480=2720\)</span>.</p>
@@ -361,15 +361,15 @@ details summary {
 <h2 data-number="4.2" class="anchored" data-anchor-id="the-variance"><span class="header-section-number">4.2</span> The Variance</h2>
 <p>The variance gives us a more comprehensive look at dispersion by considering how each data point deviates from the mean. It summarizes the squared deviations from the mean by finding their average.The <strong>variance population parameter</strong> is given by:</p>
 <div class="callout-formula">
-<p><span class="math display">\[\sigma^2= \frac{\sum (x_i-\mu)^2}{N}\]</span> where <span class="math inline">\(\mu\)</span> is the population mean and <span class="math inline">\(N\)</span> is the population size.</p>
+<p><strong>THE VARIANCE (POPULATION)</strong> <span class="math display">\[\sigma^2= \frac{\sum (x_i-\mu)^2}{N}\]</span> where <span class="math inline">\(\mu\)</span> is the population mean and <span class="math inline">\(N\)</span> is the population size.</p>
 </div>
 <p>The <strong>variance sample statistic</strong> is given by:</p>
 <div class="callout-formula">
-<p><span class="math display">\[s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}\]</span> where <span class="math inline">\(\bar{x}\)</span> is the sample mean and <span class="math inline">\(n\)</span> is the sample size.</p>
+<p><strong>THE VARIANCE (SAMPLE)</strong> <span class="math display">\[s^2=\frac{\sum (x_i-\bar{x})^2}{n-1}\]</span> where <span class="math inline">\(\bar{x}\)</span> is the sample mean and <span class="math inline">\(n\)</span> is the sample size.</p>
 </div>
 <section id="variance-intuition" class="level3" data-number="4.2.1">
 <h3 data-number="4.2.1" class="anchored" data-anchor-id="variance-intuition"><span class="header-section-number">4.2.1</span> Variance Intuition</h3>
-<p>Let’s consider a sample of the price of Ether (a famous cryptocurrency). Below is a graph of the prices:</p>
+<p>Let’s consider a sample of the price of Ether, the native cryptocurrency of the Ethereum blockchain. Ether is one of the largest cryptocurrencies by market capitalization and is widely used to pay for transactions and services on the Ethereum network. Unlike traditional assets such as stocks or bonds, cryptocurrencies like Ether are not backed by earnings or government guarantees, which makes their prices highly sensitive to speculation, regulatory news, and shifts in investor sentiment. As a result, Ether is known for dramatic price swings — sometimes gaining or losing double-digit percentages within a single day — making it an ideal case study for measures of dispersion. Below is a graph of the prices:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -389,22 +389,11 @@ details summary {
 </div>
 </div>
 </div>
-<p>Ideally, our measure of dispersion would simply average the distances from each data point to the mean, giving us a clear indication of how much the data varies around this central point. Since the mean is a measure that balances the distances from the mean, the sum of all deviations is equal to zero. This “balancing” effect is visually apparent in the graph, where positive deviations are exactly offset by negative ones.</p>
-<p>To address this issue, the variance squares each deviation from the mean before finding their average. This squaring eliminates negative values, ensuring a non-zero measure of spread. The table below illustrates these calculations:</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Var1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The second column shows the deviations from the mean. You can convince yourself that these add up to zero. The third column squares the deviations. The sample variance, averages the numbers in the third column using the degrees of freedom (<span class="math inline">\(n-1\)</span>). The result is <span class="math inline">\(s^2=1221880\)</span>, which means that the price of Ether varies on average <span class="math inline">\(1221880\)</span> squared deviations from the mean. The result by itself is not very intuitive as it is measured in squared dollars. We can, however, compare the variances from different variables to assess which variable has the most dispersion.</p>
+<p>Ideally, our measure of dispersion would simply average the distances from each data point to the mean, giving us a clear indication of how much the data varies around this central point. Since the mean is a measure that balances the distances from the mean, the sum of all deviations is equal to zero. This “balancing” effect is visually apparent in the graph, where positive deviations are exactly offset by negative ones. To address this issue, the variance squares each deviation from the mean before finding the average.</p>
 </section>
 <section id="variance-step-by-step-calculation" class="level3" data-number="4.2.2">
 <h3 data-number="4.2.2" class="anchored" data-anchor-id="variance-step-by-step-calculation"><span class="header-section-number">4.2.2</span> Variance Step By Step Calculation</h3>
-<p>Consider the data <span class="math inline">\(x=\{480, 1050, 1400, 2500, 3200\}\)</span>. Treating this as a sample, we calculate the variance step by step.</p>
+<p>Consider the data <span class="math inline">\(x=\{480, 1050, 1400, 2500, 3200\}\)</span>. Treating this as a sample, let’s calculate the variance step by step.</p>
 <p><strong>Step 1 — Calculate the sample mean:</strong></p>
 <p><span class="math display">\[\bar{x} = \frac{480 + 1050 + 1400 + 2500 + 3200}{5} = \frac{8630}{5} = 1726\]</span></p>
 <p><strong>Step 2 — Calculate the deviation of each observation from the mean:</strong></p>
@@ -487,11 +476,11 @@ details summary {
 <p>The standard deviation is derived by taking the square root of the variance. Remember, the variance employs squared deviations to eliminate negative values and calculate spread. By taking the square root, the standard deviation reverts the measure of dispersion back to the original units of the variable. This transformation makes the standard deviation more intuitive; it directly quantifies how much each data point deviates from the mean in the same units as the variable itself. Consequently, the standard deviation is a clear and intuitive measure of variability.</p>
 <p>To find the <strong>population standard deviation</strong>, take the square root of the variance. For the population parameter use:</p>
 <div class="callout-formula">
-<p><span class="math display">\[\sigma=\sqrt{\sigma^2}\]</span></p>
+<p><strong>THE STANDARD DEVIATION (POPULATION)</strong> <span class="math display">\[\sigma=\sqrt{\sigma^2}\]</span></p>
 </div>
 <p>For the <strong>sample standard deviation</strong> use:</p>
 <div class="callout-formula">
-<p><span class="math display">\[s=\sqrt{s^2}\]</span></p>
+<p><strong>THE STANDARD DEVIATION (SAMPLE)</strong> <span class="math display">\[s=\sqrt{s^2}\]</span></p>
 </div>
 <div class="callout-example">
 <p><strong>Example:</strong> Consider once more the price of Ether. That is. <span class="math inline">\(x=\{480, 1050, 1400, 2500, 3200\}\)</span>. In the previous section we found that the variance <span class="math inline">\(s^2=1221880\)</span>. Using the square root we find that <span class="math inline">\(s=\sqrt{1221880}=1105.387\)</span>. If the price of Ether is in dollars, then, the price varies from the mean 1105.39 dollars on average.</p>
@@ -501,11 +490,11 @@ details summary {
 <h2 data-number="4.4" class="anchored" data-anchor-id="mean-absolute-deviation"><span class="header-section-number">4.4</span> Mean Absolute Deviation</h2>
 <p>Another measure of data variability is the Mean Absolute Deviation (MAD), which calculates variability using absolute deviations from the mean. This approach not only keeps the measure in the same units as the data but also makes it less sensitive to large deviations. Practically, the <strong>Mean Absolute Deviation</strong> measures the average deviation from the mean, by using absolute deviations. It is calculated by:</p>
 <div class="callout-formula">
-<p><span class="math display">\[MAD=\frac{\sum |x_i-\mu|}{N}\]</span> where the | | operator indicates absolute value.</p>
+<p><strong>THE MEAN ABSOLUTE DEVIATION (POPULATION)</strong> <span class="math display">\[MAD=\frac{\sum |x_i-\mu|}{N}\]</span> where the | | operator indicates absolute value.</p>
 </div>
 <p>You can estimates the mad for a sample with:</p>
 <div class="callout-formula">
-<p><span class="math display">\[mad=\frac{\sum |x_i-\bar{x}|}{n}\]</span></p>
+<p><strong>THE MEAN ABSOLUTE DEVIATION (SAMPLE)</strong> <span class="math display">\[mad=\frac{\sum |x_i-\bar{x}|}{n}\]</span></p>
 </div>
 <p><strong>Example:</strong> Let’s consider once more the price of Ether. Recall, that if we calculate the deviations from the mean we obtain the second column in the table below:</p>
 <div class="cell" data-layout-align="center">
