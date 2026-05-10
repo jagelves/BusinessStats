@@ -266,7 +266,8 @@ window.Quarto = {
   <li><a href="#the-geometric-mean" id="toc-the-geometric-mean" class="nav-link" data-scroll-target="#the-geometric-mean"><span class="header-section-number">3.6</span> The Geometric Mean</a></li>
   <li><a href="#measures-of-central-location-in-excel" id="toc-measures-of-central-location-in-excel" class="nav-link" data-scroll-target="#measures-of-central-location-in-excel"><span class="header-section-number">3.7</span> Measures of Central Location in Excel</a></li>
   <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">3.8</span> Excel Function Summary</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.9</span> Exercises</a>
+  <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">3.9</span> Chapter Summary Cheat Sheet</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">3.10</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -323,16 +324,12 @@ details summary {
 <p>The <strong>mean</strong> is the average value for a numerical variable. It is a widely understood and straightforward measure to calculate. It incorporates all data points, providing a comprehensive representation of the data set. However, its reliance on every value also makes it sensitive to outliers or skewed distributions, which may cause it to not accurately reflect the true center of the data.</p>
 <p>The sample statistic is estimated by:</p>
 <div class="callout-formula">
-<p><strong>THE MEAN (Sample)</strong> <span class="math display">\[
-\bar{x}=\frac{\sum x_{i}}{n}
-\]</span></p>
+<p><strong>THE MEAN (Sample)</strong> <span class="math display">\[\bar{x}=\frac{\sum x_{i}}{n}\]</span></p>
 <p>where <span class="math inline">\(\Sigma\)</span> is the summation operator, <span class="math inline">\(x_i\)</span> is observation <span class="math inline">\(i\)</span>, and <span class="math inline">\(n\)</span> is the number of observations in the sample.</p>
 </div>
 <p>The formula instructs you to add up all of the values in a variable and then divide by the sample size. If you wish to estimate the population parameter you can use:</p>
 <div class="callout-formula">
-<p><strong>THE MEAN (Population)</strong> <span class="math display">\[
-\mu=\frac{\sum x_{i}}{N}
-\]</span></p>
+<p><strong>THE MEAN (Population)</strong> <span class="math display">\[\mu=\frac{\sum x_{i}}{N}\]</span></p>
 <p>where <span class="math inline">\(N\)</span> is the population size.</p>
 </div>
 <p>Let’s consider a couple of example to highlight how the formula works.</p>
@@ -367,9 +364,7 @@ details summary {
 <h2 data-number="3.5" class="anchored" data-anchor-id="the-weighted-mean"><span class="header-section-number">3.5</span> The Weighted Mean</h2>
 <p>The weighted mean is useful in scenarios where some data points are more significant than others, such as in financial portfolios, grade point averages, or survey results, as it accounts for variability in importance across observations. This measure requires additional information in the form of weights (<span class="math inline">\(w_i\)</span>), which may not always be available or accurate. It is calculated the sum product of values (<span class="math inline">\(x_i\)</span>) and weights (<span class="math inline">\(w_i\)</span>) and then dividing by the sum of weights. Mathematically, the weighted average is:</p>
 <div class="callout-formula">
-<p><strong>THE WEIGHTED MEAN</strong> <span class="math display">\[
-\bar{x}_w=\frac{\sum w_{i}x_{i}}{\sum w_{i}}
-\]</span> where <span class="math inline">\(w_{i}\)</span> represents the weight of the ith observation.</p>
+<p><strong>THE WEIGHTED MEAN</strong> <span class="math display">\[\bar{x}_w=\frac{\sum w_{i}x_{i}}{\sum w_{i}}\]</span> where <span class="math inline">\(w_{i}\)</span> represents the weight of the ith observation.</p>
 </div>
 <p>Let’s consider once more a couple of examples.</p>
 <div class="callout-example">
@@ -469,23 +464,23 @@ details summary {
 <p>Excel has a collection of functions that calculate measures of central location. Let’s consider the following data on approval ratings:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="nygclcegmm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#nygclcegmm table {
+<div id="ignfdybhkr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ignfdybhkr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#nygclcegmm thead, #nygclcegmm tbody, #nygclcegmm tfoot, #nygclcegmm tr, #nygclcegmm td, #nygclcegmm th {
+#ignfdybhkr thead, #ignfdybhkr tbody, #ignfdybhkr tfoot, #ignfdybhkr tr, #ignfdybhkr td, #ignfdybhkr th {
   border-style: none;
 }
 
-#nygclcegmm p {
+#ignfdybhkr p {
   margin: 0;
   padding: 0;
 }
 
-#nygclcegmm .gt_table {
+#ignfdybhkr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -511,12 +506,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#nygclcegmm .gt_caption {
+#ignfdybhkr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#nygclcegmm .gt_title {
+#ignfdybhkr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -528,7 +523,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#nygclcegmm .gt_subtitle {
+#ignfdybhkr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -540,7 +535,7 @@ details summary {
   border-top-width: 0;
 }
 
-#nygclcegmm .gt_heading {
+#ignfdybhkr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -552,13 +547,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#nygclcegmm .gt_bottom_border {
+#ignfdybhkr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#nygclcegmm .gt_col_headings {
+#ignfdybhkr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -573,7 +568,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#nygclcegmm .gt_col_heading {
+#ignfdybhkr .gt_col_heading {
   color: #333333;
   background-color: #EDE8E3;
   font-size: 100%;
@@ -593,7 +588,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#nygclcegmm .gt_column_spanner_outer {
+#ignfdybhkr .gt_column_spanner_outer {
   color: #333333;
   background-color: #EDE8E3;
   font-size: 100%;
@@ -605,15 +600,15 @@ details summary {
   padding-right: 4px;
 }
 
-#nygclcegmm .gt_column_spanner_outer:first-child {
+#ignfdybhkr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#nygclcegmm .gt_column_spanner_outer:last-child {
+#ignfdybhkr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#nygclcegmm .gt_column_spanner {
+#ignfdybhkr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -625,11 +620,11 @@ details summary {
   width: 100%;
 }
 
-#nygclcegmm .gt_spanner_row {
+#ignfdybhkr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#nygclcegmm .gt_group_heading {
+#ignfdybhkr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -655,7 +650,7 @@ details summary {
   text-align: left;
 }
 
-#nygclcegmm .gt_empty_group_heading {
+#ignfdybhkr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -670,15 +665,15 @@ details summary {
   vertical-align: middle;
 }
 
-#nygclcegmm .gt_from_md > :first-child {
+#ignfdybhkr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#nygclcegmm .gt_from_md > :last-child {
+#ignfdybhkr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#nygclcegmm .gt_row {
+#ignfdybhkr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -697,7 +692,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#nygclcegmm .gt_stub {
+#ignfdybhkr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -710,7 +705,7 @@ details summary {
   padding-right: 5px;
 }
 
-#nygclcegmm .gt_stub_row_group {
+#ignfdybhkr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -724,15 +719,15 @@ details summary {
   vertical-align: top;
 }
 
-#nygclcegmm .gt_row_group_first td {
+#ignfdybhkr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#nygclcegmm .gt_row_group_first th {
+#ignfdybhkr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#nygclcegmm .gt_summary_row {
+#ignfdybhkr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -742,16 +737,16 @@ details summary {
   padding-right: 5px;
 }
 
-#nygclcegmm .gt_first_summary_row {
+#ignfdybhkr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#nygclcegmm .gt_first_summary_row.thick {
+#ignfdybhkr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#nygclcegmm .gt_last_summary_row {
+#ignfdybhkr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -761,7 +756,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#nygclcegmm .gt_grand_summary_row {
+#ignfdybhkr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -771,7 +766,7 @@ details summary {
   padding-right: 5px;
 }
 
-#nygclcegmm .gt_first_grand_summary_row {
+#ignfdybhkr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -781,7 +776,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#nygclcegmm .gt_last_grand_summary_row_top {
+#ignfdybhkr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -791,11 +786,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#nygclcegmm .gt_striped {
+#ignfdybhkr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#nygclcegmm .gt_table_body {
+#ignfdybhkr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -804,7 +799,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#nygclcegmm .gt_footnotes {
+#ignfdybhkr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -818,7 +813,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#nygclcegmm .gt_footnote {
+#ignfdybhkr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -827,7 +822,7 @@ details summary {
   padding-right: 5px;
 }
 
-#nygclcegmm .gt_sourcenotes {
+#ignfdybhkr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -841,7 +836,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#nygclcegmm .gt_sourcenote {
+#ignfdybhkr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -849,72 +844,72 @@ details summary {
   padding-right: 5px;
 }
 
-#nygclcegmm .gt_left {
+#ignfdybhkr .gt_left {
   text-align: left;
 }
 
-#nygclcegmm .gt_center {
+#ignfdybhkr .gt_center {
   text-align: center;
 }
 
-#nygclcegmm .gt_right {
+#ignfdybhkr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#nygclcegmm .gt_font_normal {
+#ignfdybhkr .gt_font_normal {
   font-weight: normal;
 }
 
-#nygclcegmm .gt_font_bold {
+#ignfdybhkr .gt_font_bold {
   font-weight: bold;
 }
 
-#nygclcegmm .gt_font_italic {
+#ignfdybhkr .gt_font_italic {
   font-style: italic;
 }
 
-#nygclcegmm .gt_super {
+#ignfdybhkr .gt_super {
   font-size: 65%;
 }
 
-#nygclcegmm .gt_footnote_marks {
+#ignfdybhkr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#nygclcegmm .gt_asterisk {
+#ignfdybhkr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#nygclcegmm .gt_indent_1 {
+#ignfdybhkr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#nygclcegmm .gt_indent_2 {
+#ignfdybhkr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#nygclcegmm .gt_indent_3 {
+#ignfdybhkr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#nygclcegmm .gt_indent_4 {
+#ignfdybhkr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#nygclcegmm .gt_indent_5 {
+#ignfdybhkr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#nygclcegmm .katex-display {
+#ignfdybhkr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#nygclcegmm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ignfdybhkr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -972,8 +967,20 @@ details summary {
 <li><p><code>=GEOMEAN()</code> calculates the geometric mean for a range of numbers.</p></li>
 </ul>
 </section>
-<section id="exercises" class="level2" data-number="3.9">
-<h2 data-number="3.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.9</span> Exercises</h2>
+<section id="chapter-summary-cheat-sheet" class="level2" data-number="3.9">
+<h2 data-number="3.9" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">3.9</span> Chapter Summary Cheat Sheet</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Central_Location.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exercises" class="level2" data-number="3.10">
+<h2 data-number="3.10" class="anchored" data-anchor-id="exercises"><span class="header-section-number">3.10</span> Exercises</h2>
 <p>The following exercises will help you practice the measures of central location. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating the mean, median, and the mode.</p></li>
@@ -1002,9 +1009,9 @@ details summary {
 <summary>
 Answer
 </summary>
-<p><em>To find the mean we will use the following formula <span class="math inline">\(( \frac{1}{n} \sum_{i=i}^{n} x_{i})\)</span>. The summation of the values is <span class="math inline">\(51\)</span> and the number of observations is <span class="math inline">\(5\)</span>. The mean is <span class="math inline">\(51/5=10.2\)</span>.</em></p>
-<p><em>The median is found by locating the middle value when data is sorted in ascending order. <span class="math inline">\(x_{sorted}=[8,9,10,12,12]\)</span>. The median in this example is <span class="math inline">\(10\)</span>.</em></p>
-<p><em>The mode is the value with the highest frequency. In this example the mode is <span class="math inline">\(12\)</span> since it is repeated twice and all other numbers appear only once.</em></p>
+<p><em>To find the mean we will use the following formula</em> <span class="math inline">\(( \frac{1}{n} \sum_{i=i}^{n} x_{i})\)</span>. The summation of the values is <span class="math inline">\(51\)</span> and the number of observations is <span class="math inline">\(5\)</span>. The mean is <span class="math inline">\(51/5=10.2\)</span>.</p>
+<p><em>The median is found by locating the middle value when data is sorted in ascending order.</em> <span class="math inline">\(x_{sorted}=[8,9,10,12,12]\)</span>. The median in this example is <span class="math inline">\(10\)</span>.</p>
+<p><em>The mode is the value with the highest frequency. In this example the mode is</em> <span class="math inline">\(12\)</span> since it is repeated twice and all other numbers appear only once.</p>
 <p><em>To verify in Excel, enter the data in cells <code>A1:A5</code> and use:</em></p>
 <ul>
 <li><code>=AVERAGE(8,9,10,12,12)</code> → <span class="math inline">\(10.2\)</span></li>
@@ -1031,7 +1038,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The mean is <span class="math inline">\(-2.67\)</span>, the median is <span class="math inline">\(-3.5\)</span>, the mode is <span class="math inline">\(-4\)</span>.</em> <em>To verify in Excel, enter the data in cells <code>A1:A6</code> and use:</em></p>
+<p><em>The mean is</em> <span class="math inline">\(-2.67\)</span>, the median is <span class="math inline">\(-3.5\)</span>, the mode is <span class="math inline">\(-4\)</span>. <em>To verify in Excel, enter the data in cells <code>A1:A6</code> and use:</em></p>
 <ul>
 <li><code>=AVERAGE(-4,0,-6,1,-3,-4)</code> → <span class="math inline">\(-2.67\)</span></li>
 <li><code>=MEDIAN(-4,0,-6,1,-3,-4)</code> → <span class="math inline">\(-3.5\)</span></li>
@@ -1060,7 +1067,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The mean is <span class="math inline">\(18.33\)</span>, the median is <span class="math inline">\(20\)</span>, the data is bimodal with both <span class="math inline">\(15\)</span> and <span class="math inline">\(20\)</span> being modes.</em></p>
+<p><em>The mean is</em> <span class="math inline">\(18.33\)</span>, the median is <span class="math inline">\(20\)</span>, the data is bimodal with both <span class="math inline">\(15\)</span> and <span class="math inline">\(20\)</span> being modes.</p>
 <p><em>To verify in Excel, enter the data in cells <code>A1:A9</code> and use:</em></p>
 <ul>
 <li><code>=AVERAGE(20,15,25,20,10,15,25,20,15)</code> → <span class="math inline">\(18.33\)</span></li>
@@ -1080,7 +1087,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The mean price for Country Hill is <span class="math inline">\(1.87\)</span>. The mean price for Minute Maid is <span class="math inline">\(2.09\)</span>.</em></p>
+<p><em>The mean price for Country Hill is</em> <span class="math inline">\(1.87\)</span>. The mean price for Minute Maid is <span class="math inline">\(2.09\)</span>.</p>
 <p><em>To verify in Excel, assuming</em> <code>PriceCH</code> <em>is in column D and</em> <code>PriceMM</code> <em>is in column E, use:</em></p>
 <ul>
 <li><code>=AVERAGE(D2:D1071)</code> → <span class="math inline">\(1.87\)</span></li>
@@ -1121,7 +1128,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>Purchasers of Country Hill at store 1 paid a median price of <span class="math inline">\(1.76\)</span> for Country Hill juice. This once again was the lowest price.The median price for Country Hill purchasers at each store is given by:</em></p>
+<p><em>Purchasers of Country Hill at store 1 paid a median price of</em> <span class="math inline">\(1.76\)</span> for Country Hill juice. This once again was the lowest price.The median price for Country Hill purchasers at each store is given by:</p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 5 × 2
@@ -1138,7 +1145,7 @@ Answer
 <ul>
 <li><code>=MEDIAN(IF((C2:C1071=1)*(A2:A1071="CH"), D2:D1071))</code> → store 1 median</li>
 </ul>
-<em>Repeat changing the store number for each store.</em>
+<p><em>Repeat changing the store number for each store.</em></p>
 </details>
 </section>
 <section id="exercise-3" class="level3 unnumbered">
@@ -1176,7 +1183,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The average price of sale is found by using the weighted average formula. <span class="math inline">\(\frac{\sum w_{i}x_{i}}{\sum w_{i}}\)</span> The weights (<span class="math inline">\(w_{i}\)</span>) are given by the number of shares bought and the values (<span class="math inline">\(x_{i}\)</span>) are the prices. The weighted average is <span class="math inline">\(246.802\)</span>.</em></p>
+<p><em>The average price of sale is found by using the weighted average formula.</em> <span class="math inline">\(\frac{\sum w_{i}x_{i}}{\sum w_{i}}\)</span> The weights (<span class="math inline">\(w_{i}\)</span>) are given by the number of shares bought and the values (<span class="math inline">\(x_{i}\)</span>) are the prices. The weighted average is <span class="math inline">\(246.802\)</span>.</p>
 <p><em>To verify in Excel use:</em></p>
 <ul>
 <li><code>=SUMPRODUCT({250.34,234.59,270.45},{80,120,50}) / SUM(80,120,50)</code> → <span class="math inline">\(246.802\)</span></li>
@@ -1189,7 +1196,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The average if equal shares were bought would be <span class="math inline">\(251.7933\)</span>.</em></p>
+<p><em>The average if equal shares were bought would be</em> <span class="math inline">\(251.7933\)</span>.</p>
 <ul>
 <li><code>=AVERAGE(250.34,234.59,270.45)</code> → <span class="math inline">\(251.793\)</span></li>
 </ul>
@@ -1289,7 +1296,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>At the end of 4 years it is predicted that you would have <span class="math inline">\(1621.17\)</span> dollars. Each year you would have gained <span class="math inline">\(12.84\)</span>% on average.</em></p>
+<p><em>At the end of 4 years it is predicted that you would have</em> <span class="math inline">\(1621.17\)</span> dollars. Each year you would have gained <span class="math inline">\(12.84\)</span>% on average.</p>
 <p><em>To verify in Excel use:</em></p>
 <ul>
 <li><code>=AVERAGE(0.173, 0.196, 0.068, 0.082)</code> → <span class="math inline">\(0.12975\)</span> arithmetic mean</li>

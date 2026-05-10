@@ -19,6 +19,7 @@ details summary {
 Understanding where the "center" of a dataset lies is a fundamental step when interpreting and analyzing data. Measures of central location provide different ways to identify the "typical" value in a dataset, each with its unique strengths and limitations. Below I survey some of the most popular measures of central location.
 
 ## Sample Vs. Population Statistics
+
 In this book you will find formulas for calculating sample statistics and population parameters. In general, you will use population formulas when you have data for the entire group you care about or when you are working with a theoretical distribution and the parameter is known; population formulas use $N$ in denominators and estimate parameters. Use sample formulas when your data are a subset drawn from a larger population and you want unbiased estimators of the population parameters; sample formulas use $n$ and the degrees of freedom correction. In practice most empirical work uses sample formulas because we rarely observe entire populations; below you will see both population and sample versions so you can choose the correct one depending on whether your data represent the full population or a sample.
 
 ## The Mean
@@ -27,33 +28,29 @@ The **mean** is the average value for a numerical variable. It is a widely under
 
 The sample statistic is estimated by:
 
-::: {.callout-formula}
+::: callout-formula
 **THE MEAN (Sample)**
-$$
-\bar{x}=\frac{\sum x_{i}}{n}
-$$
+$$\bar{x}=\frac{\sum x_{i}}{n}$$
 
-where $\Sigma$ is the summation operator, $x_i$ is observation $i$, and $n$ is the number of observations in the sample. 
+where $\Sigma$ is the summation operator, $x_i$ is observation $i$, and $n$ is the number of observations in the sample.
 :::
 
 The formula instructs you to add up all of the values in a variable and then divide by the sample size. If you wish to estimate the population parameter you can use:
 
-::: {.callout-formula}
+::: callout-formula
 **THE MEAN (Population)**
-$$
-\mu=\frac{\sum x_{i}}{N}
-$$
+$$\mu=\frac{\sum x_{i}}{N}$$
 
 where $N$ is the population size.
 :::
 
 Let's consider a couple of example to highlight how the formula works.
 
-::: {.callout-example}
+::: callout-example
 **Example 1:** Consider the following sample of numbers $x=\{1,4,2,1\}$. The mean would be equal to $\bar{x}=\frac{1+4+2+1}{4}$ or $\bar{x}=2$.
 :::
 
-::: {.callout-example}
+::: callout-example
 **Example 2:** Consider the following sample of numbers $x=\{1,4,2,1,100\}$. The mean is $\bar{x}=21.6$. Although most of the numbers are in the range $(1,4)$, the $100$ biases the mean to $21.6$.
 :::
 
@@ -61,11 +58,11 @@ Let's consider a couple of example to highlight how the formula works.
 
 The **median** is the value in the middle when data is organized in ascending order. When $n$ is even, the median is the average between the two middle values. The median is resistant to outliers, making it an ideal measure for skewed data or data sets with irregular distributions. It is particularly useful for ordinal data, where precise ranking is important. However, the median does not utilize all data points, which can lead to less precise comparisons compared to other measures like the mean.
 
-::: {.callout-example}
+::: callout-example
 **Example 1:** Consider the following numbers $x=\{1,4,2,1\}$. We first sort the data to obtain $x_{sorted}=\{1,1,2,4\}$. Since the number of observations is even ($n=4$), the median is the average of the two middle numbers $(1,2)$. $median_x=\frac{1+2}{2}$ or $1.5$.
 :::
 
-::: {.callout-example}
+::: callout-example
 **Example 2:** Consider the following numbers $x=\{1,4,2,1,100\}$. We once again sort the number obtaining $x_{sorted}=\{1,1,2,4,100\}$. Since $n=5$ in this case we can identify the median as the third value in $x_{sorted}$. $median_x=2$. Note that the inclusion of $100$ in the data did not change much the measure of central location.
 :::
 
@@ -73,11 +70,11 @@ The **median** is the value in the middle when data is organized in ascending or
 
 The **mode** is the value with highest frequency from a set of observations. This measure is particularly useful for categorical data as it helps determine popularity of values. It can be applied to both numerical and non-numerical data sets. The mode has its limitations; it may not exist in cases where all values occur with equal frequency, and there may be multiple modes, which can complicate interpretation. Additionally, since the mode focuses only on the most frequent value, it does not account for other data points, limiting its overall utility as a comprehensive measure.
 
-::: {.callout-example}
+::: callout-example
 **Example 1:** Consider the following numbers $x=\{1,4,2,1\}$. Since $1$ is repeated twice and all other numbers just repeated once, $x_{mode}=1$.
 :::
 
-::: {.callout-example}
+::: callout-example
 **Example 2:** Consider the following numbers $x=\{1,4,2,1,4\}$. Now $4$ is also repeated twice. The variable has two modes $x_{mode}=\{1,2\}$. $x$ is said to be bimodal.
 :::
 
@@ -85,28 +82,26 @@ The **mode** is the value with highest frequency from a set of observations. Thi
 
 The weighted mean is useful in scenarios where some data points are more significant than others, such as in financial portfolios, grade point averages, or survey results, as it accounts for variability in importance across observations. This measure requires additional information in the form of weights ($w_i$), which may not always be available or accurate. It is calculated the sum product of values ($x_i$) and weights ($w_i$) and then dividing by the sum of weights. Mathematically, the weighted average is:
 
-::: {.callout-formula}
+::: callout-formula
 **THE WEIGHTED MEAN**
-$$
-\bar{x}_w=\frac{\sum w_{i}x_{i}}{\sum w_{i}}
-$$
+$$\bar{x}_w=\frac{\sum w_{i}x_{i}}{\sum w_{i}}$$
 where $w_{i}$ represents the weight of the ith observation.
 :::
 
 Let's consider once more a couple of examples.
 
-::: {.callout-example}
+::: callout-example
 **Example 1:** Consider three different stocks $S=\{T, C, X\}$ with stock returns of $R=\{2,4,10\}$. Each stock has a weight in the portfolio of $W=\{0.3,0.2,0.5\}$. The average return of the portfolio is $\bar{x}_{weighted}=\frac{0.6+0.8+5}{1}$ or $\bar{x}_{weighted}=6.4$.
 :::
 
-::: {.callout-example}
+::: callout-example
 **Example 2:** A company evaluates job candidates using three criteria: technical skills, communication, and teamwork. The criteria and their weights are shown in the table below:
 
-| Criteria           | Weight | Score |
-|--------------------|--------|-------|
-| Technical Skills   | 0.50   | 88    |
-| Communication      | 0.30   | 76    |
-| Teamwork           | 0.20   | 82    |
+| Criteria         | Weight | Score |
+|------------------|--------|-------|
+| Technical Skills | 0.50   | 88    |
+| Communication    | 0.30   | 76    |
+| Teamwork         | 0.20   | 82    |
 
 The weighted mean score for the candidate is:
 
@@ -117,45 +112,33 @@ $$= 44 + 22.8 + 16.4 = 83.2$$
 The candidate's overall score is $83.2$ out of $100$. Note that a simple average would have given $(88 + 76 + 82)/3 = 82$, a slightly different result. The weighted mean reflects the company's priorities by giving more importance to technical skills.
 :::
 
-
 ## The Geometric Mean
 
 The **geometric mean** is a multiplicative average that is less sensitive to outliers relative to the arithmetic mean. It is particularly useful when averaging rates or levels that compound over time. The formula depends on whether the data represents rates or levels.
 
 When working with rates, we add 1 to each value because rates represent changes relative to a base value. The geometric mean is given by:
 
-::: {.callout-formula}
-**THE GEOMETRIC MEAN (Rates)**
-$$\bar{x}_g=\sqrt[n]{(1+r_1)\times(1+r_2)\times...\times(1+r_n)}-1$$
-where $r_i$ are rates of change and $n$ is the number of periods.
+::: callout-formula
+**THE GEOMETRIC MEAN (Rates)** $$\bar{x}_g=\sqrt[n]{(1+r_1)\times(1+r_2)\times...\times(1+r_n)}-1$$ where $r_i$ are rates of change and $n$ is the number of periods.
 :::
 
-When working with levels, the values already reflect standalone 
-quantities rather than relative changes, so no adjustment is needed. 
-The geometric mean simplifies to:
+When working with levels, the values already reflect standalone quantities rather than relative changes, so no adjustment is needed. The geometric mean simplifies to:
 
-::: {.callout-formula}
-**THE GEOMETRIC MEAN (Levels)**
-$$\bar{x}_g=\sqrt[n]{x_1 \times x_2 \times ... \times x_n}$$
-where $x_i$ are positive values such as prices, proportions, or 
-index values.
+::: callout-formula
+**THE GEOMETRIC MEAN (Levels)** $$\bar{x}_g=\sqrt[n]{x_1 \times x_2 \times ... \times x_n}$$ where $x_i$ are positive values such as prices, proportions, or index values.
 :::
 
 To illustrate the distinction, we work through two examples below.
 
-::: {.callout-example}
-**Example 1:** A company tracks its market share across four regions: 
-$x=\{0.20, 0.30, 0.10, 0.10\}$. Since market share is a proportion 
-of the whole — a level, not a rate of change — we apply the levels 
-formula directly:
+::: callout-example
+**Example 1:** A company tracks its market share across four regions: $x=\{0.20, 0.30, 0.10, 0.10\}$. Since market share is a proportion of the whole — a level, not a rate of change — we apply the levels formula directly:
 
-$$\bar{x}_g=\sqrt[4]{0.20 \times 0.30 \times 0.10 \times 0.10}$$
-$$=\sqrt[4]{0.0006}=0.156$$
+$$\bar{x}_g=\sqrt[4]{0.20 \times 0.30 \times 0.10 \times 0.10}$$ $$=\sqrt[4]{0.0006}=0.156$$
 
 The geometric mean market share across the four regions is $15.6\%$.
 :::
 
-::: {.callout-example}
+::: callout-example
 **Example 2:** An investment fund reports the following annual returns over four years:
 
 | Year | Return | Growth Factor |
@@ -167,12 +150,9 @@ The geometric mean market share across the four regions is $15.6\%$.
 
 Since these are rates of return, we add 1 to each value to obtain the growth factor before applying the formula. The geometric mean is:
 
-$$\bar{x}_g = \sqrt[4]{1.10 \times 1.25 \times 0.92 \times 1.15}-1$$
-$$= \sqrt[4]{1.4539}-1 = 0.0977$$
+$$\bar{x}_g = \sqrt[4]{1.10 \times 1.25 \times 0.92 \times 1.15}-1$$ $$= \sqrt[4]{1.4539}-1 = 0.0977$$
 
-The average annual return is $9.77\%$. Note that the arithmetic mean 
-gives $(10 + 25 - 8 + 15)/4 = 10.5\%$, which overstates the true 
-average. The geometric mean is the appropriate measure here because it accounts for the compounding effect of returns over time.
+The average annual return is $9.77\%$. Note that the arithmetic mean gives $(10 + 25 - 8 + 15)/4 = 10.5\%$, which overstates the true average. The geometric mean is the appropriate measure here because it accounts for the compounding effect of returns over time.
 :::
 
 ## Measures of Central Location in Excel
@@ -227,13 +207,9 @@ You can also download the data here:
 
 **Mode:** To calculate the mode in Excel use `=MODE(C2:C5)`. Note that `MODE` only returns one value even if there are multiple modes. For the approval data, the mode is 0.25.
 
-**Weighted Mean:** To calculate the weighted mean in Excel use 
-`=SUMPRODUCT(B2:B5, C2:C5) / SUM(B2:B5)`, where column B contains the number of people surveyed and column C contains the approval ratings. This formula multiplies each approval rating by its corresponding weight and divides by the total number of people. The weighted mean approval rating is `r weighted.mean(x=poll$approval, w=poll$people)`.
+**Weighted Mean:** To calculate the weighted mean in Excel use `=SUMPRODUCT(B2:B5, C2:C5) / SUM(B2:B5)`, where column B contains the number of people surveyed and column C contains the approval ratings. This formula multiplies each approval rating by its corresponding weight and divides by the total number of people. The weighted mean approval rating is `r weighted.mean(x=poll$approval, w=poll$people)`.
 
-**Geometric Mean:** To calculate the geometric mean in Excel use 
-`=GEOMEAN(C2:C5)`. Note that since approval ratings are already 
-proportions there is no need to add 1 to each value before applying 
-the formula. The geometric mean approval rating is 0.4391.
+**Geometric Mean:** To calculate the geometric mean in Excel use `=GEOMEAN(C2:C5)`. Note that since approval ratings are already proportions there is no need to add 1 to each value before applying the formula. The geometric mean approval rating is 0.4391.
 
 ## Excel Function Summary
 
@@ -243,20 +219,25 @@ the formula. The geometric mean approval rating is 0.4391.
 
 - `=MODE()` returns the most frequently occurring value in a range.
 
-- `=SUMPRODUCT()` multiplies corresponding values in two ranges and 
-  returns their sum, useful for calculating the weighted mean.
-  
+- `=SUMPRODUCT()` multiplies corresponding values in two ranges and returns their sum, useful for calculating the weighted mean.
+
 - `=GEOMEAN()` calculates the geometric mean for a range of numbers.
+
+## Chapter Summary Cheat Sheet
+
+```{r echo=FALSE, out.width="75%", fig.align='center'}
+knitr::include_graphics("images/Central_Location.png")
+```
 
 ## Exercises
 
 The following exercises will help you practice the measures of central location. In particular, the exercises work on:
 
--   Calculating the mean, median, and the mode.
+- Calculating the mean, median, and the mode.
 
--   Calculating the weighted average.
+- Calculating the weighted average.
 
--   Applying the geometric mean for growth rates and returns.
+- Applying the geometric mean for growth rates and returns.
 
 Answers are provided below. Try not to peek until you have a formulated your own answer and double checked your work for any mistakes.
 
@@ -274,11 +255,11 @@ For the following exercises, make your calculations by hand and verify results u
 
 <summary>Answer</summary>
 
-*To find the mean we will use the following formula $( \frac{1}{n} \sum_{i=i}^{n} x_{i})$. The summation of the values is $51$ and the number of observations is $5$. The mean is $51/5=10.2$.*
+*To find the mean we will use the following formula* $( \frac{1}{n} \sum_{i=i}^{n} x_{i})$. The summation of the values is $51$ and the number of observations is $5$. The mean is $51/5=10.2$.
 
-*The median is found by locating the middle value when data is sorted in ascending order. $x_{sorted}=[8,9,10,12,12]$. The median in this example is $10$.*
+*The median is found by locating the middle value when data is sorted in ascending order.* $x_{sorted}=[8,9,10,12,12]$. The median in this example is $10$.
 
-*The mode is the value with the highest frequency. In this example the mode is $12$ since it is repeated twice and all other numbers appear only once.*
+*The mode is the value with the highest frequency. In this example the mode is* $12$ since it is repeated twice and all other numbers appear only once.
 
 *To verify in Excel, enter the data in cells `A1:A5` and use:*
 
@@ -298,7 +279,7 @@ For the following exercises, make your calculations by hand and verify results u
 
 <summary>Answer</summary>
 
-*The mean is $-2.67$, the median is $-3.5$, the mode is $-4$.* *To verify in Excel, enter the data in cells `A1:A6` and use:*
+*The mean is* $-2.67$, the median is $-3.5$, the mode is $-4$. *To verify in Excel, enter the data in cells `A1:A6` and use:*
 
 - `=AVERAGE(-4,0,-6,1,-3,-4)` → $-2.67$
 - `=MEDIAN(-4,0,-6,1,-3,-4)` → $-3.5$
@@ -316,14 +297,14 @@ For the following exercises, make your calculations by hand and verify results u
 
 <summary>Answer</summary>
 
-*The mean is $18.33$, the median is $20$, the data is bimodal with both $15$ and $20$ being modes.*
+*The mean is* $18.33$, the median is $20$, the data is bimodal with both $15$ and $20$ being modes.
 
 *To verify in Excel, enter the data in cells `A1:A9` and use:*
 
 - `=AVERAGE(20,15,25,20,10,15,25,20,15)` → $18.33$
 - `=MEDIAN(20,15,25,20,10,15,25,20,15)` → $20$
 - `=MODE.MULT(20,15,25,20,10,15,25,20,15)` → $15$ and $20$ (note: use `MODE.MULT` instead of `MODE` to capture all modes)
-  
+
 </details>
 
 ### Exercise 2 {.unnumbered}
@@ -338,7 +319,7 @@ You will need the **OJ** data set to answer this question. You can get the datas
 
 <summary>Answer</summary>
 
-*The mean price for Country Hill is $1.87$. The mean price for Minute Maid is $2.09$.*
+*The mean price for Country Hill is* $1.87$. The mean price for Minute Maid is $2.09$.
 
 *To verify in Excel, assuming* `PriceCH` *is in column D and* `PriceMM` *is in column E, use:*
 
@@ -360,8 +341,7 @@ library(ISLR2)
 OJ %>% group_by(StoreID) %>% summarise(MeanCH=mean(PriceCH))
 ```
 
-*To verify in Excel, use `AVERAGEIF` to filter by store. Assuming 
-`StoreID` is in column C and `PriceCH` is in column D:*
+*To verify in Excel, use `AVERAGEIF` to filter by store. Assuming `StoreID` is in column C and `PriceCH` is in column D:*
 
 - `=AVERAGEIF(C2:C1071, 1, D2:D1071)` → store 1 mean
 - `=AVERAGEIF(C2:C1071, 2, D2:D1071)` → store 2 mean
@@ -375,19 +355,18 @@ OJ %>% group_by(StoreID) %>% summarise(MeanCH=mean(PriceCH))
 
 <summary>Answer</summary>
 
-*Purchasers of Country Hill at store 1 paid a median price of $1.76$ for Country Hill juice. This once again was the lowest price.The median price for Country Hill purchasers at each store is given by:*
+*Purchasers of Country Hill at store 1 paid a median price of* $1.76$ for Country Hill juice. This once again was the lowest price.The median price for Country Hill purchasers at each store is given by:
 
 ```{r echo=FALSE}
 OJ %>% filter(Purchase=="CH") %>% group_by(StoreID) %>% summarise(MedianCH=median(PriceCH))
 ```
 
-*To verify in Excel, use `MEDIAN` with `IF` as an array formula. 
-Assuming `Purchase` is in column A, `StoreID` in column C, and 
-`PriceCH` in column D. Enter with `Ctrl+Shift+Enter`:*
+*To verify in Excel, use `MEDIAN` with `IF` as an array formula. Assuming `Purchase` is in column A, `StoreID` in column C, and `PriceCH` in column D. Enter with `Ctrl+Shift+Enter`:*
 
 - `=MEDIAN(IF((C2:C1071=1)*(A2:A1071="CH"), D2:D1071))` → store 1 median
 
 *Repeat changing the store number for each store.*
+
 </details>
 
 ### Exercise 3 {.unnumbered}
@@ -404,12 +383,11 @@ Assuming `Purchase` is in column A, `StoreID` in column C, and
 
 <summary>Answer</summary>
 
-*The average price of sale is found by using the weighted average formula. $\frac{\sum w_{i}x_{i}}{\sum w_{i}}$ The weights ($w_{i}$) are given by the number of shares bought and the values ($x_{i}$) are the prices. The weighted average is $246.802$.*
+*The average price of sale is found by using the weighted average formula.* $\frac{\sum w_{i}x_{i}}{\sum w_{i}}$ The weights ($w_{i}$) are given by the number of shares bought and the values ($x_{i}$) are the prices. The weighted average is $246.802$.
 
 *To verify in Excel use:*
 
 - `=SUMPRODUCT({250.34,234.59,270.45},{80,120,50}) / SUM(80,120,50)` → $246.802$
-
 
 </details>
 
@@ -419,7 +397,7 @@ Assuming `Purchase` is in column A, `StoreID` in column C, and
 
 <summary>Answer</summary>
 
-*The average if equal shares were bought would be $251.7933$.*
+*The average if equal shares were bought would be* $251.7933$.
 
 - `=AVERAGE(250.34,234.59,270.45)` → $251.793$
 
@@ -439,10 +417,9 @@ Assuming `Purchase` is in column A, `StoreID` in column C, and
 
 *The inflation rate is the percentage change in the CPI. The inflation rate for each period is shown in the table below:*
 
-|  1-2   |   2-3     |   3-4    |    4-5    |
+| 1-2 |  2-3   |  3-4  |  4-5   |
 |:---:|:------:|:-----:|:------:|
 | 30% | 23.08% | 12.5% | 16.67% |
-
 
 </details>
 
@@ -452,10 +429,9 @@ Assuming `Purchase` is in column A, `StoreID` in column C, and
 
 <summary>Answer</summary>
 
-*The average growth rate is $20.38%$. Use the geometric mean formula with compounding.
+\*The average growth rate is $20.38%$. Use the geometric mean formula with compounding.
 
-$$\bar x_{g}=(1.3 \times 1.2308 \times 1.125 \times 1.1667)^{1/4}-1$$
-$$\bar x_{g}=0.2038$$
+$$\bar x_{g}=(1.3 \times 1.2308 \times 1.125 \times 1.1667)^{1/4}-1$$ $$\bar x_{g}=0.2038$$
 
 You can use the command `GEOMEAN(1.3,1.2308,1.125,1.1667)-1` in Excel to verify the result.
 
@@ -464,7 +440,6 @@ You can use the command `GEOMEAN(1.3,1.2308,1.125,1.1667)-1` in Excel to verify 
 ### Exercise 5 {.unnumbered}
 
 Suppose that you want to invest \$1000 dollars in a stock that is predicted to yield the following returns in the next four years. Calculate both the arithmetic mean and the geometric mean. Use the geometric mean to estimate how much money you would have by the end of year 4.
-
 
 | Year | Annual Return |
 |:----:|:-------------:|
@@ -477,13 +452,12 @@ Suppose that you want to invest \$1000 dollars in a stock that is predicted to y
 
 <summary>Answer</summary>
 
-*At the end of 4 years it is predicted that you would have $1621.17$ dollars. Each year you would have gained $12.84$% on average.*
-
+*At the end of 4 years it is predicted that you would have* $1621.17$ dollars. Each year you would have gained $12.84$% on average.
 
 *To verify in Excel use:*
 
 - `=AVERAGE(0.173, 0.196, 0.068, 0.082)` → $0.12975$ arithmetic mean
-- `=GEOMEAN(1.173, 1.196, 1.068, 1.082)-1` → $0.1173$ geometric mean 
+- `=GEOMEAN(1.173, 1.196, 1.068, 1.082)-1` → $0.1173$ geometric mean
 - `=1000*(1+0.1173)^4` → $1621.17$
 
 </details>
@@ -494,13 +468,11 @@ You will need the **Hitters** dataset containing data on Major League Baseball p
 
 [{{< fa file-excel >}} Download Data](Hitters.xlsx){.btn .btn-success}
 
-
-1. Compute the overall mean and median salary for all players. Which measure (mean or median) better represents the typical salary?
+1.  Compute the overall mean and median salary for all players. Which measure (mean or median) better represents the typical salary?
 
 <details>
 
 <summary>Answer</summary>
-
 
 *The mean and the median salary of the hitters is 535 and 425 respectively.Due to right-skew from superstar salaries, the median better represents the typical player.*
 
@@ -511,7 +483,7 @@ You will need the **Hitters** dataset containing data on Major League Baseball p
 
 </details>
 
-2. filter to only players with at least one home run (HmRun >= 1) and compute the mean and median salary for this subgroup. 
+2.  filter to only players with at least one home run (HmRun \>= 1) and compute the mean and median salary for this subgroup.
 
 <details>
 
