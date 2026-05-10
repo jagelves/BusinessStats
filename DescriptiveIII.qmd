@@ -122,7 +122,7 @@ The candidate's overall score is $83.2$ out of $100$. Note that a simple average
 The **geometric mean** is a multiplicative average that is less sensitive to outliers relative to the arithmetic mean. It is useful when averaging growth rates or rates of return. It is calculated by:
 
 ::: {.callout-formula}
-**THE GEOMETRIC MEAN (GROWTH)**
+**THE GEOMETRIC MEAN (RATES)**
 $$
 \bar{x}_g=\sqrt[n]{(1+r_1)*(1+r_2)...(1+r_n)}-1
 $$
@@ -135,7 +135,7 @@ When working with growth rates or rates of return, you add 1 to each rate becaus
 When dealing with proportions, these already reflect a standalone quantity, not a relative change. As a consequence, there is no need to add 1. In this case the geometric mean simplifies to:
 
 ::: {.callout-formula}
-**THE GEOMETRIC MEAN (Proportion)**
+**THE GEOMETRIC MEAN (LEVELS)**
 $$
 \bar{x}_g=\sqrt[n]{(x_1) \times (x_2)...(x_n)}
 $$
