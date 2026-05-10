@@ -194,51 +194,161 @@ knitr::include_graphics("images/Sharpe.png")
 The table shows four investments (Apple, Bitcoin, Shiba, and S&P). Just looking at the daily return, it is clear that Shiba provides the best returns. However, the cost for that high return is reflected in variability (22% for Shiba). The S&P is clearly the safest investment with a standard deviation of only 0.9%. The Sharpe Ratio, marries these two metrics showing the return per unit of risk taken over the free rate. If we assume a 0% risk free rate, the investment with the highest Sharpe Ratio is the S&P at 0.11.
 :::
 
+
 ## Measures of Dispersion in Excel
 
-Let's use some stock returns to explore Excel functions that allow us to calculate measures of dispersion. 
+Excel has a collection of functions that calculate measures of dispersion. Let's use daily stock return data for three assets — Apple (AAPL), the S&P 500 ETF (SPY), and Tesla (TSLA) — to explore these functions. The data contains daily returns for each stock from January 2020 to July 2021.
 
-```{r}
+[{{< fa file-excel >}} Download Data](returns.xlsx){.btn .btn-success}
+
+```{r echo=FALSE, message=FALSE}
 library(tidyverse)
-returns<-read_csv("https://jagelves.github.io/Data/returns.csv")
+returns <- read_csv("https://jagelves.github.io/Data/returns.csv")
 ```
 
-It seems like the data is stock returns for different companies. We can start by finding the average return of each stock. To do this, let's use the `group_by()` and `summarise()` functions.
+**Count:** We begin by finding the number of observations for each stock using `=COUNTIF()`. Assuming the stock names are in column B and returns in column C, the number of observations for AAPL is:
 
-```{r}
-returns %>% group_by(Stock) %>% 
-  summarise(Mean=mean(Return))
+```excel
+=COUNTIF(B:B, "AAPL")
+```
+The number of daily return observations for each stock is:
+
+```{r echo=FALSE, message=FALSE}
+returns %>% group_by(Stock) %>% summarise(N = n()) %>%
+  gt::gt() %>% gt::cols_align("center") %>%
+  gt::tab_style(locations = gt::cells_column_labels(),
+    style = list(gt::cell_borders(sides="bottom", weight=gt::px(3)),
+                 gt::cell_text(weight="bold")))
 ```
 
-The `group_by()` function makes a group out of every unique entry in the Stock variable. Since, there are three unique entries (AAPL, SPY and TSLA), it created three groups. The `summarise()` function allows us to combine (or use) all of the entries of a particular stock to find a summary statistic. Since we specified `mean()`, the command returns the mean of the particular stock returns. It seems like TSLA has the highest mean return at 0.5%.
+**Average Return:** To calculate the average return we use the geometric mean, since returns compound over time. Using `=GEOMEAN()` with the adjustment for rates and the particular stocks:
 
-We can keep adding to the table by specifying other measures. To calculate the variance we can use the `var()` function, for the standard deviation we can use the `sd()` function, and for the coefficient of variation we can find the ratio between the standard deviation and the mean.
 
-```{r}
-returns %>% group_by(Stock) %>% 
-  summarise(Mean=mean(Return),
-            Variance=var(Return),
-            SD=sd(Return),
-            CV=SD/Mean*100)
+```excel
+=GEOMEAN(IF(B2:B1189="AAPL", 1+C2:C1189)) - 1
 ```
 
-TSLA seems to have the highest variation when following the standard deviation. However, if we look at the variation as a percentage of the mean, SPY seems to have the highest variation for the period considered. In the table below we once more use the `group_by()` and `summarise()` functions to calculate the other measures of dispersion.
+The average daily return for each stock is:
 
+```{r echo=FALSE, message=FALSE}
+returns %>% group_by(Stock) %>%
+  summarise(Avg_Return = (prod(1 + Return)^(1/n()) - 1)) %>%
+  gt::gt() %>% gt::cols_align("center") %>%
+  gt::fmt_percent(columns = Avg_Return, decimals = 4) %>%
+  gt::tab_style(locations = gt::cells_column_labels(),
+    style = list(gt::cell_borders(sides="bottom", weight=gt::px(3)),
+                 gt::cell_text(weight="bold")))
+```
 
-In this second table the range is calculated by finding the difference between the minimum and the maximum. We can retrieve the minimum and the maximum by using the `range()` function. The `diff()` function finds the difference (or range) between these two numbers. The MAD is calculated straight from the formula. Mainly, finding the absolute deviations from the mean and the averaging them out. Lastly, the Sharpe ratio assumes a risk free daily rate of 0.01%. Once again, TSLA seems like the investment that yields the highest return despite its higher variability.
+**Minimum and Maximum:** To find the minimum and maximum return for each stock use `=MINIFS()` and `=MAXIFS()`. Assuming stock names are in column B and returns in column C:
 
-## Excel Functions
+```excel
+=MINIFS(C:C, B:B, "AAPL")
+=MAXIFS(C:C, B:B, "AAPL")
+```
 
-Below is a list of the functions used:
+The minimum and maximum daily returns for each stock are:
 
--   The `range()` function returns the maximum and minimum of a vector of values.
+```{r echo=FALSE, message=FALSE}
+returns %>% group_by(Stock) %>%
+  summarise(Min = min(Return), Max = max(Return)) %>%
+  gt::gt() %>% gt::cols_align("center") %>%
+  gt::fmt_percent(columns = c(Min, Max), decimals = 2) %>%
+  gt::tab_style(locations = gt::cells_column_labels(),
+    style = list(gt::cell_borders(sides="bottom", weight=gt::px(3)),
+                 gt::cell_text(weight="bold")))
+```
 
--   The `diff()` function finds the first difference of a vector. Position 2 minus position 1, position 3 minus position 2, position 4 minus position 3, etc.
+Note that TSLA shows the widest range, with a minimum daily return of around $-23\%$ and a maximum of around $+18\%$, reflecting its high 
+volatility relative to AAPL and SPY.
 
--   The `var()` function calculates the sample variance for a vector of values. To calculate the population variance, adjust the result by a factor of $(n-1)/n$.
+**Variance and Standard Deviation:** To calculate the variance and 
+standard deviation use `=VARPA()` and `=STDEV.S()`. Note that Excel 
+does not have a `=STDEVIF()` function. To calculate a conditional 
+standard deviation use an array formula:
 
--   The `sd()` function calculates the sample standard deviation.
+```excel
+=VAR(IF(B2:B1189="AAPL", C2:C1189))
+=STDEV(IF(B2:B1189="AAPL", C2:C1189))
+```
+The variance and standard deviation for each stock are:
 
+```{r echo=FALSE, message=FALSE}
+returns %>% group_by(Stock) %>%
+  summarise(Variance = var(Return), Std_Dev = sd(Return)) %>%
+  gt::gt() %>% gt::cols_align("center") %>%
+  gt::fmt(columns = c(Variance, Std_Dev), 
+          fns = function(x) scales::percent(x, accuracy=0.0001)) %>%
+  gt::tab_style(locations = gt::cells_column_labels(),
+    style = list(gt::cell_borders(sides="bottom", weight=gt::px(3)),
+                 gt::cell_text(weight="bold")))
+```
+
+**Coefficient of Variation:** The coefficient of variation (CV) 
+standardizes dispersion relative to the mean, allowing comparison 
+across assets. In Excel, divide the standard deviation by the average return:
+
+```excel
+=STDEV(IF(B2:B1189="AAPL",C2:C1189)) / AVERAGE(IF(B2:B1189="AAPL",C2:C1189))
+```
+
+**Sharpe Ratio:** The Sharpe ratio measures the return earned per unit of risk, adjusting for the risk-free rate. Assuming an annual risk-free rate of $4\%$, the daily risk-free rate is $r_f = 0.04/252$. In Excel:
+
+```excel
+=(AVERAGE(IF(B2:B1189="AAPL",C2:C1189)) - (0.04/252)) /
+  STDEV(IF(B2:B1189="AAPL",C2:C1189))
+```
+
+The CV and Sharpe ratio for each stock are:
+
+```{r echo=FALSE, message=FALSE}
+rf_daily <- 0.04 / 252
+returns %>% group_by(Stock) %>%
+  summarise(
+    CV = sd(Return) / mean(Return),
+    Sharpe = (mean(Return) - rf_daily) / sd(Return)
+  ) %>%
+  gt::gt() %>% gt::cols_align("center") %>%
+  gt::fmt_number(columns = c(CV, Sharpe), decimals = 4) %>%
+  gt::tab_style(locations = gt::cells_column_labels(),
+    style = list(gt::cell_borders(sides="bottom", weight=gt::px(3)),
+                 gt::cell_text(weight="bold")))
+```
+
+A higher Sharpe ratio indicates better risk-adjusted performance. SPY offers the most consistent return per unit of risk, while TSLA has the highest volatility and the most variable Sharpe ratio — consistent with its reputation as a high-risk, high-reward asset.
+
+## Excel Function Summary
+
+Below is a list of the Excel functions used in this section:
+
+- `=COUNTIF(range, criteria)` counts the number of cells in a range 
+  that meet a given condition. Used here to count the number of 
+  observations for each stock.
+  
+- `=MINIFS(min_range, criteria_range, criteria)` returns the minimum 
+  value in a range filtered by one or more conditions.
+  
+- `=MAXIFS(max_range, criteria_range, criteria)` returns the maximum 
+  value in a range filtered by one or more conditions.
+  
+- `=VAR.S(range)` calculates the sample variance for a range of numbers.
+
+- `=STDEV.S(range)` calculates the sample standard deviation for a range of numbers. It is the square root of the sample variance.
+
+- `=VAR(IF(criteria_range="condition", value_range))` calculates a 
+  conditional variance. Unlike `=AVERAGEIF()`, Excel does not have a 
+  native `=VARIF()` function.
+  
+- `=STDEV(IF(criteria_range="condition", value_range))` calculates a 
+  conditional standard deviation. Like variance, there is no native 
+  `=STDEVIF()` in Excel.
+  
+## Chapter Summary Cheat Sheet
+
+```{r echo=FALSE, out.width="100%", fig.align='center'}
+knitr::include_graphics("images/Dispersion.png")
+```
+  
 ## Exercises
 
 The following exercises will help you practice the measures of dispersion. In particular, the exercises work on:

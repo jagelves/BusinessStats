@@ -225,10 +225,9 @@ You can also download the data here:
 
 ## Chapter Summary Cheat Sheet
 
-```{r echo=FALSE, out.width="75%", fig.align='center'}
+```{r echo=FALSE, out.width="100%", fig.align='center'}
 knitr::include_graphics("images/Central_Location.png")
 ```
-
 ## Exercises
 
 The following exercises will help you practice the measures of central location. In particular, the exercises work on:

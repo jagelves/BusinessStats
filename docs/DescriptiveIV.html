@@ -75,6 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9904b5196d746cb5bc47063911474b57.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -301,8 +303,9 @@ window.Quarto = {
   <li><a href="#coefficient-of-variation" id="toc-coefficient-of-variation" class="nav-link" data-scroll-target="#coefficient-of-variation"><span class="header-section-number">4.5</span> Coefficient of Variation</a></li>
   <li><a href="#the-sharpe-ratio" id="toc-the-sharpe-ratio" class="nav-link" data-scroll-target="#the-sharpe-ratio"><span class="header-section-number">4.6</span> The Sharpe Ratio</a></li>
   <li><a href="#measures-of-dispersion-in-excel" id="toc-measures-of-dispersion-in-excel" class="nav-link" data-scroll-target="#measures-of-dispersion-in-excel"><span class="header-section-number">4.7</span> Measures of Dispersion in Excel</a></li>
-  <li><a href="#excel-functions" id="toc-excel-functions" class="nav-link" data-scroll-target="#excel-functions"><span class="header-section-number">4.8</span> Excel Functions</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.9</span> Exercises</a>
+  <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">4.8</span> Excel Function Summary</a></li>
+  <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">4.9</span> Chapter Summary Cheat Sheet</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.10</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -552,78 +555,2460 @@ details summary {
 </section>
 <section id="measures-of-dispersion-in-excel" class="level2" data-number="4.7">
 <h2 data-number="4.7" class="anchored" data-anchor-id="measures-of-dispersion-in-excel"><span class="header-section-number">4.7</span> Measures of Dispersion in Excel</h2>
-<p>Let’s use some stock returns to explore Excel functions that allow us to calculate measures of dispersion.</p>
+<p>Excel has a collection of functions that calculate measures of dispersion. Let’s use daily stock return data for three assets — Apple (AAPL), the S&amp;P 500 ETF (SPY), and Tesla (TSLA) — to explore these functions. The data contains daily returns for each stock from January 2020 to July 2021.</p>
+<p><a href="returns.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
+<p><strong>Count:</strong> We begin by finding the number of observations for each stock using <code>=COUNTIF()</code>. Assuming the stock names are in column B and returns in column C, the number of observations for AAPL is:</p>
+<pre class="excel"><code>=COUNTIF(B:B, "AAPL")</code></pre>
+<p>The number of daily return observations for each stock is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
-✔ dplyr     1.2.0     ✔ readr     2.1.6
-✔ forcats   1.0.1     ✔ stringr   1.6.0
-✔ ggplot2   4.0.2     ✔ tibble    3.3.1
-✔ lubridate 1.9.5     ✔ tidyr     1.3.2
-✔ purrr     1.2.1     
-── Conflicts ────────────────────────────────────────── tidyverse_conflicts() ──
-✖ dplyr::filter() masks stats::filter()
-✖ dplyr::lag()    masks stats::lag()
-ℹ Use the conflicted package (&lt;http://conflicted.r-lib.org/&gt;) to force all conflicts to become errors</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>returns<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/returns.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 1182 Columns: 3
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (2): date, Stock
-dbl (1): Return
+<div class="cell-output-display">
+<div id="suiperhxer" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#suiperhxer table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
+#suiperhxer thead, #suiperhxer tbody, #suiperhxer tfoot, #suiperhxer tr, #suiperhxer td, #suiperhxer th {
+  border-style: none;
+}
+
+#suiperhxer p {
+  margin: 0;
+  padding: 0;
+}
+
+#suiperhxer .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#suiperhxer .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#suiperhxer .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#suiperhxer .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#suiperhxer .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#suiperhxer .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#suiperhxer .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#suiperhxer .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#suiperhxer .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#suiperhxer .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#suiperhxer .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#suiperhxer .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#suiperhxer .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#suiperhxer .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#suiperhxer .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#suiperhxer .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#suiperhxer .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#suiperhxer .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#suiperhxer .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#suiperhxer .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#suiperhxer .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#suiperhxer .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#suiperhxer .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#suiperhxer .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#suiperhxer .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#suiperhxer .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#suiperhxer .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#suiperhxer .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#suiperhxer .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#suiperhxer .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#suiperhxer .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#suiperhxer .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#suiperhxer .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#suiperhxer .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#suiperhxer .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#suiperhxer .gt_left {
+  text-align: left;
+}
+
+#suiperhxer .gt_center {
+  text-align: center;
+}
+
+#suiperhxer .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#suiperhxer .gt_font_normal {
+  font-weight: normal;
+}
+
+#suiperhxer .gt_font_bold {
+  font-weight: bold;
+}
+
+#suiperhxer .gt_font_italic {
+  font-style: italic;
+}
+
+#suiperhxer .gt_super {
+  font-size: 65%;
+}
+
+#suiperhxer .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#suiperhxer .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#suiperhxer .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#suiperhxer .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#suiperhxer .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#suiperhxer .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#suiperhxer .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#suiperhxer .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#suiperhxer div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Stock" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Stock</th>
+<th id="N" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">N</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="Stock">AAPL</td>
+<td class="gt_row gt_center" headers="N">394</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Stock">SPY</td>
+<td class="gt_row gt_center" headers="N">394</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Stock">TSLA</td>
+<td class="gt_row gt_center" headers="N">394</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
-<p>It seems like the data is stock returns for different companies. We can start by finding the average return of each stock. To do this, let’s use the <code>group_by()</code> and <code>summarise()</code> functions.</p>
+</div>
+<p><strong>Average Return:</strong> To calculate the average return we use the geometric mean, since returns compound over time. Using <code>=GEOMEAN()</code> with the adjustment for rates and the particular stocks:</p>
+<pre class="excel"><code>=GEOMEAN(IF(B2:B1189="AAPL", 1+C2:C1189)) - 1</code></pre>
+<p>The average daily return for each stock is:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>returns <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Stock) <span class="sc">%&gt;%</span> </span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Mean=</span><span class="fu">mean</span>(Return))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 2
-  Stock     Mean
-  &lt;chr&gt;    &lt;dbl&gt;
-1 AAPL  0.00173 
-2 SPY   0.000828
-3 TSLA  0.00511 </code></pre>
+<div class="cell-output-display">
+<div id="rhbktmuwhn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rhbktmuwhn table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#rhbktmuwhn thead, #rhbktmuwhn tbody, #rhbktmuwhn tfoot, #rhbktmuwhn tr, #rhbktmuwhn td, #rhbktmuwhn th {
+  border-style: none;
+}
+
+#rhbktmuwhn p {
+  margin: 0;
+  padding: 0;
+}
+
+#rhbktmuwhn .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#rhbktmuwhn .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#rhbktmuwhn .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#rhbktmuwhn .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#rhbktmuwhn .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rhbktmuwhn .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rhbktmuwhn .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#rhbktmuwhn .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#rhbktmuwhn .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#rhbktmuwhn .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#rhbktmuwhn .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#rhbktmuwhn .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#rhbktmuwhn .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#rhbktmuwhn .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#rhbktmuwhn .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#rhbktmuwhn .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#rhbktmuwhn .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#rhbktmuwhn .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#rhbktmuwhn .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rhbktmuwhn .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#rhbktmuwhn .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#rhbktmuwhn .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#rhbktmuwhn .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rhbktmuwhn .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#rhbktmuwhn .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#rhbktmuwhn .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rhbktmuwhn .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rhbktmuwhn .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#rhbktmuwhn .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rhbktmuwhn .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#rhbktmuwhn .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#rhbktmuwhn .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rhbktmuwhn .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rhbktmuwhn .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#rhbktmuwhn .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#rhbktmuwhn .gt_left {
+  text-align: left;
+}
+
+#rhbktmuwhn .gt_center {
+  text-align: center;
+}
+
+#rhbktmuwhn .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#rhbktmuwhn .gt_font_normal {
+  font-weight: normal;
+}
+
+#rhbktmuwhn .gt_font_bold {
+  font-weight: bold;
+}
+
+#rhbktmuwhn .gt_font_italic {
+  font-style: italic;
+}
+
+#rhbktmuwhn .gt_super {
+  font-size: 65%;
+}
+
+#rhbktmuwhn .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#rhbktmuwhn .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#rhbktmuwhn .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#rhbktmuwhn .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#rhbktmuwhn .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#rhbktmuwhn .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#rhbktmuwhn .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#rhbktmuwhn .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#rhbktmuwhn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Stock" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Stock</th>
+<th id="Avg_Return" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Avg_Return</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="Stock">AAPL</td>
+<td class="gt_row gt_center" headers="Avg_Return">0.1401%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Stock">SPY</td>
+<td class="gt_row gt_center" headers="Avg_Return">0.0670%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Stock">TSLA</td>
+<td class="gt_row gt_center" headers="Avg_Return">0.3837%</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
-<p>The <code>group_by()</code> function makes a group out of every unique entry in the Stock variable. Since, there are three unique entries (AAPL, SPY and TSLA), it created three groups. The <code>summarise()</code> function allows us to combine (or use) all of the entries of a particular stock to find a summary statistic. Since we specified <code>mean()</code>, the command returns the mean of the particular stock returns. It seems like TSLA has the highest mean return at 0.5%.</p>
-<p>We can keep adding to the table by specifying other measures. To calculate the variance we can use the <code>var()</code> function, for the standard deviation we can use the <code>sd()</code> function, and for the coefficient of variation we can find the ratio between the standard deviation and the mean.</p>
+</div>
+<p><strong>Minimum and Maximum:</strong> To find the minimum and maximum return for each stock use <code>=MINIFS()</code> and <code>=MAXIFS()</code>. Assuming stock names are in column B and returns in column C:</p>
+<pre class="excel"><code>=MINIFS(C:C, B:B, "AAPL")
+=MAXIFS(C:C, B:B, "AAPL")</code></pre>
+<p>The minimum and maximum daily returns for each stock are:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>returns <span class="sc">%&gt;%</span> <span class="fu">group_by</span>(Stock) <span class="sc">%&gt;%</span> </span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="at">Mean=</span><span class="fu">mean</span>(Return),</span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>            <span class="at">Variance=</span><span class="fu">var</span>(Return),</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>            <span class="at">SD=</span><span class="fu">sd</span>(Return),</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>            <span class="at">CV=</span>SD<span class="sc">/</span>Mean<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 5
-  Stock     Mean Variance     SD    CV
-  &lt;chr&gt;    &lt;dbl&gt;    &lt;dbl&gt;  &lt;dbl&gt; &lt;dbl&gt;
-1 AAPL  0.00173  0.000659 0.0257 1483.
-2 SPY   0.000828 0.000313 0.0177 2138.
-3 TSLA  0.00511  0.00252  0.0502  983.</code></pre>
+<div class="cell-output-display">
+<div id="mqmwuqrjis" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mqmwuqrjis table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#mqmwuqrjis thead, #mqmwuqrjis tbody, #mqmwuqrjis tfoot, #mqmwuqrjis tr, #mqmwuqrjis td, #mqmwuqrjis th {
+  border-style: none;
+}
+
+#mqmwuqrjis p {
+  margin: 0;
+  padding: 0;
+}
+
+#mqmwuqrjis .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#mqmwuqrjis .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#mqmwuqrjis .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#mqmwuqrjis .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#mqmwuqrjis .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mqmwuqrjis .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mqmwuqrjis .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#mqmwuqrjis .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#mqmwuqrjis .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#mqmwuqrjis .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#mqmwuqrjis .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#mqmwuqrjis .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#mqmwuqrjis .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#mqmwuqrjis .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#mqmwuqrjis .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#mqmwuqrjis .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#mqmwuqrjis .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#mqmwuqrjis .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#mqmwuqrjis .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mqmwuqrjis .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#mqmwuqrjis .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#mqmwuqrjis .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#mqmwuqrjis .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mqmwuqrjis .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#mqmwuqrjis .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#mqmwuqrjis .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mqmwuqrjis .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mqmwuqrjis .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#mqmwuqrjis .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mqmwuqrjis .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#mqmwuqrjis .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#mqmwuqrjis .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mqmwuqrjis .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mqmwuqrjis .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#mqmwuqrjis .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#mqmwuqrjis .gt_left {
+  text-align: left;
+}
+
+#mqmwuqrjis .gt_center {
+  text-align: center;
+}
+
+#mqmwuqrjis .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#mqmwuqrjis .gt_font_normal {
+  font-weight: normal;
+}
+
+#mqmwuqrjis .gt_font_bold {
+  font-weight: bold;
+}
+
+#mqmwuqrjis .gt_font_italic {
+  font-style: italic;
+}
+
+#mqmwuqrjis .gt_super {
+  font-size: 65%;
+}
+
+#mqmwuqrjis .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#mqmwuqrjis .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#mqmwuqrjis .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#mqmwuqrjis .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#mqmwuqrjis .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#mqmwuqrjis .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#mqmwuqrjis .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#mqmwuqrjis .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#mqmwuqrjis div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Stock" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Stock</th>
+<th id="Min" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Min</th>
+<th id="Max" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Max</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="Stock">AAPL</td>
+<td class="gt_row gt_center" headers="Min">−13.77%</td>
+<td class="gt_row gt_center" headers="Max">11.32%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Stock">SPY</td>
+<td class="gt_row gt_center" headers="Min">−11.59%</td>
+<td class="gt_row gt_center" headers="Max">8.67%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Stock">TSLA</td>
+<td class="gt_row gt_center" headers="Min">−23.65%</td>
+<td class="gt_row gt_center" headers="Max">18.14%</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
-<p>TSLA seems to have the highest variation when following the standard deviation. However, if we look at the variation as a percentage of the mean, SPY seems to have the highest variation for the period considered. In the table below we once more use the <code>group_by()</code> and <code>summarise()</code> functions to calculate the other measures of dispersion.</p>
-<p>In this second table the range is calculated by finding the difference between the minimum and the maximum. We can retrieve the minimum and the maximum by using the <code>range()</code> function. The <code>diff()</code> function finds the difference (or range) between these two numbers. The MAD is calculated straight from the formula. Mainly, finding the absolute deviations from the mean and the averaging them out. Lastly, the Sharpe ratio assumes a risk free daily rate of 0.01%. Once again, TSLA seems like the investment that yields the highest return despite its higher variability.</p>
+</div>
+<p>Note that TSLA shows the widest range, with a minimum daily return of around <span class="math inline">\(-23\%\)</span> and a maximum of around <span class="math inline">\(+18\%\)</span>, reflecting its high volatility relative to AAPL and SPY.</p>
+<p><strong>Variance and Standard Deviation:</strong> To calculate the variance and standard deviation use <code>=VARPA()</code> and <code>=STDEV.S()</code>. Note that Excel does not have a <code>=STDEVIF()</code> function. To calculate a conditional standard deviation use an array formula:</p>
+<pre class="excel"><code>=VAR(IF(B2:B1189="AAPL", C2:C1189))
+=STDEV(IF(B2:B1189="AAPL", C2:C1189))</code></pre>
+<p>The variance and standard deviation for each stock are:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="ydwgkfjbol" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ydwgkfjbol table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ydwgkfjbol thead, #ydwgkfjbol tbody, #ydwgkfjbol tfoot, #ydwgkfjbol tr, #ydwgkfjbol td, #ydwgkfjbol th {
+  border-style: none;
+}
+
+#ydwgkfjbol p {
+  margin: 0;
+  padding: 0;
+}
+
+#ydwgkfjbol .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ydwgkfjbol .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ydwgkfjbol .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ydwgkfjbol .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ydwgkfjbol .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ydwgkfjbol .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ydwgkfjbol .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ydwgkfjbol .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ydwgkfjbol .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ydwgkfjbol .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ydwgkfjbol .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ydwgkfjbol .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ydwgkfjbol .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ydwgkfjbol .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ydwgkfjbol .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ydwgkfjbol .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ydwgkfjbol .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ydwgkfjbol .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ydwgkfjbol .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ydwgkfjbol .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ydwgkfjbol .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ydwgkfjbol .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ydwgkfjbol .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ydwgkfjbol .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ydwgkfjbol .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ydwgkfjbol .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ydwgkfjbol .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ydwgkfjbol .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ydwgkfjbol .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ydwgkfjbol .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ydwgkfjbol .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ydwgkfjbol .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ydwgkfjbol .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ydwgkfjbol .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ydwgkfjbol .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ydwgkfjbol .gt_left {
+  text-align: left;
+}
+
+#ydwgkfjbol .gt_center {
+  text-align: center;
+}
+
+#ydwgkfjbol .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ydwgkfjbol .gt_font_normal {
+  font-weight: normal;
+}
+
+#ydwgkfjbol .gt_font_bold {
+  font-weight: bold;
+}
+
+#ydwgkfjbol .gt_font_italic {
+  font-style: italic;
+}
+
+#ydwgkfjbol .gt_super {
+  font-size: 65%;
+}
+
+#ydwgkfjbol .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ydwgkfjbol .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ydwgkfjbol .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ydwgkfjbol .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ydwgkfjbol .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ydwgkfjbol .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ydwgkfjbol .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ydwgkfjbol .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ydwgkfjbol div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Stock" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Stock</th>
+<th id="Variance" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Variance</th>
+<th id="Std_Dev" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Std_Dev</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="Stock">AAPL</td>
+<td class="gt_row gt_center" headers="Variance">0.0659%</td>
+<td class="gt_row gt_center" headers="Std_Dev">2.5667%</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Stock">SPY</td>
+<td class="gt_row gt_center" headers="Variance">0.0313%</td>
+<td class="gt_row gt_center" headers="Std_Dev">1.7694%</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Stock">TSLA</td>
+<td class="gt_row gt_center" headers="Variance">0.2524%</td>
+<td class="gt_row gt_center" headers="Std_Dev">5.0239%</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p><strong>Coefficient of Variation:</strong> The coefficient of variation (CV) standardizes dispersion relative to the mean, allowing comparison across assets. In Excel, divide the standard deviation by the average return:</p>
+<pre class="excel"><code>=STDEV(IF(B2:B1189="AAPL",C2:C1189)) / AVERAGE(IF(B2:B1189="AAPL",C2:C1189))</code></pre>
+<p><strong>Sharpe Ratio:</strong> The Sharpe ratio measures the return earned per unit of risk, adjusting for the risk-free rate. Assuming an annual risk-free rate of <span class="math inline">\(4\%\)</span>, the daily risk-free rate is <span class="math inline">\(r_f = 0.04/252\)</span>. In Excel:</p>
+<pre class="excel"><code>=(AVERAGE(IF(B2:B1189="AAPL",C2:C1189)) - (0.04/252)) /
+  STDEV(IF(B2:B1189="AAPL",C2:C1189))</code></pre>
+<p>The CV and Sharpe ratio for each stock are:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="uamprecfgw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uamprecfgw table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#uamprecfgw thead, #uamprecfgw tbody, #uamprecfgw tfoot, #uamprecfgw tr, #uamprecfgw td, #uamprecfgw th {
+  border-style: none;
+}
+
+#uamprecfgw p {
+  margin: 0;
+  padding: 0;
+}
+
+#uamprecfgw .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uamprecfgw .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#uamprecfgw .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uamprecfgw .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uamprecfgw .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uamprecfgw .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uamprecfgw .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uamprecfgw .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#uamprecfgw .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uamprecfgw .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uamprecfgw .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uamprecfgw .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uamprecfgw .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#uamprecfgw .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#uamprecfgw .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uamprecfgw .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uamprecfgw .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uamprecfgw .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uamprecfgw .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uamprecfgw .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#uamprecfgw .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#uamprecfgw .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#uamprecfgw .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uamprecfgw .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#uamprecfgw .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#uamprecfgw .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uamprecfgw .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uamprecfgw .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uamprecfgw .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uamprecfgw .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#uamprecfgw .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uamprecfgw .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uamprecfgw .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uamprecfgw .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uamprecfgw .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uamprecfgw .gt_left {
+  text-align: left;
+}
+
+#uamprecfgw .gt_center {
+  text-align: center;
+}
+
+#uamprecfgw .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uamprecfgw .gt_font_normal {
+  font-weight: normal;
+}
+
+#uamprecfgw .gt_font_bold {
+  font-weight: bold;
+}
+
+#uamprecfgw .gt_font_italic {
+  font-style: italic;
+}
+
+#uamprecfgw .gt_super {
+  font-size: 65%;
+}
+
+#uamprecfgw .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#uamprecfgw .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#uamprecfgw .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#uamprecfgw .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#uamprecfgw .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#uamprecfgw .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#uamprecfgw .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#uamprecfgw .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#uamprecfgw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Stock" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Stock</th>
+<th id="CV" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">CV</th>
+<th id="Sharpe" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Sharpe</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="Stock">AAPL</td>
+<td class="gt_row gt_center" headers="CV">14.8284</td>
+<td class="gt_row gt_center" headers="Sharpe">0.0613</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="Stock">SPY</td>
+<td class="gt_row gt_center" headers="CV">21.3757</td>
+<td class="gt_row gt_center" headers="Sharpe">0.0378</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="Stock">TSLA</td>
+<td class="gt_row gt_center" headers="CV">9.8285</td>
+<td class="gt_row gt_center" headers="Sharpe">0.0986</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>A higher Sharpe ratio indicates better risk-adjusted performance. SPY offers the most consistent return per unit of risk, while TSLA has the highest volatility and the most variable Sharpe ratio — consistent with its reputation as a high-risk, high-reward asset.</p>
 </section>
-<section id="excel-functions" class="level2" data-number="4.8">
-<h2 data-number="4.8" class="anchored" data-anchor-id="excel-functions"><span class="header-section-number">4.8</span> Excel Functions</h2>
-<p>Below is a list of the functions used:</p>
+<section id="excel-function-summary" class="level2" data-number="4.8">
+<h2 data-number="4.8" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">4.8</span> Excel Function Summary</h2>
+<p>Below is a list of the Excel functions used in this section:</p>
 <ul>
-<li><p>The <code>range()</code> function returns the maximum and minimum of a vector of values.</p></li>
-<li><p>The <code>diff()</code> function finds the first difference of a vector. Position 2 minus position 1, position 3 minus position 2, position 4 minus position 3, etc.</p></li>
-<li><p>The <code>var()</code> function calculates the sample variance for a vector of values. To calculate the population variance, adjust the result by a factor of <span class="math inline">\((n-1)/n\)</span>.</p></li>
-<li><p>The <code>sd()</code> function calculates the sample standard deviation.</p></li>
+<li><p><code>=COUNTIF(range, criteria)</code> counts the number of cells in a range that meet a given condition. Used here to count the number of observations for each stock.</p></li>
+<li><p><code>=MINIFS(min_range, criteria_range, criteria)</code> returns the minimum value in a range filtered by one or more conditions.</p></li>
+<li><p><code>=MAXIFS(max_range, criteria_range, criteria)</code> returns the maximum value in a range filtered by one or more conditions.</p></li>
+<li><p><code>=VAR.S(range)</code> calculates the sample variance for a range of numbers.</p></li>
+<li><p><code>=STDEV.S(range)</code> calculates the sample standard deviation for a range of numbers. It is the square root of the sample variance.</p></li>
+<li><p><code>=VAR(IF(criteria_range="condition", value_range))</code> calculates a conditional variance. Unlike <code>=AVERAGEIF()</code>, Excel does not have a native <code>=VARIF()</code> function.</p></li>
+<li><p><code>=STDEV(IF(criteria_range="condition", value_range))</code> calculates a conditional standard deviation. Like variance, there is no native <code>=STDEVIF()</code> in Excel.</p></li>
 </ul>
 </section>
-<section id="exercises" class="level2" data-number="4.9">
-<h2 data-number="4.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.9</span> Exercises</h2>
+<section id="chapter-summary-cheat-sheet" class="level2" data-number="4.9">
+<h2 data-number="4.9" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">4.9</span> Chapter Summary Cheat Sheet</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Dispersion.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exercises" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.10</span> Exercises</h2>
 <p>The following exercises will help you practice the measures of dispersion. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating the range, MAD, variance, and the standard deviation.</p></li>
@@ -654,18 +3039,18 @@ Answer
 <p><em>The mean is</em> <span class="math inline">\(60\)</span>, the Range is <span class="math inline">\(94\)</span>, the MAD is <span class="math inline">\(28\)</span>, the variance is <span class="math inline">\(1186\)</span> and the variance is <span class="math inline">\(34.44\)</span>.</p>
 <p><em>Start by creating a vector to hold the values:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>Ex1<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">68</span>,<span class="dv">4</span>,<span class="dv">98</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>Ex1<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">70</span>,<span class="dv">68</span>,<span class="dv">4</span>,<span class="dv">98</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>The range can be calculated by using the <code>range()</code> and <code>diff()</code> functions in R.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(Range<span class="ot">&lt;-</span><span class="fu">diff</span>(<span class="fu">range</span>(Ex1)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(Range<span class="ot">&lt;-</span><span class="fu">diff</span>(<span class="fu">range</span>(Ex1)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 94</code></pre>
 </div>
 </div>
 <p><em>Next, we can create a table by hand that captures the deviations from the mean. Let’s calculate the mean first:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>(Average1<span class="ot">&lt;-</span><span class="fu">mean</span>(Ex1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(Average1<span class="ot">&lt;-</span><span class="fu">mean</span>(Ex1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 60</code></pre>
 </div>
@@ -710,24 +3095,24 @@ Answer
 <p><em>The variance averages out the squared deviations</em> <span class="math inline">\((x_{i}-\bar{x})^2\)</span>, the MAD averages out the absolute deviations <span class="math inline">\(|x_{i}-\bar{x}|\)</span>, and the standard deviation is the square root of the variance.</p>
 <p><em>Let’s verify the variance in R:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>SquaredDeviations1<span class="ot">&lt;-</span>(Ex1<span class="sc">-</span>Average1)<span class="sc">^</span><span class="dv">2</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>AverageDeviations1<span class="ot">&lt;-</span><span class="fu">mean</span>(SquaredDeviations1)</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(Ex1)<span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>SquaredDeviations1<span class="ot">&lt;-</span>(Ex1<span class="sc">-</span>Average1)<span class="sc">^</span><span class="dv">2</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>AverageDeviations1<span class="ot">&lt;-</span><span class="fu">mean</span>(SquaredDeviations1)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(Ex1)<span class="sc">*</span><span class="dv">3</span><span class="sc">/</span><span class="dv">4</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1186</code></pre>
 </div>
 </div>
 <p><em>Note that R calculates the sample variance. Hence, we must multiply the result by</em> <span class="math inline">\(3/4\)</span> to get the population variance. The standard deviation is just the square root of the variance:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(AverageDeviations1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(AverageDeviations1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 34.43835</code></pre>
 </div>
 </div>
 <p><em>Lastly, the MAD is calculated by averaging the absolute deviations</em> <span class="math inline">\(|x_{i}-\bar{x}|\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>AbsoluteDeviations1<span class="ot">&lt;-</span><span class="fu">abs</span>(Ex1<span class="sc">-</span>Average1)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(AbsoluteDeviations1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>AbsoluteDeviations1<span class="ot">&lt;-</span><span class="fu">abs</span>(Ex1<span class="sc">-</span>Average1)</span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(AbsoluteDeviations1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 28</code></pre>
 </div>
@@ -804,29 +3189,29 @@ Answer
 </table>
 <p><em>We can check the results in R. Let’s start with the variance:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>Ex2<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">0</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(Ex2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>Ex2<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">4</span>,<span class="dv">0</span>,<span class="sc">-</span><span class="dv">6</span>,<span class="dv">1</span>,<span class="sc">-</span><span class="dv">3</span>,<span class="dv">0</span>)</span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">var</span>(Ex2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7.6</code></pre>
 </div>
 </div>
 <p><em>The standard deviation can be found with the <code>sd()</code> function:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Ex2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Ex2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.75681</code></pre>
 </div>
 </div>
 <p><em>The MAD is given by:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>(MAD<span class="ot">&lt;-</span><span class="fu">mean</span>(<span class="fu">abs</span>(Ex2<span class="sc">-</span><span class="fu">mean</span>(Ex2))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(MAD<span class="ot">&lt;-</span><span class="fu">mean</span>(<span class="fu">abs</span>(Ex2<span class="sc">-</span><span class="fu">mean</span>(Ex2))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.333333</code></pre>
 </div>
 </div>
 <p><em>Lastly, the range:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(Ex2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">diff</span>(<span class="fu">range</span>(Ex2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 7</code></pre>
 </div>
@@ -846,25 +3231,25 @@ Answer
 <p><em>For the sample taken, GBTC has the less variation. The standard deviation of GBTC is</em> <span class="math inline">\(9.43\)</span>, which is less than <span class="math inline">\(16.57\)</span> for VTI or <span class="math inline">\(50.38\)</span> for TSLA.</p>
 <p><em>Start by loading the data set from the website. Since the file is in csv format, we will use the <code>read.csv()</code> function.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a>StockPrices<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://jagelves.github.io/Data/Stocks.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>StockPrices<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://jagelves.github.io/Data/Stocks.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Let’s start with the standard deviation of the Tesla stock. The standard deviation is given by:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(StockPrices<span class="sc">$</span>TSLA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(StockPrices<span class="sc">$</span>TSLA)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 50.38092</code></pre>
 </div>
 </div>
 <p><em>Next, let’s find the standard deviation for the S&amp;P 500 or VTI. The standard deviation is given by:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(StockPrices<span class="sc">$</span>VTI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(StockPrices<span class="sc">$</span>VTI)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 16.5731</code></pre>
 </div>
 </div>
 <p><em>Finally, let’s calculate the standard deviation for GBTC or Bitcoin.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(StockPrices<span class="sc">$</span>GBTC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(StockPrices<span class="sc">$</span>GBTC)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 9.434213</code></pre>
 </div>
@@ -880,21 +3265,21 @@ Answer
 <p><em>The answer is the same, since the MAD for GBTC is</em> <span class="math inline">\(8.46\)</span> which is lower than <span class="math inline">\(14.27\)</span> for VTI or <span class="math inline">\(41.67\)</span> for TSLA.</p>
 <p><em>To calculate the MAD for TSLA we can use the following command:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(MADTSLA<span class="ot">&lt;-</span><span class="fu">mean</span>(<span class="fu">abs</span>(StockPrices<span class="sc">$</span>TSLA<span class="sc">-</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>TSLA))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(MADTSLA<span class="ot">&lt;-</span><span class="fu">mean</span>(<span class="fu">abs</span>(StockPrices<span class="sc">$</span>TSLA<span class="sc">-</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>TSLA))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 41.67163</code></pre>
 </div>
 </div>
 <p><em>The MAD for VTI is:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(MADVTI<span class="ot">&lt;-</span><span class="fu">mean</span>(<span class="fu">abs</span>(StockPrices<span class="sc">$</span>VTI<span class="sc">-</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(MADVTI<span class="ot">&lt;-</span><span class="fu">mean</span>(<span class="fu">abs</span>(StockPrices<span class="sc">$</span>VTI<span class="sc">-</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 14.27169</code></pre>
 </div>
 </div>
 <p><em>The MAD for GBTC is:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>(MADGBTC<span class="ot">&lt;-</span><span class="fu">mean</span>(<span class="fu">abs</span>(StockPrices<span class="sc">$</span>GBTC<span class="sc">-</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>GBTC))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(MADGBTC<span class="ot">&lt;-</span><span class="fu">mean</span>(<span class="fu">abs</span>(StockPrices<span class="sc">$</span>GBTC<span class="sc">-</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>GBTC))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 8.458029</code></pre>
 </div>
@@ -910,21 +3295,21 @@ Answer
 <p><em>By considering the magnitudes of the stock prices, it seems like VTI is the less volatile stock. VTI has a CV of</em> <span class="math inline">\(0.08\)</span> which is lower than <span class="math inline">\(0.44\)</span> for GBTC or <span class="math inline">\(0.18\)</span> for TSLA. In fact, by CV Bitcoin seems to be the most risky asset.</p>
 <p><em>The coefficients of variations are as follows. For TSLA the CV is:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>(CVTSLA<span class="ot">&lt;-</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>TSLA)<span class="sc">/</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>TSLA))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>(CVTSLA<span class="ot">&lt;-</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>TSLA)<span class="sc">/</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>TSLA))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1793755</code></pre>
 </div>
 </div>
 <p><em>For VTI the CV is:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>(CVVTI<span class="ot">&lt;-</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>VTI)<span class="sc">/</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>(CVVTI<span class="ot">&lt;-</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>VTI)<span class="sc">/</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.07970004</code></pre>
 </div>
 </div>
 <p><em>For GBTC we get:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>(CVGBTC<span class="ot">&lt;-</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>GBTC)<span class="sc">/</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>GBTC))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>(CVGBTC<span class="ot">&lt;-</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>GBTC)<span class="sc">/</span><span class="fu">mean</span>(StockPrices<span class="sc">$</span>GBTC))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4442497</code></pre>
 </div>
@@ -944,32 +3329,32 @@ Answer
 <p><em>The best performing stock on average is stock X. It has an average return of</em> <span class="math inline">\(-0.078\)</span>% vs.&nbsp;<span class="math inline">\(0.097\)</span>% for stock Y. The safest stock is stock X as well, since the standard deviation is <span class="math inline">\(1.062\)</span> percentage points vs.&nbsp;<span class="math inline">\(1.14\)</span> percentage points for stock Y.</p>
 <p><em>Start by loading the <code>ISLR2</code> package:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Next, calculate the mean for stock X:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Portfolio<span class="sc">$</span>X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Portfolio<span class="sc">$</span>X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.07713211</code></pre>
 </div>
 </div>
 <p><em>and stock Y.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Portfolio<span class="sc">$</span>Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Portfolio<span class="sc">$</span>Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.09694472</code></pre>
 </div>
 </div>
 <p><em>Then, calculate the standard deviation for stock X</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Portfolio<span class="sc">$</span>X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Portfolio<span class="sc">$</span>X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.062376</code></pre>
 </div>
 </div>
 <p><em>and stock Y.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Portfolio<span class="sc">$</span>Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(Portfolio<span class="sc">$</span>Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.143782</code></pre>
 </div>
@@ -985,14 +3370,14 @@ Answer
 <p><em>The Sharpe Ratio measures the excess return per unit of risk taken. Stock X has the better Sharpe Ratio.</em> <span class="math inline">\(-0.106\)</span> vs.&nbsp;<span class="math inline">\(-0.115\)</span>. Stock X is recommended since it provides a higher excess return per unit of risk taken.</p>
 <p><em>To calculate Sharpe Ratios use both the average return, and the standard deviation. For stock X, the Sharpe Ratio is:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">mean</span>(Portfolio<span class="sc">$</span>X)<span class="sc">-</span><span class="fl">0.035</span>)<span class="sc">/</span><span class="fu">sd</span>(Portfolio<span class="sc">$</span>X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">mean</span>(Portfolio<span class="sc">$</span>X)<span class="sc">-</span><span class="fl">0.035</span>)<span class="sc">/</span><span class="fu">sd</span>(Portfolio<span class="sc">$</span>X)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.1055484</code></pre>
 </div>
 </div>
 <p><em>The Sharpe Ratio for stock Y:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">mean</span>(Portfolio<span class="sc">$</span>Y)<span class="sc">-</span><span class="fl">0.035</span>)<span class="sc">/</span><span class="fu">sd</span>(Portfolio<span class="sc">$</span>Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>(<span class="fu">mean</span>(Portfolio<span class="sc">$</span>Y)<span class="sc">-</span><span class="fl">0.035</span>)<span class="sc">/</span><span class="fu">sd</span>(Portfolio<span class="sc">$</span>Y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.1153583</code></pre>
 </div>
@@ -1008,14 +3393,14 @@ Answer
 <p><em>The portfolio has an average return of</em> <span class="math inline">\(-0.091\)</span> which is worse than stock X but better than stock Y. The standard deviation is <span class="math inline">\(1.00\)</span>. This is better than stock X and Y separately. The Sharpe ratio of <span class="math inline">\(-0.091\)</span> is also better for the portfolio than for each stock individually.</p>
 <p><em>The mean of the portfolio is given by:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">mean_return=</span><span class="fl">0.3</span><span class="sc">*</span><span class="fu">mean</span>(Portfolio<span class="sc">$</span>X)<span class="sc">+</span><span class="fl">0.7</span><span class="sc">*</span><span class="fu">mean</span>(Portfolio<span class="sc">$</span>Y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a>(<span class="at">mean_return=</span><span class="fl">0.3</span><span class="sc">*</span><span class="fu">mean</span>(Portfolio<span class="sc">$</span>X)<span class="sc">+</span><span class="fl">0.7</span><span class="sc">*</span><span class="fu">mean</span>(Portfolio<span class="sc">$</span>Y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.09100094</code></pre>
 </div>
 </div>
 <p><em>The covariance matrix is given by:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>(risk<span class="ot">&lt;-</span><span class="fu">cov</span>(Portfolio))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a>(risk<span class="ot">&lt;-</span><span class="fu">cov</span>(Portfolio))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>          X         Y
 X 1.1286424 0.6263583
@@ -1024,7 +3409,7 @@ Y 0.6263583 1.3082375</code></pre>
 </div>
 <p><em>Using the matrix we can now calculate the standard deviation:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>(standard<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">t</span>(<span class="fu">c</span>(<span class="fl">0.3</span>,<span class="fl">0.7</span>)) <span class="sc">%*%</span> (risk <span class="sc">%*%</span> <span class="fu">c</span>(<span class="fl">0.3</span>,<span class="fl">0.7</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a>(standard<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">t</span>(<span class="fu">c</span>(<span class="fl">0.3</span>,<span class="fl">0.7</span>)) <span class="sc">%*%</span> (risk <span class="sc">%*%</span> <span class="fu">c</span>(<span class="fl">0.3</span>,<span class="fl">0.7</span>))))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>         [,1]
 [1,] 1.002838</code></pre>
@@ -1032,7 +3417,7 @@ Y 0.6263583 1.3082375</code></pre>
 </div>
 <p><em>Finally, the Sharpe ratio for the portfolio is:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a>mean_return<span class="sc">/</span>standard[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a>mean_return<span class="sc">/</span>standard[<span class="dv">1</span>]</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] -0.09074338</code></pre>
 </div>
@@ -1048,18 +3433,18 @@ Answer
 </summary>
 <p><em>You can use the <code>summarise()</code> function in r to get the list of sample statistics.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb68-2"><a href="#cb68-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-3"><a href="#cb68-3" aria-hidden="true" tabindex="-1"></a>returns <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">month =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>,</span>
-<span id="cb68-4"><a href="#cb68-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ret =</span> <span class="fu">c</span>(<span class="fl">2.1</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">3.0</span>, <span class="fl">1.2</span>, <span class="sc">-</span><span class="fl">1.8</span>, <span class="fl">0.7</span>, <span class="fl">2.5</span>, <span class="sc">-</span><span class="fl">0.3</span>))</span>
-<span id="cb68-5"><a href="#cb68-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb68-6"><a href="#cb68-6" aria-hidden="true" tabindex="-1"></a>returns <span class="sc">%&gt;%</span><span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
-<span id="cb68-7"><a href="#cb68-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Mean =</span> <span class="fu">mean</span>(ret),</span>
-<span id="cb68-8"><a href="#cb68-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Var_sample =</span> <span class="fu">var</span>(ret),</span>
-<span id="cb68-9"><a href="#cb68-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">SD =</span> <span class="fu">sd</span>(ret),</span>
-<span id="cb68-10"><a href="#cb68-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">CV =</span> <span class="fu">sd</span>(ret) <span class="sc">/</span> <span class="fu">mean</span>(ret) <span class="sc">*</span> <span class="dv">100</span>,</span>
-<span id="cb68-11"><a href="#cb68-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">MAD =</span> <span class="fu">mean</span>(<span class="fu">abs</span>(ret <span class="sc">-</span> <span class="fu">mean</span>(ret)))</span>
-<span id="cb68-12"><a href="#cb68-12" aria-hidden="true" tabindex="-1"></a>                     )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
+<span id="cb66-2"><a href="#cb66-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-3"><a href="#cb66-3" aria-hidden="true" tabindex="-1"></a>returns <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">month =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">8</span>,</span>
+<span id="cb66-4"><a href="#cb66-4" aria-hidden="true" tabindex="-1"></a>                  <span class="at">ret =</span> <span class="fu">c</span>(<span class="fl">2.1</span>, <span class="sc">-</span><span class="fl">0.5</span>, <span class="fl">3.0</span>, <span class="fl">1.2</span>, <span class="sc">-</span><span class="fl">1.8</span>, <span class="fl">0.7</span>, <span class="fl">2.5</span>, <span class="sc">-</span><span class="fl">0.3</span>))</span>
+<span id="cb66-5"><a href="#cb66-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb66-6"><a href="#cb66-6" aria-hidden="true" tabindex="-1"></a>returns <span class="sc">%&gt;%</span><span class="fu">summarise</span>(<span class="at">n =</span> <span class="fu">n</span>(),</span>
+<span id="cb66-7"><a href="#cb66-7" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Mean =</span> <span class="fu">mean</span>(ret),</span>
+<span id="cb66-8"><a href="#cb66-8" aria-hidden="true" tabindex="-1"></a>                     <span class="at">Var_sample =</span> <span class="fu">var</span>(ret),</span>
+<span id="cb66-9"><a href="#cb66-9" aria-hidden="true" tabindex="-1"></a>                     <span class="at">SD =</span> <span class="fu">sd</span>(ret),</span>
+<span id="cb66-10"><a href="#cb66-10" aria-hidden="true" tabindex="-1"></a>                     <span class="at">CV =</span> <span class="fu">sd</span>(ret) <span class="sc">/</span> <span class="fu">mean</span>(ret) <span class="sc">*</span> <span class="dv">100</span>,</span>
+<span id="cb66-11"><a href="#cb66-11" aria-hidden="true" tabindex="-1"></a>                     <span class="at">MAD =</span> <span class="fu">mean</span>(<span class="fu">abs</span>(ret <span class="sc">-</span> <span class="fu">mean</span>(ret)))</span>
+<span id="cb66-12"><a href="#cb66-12" aria-hidden="true" tabindex="-1"></a>                     )</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 1 × 6
       n  Mean Var_sample    SD    CV   MAD
