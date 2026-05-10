@@ -158,9 +158,11 @@ For the MAD, focus on the fourth column which lists the absolute deviations from
 The **Coefficient of Variation** simplifies comparisons of variability across variables with different units or scales, by dividing the standard deviation by the mean. It is calculated by:
 
 ::: {.callout-formula}
-$$CV=\frac{s}{\bar{x}}$$
+**THE COEFFICIENT OF VARIATION (CV)**
+$$CV=\frac{s}{\bar{x}} \times 100$$
 :::
 
+::: {.callout-example}
 **Example:** Consider the table below, that shows information on two different stocks:
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
@@ -168,6 +170,7 @@ knitr::include_graphics("images/CV.png")
 ```
 
 The third column shows the standard deviation of each stock. One could conclude that both stocks vary the same as they have the same standard deviation of one. Recall that the coefficient of variation considers the variable's scale by incorporating the mean into its calculation. Since one stock is centered around 1 dollar and the other around 100 dollars (second column), it is clear that they do not vary similarly percentage-wise. Stock A varies 100% from the mean, whereas Stock B only varies 1%. Hence, the coefficient of variation would identify Stock A as the more variable stock.
+:::
 
 ## The Sharpe Ratio
 
@@ -176,10 +179,12 @@ The Sharpe Ratio measures how much excess return an investor receives for the ex
 In sum, the **Sharpe ratio** quantifies the excess return of an investment over the risk free return. It is calculated by:
 
 ::: {.callout-formula}
+**THE SHARPE RATIO**
 $$\frac{\bar{R_p}-R_f}{s}$$ 
 where $\bar{R_p}$ is the mean return of the portfolio, $R_f$ is the risk free return, and $s$ is the standard deviation.
 :::
 
+::: {.callout-example}
 **Example:** Consider the table below that includes a collection of investments.
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
@@ -187,20 +192,15 @@ knitr::include_graphics("images/Sharpe.png")
 ```
 
 The table shows four investments (Apple, Bitcoin, Shiba, and S&P). Just looking at the daily return, it is clear that Shiba provides the best returns. However, the cost for that high return is reflected in variability (22% for Shiba). The S&P is clearly the safest investment with a standard deviation of only 0.9%. The Sharpe Ratio, marries these two metrics showing the return per unit of risk taken over the free rate. If we assume a 0% risk free rate, the investment with the highest Sharpe Ratio is the S&P at 0.11.
+:::
 
 ## Measures of Dispersion in Excel
 
-Let's use some stock returns to explore R functions that allow us to calculate measures of dispersion. You can run the following command to get the data into R:
-
-```{r message=FALSE}
-library(tidyverse)
-returns<-read_csv("https://jagelves.github.io/Data/returns.csv")
-```
-
-Use the `glimpse()` function to view the data:
+Let's use some stock returns to explore Excel functions that allow us to calculate measures of dispersion. 
 
 ```{r}
-glimpse(returns)
+library(tidyverse)
+returns<-read_csv("https://jagelves.github.io/Data/returns.csv")
 ```
 
 It seems like the data is stock returns for different companies. We can start by finding the average return of each stock. To do this, let's use the `group_by()` and `summarise()` functions.
@@ -224,14 +224,10 @@ returns %>% group_by(Stock) %>%
 
 TSLA seems to have the highest variation when following the standard deviation. However, if we look at the variation as a percentage of the mean, SPY seems to have the highest variation for the period considered. In the table below we once more use the `group_by()` and `summarise()` functions to calculate the other measures of dispersion.
 
-```{r}
-returns %>% group_by(Stock) %>% 
-  summarise(Range=diff(range(Return)),
-            MAD=mean(abs(Return-mean(Return))),
-            Sharpe=(mean(Return)-0.0001)/sd(Return))
-```
 
 In this second table the range is calculated by finding the difference between the minimum and the maximum. We can retrieve the minimum and the maximum by using the `range()` function. The `diff()` function finds the difference (or range) between these two numbers. The MAD is calculated straight from the formula. Mainly, finding the absolute deviations from the mean and the averaging them out. Lastly, the Sharpe ratio assumes a risk free daily rate of 0.01%. Once again, TSLA seems like the investment that yields the highest return despite its higher variability.
+
+## Excel Functions
 
 Below is a list of the functions used:
 
