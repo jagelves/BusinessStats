@@ -377,25 +377,7 @@ For the following exercises, make your calculations by hand and verify results u
 
 *The mean is* $60$, the Range is $94$, the MAD is $28$, the variance is $1186$ and the variance is $34.44$.
 
-*Start by creating a vector to hold the values:*
-
-```{r}
-Ex1<-c(70,68,4,98)
-```
-
-*The range can be calculated by using the `range()` and `diff()` functions in R.*
-
-```{r}
-(Range<-diff(range(Ex1)))
-```
-
-*Next, we can create a table by hand that captures the deviations from the mean. Let's calculate the mean first:*
-
-```{r}
-(Average1<-mean(Ex1))
-```
-
-*Now we can use the mean to fill out a table of deviations:*
+*Here is the table of deviations:*
 
 | $x_{i}$ | $x_{i}-\bar{x}$ | $(x_{i}-\bar{x})^2$ | $|x_{i}-\bar{x}|$ |
 |:-------:|:---------------:|:-------------------:|:-----------------:|
@@ -405,27 +387,6 @@ Ex1<-c(70,68,4,98)
 |   98    |       38        |        1444         |        38         |
 
 *The variance averages out the squared deviations* $(x_{i}-\bar{x})^2$, the MAD averages out the absolute deviations $|x_{i}-\bar{x}|$, and the standard deviation is the square root of the variance.
-
-*Let's verify the variance in R:*
-
-```{r}
-SquaredDeviations1<-(Ex1-Average1)^2
-AverageDeviations1<-mean(SquaredDeviations1)
-var(Ex1)*3/4
-```
-
-*Note that R calculates the sample variance. Hence, we must multiply the result by* $3/4$ to get the population variance. The standard deviation is just the square root of the variance:
-
-```{r}
-sqrt(AverageDeviations1)
-```
-
-*Lastly, the MAD is calculated by averaging the absolute deviations* $|x_{i}-\bar{x}|$.
-
-```{r}
-AbsoluteDeviations1<-abs(Ex1-Average1)
-mean(AbsoluteDeviations1)
-```
 
 </details>
 
@@ -439,7 +400,7 @@ mean(AbsoluteDeviations1)
 
 <summary>Answer</summary>
 
-*The mean is* $-2$, Range is $7$, the MAD is $2.33$, the variance is $7.6$ and the standard deviation is $2.76$.
+*The mean is $-2$, Range is $7$, the MAD is $2.33$, the variance is $7.6$ and the standard deviation is $2.76$.*
 
 *Here is the table of deviations from the mean:*
 
@@ -452,36 +413,48 @@ mean(AbsoluteDeviations1)
 |   -3    |       -1        |          1          |         1         |
 |    0    |        2        |          4          |         2         |
 
-*We can check the results in R. Let's start with the variance:*
+</details>
 
-```{r}
-Ex2<-c(-4,0,-6,1,-3,0)
-var(Ex2)
-```
+3. Use the following observations to calculate the Range, MAD, Variance and Standard Deviation. Assume that the data below is a sample from the population.
 
-*The standard deviation can be found with the `sd()` function:*
+|     |     |     |     |     |     |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+|  2  |  8  |  4  | 10  |  6  |  6  |
 
-```{r}
-sd(Ex2)
-```
+<details>
+<summary>Answer</summary>
 
-*The MAD is given by:*
+*The mean is $6$, Range is $8$, the MAD is $2$, the variance is $8$ 
+and the standard deviation is $2.83$.*
 
-```{r}
-(MAD<-mean(abs(Ex2-mean(Ex2))))
-```
+*Here is the table of deviations from the mean:*
 
-*Lastly, the range:*
+| $x_{i}$ | $x_{i}-\bar{x}$ | $(x_{i}-\bar{x})^2$ | $|x_{i}-\bar{x}|$ |
+|:-------:|:---------------:|:-------------------:|:-----------------:|
+|    2    |       -4        |         16          |         4         |
+|    8    |        2        |          4          |         2         |
+|    4    |       -2        |          4          |         2         |
+|   10    |        4        |         16          |         4         |
+|    6    |        0        |          0          |         0         |
+|    6    |        0        |          0          |         0         |
 
-```{r}
-diff(range(Ex2))
-```
+*The range is $Range = 10 - 2 = 8$.*
+
+*The MAD is $mad = (4+2+2+4+0+0)/6 = 12/6 = 2$.*
+
+*The sample variance is $s^2 = (16+4+4+16+0+0)/(6-1) = 40/5 = 8$.*
+
+*The standard deviation is $s = \sqrt{8} = 2.83$.*
 
 </details>
 
 ### Exercise 2 {.unnumbered}
 
-You will need the **Stocks** data set to answer this question. You can find this data at https://jagelves.github.io/Data/Stocks.csv The data is a sample of daily stock prices for ticker symbols TSLA (Tesla), VTI (S&P 500) and GBTC (Bitcoin).
+You will need the **Stocks** data set to answer this question. You can find this data here:
+
+[{{< fa file-excel >}} Download Data](stocks.xlsx){.btn .btn-success}
+
+The data is a sample of daily stock prices for ticker symbols TSLA (Tesla), VTI (S&P 500) and GBTC (Bitcoin).
 
 1.  Calculate the standard deviations for each stock. Which stock had the lowest standard deviation?
 
@@ -489,31 +462,7 @@ You will need the **Stocks** data set to answer this question. You can find this
 
 <summary>Answer</summary>
 
-*For the sample taken, GBTC has the less variation. The standard deviation of GBTC is* $9.43$, which is less than $16.57$ for VTI or $50.38$ for TSLA.
-
-*Start by loading the data set from the website. Since the file is in csv format, we will use the `read.csv()` function.*
-
-```{r}
-StockPrices<-read.csv("https://jagelves.github.io/Data/Stocks.csv")
-```
-
-*Let's start with the standard deviation of the Tesla stock. The standard deviation is given by:*
-
-```{r}
-sd(StockPrices$TSLA)
-```
-
-*Next, let's find the standard deviation for the S&P 500 or VTI. The standard deviation is given by:*
-
-```{r}
-sd(StockPrices$VTI)
-```
-
-*Finally, let's calculate the standard deviation for GBTC or Bitcoin.*
-
-```{r}
-sd(StockPrices$GBTC)
-```
+*For the sample taken, GBTC has the less variation. The standard deviation of GBTC is $9.43$, which is less than $16.57$ for VTI or $50.38$ for TSLA.*
 
 </details>
 
@@ -523,25 +472,7 @@ sd(StockPrices$GBTC)
 
 <summary>Answer</summary>
 
-*The answer is the same, since the MAD for GBTC is* $8.46$ which is lower than $14.27$ for VTI or $41.67$ for TSLA.
-
-*To calculate the MAD for TSLA we can use the following command:*
-
-```{r}
-(MADTSLA<-mean(abs(StockPrices$TSLA-mean(StockPrices$TSLA))))
-```
-
-*The MAD for VTI is:*
-
-```{r}
-(MADVTI<-mean(abs(StockPrices$VTI-mean(StockPrices$VTI))))
-```
-
-*The MAD for GBTC is:*
-
-```{r}
-(MADGBTC<-mean(abs(StockPrices$GBTC-mean(StockPrices$GBTC))))
-```
+*The answer is the same, since the MAD for GBTC is $8.46$ which is lower than $14.27$ for VTI or $41.67$ for TSLA.*
 
 </details>
 
@@ -551,25 +482,7 @@ sd(StockPrices$GBTC)
 
 <summary>Answer</summary>
 
-*By considering the magnitudes of the stock prices, it seems like VTI is the less volatile stock. VTI has a CV of* $0.08$ which is lower than $0.44$ for GBTC or $0.18$ for TSLA. In fact, by CV Bitcoin seems to be the most risky asset.
-
-*The coefficients of variations are as follows. For TSLA the CV is:*
-
-```{r}
-(CVTSLA<-sd(StockPrices$TSLA)/mean(StockPrices$TSLA))
-```
-
-*For VTI the CV is:*
-
-```{r}
-(CVVTI<-sd(StockPrices$VTI)/mean(StockPrices$VTI))
-```
-
-*For GBTC we get:*
-
-```{r}
-(CVGBTC<-sd(StockPrices$GBTC)/mean(StockPrices$GBTC))
-```
+*By considering the magnitudes of the stock prices, it seems like VTI is the less volatile stock. VTI has a CV of $0.08$ which is lower than $0.44$ for GBTC or $0.18$ for TSLA. In fact, by CV Bitcoin seems to be the most risky asset.*
 
 </details>
 
