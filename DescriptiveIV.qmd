@@ -488,7 +488,9 @@ The data is a sample of daily stock prices for ticker symbols TSLA (Tesla), VTI 
 
 ### Exercise 3 {.unnumbered}
 
-Install the `ISLR2` package. You will need the **Portfolio** data set to answer this question. The data has 100 records of the returns of two stocks.
+You will need the **Portfolio** data set to answer this question. The data has 100 records of the returns of two stocks. You can find the data here:
+
+[{{< fa file-excel >}} Download Data](portfolio.xlsx){.btn .btn-success}
 
 1.  Calculate the mean and standard deviation for each stock. Which investment has higher returns on average? Which investment is safest as measured by the standard deviation?
 
@@ -496,37 +498,7 @@ Install the `ISLR2` package. You will need the **Portfolio** data set to answer 
 
 <summary>Answer</summary>
 
-*The best performing stock on average is stock X. It has an average return of* $-0.078$% vs. $0.097$% for stock Y. The safest stock is stock X as well, since the standard deviation is $1.062$ percentage points vs. $1.14$ percentage points for stock Y.
-
-*Start by loading the `ISLR2` package:*
-
-```{r}
-library(ISLR2)
-```
-
-*Next, calculate the mean for stock X:*
-
-```{r}
-mean(Portfolio$X)
-```
-
-*and stock Y.*
-
-```{r}
-mean(Portfolio$Y)
-```
-
-*Then, calculate the standard deviation for stock X*
-
-```{r}
-sd(Portfolio$X)
-```
-
-*and stock Y.*
-
-```{r}
-sd(Portfolio$Y)
-```
+*The best performing stock on average is stock X. It has an average return of $-0.078$% vs. $0.097$% for stock Y. The safest stock is stock X as well, since the standard deviation is $1.062$ percentage points vs. $1.14$ percentage points for stock Y.*
 
 </details>
 
@@ -536,78 +508,134 @@ sd(Portfolio$Y)
 
 <summary>Answer</summary>
 
-*The Sharpe Ratio measures the excess return per unit of risk taken. Stock X has the better Sharpe Ratio.* $-0.106$ vs. $-0.115$. Stock X is recommended since it provides a higher excess return per unit of risk taken.
+*The Sharpe Ratio measures the excess return per unit of risk taken. Stock X has the better Sharpe Ratio $-0.106$ vs. $-0.115$ for stock Y. Stock X is recommended since it provides a higher excess return per unit of risk taken.
 
-*To calculate Sharpe Ratios use both the average return, and the standard deviation. For stock X, the Sharpe Ratio is:*
-
-```{r}
-(mean(Portfolio$X)-0.035)/sd(Portfolio$X)
-```
-
-*The Sharpe Ratio for stock Y:*
-
-```{r}
-(mean(Portfolio$Y)-0.035)/sd(Portfolio$Y)
-```
-
-</details>
-
-3.  Calculate the average return for a portfolio that has 30% of stock X and 70% of stock Y. What is the standard deviation of the portfolio?
-
-<details>
-
-<summary>Answer</summary>
-
-*The portfolio has an average return of* $-0.091$ which is worse than stock X but better than stock Y. The standard deviation is $1.00$. This is better than stock X and Y separately. The Sharpe ratio of $-0.091$ is also better for the portfolio than for each stock individually.
-
-*The mean of the portfolio is given by:*
-
-```{r}
-(mean_return=0.3*mean(Portfolio$X)+0.7*mean(Portfolio$Y))
-```
-
-*The covariance matrix is given by:*
-
-```{r}
-(risk<-cov(Portfolio))
-```
-
-*Using the matrix we can now calculate the standard deviation:*
-
-```{r}
-(standard<-sqrt(t(c(0.3,0.7)) %*% (risk %*% c(0.3,0.7))))
-```
-
-*Finally, the Sharpe ratio for the portfolio is:*
-
-```{r}
-mean_return/standard[1]
-```
 
 </details>
 
 ### Exercise 4 {.unnumbered}
-The monthly returns (in percent) for a small project are:{2.1,-0.5,3.0,1.2,−1.8,0.7,2.5,−0.3}. Compute the sample mean, sample variance, sample standard deviation, coefficient of variation (CV) (in percent), and the mean absolute deviation (MAD). Briefly interpret the CV: what does it tell you about the returns relative to their mean?
+The monthly returns (in percent) for a small project are:
+
+|  1  |   2   |  3  |  4  |   5   |  6  |  7  |   8   |
+|:---:|:-----:|:---:|:---:|:-----:|:---:|:---:|:-----:|
+| 2.1 | -0.5  | 3.0 | 1.2 | -1.8  | 0.7 | 2.5 | -0.3  |
+
+Compute the sample mean, sample variance, sample standard deviation, coefficient of variation (CV) (in percent), and the mean absolute deviation (MAD). Briefly interpret the CV: what does it tell you about the returns relative to their mean?
 
 <details>
-
 <summary>Answer</summary>
 
-*You can use the `summarise()` function in r to get the list of sample statistics.*
-```{r}
-library(tidyverse)
+*Start by computing the sample mean:*
 
-returns <- tibble(month = 1:8,
-                  ret = c(2.1, -0.5, 3.0, 1.2, -1.8, 0.7, 2.5, -0.3))
+$$\bar{x} = \frac{2.1 + (-0.5) + 3.0 + 1.2 + (-1.8) + 0.7 + 2.5 + (-0.3)}{8} = \frac{6.9}{8} = 0.8625$$
 
-returns %>%summarise(n = n(),
-                     Mean = mean(ret),
-                     Var_sample = var(ret),
-                     SD = sd(ret),
-                     CV = sd(ret) / mean(ret) * 100,
-                     MAD = mean(abs(ret - mean(ret)))
-                     )
-```
+*Here is the table of deviations from the mean:*
 
-*The CV is about 192%, which is large: the standard deviation is almost twice the mean. That indicates the returns are highly variable relative to their average — the mean is small compared with typical month‑to‑month fluctuations.*
+| $x_{i}$ | $x_{i}-\bar{x}$ | $(x_{i}-\bar{x})^2$ | $|x_{i}-\bar{x}|$ |
+|:-------:|:---------------:|:-------------------:|:-----------------:|
+|   2.1   |     1.2375      |       1.5314        |      1.2375       |
+|  -0.5   |    -1.3625      |       1.8564        |      1.3625       |
+|   3.0   |     2.1375      |       4.5689        |      2.1375       |
+|   1.2   |     0.3375      |       0.1139        |      0.3375       |
+|  -1.8   |    -2.6625      |       7.0889        |      2.6625       |
+|   0.7   |    -0.1625      |       0.0264        |      0.1625       |
+|   2.5   |     1.6375      |       2.6814        |      1.6375       |
+|  -0.3   |    -1.1625      |       1.3514        |      1.1625       |
+
+*The sample variance is:*
+
+$$s^2 = \frac{\sum(x_i - \bar{x})^2}{n-1} = \frac{19.2188}{7} = 2.7455$$
+
+*The sample standard deviation is:*
+
+$$s = \sqrt{2.7455} = 1.657$$
+
+*The Mean Absolute Deviation is:*
+
+$$mad = \frac{\sum|x_i - \bar{x}|}{n} = \frac{10.7}{8} = 1.3375$$
+
+*The Coefficient of Variation is:*
+
+$$CV = \frac{s}{\bar{x}} \times 100 = \frac{1.657}{0.8625} \times 100 = 192.1\%$$
+
+*The CV is about $192\%$, which is large: the standard deviation is almost twice the mean. This indicates the returns are highly variable relative to their average — the mean is small compared with typical month-to-month fluctuations. In practice, a CV this large signals that the project's returns are unreliable; an investor cannot count on earning close to the average return in any given month.*
+</details>
+
+### Exercise 5 {.unnumbered}
+
+Prediction markets allow participants to bet on the outcomes of sporting 
+events. A bettor tracks his weekly profit and loss (in dollars) over 
+ten weeks of NFL betting:
+
+|  1  |   2   |  3  |  4  |   5   |  6  |  7  |   8   |  9  |  10  |
+|:---:|:-----:|:---:|:---:|:-----:|:---:|:---:|:-----:|:---:|:----:|
+| 120 | -85  | 200 | -150 | 95  | -60 | 310 | -220  | 175 | -45  |
+
+1. Compute the sample mean, sample variance, sample standard deviation, and MAD. Is the bettor profitable on average?
+
+
+<details>
+<summary>Answer</summary>
+
+*The sample mean is:*
+
+$$\bar{x} = \frac{120 + (-85) + 200 + (-150) + 95 + (-60) + 310 + (-220) + 175 + (-45)}{10} = \frac{340}{10} = 34$$
+
+*The bettor is profitable on average, earning $\$34$ per week.*
+
+*Here is the table of deviations from the mean:*
+
+| $x_{i}$ | $x_{i}-\bar{x}$ | $(x_{i}-\bar{x})^2$ | $|x_{i}-\bar{x}|$ |
+|:-------:|:---------------:|:-------------------:|:-----------------:|
+|   120   |       86        |        7,396        |        86         |
+|   -85   |      -119       |       14,161        |       119         |
+|   200   |       166       |       27,556        |       166         |
+|  -150   |      -184       |       33,856        |       184         |
+|    95   |       61        |        3,721        |        61         |
+|   -60   |       -94       |        8,836        |        94         |
+|   310   |       276       |       76,176        |       276         |
+|  -220   |      -254       |       64,516        |       254         |
+|   175   |       141       |       19,881        |       141         |
+|   -45   |       -79       |        6,241        |        79         |
+
+*The sample variance is:*
+
+$$s^2 = \frac{262{,}340}{9} = 29{,}149$$
+
+*The sample standard deviation is:*
+
+$$s = \sqrt{29{,}149} = \$170.73$$
+
+*The MAD is:*
+
+$$mad = \frac{86+119+166+184+61+94+276+254+141+79}{10} = \frac{1{,}460}{10} = \$146$$
+
+*The bettor is profitable on average but faces large week-to-week swings — a typical week deviates from the mean by about $\$146$ to $\$171$ depending on the measure used.*
+
+</details>
+
+
+2. Compute the Coefficient of Variation (CV). What does it tell you about the reliability of the bettor's weekly results?
+
+
+<details>
+<summary>Answer</summary>
+
+$$CV = \frac{170.73}{34} \times 100 = 502\%$$
+
+*A CV of $502\%$ is extremely large (i.e., the standard deviation is five) times the mean. This indicates that the average weekly profit of $\$34$ is tiny relative to the typical week-to-week swings of $\$171$. The bettor cannot reliably count on earning near the mean in any given week. A high CV signals that the strategy is highly risky relative to its average reward.*
+
+</details>
+
+3. Assuming a risk-free weekly return of $0, compute the Sharpe Ratio. Would you consider this a good risk-adjusted return?
+
+<details>
+<summary>Answer</summary>
+
+*With a risk-free rate of $\$0$:*
+
+$$SR = \frac{\bar{x} - R_f}{s} = \frac{34 - 0}{170.73} = 0.199$$
+
+*A Sharpe ratio of $0.199$ is low. As a point of reference, a Sharpe ratio above $1$ is generally considered acceptable in finance. The bettor earns only $\$0.20$ of profit per dollar of risk taken — suggesting that while the strategy is marginally profitable, the risk taken to achieve that profit is not well compensated. A more disciplined betting strategy or better odds selection would be needed to improve the risk-adjusted return.*
+
 </details>
