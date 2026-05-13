@@ -22,23 +22,42 @@ There are statistical measures that describe the shape and distribution of the d
 
 A **quantile** is a location within a set of ranked numbers (or distribution), below which a certain proportion, $q$, of that set lie. If we instead express quantiles as a percentage, they are referred to as **percentiles**.
 
-*Ex: Imagine all your data points lined up from smallest to largest. If you say you're looking at the 25th percentile, it means you're finding the value below which 25% of your data falls. If you had 100 test scores, the 25th percentile would be the score where 25 students scored lower than that, and 75 scored higher or equal. It's a way to see where a value stands in relation to the rest of the data in terms of percentage.*
+::: {.callout-example}
+**Example:** Imagine all your data points lined up from smallest to largest. If you say you're looking at the 25th percentile, it means you're finding the value below which 25% of your data falls. If you had 100 test scores, the 25th percentile would be the score where 25 students scored lower than that, and 75 scored higher or equal. It's a way to see where a value stands in relation to the rest of the data in terms of percentage.*
+:::
 
 To calculate a percentile we follow the steps below:
 
 1.  Sort the data in ascending order. Each point has now a location. The smallest number will be first, the second smallest number will be second, etc.
 
-2.  Compute the location of the percentile desired using $L_{p}=\frac{(n+1)P}{100}$ where $L_{p}$ is the location (in the sorted data) of the $P_{th}$ percentile, and $P$ is the percentile desired.
+2.  Compute the location of the percentile desired using:
+
+::: {.callout-formula}
+**Location of the pth percentile**
+$$L_{p}=1+k(n-1)$$ 
+where $L_{p}$$ is the location (in the sorted data) of the $P_{th}$ percentile, and $P$ is the percentile desired.
+:::
 
 3.  The data point at location $L_p$, is the the $P_{th}$ percentile.
 
+::: {.callout-formula}
 **Example:** Let's use the IQ scores for a group of students to find the 25th percentile. $IQ=\{80,100,110,75,130,90\}$.
 
-1.  We sort the data: $IQ_{sorted}=\{75,80,90,100,110,130\}$
+1.  We sort the data: 
 
-2.  Find the location of the 25th percentile: $L_{25}=7 \times 0.25=1.75$. The 25th percentile is in the position 1.75 of the sorted data.
+$$IQ_{sorted}=\{75,80,90,100,110,130\}$$
 
-3.  Retrieve the 25th percentile: Since position 1 is 75 and position 2 is 80, the 25th percentile lies 0.75 of the way between position 1 and 2. Hence, the 25th percentile is $P_{25}=75+0.75(80-75)=78.75$.
+2.  Find the location of the 25th percentile: 
+$$L_{25}=1+0.25(6+1)=2.25$$ 
+The 25th percentile is in the position 2.25 of the sorted data.
+
+3.  Retrieve the 25th percentile: Since position 2 is 80 and position 3 
+is 90, the 25th percentile lies $0.25$ of the way between positions 
+2 and 3. Hence, the 25th percentile is:
+
+$$P_{25} = 80 + 0.25(90 - 80) = 82.5$$.
+
+:::
 
 ## Chebyshev's Theorem
 
