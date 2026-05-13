@@ -86,13 +86,37 @@ scores between $66$ and $90$. Note that this conclusion is only valid if the dat
 verify this assumption before accepting the claim.
 :::
 
-## Outliers Z-Scores
+## Outliers (Z-Scores)
 
 Given the boundaries set by both the empirical rule and Chebyshev's theorem, we can classify points as being common (normal) and not common (outliers). Specifically, **outliers** are extreme deviations from the mean. They are values that are not "common" or rarely occurring. Since both the empirical rule and Chebyshev's theorem state that a large proportion of the data is between three standard deviations, it would be uncommon to have a data point that is more that three standard deviations away from the mean.
 
-To identify outliers we use a **z-score**, which is a measure of distance from the mean in units of standard deviations. It can be calculated for any data point in your variable by using the formula $z_{i}=\frac{x_i-\bar{x}}{s_x}$. By definition, $z$-scores above $3$ are suspected to be outliers.
+To identify outliers we use a **z-score**, which is a measure of 
+distance from the mean in units of standard deviations. By definition, $z$-scores above $3$ are suspected to be outliers.
 
-*Ex: On Jan 22, 2006 Kobe Bryant scored 81 points against the Toronto Raptors. He had averaged 30 point per game with a standard deviation of 4 points. If we calculate the z-score we get:* $z_{81}=\frac{81-30}{4}=12.5$. This mean that 81 is 12.5 standard deviations away from the mean, making this value extremely rare.
+::: {.callout-formula}
+**THE Z-SCORE**
+$$z_{i}=\frac{x_i-\bar{x}}{s_x}$$
+where $x_i$ is the data point, $\bar{x}$ is the sample mean, and 
+$s_x$ is the sample standard deviation.
+:::
+
+::: {.callout-example}
+**Example:** On Jan 22, 2006 Kobe Bryant scored 81 points against the Toronto Raptors. He had averaged 30 point per game with a standard deviation of 4 points. If we calculate the z-score we get:* $z_{81}=\frac{81-30}{4}=12.5$. This mean that 81 is 12.5 standard deviations away from the mean, making this value extremely rare.
+:::
+
+::: {.callout-example}
+**Example:** On March 10, 2026, Bam Adebayo of the Miami Heat scored 
+$83$ points against the Washington Wizards — the second highest 
+single-game scoring performance in NBA history, surpassing Kobe 
+Bryant's iconic $81$-point game. Prior to this game, Adebayo had 
+averaged approximately $20$ points per game with a standard deviation 
+of $5$ points. Calculating the z-score:
+
+$$z_{83}=\frac{83-20}{5}=12.6$$
+
+This means that Adebayo's $83$-point performance was $12.6$ standard 
+deviations above his mean comparable in statistical terms to Kobe Bryant's $81$-point game in 2006, which produced a z-score of $12.5$. Both performances illustrate how z-scores allow us to compare exceptional events across different players and eras on a common scale.
+:::
 
 ## Skew
 
@@ -104,12 +128,44 @@ The image below shows the different types of skew:
 knitr::include_graphics("images/Skew.png")
 ```
 
-*Ex: Assume that for a variable the mean is 10, the median is 8, and the standard deviation is 3. The Pearson coefficient of skew is equal to* $Sk=3(10-8)/3=2$. Since the skew is positive, we expect the distribution to be right skewed.
+::: {.callout-example}
+**Example:** Assume that for a variable the mean is 10, the median is 8, and the standard deviation is 3. The Pearson coefficient of skew is equal to* $Sk=3(10-8)/3=2$. Since the skew is positive, we expect the distribution to be right skewed.
+:::
+
+## Kurtosis
+
+Kurtosis measures the "tailedness" of a distribution — that is, how 
+much of the data is concentrated in the tails relative to a normal 
+distribution. A distribution with heavy tails has more extreme values 
+than expected, while a distribution with light tails has fewer. To 
+measure kurtosis, we use the **Excess Kurtosis** formula, which 
+centers the measure around zero by subtracting 3:
+
+$$K = \frac{\sum(x_i - \bar{x})^4 / n}{s^4} - 3$$
+
+A distribution is **leptokurtic** ($K>0$) when it has heavier tails 
+and a sharper peak than a normal distribution — extreme values are 
+more common. A distribution is **platykurtic** ($K<0$) when it has 
+lighter tails and a flatter peak — extreme values are rare. When 
+$K=0$ the distribution has the same tail behavior as a normal 
+distribution and is called **mesokurtic**.
+
+::: {.callout-example}
+**Example:** A risk analyst examines the daily returns of two assets. 
+Asset A has an excess kurtosis of $K=3.2$ and Asset B has an excess 
+kurtosis of $K=-0.8$. Since $K>0$, Asset A is leptokurtic — its 
+returns have heavier tails than a normal distribution, meaning extreme 
+gains or losses occur more frequently than expected. Since $K<0$, 
+Asset B is platykurtic — extreme returns are rare and the distribution 
+is flatter. An investor concerned about tail risk would prefer Asset B, 
+as large unexpected losses are less likely.
+:::
 
 ## Five Point Summary
 
 A popular way to summarize data is by calculating the minimum, first quartile, median, third quartile and maximum (five point summary). This gives us a good idea of how data is distributed. We can additionally inquire how the middle 50% of the data varies. Recall, that we can use a range to assess dispersion. The **interquartile range (IQR)** quantifies the dispersion of the middle 50% of the data. Formally, the IQR is the difference between the third quartile (75th percentile) and the first quartile (25th percentile).
 
+::: {.callout-example}
 **Example:** Let's use the IQ scores for a group of students once more. Recall that the data is given by $IQ=\{80,100,110,75,130,90\}$. The minimum and the maximum are easily identified as $Max=130$ and $Min=75$. The first quartile ($P_{25}$) was calculated in [1.1](#.quartiles) as 78.75. Using the same steps the third quartile ($P_{75}$) is 115. The median is the average between the third and fourth numbers $Median=190/2=95$. The five point summary is given in the table below:
 
 | $Min$ | $P_{25}$ | $Median$ | $P_{75}$ | $Max$ |
@@ -117,14 +173,37 @@ A popular way to summarize data is by calculating the minimum, first quartile, m
 |  75   |  78.75   |    95    |   115    |  130  |
 
 To calculate the interquartile range we find the difference between the 75th and 25th percentiles. $IQR=115-78.75=36.25$ which means that the middle 50% of the data has a range of 36.25.
+:::
 
-## Outliers IQR
+## Outliers (IQR)
 
-An alternate way to identify outliers is by using the interquartile range. This measure and the z-score method can disagree. To calculate the outliers using the IQR, we first calculate $Q_1-1.5(IQR)$ and $Q_3+1.5(IQR)$, where $Q_1$ is the first quartile, $Q_3$ is the third quartile, and $IQR$ is the interquartile range. If the observation ($x_i$) is less than $Q_1-1.5(IQR)$ or greater than $Q_3+1.5(IQR)$, then it is considered an outlier.
+An alternate way to identify outliers is by using the interquartile 
+range. This measure and the z-score method can disagree. Any 
+observation falling outside the following limits is considered an 
+outlier:
 
-*Ex: Consider once more the IQ data.* $IQ=\{80,100,110,75,130,90\}$. The lower limit for on outlier is given by $LL=Q_1-1.5(IQR)=78.75-1.5(36.25)$ or $LL=24.375$. The upper limit is given by $UL=Q_3+1.5(IQR)=115+1.5(36.25)$ or $UL=169.375$. Any data point outside the range \[24.375,169.375\] is considered an outlier. In other words, 200 and 20 would be outliers, but 100 would not.
+::: {.callout-formula}
+**OUTLIER LIMITS (IQR METHOD)**
+$$Lower\ Limit = Q_1 - 1.5 \times IQR$$
+$$Upper\ Limit = Q_3 + 1.5 \times IQR$$
+where $Q_1$ is the first quartile, $Q_3$ is the third quartile, and 
+$IQR = Q_3 - Q_1$ is the interquartile range.
+:::
 
-## Quantiles and Quartiles in R
+If an observation $x_i$ falls below the lower limit or above the 
+upper limit, it is considered an outlier.
+
+::: {.callout-example}
+**Example:** Consider once more the IQ data.
+$$IQ=\{80,100,110,75,130,90\}$$ 
+The lower limit for on outlier is given by:
+$$LL=Q_1-1.5(IQR)=78.75-1.5(36.25)=24.375$$ 
+The upper limit is given by 
+$$UL=Q_3+1.5(IQR)=115+1.5(36.25)=169.375$$ 
+Any data point outside the range \[24.375,169.375\] is considered an outlier. In other words, 200 and 20 would be outliers, but 100 would not.
+:::
+
+## Calculating Measures in Excel
 
 R quickly calculates quantiles for a given variable (vector) using the `quantile()` function. Below we use the IQ example once more.
 
@@ -201,15 +280,33 @@ skewness(faithful$eruptions)
 
 The result indicates that the distribution is mildly skewed to the left.
 
-Here is a summary of the functions used in this section:
+## Excel Function Summary
 
--   The `quantile()` function returns the five point summary when no arguments are specified. For a specific quantile, specify the *probs* argument.
+Below is a list of the Excel functions used in this section:
 
--   The `scale()` function calculates the z-scores for a vector of values.
+- `=PERCENTILE.INC(array, k)` returns the $k$th percentile of a range using the formula $L_p = 1 + k(n-1)$, where $k$ is expressed as a decimal between 0 and 1. This matches the method used in this chapter.
 
--   The `geom_boxplot()` command returns a box plot for a vector of values.
+- `=PERCENTILE.EXC(array, k)` returns the $k$th percentile using the 
+  formula $L_p = k(n+1)$. 
+  
+- `=QUARTILE.INC(array, quart)` returns the five point summary. The 
+  argument `quart` takes values 0 (minimum), 1 ($Q_1$), 2 (median), 
+  3 ($Q_3$), and 4 (maximum).
 
--   The `skewness()` function is found in the `e1071` package. It takes as an input a vector of values and returns the Pearson Coefficient of Skew.
+- `=STANDARDIZE(x, mean, std_dev)` calculates the z-score for a value `x` given the mean and standard deviation. Alternatively, compute it manually as `=(A1 - AVERAGE(A:A)) / STDEV.S(A:A)`.
+
+- `=SKEW(range)` calculates the skewness of a range using the 
+  Fisher-Pearson standardized moment coefficient. Note that Excel does not have a direct equivalent to Pearson's Coefficient of Skew 
+  $Sk=3(\bar{x}-Median)/s_x$ — this must be calculated manually as 
+  `=3*(AVERAGE(range) - MEDIAN(range)) / STDEV.S(range)`.
+
+- `=KURT(range)` calculates the excess kurtosis of a range. A positive value indicates leptokurtic (heavy tails) and a negative value indicates platykurtic (light tails).
+
+## Chapter Summary Cheat Sheet
+
+```{r echo=FALSE, out.width="100%", fig.align='center'}
+knitr::include_graphics("images/Other.png")
+```
 
 ## Exercises
 

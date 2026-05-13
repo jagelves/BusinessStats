@@ -293,15 +293,18 @@ window.Quarto = {
   <li><a href="#.quartiles" id="toc-.quartiles" class="nav-link active" data-scroll-target="#.quartiles"><span class="header-section-number">5.1</span> Quantiles and Percentiles</a></li>
   <li><a href="#chebyshevs-theorem" id="toc-chebyshevs-theorem" class="nav-link" data-scroll-target="#chebyshevs-theorem"><span class="header-section-number">5.2</span> Chebyshev’s Theorem</a></li>
   <li><a href="#the-empirical-rule" id="toc-the-empirical-rule" class="nav-link" data-scroll-target="#the-empirical-rule"><span class="header-section-number">5.3</span> The Empirical Rule</a></li>
-  <li><a href="#outliers-z-scores" id="toc-outliers-z-scores" class="nav-link" data-scroll-target="#outliers-z-scores"><span class="header-section-number">5.4</span> Outliers Z-Scores</a></li>
+  <li><a href="#outliers-z-scores" id="toc-outliers-z-scores" class="nav-link" data-scroll-target="#outliers-z-scores"><span class="header-section-number">5.4</span> Outliers (Z-Scores)</a></li>
   <li><a href="#skew" id="toc-skew" class="nav-link" data-scroll-target="#skew"><span class="header-section-number">5.5</span> Skew</a></li>
-  <li><a href="#five-point-summary" id="toc-five-point-summary" class="nav-link" data-scroll-target="#five-point-summary"><span class="header-section-number">5.6</span> Five Point Summary</a></li>
-  <li><a href="#outliers-iqr" id="toc-outliers-iqr" class="nav-link" data-scroll-target="#outliers-iqr"><span class="header-section-number">5.7</span> Outliers IQR</a></li>
-  <li><a href="#quantiles-and-quartiles-in-r" id="toc-quantiles-and-quartiles-in-r" class="nav-link" data-scroll-target="#quantiles-and-quartiles-in-r"><span class="header-section-number">5.8</span> Quantiles and Quartiles in R</a></li>
-  <li><a href="#outliers-in-r" id="toc-outliers-in-r" class="nav-link" data-scroll-target="#outliers-in-r"><span class="header-section-number">5.9</span> Outliers in R</a></li>
-  <li><a href="#box-plots-in-r" id="toc-box-plots-in-r" class="nav-link" data-scroll-target="#box-plots-in-r"><span class="header-section-number">5.10</span> Box Plots in R</a></li>
-  <li><a href="#skewness-in-r" id="toc-skewness-in-r" class="nav-link" data-scroll-target="#skewness-in-r"><span class="header-section-number">5.11</span> Skewness in R</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.12</span> Exercises</a>
+  <li><a href="#kurtosis" id="toc-kurtosis" class="nav-link" data-scroll-target="#kurtosis"><span class="header-section-number">5.6</span> Kurtosis</a></li>
+  <li><a href="#five-point-summary" id="toc-five-point-summary" class="nav-link" data-scroll-target="#five-point-summary"><span class="header-section-number">5.7</span> Five Point Summary</a></li>
+  <li><a href="#outliers-iqr" id="toc-outliers-iqr" class="nav-link" data-scroll-target="#outliers-iqr"><span class="header-section-number">5.8</span> Outliers (IQR)</a></li>
+  <li><a href="#calculating-measures-in-excel" id="toc-calculating-measures-in-excel" class="nav-link" data-scroll-target="#calculating-measures-in-excel"><span class="header-section-number">5.9</span> Calculating Measures in Excel</a></li>
+  <li><a href="#outliers-in-r" id="toc-outliers-in-r" class="nav-link" data-scroll-target="#outliers-in-r"><span class="header-section-number">5.10</span> Outliers in R</a></li>
+  <li><a href="#box-plots-in-r" id="toc-box-plots-in-r" class="nav-link" data-scroll-target="#box-plots-in-r"><span class="header-section-number">5.11</span> Box Plots in R</a></li>
+  <li><a href="#skewness-in-r" id="toc-skewness-in-r" class="nav-link" data-scroll-target="#skewness-in-r"><span class="header-section-number">5.12</span> Skewness in R</a></li>
+  <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">5.13</span> Excel Function Summary</a></li>
+  <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">5.14</span> Chapter Summary Cheat Sheet</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.15</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -394,10 +397,20 @@ details summary {
 </div>
 </section>
 <section id="outliers-z-scores" class="level2" data-number="5.4">
-<h2 data-number="5.4" class="anchored" data-anchor-id="outliers-z-scores"><span class="header-section-number">5.4</span> Outliers Z-Scores</h2>
+<h2 data-number="5.4" class="anchored" data-anchor-id="outliers-z-scores"><span class="header-section-number">5.4</span> Outliers (Z-Scores)</h2>
 <p>Given the boundaries set by both the empirical rule and Chebyshev’s theorem, we can classify points as being common (normal) and not common (outliers). Specifically, <strong>outliers</strong> are extreme deviations from the mean. They are values that are not “common” or rarely occurring. Since both the empirical rule and Chebyshev’s theorem state that a large proportion of the data is between three standard deviations, it would be uncommon to have a data point that is more that three standard deviations away from the mean.</p>
-<p>To identify outliers we use a <strong>z-score</strong>, which is a measure of distance from the mean in units of standard deviations. It can be calculated for any data point in your variable by using the formula <span class="math inline">\(z_{i}=\frac{x_i-\bar{x}}{s_x}\)</span>. By definition, <span class="math inline">\(z\)</span>-scores above <span class="math inline">\(3\)</span> are suspected to be outliers.</p>
-<p><em>Ex: On Jan 22, 2006 Kobe Bryant scored 81 points against the Toronto Raptors. He had averaged 30 point per game with a standard deviation of 4 points. If we calculate the z-score we get:</em> <span class="math inline">\(z_{81}=\frac{81-30}{4}=12.5\)</span>. This mean that 81 is 12.5 standard deviations away from the mean, making this value extremely rare.</p>
+<p>To identify outliers we use a <strong>z-score</strong>, which is a measure of distance from the mean in units of standard deviations. By definition, <span class="math inline">\(z\)</span>-scores above <span class="math inline">\(3\)</span> are suspected to be outliers.</p>
+<div class="callout-formula">
+<p><strong>THE Z-SCORE</strong> <span class="math display">\[z_{i}=\frac{x_i-\bar{x}}{s_x}\]</span> where <span class="math inline">\(x_i\)</span> is the data point, <span class="math inline">\(\bar{x}\)</span> is the sample mean, and <span class="math inline">\(s_x\)</span> is the sample standard deviation.</p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> On Jan 22, 2006 Kobe Bryant scored 81 points against the Toronto Raptors. He had averaged 30 point per game with a standard deviation of 4 points. If we calculate the z-score we get:* <span class="math inline">\(z_{81}=\frac{81-30}{4}=12.5\)</span>. This mean that 81 is 12.5 standard deviations away from the mean, making this value extremely rare.</p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> On March 10, 2026, Bam Adebayo of the Miami Heat scored <span class="math inline">\(83\)</span> points against the Washington Wizards — the second highest single-game scoring performance in NBA history, surpassing Kobe Bryant’s iconic <span class="math inline">\(81\)</span>-point game. Prior to this game, Adebayo had averaged approximately <span class="math inline">\(20\)</span> points per game with a standard deviation of <span class="math inline">\(5\)</span> points. Calculating the z-score:</p>
+<p><span class="math display">\[z_{83}=\frac{83-20}{5}=12.6\]</span></p>
+<p>This means that Adebayo’s <span class="math inline">\(83\)</span>-point performance was <span class="math inline">\(12.6\)</span> standard deviations above his mean comparable in statistical terms to Kobe Bryant’s <span class="math inline">\(81\)</span>-point game in 2006, which produced a z-score of <span class="math inline">\(12.5\)</span>. Both performances illustrate how z-scores allow us to compare exceptional events across different players and eras on a common scale.</p>
+</div>
 </section>
 <section id="skew" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="skew"><span class="header-section-number">5.5</span> Skew</h2>
@@ -412,11 +425,23 @@ details summary {
 </div>
 </div>
 </div>
-<p><em>Ex: Assume that for a variable the mean is 10, the median is 8, and the standard deviation is 3. The Pearson coefficient of skew is equal to</em> <span class="math inline">\(Sk=3(10-8)/3=2\)</span>. Since the skew is positive, we expect the distribution to be right skewed.</p>
+<div class="callout-example">
+<p><strong>Example:</strong> Assume that for a variable the mean is 10, the median is 8, and the standard deviation is 3. The Pearson coefficient of skew is equal to* <span class="math inline">\(Sk=3(10-8)/3=2\)</span>. Since the skew is positive, we expect the distribution to be right skewed.</p>
+</div>
 </section>
-<section id="five-point-summary" class="level2" data-number="5.6">
-<h2 data-number="5.6" class="anchored" data-anchor-id="five-point-summary"><span class="header-section-number">5.6</span> Five Point Summary</h2>
+<section id="kurtosis" class="level2" data-number="5.6">
+<h2 data-number="5.6" class="anchored" data-anchor-id="kurtosis"><span class="header-section-number">5.6</span> Kurtosis</h2>
+<p>Kurtosis measures the “tailedness” of a distribution — that is, how much of the data is concentrated in the tails relative to a normal distribution. A distribution with heavy tails has more extreme values than expected, while a distribution with light tails has fewer. To measure kurtosis, we use the <strong>Excess Kurtosis</strong> formula, which centers the measure around zero by subtracting 3:</p>
+<p><span class="math display">\[K = \frac{\sum(x_i - \bar{x})^4 / n}{s^4} - 3\]</span></p>
+<p>A distribution is <strong>leptokurtic</strong> (<span class="math inline">\(K&gt;0\)</span>) when it has heavier tails and a sharper peak than a normal distribution — extreme values are more common. A distribution is <strong>platykurtic</strong> (<span class="math inline">\(K&lt;0\)</span>) when it has lighter tails and a flatter peak — extreme values are rare. When <span class="math inline">\(K=0\)</span> the distribution has the same tail behavior as a normal distribution and is called <strong>mesokurtic</strong>.</p>
+<div class="callout-example">
+<p><strong>Example:</strong> A risk analyst examines the daily returns of two assets. Asset A has an excess kurtosis of <span class="math inline">\(K=3.2\)</span> and Asset B has an excess kurtosis of <span class="math inline">\(K=-0.8\)</span>. Since <span class="math inline">\(K&gt;0\)</span>, Asset A is leptokurtic — its returns have heavier tails than a normal distribution, meaning extreme gains or losses occur more frequently than expected. Since <span class="math inline">\(K&lt;0\)</span>, Asset B is platykurtic — extreme returns are rare and the distribution is flatter. An investor concerned about tail risk would prefer Asset B, as large unexpected losses are less likely.</p>
+</div>
+</section>
+<section id="five-point-summary" class="level2" data-number="5.7">
+<h2 data-number="5.7" class="anchored" data-anchor-id="five-point-summary"><span class="header-section-number">5.7</span> Five Point Summary</h2>
 <p>A popular way to summarize data is by calculating the minimum, first quartile, median, third quartile and maximum (five point summary). This gives us a good idea of how data is distributed. We can additionally inquire how the middle 50% of the data varies. Recall, that we can use a range to assess dispersion. The <strong>interquartile range (IQR)</strong> quantifies the dispersion of the middle 50% of the data. Formally, the IQR is the difference between the third quartile (75th percentile) and the first quartile (25th percentile).</p>
+<div class="callout-example">
 <p><strong>Example:</strong> Let’s use the IQ scores for a group of students once more. Recall that the data is given by <span class="math inline">\(IQ=\{80,100,110,75,130,90\}\)</span>. The minimum and the maximum are easily identified as <span class="math inline">\(Max=130\)</span> and <span class="math inline">\(Min=75\)</span>. The first quartile (<span class="math inline">\(P_{25}\)</span>) was calculated in <a href="#.quartiles">1.1</a> as 78.75. Using the same steps the third quartile (<span class="math inline">\(P_{75}\)</span>) is 115. The median is the average between the third and fourth numbers <span class="math inline">\(Median=190/2=95\)</span>. The five point summary is given in the table below:</p>
 <table class="caption-top table">
 <thead>
@@ -439,14 +464,21 @@ details summary {
 </tbody>
 </table>
 <p>To calculate the interquartile range we find the difference between the 75th and 25th percentiles. <span class="math inline">\(IQR=115-78.75=36.25\)</span> which means that the middle 50% of the data has a range of 36.25.</p>
+</div>
 </section>
-<section id="outliers-iqr" class="level2" data-number="5.7">
-<h2 data-number="5.7" class="anchored" data-anchor-id="outliers-iqr"><span class="header-section-number">5.7</span> Outliers IQR</h2>
-<p>An alternate way to identify outliers is by using the interquartile range. This measure and the z-score method can disagree. To calculate the outliers using the IQR, we first calculate <span class="math inline">\(Q_1-1.5(IQR)\)</span> and <span class="math inline">\(Q_3+1.5(IQR)\)</span>, where <span class="math inline">\(Q_1\)</span> is the first quartile, <span class="math inline">\(Q_3\)</span> is the third quartile, and <span class="math inline">\(IQR\)</span> is the interquartile range. If the observation (<span class="math inline">\(x_i\)</span>) is less than <span class="math inline">\(Q_1-1.5(IQR)\)</span> or greater than <span class="math inline">\(Q_3+1.5(IQR)\)</span>, then it is considered an outlier.</p>
-<p><em>Ex: Consider once more the IQ data.</em> <span class="math inline">\(IQ=\{80,100,110,75,130,90\}\)</span>. The lower limit for on outlier is given by <span class="math inline">\(LL=Q_1-1.5(IQR)=78.75-1.5(36.25)\)</span> or <span class="math inline">\(LL=24.375\)</span>. The upper limit is given by <span class="math inline">\(UL=Q_3+1.5(IQR)=115+1.5(36.25)\)</span> or <span class="math inline">\(UL=169.375\)</span>. Any data point outside the range [24.375,169.375] is considered an outlier. In other words, 200 and 20 would be outliers, but 100 would not.</p>
+<section id="outliers-iqr" class="level2" data-number="5.8">
+<h2 data-number="5.8" class="anchored" data-anchor-id="outliers-iqr"><span class="header-section-number">5.8</span> Outliers (IQR)</h2>
+<p>An alternate way to identify outliers is by using the interquartile range. This measure and the z-score method can disagree. Any observation falling outside the following limits is considered an outlier:</p>
+<div class="callout-formula">
+<p><strong>OUTLIER LIMITS (IQR METHOD)</strong> <span class="math display">\[Lower\ Limit = Q_1 - 1.5 \times IQR\]</span> <span class="math display">\[Upper\ Limit = Q_3 + 1.5 \times IQR\]</span> where <span class="math inline">\(Q_1\)</span> is the first quartile, <span class="math inline">\(Q_3\)</span> is the third quartile, and <span class="math inline">\(IQR = Q_3 - Q_1\)</span> is the interquartile range.</p>
+</div>
+<p>If an observation <span class="math inline">\(x_i\)</span> falls below the lower limit or above the upper limit, it is considered an outlier.</p>
+<div class="callout-example">
+<p><strong>Example:</strong> Consider once more the IQ data. <span class="math display">\[IQ=\{80,100,110,75,130,90\}\]</span> The lower limit for on outlier is given by: <span class="math display">\[LL=Q_1-1.5(IQR)=78.75-1.5(36.25)=24.375\]</span> The upper limit is given by <span class="math display">\[UL=Q_3+1.5(IQR)=115+1.5(36.25)=169.375\]</span> Any data point outside the range [24.375,169.375] is considered an outlier. In other words, 200 and 20 would be outliers, but 100 would not.</p>
+</div>
 </section>
-<section id="quantiles-and-quartiles-in-r" class="level2" data-number="5.8">
-<h2 data-number="5.8" class="anchored" data-anchor-id="quantiles-and-quartiles-in-r"><span class="header-section-number">5.8</span> Quantiles and Quartiles in R</h2>
+<section id="calculating-measures-in-excel" class="level2" data-number="5.9">
+<h2 data-number="5.9" class="anchored" data-anchor-id="calculating-measures-in-excel"><span class="header-section-number">5.9</span> Calculating Measures in Excel</h2>
 <p>R quickly calculates quantiles for a given variable (vector) using the <code>quantile()</code> function. Below we use the IQ example once more.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>IQ <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">80</span>,<span class="dv">100</span>,<span class="dv">110</span>,<span class="dv">75</span>,<span class="dv">130</span>,<span class="dv">90</span>)</span>
@@ -458,8 +490,8 @@ details summary {
 </div>
 <p>You will notice that an extra argument <em>type</em> has been been passed into the quantile function. Since, there are several ways to calculate quantiles, R allows you to identify which method you want to use. In sec <a href=".#quartiles">1.1</a> we explained method 6.</p>
 </section>
-<section id="outliers-in-r" class="level2" data-number="5.9">
-<h2 data-number="5.9" class="anchored" data-anchor-id="outliers-in-r"><span class="header-section-number">5.9</span> Outliers in R</h2>
+<section id="outliers-in-r" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="outliers-in-r"><span class="header-section-number">5.10</span> Outliers in R</h2>
 <p>To identify outliers we can us the <code>scale()</code> function. We’ll consider the first five observations in the <em>faithful</em> data set.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">scale</span>(faithful),<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -488,8 +520,8 @@ details summary {
 </div>
 <p>This confirms that there are no outliers in the eruptions variable.</p>
 </section>
-<section id="box-plots-in-r" class="level2" data-number="5.10">
-<h2 data-number="5.10" class="anchored" data-anchor-id="box-plots-in-r"><span class="header-section-number">5.10</span> Box Plots in R</h2>
+<section id="box-plots-in-r" class="level2" data-number="5.11">
+<h2 data-number="5.11" class="anchored" data-anchor-id="box-plots-in-r"><span class="header-section-number">5.11</span> Box Plots in R</h2>
 <p>A <strong>box plot</strong> is a graph that shows the five point summary, outliers (if any), and the distribution of data. It can be easily constructed using <code>geom_boxplot()</code> in R. Let’s use the eruptions variable once more.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
@@ -532,8 +564,8 @@ details summary {
 </div>
 </div>
 </section>
-<section id="skewness-in-r" class="level2" data-number="5.11">
-<h2 data-number="5.11" class="anchored" data-anchor-id="skewness-in-r"><span class="header-section-number">5.11</span> Skewness in R</h2>
+<section id="skewness-in-r" class="level2" data-number="5.12">
+<h2 data-number="5.12" class="anchored" data-anchor-id="skewness-in-r"><span class="header-section-number">5.12</span> Skewness in R</h2>
 <p>Unfortunately, base R does not have a function to calculate the Pearson Coefficient of skewness. Hence, we will have to install the <code>e1071</code> package. The package contains the function <code>skewness()</code> which makes the estimation of skew simple. Below is the code to calculate the skewness for the eruptions variable.</p>
 <div class="cell">
 <div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(e1071)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
@@ -552,16 +584,33 @@ Attaching package: 'e1071'</code></pre>
 </div>
 </div>
 <p>The result indicates that the distribution is mildly skewed to the left.</p>
-<p>Here is a summary of the functions used in this section:</p>
+</section>
+<section id="excel-function-summary" class="level2" data-number="5.13">
+<h2 data-number="5.13" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">5.13</span> Excel Function Summary</h2>
+<p>Below is a list of the Excel functions used in this section:</p>
 <ul>
-<li><p>The <code>quantile()</code> function returns the five point summary when no arguments are specified. For a specific quantile, specify the <em>probs</em> argument.</p></li>
-<li><p>The <code>scale()</code> function calculates the z-scores for a vector of values.</p></li>
-<li><p>The <code>geom_boxplot()</code> command returns a box plot for a vector of values.</p></li>
-<li><p>The <code>skewness()</code> function is found in the <code>e1071</code> package. It takes as an input a vector of values and returns the Pearson Coefficient of Skew.</p></li>
+<li><p><code>=PERCENTILE.INC(array, k)</code> returns the <span class="math inline">\(k\)</span>th percentile of a range using the formula <span class="math inline">\(L_p = 1 + k(n-1)\)</span>, where <span class="math inline">\(k\)</span> is expressed as a decimal between 0 and 1. This matches the method used in this chapter.</p></li>
+<li><p><code>=PERCENTILE.EXC(array, k)</code> returns the <span class="math inline">\(k\)</span>th percentile using the formula <span class="math inline">\(L_p = k(n+1)\)</span>.</p></li>
+<li><p><code>=QUARTILE.INC(array, quart)</code> returns the five point summary. The argument <code>quart</code> takes values 0 (minimum), 1 (<span class="math inline">\(Q_1\)</span>), 2 (median), 3 (<span class="math inline">\(Q_3\)</span>), and 4 (maximum).</p></li>
+<li><p><code>=STANDARDIZE(x, mean, std_dev)</code> calculates the z-score for a value <code>x</code> given the mean and standard deviation. Alternatively, compute it manually as <code>=(A1 - AVERAGE(A:A)) / STDEV.S(A:A)</code>.</p></li>
+<li><p><code>=SKEW(range)</code> calculates the skewness of a range using the Fisher-Pearson standardized moment coefficient. Note that Excel does not have a direct equivalent to Pearson’s Coefficient of Skew <span class="math inline">\(Sk=3(\bar{x}-Median)/s_x\)</span> — this must be calculated manually as <code>=3*(AVERAGE(range) - MEDIAN(range)) / STDEV.S(range)</code>.</p></li>
+<li><p><code>=KURT(range)</code> calculates the excess kurtosis of a range. A positive value indicates leptokurtic (heavy tails) and a negative value indicates platykurtic (light tails).</p></li>
 </ul>
 </section>
-<section id="exercises" class="level2" data-number="5.12">
-<h2 data-number="5.12" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.12</span> Exercises</h2>
+<section id="chapter-summary-cheat-sheet" class="level2" data-number="5.14">
+<h2 data-number="5.14" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">5.14</span> Chapter Summary Cheat Sheet</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Other.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exercises" class="level2" data-number="5.15">
+<h2 data-number="5.15" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.15</span> Exercises</h2>
 <p>The following exercises will help you practice other statistical measures. In particular, the exercises work on:</p>
 <ul>
 <li><p>Constructing a five point summary and a boxplot.</p></li>
@@ -666,7 +715,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -694,7 +743,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -723,7 +772,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -754,7 +803,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -790,7 +839,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -826,7 +875,7 @@ Answer
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-21-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
