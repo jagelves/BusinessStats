@@ -514,11 +514,9 @@ You will need the **Portfolio** data set to answer this question. The data has 1
 </details>
 
 ### Exercise 4 {.unnumbered}
-The monthly returns (in percent) for a small project are:
+The monthly returns (in percent) for a small project can be found in the Excel sheet below:
 
-|  1  |   2   |  3  |  4  |   5   |  6  |  7  |   8   |
-|:---:|:-----:|:---:|:---:|:-----:|:---:|:---:|:-----:|
-| 2.1 | -0.5  | 3.0 | 1.2 | -1.8  | 0.7 | 2.5 | -0.3  |
+[{{< fa file-excel >}} Download Data](monthly_returns.xlsx){.btn .btn-success}
 
 Compute the sample mean, sample variance, sample standard deviation, coefficient of variation (CV) (in percent), and the mean absolute deviation (MAD). Briefly interpret the CV: what does it tell you about the returns relative to their mean?
 
@@ -563,13 +561,10 @@ $$CV = \frac{s}{\bar{x}} \times 100 = \frac{1.657}{0.8625} \times 100 = 192.1\%$
 
 ### Exercise 5 {.unnumbered}
 
-Prediction markets allow participants to bet on the outcomes of sporting 
-events. A bettor tracks his weekly profit and loss (in dollars) over 
-ten weeks of NFL betting:
+Prediction markets allow participants to bet on the outcomes of sporting events. A bettor tracks his weekly profit and loss (in dollars) over ten weeks of NFL betting in the spreadsheet below:
 
-|  1  |   2   |  3  |  4  |   5   |  6  |  7  |   8   |  9  |  10  |
-|:---:|:-----:|:---:|:---:|:-----:|:---:|:---:|:-----:|:---:|:----:|
-| 120 | -85  | 200 | -150 | 95  | -60 | 310 | -220  | 175 | -45  |
+[{{< fa file-excel >}} Download Data](nfl_betting.xlsx){.btn .btn-success}
+
 
 1. Compute the sample mean, sample variance, sample standard deviation, and MAD. Is the bettor profitable on average?
 
