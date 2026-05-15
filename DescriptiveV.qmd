@@ -145,6 +145,15 @@ The image below shows the different types of skew:
 knitr::include_graphics("images/Skew.png")
 ```
 
+The intuition behind the skewness formula lies in the cubed z-scores. Recall that a z-score measures how far each observation is from the 
+mean in standard deviation units. Cubing these z-scores does two 
+things: it preserves the sign and it amplifies large deviations, 
+giving outsized influence to observations in the tails. If the right 
+tail is longer, a few large positive cubed z-scores dominate the sum, producing a positive skewness. If the left tail is longer, large 
+negative cubed z-scores dominate, producing a negative result. A 
+symmetric distribution produces cubed z-scores that cancel out, 
+yielding a skewness of zero.
+
 ::: {.callout-example}
 **Example:** Consider the IQ scores $IQ=\{75, 80, 90, 100, 110, 130\}$ with $n=6$, $\bar{x}=97.5$, and $s=20.43$.
 
@@ -168,12 +177,42 @@ the score of $130$ pulls the tail to the right.
 
 Kurtosis measures the "tailedness" of a distribution — that is, how 
 much of the data is concentrated in the tails relative to a normal 
-distribution. A distribution with heavy tails has more extreme values 
-than expected, while a distribution with light tails has fewer. To 
+distribution. A distribution with heavy tails has more extreme values than expected, while a distribution with light tails has fewer. To 
 measure kurtosis, we use the **Excess Kurtosis** formula, which 
-centers the measure around zero by subtracting 3:
+centers the measure around zero by subtracting 3.
 
-$$K = \frac{\sum(x_i - \bar{x})^4 / n}{s^4} - 3$$
+::: {.callout-formula}
+**EXCESS KURTOSIS**
+$$K = \frac{n(n+1)}{(n-1)(n-2)(n-3)}\sum\left(\frac{x_i-\bar{x}}{s}\right)^4 - \frac{3(n-1)^2}{(n-2)(n-3)}$$
+where $n$ is the sample size, $\bar{x}$ is the sample mean, and $s$ 
+is the sample standard deviation.
+
+| $K < 0$ | $K = 0$ | $K > 0$ |
+|:---:|:---:|:---:|
+| Platykurtic (light tails) | Mesokurtic | Leptokurtic (heavy tails) |
+:::
+
+::: {.callout-example}
+**Example:** Consider once more the IQ scores 
+$IQ=\{75, 80, 90, 100, 110, 130\}$ with $n=6$, $\bar{x}=97.5$, 
+and $s=20.43$.
+
+| $x_i$ | $\frac{x_i-\bar{x}}{s}$ | $\left(\frac{x_i-\bar{x}}{s}\right)^4$ |
+|:-----:|:------------------------:|:--------------------------------------:|
+|  75   |        $-1.101$          |               $1.470$                  |
+|  80   |        $-0.857$          |               $0.538$                  |
+|  90   |        $-0.367$          |               $0.018$                  |
+| 100   |         $0.122$          |               $0.000$                  |
+| 110   |         $0.612$          |               $0.140$                  |
+| 130   |         $1.591$          |               $6.401$                  |
+
+Applying Excel's bias-corrected formula with $n=6$:
+
+$$K = \frac{6(7)}{(5)(4)(3)}(8.567) - \frac{3(5)^2}{(4)(3)} = 5.997 - 6.25 = -0.253$$
+
+Since $K < 0$ the distribution is platykurtic — the tails are 
+lighter than a normal distribution.
+:::
 
 A distribution is **leptokurtic** ($K>0$) when it has heavier tails 
 and a sharper peak than a normal distribution — extreme values are 
@@ -183,19 +222,23 @@ $K=0$ the distribution has the same tail behavior as a normal
 distribution and is called **mesokurtic**.
 
 ::: {.callout-example}
-**Example:** A risk analyst examines the daily returns of two assets. 
-Asset A has an excess kurtosis of $K=3.2$ and Asset B has an excess 
+
+**Example:** A risk analyst examines the daily returns of two assets. Asset A has an excess kurtosis of $K=3.2$ and Asset B has an excess 
 kurtosis of $K=-0.8$. Since $K>0$, Asset A is leptokurtic — its 
-returns have heavier tails than a normal distribution, meaning extreme 
-gains or losses occur more frequently than expected. Since $K<0$, 
-Asset B is platykurtic — extreme returns are rare and the distribution 
-is flatter. An investor concerned about tail risk would prefer Asset B, 
-as large unexpected losses are less likely.
+returns have heavier tails than a normal distribution, meaning extreme gains or losses occur more frequently than expected. Since $K<0$, Asset B is platykurtic — extreme returns are rare and the distribution is flatter. An investor concerned about tail risk would prefer Asset B, as large unexpected losses are less likely.
 :::
 
 ## Five Point Summary
 
 A popular way to summarize data is by calculating the minimum, first quartile, median, third quartile and maximum (five point summary). This gives us a good idea of how data is distributed. We can additionally inquire how the middle 50% of the data varies. Recall, that we can use a range to assess dispersion. The **interquartile range (IQR)** quantifies the dispersion of the middle 50% of the data. Formally, the IQR is the difference between the third quartile (75th percentile) and the first quartile (25th percentile).
+
+::: {.callout-formula}
+**THE INTERQUARTILE RANGE (IQR)**
+$$IQR = Q_3 - Q_1$$
+where $Q_1$ is the first quartile (25th percentile) and $Q_3$ is 
+the third quartile (75th percentile). The IQR measures the spread 
+of the middle $50\%$ of the data.
+:::
 
 ::: {.callout-example}
 **Example:** Let's use the IQ scores for a group of students once more. Recall that the data is given by $IQ=\{80,100,110,75,130,90\}$. The minimum and the maximum are easily identified as $Max=130$ and $Min=75$. The first quartile ($P_{25}$) was calculated in [1.1](#.quartiles) as 78.75. Using the same steps the third quartile ($P_{75}$) is 115. The median is the average between the third and fourth numbers $Median=190/2=95$. The five point summary is given in the table below:
@@ -237,80 +280,132 @@ Any data point outside the range \[24.375,169.375\] is considered an outlier. In
 
 ## Calculating Measures in Excel
 
-R quickly calculates quantiles for a given variable (vector) using the `quantile()` function. Below we use the IQ example once more.
+Excel provides functions to calculate all the shape and distribution 
+measures covered in this chapter. We will use the same `faithful` 
+dataset from R, which contains data on eruptions of the Old Faithful 
+geyser in Yellowstone National Park. The variable `eruptions` 
+measures the duration of each eruption in minutes.
 
-```{r}
-IQ <- c(80,100,110,75,130,90)
-quantile(IQ, type=6)
-```
-
-You will notice that an extra argument *type* has been been passed into the quantile function. Since, there are several ways to calculate quantiles, R allows you to identify which method you want to use. In sec [1.1](.#quartiles) we explained method 6.
-
-## Outliers in R
-
-To identify outliers we can us the `scale()` function. We'll consider the first five observations in the *faithful* data set.
-
-```{r}
-head(scale(faithful),5)
-```
-
-The data shown above are z-scores for the first five observations of the faithful data set. As you can see none of the observations are outliers, as they are all less that 3 standard deviations away from the mean.
-
-If we want to filter all observations that are say 1.3 standard deviations away from the mean, we can use the following command from `tidyverse`:
-
-```{r message=FALSE, warning=FALSE}
+```{r echo=FALSE, message=FALSE}
 library(tidyverse)
-faithful %>% mutate(z_eruptions=scale(eruptions)) %>%
-                      filter(scale(eruptions)>1.3)
+library(gt)
+head(faithful, 5) %>%
+  gt() %>%
+  cols_align("center") %>%
+  tab_style(
+    locations = cells_column_labels(columns = everything()),
+    style = list(cell_borders(sides = "bottom", weight = px(3)),
+                 cell_text(weight = "bold")))
 ```
 
-This confirms that there are no outliers in the eruptions variable.
+Assuming the `eruptions` variable is in column A of your Excel 
+spreadsheet, the functions below will replicate the R output.
 
-## Box Plots in R
+### Outliers in Excel
 
-A **box plot** is a graph that shows the five point summary, outliers (if any), and the distribution of data. It can be easily constructed using `geom_boxplot()` in R. Let's use the eruptions variable once more.
+To identify outliers using the z-score method, calculate the z-score 
+for each observation using `=STANDARDIZE()`. In a new column, enter:
 
-```{r message=FALSE}
-library(ggthemes)
+```excel
+=STANDARDIZE(A2, AVERAGE(A:A), STDEV.S(A:A))
+```
+
+Copy the formula down for all observations. Any value greater than 
+$3$ or less than $-3$ in absolute value is a suspected outlier. To 
+filter outliers automatically, use `=IF()`:
+
+```excel
+=IF(ABS(STANDARDIZE(A2, AVERAGE($A:$A), STDEV.S($A:$A))) > 3, "Outlier", "Normal")
+```
+
+The z-scores for the first five observations of the `faithful` 
+dataset are:
+
+```{r echo=FALSE, message=FALSE}
 faithful %>% 
-  ggplot() +
-  geom_boxplot(aes(y=eruptions),
-               fill="lightgrey", alpha=0.5,
-               col="black", width=0.3) +
-  theme_clean() +
-  scale_x_continuous(breaks = NULL, limits=c(-1,1))+
-  ylim(limits=c(0,6))
+  head(5) %>%
+  mutate(z_eruptions = round(scale(eruptions)[,1], 4)) %>%
+  gt() %>%
+  cols_align("center") %>%
+  tab_style(
+    locations = cells_column_labels(columns = everything()),
+    style = list(cell_borders(sides = "bottom", weight = px(3)),
+                 cell_text(weight = "bold")))
 ```
 
-The boxplot highlights the minimum just below 2, the maximum around 5, the first quartile just above 2, the median at 4, and the third quartile just above 4. Any outlier would be shown as a point beyond the whiskers of the box plot.
+As confirmed earlier, none of the observations are outliers as all 
+z-scores are within three standard deviations of the mean.
 
-We can also overlay the data to the boxplot by using the `geom_jitter()` function. The data points allow us to see how the data is distributed. The code is below:
+### Five Point Summary in Excel
 
-```{r}
-faithful %>% 
-  ggplot() +
-  geom_boxplot(aes(y=eruptions),
-               fill="lightgrey", alpha=0.5,
-               col="black", width=0.3) +
-  theme_clean() +
-  scale_x_continuous(breaks = NULL, limits=c(-1,1))+
-  ylim(limits=c(0,6)) + labs(x="") +
-  geom_jitter(aes(y=eruptions,x=0.5), 
-              width=0.15, pch=21,
-              alpha=0.4, bg="grey")
+To calculate the five point summary use `=QUARTILE.INC()`. The 
+argument `quart` takes values $0$ through $4$:
 
+```excel
+=QUARTILE.INC(A:A, 0)   /* Minimum    */
+=QUARTILE.INC(A:A, 1)   /* Q1 (P25)   */
+=QUARTILE.INC(A:A, 2)   /* Median     */
+=QUARTILE.INC(A:A, 3)   /* Q3 (P75)   */
+=QUARTILE.INC(A:A, 4)   /* Maximum    */
 ```
 
-## Skewness in R
+The IQR can then be calculated as:
 
-Unfortunately, base R does not have a function to calculate the Pearson Coefficient of skewness. Hence, we will have to install the `e1071` package. The package contains the function `skewness()` which makes the estimation of skew simple. Below is the code to calculate the skewness for the eruptions variable.
+```excel
+=QUARTILE.INC(A:A, 3) - QUARTILE.INC(A:A, 1)
+```
 
-```{r}
+The five point summary for the `eruptions` variable is:
+
+```{r echo=FALSE, message=FALSE}
+tibble(
+  Min    = min(faithful$eruptions),
+  Q1     = quantile(faithful$eruptions, 0.25, type = 7),
+  Median = median(faithful$eruptions),
+  Q3     = quantile(faithful$eruptions, 0.75, type = 7),
+  Max    = max(faithful$eruptions),
+  IQR    = IQR(faithful$eruptions)
+) %>%
+  gt() %>%
+  cols_align("center") %>%
+  fmt_number(decimals = 3) %>%
+  tab_style(
+    locations = cells_column_labels(columns = everything()),
+    style = list(cell_borders(sides = "bottom", weight = px(3)),
+                 cell_text(weight = "bold")))
+```
+
+### Skewness and Kurtosis in Excel
+
+To calculate skewness use `=SKEW()` and for excess kurtosis use 
+`=KURT()`. Both functions use the bias-corrected formulas presented 
+in this chapter:
+
+```excel
+=SKEW(A:A)    /* Skewness        */
+=KURT(A:A)    /* Excess Kurtosis */
+```
+
+The skewness and kurtosis for the `eruptions` variable are:
+
+```{r echo=FALSE, message=FALSE}
 library(e1071)
-skewness(faithful$eruptions)
+tibble(
+  Skewness = skewness(faithful$eruptions),
+  Kurtosis = kurtosis(faithful$eruptions)
+) %>%
+  gt() %>%
+  cols_align("center") %>%
+  fmt_number(decimals = 4) %>%
+  tab_style(
+    locations = cells_column_labels(columns = everything()),
+    style = list(cell_borders(sides = "bottom", weight = px(3)),
+                 cell_text(weight = "bold")))
 ```
 
-The result indicates that the distribution is mildly skewed to the left.
+The negative skewness confirms the mild left skew identified earlier 
+in the chapter. The negative excess kurtosis indicates that the 
+distribution is platykurtic (i.e., the eruption durations have lighter tails than a normal distribution), with fewer extreme values than expected.
 
 ## Excel Function Summary
 
@@ -430,6 +525,7 @@ You will need the **Stocks** data set to answer this question. You can find this
 *Start by loading the data set:*
 
 ```{r}
+library(ggthemes)
 StockPrices<-read.csv("https://jagelves.github.io/Data/Stocks.csv")
 ```
 

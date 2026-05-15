@@ -298,13 +298,15 @@ window.Quarto = {
   <li><a href="#kurtosis" id="toc-kurtosis" class="nav-link" data-scroll-target="#kurtosis"><span class="header-section-number">5.6</span> Kurtosis</a></li>
   <li><a href="#five-point-summary" id="toc-five-point-summary" class="nav-link" data-scroll-target="#five-point-summary"><span class="header-section-number">5.7</span> Five Point Summary</a></li>
   <li><a href="#outliers-iqr" id="toc-outliers-iqr" class="nav-link" data-scroll-target="#outliers-iqr"><span class="header-section-number">5.8</span> Outliers (IQR)</a></li>
-  <li><a href="#calculating-measures-in-excel" id="toc-calculating-measures-in-excel" class="nav-link" data-scroll-target="#calculating-measures-in-excel"><span class="header-section-number">5.9</span> Calculating Measures in Excel</a></li>
-  <li><a href="#outliers-in-r" id="toc-outliers-in-r" class="nav-link" data-scroll-target="#outliers-in-r"><span class="header-section-number">5.10</span> Outliers in R</a></li>
-  <li><a href="#box-plots-in-r" id="toc-box-plots-in-r" class="nav-link" data-scroll-target="#box-plots-in-r"><span class="header-section-number">5.11</span> Box Plots in R</a></li>
-  <li><a href="#skewness-in-r" id="toc-skewness-in-r" class="nav-link" data-scroll-target="#skewness-in-r"><span class="header-section-number">5.12</span> Skewness in R</a></li>
-  <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">5.13</span> Excel Function Summary</a></li>
-  <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">5.14</span> Chapter Summary Cheat Sheet</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.15</span> Exercises</a>
+  <li><a href="#calculating-measures-in-excel" id="toc-calculating-measures-in-excel" class="nav-link" data-scroll-target="#calculating-measures-in-excel"><span class="header-section-number">5.9</span> Calculating Measures in Excel</a>
+  <ul class="collapse">
+  <li><a href="#outliers-in-excel" id="toc-outliers-in-excel" class="nav-link" data-scroll-target="#outliers-in-excel"><span class="header-section-number">5.9.1</span> Outliers in Excel</a></li>
+  <li><a href="#five-point-summary-in-excel" id="toc-five-point-summary-in-excel" class="nav-link" data-scroll-target="#five-point-summary-in-excel"><span class="header-section-number">5.9.2</span> Five Point Summary in Excel</a></li>
+  <li><a href="#skewness-and-kurtosis-in-excel" id="toc-skewness-and-kurtosis-in-excel" class="nav-link" data-scroll-target="#skewness-and-kurtosis-in-excel"><span class="header-section-number">5.9.3</span> Skewness and Kurtosis in Excel</a></li>
+  </ul></li>
+  <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">5.10</span> Excel Function Summary</a></li>
+  <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">5.11</span> Chapter Summary Cheat Sheet</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.12</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -447,6 +449,7 @@ details summary {
 </div>
 </div>
 </div>
+<p>The intuition behind the skewness formula lies in the cubed z-scores. Recall that a z-score measures how far each observation is from the mean in standard deviation units. Cubing these z-scores does two things: it preserves the sign and it amplifies large deviations, giving outsized influence to observations in the tails. If the right tail is longer, a few large positive cubed z-scores dominate the sum, producing a positive skewness. If the left tail is longer, large negative cubed z-scores dominate, producing a negative result. A symmetric distribution produces cubed z-scores that cancel out, yielding a skewness of zero.</p>
 <div class="callout-example">
 <p><strong>Example:</strong> Consider the IQ scores <span class="math inline">\(IQ=\{75, 80, 90, 100, 110, 130\}\)</span> with <span class="math inline">\(n=6\)</span>, <span class="math inline">\(\bar{x}=97.5\)</span>, and <span class="math inline">\(s=20.43\)</span>.</p>
 <table class="caption-top table">
@@ -501,8 +504,78 @@ details summary {
 </section>
 <section id="kurtosis" class="level2" data-number="5.6">
 <h2 data-number="5.6" class="anchored" data-anchor-id="kurtosis"><span class="header-section-number">5.6</span> Kurtosis</h2>
-<p>Kurtosis measures the “tailedness” of a distribution — that is, how much of the data is concentrated in the tails relative to a normal distribution. A distribution with heavy tails has more extreme values than expected, while a distribution with light tails has fewer. To measure kurtosis, we use the <strong>Excess Kurtosis</strong> formula, which centers the measure around zero by subtracting 3:</p>
-<p><span class="math display">\[K = \frac{\sum(x_i - \bar{x})^4 / n}{s^4} - 3\]</span></p>
+<p>Kurtosis measures the “tailedness” of a distribution — that is, how much of the data is concentrated in the tails relative to a normal distribution. A distribution with heavy tails has more extreme values than expected, while a distribution with light tails has fewer. To measure kurtosis, we use the <strong>Excess Kurtosis</strong> formula, which centers the measure around zero by subtracting 3.</p>
+<div class="callout-formula">
+<p><strong>EXCESS KURTOSIS</strong> <span class="math display">\[K = \frac{n(n+1)}{(n-1)(n-2)(n-3)}\sum\left(\frac{x_i-\bar{x}}{s}\right)^4 - \frac{3(n-1)^2}{(n-2)(n-3)}\]</span> where <span class="math inline">\(n\)</span> is the sample size, <span class="math inline">\(\bar{x}\)</span> is the sample mean, and <span class="math inline">\(s\)</span> is the sample standard deviation.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(K &lt; 0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(K = 0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(K &gt; 0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Platykurtic (light tails)</td>
+<td style="text-align: center;">Mesokurtic</td>
+<td style="text-align: center;">Leptokurtic (heavy tails)</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> Consider once more the IQ scores <span class="math inline">\(IQ=\{75, 80, 90, 100, 110, 130\}\)</span> with <span class="math inline">\(n=6\)</span>, <span class="math inline">\(\bar{x}=97.5\)</span>, and <span class="math inline">\(s=20.43\)</span>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 35%">
+<col style="width: 54%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\frac{x_i-\bar{x}}{s}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\left(\frac{x_i-\bar{x}}{s}\right)^4\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;"><span class="math inline">\(-1.101\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1.470\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">80</td>
+<td style="text-align: center;"><span class="math inline">\(-0.857\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.538\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">90</td>
+<td style="text-align: center;"><span class="math inline">\(-0.367\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.018\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">100</td>
+<td style="text-align: center;"><span class="math inline">\(0.122\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.000\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">110</td>
+<td style="text-align: center;"><span class="math inline">\(0.612\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.140\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">130</td>
+<td style="text-align: center;"><span class="math inline">\(1.591\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(6.401\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Applying Excel’s bias-corrected formula with <span class="math inline">\(n=6\)</span>:</p>
+<p><span class="math display">\[K = \frac{6(7)}{(5)(4)(3)}(8.567) - \frac{3(5)^2}{(4)(3)} = 5.997 - 6.25 = -0.253\]</span></p>
+<p>Since <span class="math inline">\(K &lt; 0\)</span> the distribution is platykurtic — the tails are lighter than a normal distribution.</p>
+</div>
 <p>A distribution is <strong>leptokurtic</strong> (<span class="math inline">\(K&gt;0\)</span>) when it has heavier tails and a sharper peak than a normal distribution — extreme values are more common. A distribution is <strong>platykurtic</strong> (<span class="math inline">\(K&lt;0\)</span>) when it has lighter tails and a flatter peak — extreme values are rare. When <span class="math inline">\(K=0\)</span> the distribution has the same tail behavior as a normal distribution and is called <strong>mesokurtic</strong>.</p>
 <div class="callout-example">
 <p><strong>Example:</strong> A risk analyst examines the daily returns of two assets. Asset A has an excess kurtosis of <span class="math inline">\(K=3.2\)</span> and Asset B has an excess kurtosis of <span class="math inline">\(K=-0.8\)</span>. Since <span class="math inline">\(K&gt;0\)</span>, Asset A is leptokurtic — its returns have heavier tails than a normal distribution, meaning extreme gains or losses occur more frequently than expected. Since <span class="math inline">\(K&lt;0\)</span>, Asset B is platykurtic — extreme returns are rare and the distribution is flatter. An investor concerned about tail risk would prefer Asset B, as large unexpected losses are less likely.</p>
@@ -511,6 +584,9 @@ details summary {
 <section id="five-point-summary" class="level2" data-number="5.7">
 <h2 data-number="5.7" class="anchored" data-anchor-id="five-point-summary"><span class="header-section-number">5.7</span> Five Point Summary</h2>
 <p>A popular way to summarize data is by calculating the minimum, first quartile, median, third quartile and maximum (five point summary). This gives us a good idea of how data is distributed. We can additionally inquire how the middle 50% of the data varies. Recall, that we can use a range to assess dispersion. The <strong>interquartile range (IQR)</strong> quantifies the dispersion of the middle 50% of the data. Formally, the IQR is the difference between the third quartile (75th percentile) and the first quartile (25th percentile).</p>
+<div class="callout-formula">
+<p><strong>THE INTERQUARTILE RANGE (IQR)</strong> <span class="math display">\[IQR = Q_3 - Q_1\]</span> where <span class="math inline">\(Q_1\)</span> is the first quartile (25th percentile) and <span class="math inline">\(Q_3\)</span> is the third quartile (75th percentile). The IQR measures the spread of the middle <span class="math inline">\(50\%\)</span> of the data.</p>
+</div>
 <div class="callout-example">
 <p><strong>Example:</strong> Let’s use the IQ scores for a group of students once more. Recall that the data is given by <span class="math inline">\(IQ=\{80,100,110,75,130,90\}\)</span>. The minimum and the maximum are easily identified as <span class="math inline">\(Max=130\)</span> and <span class="math inline">\(Min=75\)</span>. The first quartile (<span class="math inline">\(P_{25}\)</span>) was calculated in <a href="#.quartiles">1.1</a> as 78.75. Using the same steps the third quartile (<span class="math inline">\(P_{75}\)</span>) is 115. The median is the average between the third and fourth numbers <span class="math inline">\(Median=190/2=95\)</span>. The five point summary is given in the table below:</p>
 <table class="caption-top table">
@@ -549,114 +625,1966 @@ details summary {
 </section>
 <section id="calculating-measures-in-excel" class="level2" data-number="5.9">
 <h2 data-number="5.9" class="anchored" data-anchor-id="calculating-measures-in-excel"><span class="header-section-number">5.9</span> Calculating Measures in Excel</h2>
-<p>R quickly calculates quantiles for a given variable (vector) using the <code>quantile()</code> function. Below we use the IQ example once more.</p>
+<p>Excel provides functions to calculate all the shape and distribution measures covered in this chapter. We will use the same <code>faithful</code> dataset from R, which contains data on eruptions of the Old Faithful geyser in Yellowstone National Park. The variable <code>eruptions</code> measures the duration of each eruption in minutes.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>IQ <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">80</span>,<span class="dv">100</span>,<span class="dv">110</span>,<span class="dv">75</span>,<span class="dv">130</span>,<span class="dv">90</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(IQ, <span class="at">type=</span><span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    0%    25%    50%    75%   100% 
- 75.00  78.75  95.00 115.00 130.00 </code></pre>
-</div>
-</div>
-<p>You will notice that an extra argument <em>type</em> has been been passed into the quantile function. Since, there are several ways to calculate quantiles, R allows you to identify which method you want to use. In sec <a href=".#quartiles">1.1</a> we explained method 6.</p>
-</section>
-<section id="outliers-in-r" class="level2" data-number="5.10">
-<h2 data-number="5.10" class="anchored" data-anchor-id="outliers-in-r"><span class="header-section-number">5.10</span> Outliers in R</h2>
-<p>To identify outliers we can us the <code>scale()</code> function. We’ll consider the first five observations in the <em>faithful</em> data set.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(<span class="fu">scale</span>(faithful),<span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>    eruptions    waiting
-1  0.09831763  0.5960248
-2 -1.47873278 -1.2428901
-3 -0.13561152  0.2282418
-4 -1.05555759 -0.6544374
-5  0.91575542  1.0373644</code></pre>
-</div>
-</div>
-<p>The data shown above are z-scores for the first five observations of the faithful data set. As you can see none of the observations are outliers, as they are all less that 3 standard deviations away from the mean.</p>
-<p>If we want to filter all observations that are say 1.3 standard deviations away from the mean, we can use the following command from <code>tidyverse</code>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>faithful <span class="sc">%&gt;%</span> <span class="fu">mutate</span>(<span class="at">z_eruptions=</span><span class="fu">scale</span>(eruptions)) <span class="sc">%&gt;%</span></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>                      <span class="fu">filter</span>(<span class="fu">scale</span>(eruptions)<span class="sc">&gt;</span><span class="fl">1.3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  eruptions waiting z_eruptions
-1     5.067      76    1.383614
-2     5.100      96    1.412526
-3     5.033      77    1.353825
-4     5.000      88    1.324912</code></pre>
-</div>
-</div>
-<p>This confirms that there are no outliers in the eruptions variable.</p>
-</section>
-<section id="box-plots-in-r" class="level2" data-number="5.11">
-<h2 data-number="5.11" class="anchored" data-anchor-id="box-plots-in-r"><span class="header-section-number">5.11</span> Box Plots in R</h2>
-<p>A <strong>box plot</strong> is a graph that shows the five point summary, outliers (if any), and the distribution of data. It can be easily constructed using <code>geom_boxplot()</code> in R. Let’s use the eruptions variable once more.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>faithful <span class="sc">%&gt;%</span> </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>eruptions),</span>
-<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill=</span><span class="st">"lightgrey"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>,</span>
-<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">col=</span><span class="st">"black"</span>, <span class="at">width=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
-<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>, <span class="at">limits=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))<span class="sc">+</span></span>
-<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The boxplot highlights the minimum just below 2, the maximum around 5, the first quartile just above 2, the median at 4, and the third quartile just above 4. Any outlier would be shown as a point beyond the whiskers of the box plot.</p>
-<p>We can also overlay the data to the boxplot by using the <code>geom_jitter()</code> function. The data points allow us to see how the data is distributed. The code is below:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>faithful <span class="sc">%&gt;%</span> </span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>eruptions),</span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill=</span><span class="st">"lightgrey"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>,</span>
-<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">col=</span><span class="st">"black"</span>, <span class="at">width=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
-<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>, <span class="at">limits=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))<span class="sc">+</span></span>
-<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ylim</span>(<span class="at">limits=</span><span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">6</span>)) <span class="sc">+</span> <span class="fu">labs</span>(<span class="at">x=</span><span class="st">""</span>) <span class="sc">+</span></span>
-<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="fu">aes</span>(<span class="at">y=</span>eruptions,<span class="at">x=</span><span class="fl">0.5</span>), </span>
-<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a>              <span class="at">width=</span><span class="fl">0.15</span>, <span class="at">pch=</span><span class="dv">21</span>,</span>
-<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a>              <span class="at">alpha=</span><span class="fl">0.4</span>, <span class="at">bg=</span><span class="st">"grey"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</section>
-<section id="skewness-in-r" class="level2" data-number="5.12">
-<h2 data-number="5.12" class="anchored" data-anchor-id="skewness-in-r"><span class="header-section-number">5.12</span> Skewness in R</h2>
-<p>Unfortunately, base R does not have a function to calculate the Pearson Coefficient of skewness. Hence, we will have to install the <code>e1071</code> package. The package contains the function <code>skewness()</code> which makes the estimation of skew simple. Below is the code to calculate the skewness for the eruptions variable.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(e1071)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'e1071'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:ggplot2':
+<div id="tsakdsrpnz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tsakdsrpnz table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
 
-    element</code></pre>
+#tsakdsrpnz thead, #tsakdsrpnz tbody, #tsakdsrpnz tfoot, #tsakdsrpnz tr, #tsakdsrpnz td, #tsakdsrpnz th {
+  border-style: none;
+}
+
+#tsakdsrpnz p {
+  margin: 0;
+  padding: 0;
+}
+
+#tsakdsrpnz .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#tsakdsrpnz .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#tsakdsrpnz .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#tsakdsrpnz .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#tsakdsrpnz .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tsakdsrpnz .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tsakdsrpnz .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#tsakdsrpnz .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#tsakdsrpnz .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#tsakdsrpnz .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#tsakdsrpnz .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#tsakdsrpnz .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#tsakdsrpnz .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#tsakdsrpnz .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#tsakdsrpnz .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#tsakdsrpnz .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#tsakdsrpnz .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#tsakdsrpnz .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#tsakdsrpnz .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tsakdsrpnz .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#tsakdsrpnz .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#tsakdsrpnz .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#tsakdsrpnz .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tsakdsrpnz .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#tsakdsrpnz .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#tsakdsrpnz .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tsakdsrpnz .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tsakdsrpnz .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#tsakdsrpnz .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tsakdsrpnz .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#tsakdsrpnz .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#tsakdsrpnz .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tsakdsrpnz .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tsakdsrpnz .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#tsakdsrpnz .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#tsakdsrpnz .gt_left {
+  text-align: left;
+}
+
+#tsakdsrpnz .gt_center {
+  text-align: center;
+}
+
+#tsakdsrpnz .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#tsakdsrpnz .gt_font_normal {
+  font-weight: normal;
+}
+
+#tsakdsrpnz .gt_font_bold {
+  font-weight: bold;
+}
+
+#tsakdsrpnz .gt_font_italic {
+  font-style: italic;
+}
+
+#tsakdsrpnz .gt_super {
+  font-size: 65%;
+}
+
+#tsakdsrpnz .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#tsakdsrpnz .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#tsakdsrpnz .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#tsakdsrpnz .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#tsakdsrpnz .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#tsakdsrpnz .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#tsakdsrpnz .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#tsakdsrpnz .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#tsakdsrpnz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="eruptions" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">eruptions</th>
+<th id="waiting" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">waiting</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="eruptions">3.600</td>
+<td class="gt_row gt_center" headers="waiting">79</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="eruptions">1.800</td>
+<td class="gt_row gt_center" headers="waiting">54</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="eruptions">3.333</td>
+<td class="gt_row gt_center" headers="waiting">74</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="eruptions">2.283</td>
+<td class="gt_row gt_center" headers="waiting">62</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="eruptions">4.533</td>
+<td class="gt_row gt_center" headers="waiting">85</td>
+</tr>
+</tbody>
+</table>
+
 </div>
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">skewness</span>(faithful<span class="sc">$</span>eruptions)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.4135498</code></pre>
 </div>
 </div>
-<p>The result indicates that the distribution is mildly skewed to the left.</p>
+<p>Assuming the <code>eruptions</code> variable is in column A of your Excel spreadsheet, the functions below will replicate the R output.</p>
+<section id="outliers-in-excel" class="level3" data-number="5.9.1">
+<h3 data-number="5.9.1" class="anchored" data-anchor-id="outliers-in-excel"><span class="header-section-number">5.9.1</span> Outliers in Excel</h3>
+<p>To identify outliers using the z-score method, calculate the z-score for each observation using <code>=STANDARDIZE()</code>. In a new column, enter:</p>
+<pre class="excel"><code>=STANDARDIZE(A2, AVERAGE(A:A), STDEV.S(A:A))</code></pre>
+<p>Copy the formula down for all observations. Any value greater than <span class="math inline">\(3\)</span> or less than <span class="math inline">\(-3\)</span> in absolute value is a suspected outlier. To filter outliers automatically, use <code>=IF()</code>:</p>
+<pre class="excel"><code>=IF(ABS(STANDARDIZE(A2, AVERAGE($A:$A), STDEV.S($A:$A))) &gt; 3, "Outlier", "Normal")</code></pre>
+<p>The z-scores for the first five observations of the <code>faithful</code> dataset are:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="uaddsczwux" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uaddsczwux table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#uaddsczwux thead, #uaddsczwux tbody, #uaddsczwux tfoot, #uaddsczwux tr, #uaddsczwux td, #uaddsczwux th {
+  border-style: none;
+}
+
+#uaddsczwux p {
+  margin: 0;
+  padding: 0;
+}
+
+#uaddsczwux .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uaddsczwux .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#uaddsczwux .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uaddsczwux .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uaddsczwux .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uaddsczwux .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uaddsczwux .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uaddsczwux .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#uaddsczwux .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uaddsczwux .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uaddsczwux .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uaddsczwux .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uaddsczwux .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#uaddsczwux .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#uaddsczwux .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uaddsczwux .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uaddsczwux .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uaddsczwux .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uaddsczwux .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uaddsczwux .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#uaddsczwux .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#uaddsczwux .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#uaddsczwux .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uaddsczwux .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#uaddsczwux .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#uaddsczwux .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uaddsczwux .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uaddsczwux .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uaddsczwux .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uaddsczwux .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#uaddsczwux .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uaddsczwux .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uaddsczwux .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uaddsczwux .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uaddsczwux .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uaddsczwux .gt_left {
+  text-align: left;
+}
+
+#uaddsczwux .gt_center {
+  text-align: center;
+}
+
+#uaddsczwux .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uaddsczwux .gt_font_normal {
+  font-weight: normal;
+}
+
+#uaddsczwux .gt_font_bold {
+  font-weight: bold;
+}
+
+#uaddsczwux .gt_font_italic {
+  font-style: italic;
+}
+
+#uaddsczwux .gt_super {
+  font-size: 65%;
+}
+
+#uaddsczwux .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#uaddsczwux .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#uaddsczwux .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#uaddsczwux .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#uaddsczwux .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#uaddsczwux .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#uaddsczwux .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#uaddsczwux .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#uaddsczwux div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="eruptions" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">eruptions</th>
+<th id="waiting" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">waiting</th>
+<th id="z_eruptions" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">z_eruptions</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="eruptions">3.600</td>
+<td class="gt_row gt_center" headers="waiting">79</td>
+<td class="gt_row gt_center" headers="z_eruptions">0.4515</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="eruptions">1.800</td>
+<td class="gt_row gt_center" headers="waiting">54</td>
+<td class="gt_row gt_center" headers="z_eruptions">-1.2064</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="eruptions">3.333</td>
+<td class="gt_row gt_center" headers="waiting">74</td>
+<td class="gt_row gt_center" headers="z_eruptions">0.2056</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_center" headers="eruptions">2.283</td>
+<td class="gt_row gt_center" headers="waiting">62</td>
+<td class="gt_row gt_center" headers="z_eruptions">-0.7616</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_center" headers="eruptions">4.533</td>
+<td class="gt_row gt_center" headers="waiting">85</td>
+<td class="gt_row gt_center" headers="z_eruptions">1.3109</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>As confirmed earlier, none of the observations are outliers as all z-scores are within three standard deviations of the mean.</p>
 </section>
-<section id="excel-function-summary" class="level2" data-number="5.13">
-<h2 data-number="5.13" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">5.13</span> Excel Function Summary</h2>
+<section id="five-point-summary-in-excel" class="level3" data-number="5.9.2">
+<h3 data-number="5.9.2" class="anchored" data-anchor-id="five-point-summary-in-excel"><span class="header-section-number">5.9.2</span> Five Point Summary in Excel</h3>
+<p>To calculate the five point summary use <code>=QUARTILE.INC()</code>. The argument <code>quart</code> takes values <span class="math inline">\(0\)</span> through <span class="math inline">\(4\)</span>:</p>
+<pre class="excel"><code>=QUARTILE.INC(A:A, 0)   /* Minimum    */
+=QUARTILE.INC(A:A, 1)   /* Q1 (P25)   */
+=QUARTILE.INC(A:A, 2)   /* Median     */
+=QUARTILE.INC(A:A, 3)   /* Q3 (P75)   */
+=QUARTILE.INC(A:A, 4)   /* Maximum    */</code></pre>
+<p>The IQR can then be calculated as:</p>
+<pre class="excel"><code>=QUARTILE.INC(A:A, 3) - QUARTILE.INC(A:A, 1)</code></pre>
+<p>The five point summary for the <code>eruptions</code> variable is:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="opdybvxchy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#opdybvxchy table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#opdybvxchy thead, #opdybvxchy tbody, #opdybvxchy tfoot, #opdybvxchy tr, #opdybvxchy td, #opdybvxchy th {
+  border-style: none;
+}
+
+#opdybvxchy p {
+  margin: 0;
+  padding: 0;
+}
+
+#opdybvxchy .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#opdybvxchy .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#opdybvxchy .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#opdybvxchy .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#opdybvxchy .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#opdybvxchy .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#opdybvxchy .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#opdybvxchy .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#opdybvxchy .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#opdybvxchy .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#opdybvxchy .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#opdybvxchy .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#opdybvxchy .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#opdybvxchy .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#opdybvxchy .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#opdybvxchy .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#opdybvxchy .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#opdybvxchy .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#opdybvxchy .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#opdybvxchy .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#opdybvxchy .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#opdybvxchy .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#opdybvxchy .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#opdybvxchy .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#opdybvxchy .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#opdybvxchy .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#opdybvxchy .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#opdybvxchy .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#opdybvxchy .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#opdybvxchy .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#opdybvxchy .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#opdybvxchy .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#opdybvxchy .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#opdybvxchy .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#opdybvxchy .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#opdybvxchy .gt_left {
+  text-align: left;
+}
+
+#opdybvxchy .gt_center {
+  text-align: center;
+}
+
+#opdybvxchy .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#opdybvxchy .gt_font_normal {
+  font-weight: normal;
+}
+
+#opdybvxchy .gt_font_bold {
+  font-weight: bold;
+}
+
+#opdybvxchy .gt_font_italic {
+  font-style: italic;
+}
+
+#opdybvxchy .gt_super {
+  font-size: 65%;
+}
+
+#opdybvxchy .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#opdybvxchy .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#opdybvxchy .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#opdybvxchy .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#opdybvxchy .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#opdybvxchy .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#opdybvxchy .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#opdybvxchy .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#opdybvxchy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Min" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Min</th>
+<th id="Q1" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Q1</th>
+<th id="Median" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Median</th>
+<th id="Q3" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Q3</th>
+<th id="Max" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Max</th>
+<th id="IQR" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">IQR</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="Min">1.600</td>
+<td class="gt_row gt_center" headers="Q1">2.163</td>
+<td class="gt_row gt_center" headers="Median">4.000</td>
+<td class="gt_row gt_center" headers="Q3">4.454</td>
+<td class="gt_row gt_center" headers="Max">5.100</td>
+<td class="gt_row gt_center" headers="IQR">2.292</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+</section>
+<section id="skewness-and-kurtosis-in-excel" class="level3" data-number="5.9.3">
+<h3 data-number="5.9.3" class="anchored" data-anchor-id="skewness-and-kurtosis-in-excel"><span class="header-section-number">5.9.3</span> Skewness and Kurtosis in Excel</h3>
+<p>To calculate skewness use <code>=SKEW()</code> and for excess kurtosis use <code>=KURT()</code>. Both functions use the bias-corrected formulas presented in this chapter:</p>
+<pre class="excel"><code>=SKEW(A:A)    /* Skewness        */
+=KURT(A:A)    /* Excess Kurtosis */</code></pre>
+<p>The skewness and kurtosis for the <code>eruptions</code> variable are:</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="uwzcfmssjd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#uwzcfmssjd table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#uwzcfmssjd thead, #uwzcfmssjd tbody, #uwzcfmssjd tfoot, #uwzcfmssjd tr, #uwzcfmssjd td, #uwzcfmssjd th {
+  border-style: none;
+}
+
+#uwzcfmssjd p {
+  margin: 0;
+  padding: 0;
+}
+
+#uwzcfmssjd .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#uwzcfmssjd .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#uwzcfmssjd .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#uwzcfmssjd .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#uwzcfmssjd .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uwzcfmssjd .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uwzcfmssjd .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#uwzcfmssjd .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#uwzcfmssjd .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#uwzcfmssjd .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#uwzcfmssjd .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#uwzcfmssjd .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#uwzcfmssjd .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#uwzcfmssjd .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#uwzcfmssjd .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#uwzcfmssjd .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#uwzcfmssjd .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#uwzcfmssjd .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#uwzcfmssjd .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uwzcfmssjd .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#uwzcfmssjd .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#uwzcfmssjd .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#uwzcfmssjd .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uwzcfmssjd .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#uwzcfmssjd .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#uwzcfmssjd .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uwzcfmssjd .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uwzcfmssjd .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#uwzcfmssjd .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uwzcfmssjd .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#uwzcfmssjd .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#uwzcfmssjd .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uwzcfmssjd .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uwzcfmssjd .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#uwzcfmssjd .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#uwzcfmssjd .gt_left {
+  text-align: left;
+}
+
+#uwzcfmssjd .gt_center {
+  text-align: center;
+}
+
+#uwzcfmssjd .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#uwzcfmssjd .gt_font_normal {
+  font-weight: normal;
+}
+
+#uwzcfmssjd .gt_font_bold {
+  font-weight: bold;
+}
+
+#uwzcfmssjd .gt_font_italic {
+  font-style: italic;
+}
+
+#uwzcfmssjd .gt_super {
+  font-size: 65%;
+}
+
+#uwzcfmssjd .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#uwzcfmssjd .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#uwzcfmssjd .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#uwzcfmssjd .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#uwzcfmssjd .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#uwzcfmssjd .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#uwzcfmssjd .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#uwzcfmssjd .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#uwzcfmssjd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Skewness" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Skewness</th>
+<th id="Kurtosis" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Kurtosis</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="Skewness">−0.4135</td>
+<td class="gt_row gt_center" headers="Kurtosis">−1.5116</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>The negative skewness confirms the mild left skew identified earlier in the chapter. The negative excess kurtosis indicates that the distribution is platykurtic (i.e., the eruption durations have lighter tails than a normal distribution), with fewer extreme values than expected.</p>
+</section>
+</section>
+<section id="excel-function-summary" class="level2" data-number="5.10">
+<h2 data-number="5.10" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">5.10</span> Excel Function Summary</h2>
 <p>Below is a list of the Excel functions used in this section:</p>
 <ul>
 <li><p><code>=PERCENTILE.INC(array, k)</code> returns the <span class="math inline">\(k\)</span>th percentile of a range using the formula <span class="math inline">\(L_p = 1 + k(n-1)\)</span>, where <span class="math inline">\(k\)</span> is expressed as a decimal between 0 and 1. This matches the method used in this chapter.</p></li>
@@ -667,8 +2595,8 @@ Attaching package: 'e1071'</code></pre>
 <li><p><code>=KURT(range)</code> calculates the excess kurtosis of a range. A positive value indicates leptokurtic (heavy tails) and a negative value indicates platykurtic (light tails).</p></li>
 </ul>
 </section>
-<section id="chapter-summary-cheat-sheet" class="level2" data-number="5.14">
-<h2 data-number="5.14" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">5.14</span> Chapter Summary Cheat Sheet</h2>
+<section id="chapter-summary-cheat-sheet" class="level2" data-number="5.11">
+<h2 data-number="5.11" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">5.11</span> Chapter Summary Cheat Sheet</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -679,8 +2607,8 @@ Attaching package: 'e1071'</code></pre>
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="5.15">
-<h2 data-number="5.15" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.15</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="5.12">
+<h2 data-number="5.12" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.12</span> Exercises</h2>
 <p>The following exercises will help you practice other statistical measures. In particular, the exercises work on:</p>
 <ul>
 <li><p>Constructing a five point summary and a boxplot.</p></li>
@@ -716,8 +2644,8 @@ Answer
 <p><em>Quartiles are calculated using the percentile formula</em> <span class="math inline">\((n+1)P/100\)</span>. The data set has seven numbers. The first quartile’s location is <span class="math inline">\(8/4=2\)</span>, the second quartile’s location is <span class="math inline">\(8/2=4\)</span> and the third quartile’s location is <span class="math inline">\(24/4=6\)</span>. The values at these location, when data is organized in ascending order, are <span class="math inline">\(1\)</span>, <span class="math inline">\(4\)</span>, and <span class="math inline">\(10\)</span>.</p>
 <p><em>In R we can get the five number summary by using the <code>quantile()</code> function. Since there are various rules that can be used to calculate percentiles, we specify type</em> <span class="math inline">\(6\)</span> to match our rules.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>Ex1<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">30</span>,<span class="dv">6</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(Ex1,<span class="at">type =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Ex1<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">30</span>,<span class="dv">6</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(Ex1,<span class="at">type =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>  0%  25%  50%  75% 100% 
    0    1    4   10   30 </code></pre>
@@ -735,7 +2663,7 @@ Answer
 <p><em>If we use the</em> <span class="math inline">\(z\)</span>-score instead we find that <span class="math inline">\(30\)</span> is not an outlier since the <span class="math inline">\(z\)</span>-score is <span class="math inline">\(Z_{30}=2.15\)</span>. This observation is only <span class="math inline">\(2.15\)</span> standard deviations away from the mean.</p>
 <p><em>In R we can make a quick calculation of the</em> <span class="math inline">\(z\)</span>-Score to confirm our results. The <span class="math inline">\(z\)</span>-score is given by <span class="math inline">\(Z_{i}=\frac{x_{30}-\mu}{\sigma}\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(Z30<span class="ot">&lt;-</span>(<span class="dv">30</span><span class="sc">-</span><span class="fu">mean</span>(Ex1))<span class="sc">/</span><span class="fu">sd</span>(Ex1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(Z30<span class="ot">&lt;-</span>(<span class="dv">30</span><span class="sc">-</span><span class="fu">mean</span>(Ex1))<span class="sc">/</span><span class="fu">sd</span>(Ex1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2.148711</code></pre>
 </div>
@@ -751,7 +2679,7 @@ Answer
 <p><em>Chebyshev’s theorem states that</em> <span class="math inline">\(1-\frac{1}{z_{2}}\)</span> of the data lies between <span class="math inline">\(z\)</span> standard deviation from the mean.</p>
 <p><em>Substituting the</em> <span class="math inline">\(z\)</span>-score found in 2. we get <span class="math inline">\(78.34\)</span>% of the data lies between the standard deviation calculated. In R:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1-1</span><span class="sc">/</span>(Z30)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1-1</span><span class="sc">/</span>(Z30)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.7834073</code></pre>
 </div>
@@ -771,21 +2699,22 @@ Answer
 <p><em>The data is skewed to the right.</em></p>
 <p><em>Start by loading the data set:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>StockPrices<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://jagelves.github.io/Data/Stocks.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>StockPrices<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://jagelves.github.io/Data/Stocks.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>To construct the boxplot in R, use the <code>boxplot()</code> command.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>StockPrices <span class="sc">%&gt;%</span> </span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>VTI),</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill=</span><span class="st">"lightgrey"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">col=</span><span class="st">"black"</span>, <span class="at">width=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>, <span class="at">limits=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>StockPrices <span class="sc">%&gt;%</span> </span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>VTI),</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill=</span><span class="st">"lightgrey"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>,</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">col=</span><span class="st">"black"</span>, <span class="at">width=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>, <span class="at">limits=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -802,25 +2731,25 @@ Answer
 <p><em>The mean is more sensitive to outliers than the median. Hence, when the data is skewed to the right we expect that the mean is larger than the median.</em></p>
 <p><em>Let’s construct a histogram in R to search for skewness.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>StockPrices <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(VTI), <span class="at">bins =</span> <span class="dv">8</span>,</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">binwidth =</span> <span class="dv">8</span>,</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col=</span><span class="st">"black"</span>, <span class="at">bg=</span><span class="st">"grey"</span>,</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">boundary=</span><span class="dv">179</span>) <span class="sc">+</span></span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI), <span class="at">col=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(StockPrices<span class="sc">$</span>VTI), <span class="at">col=</span><span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>StockPrices <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(VTI), <span class="at">bins =</span> <span class="dv">8</span>,</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">binwidth =</span> <span class="dv">8</span>,</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col=</span><span class="st">"black"</span>, <span class="at">bg=</span><span class="st">"grey"</span>,</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">boundary=</span><span class="dv">179</span>) <span class="sc">+</span></span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI), <span class="at">col=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(StockPrices<span class="sc">$</span>VTI), <span class="at">col=</span><span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><em>The lines are close to each other but the mean is slightlty larger than the median. Let’s confirm with the skewness statistic</em> <span class="math inline">\(3(mean-median)/sd\)</span>.</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(skew<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI<span class="sc">-</span><span class="fu">median</span>(StockPrices<span class="sc">$</span>VTI))<span class="sc">/</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>VTI)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(skew<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI<span class="sc">-</span><span class="fu">median</span>(StockPrices<span class="sc">$</span>VTI))<span class="sc">/</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>VTI)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2856304</code></pre>
 </div>
@@ -836,13 +2765,13 @@ Answer
 </summary>
 <p><em>The line chart indicates that the data has a downward trend in the early periods. This creates a few points that are large. In later periods the stock price stabilizes to lower levels.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>StockPrices <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>VTI, <span class="at">x=</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="fu">length</span>(VTI)))) <span class="sc">+</span> <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Period"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>StockPrices <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>VTI, <span class="at">x=</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="fu">length</span>(VTI)))) <span class="sc">+</span> <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Period"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -862,25 +2791,25 @@ Answer
 <p><em>The outlier is the Masserati Bora. The horse power is</em> <span class="math inline">\(335\)</span>.</p>
 <p><em>In R we can construct a boxplot with the following command:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>hp),</span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill=</span><span class="st">"lightgrey"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>,</span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">col=</span><span class="st">"black"</span>, <span class="at">width=</span><span class="fl">0.3</span>,</span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">outlier.colour =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>, <span class="at">limits=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>hp),</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill=</span><span class="st">"lightgrey"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>,</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">col=</span><span class="st">"black"</span>, <span class="at">width=</span><span class="fl">0.3</span>,</span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">outlier.colour =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
+<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>, <span class="at">limits=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><em>From the graph it seems like the outlier is beyond a horsepower of 275. Let’s write an R command to retrieve the car.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(hp<span class="sc">&gt;</span><span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(hp<span class="sc">&gt;</span><span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>              mpg cyl disp  hp drat   wt qsec vs am gear carb
 Maserati Bora  15   8  301 335 3.54 3.57 14.6  0  1    5    8</code></pre>
@@ -898,25 +2827,25 @@ Answer
 <p><em>The histogram looks skewed to the right. This is confirmed by the estimation of a Pearson coefficient fo skewness of</em> <span class="math inline">\(1.04\)</span>.</p>
 <p><em>In R we can construct a histogram with vertical lines for the mean and median with the following code:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(hp), <span class="at">bins =</span> <span class="dv">5</span>,</span>
-<span id="cb29-3"><a href="#cb29-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">binwidth =</span> <span class="dv">60</span>,</span>
-<span id="cb29-4"><a href="#cb29-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col=</span><span class="st">"black"</span>, <span class="at">bg=</span><span class="st">"grey"</span>,</span>
-<span id="cb29-5"><a href="#cb29-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">boundary=</span><span class="dv">50</span>) <span class="sc">+</span></span>
-<span id="cb29-6"><a href="#cb29-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
-<span id="cb29-7"><a href="#cb29-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI), <span class="at">col=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
-<span id="cb29-8"><a href="#cb29-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(StockPrices<span class="sc">$</span>VTI), <span class="at">col=</span><span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(hp), <span class="at">bins =</span> <span class="dv">5</span>,</span>
+<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">binwidth =</span> <span class="dv">60</span>,</span>
+<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col=</span><span class="st">"black"</span>, <span class="at">bg=</span><span class="st">"grey"</span>,</span>
+<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">boundary=</span><span class="dv">50</span>) <span class="sc">+</span></span>
+<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI), <span class="at">col=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
+<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(StockPrices<span class="sc">$</span>VTI), <span class="at">col=</span><span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-19-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><em>The histogram looks skewed to the right. Pearson’s Coefficient of Skewness is:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>(SkewHP<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(mtcars<span class="sc">$</span>hp)<span class="sc">-</span><span class="fu">median</span>(mtcars<span class="sc">$</span>hp))<span class="sc">/</span><span class="fu">sd</span>(mtcars<span class="sc">$</span>hp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(SkewHP<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(mtcars<span class="sc">$</span>hp)<span class="sc">-</span><span class="fu">median</span>(mtcars<span class="sc">$</span>hp))<span class="sc">/</span><span class="fu">sd</span>(mtcars<span class="sc">$</span>hp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1.036458</code></pre>
 </div>
@@ -932,27 +2861,27 @@ Answer
 <p><em>The skew is still there, but the distribution now look more symmetrical and the Skew coefficient has decreased to</em> <span class="math inline">\(0.44\)</span>.</p>
 <p><em>In R we can create an new variable that captures the log transformation. The <code>log()</code> function takes the natural logarithm of a number or vector.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>LogHP<span class="ot">&lt;-</span><span class="fu">log</span>(mtcars<span class="sc">$</span>hp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>LogHP<span class="ot">&lt;-</span><span class="fu">log</span>(mtcars<span class="sc">$</span>hp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 <p><em>Let’s use this new variable to create our histogram:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(LogHP), <span class="at">bins =</span> <span class="dv">5</span>,</span>
-<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col=</span><span class="st">"black"</span>, <span class="at">bg=</span><span class="st">"grey"</span>) <span class="sc">+</span></span>
-<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
-<span id="cb33-5"><a href="#cb33-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(LogHP), <span class="at">col=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
-<span id="cb33-6"><a href="#cb33-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(LogHP), <span class="at">col=</span><span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
+<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(LogHP), <span class="at">bins =</span> <span class="dv">5</span>,</span>
+<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col=</span><span class="st">"black"</span>, <span class="at">bg=</span><span class="st">"grey"</span>) <span class="sc">+</span></span>
+<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
+<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(LogHP), <span class="at">col=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
+<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(LogHP), <span class="at">col=</span><span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-22-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p><em>The mean and the variance now look closer together. The tail of the distribution (skew) now also looks diminished. The Skewness coefficient has decreased significantly:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>(SkewLogHP<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(LogHP)<span class="sc">-</span><span class="fu">median</span>(LogHP))<span class="sc">/</span><span class="fu">sd</span>(LogHP))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>(SkewLogHP<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(LogHP)<span class="sc">-</span><span class="fu">median</span>(LogHP))<span class="sc">/</span><span class="fu">sd</span>(LogHP))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.4402212</code></pre>
 </div>
