@@ -75,6 +75,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9904b5196d746cb5bc47063911474b57.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -311,6 +313,7 @@ window.Quarto = {
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
   <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
+  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -628,23 +631,23 @@ details summary {
 <p>Excel provides functions to calculate all the shape and distribution measures covered in this chapter. We will use the same <code>faithful</code> dataset from R, which contains data on eruptions of the Old Faithful geyser in Yellowstone National Park. The variable <code>eruptions</code> measures the duration of each eruption in minutes.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="tsakdsrpnz" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#tsakdsrpnz table {
+<div id="ojtwgqprxt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ojtwgqprxt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#tsakdsrpnz thead, #tsakdsrpnz tbody, #tsakdsrpnz tfoot, #tsakdsrpnz tr, #tsakdsrpnz td, #tsakdsrpnz th {
+#ojtwgqprxt thead, #ojtwgqprxt tbody, #ojtwgqprxt tfoot, #ojtwgqprxt tr, #ojtwgqprxt td, #ojtwgqprxt th {
   border-style: none;
 }
 
-#tsakdsrpnz p {
+#ojtwgqprxt p {
   margin: 0;
   padding: 0;
 }
 
-#tsakdsrpnz .gt_table {
+#ojtwgqprxt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -670,12 +673,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#tsakdsrpnz .gt_caption {
+#ojtwgqprxt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#tsakdsrpnz .gt_title {
+#ojtwgqprxt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -687,7 +690,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#tsakdsrpnz .gt_subtitle {
+#ojtwgqprxt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -699,7 +702,7 @@ details summary {
   border-top-width: 0;
 }
 
-#tsakdsrpnz .gt_heading {
+#ojtwgqprxt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -711,13 +714,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#tsakdsrpnz .gt_bottom_border {
+#ojtwgqprxt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#tsakdsrpnz .gt_col_headings {
+#ojtwgqprxt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -732,7 +735,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#tsakdsrpnz .gt_col_heading {
+#ojtwgqprxt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -752,7 +755,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#tsakdsrpnz .gt_column_spanner_outer {
+#ojtwgqprxt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -764,15 +767,15 @@ details summary {
   padding-right: 4px;
 }
 
-#tsakdsrpnz .gt_column_spanner_outer:first-child {
+#ojtwgqprxt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#tsakdsrpnz .gt_column_spanner_outer:last-child {
+#ojtwgqprxt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#tsakdsrpnz .gt_column_spanner {
+#ojtwgqprxt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -784,11 +787,11 @@ details summary {
   width: 100%;
 }
 
-#tsakdsrpnz .gt_spanner_row {
+#ojtwgqprxt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#tsakdsrpnz .gt_group_heading {
+#ojtwgqprxt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -814,7 +817,7 @@ details summary {
   text-align: left;
 }
 
-#tsakdsrpnz .gt_empty_group_heading {
+#ojtwgqprxt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -829,15 +832,15 @@ details summary {
   vertical-align: middle;
 }
 
-#tsakdsrpnz .gt_from_md > :first-child {
+#ojtwgqprxt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#tsakdsrpnz .gt_from_md > :last-child {
+#ojtwgqprxt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#tsakdsrpnz .gt_row {
+#ojtwgqprxt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -856,7 +859,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#tsakdsrpnz .gt_stub {
+#ojtwgqprxt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -869,7 +872,7 @@ details summary {
   padding-right: 5px;
 }
 
-#tsakdsrpnz .gt_stub_row_group {
+#ojtwgqprxt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -883,15 +886,15 @@ details summary {
   vertical-align: top;
 }
 
-#tsakdsrpnz .gt_row_group_first td {
+#ojtwgqprxt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#tsakdsrpnz .gt_row_group_first th {
+#ojtwgqprxt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#tsakdsrpnz .gt_summary_row {
+#ojtwgqprxt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -901,16 +904,16 @@ details summary {
   padding-right: 5px;
 }
 
-#tsakdsrpnz .gt_first_summary_row {
+#ojtwgqprxt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#tsakdsrpnz .gt_first_summary_row.thick {
+#ojtwgqprxt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#tsakdsrpnz .gt_last_summary_row {
+#ojtwgqprxt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -920,7 +923,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#tsakdsrpnz .gt_grand_summary_row {
+#ojtwgqprxt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -930,7 +933,7 @@ details summary {
   padding-right: 5px;
 }
 
-#tsakdsrpnz .gt_first_grand_summary_row {
+#ojtwgqprxt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -940,7 +943,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#tsakdsrpnz .gt_last_grand_summary_row_top {
+#ojtwgqprxt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -950,11 +953,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#tsakdsrpnz .gt_striped {
+#ojtwgqprxt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#tsakdsrpnz .gt_table_body {
+#ojtwgqprxt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -963,7 +966,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#tsakdsrpnz .gt_footnotes {
+#ojtwgqprxt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -977,7 +980,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#tsakdsrpnz .gt_footnote {
+#ojtwgqprxt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -986,7 +989,7 @@ details summary {
   padding-right: 5px;
 }
 
-#tsakdsrpnz .gt_sourcenotes {
+#ojtwgqprxt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1000,7 +1003,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#tsakdsrpnz .gt_sourcenote {
+#ojtwgqprxt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1008,72 +1011,72 @@ details summary {
   padding-right: 5px;
 }
 
-#tsakdsrpnz .gt_left {
+#ojtwgqprxt .gt_left {
   text-align: left;
 }
 
-#tsakdsrpnz .gt_center {
+#ojtwgqprxt .gt_center {
   text-align: center;
 }
 
-#tsakdsrpnz .gt_right {
+#ojtwgqprxt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#tsakdsrpnz .gt_font_normal {
+#ojtwgqprxt .gt_font_normal {
   font-weight: normal;
 }
 
-#tsakdsrpnz .gt_font_bold {
+#ojtwgqprxt .gt_font_bold {
   font-weight: bold;
 }
 
-#tsakdsrpnz .gt_font_italic {
+#ojtwgqprxt .gt_font_italic {
   font-style: italic;
 }
 
-#tsakdsrpnz .gt_super {
+#ojtwgqprxt .gt_super {
   font-size: 65%;
 }
 
-#tsakdsrpnz .gt_footnote_marks {
+#ojtwgqprxt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#tsakdsrpnz .gt_asterisk {
+#ojtwgqprxt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#tsakdsrpnz .gt_indent_1 {
+#ojtwgqprxt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#tsakdsrpnz .gt_indent_2 {
+#ojtwgqprxt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#tsakdsrpnz .gt_indent_3 {
+#ojtwgqprxt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#tsakdsrpnz .gt_indent_4 {
+#ojtwgqprxt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#tsakdsrpnz .gt_indent_5 {
+#ojtwgqprxt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#tsakdsrpnz .katex-display {
+#ojtwgqprxt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#tsakdsrpnz div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#ojtwgqprxt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1122,23 +1125,23 @@ details summary {
 <p>The z-scores for the first five observations of the <code>faithful</code> dataset are:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="uaddsczwux" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#uaddsczwux table {
+<div id="dkiifqiljs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#dkiifqiljs table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#uaddsczwux thead, #uaddsczwux tbody, #uaddsczwux tfoot, #uaddsczwux tr, #uaddsczwux td, #uaddsczwux th {
+#dkiifqiljs thead, #dkiifqiljs tbody, #dkiifqiljs tfoot, #dkiifqiljs tr, #dkiifqiljs td, #dkiifqiljs th {
   border-style: none;
 }
 
-#uaddsczwux p {
+#dkiifqiljs p {
   margin: 0;
   padding: 0;
 }
 
-#uaddsczwux .gt_table {
+#dkiifqiljs .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1164,12 +1167,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#uaddsczwux .gt_caption {
+#dkiifqiljs .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#uaddsczwux .gt_title {
+#dkiifqiljs .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1181,7 +1184,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#uaddsczwux .gt_subtitle {
+#dkiifqiljs .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1193,7 +1196,7 @@ details summary {
   border-top-width: 0;
 }
 
-#uaddsczwux .gt_heading {
+#dkiifqiljs .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1205,13 +1208,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#uaddsczwux .gt_bottom_border {
+#dkiifqiljs .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uaddsczwux .gt_col_headings {
+#dkiifqiljs .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1226,7 +1229,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#uaddsczwux .gt_col_heading {
+#dkiifqiljs .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1246,7 +1249,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#uaddsczwux .gt_column_spanner_outer {
+#dkiifqiljs .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1258,15 +1261,15 @@ details summary {
   padding-right: 4px;
 }
 
-#uaddsczwux .gt_column_spanner_outer:first-child {
+#dkiifqiljs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uaddsczwux .gt_column_spanner_outer:last-child {
+#dkiifqiljs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uaddsczwux .gt_column_spanner {
+#dkiifqiljs .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1278,11 +1281,11 @@ details summary {
   width: 100%;
 }
 
-#uaddsczwux .gt_spanner_row {
+#dkiifqiljs .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#uaddsczwux .gt_group_heading {
+#dkiifqiljs .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1308,7 +1311,7 @@ details summary {
   text-align: left;
 }
 
-#uaddsczwux .gt_empty_group_heading {
+#dkiifqiljs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1323,15 +1326,15 @@ details summary {
   vertical-align: middle;
 }
 
-#uaddsczwux .gt_from_md > :first-child {
+#dkiifqiljs .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uaddsczwux .gt_from_md > :last-child {
+#dkiifqiljs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uaddsczwux .gt_row {
+#dkiifqiljs .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1350,7 +1353,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#uaddsczwux .gt_stub {
+#dkiifqiljs .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1363,7 +1366,7 @@ details summary {
   padding-right: 5px;
 }
 
-#uaddsczwux .gt_stub_row_group {
+#dkiifqiljs .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1377,15 +1380,15 @@ details summary {
   vertical-align: top;
 }
 
-#uaddsczwux .gt_row_group_first td {
+#dkiifqiljs .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uaddsczwux .gt_row_group_first th {
+#dkiifqiljs .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#uaddsczwux .gt_summary_row {
+#dkiifqiljs .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1395,16 +1398,16 @@ details summary {
   padding-right: 5px;
 }
 
-#uaddsczwux .gt_first_summary_row {
+#dkiifqiljs .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uaddsczwux .gt_first_summary_row.thick {
+#dkiifqiljs .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uaddsczwux .gt_last_summary_row {
+#dkiifqiljs .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1414,7 +1417,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#uaddsczwux .gt_grand_summary_row {
+#dkiifqiljs .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1424,7 +1427,7 @@ details summary {
   padding-right: 5px;
 }
 
-#uaddsczwux .gt_first_grand_summary_row {
+#dkiifqiljs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1434,7 +1437,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#uaddsczwux .gt_last_grand_summary_row_top {
+#dkiifqiljs .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1444,11 +1447,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#uaddsczwux .gt_striped {
+#dkiifqiljs .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uaddsczwux .gt_table_body {
+#dkiifqiljs .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1457,7 +1460,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#uaddsczwux .gt_footnotes {
+#dkiifqiljs .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1471,7 +1474,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#uaddsczwux .gt_footnote {
+#dkiifqiljs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1480,7 +1483,7 @@ details summary {
   padding-right: 5px;
 }
 
-#uaddsczwux .gt_sourcenotes {
+#dkiifqiljs .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1494,7 +1497,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#uaddsczwux .gt_sourcenote {
+#dkiifqiljs .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1502,72 +1505,72 @@ details summary {
   padding-right: 5px;
 }
 
-#uaddsczwux .gt_left {
+#dkiifqiljs .gt_left {
   text-align: left;
 }
 
-#uaddsczwux .gt_center {
+#dkiifqiljs .gt_center {
   text-align: center;
 }
 
-#uaddsczwux .gt_right {
+#dkiifqiljs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uaddsczwux .gt_font_normal {
+#dkiifqiljs .gt_font_normal {
   font-weight: normal;
 }
 
-#uaddsczwux .gt_font_bold {
+#dkiifqiljs .gt_font_bold {
   font-weight: bold;
 }
 
-#uaddsczwux .gt_font_italic {
+#dkiifqiljs .gt_font_italic {
   font-style: italic;
 }
 
-#uaddsczwux .gt_super {
+#dkiifqiljs .gt_super {
   font-size: 65%;
 }
 
-#uaddsczwux .gt_footnote_marks {
+#dkiifqiljs .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#uaddsczwux .gt_asterisk {
+#dkiifqiljs .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uaddsczwux .gt_indent_1 {
+#dkiifqiljs .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uaddsczwux .gt_indent_2 {
+#dkiifqiljs .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uaddsczwux .gt_indent_3 {
+#dkiifqiljs .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uaddsczwux .gt_indent_4 {
+#dkiifqiljs .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uaddsczwux .gt_indent_5 {
+#dkiifqiljs .gt_indent_5 {
   text-indent: 25px;
 }
 
-#uaddsczwux .katex-display {
+#dkiifqiljs .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#uaddsczwux div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#dkiifqiljs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1627,23 +1630,23 @@ details summary {
 <p>The five point summary for the <code>eruptions</code> variable is:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="opdybvxchy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#opdybvxchy table {
+<div id="rekhfvydqw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#rekhfvydqw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#opdybvxchy thead, #opdybvxchy tbody, #opdybvxchy tfoot, #opdybvxchy tr, #opdybvxchy td, #opdybvxchy th {
+#rekhfvydqw thead, #rekhfvydqw tbody, #rekhfvydqw tfoot, #rekhfvydqw tr, #rekhfvydqw td, #rekhfvydqw th {
   border-style: none;
 }
 
-#opdybvxchy p {
+#rekhfvydqw p {
   margin: 0;
   padding: 0;
 }
 
-#opdybvxchy .gt_table {
+#rekhfvydqw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1669,12 +1672,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#opdybvxchy .gt_caption {
+#rekhfvydqw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#opdybvxchy .gt_title {
+#rekhfvydqw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1686,7 +1689,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#opdybvxchy .gt_subtitle {
+#rekhfvydqw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1698,7 +1701,7 @@ details summary {
   border-top-width: 0;
 }
 
-#opdybvxchy .gt_heading {
+#rekhfvydqw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1710,13 +1713,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#opdybvxchy .gt_bottom_border {
+#rekhfvydqw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#opdybvxchy .gt_col_headings {
+#rekhfvydqw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1731,7 +1734,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#opdybvxchy .gt_col_heading {
+#rekhfvydqw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1751,7 +1754,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#opdybvxchy .gt_column_spanner_outer {
+#rekhfvydqw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1763,15 +1766,15 @@ details summary {
   padding-right: 4px;
 }
 
-#opdybvxchy .gt_column_spanner_outer:first-child {
+#rekhfvydqw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#opdybvxchy .gt_column_spanner_outer:last-child {
+#rekhfvydqw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#opdybvxchy .gt_column_spanner {
+#rekhfvydqw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1783,11 +1786,11 @@ details summary {
   width: 100%;
 }
 
-#opdybvxchy .gt_spanner_row {
+#rekhfvydqw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#opdybvxchy .gt_group_heading {
+#rekhfvydqw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1813,7 +1816,7 @@ details summary {
   text-align: left;
 }
 
-#opdybvxchy .gt_empty_group_heading {
+#rekhfvydqw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1828,15 +1831,15 @@ details summary {
   vertical-align: middle;
 }
 
-#opdybvxchy .gt_from_md > :first-child {
+#rekhfvydqw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#opdybvxchy .gt_from_md > :last-child {
+#rekhfvydqw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#opdybvxchy .gt_row {
+#rekhfvydqw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1855,7 +1858,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#opdybvxchy .gt_stub {
+#rekhfvydqw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1868,7 +1871,7 @@ details summary {
   padding-right: 5px;
 }
 
-#opdybvxchy .gt_stub_row_group {
+#rekhfvydqw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1882,15 +1885,15 @@ details summary {
   vertical-align: top;
 }
 
-#opdybvxchy .gt_row_group_first td {
+#rekhfvydqw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#opdybvxchy .gt_row_group_first th {
+#rekhfvydqw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#opdybvxchy .gt_summary_row {
+#rekhfvydqw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1900,16 +1903,16 @@ details summary {
   padding-right: 5px;
 }
 
-#opdybvxchy .gt_first_summary_row {
+#rekhfvydqw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#opdybvxchy .gt_first_summary_row.thick {
+#rekhfvydqw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#opdybvxchy .gt_last_summary_row {
+#rekhfvydqw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1919,7 +1922,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#opdybvxchy .gt_grand_summary_row {
+#rekhfvydqw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1929,7 +1932,7 @@ details summary {
   padding-right: 5px;
 }
 
-#opdybvxchy .gt_first_grand_summary_row {
+#rekhfvydqw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1939,7 +1942,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#opdybvxchy .gt_last_grand_summary_row_top {
+#rekhfvydqw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1949,11 +1952,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#opdybvxchy .gt_striped {
+#rekhfvydqw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#opdybvxchy .gt_table_body {
+#rekhfvydqw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1962,7 +1965,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#opdybvxchy .gt_footnotes {
+#rekhfvydqw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1976,7 +1979,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#opdybvxchy .gt_footnote {
+#rekhfvydqw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1985,7 +1988,7 @@ details summary {
   padding-right: 5px;
 }
 
-#opdybvxchy .gt_sourcenotes {
+#rekhfvydqw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1999,7 +2002,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#opdybvxchy .gt_sourcenote {
+#rekhfvydqw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2007,72 +2010,72 @@ details summary {
   padding-right: 5px;
 }
 
-#opdybvxchy .gt_left {
+#rekhfvydqw .gt_left {
   text-align: left;
 }
 
-#opdybvxchy .gt_center {
+#rekhfvydqw .gt_center {
   text-align: center;
 }
 
-#opdybvxchy .gt_right {
+#rekhfvydqw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#opdybvxchy .gt_font_normal {
+#rekhfvydqw .gt_font_normal {
   font-weight: normal;
 }
 
-#opdybvxchy .gt_font_bold {
+#rekhfvydqw .gt_font_bold {
   font-weight: bold;
 }
 
-#opdybvxchy .gt_font_italic {
+#rekhfvydqw .gt_font_italic {
   font-style: italic;
 }
 
-#opdybvxchy .gt_super {
+#rekhfvydqw .gt_super {
   font-size: 65%;
 }
 
-#opdybvxchy .gt_footnote_marks {
+#rekhfvydqw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#opdybvxchy .gt_asterisk {
+#rekhfvydqw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#opdybvxchy .gt_indent_1 {
+#rekhfvydqw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#opdybvxchy .gt_indent_2 {
+#rekhfvydqw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#opdybvxchy .gt_indent_3 {
+#rekhfvydqw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#opdybvxchy .gt_indent_4 {
+#rekhfvydqw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#opdybvxchy .gt_indent_5 {
+#rekhfvydqw .gt_indent_5 {
   text-indent: 25px;
 }
 
-#opdybvxchy .katex-display {
+#rekhfvydqw .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#opdybvxchy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#rekhfvydqw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2112,23 +2115,23 @@ details summary {
 <p>The skewness and kurtosis for the <code>eruptions</code> variable are:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="uwzcfmssjd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#uwzcfmssjd table {
+<div id="qzfaygmzpw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#qzfaygmzpw table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#uwzcfmssjd thead, #uwzcfmssjd tbody, #uwzcfmssjd tfoot, #uwzcfmssjd tr, #uwzcfmssjd td, #uwzcfmssjd th {
+#qzfaygmzpw thead, #qzfaygmzpw tbody, #qzfaygmzpw tfoot, #qzfaygmzpw tr, #qzfaygmzpw td, #qzfaygmzpw th {
   border-style: none;
 }
 
-#uwzcfmssjd p {
+#qzfaygmzpw p {
   margin: 0;
   padding: 0;
 }
 
-#uwzcfmssjd .gt_table {
+#qzfaygmzpw .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2154,12 +2157,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#uwzcfmssjd .gt_caption {
+#qzfaygmzpw .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#uwzcfmssjd .gt_title {
+#qzfaygmzpw .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2171,7 +2174,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#uwzcfmssjd .gt_subtitle {
+#qzfaygmzpw .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2183,7 +2186,7 @@ details summary {
   border-top-width: 0;
 }
 
-#uwzcfmssjd .gt_heading {
+#qzfaygmzpw .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2195,13 +2198,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#uwzcfmssjd .gt_bottom_border {
+#qzfaygmzpw .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#uwzcfmssjd .gt_col_headings {
+#qzfaygmzpw .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2216,7 +2219,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#uwzcfmssjd .gt_col_heading {
+#qzfaygmzpw .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2236,7 +2239,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#uwzcfmssjd .gt_column_spanner_outer {
+#qzfaygmzpw .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2248,15 +2251,15 @@ details summary {
   padding-right: 4px;
 }
 
-#uwzcfmssjd .gt_column_spanner_outer:first-child {
+#qzfaygmzpw .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#uwzcfmssjd .gt_column_spanner_outer:last-child {
+#qzfaygmzpw .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#uwzcfmssjd .gt_column_spanner {
+#qzfaygmzpw .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2268,11 +2271,11 @@ details summary {
   width: 100%;
 }
 
-#uwzcfmssjd .gt_spanner_row {
+#qzfaygmzpw .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#uwzcfmssjd .gt_group_heading {
+#qzfaygmzpw .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2298,7 +2301,7 @@ details summary {
   text-align: left;
 }
 
-#uwzcfmssjd .gt_empty_group_heading {
+#qzfaygmzpw .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2313,15 +2316,15 @@ details summary {
   vertical-align: middle;
 }
 
-#uwzcfmssjd .gt_from_md > :first-child {
+#qzfaygmzpw .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#uwzcfmssjd .gt_from_md > :last-child {
+#qzfaygmzpw .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#uwzcfmssjd .gt_row {
+#qzfaygmzpw .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2340,7 +2343,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#uwzcfmssjd .gt_stub {
+#qzfaygmzpw .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2353,7 +2356,7 @@ details summary {
   padding-right: 5px;
 }
 
-#uwzcfmssjd .gt_stub_row_group {
+#qzfaygmzpw .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2367,15 +2370,15 @@ details summary {
   vertical-align: top;
 }
 
-#uwzcfmssjd .gt_row_group_first td {
+#qzfaygmzpw .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#uwzcfmssjd .gt_row_group_first th {
+#qzfaygmzpw .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#uwzcfmssjd .gt_summary_row {
+#qzfaygmzpw .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2385,16 +2388,16 @@ details summary {
   padding-right: 5px;
 }
 
-#uwzcfmssjd .gt_first_summary_row {
+#qzfaygmzpw .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#uwzcfmssjd .gt_first_summary_row.thick {
+#qzfaygmzpw .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#uwzcfmssjd .gt_last_summary_row {
+#qzfaygmzpw .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2404,7 +2407,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#uwzcfmssjd .gt_grand_summary_row {
+#qzfaygmzpw .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2414,7 +2417,7 @@ details summary {
   padding-right: 5px;
 }
 
-#uwzcfmssjd .gt_first_grand_summary_row {
+#qzfaygmzpw .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2424,7 +2427,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#uwzcfmssjd .gt_last_grand_summary_row_top {
+#qzfaygmzpw .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2434,11 +2437,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#uwzcfmssjd .gt_striped {
+#qzfaygmzpw .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#uwzcfmssjd .gt_table_body {
+#qzfaygmzpw .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2447,7 +2450,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#uwzcfmssjd .gt_footnotes {
+#qzfaygmzpw .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2461,7 +2464,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#uwzcfmssjd .gt_footnote {
+#qzfaygmzpw .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2470,7 +2473,7 @@ details summary {
   padding-right: 5px;
 }
 
-#uwzcfmssjd .gt_sourcenotes {
+#qzfaygmzpw .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2484,7 +2487,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#uwzcfmssjd .gt_sourcenote {
+#qzfaygmzpw .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2492,72 +2495,72 @@ details summary {
   padding-right: 5px;
 }
 
-#uwzcfmssjd .gt_left {
+#qzfaygmzpw .gt_left {
   text-align: left;
 }
 
-#uwzcfmssjd .gt_center {
+#qzfaygmzpw .gt_center {
   text-align: center;
 }
 
-#uwzcfmssjd .gt_right {
+#qzfaygmzpw .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#uwzcfmssjd .gt_font_normal {
+#qzfaygmzpw .gt_font_normal {
   font-weight: normal;
 }
 
-#uwzcfmssjd .gt_font_bold {
+#qzfaygmzpw .gt_font_bold {
   font-weight: bold;
 }
 
-#uwzcfmssjd .gt_font_italic {
+#qzfaygmzpw .gt_font_italic {
   font-style: italic;
 }
 
-#uwzcfmssjd .gt_super {
+#qzfaygmzpw .gt_super {
   font-size: 65%;
 }
 
-#uwzcfmssjd .gt_footnote_marks {
+#qzfaygmzpw .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#uwzcfmssjd .gt_asterisk {
+#qzfaygmzpw .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#uwzcfmssjd .gt_indent_1 {
+#qzfaygmzpw .gt_indent_1 {
   text-indent: 5px;
 }
 
-#uwzcfmssjd .gt_indent_2 {
+#qzfaygmzpw .gt_indent_2 {
   text-indent: 10px;
 }
 
-#uwzcfmssjd .gt_indent_3 {
+#qzfaygmzpw .gt_indent_3 {
   text-indent: 15px;
 }
 
-#uwzcfmssjd .gt_indent_4 {
+#qzfaygmzpw .gt_indent_4 {
   text-indent: 20px;
 }
 
-#uwzcfmssjd .gt_indent_5 {
+#qzfaygmzpw .gt_indent_5 {
   text-indent: 25px;
 }
 
-#uwzcfmssjd .katex-display {
+#qzfaygmzpw .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#uwzcfmssjd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#qzfaygmzpw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2688,7 +2691,148 @@ Answer
 </section>
 <section id="exercise-2" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise 2</h3>
-<p>You will need the <strong>Stocks</strong> data set to answer this question. You can find this data at https://jagelves.github.io/Data/Stocks.csv The data is a sample of daily stock prices for ticker symbols TSLA (Tesla), VTI (S&amp;P 500) and GBTC (Bitcoin).</p>
+<p>A financial analyst tracks the monthly revenue growth rates (in percent) of a small e-commerce startup over five months:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">1</th>
+<th style="text-align: center;">2</th>
+<th style="text-align: center;">3</th>
+<th style="text-align: center;">4</th>
+<th style="text-align: center;">5</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">13</td>
+</tr>
+</tbody>
+</table>
+<ol type="1">
+<li>Calculate the sample mean and sample standard deviation.</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div style="padding-left: 1.5em;">
+<p><span class="math display">\[\bar{x} = \frac{2+2+2+6+13}{5} = \frac{25}{5} = 5\]</span></p>
+<p><span class="math display">\[s = \sqrt{\frac{9+9+9+1+64}{4}} = \sqrt{23} = 4.796\]</span></p>
+</div>
+</details>
+<ol start="2" type="1">
+<li>For each observation compute the standardized value <span class="math inline">\(\frac{x_i - \bar{x}}{s}\)</span>, its cube, and its fourth power. Organize your results in a table.</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div style="padding-left: 1.5em;">
+<table class="caption-top table">
+<colgroup>
+<col style="width: 5%">
+<col style="width: 13%">
+<col style="width: 20%">
+<col style="width: 30%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x_i - \bar{x}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\frac{x_i-\bar{x}}{s}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\left(\frac{x_i-\bar{x}}{s}\right)^3\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\left(\frac{x_i-\bar{x}}{s}\right)^4\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(-3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-0.625\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-0.244\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.153\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(-3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-0.625\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-0.244\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.153\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;"><span class="math inline">\(-3\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-0.625\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-0.244\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.153\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.208\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.009\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.002\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">13</td>
+<td style="text-align: center;"><span class="math inline">\(8\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1.667\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(4.630\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(7.716\)</span></td>
+</tr>
+</tbody>
+</table>
+</div>
+</details>
+<ol start="3" type="1">
+<li>Use the results from part 2 to calculate the skewness. Is the distribution left-skewed, right-skewed, or symmetric?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div style="padding-left: 1.5em;">
+<p><span class="math display">\[Sk = \frac{5}{(4)(3)}\sum\left(\frac{x_i-\bar{x}}{s}\right)^3 = \frac{5}{12}(-0.244-0.244-0.244+0.009+4.630)\]</span> <span class="math display">\[= \frac{5}{12}(3.907) = 1.628\]</span></p>
+<p><em>Since <span class="math inline">\(Sk &gt; 0\)</span> the distribution is right-skewed. Three months had modest growth of <span class="math inline">\(2\%\)</span> while one exceptional month of <span class="math inline">\(13\%\)</span> pulls the tail to the right.</em></p>
+</div>
+</details>
+<ol start="4" type="1">
+<li>Use the results from part 2 to calculate the excess kurtosis. Is the distribution leptokurtic, mesokurtic, or platykurtic?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div style="padding-left: 1.5em;">
+<p><span class="math display">\[K = \frac{5(6)}{(4)(3)(2)}\sum\left(\frac{x_i-\bar{x}}{s}\right)^4 - \frac{3(4)^2}{(3)(2)}\]</span> <span class="math display">\[= \frac{30}{24}(0.153+0.153+0.153+0.002+7.716) - \frac{48}{6}\]</span> <span class="math display">\[= \frac{30}{24}(8.177) - 8 = 10.221 - 8 = 2.221\]</span></p>
+<p><em>Since <span class="math inline">\(K &gt; 0\)</span> the distribution is leptokurtic — the tail is heavier than a normal distribution, driven by the exceptional month of <span class="math inline">\(13\%\)</span> growth.</em></p>
+</div>
+</details>
+<ol start="5" type="1">
+<li>Verify your results using <code>=SKEW()</code> and <code>=KURT()</code> in Excel.</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div style="padding-left: 1.5em;">
+<ul>
+<li><code>=SKEW(2,2,2,6,13)</code> → <span class="math inline">\(1.628\)</span></li>
+<li><code>=KURT(2,2,2,6,13)</code> → <span class="math inline">\(2.221\)</span></li>
+</ul>
+</div>
+</details>
+</section>
+<section id="exercise-3" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
+<p>You will need the <strong>Stocks</strong> data set to answer this question. You can find this data here:</p>
+<p><a href="stocks.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
+<p>The data is a sample of daily stock prices for ticker symbols TSLA (Tesla), VTI (S&amp;P 500) and GBTC (Bitcoin).</p>
 <ol type="1">
 <li>Construct a boxplot for Stock A. Is the data skewed or symmetric?</li>
 </ol>
@@ -2697,24 +2841,11 @@ Answer
 Answer
 </summary>
 <p><em>The data is skewed to the right.</em></p>
-<p><em>Start by loading the data set:</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>StockPrices<span class="ot">&lt;-</span><span class="fu">read.csv</span>(<span class="st">"https://jagelves.github.io/Data/Stocks.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><em>To construct the boxplot in R, use the <code>boxplot()</code> command.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>StockPrices <span class="sc">%&gt;%</span> </span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>VTI),</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill=</span><span class="st">"lightgrey"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>,</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">col=</span><span class="st">"black"</span>, <span class="at">width=</span><span class="fl">0.3</span>) <span class="sc">+</span></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>, <span class="at">limits=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -2729,27 +2860,17 @@ Answer
 Answer
 </summary>
 <p><em>The mean is more sensitive to outliers than the median. Hence, when the data is skewed to the right we expect that the mean is larger than the median.</em></p>
-<p><em>Let’s construct a histogram in R to search for skewness.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>StockPrices <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(VTI), <span class="at">bins =</span> <span class="dv">8</span>,</span>
-<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">binwidth =</span> <span class="dv">8</span>,</span>
-<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col=</span><span class="st">"black"</span>, <span class="at">bg=</span><span class="st">"grey"</span>,</span>
-<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">boundary=</span><span class="dv">179</span>) <span class="sc">+</span></span>
-<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
-<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI), <span class="at">col=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
-<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(StockPrices<span class="sc">$</span>VTI), <span class="at">col=</span><span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p><em>The lines are close to each other but the mean is slightlty larger than the median. Let’s confirm with the skewness statistic</em> <span class="math inline">\(3(mean-median)/sd\)</span>.</p>
+<p><em>The lines are close to each other but the mean is slightlty larger than the median. Let’s confirm with the skewness statistic</em>:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(skew<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI<span class="sc">-</span><span class="fu">median</span>(StockPrices<span class="sc">$</span>VTI))<span class="sc">/</span><span class="fu">sd</span>(StockPrices<span class="sc">$</span>VTI)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.2856304</code></pre>
 </div>
@@ -2765,9 +2886,29 @@ Answer
 </summary>
 <p><em>The line chart indicates that the data has a downward trend in the early periods. This creates a few points that are large. In later periods the stock price stabilizes to lower levels.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>StockPrices <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="fu">aes</span>(<span class="at">y=</span>VTI, <span class="at">x=</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="fu">length</span>(VTI)))) <span class="sc">+</span> <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
-<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x=</span><span class="st">"Period"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-13-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</details>
+</section>
+<section id="exercise-4" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h3>
+<p>You will need the <strong>mtcars</strong> data set to answer this question. The dataset contains data on 32 automobile models and 11 variables including miles per gallon (mpg), number of cylinders (cyl), horsepower (hp), weight (wt), and transmission type (am), among others. You can find the data here:</p>
+<p><a href="mtcars.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
+<ol type="1">
+<li>Construct a boxplot for the <em>hp</em> variable. Which car is the outlier?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>The outlier is the Masserati Bora. The horse power is</em> <span class="math inline">\(335\)</span>.</p>
+<div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -2776,78 +2917,23 @@ Answer
 </div>
 </div>
 </div>
+<p><em>From the graph it seems like the outlier is beyond a horsepower of 275, which is th Masserati Bora!</em></p>
 </details>
-</section>
-<section id="exercise-3" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
-<p>You will need the <strong>mtcars</strong> data set to answer this question. This data set is part of R. You don’t need to download any files to access it.</p>
-<ol type="1">
-<li>Construct a boxplot for the <em>hp</em> variable. Write a command in R that retrieves the outlier. Which car is the outlier?</li>
+<ol start="2" type="1">
+<li>Create a histogram of the data. Is the data skewed or leptokurtic? Calculate the skewness and kurtosis statistics to confirm your result.</li>
 </ol>
 <details>
 <summary>
 Answer
 </summary>
-<p><em>The outlier is the Masserati Bora. The horse power is</em> <span class="math inline">\(335\)</span>.</p>
-<p><em>In R we can construct a boxplot with the following command:</em></p>
+<p><em>The histogram looks skewed to the right. This is confirmed by the estimation of the coefficient of skewness of <span class="math inline">\(0.8\)</span>. The histogram also shows also heavy tails which is confirmed with the kurtosis being <span class="math inline">\(0.275&gt;0\)</span>.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> </span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="fu">aes</span>(<span class="at">y=</span>hp),</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>               <span class="at">fill=</span><span class="st">"lightgrey"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>,</span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>               <span class="at">col=</span><span class="st">"black"</span>, <span class="at">width=</span><span class="fl">0.3</span>,</span>
-<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a>               <span class="at">outlier.colour =</span> <span class="st">"red"</span>) <span class="sc">+</span></span>
-<span id="cb18-7"><a href="#cb18-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
-<span id="cb18-8"><a href="#cb18-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_x_continuous</span>(<span class="at">breaks =</span> <span class="cn">NULL</span>, <span class="at">limits=</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
 <p><img src="DescriptiveV_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
-</div>
-</div>
-<p><em>From the graph it seems like the outlier is beyond a horsepower of 275. Let’s write an R command to retrieve the car.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">filter</span>(hp<span class="sc">&gt;</span><span class="dv">300</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>              mpg cyl disp  hp drat   wt qsec vs am gear carb
-Maserati Bora  15   8  301 335 3.54 3.57 14.6  0  1    5    8</code></pre>
-</div>
-</div>
-<p><em>It’s the Masserati Bora!</em></p>
-</details>
-<ol start="2" type="1">
-<li>Create a histogram of the data. Is the data skewed? Include a vertical line for the mean and median. Calculate the skewness statistic to confirm your result.</li>
-</ol>
-<details>
-<summary>
-Answer
-</summary>
-<p><em>The histogram looks skewed to the right. This is confirmed by the estimation of a Pearson coefficient fo skewness of</em> <span class="math inline">\(1.04\)</span>.</p>
-<p><em>In R we can construct a histogram with vertical lines for the mean and median with the following code:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(hp), <span class="at">bins =</span> <span class="dv">5</span>,</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">binwidth =</span> <span class="dv">60</span>,</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col=</span><span class="st">"black"</span>, <span class="at">bg=</span><span class="st">"grey"</span>,</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>                 <span class="at">boundary=</span><span class="dv">50</span>) <span class="sc">+</span></span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(StockPrices<span class="sc">$</span>VTI), <span class="at">col=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(StockPrices<span class="sc">$</span>VTI), <span class="at">col=</span><span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><em>The histogram looks skewed to the right. Pearson’s Coefficient of Skewness is:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(SkewHP<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(mtcars<span class="sc">$</span>hp)<span class="sc">-</span><span class="fu">median</span>(mtcars<span class="sc">$</span>hp))<span class="sc">/</span><span class="fu">sd</span>(mtcars<span class="sc">$</span>hp))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.036458</code></pre>
 </div>
 </div>
 </details>
@@ -2858,34 +2944,17 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The skew is still there, but the distribution now look more symmetrical and the Skew coefficient has decreased to</em> <span class="math inline">\(0.44\)</span>.</p>
-<p><em>In R we can create an new variable that captures the log transformation. The <code>log()</code> function takes the natural logarithm of a number or vector.</em></p>
+<p><em>The skew is still there, but the distribution now looks more symmetrical and the Skew coefficient has decreased to <span class="math inline">\(-0.1\)</span>. The kurtosis has turned platykurtic -0.73.</em></p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>LogHP<span class="ot">&lt;-</span><span class="fu">log</span>(mtcars<span class="sc">$</span>hp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><em>Let’s use this new variable to create our histogram:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="fu">aes</span>(LogHP), <span class="at">bins =</span> <span class="dv">5</span>,</span>
-<span id="cb25-3"><a href="#cb25-3" aria-hidden="true" tabindex="-1"></a>                 <span class="at">col=</span><span class="st">"black"</span>, <span class="at">bg=</span><span class="st">"grey"</span>) <span class="sc">+</span></span>
-<span id="cb25-4"><a href="#cb25-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>() <span class="sc">+</span></span>
-<span id="cb25-5"><a href="#cb25-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">mean</span>(LogHP), <span class="at">col=</span><span class="st">"black"</span>)<span class="sc">+</span></span>
-<span id="cb25-6"><a href="#cb25-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> <span class="fu">median</span>(LogHP), <span class="at">col=</span><span class="st">"orange"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-20-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p><em>The mean and the variance now look closer together. The tail of the distribution (skew) now also looks diminished. The Skewness coefficient has decreased significantly:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a>(SkewLogHP<span class="ot">&lt;-</span><span class="dv">3</span><span class="sc">*</span>(<span class="fu">mean</span>(LogHP)<span class="sc">-</span><span class="fu">median</span>(LogHP))<span class="sc">/</span><span class="fu">sd</span>(LogHP))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4402212</code></pre>
-</div>
-</div>
+<em>The mean and the variance now look closer together.</em>
 </details>
 
 

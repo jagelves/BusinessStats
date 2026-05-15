@@ -512,7 +512,100 @@ quantile(Ex1,type = 6)
 
 ### Exercise 2 {.unnumbered}
 
-You will need the **Stocks** data set to answer this question. You can find this data at https://jagelves.github.io/Data/Stocks.csv The data is a sample of daily stock prices for ticker symbols TSLA (Tesla), VTI (S&P 500) and GBTC (Bitcoin).
+A financial analyst tracks the monthly revenue growth rates (in 
+percent) of a small e-commerce startup over five months:
+
+|  1  |  2  |  3  |  4  |  5  |
+|:---:|:---:|:---:|:---:|:---:|
+|  2  |  2  |  2  |  6  | 13  |
+
+1. Calculate the sample mean and sample standard deviation.
+
+<details>
+<summary>Answer</summary>
+<div style="padding-left: 1.5em;">
+
+$$\bar{x} = \frac{2+2+2+6+13}{5} = \frac{25}{5} = 5$$
+
+$$s = \sqrt{\frac{9+9+9+1+64}{4}} = \sqrt{23} = 4.796$$
+
+</div>
+</details>
+
+2. For each observation compute the standardized value 
+$\frac{x_i - \bar{x}}{s}$, its cube, and its fourth power. 
+Organize your results in a table.
+
+<details>
+<summary>Answer</summary>
+<div style="padding-left: 1.5em;">
+
+| $x_i$ | $x_i - \bar{x}$ | $\frac{x_i-\bar{x}}{s}$ | $\left(\frac{x_i-\bar{x}}{s}\right)^3$ | $\left(\frac{x_i-\bar{x}}{s}\right)^4$ |
+|:-----:|:---------------:|:------------------------:|:--------------------------------------:|:--------------------------------------:|
+|   2   |      $-3$       |        $-0.625$          |              $-0.244$                  |               $0.153$                  |
+|   2   |      $-3$       |        $-0.625$          |              $-0.244$                  |               $0.153$                  |
+|   2   |      $-3$       |        $-0.625$          |              $-0.244$                  |               $0.153$                  |
+|   6   |       $1$       |         $0.208$          |               $0.009$                  |               $0.002$                  |
+|  13   |       $8$       |         $1.667$          |               $4.630$                  |               $7.716$                  |
+
+</div>
+</details>
+
+3. Use the results from part 2 to calculate the skewness. 
+Is the distribution left-skewed, right-skewed, or symmetric?
+
+<details>
+<summary>Answer</summary>
+<div style="padding-left: 1.5em;">
+
+$$Sk = \frac{5}{(4)(3)}\sum\left(\frac{x_i-\bar{x}}{s}\right)^3 = \frac{5}{12}(-0.244-0.244-0.244+0.009+4.630)$$
+$$= \frac{5}{12}(3.907) = 1.628$$
+
+*Since $Sk > 0$ the distribution is right-skewed. Three months had 
+modest growth of $2\%$ while one exceptional month of $13\%$ pulls 
+the tail to the right.*
+
+</div>
+</details>
+
+4. Use the results from part 2 to calculate the excess kurtosis. 
+Is the distribution leptokurtic, mesokurtic, or platykurtic?
+
+<details>
+<summary>Answer</summary>
+<div style="padding-left: 1.5em;">
+
+$$K = \frac{5(6)}{(4)(3)(2)}\sum\left(\frac{x_i-\bar{x}}{s}\right)^4 - \frac{3(4)^2}{(3)(2)}$$
+$$= \frac{30}{24}(0.153+0.153+0.153+0.002+7.716) - \frac{48}{6}$$
+$$= \frac{30}{24}(8.177) - 8 = 10.221 - 8 = 2.221$$
+
+*Since $K > 0$ the distribution is leptokurtic — the tail is heavier 
+than a normal distribution, driven by the exceptional month of 
+$13\%$ growth.*
+
+</div>
+</details>
+
+5. Verify your results using `=SKEW()` and `=KURT()` in Excel.
+
+<details>
+<summary>Answer</summary>
+<div style="padding-left: 1.5em;">
+
+- `=SKEW(2,2,2,6,13)` → $1.628$
+- `=KURT(2,2,2,6,13)` → $2.221$
+
+</div>
+</details>
+
+
+### Exercise 3 {.unnumbered}
+
+You will need the **Stocks** data set to answer this question. You can find this data here:
+
+[{{< fa file-excel >}} Download Data](stocks.xlsx){.btn .btn-success}
+
+The data is a sample of daily stock prices for ticker symbols TSLA (Tesla), VTI (S&P 500) and GBTC (Bitcoin).
 
 1.  Construct a boxplot for Stock A. Is the data skewed or symmetric?
 
@@ -522,16 +615,10 @@ You will need the **Stocks** data set to answer this question. You can find this
 
 *The data is skewed to the right.*
 
-*Start by loading the data set:*
-
-```{r}
+```{r echo=FALSE, message=FALSE}
 library(ggthemes)
 StockPrices<-read.csv("https://jagelves.github.io/Data/Stocks.csv")
-```
 
-*To construct the boxplot in R, use the `boxplot()` command.*
-
-```{r}
 StockPrices %>% 
   ggplot() +
   geom_boxplot(aes(y=VTI),
@@ -553,9 +640,7 @@ StockPrices %>%
 
 *The mean is more sensitive to outliers than the median. Hence, when the data is skewed to the right we expect that the mean is larger than the median.*
 
-*Let's construct a histogram in R to search for skewness.*
-
-```{r}
+```{r echo=FALSE, message=FALSE}
 StockPrices %>% ggplot() +
   geom_histogram(aes(VTI), bins = 8,
                  binwidth = 8,
@@ -566,9 +651,9 @@ StockPrices %>% ggplot() +
   geom_vline(xintercept = median(StockPrices$VTI), col="orange")
 ```
 
-*The lines are close to each other but the mean is slightlty larger than the median. Let's confirm with the skewness statistic* $3(mean-median)/sd$.
+*The lines are close to each other but the mean is slightlty larger than the median. Let's confirm with the skewness statistic*: 
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 (skew<-3*(mean(StockPrices$VTI-median(StockPrices$VTI))/sd(StockPrices$VTI)))
 ```
 
@@ -584,7 +669,7 @@ StockPrices %>% ggplot() +
 
 *The line chart indicates that the data has a downward trend in the early periods. This creates a few points that are large. In later periods the stock price stabilizes to lower levels.*
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 StockPrices %>% ggplot() +
   geom_line(aes(y=VTI, x=seq(1,length(VTI)))) + theme_clean() +
   labs(x="Period")
@@ -592,11 +677,13 @@ StockPrices %>% ggplot() +
 
 </details>
 
-### Exercise 3 {.unnumbered}
+### Exercise 4 {.unnumbered}
 
-You will need the **mtcars** data set to answer this question. This data set is part of R. You don't need to download any files to access it.
+You will need the **mtcars** data set to answer this question. The dataset contains data on 32 automobile models and 11 variables including miles per gallon (mpg), number of cylinders (cyl), horsepower (hp), weight (wt), and transmission type (am), among others. You can find the data here:
 
-1.  Construct a boxplot for the *hp* variable. Write a command in R that retrieves the outlier. Which car is the outlier?
+[{{< fa file-excel >}} Download Data](mtcars.xlsx){.btn .btn-success}
+
+1.  Construct a boxplot for the *hp* variable. Which car is the outlier?
 
 <details>
 
@@ -604,9 +691,8 @@ You will need the **mtcars** data set to answer this question. This data set is 
 
 *The outlier is the Masserati Bora. The horse power is* $335$.
 
-*In R we can construct a boxplot with the following command:*
 
-```{r}
+```{r echo=FALSE, message=FALSE}
 mtcars %>% 
   ggplot() +
   geom_boxplot(aes(y=hp),
@@ -617,27 +703,19 @@ mtcars %>%
   scale_x_continuous(breaks = NULL, limits=c(-1,1))
 ```
 
-*From the graph it seems like the outlier is beyond a horsepower of 275. Let's write an R command to retrieve the car.*
-
-```{r}
-mtcars %>% filter(hp>300)
-```
-
-*It's the Masserati Bora!*
+*From the graph it seems like the outlier is beyond a horsepower of 275, which is th Masserati Bora!* 
 
 </details>
 
-2.  Create a histogram of the data. Is the data skewed? Include a vertical line for the mean and median. Calculate the skewness statistic to confirm your result.
+2.  Create a histogram of the data. Is the data skewed or leptokurtic? Calculate the skewness and kurtosis statistics to confirm your result.
 
 <details>
 
 <summary>Answer</summary>
 
-*The histogram looks skewed to the right. This is confirmed by the estimation of a Pearson coefficient fo skewness of* $1.04$.
+*The histogram looks skewed to the right. This is confirmed by the estimation of the coefficient of skewness of $0.8$. The histogram also shows also heavy tails which is confirmed with the kurtosis being $0.275>0$.*
 
-*In R we can construct a histogram with vertical lines for the mean and median with the following code:*
-
-```{r}
+```{r echo=FALSE, message=FALSE}
 mtcars %>% ggplot() +
   geom_histogram(aes(hp), bins = 5,
                  binwidth = 60,
@@ -648,12 +726,6 @@ mtcars %>% ggplot() +
   geom_vline(xintercept = median(StockPrices$VTI), col="orange")
 ```
 
-*The histogram looks skewed to the right. Pearson's Coefficient of Skewness is:*
-
-```{r}
-(SkewHP<-3*(mean(mtcars$hp)-median(mtcars$hp))/sd(mtcars$hp))
-```
-
 </details>
 
 3.  Transform the data by taking a natural logarithm. Specifically, create a new variable called *Loghp*. Repeat the procedure in 2. Is the skew still there?
@@ -662,17 +734,10 @@ mtcars %>% ggplot() +
 
 <summary>Answer</summary>
 
-*The skew is still there, but the distribution now look more symmetrical and the Skew coefficient has decreased to* $0.44$.
+*The skew is still there, but the distribution now looks more symmetrical and the Skew coefficient has decreased to $-0.1$. The kurtosis has turned platykurtic -0.73.*
 
-*In R we can create an new variable that captures the log transformation. The `log()` function takes the natural logarithm of a number or vector.*
-
-```{r}
+```{r echo=FALSE, message=FALSE}
 LogHP<-log(mtcars$hp)
-```
-
-*Let's use this new variable to create our histogram:*
-
-```{r}
 ggplot() +
   geom_histogram(aes(LogHP), bins = 5,
                  col="black", bg="grey") +
@@ -681,10 +746,5 @@ ggplot() +
   geom_vline(xintercept = median(LogHP), col="orange")
 ```
 
-*The mean and the variance now look closer together. The tail of the distribution (skew) now also looks diminished. The Skewness coefficient has decreased significantly:*
-
-```{r}
-(SkewLogHP<-3*(mean(LogHP)-median(LogHP))/sd(LogHP))
-```
-
+*The mean and the variance now look closer together.* 
 </details>
