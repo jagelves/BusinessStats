@@ -382,6 +382,9 @@ details summary {
 <section id="chebyshevs-theorem" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="chebyshevs-theorem"><span class="header-section-number">5.2</span> Chebyshev’s Theorem</h2>
 <p>Chebyshev’s Theorem is an important theorem, as it helps you form an expectation of the proportion of data that must lie between a given standard deviation from the mean. This offers a baseline to understanding the range and distribution of your data, and aids in detecting outliers. Formally, <strong>Chebyshev’s Theorem</strong> states that regardless of the shape of the distribution, at least (<span class="math inline">\(1-1/z^2\)</span>)% of the data lies between <span class="math inline">\(z\)</span> standard deviations from the mean.</p>
+<div class="callout-formula">
+<p><strong>CHEBYSHEV’S THEOREM</strong> <span class="math display">\[1 - \frac{1}{k^2}\]</span> where <span class="math inline">\(k\)</span> is the number of standard deviations from the mean and <span class="math inline">\(k &gt; 1\)</span>.</p>
+</div>
 <div class="callout-example">
 <p><strong>Example:</strong> For a given data set, we want to know at least how much of the data lies within two standard deviations of the mean. Substituting <span class="math inline">\(k=2\)</span> into Chebyshev’s formula yields <span class="math inline">\(1-\frac{1}{2^2}=1-\frac{1}{4}=0.75\)</span>. Hence, at least <span class="math inline">\(75\%\)</span> of the data lies within two standard deviations from the mean.</p>
 </div>
@@ -414,7 +417,26 @@ details summary {
 </section>
 <section id="skew" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="skew"><span class="header-section-number">5.5</span> Skew</h2>
-<p>A measurement of skew, identifies asymmetry in the distribution of data. If most of the data leans towards one side, it’s skewed. If it leans to the left, it’s left-skewed or negatively skewed, meaning the tail on the left side is longer. If it leans to the right, it’s right-skewed or positively skewed, with a longer tail on the right. If the data is evenly distributed, it’s not skewed at all, it’s symmetric. To determine if the data is skewed, calculate the <strong>Pearson’s Coefficient of Skew</strong>. <span class="math inline">\(Sk=\frac{3(\bar {x}- Median)}{s_x}\)</span>. The distribution is skewed to the left if <span class="math inline">\(Sk&lt;0\)</span>, skewed to the right is <span class="math inline">\(Sk&gt;0\)</span>, and symmetric if <span class="math inline">\(Sk=0\)</span>.</p>
+<p>A measurement of skew, identifies asymmetry in the distribution of data. If most of the data leans towards one side, it’s skewed. If it leans to the left, it’s left-skewed or negatively skewed, meaning the tail on the left side is longer. If it leans to the right, it’s right-skewed or positively skewed, with a longer tail on the right. If the data is evenly distributed, it’s not skewed at all, it’s symmetric. To determine if the data is skewed, calculate the <strong>Coefficient of Skew</strong>.</p>
+<div class="callout-formula">
+<p><strong>SKEWNESS</strong> <span class="math display">\[Sk=\frac{n}{(n-1)(n-2)}\sum\left(\frac{x_i-\bar{x}}{s}\right)^3\]</span> where <span class="math inline">\(n\)</span> is the sample size, <span class="math inline">\(\bar{x}\)</span> is the sample mean, and <span class="math inline">\(s\)</span> is the sample standard deviation.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(Sk &lt; 0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Sk = 0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Sk &gt; 0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Left-skewed</td>
+<td style="text-align: center;">Symmetric</td>
+<td style="text-align: center;">Right-skewed</td>
+</tr>
+</tbody>
+</table>
+</div>
 <p>The image below shows the different types of skew:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -426,7 +448,55 @@ details summary {
 </div>
 </div>
 <div class="callout-example">
-<p><strong>Example:</strong> Assume that for a variable the mean is 10, the median is 8, and the standard deviation is 3. The Pearson coefficient of skew is equal to* <span class="math inline">\(Sk=3(10-8)/3=2\)</span>. Since the skew is positive, we expect the distribution to be right skewed.</p>
+<p><strong>Example:</strong> Consider the IQ scores <span class="math inline">\(IQ=\{75, 80, 90, 100, 110, 130\}\)</span> with <span class="math inline">\(n=6\)</span>, <span class="math inline">\(\bar{x}=97.5\)</span>, and <span class="math inline">\(s=20.43\)</span>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 35%">
+<col style="width: 54%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\frac{x_i-\bar{x}}{s}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(\left(\frac{x_i-\bar{x}}{s}\right)^3\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">75</td>
+<td style="text-align: center;"><span class="math inline">\(-1.101\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-1.335\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">80</td>
+<td style="text-align: center;"><span class="math inline">\(-0.857\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-0.628\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">90</td>
+<td style="text-align: center;"><span class="math inline">\(-0.367\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-0.050\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">100</td>
+<td style="text-align: center;"><span class="math inline">\(0.122\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.002\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">110</td>
+<td style="text-align: center;"><span class="math inline">\(0.612\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.229\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">130</td>
+<td style="text-align: center;"><span class="math inline">\(1.591\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(4.024\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[Sk = \frac{6}{(5)(4)}\times(2.242) = \frac{6}{20}\times 2.242 = 0.673\]</span></p>
+<p>Since <span class="math inline">\(Sk &gt; 0\)</span> the distribution is right-skewed, which makes intuitive sense — most IQ scores cluster below the mean while the score of <span class="math inline">\(130\)</span> pulls the tail to the right.</p>
 </div>
 </section>
 <section id="kurtosis" class="level2" data-number="5.6">
