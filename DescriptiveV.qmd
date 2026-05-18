@@ -748,3 +748,94 @@ ggplot() +
 
 *The mean and the variance now look closer together.* 
 </details>
+
+
+### Exercise 5 {.unnumbered}
+
+A quality control manager records the number of units produced per 
+hour by a manufacturing machine over eight shifts:
+
+|  1  |  2  |  3  |  4  |  5  |  6  |  7  |  8  |
+|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|  5  | 48  | 52  | 55  | 58  | 62  | 65  | 70  |
+
+1. Find the five point summary: minimum, $Q_1$, median, $Q_3$, 
+and maximum.
+
+<details>
+<summary>Answer</summary>
+<div style="padding-left: 1.5em;">
+
+*Sort the data: $\{5, 48, 52, 55, 58, 62, 65, 70\}$.*
+
+*Using $L_p = 1 + k(n-1)$:*
+
+*$L_{25} = 1 + 0.25(7) = 2.75$ → $Q_1 = 48 + 0.75(52-48) = 51$*
+
+*$L_{50} = 1 + 0.50(7) = 4.5$ → $Median = 55 + 0.5(58-55) = 56.5$*
+
+*$L_{75} = 1 + 0.75(7) = 6.25$ → $Q_3 = 62 + 0.25(65-62) = 62.75$*
+
+| $Min$ | $Q_1$ | $Median$ | $Q_3$ | $Max$ |
+|:-----:|:-----:|:--------:|:-----:|:-----:|
+|   5   |  51   |   56.5   | 62.75 |  70   |
+
+</div>
+</details>
+
+2. Calculate the IQR and the lower and upper outlier limits.
+
+<details>
+<summary>Answer</summary>
+<div style="padding-left: 1.5em;">
+
+$$IQR = Q_3 - Q_1 = 62.75 - 51 = 11.75$$
+
+$$LL = Q_1 - 1.5 \times IQR = 51 - 1.5(11.75) = 51 - 17.625 = 33.375$$
+
+$$UL = Q_3 + 1.5 \times IQR = 62.75 + 1.5(11.75) = 62.75 + 17.625 = 80.375$$
+
+*Any observation below $33.375$ or above $80.375$ is an outlier. 
+The value $5$ falls below the lower limit and is therefore 
+identified as an outlier. This likely represents a shift where 
+the machine malfunctioned or was taken offline for maintenance.*
+
+</div>
+</details>
+
+3. Draw a box plot with whiskers and clearly mark any outliers.
+
+<details>
+<summary>Answer</summary>
+<div style="padding-left: 1.5em;">
+
+*The box plot is constructed using the five point summary. The 
+whiskers extend from $Q_1$ to the smallest non-outlier value ($48$) 
+and from $Q_3$ to the largest non-outlier value ($70$). The outlier 
+$5$ is shown as a point below the lower whisker.*
+
+```{r echo=FALSE, message=FALSE}
+library(ggplot2)
+library(ggthemes)
+
+data <- c(5, 48, 52, 55, 58, 62, 65, 70)
+
+ggplot(data.frame(x = data), aes(y = x)) +
+  geom_boxplot(fill = "lightgrey", alpha = 0.5,
+               col = "black", width = 0.3) +
+  theme_clean() +
+  scale_x_continuous(breaks = NULL, limits = c(-1, 1)) +
+  labs(x = "", y = "Units Produced per Hour",
+       title = "Units Produced per Hour",
+       subtitle = "Manufacturing Machine — 8 Shifts") +
+  geom_jitter(aes(x = 0.35), width = 0.1,
+              pch = 21, alpha = 0.6, bg = "grey")
+```
+
+*The box plot clearly shows the outlier at $5$ units as an isolated 
+point well below the lower whisker. The remaining seven observations 
+are tightly clustered between $48$ and $70$, suggesting the machine 
+operates consistently when functioning normally.*
+
+</div>
+</details>
