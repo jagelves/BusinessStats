@@ -51,7 +51,7 @@ where $\bar{x}$ is the sample mean and $n$ is the sample size.
 :::
 
 
-### Variance Intuition
+### Variance Intuition {.unnumbered}
 Let's consider a sample of the price of Ether, the native cryptocurrency of the Ethereum blockchain. Ether is one of the largest cryptocurrencies by market capitalization and is widely used to pay for transactions and services on the Ethereum network. Unlike traditional assets such as stocks or bonds, cryptocurrencies like Ether are not backed by earnings or government guarantees, which makes their prices highly sensitive to speculation, regulatory news, and shifts in investor sentiment. As a result, Ether is known for dramatic price swings — sometimes gaining or losing double-digit percentages within a single day — making it an ideal case study for measures of dispersion. Below is a graph of the prices:
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
@@ -66,7 +66,7 @@ knitr::include_graphics("images/Ether2.png")
 
 Ideally, our measure of dispersion would simply average the distances from each data point to the mean, giving us a clear indication of how much the data varies around this central point. Since the mean is a measure that balances the distances from the mean, the sum of all deviations is equal to zero. This "balancing" effect is visually apparent in the graph, where positive deviations are exactly offset by negative ones. To address this issue, the variance squares each deviation from the mean before finding the average.
 
-### Variance Step By Step Calculation
+### Variance Step By Step Calculation {.unnumbered}
 Consider the data $x=\{480, 1050, 1400, 2500, 3200\}$. 
 Treating this as a sample, let's calculate the variance step by step.
 
