@@ -301,7 +301,7 @@ head(faithful, 5) %>%
 Assuming the `eruptions` variable is in column A of your Excel 
 spreadsheet, the functions below will replicate the R output.
 
-### Outliers in Excel
+### Outliers in Excel {.unnumbered}
 
 To identify outliers using the z-score method, calculate the z-score 
 for each observation using `=STANDARDIZE()`. In a new column, enter:
@@ -336,7 +336,7 @@ faithful %>%
 As confirmed earlier, none of the observations are outliers as all 
 z-scores are within three standard deviations of the mean.
 
-### Five Point Summary in Excel
+### Five Point Summary in Excel {.unnumbered}
 
 To calculate the five point summary use `=QUARTILE.INC()`. The 
 argument `quart` takes values $0$ through $4$:
@@ -375,7 +375,7 @@ tibble(
                  cell_text(weight = "bold")))
 ```
 
-### Skewness and Kurtosis in Excel
+### Skewness and Kurtosis in Excel {.unnumbered}
 
 To calculate skewness use `=SKEW()` and for excess kurtosis use 
 `=KURT()`. Both functions use the bias-corrected formulas presented 
