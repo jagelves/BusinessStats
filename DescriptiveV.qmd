@@ -192,6 +192,12 @@ is the sample standard deviation.
 | Platykurtic (light tails) | Mesokurtic | Leptokurtic (heavy tails) |
 :::
 
+Below you can see a graph illustrating the different types of kurtosis:
+
+```{r echo=FALSE, out.width="100%", fig.align='center'}
+knitr::include_graphics("images/Kurtosis.png")
+```
+
 ::: {.callout-example}
 **Example:** Consider once more the IQ scores 
 $IQ=\{75, 80, 90, 100, 110, 130\}$ with $n=6$, $\bar{x}=97.5$, 
