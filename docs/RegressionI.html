@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -74,7 +40,9 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-64ceb912cc357be7afec3ea88009646a.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-9904b5196d746cb5bc47063911474b57.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -293,8 +261,9 @@ window.Quarto = {
   <li><a href="#the-covariance" id="toc-the-covariance" class="nav-link active" data-scroll-target="#the-covariance"><span class="header-section-number">6.1</span> The Covariance</a></li>
   <li><a href="#the-correlation" id="toc-the-correlation" class="nav-link" data-scroll-target="#the-correlation"><span class="header-section-number">6.2</span> The Correlation</a></li>
   <li><a href="#the-coefficient-of-determination-r2" id="toc-the-coefficient-of-determination-r2" class="nav-link" data-scroll-target="#the-coefficient-of-determination-r2"><span class="header-section-number">6.3</span> The Coefficient of Determination (<span class="math inline">\(R^2\)</span>)</a></li>
-  <li><a href="#measures-of-association-in-r" id="toc-measures-of-association-in-r" class="nav-link" data-scroll-target="#measures-of-association-in-r"><span class="header-section-number">6.4</span> Measures of Association in R</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.5</span> Exercises</a>
+  <li><a href="#measures-of-association-in-excel" id="toc-measures-of-association-in-excel" class="nav-link" data-scroll-target="#measures-of-association-in-excel"><span class="header-section-number">6.4</span> Measures of Association in Excel</a></li>
+  <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">6.5</span> Excel Function Summary</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.6</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -329,139 +298,697 @@ window.Quarto = {
 details {
   background-color: #F8F9FA;
   padding: 5px;
-  border: 1px solid #ddd; /* Light border */
-  border-radius: 5px; /* Rounded corners */
-  margin: 10px 0; /* Spacing */
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  margin: 10px 0;
 }
-
 details summary {
-  cursor: pointer; /* Pointer cursor for interactivity */
+  cursor: pointer;
 }
 </style>
 <p>Measures of association are essential tools in business statistics for analyzing relationships between variables. They help determine whether changes in one variable are linked to changes in another, providing valuable insights into patterns and dependencies. Understanding these relationships is critical for making informed decisions. By quantifying the strength and direction of associations, businesses can better interpret data, optimize strategies, and drive meaningful outcomes. Below we study important measures of association.</p>
 <section id="the-covariance" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="the-covariance"><span class="header-section-number">6.1</span> The Covariance</h2>
-<p>The <strong>covariance</strong> is a measure that determines the direction of the relationship between two variables. It is calculated by: <span class="math display">\[s_{xy}=\frac {\sum(x_i-\bar{x})(y_i-\bar{y})}{n-1}\]</span> The result of the covariance indicates the relationship between the two variables. If <span class="math inline">\(s_{xy}&gt;0\)</span> there is a direct relationship, if <span class="math inline">\(s_{xy}&lt;0\)</span> there is an inverse relationship, and if <span class="math inline">\(s_{xy}=0\)</span> there is no relationship.</p>
+<p>The <strong>covariance</strong> is a measure that determines the direction of the relationship between two variables. It is calculated by:</p>
+<div class="callout-formula">
+<p><strong>THE COVARIANCE</strong> <span class="math display">\[s_{xy}=\frac{\sum(x_i-\bar{x})(y_i-\bar{y})}{n-1}\]</span> where <span class="math inline">\(x_i\)</span> and <span class="math inline">\(y_i\)</span> are observations, <span class="math inline">\(\bar{x}\)</span> and <span class="math inline">\(\bar{y}\)</span> are the sample means, and <span class="math inline">\(n\)</span> is the sample size.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(s_{xy} &gt; 0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(s_{xy} = 0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(s_{xy} &lt; 0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Direct relationship</td>
+<td style="text-align: center;">No relationship</td>
+<td style="text-align: center;">Inverse relationship</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="callout-example">
 <p><strong>Example:</strong> Let’s consider the following data that captures the price of stocks (SPY) and bonds (BND):</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/StocksBonds.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Period</th>
+<th style="text-align: center;">SPY</th>
+<th style="text-align: center;">BND</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">87</td>
+<td style="text-align: center;">316</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">86</td>
+<td style="text-align: center;">380</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">84</td>
+<td style="text-align: center;">416</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">85</td>
+<td style="text-align: center;">430</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">83</td>
+<td style="text-align: center;">440</td>
+</tr>
+</tbody>
+</table>
+<p>The idea behind calculating a covariance is to determine whether there is a relationship between the two variables. We start by finding the deviations from the mean for both SPY and BND:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Period</th>
+<th style="text-align: center;">SPY</th>
+<th style="text-align: center;">BND</th>
+<th style="text-align: center;"><span class="math inline">\(SPY - \bar{SPY}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(BND - \bar{BND}\)</span></th>
+<th style="text-align: center;">Product</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">87</td>
+<td style="text-align: center;">316</td>
+<td style="text-align: center;"><span class="math inline">\(2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-80\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-160\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">86</td>
+<td style="text-align: center;">380</td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-16\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-16\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">84</td>
+<td style="text-align: center;">416</td>
+<td style="text-align: center;"><span class="math inline">\(-1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(20\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-20\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">85</td>
+<td style="text-align: center;">430</td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(34\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">83</td>
+<td style="text-align: center;">440</td>
+<td style="text-align: center;"><span class="math inline">\(-2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(44\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-88\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The covariance is the average of the products column using <span class="math inline">\(n-1\)</span>:</p>
+<p><span class="math display">\[s_{xy} = \frac{-160 + (-16) + (-20) + 0 + (-88)}{5-1} =
+\frac{-284}{4} = -71\]</span></p>
+<p>Since <span class="math inline">\(s_{xy} &lt; 0\)</span> there is an inverse relationship between SPY and BND. Intuitively, the covariance checks whether on average the products of the deviations from the mean is positive or negative. Whenever <span class="math inline">\(x\)</span> lies below its mean and <span class="math inline">\(y\)</span> lies above its mean, the product is negative — and vice versa — reflecting the inverse relationship between the two variables.</p>
 </div>
-</div>
-</div>
-<p>The idea behind calculating a covariance is to determine whether there is a relationship between the two variables. Let’s start by calculating the formula. We can do this by finding deviations from the mean for both SPY and BND. The table below shows the deviations from the mean for each variable in columns 3 and 4.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/cov1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>Column 5 calculates the product between column 3 and column 4. The covariance is simply the average of the numbers of column 5 by using the degrees of freedom <span class="math inline">\(n-1\)</span>. Hence, <span class="math inline">\(s_{xy}=-71\)</span>. Since <span class="math inline">\(s_{xy}\)</span> is negative we can establish that there is an inverse relationship between SPY and BND.</p>
-<p>Intuitively, the covariance checks whether on average the products of the deviations from the mean is positive or negative. The image below explains the intuition.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/cov.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The image plots the SPY and BDN in a scatter plot. You can see that there is an inverse relationship. The vertical and horizontal lines represents the mean of SPY and the mean of BND, respectively. The red numbers are the deviations from the mean (you can compare with the table). So whenever x lies below the mean and y lies above its mean, the product is negative. This happens as well when x lies above the mean and y underneath its mean. As a result, the points are aligned so that an inverse relationship is reflected. You’ll notice that the product of the deviations in these cases is negative, and ultimately measured with the covariance.</p>
 </section>
 <section id="the-correlation" class="level2" data-number="6.2">
 <h2 data-number="6.2" class="anchored" data-anchor-id="the-correlation"><span class="header-section-number">6.2</span> The Correlation</h2>
-<p>The <strong>correlation</strong> measures the strength of the linear relationship between two variables. It is calculated by <span class="math display">\[r= \frac {s_{xy}}{s_x s_y}\]</span> The correlation coefficient is between <span class="math inline">\([-1,1]\)</span>. When the correlation coefficient is <span class="math inline">\(1\)</span> (<span class="math inline">\(-1\)</span>), there is a perfect direct (inverse) relationship between the two variables.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/cor.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
+<p>The <strong>correlation</strong> measures the strength of the linear relationship between two variables. It is calculated by:</p>
+<div class="callout-formula">
+<p><strong>THE CORRELATION COEFFICIENT</strong> <span class="math display">\[r = \frac{s_{xy}}{s_x \cdot s_y}\]</span> where <span class="math inline">\(s_{xy}\)</span> is the covariance, <span class="math inline">\(s_x\)</span> is the standard deviation of <span class="math inline">\(x\)</span>, and <span class="math inline">\(s_y\)</span> is the standard deviation of <span class="math inline">\(y\)</span>.</p>
+<p>The correlation coefficient lies between <span class="math inline">\([-1, 1]\)</span>:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 20%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(r = -1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(-1 &lt; r &lt; 0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(r = 0\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(0 &lt; r &lt; 1\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(r = 1\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Perfect inverse</td>
+<td style="text-align: center;">Inverse</td>
+<td style="text-align: center;">No relationship</td>
+<td style="text-align: center;">Direct</td>
+<td style="text-align: center;">Perfect direct</td>
+</tr>
+</tbody>
+</table>
 </div>
+<p>The strength of the relationship is determined by the absolute value of <span class="math inline">\(r\)</span>. Values close to <span class="math inline">\(1\)</span> indicate a strong relationship, values close to <span class="math inline">\(0\)</span> indicate a weak relationship.</p>
+<div class="callout-example">
+<p><strong>Example:</strong> Consider the SPY and BND data. The standard deviation of SPY is <span class="math inline">\(s_{SPY} = 1.58\)</span> and that of BND is <span class="math inline">\(s_{BND} = 50.37\)</span>. Substituting into the correlation formula:</p>
+<p><span class="math display">\[r = \frac{-71}{1.58 \times 50.37} = -0.89\]</span></p>
+<p>This indicates that the relationship between SPY and BND is inverse and strong.</p>
 </div>
-</div>
-<p>The image above shows three examples of correlation coefficients. When the correlation coefficient is -0.4 or 0.4 the direction of the relationship depends on the sign of the coefficient. The magnitude of 0.4 indicates that the strength of the relationship is moderate (i.e., a general linear pattern is observed but many points do not lie on the trend line). When the correlation coefficient is zero, there is no linear pattern in the relationship. When the absolute value of the correlation is 1, then there is a perfect linear relationship between the two variables.</p>
-<p><em>Ex: Consider the SPY and BND data. The standard deviation of SPY is</em> <span class="math inline">\(1.58\)</span> and that of BDN is <span class="math inline">\(50.37\)</span>. Substituting into the correlation formula we get a correlation coefficient of <span class="math inline">\(r= \frac {-71}{1.58 \times 50.37}=-0.89\)</span>. This indicates that the relationship between SPY and BND is inverse and strong.</p>
 </section>
 <section id="the-coefficient-of-determination-r2" class="level2" data-number="6.3">
 <h2 data-number="6.3" class="anchored" data-anchor-id="the-coefficient-of-determination-r2"><span class="header-section-number">6.3</span> The Coefficient of Determination (<span class="math inline">\(R^2\)</span>)</h2>
-<p>The <strong>coefficient of determination</strong> or <span class="math inline">\(R^2\)</span>, measures the percent of variation in <span class="math inline">\(y\)</span> explained by variations in <span class="math inline">\(x\)</span>. It is calculated by:</p>
-<p><span class="math display">\[R^2=r^2\]</span> The number that we get from the <span class="math inline">\(R^2\)</span> tells us how well a variable (x) explains the variation in the another variable (y). The number could be anywhere from zero (indicating that the two variables are unrelated), to one (indicating that one variable explains entirely the variation of the other variable).</p>
-<p><em>Ex: Consider once more the SPY and BND example. The correlation coefficient is given by</em> <span class="math inline">\(r=-0.89\)</span>. The <span class="math inline">\(R^2=(-0.89)^2=0.79\)</span>. This indicates that about 80% of the variation in the BND can be explained by the changes in SPY. Hence, these two variables are closely related.</p>
+<p>The <strong>coefficient of determination</strong> or <span class="math inline">\(R^2\)</span> measures the percent of variation in <span class="math inline">\(y\)</span> explained by variations in <span class="math inline">\(x\)</span>. It is calculated by:</p>
+<div class="callout-formula">
+<p><strong>THE COEFFICIENT OF DETERMINATION</strong> <span class="math display">\[R^2 = r^2\]</span> where <span class="math inline">\(r\)</span> is the correlation coefficient. <span class="math inline">\(R^2\)</span> ranges from <span class="math inline">\(0\)</span> (no relationship) to <span class="math inline">\(1\)</span> (perfect relationship).</p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> Consider once more the SPY and BND example. The correlation coefficient is <span class="math inline">\(r = -0.89\)</span>. Hence:</p>
+<p><span class="math display">\[R^2 = (-0.89)^2 = 0.79\]</span></p>
+<p>This indicates that about <span class="math inline">\(79\%\)</span> of the variation in BND can be explained by changes in SPY. The two variables are closely related.</p>
+</div>
 </section>
-<section id="measures-of-association-in-r" class="level2" data-number="6.4">
-<h2 data-number="6.4" class="anchored" data-anchor-id="measures-of-association-in-r"><span class="header-section-number">6.4</span> Measures of Association in R</h2>
-<p>R makes it very convenient to retrieve measures of association. Let’s get the data from SPY and BND example into R:</p>
+<section id="measures-of-association-in-excel" class="level2" data-number="6.4">
+<h2 data-number="6.4" class="anchored" data-anchor-id="measures-of-association-in-excel"><span class="header-section-number">6.4</span> Measures of Association in Excel</h2>
+<p>Excel provides straightforward functions to calculate all three measures of association. Let’s use the SPY and BND data from the example above.</p>
+<p><a href="spybnd.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
+<p><strong>Covariance:</strong> To calculate the sample covariance use <code>=COVARIANCE.S()</code>. Assuming SPY is in column A and BND is in column B:</p>
+<pre class="excel"><code>=COVARIANCE.S(A2:A6, B2:B6)</code></pre>
+<p><strong>Correlation:</strong> To calculate the correlation coefficient use <code>=CORREL()</code>:</p>
+<pre class="excel"><code>=CORREL(A2:A6, B2:B6)</code></pre>
+<p><strong>Coefficient of Determination:</strong> There is no direct Excel function for <span class="math inline">\(R^2\)</span> between two variables. Simply square the correlation coefficient:</p>
+<pre class="excel"><code>=CORREL(A2:A6, B2:B6)^2</code></pre>
+<p>The results for the SPY and BND data are:</p>
 <div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>data<span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">SPY=</span><span class="fu">c</span>(<span class="dv">87</span>,<span class="dv">86</span>,<span class="dv">84</span>,<span class="dv">85</span>,<span class="dv">83</span>), <span class="at">BND=</span><span class="fu">c</span>(<span class="dv">316</span>,<span class="dv">380</span>,<span class="dv">416</span>,<span class="dv">430</span>,<span class="dv">440</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>Now we can retrieve the covariance by using the <code>cov()</code> command in R. Below is the code:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(data<span class="sc">$</span>SPY,data<span class="sc">$</span>BND)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -71</code></pre>
-</div>
-</div>
-<p>We confirm that the covariance is -71 and that there is an inverse relationship between the variables. To verify the correlation coefficient, we use the code below:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>SPY,data<span class="sc">$</span>BND)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.891549</code></pre>
-</div>
-</div>
-<p>The correlation coefficient of -0.89 indicates a strong inverse linear relationship between the two variables. Lastly, the coefficient of determination is calculated below:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(data<span class="sc">$</span>SPY,data<span class="sc">$</span>BND)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7948597</code></pre>
-</div>
-</div>
-<p>It seems that about 80% of the variation in the price of bonds (BND) is explained by the variation in the price of stocks (SPY). We can create a visual of the relationship between the two variables by using the <code>geom_point()</code> function in R.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>data <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>SPY,<span class="at">x=</span>BND), <span class="at">col=</span><span class="st">"black"</span>,</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">cex=</span><span class="dv">2</span>, <span class="at">bg=</span><span class="st">"blue"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>, <span class="at">pch=</span><span class="dv">21</span>) <span class="sc">+</span></span>
-<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="RegressionI_files/figure-html/unnamed-chunk-9-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div id="bqedghipqo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#bqedghipqo table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#bqedghipqo thead, #bqedghipqo tbody, #bqedghipqo tfoot, #bqedghipqo tr, #bqedghipqo td, #bqedghipqo th {
+  border-style: none;
+}
+
+#bqedghipqo p {
+  margin: 0;
+  padding: 0;
+}
+
+#bqedghipqo .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#bqedghipqo .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#bqedghipqo .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#bqedghipqo .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#bqedghipqo .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bqedghipqo .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bqedghipqo .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#bqedghipqo .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#bqedghipqo .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#bqedghipqo .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#bqedghipqo .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#bqedghipqo .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#bqedghipqo .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#bqedghipqo .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#bqedghipqo .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#bqedghipqo .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#bqedghipqo .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#bqedghipqo .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#bqedghipqo .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bqedghipqo .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#bqedghipqo .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#bqedghipqo .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#bqedghipqo .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bqedghipqo .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#bqedghipqo .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#bqedghipqo .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bqedghipqo .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bqedghipqo .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#bqedghipqo .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bqedghipqo .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#bqedghipqo .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#bqedghipqo .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bqedghipqo .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bqedghipqo .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#bqedghipqo .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#bqedghipqo .gt_left {
+  text-align: left;
+}
+
+#bqedghipqo .gt_center {
+  text-align: center;
+}
+
+#bqedghipqo .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#bqedghipqo .gt_font_normal {
+  font-weight: normal;
+}
+
+#bqedghipqo .gt_font_bold {
+  font-weight: bold;
+}
+
+#bqedghipqo .gt_font_italic {
+  font-style: italic;
+}
+
+#bqedghipqo .gt_super {
+  font-size: 65%;
+}
+
+#bqedghipqo .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#bqedghipqo .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#bqedghipqo .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#bqedghipqo .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#bqedghipqo .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#bqedghipqo .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#bqedghipqo .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#bqedghipqo .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#bqedghipqo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_col_headings header">
+<th id="Covariance" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Covariance</th>
+<th id="Correlation" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">Correlation</th>
+<th id="R2" class="gt_col_heading gt_columns_bottom_border gt_center" data-quarto-table-cell-role="th" style="border-bottom-width: 3px; border-bottom-style: solid; border-bottom-color: #000000; font-weight: bold" scope="col">R2</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_center" headers="Covariance">−71.0000</td>
+<td class="gt_row gt_center" headers="Correlation">−0.8915</td>
+<td class="gt_row gt_center" headers="R2">0.7949</td>
+</tr>
+</tbody>
+</table>
+
 </div>
 </div>
 </div>
-<p>The visualization above is called a scatter plot. A <strong>scatter plot</strong> displays pairs of [<span class="math inline">\(x\)</span>,<span class="math inline">\(y\)</span>] as points on the Cartesian plane. The plot acts as a visual aid to determine the relationship between two variables. We can see that the points are inversely related to each other.</p>
-<p>Below is a list of the functions used:</p>
+<p><strong>Scatter Plot:</strong> To create a scatter plot in Excel, select both columns and go to <code>Insert → Charts → Scatter</code>. This will display the relationship between SPY and BND visually. To add a trend line, right-click any point in the scatter plot and select <code>Add Trendline → Linear</code>.</p>
+</section>
+<section id="excel-function-summary" class="level2" data-number="6.5">
+<h2 data-number="6.5" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">6.5</span> Excel Function Summary</h2>
+<p>Below is a list of the Excel functions used in this section:</p>
 <ul>
-<li><p>To calculate the covariance use the <code>cov()</code> function. The input must be two vectors (variables).</p></li>
-<li><p>The correlation coefficient is calculated with the <code>cor()</code> function. The input must be two vectors (variables).</p></li>
-<li><p>The <code>geom_point()</code> function will create scatter plots. Make sure you include two variables in the <code>aes()</code> function. The argument <em>cex</em> increases the size of the points, <em>pch</em> changes the point character, <em>bg</em> selects the color, and <em>alpha</em> adjusts the transparency of the background color (bg).</p></li>
+<li><p><code>=COVARIANCE.S(array1, array2)</code> calculates the sample covariance between two variables. Use <code>=COVARIANCE.P()</code> for the population covariance.</p></li>
+<li><p><code>=CORREL(array1, array2)</code> calculates the correlation coefficient between two variables. The result is always between <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span>.</p></li>
+<li><p><code>=CORREL(array1, array2)^2</code> calculates the coefficient of determination <span class="math inline">\(R^2\)</span> by squaring the correlation coefficient. Excel does not have a standalone <span class="math inline">\(R^2\)</span> function for two variables.</p></li>
 </ul>
 </section>
-<section id="exercises" class="level2" data-number="6.5">
-<h2 data-number="6.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.5</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="6.6">
+<h2 data-number="6.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.6</span> Exercises</h2>
 <p>The following exercises will help you understand statistical measures that establish the relationship between two variables. In particular, the exercises work on:</p>
 <ul>
-<li><p>Calculating covariance and correlation.</p></li>
-<li><p>Using R to plot scatter diagrams.</p></li>
-<li><p>Calculating the coefficient of determination.</p></li>
+<li>Calculating covariance and correlation.</li>
+<li>Creating scatter diagrams in Excel.</li>
+<li>Calculating the coefficient of determination.</li>
 </ul>
-<p>Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.</p>
+<p>Answers are provided below. Try not to peek until you have formulated your own answer and double checked your work for any mistakes.</p>
 <section id="exercise-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-1">Exercise 1</h3>
-<p>For the following exercises, make your calculations by hand and verify results using R functions when possible.</p>
+<p>For the following exercises, make your calculations by hand and verify results using Excel functions when possible.</p>
 <ol type="1">
-<li>Consider the data below. Calculate the covariance and correlation coefficient by finding deviations from the mean. Use R to verify your result. Is there a direct or inverse relationship between the two variables? How strong is the relationship?</li>
+<li>Consider the data below. Calculate the covariance and correlation coefficient by finding deviations from the mean. Verify your result using Excel. Is there a direct or inverse relationship between the two variables? How strong is the relationship?</li>
 </ol>
 <table class="caption-top table">
 <thead>
@@ -489,54 +1016,68 @@ details summary {
 <summary>
 Answer
 </summary>
-<p><em>The covariance is</em> <span class="math inline">\(14.9\)</span> and the correlation is <span class="math inline">\(0.96\)</span>. The results indicate that there is a strong direct relationship between the two variables.</p>
-<p><em>Let’s start by finding the deviations from the mean for the x variable in R.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">15</span>,<span class="dv">18</span>,<span class="dv">25</span>)</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>(devx<span class="ot">&lt;-</span>x<span class="sc">-</span><span class="fu">mean</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.2  1.2 -4.8 -1.8  5.2</code></pre>
-</div>
-</div>
-<p><em>We will do the same with y:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">19</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">22</span>)</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>(devy<span class="ot">&lt;-</span>y<span class="sc">-</span><span class="fu">mean</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.4  2.4 -4.6 -3.6  5.4</code></pre>
-</div>
-</div>
-<p><em>Note that when the deviations in x are negative (positive), they are also negative (positive) in y. This is indicative of a direct relationship between the two variables. The covariance is given by:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(Ex1Cov<span class="ot">&lt;-</span><span class="fu">sum</span>(devx<span class="sc">*</span>devy)<span class="sc">/</span>(<span class="fu">length</span>(devx)<span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 14.9</code></pre>
-</div>
-</div>
-<p><em>We can verify this by using <code>cov()</code> function in R.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 14.9</code></pre>
-</div>
-</div>
-<p><em>The correlation coefficient is found by dividing the covariance over the product of standard deviations. In R:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(Ex1Cor<span class="ot">&lt;-</span>Ex1Cov<span class="sc">/</span>(<span class="fu">sd</span>(x)<span class="sc">*</span><span class="fu">sd</span>(y)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9678386</code></pre>
-</div>
-</div>
-<p><em>We can once more verify the result in R with the built in function <code>cor()</code>.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(x,y)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9678386</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>The covariance is <span class="math inline">\(14.9\)</span> and the correlation is <span class="math inline">\(0.96\)</span>. The results indicate that there is a strong direct relationship between the two variables.</em></p>
+<p><em>Start by finding the mean of each variable: <span class="math inline">\(\bar{x} = 19.8\)</span> and <span class="math inline">\(\bar{y} = 16.6\)</span>. Then build the deviations table:</em></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(y_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x_i-\bar{x}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(y_i-\bar{y}\)</span></th>
+<th style="text-align: center;">Product</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;"><span class="math inline">\(0.2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.08\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;"><span class="math inline">\(1.2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2.4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2.88\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;"><span class="math inline">\(-4.8\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-4.6\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(22.08\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;"><span class="math inline">\(-1.8\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-3.6\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(6.48\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;"><span class="math inline">\(5.2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5.4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(28.08\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[s_{xy} = \frac{0.08+2.88+22.08+6.48+28.08}{4} = \frac{59.6}{4} = 14.9\]</span></p>
+<p><span class="math display">\[r = \frac{14.9}{sd(x) \times sd(y)} = \frac{14.9}{3.49 \times 4.34} = 0.96\]</span></p>
+<p><em>To verify in Excel, enter x in column A and y in column B and use:</em></p>
+<ul>
+<li><code>=COVARIANCE.S(A2:A6, B2:B6)</code> → <span class="math inline">\(14.9\)</span></li>
+<li><code>=CORREL(A2:A6, B2:B6)</code> → <span class="math inline">\(0.96\)</span></li>
+</ul>
 </div>
 </details>
 <ol start="2" type="1">
-<li>Consider the data below. Calculate the covariance and correlation coefficient by finding deviations from the mean. Use R to verify your result. Is there a direct or inverse relationship between the two variables? How strong is the relationship?</li>
+<li>Consider the data below. Calculate the covariance and correlation coefficient by finding deviations from the mean. Verify your result using Excel. Is there a direct or inverse relationship between the two variables? How strong is the relationship?</li>
 </ol>
 <table class="caption-top table">
 <thead>
@@ -564,170 +1105,106 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The covariance is</em> <span class="math inline">\(0.85\)</span> and the correlation is <span class="math inline">\(0.148\)</span>. The results indicate that there is a very weak direct relationship between the two variables. They might be unrelated.</p>
-<p><em>Let’s start with w and finding the deviations from the mean in R.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>w<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">19</span>,<span class="dv">16</span>,<span class="dv">14</span>,<span class="dv">11</span>,<span class="dv">18</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>(devw<span class="ot">&lt;-</span>w<span class="sc">-</span><span class="fu">mean</span>(w))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  3.4  0.4 -1.6 -4.6  2.4</code></pre>
-</div>
-</div>
-<p><em>We will do the same with z:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>z<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">20</span>,<span class="dv">20</span>,<span class="dv">16</span>,<span class="dv">18</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>(devz<span class="ot">&lt;-</span>z<span class="sc">-</span><span class="fu">mean</span>(z))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -1.2  1.8  1.8 -2.2 -0.2</code></pre>
-</div>
-</div>
-<p><em>The covariance is given by:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>(Ex2Cov<span class="ot">&lt;-</span><span class="fu">sum</span>(devw<span class="sc">*</span>devz)<span class="sc">/</span>(<span class="fu">length</span>(devz)<span class="sc">-</span><span class="dv">1</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.85</code></pre>
-</div>
-</div>
-<p><em>We can verify this with the <code>cov()</code> function in R.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cov</span>(w,z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.85</code></pre>
-</div>
-</div>
-<p><em>The correlation coefficient is found by dividing the covariance over the product of standard deviations. In R:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(Ex2Cor<span class="ot">&lt;-</span>Ex2Cov<span class="sc">/</span>(<span class="fu">sd</span>(z)<span class="sc">*</span><span class="fu">sd</span>(w)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1480558</code></pre>
-</div>
-</div>
-<p><em>We can once more verify the result in R with the built in function <code>cor()</code>.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(w,z)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1480558</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>The covariance is <span class="math inline">\(0.85\)</span> and the correlation is <span class="math inline">\(0.148\)</span>. The results indicate that there is a very weak direct relationship between the two variables. They might be unrelated.</em></p>
+<p><em>To verify in Excel, enter w in column A and z in column B and use:</em></p>
+<ul>
+<li><code>=COVARIANCE.S(A2:A6, B2:B6)</code> → <span class="math inline">\(0.85\)</span></li>
+<li><code>=CORREL(A2:A6, B2:B6)</code> → <span class="math inline">\(0.148\)</span></li>
+</ul>
 </div>
 </details>
 </section>
 <section id="exercise-2" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise 2</h3>
-<p>You will need the <strong>mtcars</strong> data set to answer this question. This data set is part of R. You don’t need to download any files to access it.</p>
+<p>You will need the <strong>mtcars</strong> data set to answer this question. You can download it here:</p>
+<p><a href="mtcars.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <ol type="1">
-<li>Calculate the correlation coefficient between <em>hp</em> and <em>mpg</em>. Explain the results. Specifically, the direction of the relationship and the strength given the context of the problem.</li>
+<li>Calculate the correlation coefficient between <code>hp</code> and <code>mpg</code>. What is the correct interpretation of the result?</li>
 </ol>
+<ul class="task-list">
+<li><label><input type="checkbox">Strong direct relationship, <span class="math inline">\(r = 0.78\)</span></label></li>
+<li><label><input type="checkbox" checked="">Moderately strong inverse relationship, <span class="math inline">\(r = -0.78\)</span></label></li>
+<li><label><input type="checkbox">Weak inverse relationship, <span class="math inline">\(r = -0.32\)</span></label></li>
+<li><label><input type="checkbox">No relationship, <span class="math inline">\(r = 0\)</span></label></li>
+</ul>
 <details>
 <summary>
 Answer
 </summary>
-<p><em>The correlation coefficient is</em> <span class="math inline">\(-0.78\)</span>. This is indicative of a moderately strong inverse relationship between mpg and mp.</p>
-<p><em>In R we can easily calculate the correlation coefficient with the <code>cor()</code> function.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg,mtcars<span class="sc">$</span>hp)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.7761684</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>The correlation coefficient is <span class="math inline">\(-0.78\)</span>, indicating a moderately strong inverse relationship between mpg and hp. As horsepower increases, fuel efficiency decreases — which makes intuitive sense.</em></p>
+<p><em>In Excel, assuming <code>mpg</code> is in column A and <code>hp</code> is in column B:</em></p>
+<ul>
+<li><code>=CORREL(A2:A33, B2:B33)</code> → <span class="math inline">\(-0.78\)</span></li>
+</ul>
 </div>
 </details>
 <ol start="2" type="1">
-<li>Create a scatter diagram of the two variables. Is the scatter diagram what you expected after you calculated the correlation coefficient?</li>
+<li>Create a scatter diagram of <code>hp</code> (x-axis) and <code>mpg</code> (y-axis) in Excel. Add a linear trend line. Which of the following best describes the scatter diagram?</li>
 </ol>
-<details>
-<summary>
-Answer
-</summary>
-<p>The scatter diagram is downward sloping. Most points are close to the trend line. It is what was expected from a correlation coefficient of <span class="math inline">\(-0.78\)</span>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>mtcars <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb35-4"><a href="#cb35-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>mpg,<span class="at">x=</span>hp), <span class="at">col=</span><span class="st">"black"</span>,</span>
-<span id="cb35-5"><a href="#cb35-5" aria-hidden="true" tabindex="-1"></a>             <span class="at">bg=</span><span class="st">"grey"</span>, <span class="at">pch=</span><span class="dv">21</span>) <span class="sc">+</span></span>
-<span id="cb35-6"><a href="#cb35-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>mpg,<span class="at">x=</span>hp), <span class="at">formula=</span>y<span class="sc">~</span>x,</span>
-<span id="cb35-7"><a href="#cb35-7" aria-hidden="true" tabindex="-1"></a>              <span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span>F) <span class="sc">+</span></span>
-<span id="cb35-8"><a href="#cb35-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="RegressionI_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</details>
+<ul class="task-list">
+<li><label><input type="checkbox">Upward sloping with points close to the trend line</label></li>
+<li><label><input type="checkbox" checked="">Downward sloping with points moderately close to the trend line</label></li>
+<li><label><input type="checkbox">No clear pattern</label></li>
+<li><label><input type="checkbox">U-shaped pattern</label></li>
+</ul>
 <ol start="3" type="1">
-<li>Calculate the coefficient of determination. How close is it to one? What else could be explaining the variation in the <em>mpg</em>? Let your dependent variable be <em>mpg</em>.</li>
+<li>Calculate the coefficient of determination. What percentage of the variation in <code>mpg</code> is explained by <code>hp</code>?</li>
 </ol>
+<ul class="task-list">
+<li><label><input type="checkbox">78%</label></li>
+<li><label><input type="checkbox">32%</label></li>
+<li><label><input type="checkbox" checked="">60%</label></li>
+<li><label><input type="checkbox">90%</label></li>
+</ul>
 <details>
 <summary>
 Answer
 </summary>
-<p><em>The coefficient of determination is</em> <span class="math inline">\(0.6\)</span>. This value is not very close to one. This is expected since miles per gallon can also vary because of the cars weight, and fuel efficiency. It makes sense that the hp only explains <span class="math inline">\(60\)</span>% of the total variation.</p>
-<p><em>In R we can calculate the coefficient of determination by squaring the correlation coefficient.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(mtcars<span class="sc">$</span>mpg,mtcars<span class="sc">$</span>hp)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6024373</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>The coefficient of determination is <span class="math inline">\(R^2 = (-0.78)^2 = 0.60\)</span>. This means that <span class="math inline">\(60\%\)</span> of the variation in miles per gallon is explained by horsepower. The remaining <span class="math inline">\(40\%\)</span> is explained by other factors such as the car’s weight, engine size, and fuel efficiency.</em></p>
+<p><em>In Excel:</em></p>
+<ul>
+<li><code>=CORREL(A2:A33, B2:B33)^2</code> → <span class="math inline">\(0.60\)</span></li>
+</ul>
 </div>
 </details>
 </section>
 <section id="exercise-3" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
-<p>You will need the <strong>College</strong> data set to answer this question. You can find this data set here: https://jagelves.github.io/Data/College.csv</p>
+<p>You will need the <strong>College</strong> data set to answer this question. You can download it here:</p>
+<p><a href="College.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <ol type="1">
-<li>Create a scatter diagram between <em>GRAD_DEBT_MDN</em> (Median Debt) and <em>MD_EARN_WNE_P10</em> (Median Earnings). What type of relationship do you observe between the variables?</li>
+<li>Create a scatter diagram between <code>GRAD_DEBT_MDN</code> (Median Debt) on the y-axis and <code>MD_EARN_WNE_P10</code> (Median Earnings) on the x-axis. Which of the following best describes the relationship?</li>
 </ol>
-<details>
-<summary>
-Answer
-</summary>
-<p><em>It seems like there is a direct relationship between both variables. The more debt you take, the higher the salary.</em></p>
-<p><em>Start by loading the data. We’ll use the <code>read_csv()</code> function:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb38-2"><a href="#cb38-2" aria-hidden="true" tabindex="-1"></a>College<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/College.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The two variables of interest are <em>GRAD_DEBT_MDN</em> and <em>MD_EARN_WNE_P10</em>. The following code creates the scatter plot:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>College <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>GRAD_DEBT_MDN,<span class="at">x=</span>MD_EARN_WNE_P10), <span class="at">col=</span><span class="st">"black"</span>,</span>
-<span id="cb39-3"><a href="#cb39-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">bg=</span><span class="st">"grey"</span>, <span class="at">pch=</span><span class="dv">21</span>) <span class="sc">+</span></span>
-<span id="cb39-4"><a href="#cb39-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>GRAD_DEBT_MDN,<span class="at">x=</span>MD_EARN_WNE_P10), <span class="at">formula=</span>y<span class="sc">~</span>x,</span>
-<span id="cb39-5"><a href="#cb39-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span>F) <span class="sc">+</span></span>
-<span id="cb39-6"><a href="#cb39-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="RegressionI_files/figure-html/unnamed-chunk-26-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</details>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Direct relationship — higher earnings are associated with higher debt</label></li>
+<li><label><input type="checkbox">Inverse relationship — higher earnings are associated with lower debt</label></li>
+<li><label><input type="checkbox">No relationship between the two variables</label></li>
+<li><label><input type="checkbox">U-shaped relationship</label></li>
+</ul>
 <ol start="2" type="1">
-<li>Calculate the correlation coefficient and the coefficient of determination. According to the data, are higher debts correlated with higher earnings?</li>
+<li>Calculate the correlation coefficient and coefficient of determination. Which of the following correctly describes the results?</li>
 </ol>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(r = 0.46\)</span>, <span class="math inline">\(R^2 = 0.46\)</span> — moderate direct relationship</label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(r = 0.46\)</span>, <span class="math inline">\(R^2 = 0.21\)</span> — moderate direct relationship, debt explains 21% of variation in earnings</label></li>
+<li><label><input type="checkbox"><span class="math inline">\(r = -0.46\)</span>, <span class="math inline">\(R^2 = 0.21\)</span> — moderate inverse relationship</label></li>
+<li><label><input type="checkbox"><span class="math inline">\(r = 0.90\)</span>, <span class="math inline">\(R^2 = 0.81\)</span> — strong direct relationship</label></li>
+</ul>
 <details>
 <summary>
 Answer
 </summary>
-<p><em>The correlation coefficient shows a moderate direct relationship between earnings and debt</em> <span class="math inline">\(0.46\)</span>. The coefficient of determination indicates that only <span class="math inline">\(21\)</span>% of the variation in earnings can be explained by debt.</p>
-<p><em>In R we can start with the correlation coefficient:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>(Correlation<span class="ot">&lt;-</span><span class="fu">cor</span>(College<span class="sc">$</span>GRAD_DEBT_MDN,</span>
-<span id="cb40-2"><a href="#cb40-2" aria-hidden="true" tabindex="-1"></a>                  College<span class="sc">$</span>MD_EARN_WNE_P10,<span class="st">"complete.obs"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4615361</code></pre>
-</div>
-</div>
-<p><em>We can simply square the correlation to obtain the coefficient of determination:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>Correlation<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2130155</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>The correlation coefficient is <span class="math inline">\(r = 0.46\)</span>, indicating a moderate direct relationship between earnings and debt. The coefficient of determination <span class="math inline">\(R^2 = 0.21\)</span> indicates that only <span class="math inline">\(21\%\)</span> of the variation in earnings can be explained by debt. Other factors such as field of study, institution type, and location likely explain the remaining variation.</em></p>
+<p><em>In Excel, assuming <code>GRAD_DEBT_MDN</code> is in column A and <code>MD_EARN_WNE_P10</code> is in column B:</em></p>
+<ul>
+<li><code>=CORREL(A2:A1000, B2:B1000)</code> → <span class="math inline">\(0.46\)</span></li>
+<li><code>=CORREL(A2:A1000, B2:B1000)^2</code> → <span class="math inline">\(0.21\)</span></li>
+</ul>
+<p><em>Note: use <code>=CORREL()</code> rather than <code>=COVARIANCE.S()</code> when there are missing values, as CORREL handles them more gracefully in Excel.</em></p>
 </div>
 </details>
 
