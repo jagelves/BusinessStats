@@ -15,24 +15,24 @@ details summary {
 
 # Regression I
 
-Measures of association are essential tools in business statistics 
-for analyzing relationships between variables. They help determine 
-whether changes in one variable are linked to changes in another, 
-providing valuable insights into patterns and dependencies. 
-Understanding these relationships is critical for making informed 
-decisions. By quantifying the strength and direction of associations, 
-businesses can better interpret data, optimize strategies, and drive 
+Measures of association are essential tools in business statistics
+for analyzing relationships between variables. They help determine
+whether changes in one variable are linked to changes in another,
+providing valuable insights into patterns and dependencies.
+Understanding these relationships is critical for making informed
+decisions. By quantifying the strength and direction of associations,
+businesses can better interpret data, optimize strategies, and drive
 meaningful outcomes. Below we study important measures of association.
 
 ## The Covariance
 
-The **covariance** is a measure that determines the direction of the 
+The **covariance** is a measure that determines the direction of the
 relationship between two variables. It is calculated by:
 
 ::: {.callout-formula}
 **THE COVARIANCE**
 $$s_{xy}=\frac{\sum(x_i-\bar{x})(y_i-\bar{y})}{n-1}$$
-where $x_i$ and $y_i$ are observations, $\bar{x}$ and $\bar{y}$ are 
+where $x_i$ and $y_i$ are observations, $\bar{x}$ and $\bar{y}$ are
 the sample means, and $n$ is the sample size.
 
 | $s_{xy} > 0$ | $s_{xy} = 0$ | $s_{xy} < 0$ |
@@ -41,7 +41,7 @@ the sample means, and $n$ is the sample size.
 :::
 
 ::: {.callout-example}
-**Example:** Let's consider the following data that captures the 
+**Example:** Let's consider the following data that captures the
 price of stocks (SPY) and bonds (BND):
 
 | Period | SPY | BND |
@@ -52,8 +52,8 @@ price of stocks (SPY) and bonds (BND):
 | 4      | 85  | 430 |
 | 5      | 83  | 440 |
 
-The idea behind calculating a covariance is to determine whether 
-there is a relationship between the two variables. We start by 
+The idea behind calculating a covariance is to determine whether
+there is a relationship between the two variables. We start by
 finding the deviations from the mean for both SPY and BND:
 
 | Period | SPY | BND | $SPY - \bar{SPY}$ | $BND - \bar{BND}$ | Product |
@@ -66,26 +66,26 @@ finding the deviations from the mean for both SPY and BND:
 
 The covariance is the average of the products column using $n-1$:
 
-$$s_{xy} = \frac{-160 + (-16) + (-20) + 0 + (-88)}{5-1} = 
+$$s_{xy} = \frac{-160 + (-16) + (-20) + 0 + (-88)}{5-1} =
 \frac{-284}{4} = -71$$
 
-Since $s_{xy} < 0$ there is an inverse relationship between SPY 
-and BND. Intuitively, the covariance checks whether on average the 
-products of the deviations from the mean is positive or negative. 
-Whenever $x$ lies below its mean and $y$ lies above its mean, the 
-product is negative — and vice versa — reflecting the inverse 
+Since $s_{xy} < 0$ there is an inverse relationship between SPY
+and BND. Intuitively, the covariance checks whether on average the
+products of the deviations from the mean is positive or negative.
+Whenever $x$ lies below its mean and $y$ lies above its mean, the
+product is negative — and vice versa — reflecting the inverse
 relationship between the two variables.
 :::
 
 ## The Correlation
 
-The **correlation** measures the strength of the linear relationship 
+The **correlation** measures the strength of the linear relationship
 between two variables. It is calculated by:
 
 ::: {.callout-formula}
 **THE CORRELATION COEFFICIENT**
 $$r = \frac{s_{xy}}{s_x \cdot s_y}$$
-where $s_{xy}$ is the covariance, $s_x$ is the standard deviation 
+where $s_{xy}$ is the covariance, $s_x$ is the standard deviation
 of $x$, and $s_y$ is the standard deviation of $y$.
 
 The correlation coefficient lies between $[-1, 1]$:
@@ -95,69 +95,69 @@ The correlation coefficient lies between $[-1, 1]$:
 | Perfect inverse | Inverse | No relationship | Direct | Perfect direct |
 :::
 
-The strength of the relationship is determined by the absolute value 
-of $r$. Values close to $1$ indicate a strong relationship, values 
+The strength of the relationship is determined by the absolute value
+of $r$. Values close to $1$ indicate a strong relationship, values
 close to $0$ indicate a weak relationship.
 
 ::: {.callout-example}
-**Example:** Consider the SPY and BND data. The standard deviation 
-of SPY is $s_{SPY} = 1.58$ and that of BND is $s_{BND} = 50.37$. 
+**Example:** Consider the SPY and BND data. The standard deviation
+of SPY is $s_{SPY} = 1.58$ and that of BND is $s_{BND} = 50.37$.
 Substituting into the correlation formula:
 
 $$r = \frac{-71}{1.58 \times 50.37} = -0.89$$
 
-This indicates that the relationship between SPY and BND is inverse 
+This indicates that the relationship between SPY and BND is inverse
 and strong.
 :::
 
 ## The Coefficient of Determination ($R^2$)
 
-The **coefficient of determination** or $R^2$ measures the percent 
-of variation in $y$ explained by variations in $x$. It is calculated 
+The **coefficient of determination** or $R^2$ measures the percent
+of variation in $y$ explained by variations in $x$. It is calculated
 by:
 
 ::: {.callout-formula}
 **THE COEFFICIENT OF DETERMINATION**
 $$R^2 = r^2$$
-where $r$ is the correlation coefficient. $R^2$ ranges from $0$ 
+where $r$ is the correlation coefficient. $R^2$ ranges from $0$
 (no relationship) to $1$ (perfect relationship).
 :::
 
 ::: {.callout-example}
-**Example:** Consider once more the SPY and BND example. The 
+**Example:** Consider once more the SPY and BND example. The
 correlation coefficient is $r = -0.89$. Hence:
 
 $$R^2 = (-0.89)^2 = 0.79$$
 
-This indicates that about $79\%$ of the variation in BND can be 
+This indicates that about $79\%$ of the variation in BND can be
 explained by changes in SPY. The two variables are closely related.
 :::
 
 ## Measures of Association in Excel
 
-Excel provides straightforward functions to calculate all three 
-measures of association. Let's use the SPY and BND data from the 
+Excel provides straightforward functions to calculate all three
+measures of association. Let's use the SPY and BND data from the
 example above.
 
 [{{< fa file-excel >}} Download Data](spybnd.xlsx){.btn .btn-success}
 
-**Covariance:** To calculate the sample covariance use 
-`=COVARIANCE.S()`. Assuming SPY is in column A and BND is in 
+**Covariance:** To calculate the sample covariance use
+`=COVARIANCE.S()`. Assuming SPY is in column A and BND is in
 column B:
 
 ```excel
 =COVARIANCE.S(A2:A6, B2:B6)
 ```
 
-**Correlation:** To calculate the correlation coefficient use 
+**Correlation:** To calculate the correlation coefficient use
 `=CORREL()`:
 
 ```excel
 =CORREL(A2:A6, B2:B6)
 ```
 
-**Coefficient of Determination:** There is no direct Excel function 
-for $R^2$ between two variables. Simply square the correlation 
+**Coefficient of Determination:** There is no direct Excel function
+for $R^2$ between two variables. Simply square the correlation
 coefficient:
 
 ```excel
@@ -166,68 +166,52 @@ coefficient:
 
 The results for the SPY and BND data are:
 
-```{r echo=FALSE, message=FALSE}
-library(tidyverse)
-library(gt)
+| Covariance | Correlation | $R^2$  |
+|:----------:|:-----------:|:------:|
+| $-71.00$   | $-0.8916$   | $0.79$ |
 
-data <- tibble(SPY=c(87,86,84,85,83), BND=c(316,380,416,430,440))
-
-tibble(
-  Covariance = cov(data$SPY, data$BND),
-  Correlation = cor(data$SPY, data$BND),
-  R2 = cor(data$SPY, data$BND)^2
-) %>%
-  gt() %>%
-  cols_align("center") %>%
-  fmt_number(decimals = 4) %>%
-  tab_style(
-    locations = cells_column_labels(columns = everything()),
-    style = list(cell_borders(sides = "bottom", weight = px(3)),
-                 cell_text(weight = "bold")))
-```
-
-**Scatter Plot:** To create a scatter plot in Excel, select both 
-columns and go to `Insert → Charts → Scatter`. This will display 
-the relationship between SPY and BND visually. To add a trend line, 
-right-click any point in the scatter plot and select 
+**Scatter Plot:** To create a scatter plot in Excel, select both
+columns and go to `Insert → Charts → Scatter`. This will display
+the relationship between SPY and BND visually. To add a trend line,
+right-click any point in the scatter plot and select
 `Add Trendline → Linear`.
 
 ## Excel Function Summary
 
 Below is a list of the Excel functions used in this section:
 
-- `=COVARIANCE.S(array1, array2)` calculates the sample covariance 
-  between two variables. Use `=COVARIANCE.P()` for the population 
+- `=COVARIANCE.S(array1, array2)` calculates the sample covariance
+  between two variables. Use `=COVARIANCE.P()` for the population
   covariance.
 
-- `=CORREL(array1, array2)` calculates the correlation coefficient 
+- `=CORREL(array1, array2)` calculates the correlation coefficient
   between two variables. The result is always between $-1$ and $1$.
 
-- `=CORREL(array1, array2)^2` calculates the coefficient of 
-  determination $R^2$ by squaring the correlation coefficient. Excel 
+- `=CORREL(array1, array2)^2` calculates the coefficient of
+  determination $R^2$ by squaring the correlation coefficient. Excel
   does not have a standalone $R^2$ function for two variables.
 
 ## Exercises
 
-The following exercises will help you understand statistical measures 
-that establish the relationship between two variables. In particular, 
+The following exercises will help you understand statistical measures
+that establish the relationship between two variables. In particular,
 the exercises work on:
 
 - Calculating covariance and correlation.
 - Creating scatter diagrams in Excel.
 - Calculating the coefficient of determination.
 
-Answers are provided below. Try not to peek until you have formulated 
+Answers are provided below. Try not to peek until you have formulated
 your own answer and double checked your work for any mistakes.
 
 ### Exercise 1 {.unnumbered}
 
-For the following exercises, make your calculations by hand and 
+For the following exercises, make your calculations by hand and
 verify results using Excel functions when possible.
 
-1. Consider the data below. Calculate the covariance and correlation 
-coefficient by finding deviations from the mean. Verify your result 
-using Excel. Is there a direct or inverse relationship between the 
+1. Consider the data below. Calculate the covariance and correlation
+coefficient by finding deviations from the mean. Verify your result
+using Excel. Is there a direct or inverse relationship between the
 two variables? How strong is the relationship?
 
 | **x** | 20  | 21  | 15  | 18  | 25  |
@@ -238,11 +222,11 @@ two variables? How strong is the relationship?
 <summary>Answer</summary>
 <div style="padding-left: 1.5em;">
 
-*The covariance is $14.9$ and the correlation is $0.96$. The results 
-indicate that there is a strong direct relationship between the two 
+*The covariance is $14.9$ and the correlation is $0.96$. The results
+indicate that there is a strong direct relationship between the two
 variables.*
 
-*Start by finding the mean of each variable: $\bar{x} = 19.8$ and 
+*Start by finding the mean of each variable: $\bar{x} = 19.8$ and
 $\bar{y} = 16.6$. Then build the deviations table:*
 
 | $x_i$ | $y_i$ | $x_i-\bar{x}$ | $y_i-\bar{y}$ | Product |
@@ -265,9 +249,9 @@ $$r = \frac{14.9}{sd(x) \times sd(y)} = \frac{14.9}{3.49 \times 4.34} = 0.96$$
 </div>
 </details>
 
-2. Consider the data below. Calculate the covariance and correlation 
-coefficient by finding deviations from the mean. Verify your result 
-using Excel. Is there a direct or inverse relationship between the 
+2. Consider the data below. Calculate the covariance and correlation
+coefficient by finding deviations from the mean. Verify your result
+using Excel. Is there a direct or inverse relationship between the
 two variables? How strong is the relationship?
 
 | **w** | 19  | 16  | 14  | 11  | 18  |
@@ -278,9 +262,9 @@ two variables? How strong is the relationship?
 <summary>Answer</summary>
 <div style="padding-left: 1.5em;">
 
-*The covariance is $0.85$ and the correlation is $0.148$. The results 
-indicate that there is a very weak direct relationship between the 
-two variables. They might be unrelated.*
+*The covariance is $0.85$ and the correlation is $0.148$. The results
+indicate that there is a very weak direct relationship between the two
+variables. They might be unrelated.*
 
 *To verify in Excel, enter w in column A and z in column B and use:*
 
@@ -292,25 +276,21 @@ two variables. They might be unrelated.*
 
 ### Exercise 2 {.unnumbered}
 
-You will need the **mtcars** data set to answer this question. 
+You will need the **mtcars** data set to answer this question.
 You can download it here:
 
 [{{< fa file-excel >}} Download Data](mtcars.xlsx){.btn .btn-success}
 
-1. Calculate the correlation coefficient between `hp` and `mpg`. 
-What is the correct interpretation of the result?
-
-- [ ] Strong direct relationship, $r = 0.78$
-- [x] Moderately strong inverse relationship, $r = -0.78$
-- [ ] Weak inverse relationship, $r = -0.32$
-- [ ] No relationship, $r = 0$
+1. Calculate the correlation coefficient between `hp` and `mpg`. Is
+the relationship direct or inverse? How strong is it? Interpret the
+result.
 
 <details>
 <summary>Answer</summary>
 <div style="padding-left: 1.5em;">
 
-*The correlation coefficient is $-0.78$, indicating a moderately 
-strong inverse relationship between mpg and hp. As horsepower 
+*The correlation coefficient is $-0.78$, indicating a moderately
+strong inverse relationship between mpg and hp. As horsepower
 increases, fuel efficiency decreases — which makes intuitive sense.*
 
 *In Excel, assuming `mpg` is in column A and `hp` is in column B:*
@@ -320,30 +300,31 @@ increases, fuel efficiency decreases — which makes intuitive sense.*
 </div>
 </details>
 
-2. Create a scatter diagram of `hp` (x-axis) and `mpg` (y-axis) 
-in Excel. Add a linear trend line. Which of the following best 
-describes the scatter diagram?
-
-- [ ] Upward sloping with points close to the trend line
-- [x] Downward sloping with points moderately close to the trend line
-- [ ] No clear pattern
-- [ ] U-shaped pattern
-
-3. Calculate the coefficient of determination. What percentage of 
-the variation in `mpg` is explained by `hp`?
-
-- [ ] 78%
-- [ ] 32%
-- [x] 60%
-- [ ] 90%
+2. Create a scatter diagram of `hp` (x-axis) and `mpg` (y-axis)
+in Excel. Add a linear trend line. Describe the pattern you observe.
 
 <details>
 <summary>Answer</summary>
 <div style="padding-left: 1.5em;">
 
-*The coefficient of determination is $R^2 = (-0.78)^2 = 0.60$. This 
-means that $60\%$ of the variation in miles per gallon is explained 
-by horsepower. The remaining $40\%$ is explained by other factors 
+*The scatter diagram is downward sloping: as horsepower increases,
+miles per gallon tends to decrease. The points lie moderately close
+to the trend line, which is consistent with the moderately strong
+inverse correlation of $-0.78$.*
+
+</div>
+</details>
+
+3. Calculate the coefficient of determination. What percentage of
+the variation in `mpg` is explained by `hp`?
+
+<details>
+<summary>Answer</summary>
+<div style="padding-left: 1.5em;">
+
+*The coefficient of determination is $R^2 = (-0.78)^2 = 0.60$. This
+means that $60\%$ of the variation in miles per gallon is explained
+by horsepower. The remaining $40\%$ is explained by other factors
 such as the car's weight, engine size, and fuel efficiency.*
 
 *In Excel:*
@@ -355,47 +336,50 @@ such as the car's weight, engine size, and fuel efficiency.*
 
 ### Exercise 3 {.unnumbered}
 
-You will need the **College** data set to answer this question. 
+You will need the **College** data set to answer this question.
 You can download it here:
 
 [{{< fa file-excel >}} Download Data](College.xlsx){.btn .btn-success}
 
-1. Create a scatter diagram between `GRAD_DEBT_MDN` (Median Debt) 
-on the y-axis and `MD_EARN_WNE_P10` (Median Earnings) on the x-axis. 
-Which of the following best describes the relationship?
-
-- [x] Direct relationship — higher earnings are associated with higher debt
-- [ ] Inverse relationship — higher earnings are associated with lower debt
-- [ ] No relationship between the two variables
-- [ ] U-shaped relationship
-
-2. Calculate the correlation coefficient and coefficient of 
-determination. Which of the following correctly describes the 
-results?
-
-- [ ] $r = 0.46$, $R^2 = 0.46$ — moderate direct relationship
-- [x] $r = 0.46$, $R^2 = 0.21$ — moderate direct relationship, debt explains 21% of variation in earnings
-- [ ] $r = -0.46$, $R^2 = 0.21$ — moderate inverse relationship
-- [ ] $r = 0.90$, $R^2 = 0.81$ — strong direct relationship
+1. Create a scatter diagram between `GRAD_DEBT_MDN` (Median Debt)
+on the y-axis and `MD_EARN_WNE_P10` (Median Earnings) on the x-axis.
+Describe the relationship between the two variables.
 
 <details>
 <summary>Answer</summary>
 <div style="padding-left: 1.5em;">
 
-*The correlation coefficient is $r = 0.46$, indicating a moderate 
-direct relationship between earnings and debt. The coefficient of 
-determination $R^2 = 0.21$ indicates that only $21\%$ of the 
-variation in earnings can be explained by debt. Other factors such 
-as field of study, institution type, and location likely explain 
+*The scatter diagram shows a direct relationship: institutions whose
+graduates have higher median earnings also tend to have higher median
+debt. The upward pattern is moderate rather than tight, with a fair
+amount of scatter around the trend line.*
+
+</div>
+</details>
+
+2. Calculate the correlation coefficient and the coefficient of
+determination between the two variables. Is the relationship direct
+or inverse? How strong is it? What percentage of the variation in
+earnings is explained by debt?
+
+<details>
+<summary>Answer</summary>
+<div style="padding-left: 1.5em;">
+
+*The correlation coefficient is $r = 0.46$, indicating a moderate
+direct relationship between earnings and debt. The coefficient of
+determination $R^2 = 0.21$ indicates that only $21\%$ of the
+variation in earnings can be explained by debt. Other factors such
+as field of study, institution type, and location likely explain
 the remaining variation.*
 
-*In Excel, assuming `GRAD_DEBT_MDN` is in column A and 
+*In Excel, assuming `GRAD_DEBT_MDN` is in column A and
 `MD_EARN_WNE_P10` is in column B:*
 
 - `=CORREL(A2:A1000, B2:B1000)` → $0.46$
 - `=CORREL(A2:A1000, B2:B1000)^2` → $0.21$
 
-*Note: use `=CORREL()` rather than `=COVARIANCE.S()` when there 
+*Note: use `=CORREL()` rather than `=COVARIANCE.S()` when there
 are missing values, as CORREL handles them more gracefully in Excel.*
 
 </div>
