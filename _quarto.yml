@@ -29,7 +29,7 @@ book:
     - InferenceII.qmd
     - InferenceIII.qmd
     - InfReg.qmd
-    - R Basics.qmd
+    - Excel Basics.qmd
     - references.qmd
     
 bibliography: references.bib
