@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.32">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>15&nbsp; Excel Basics – Business Statistics</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./references.html" rel="next">
+<link href="./InfReg.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-9904b5196d746cb5bc47063911474b57.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
+<!-- Google tag (gtag.js) -->
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FWC3RCL4BF"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-FWC3RCL4BF');
+</script>
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN") {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="nav-sidebar floating">
+
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Excel Basics.html"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Excel Basics</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Business Statistics</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Introduction</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DescriptiveI.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Descriptive Stats I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DescriptiveII.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Stats II</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DescriptiveIII.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descriptive Statistics III</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DescriptiveIV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Descriptive Stats IV</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./DescriptiveV.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Descriptive Stats V</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RegressionI.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Regression I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./RegressionII.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Regression II</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ProbabilityI.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ProbabilityII.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability II</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./ProbabilityIII.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability III</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./InferenceI.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inference I</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./InferenceII.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Inference II</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./InferenceIII.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Inference III</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./InfReg.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression and Inference</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Excel Basics.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Excel Basics</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./references.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">References</span></a>
+  </div>
+</li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#cells-and-references" id="toc-cells-and-references" class="nav-link active" data-scroll-target="#cells-and-references">Cells and References</a></li>
+  <li><a href="#ranges" id="toc-ranges" class="nav-link" data-scroll-target="#ranges">Ranges</a></li>
+  <li><a href="#worksheets-and-tables" id="toc-worksheets-and-tables" class="nav-link" data-scroll-target="#worksheets-and-tables">Worksheets and Tables</a></li>
+  <li><a href="#the-data-analysis-toolpak" id="toc-the-data-analysis-toolpak" class="nav-link" data-scroll-target="#the-data-analysis-toolpak">The Data Analysis ToolPak</a></li>
+  <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing Data</a></li>
+  <li><a href="#formulas-and-functions" id="toc-formulas-and-functions" class="nav-link" data-scroll-target="#formulas-and-functions">Formulas and Functions</a></li>
+  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">Data Types</a></li>
+  <li><a href="#comparison-and-logical-operators" id="toc-comparison-and-logical-operators" class="nav-link" data-scroll-target="#comparison-and-logical-operators">Comparison and Logical Operators</a></li>
+  <li><a href="#dictionary-of-functions" id="toc-dictionary-of-functions" class="nav-link" data-scroll-target="#dictionary-of-functions"><span class="header-section-number">15.1</span> Dictionary of Functions</a>
+  <ul class="collapse">
+  <li><a href="#general-purpose" id="toc-general-purpose" class="nav-link" data-scroll-target="#general-purpose">General Purpose</a></li>
+  <li><a href="#tables-and-charts-descriptive-stats-ii" id="toc-tables-and-charts-descriptive-stats-ii" class="nav-link" data-scroll-target="#tables-and-charts-descriptive-stats-ii">Tables and Charts (Descriptive Stats II)</a></li>
+  <li><a href="#measures-of-central-location-descriptive-stats-iii" id="toc-measures-of-central-location-descriptive-stats-iii" class="nav-link" data-scroll-target="#measures-of-central-location-descriptive-stats-iii">Measures of Central Location (Descriptive Stats III)</a></li>
+  <li><a href="#measures-of-dispersion-descriptive-stats-iv" id="toc-measures-of-dispersion-descriptive-stats-iv" class="nav-link" data-scroll-target="#measures-of-dispersion-descriptive-stats-iv">Measures of Dispersion (Descriptive Stats IV)</a></li>
+  <li><a href="#measures-of-shape-and-position-descriptive-stats-v" id="toc-measures-of-shape-and-position-descriptive-stats-v" class="nav-link" data-scroll-target="#measures-of-shape-and-position-descriptive-stats-v">Measures of Shape and Position (Descriptive Stats V)</a></li>
+  <li><a href="#measures-of-association-regression-i" id="toc-measures-of-association-regression-i" class="nav-link" data-scroll-target="#measures-of-association-regression-i">Measures of Association (Regression I)</a></li>
+  <li><a href="#regression-regression-ii" id="toc-regression-regression-ii" class="nav-link" data-scroll-target="#regression-regression-ii">Regression (Regression II)</a></li>
+  </ul></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Excel Basics</span></h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>Below you will find a collection of basic Excel concepts along with a dictionary of the functions used throughout the descriptive statistics and regression chapters. Use the first sections to review how Excel organizes and references data, and use the dictionary as a quick reference for the functions that appear in each chapter.</p>
+<section id="cells-and-references" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="cells-and-references">Cells and References</h3>
+<p>A <strong>cell</strong> is the basic building block of a worksheet. Each cell is identified by its column letter and row number, such as <code>A1</code> or <code>C15</code>. You store a value or a formula in a cell simply by typing into it. This is the Excel equivalent of assigning a value to an object.</p>
+<p>When a formula refers to another cell, it uses a <strong>cell reference</strong>. References come in three forms:</p>
+<ul>
+<li><p><strong>Relative</strong> (<code>A1</code>) adjusts automatically when the formula is copied to another cell.</p></li>
+<li><p><strong>Absolute</strong> (<code>$A$1</code>) stays fixed when copied. The dollar signs lock both the column and the row.</p></li>
+<li><p><strong>Mixed</strong> (<code>$A1</code> or <code>A$1</code>) locks only the column or only the row.</p></li>
+</ul>
+<p>For example, <code>=A1*2</code> multiplies the value in <code>A1</code> by two. Pressing <code>F4</code> while editing a reference cycles through the relative, absolute, and mixed forms.</p>
+</section>
+<section id="ranges" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="ranges">Ranges</h3>
+<p>A <strong>range</strong> is a group of adjacent cells, written as the top-left cell, a colon, and the bottom-right cell. For example, <code>A1:A10</code> is a single column of ten cells, and <code>A1:C10</code> is a rectangular block. A range is the Excel equivalent of a vector — a list of values that most statistical functions take as an input.</p>
+<p>You can reference an entire column with <code>A:A</code> or an entire row with <code>1:1</code>. To give a range a memorable name, select it and go to <code>Formulas → Define Name</code>; you can then use the name in formulas instead of the cell addresses.</p>
+</section>
+<section id="worksheets-and-tables" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="worksheets-and-tables">Worksheets and Tables</h3>
+<p>Data in Excel is stored in a <strong>worksheet</strong> in a tabular format, much like a data frame. Columns represent variables and rows represent observations, with the first row typically holding the headers. For a cleaner structure, select your data and press <code>Ctrl + T</code> (or go to <code>Insert → Table</code>) to convert the range into an <strong>Excel Table</strong>. Tables make it easy to sort, filter, and refer to columns by name.</p>
+</section>
+<section id="the-data-analysis-toolpak" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="the-data-analysis-toolpak">The Data Analysis ToolPak</h3>
+<p>Some analyses — such as regression — require the <strong>Analysis ToolPak</strong>, an add-in that ships with Excel but is turned off by default. Enabling an add-in is the Excel equivalent of installing and loading a package. To enable it on Windows, go to <code>File → Options → Add-ins → Manage: Excel Add-ins → Go</code>, check <code>Analysis ToolPak</code>, and click <code>OK</code>. On a Mac, use <code>Tools → Excel Add-ins</code>. Once enabled, the ToolPak appears under <code>Data → Data Analysis</code>.</p>
+</section>
+<section id="importing-data" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="importing-data">Importing Data</h3>
+<p>To <strong>import</strong> a CSV file, use <code>File → Open</code> and select the file, or go to <code>Data → Get Data → From Text/CSV</code> for more control over how the columns are separated. To preview large data sets, freeze the header row with <code>View → Freeze Panes</code>, and use <code>Ctrl + ↓</code> or <code>Ctrl + End</code> to jump to the last observation.</p>
+</section>
+<section id="formulas-and-functions" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="formulas-and-functions">Formulas and Functions</h3>
+<p>Every calculation in Excel begins with an equals sign (<code>=</code>). A <strong>function</strong> relates an input (its arguments) to an output. For example, the <code>SUM</code> function takes a range of numeric values and returns their total:</p>
+<pre class="excel"><code>=SUM(A2:A5)</code></pre>
+<p>Arguments are separated by commas, and some are optional. Many functions accept a <strong>criteria</strong> argument that filters the data, such as <code>=AVERAGEIF(A2:A100, "&gt;=1", B2:B100)</code>. A few calculations — like a conditional variance — must be entered as <strong>array formulas</strong>. In older versions of Excel you complete these by pressing <code>Ctrl + Shift + Enter</code> instead of just <code>Enter</code>. If a formula cannot be evaluated, Excel returns an error such as <code>#DIV/0!</code>, <code>#VALUE!</code>, <code>#N/A</code>, or <code>#REF!</code>.</p>
+</section>
+<section id="data-types" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="data-types">Data Types</h3>
+<p>The main data types in Excel are number, text, logical, date, and error.</p>
+<ul>
+<li><p><strong>Number</strong> includes integers and decimals. Numbers are right-aligned in a cell by default.</p></li>
+<li><p><strong>Text</strong> represents labels or strings and is left-aligned by default.</p></li>
+<li><p><strong>Logical</strong> values are <code>TRUE</code> or <code>FALSE</code>, usually produced by a comparison.</p></li>
+<li><p><strong>Date and time</strong> values are stored as serial numbers counting the days since January 1, 1900, which is why dates can be added and subtracted.</p></li>
+<li><p><strong>Error</strong> values are the result of an invalid operation, such as dividing by zero.</p></li>
+</ul>
+</section>
+<section id="comparison-and-logical-operators" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="comparison-and-logical-operators">Comparison and Logical Operators</h3>
+<p>Comparison operators return a logical value (<code>TRUE</code> or <code>FALSE</code>). The primary operators are <code>=</code> (equal to), <code>&lt;&gt;</code> (not equal to), <code>&gt;</code> (greater than), <code>&lt;</code> (less than), <code>&gt;=</code> (at least), and <code>&lt;=</code> (at most). They are frequently combined with the <code>IF</code>, <code>AND</code>, <code>OR</code>, and <code>NOT</code> functions. When used inside a criteria argument, an operator is written as text in quotes, for example <code>"&gt;=1"</code> in a <code>COUNTIF</code> or <code>AVERAGEIF</code> formula.</p>
+</section>
+<section id="dictionary-of-functions" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="dictionary-of-functions"><span class="header-section-number">15.1</span> Dictionary of Functions</h2>
+<p>The remainder of the chapter lists the Excel functions and tools used in the book, grouped by the chapter in which they first appear.</p>
+<section id="general-purpose" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="general-purpose">General Purpose</h3>
+<ul>
+<li><p><code>=SUM(range)</code> adds all of the numbers in a range.</p></li>
+<li><p><code>=COUNT(range)</code> counts the cells that contain numbers, while <code>=COUNTA(range)</code> counts all non-empty cells.</p></li>
+<li><p><code>=MIN(range)</code> and <code>=MAX(range)</code> return the smallest and largest values in a range.</p></li>
+<li><p><code>=ABS(number)</code> returns the absolute value of a number.</p></li>
+<li><p><code>=SQRT(number)</code> returns the square root of a number.</p></li>
+<li><p><code>=IF(test, value_if_true, value_if_false)</code> returns one of two values depending on whether a condition is met.</p></li>
+<li><p><code>=AND(...)</code>, <code>=OR(...)</code>, and <code>=NOT(...)</code> combine or reverse logical conditions.</p></li>
+</ul>
+</section>
+<section id="tables-and-charts-descriptive-stats-ii" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="tables-and-charts-descriptive-stats-ii">Tables and Charts (Descriptive Stats II)</h3>
+<ul>
+<li><p><strong>PivotTable</strong> (<code>Insert → PivotTable</code>) automatically summarizes and counts data, making it the primary tool for building frequency and relative frequency distributions.</p></li>
+<li><p><code>=IFS(test1, value1, test2, value2, ...)</code> checks multiple conditions in order and returns the value for the first one that is true. It is used to assign each numerical observation to its class (bin) when building a frequency distribution.</p></li>
+</ul>
+</section>
+<section id="measures-of-central-location-descriptive-stats-iii" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="measures-of-central-location-descriptive-stats-iii">Measures of Central Location (Descriptive Stats III)</h3>
+<ul>
+<li><p><code>=AVERAGE(range)</code> calculates the mean of a range of numbers.</p></li>
+<li><p><code>=MEDIAN(range)</code> calculates the median.</p></li>
+<li><p><code>=MODE(range)</code> returns the single most frequent value, while <code>=MODE.MULT(range)</code> returns all modes when the data is multimodal.</p></li>
+<li><p><code>=SUMPRODUCT(array1, array2)</code> multiplies corresponding values in two ranges and sums the results. Dividing by <code>=SUM(weights)</code> gives the weighted mean.</p></li>
+<li><p><code>=GEOMEAN(range)</code> calculates the geometric mean. For rates of change, apply the function to the growth factors (<code>1 + r</code>) and subtract one at the end.</p></li>
+<li><p><code>=AVERAGEIF(range, criteria, average_range)</code> calculates the mean of the values that meet a given condition.</p></li>
+</ul>
+</section>
+<section id="measures-of-dispersion-descriptive-stats-iv" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="measures-of-dispersion-descriptive-stats-iv">Measures of Dispersion (Descriptive Stats IV)</h3>
+<ul>
+<li><p><code>=COUNTIF(range, criteria)</code> counts the number of cells that meet a condition.</p></li>
+<li><p><code>=MINIFS(min_range, criteria_range, criteria)</code> and <code>=MAXIFS(max_range, criteria_range, criteria)</code> return the minimum and maximum values filtered by one or more conditions.</p></li>
+<li><p><code>=VAR.S(range)</code> calculates the sample variance; <code>=VAR.P(range)</code> calculates the population variance.</p></li>
+<li><p><code>=STDEV.S(range)</code> calculates the sample standard deviation (the square root of the sample variance); <code>=STDEV.P(range)</code> calculates the population standard deviation.</p></li>
+<li><p><code>=VAR(IF(criteria_range="condition", value_range))</code> and <code>=STDEV(IF(criteria_range="condition", value_range))</code> calculate a conditional variance and standard deviation. Excel has no native <code>VARIF</code> or <code>STDEVIF</code>, so these are entered as array formulas.</p></li>
+<li><p><strong>Coefficient of Variation</strong> has no dedicated function; compute it as <code>=STDEV.S(range) / AVERAGE(range)</code>.</p></li>
+<li><p><strong>Sharpe Ratio</strong> also has no dedicated function; compute it as <code>=(AVERAGE(range) - rf) / STDEV.S(range)</code>, where <code>rf</code> is the risk-free rate.</p></li>
+</ul>
+</section>
+<section id="measures-of-shape-and-position-descriptive-stats-v" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="measures-of-shape-and-position-descriptive-stats-v">Measures of Shape and Position (Descriptive Stats V)</h3>
+<ul>
+<li><p><code>=PERCENTILE.INC(array, k)</code> returns the <span class="math inline">\(k\)</span>th percentile using the inclusive method <span class="math inline">\(L_p = 1 + k(n-1)\)</span>, where <code>k</code> is a decimal between 0 and 1. <code>=PERCENTILE.EXC(array, k)</code> uses the exclusive method <span class="math inline">\(L_p = k(n+1)\)</span>.</p></li>
+<li><p><code>=QUARTILE.INC(array, quart)</code> returns the five-point summary. The <code>quart</code> argument takes the values 0 (minimum), 1 (<span class="math inline">\(Q_1\)</span>), 2 (median), 3 (<span class="math inline">\(Q_3\)</span>), and 4 (maximum). The IQR is <code>=QUARTILE.INC(array, 3) - QUARTILE.INC(array, 1)</code>.</p></li>
+<li><p><code>=STANDARDIZE(x, mean, std_dev)</code> calculates the z-score of a value. It can also be computed manually as <code>=(x - AVERAGE(range)) / STDEV.S(range)</code>.</p></li>
+<li><p><code>=SKEW(range)</code> calculates the skewness using the Fisher-Pearson standardized moment coefficient.</p></li>
+<li><p><code>=KURT(range)</code> calculates the excess kurtosis. A positive value indicates heavy tails (leptokurtic) and a negative value indicates light tails (platykurtic).</p></li>
+</ul>
+</section>
+<section id="measures-of-association-regression-i" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="measures-of-association-regression-i">Measures of Association (Regression I)</h3>
+<ul>
+<li><p><code>=COVARIANCE.S(array1, array2)</code> calculates the sample covariance between two variables; <code>=COVARIANCE.P(array1, array2)</code> calculates the population covariance.</p></li>
+<li><p><code>=CORREL(array1, array2)</code> calculates the correlation coefficient, which is always between <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span>.</p></li>
+<li><p><code>=CORREL(array1, array2)^2</code> calculates the coefficient of determination <span class="math inline">\(R^2\)</span> by squaring the correlation coefficient. Excel has no standalone <span class="math inline">\(R^2\)</span> function for two variables.</p></li>
+</ul>
+</section>
+<section id="regression-regression-ii" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="regression-regression-ii">Regression (Regression II)</h3>
+<ul>
+<li><p><strong>Data Analysis ToolPak → Regression</strong> is the primary tool for estimating regression models. It returns the coefficients, <span class="math inline">\(R^2\)</span>, adjusted <span class="math inline">\(R^2\)</span>, standard error, and the ANOVA table in a single output.</p></li>
+<li><p><code>=SLOPE(y_range, x_range)</code> calculates the slope <span class="math inline">\(\hat{\beta}\)</span> of a simple regression line.</p></li>
+<li><p><code>=INTERCEPT(y_range, x_range)</code> calculates the intercept <span class="math inline">\(\hat{\alpha}\)</span> of a simple regression line.</p></li>
+<li><p><code>=FORECAST.LINEAR(x, y_range, x_range)</code> returns the predicted value of <span class="math inline">\(y\)</span> for a given value of <span class="math inline">\(x\)</span>.</p></li>
+<li><p><code>=RSQ(y_range, x_range)</code> returns the <span class="math inline">\(R^2\)</span> of a simple regression.</p></li>
+<li><p><code>=STEYX(y_range, x_range)</code> returns the residual standard error <span class="math inline">\(s_e\)</span> of a simple regression.</p></li>
+</ul>
+
+
+</section>
+</section>
+
+</main> <!-- /main -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./InfReg.html" class="pagination-link" aria-label="Regression and Inference">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression and Inference</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./references.html" class="pagination-link" aria-label="References">
+        <span class="nav-page-text">References</span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
+</div> <!-- /content -->
+<footer class="footer">
+  <div class="nav-footer">
+    <div class="nav-footer-left">
+<p>Business Statistics by J. Alejandro Gelves.</p>
+</div>   
+    <div class="nav-footer-center">
+      &nbsp;
+    </div>
+    <div class="nav-footer-right">
+<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+</div>
+  </div>
+</footer>
+
+
+
+
+</body></html>

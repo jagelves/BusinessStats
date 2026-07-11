@@ -8,11 +8,11 @@ A **cell** is the basic building block of a worksheet. Each cell is identified b
 
 When a formula refers to another cell, it uses a **cell reference**. References come in three forms:
 
--   **Relative** (`A1`) adjusts automatically when the formula is copied to another cell.
+- **Relative** (`A1`) adjusts automatically when the formula is copied to another cell.
 
--   **Absolute** (`$A$1`) stays fixed when copied. The dollar signs lock both the column and the row.
+- **Absolute** (`$A$1`) stays fixed when copied. The dollar signs lock both the column and the row.
 
--   **Mixed** (`$A1` or `A$1`) locks only the column or only the row.
+- **Mixed** (`$A1` or `A$1`) locks only the column or only the row.
 
 For example, `=A1*2` multiplies the value in `A1` by two. Pressing `F4` while editing a reference cycles through the relative, absolute, and mixed forms.
 
@@ -38,7 +38,7 @@ To **import** a CSV file, use `File → Open` and select the file, or go to `Dat
 
 Every calculation in Excel begins with an equals sign (`=`). A **function** relates an input (its arguments) to an output. For example, the `SUM` function takes a range of numeric values and returns their total:
 
-```excel
+``` excel
 =SUM(A2:A5)
 ```
 
@@ -48,15 +48,15 @@ Arguments are separated by commas, and some are optional. Many functions accept 
 
 The main data types in Excel are number, text, logical, date, and error.
 
--   **Number** includes integers and decimals. Numbers are right-aligned in a cell by default.
+- **Number** includes integers and decimals. Numbers are right-aligned in a cell by default.
 
--   **Text** represents labels or strings and is left-aligned by default.
+- **Text** represents labels or strings and is left-aligned by default.
 
--   **Logical** values are `TRUE` or `FALSE`, usually produced by a comparison.
+- **Logical** values are `TRUE` or `FALSE`, usually produced by a comparison.
 
--   **Date and time** values are stored as serial numbers counting the days since January 1, 1900, which is why dates can be added and subtracted.
+- **Date and time** values are stored as serial numbers counting the days since January 1, 1900, which is why dates can be added and subtracted.
 
--   **Error** values are the result of an invalid operation, such as dividing by zero.
+- **Error** values are the result of an invalid operation, such as dividing by zero.
 
 ### Comparison and Logical Operators {.unnumbered}
 
@@ -68,86 +68,86 @@ The remainder of the chapter lists the Excel functions and tools used in the boo
 
 ### General Purpose {.unnumbered}
 
--   `=SUM(range)` adds all of the numbers in a range.
+- `=SUM(range)` adds all of the numbers in a range.
 
--   `=COUNT(range)` counts the cells that contain numbers, while `=COUNTA(range)` counts all non-empty cells.
+- `=COUNT(range)` counts the cells that contain numbers, while `=COUNTA(range)` counts all non-empty cells.
 
--   `=MIN(range)` and `=MAX(range)` return the smallest and largest values in a range.
+- `=MIN(range)` and `=MAX(range)` return the smallest and largest values in a range.
 
--   `=ABS(number)` returns the absolute value of a number.
+- `=ABS(number)` returns the absolute value of a number.
 
--   `=SQRT(number)` returns the square root of a number.
+- `=SQRT(number)` returns the square root of a number.
 
--   `=IF(test, value_if_true, value_if_false)` returns one of two values depending on whether a condition is met.
+- `=IF(test, value_if_true, value_if_false)` returns one of two values depending on whether a condition is met.
 
--   `=AND(...)`, `=OR(...)`, and `=NOT(...)` combine or reverse logical conditions.
+- `=AND(...)`, `=OR(...)`, and `=NOT(...)` combine or reverse logical conditions.
 
 ### Tables and Charts (Descriptive Stats II) {.unnumbered}
 
--   **PivotTable** (`Insert → PivotTable`) automatically summarizes and counts data, making it the primary tool for building frequency and relative frequency distributions.
+- **PivotTable** (`Insert → PivotTable`) automatically summarizes and counts data, making it the primary tool for building frequency and relative frequency distributions.
 
--   `=IFS(test1, value1, test2, value2, ...)` checks multiple conditions in order and returns the value for the first one that is true. It is used to assign each numerical observation to its class (bin) when building a frequency distribution.
+- `=IFS(test1, value1, test2, value2, ...)` checks multiple conditions in order and returns the value for the first one that is true. It is used to assign each numerical observation to its class (bin) when building a frequency distribution.
 
 ### Measures of Central Location (Descriptive Stats III) {.unnumbered}
 
--   `=AVERAGE(range)` calculates the mean of a range of numbers.
+- `=AVERAGE(range)` calculates the mean of a range of numbers.
 
--   `=MEDIAN(range)` calculates the median.
+- `=MEDIAN(range)` calculates the median.
 
--   `=MODE(range)` returns the single most frequent value, while `=MODE.MULT(range)` returns all modes when the data is multimodal.
+- `=MODE(range)` returns the single most frequent value, while `=MODE.MULT(range)` returns all modes when the data is multimodal.
 
--   `=SUMPRODUCT(array1, array2)` multiplies corresponding values in two ranges and sums the results. Dividing by `=SUM(weights)` gives the weighted mean.
+- `=SUMPRODUCT(array1, array2)` multiplies corresponding values in two ranges and sums the results. Dividing by `=SUM(weights)` gives the weighted mean.
 
--   `=GEOMEAN(range)` calculates the geometric mean. For rates of change, apply the function to the growth factors (`1 + r`) and subtract one at the end.
+- `=GEOMEAN(range)` calculates the geometric mean. For rates of change, apply the function to the growth factors (`1 + r`) and subtract one at the end.
 
--   `=AVERAGEIF(range, criteria, average_range)` calculates the mean of the values that meet a given condition.
+- `=AVERAGEIF(range, criteria, average_range)` calculates the mean of the values that meet a given condition.
 
 ### Measures of Dispersion (Descriptive Stats IV) {.unnumbered}
 
--   `=COUNTIF(range, criteria)` counts the number of cells that meet a condition.
+- `=COUNTIF(range, criteria)` counts the number of cells that meet a condition.
 
--   `=MINIFS(min_range, criteria_range, criteria)` and `=MAXIFS(max_range, criteria_range, criteria)` return the minimum and maximum values filtered by one or more conditions.
+- `=MINIFS(min_range, criteria_range, criteria)` and `=MAXIFS(max_range, criteria_range, criteria)` return the minimum and maximum values filtered by one or more conditions.
 
--   `=VAR.S(range)` calculates the sample variance; `=VAR.P(range)` calculates the population variance.
+- `=VAR.S(range)` calculates the sample variance; `=VAR.P(range)` calculates the population variance.
 
--   `=STDEV.S(range)` calculates the sample standard deviation (the square root of the sample variance); `=STDEV.P(range)` calculates the population standard deviation.
+- `=STDEV.S(range)` calculates the sample standard deviation (the square root of the sample variance); `=STDEV.P(range)` calculates the population standard deviation.
 
--   `=VAR(IF(criteria_range="condition", value_range))` and `=STDEV(IF(criteria_range="condition", value_range))` calculate a conditional variance and standard deviation. Excel has no native `VARIF` or `STDEVIF`, so these are entered as array formulas.
+- `=VAR(IF(criteria_range="condition", value_range))` and `=STDEV(IF(criteria_range="condition", value_range))` calculate a conditional variance and standard deviation. Excel has no native `VARIF` or `STDEVIF`, so these are entered as array formulas.
 
--   **Coefficient of Variation** has no dedicated function; compute it as `=STDEV.S(range) / AVERAGE(range)`.
+- **Coefficient of Variation** has no dedicated function; compute it as `=STDEV.S(range) / AVERAGE(range)`.
 
--   **Sharpe Ratio** also has no dedicated function; compute it as `=(AVERAGE(range) - rf) / STDEV.S(range)`, where `rf` is the risk-free rate.
+- **Sharpe Ratio** also has no dedicated function; compute it as `=(AVERAGE(range) - rf) / STDEV.S(range)`, where `rf` is the risk-free rate.
 
 ### Measures of Shape and Position (Descriptive Stats V) {.unnumbered}
 
--   `=PERCENTILE.INC(array, k)` returns the $k$th percentile using the inclusive method $L_p = 1 + k(n-1)$, where `k` is a decimal between 0 and 1. `=PERCENTILE.EXC(array, k)` uses the exclusive method $L_p = k(n+1)$.
+- `=PERCENTILE.INC(array, k)` returns the $k$th percentile using the inclusive method $L_p = 1 + k(n-1)$, where `k` is a decimal between 0 and 1. `=PERCENTILE.EXC(array, k)` uses the exclusive method $L_p = k(n+1)$.
 
--   `=QUARTILE.INC(array, quart)` returns the five-point summary. The `quart` argument takes the values 0 (minimum), 1 ($Q_1$), 2 (median), 3 ($Q_3$), and 4 (maximum). The IQR is `=QUARTILE.INC(array, 3) - QUARTILE.INC(array, 1)`.
+- `=QUARTILE.INC(array, quart)` returns the five-point summary. The `quart` argument takes the values 0 (minimum), 1 ($Q_1$), 2 (median), 3 ($Q_3$), and 4 (maximum). The IQR is `=QUARTILE.INC(array, 3) - QUARTILE.INC(array, 1)`.
 
--   `=STANDARDIZE(x, mean, std_dev)` calculates the z-score of a value. It can also be computed manually as `=(x - AVERAGE(range)) / STDEV.S(range)`.
+- `=STANDARDIZE(x, mean, std_dev)` calculates the z-score of a value. It can also be computed manually as `=(x - AVERAGE(range)) / STDEV.S(range)`.
 
--   `=SKEW(range)` calculates the skewness using the Fisher-Pearson standardized moment coefficient.
+- `=SKEW(range)` calculates the skewness using the Fisher-Pearson standardized moment coefficient.
 
--   `=KURT(range)` calculates the excess kurtosis. A positive value indicates heavy tails (leptokurtic) and a negative value indicates light tails (platykurtic).
+- `=KURT(range)` calculates the excess kurtosis. A positive value indicates heavy tails (leptokurtic) and a negative value indicates light tails (platykurtic).
 
 ### Measures of Association (Regression I) {.unnumbered}
 
--   `=COVARIANCE.S(array1, array2)` calculates the sample covariance between two variables; `=COVARIANCE.P(array1, array2)` calculates the population covariance.
+- `=COVARIANCE.S(array1, array2)` calculates the sample covariance between two variables; `=COVARIANCE.P(array1, array2)` calculates the population covariance.
 
--   `=CORREL(array1, array2)` calculates the correlation coefficient, which is always between $-1$ and $1$.
+- `=CORREL(array1, array2)` calculates the correlation coefficient, which is always between $-1$ and $1$.
 
--   `=CORREL(array1, array2)^2` calculates the coefficient of determination $R^2$ by squaring the correlation coefficient. Excel has no standalone $R^2$ function for two variables.
+- `=CORREL(array1, array2)^2` calculates the coefficient of determination $R^2$ by squaring the correlation coefficient. Excel has no standalone $R^2$ function for two variables.
 
 ### Regression (Regression II) {.unnumbered}
 
--   **Data Analysis ToolPak → Regression** is the primary tool for estimating regression models. It returns the coefficients, $R^2$, adjusted $R^2$, standard error, and the ANOVA table in a single output.
+- **Data Analysis ToolPak → Regression** is the primary tool for estimating regression models. It returns the coefficients, $R^2$, adjusted $R^2$, standard error, and the ANOVA table in a single output.
 
--   `=SLOPE(y_range, x_range)` calculates the slope $\hat{\beta}$ of a simple regression line.
+- `=SLOPE(y_range, x_range)` calculates the slope $\hat{\beta}$ of a simple regression line.
 
--   `=INTERCEPT(y_range, x_range)` calculates the intercept $\hat{\alpha}$ of a simple regression line.
+- `=INTERCEPT(y_range, x_range)` calculates the intercept $\hat{\alpha}$ of a simple regression line.
 
--   `=FORECAST.LINEAR(x, y_range, x_range)` returns the predicted value of $y$ for a given value of $x$.
+- `=FORECAST.LINEAR(x, y_range, x_range)` returns the predicted value of $y$ for a given value of $x$.
 
--   `=RSQ(y_range, x_range)` returns the $R^2$ of a simple regression.
+- `=RSQ(y_range, x_range)` returns the $R^2$ of a simple regression.
 
--   `=STEYX(y_range, x_range)` returns the residual standard error $s_e$ of a simple regression.
+- `=STEYX(y_range, x_range)` returns the residual standard error $s_e$ of a simple regression.
