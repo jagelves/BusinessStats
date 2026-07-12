@@ -32,11 +32,7 @@ $$E(x)= \frac {a+b}{2}$$
 
 The **variance** of the uniform distribution is
 
-$$var(x)= \frac {(b-a)^2} {12}$$ **Example:** Consider the travel time between NY and CHI. Typically, this trips can take anywhere from 120-140 minutes. The specific time of a particular flight is unpredictable, but assumed to be anywhere between this interval. We assume a uniform distribution with upper limit of 140 and lower limit of 120. The probability that the flight take 122 minutes is zero since the interval has an infinite amount of possible values. The probability of the flight taking 130 minutes or less is 0.5. $$f(x<=130)=\frac{130-120}{20}=0.5$$ We can confirm this result in R using the `punif()` function. Below is the code:
-
-```{r}
-punif(130,120,140)
-```
+$$var(x)= \frac {(b-a)^2} {12}$$ **Example:** Consider the travel time between NY and CHI. Typically, this trips can take anywhere from 120-140 minutes. The specific time of a particular flight is unpredictable, but assumed to be anywhere between this interval. We assume a uniform distribution with upper limit of 140 and lower limit of 120. The probability that the flight take 122 minutes is zero since the interval has an infinite amount of possible values. The probability of the flight taking 130 minutes or less is 0.5. $$f(x<=130)=\frac{130-120}{20}=0.5$$ The uniform distribution has no dedicated Excel function, but its cumulative probability follows directly from the formula. In Excel, `=(130-120)/(140-120)` returns $0.5$.
 
 ## Normal Distribution
 
@@ -44,37 +40,25 @@ The **normal** PDF is given by
 
 $$f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1}{2} (\frac {x-\mu}{\sigma})^2}$$ where $\mu$ is the mean, $\sigma$ is the standard deviation, $\pi$ is 3.1415... , and $e$ is 2.7282... . The normal distribution has the following properties:
 
--   It is symmetrical about the mean $\mu$.
+- It is symmetrical about the mean $\mu$.
 
--   The mean is at the middle and divides the area of the distribution into halves.
+- The mean is at the middle and divides the area of the distribution into halves.
 
--   The total area under the curve is equal to 1.
+- The total area under the curve is equal to 1.
 
--   The distribution is completely determined by its mean and standard deviation.
+- The distribution is completely determined by its mean and standard deviation.
 
 The **standard normal** has a mean of $0$ and a standard deviation of $1$. Otherwise, it has the exact same properties as the normal distribution.
 
-**Example:** Dr Tires is planning on offering a mileage guarantee on each set of tires they sell. They are considering a 40,000 mile guarantee. Given that the mean tire mileage is 36,500 miles with a standard deviation of 5,000 miles, we can estimate that the probability that a tire lasts more than 40,000 miles 24.2%. We can confirm this using R.
-
-```{r}
-1-pnorm(40000,36500,5000)
-```
+**Example:** Dr Tires is planning on offering a mileage guarantee on each set of tires they sell. They are considering a 40,000 mile guarantee. Given that the mean tire mileage is 36,500 miles with a standard deviation of 5,000 miles, we can estimate that the probability that a tire lasts more than 40,000 miles is 24.2%. In Excel, use `=1 - NORM.DIST(40000, 36500, 5000, TRUE)`, which returns $0.242$.
 
 ## Exponential Distribution
 
 The **exponential distribution** is useful in computing probabilities for the time it takes to complete a task. It describes the time between events in a Poisson process.
 
-The probability density function is given by $$f(x)=1/{\mu} \times e^{\frac{-x}{\mu}}=\lambda e^{-{\lambda} x}$$ **Example:** Let $x$ represent the loading time for a truck at the Dock Dash loading dock. If the average loading time is 15 minutes, the probability that loading a truck will take 6 minutes or less is 32.97%.
+The probability density function is given by $$f(x)=1/{\mu} \times e^{\frac{-x}{\mu}}=\lambda e^{-{\lambda} x}$$ **Example:** Let $x$ represent the loading time for a truck at the Dock Dash loading dock. If the average loading time is 15 minutes, the probability that loading a truck will take 6 minutes or less is 32.97%. In Excel, the exponential functions use the rate $\lambda = 1/\mu = 1/15$: `=EXPON.DIST(6, 1/15, TRUE)` returns $0.3297$.
 
-```{r}
-pexp(6,1/15)
-```
-
-We can also estimate that the probability that it takes between 6 and 18 minutes is 36.91%.
-
-```{r}
-pexp(18,1/15)-pexp(6,1/15)
-```
+We can also estimate that the probability that it takes between 6 and 18 minutes is 36.91%: `=EXPON.DIST(18, 1/15, TRUE) - EXPON.DIST(6, 1/15, TRUE)` returns $0.3691$.
 
 ## Triangular Distribution
 
@@ -90,38 +74,55 @@ for $c < x \leq b$, and $f(x)=0$ otherwise. The **expected value** of the distri
 
 $$var(x) = \frac {a^2+b^2+c^2-ab-ac-bc}{18}$$
 
-**Example:** Bite Bliss is planning a new store in Williamsburg. It is estimated that the minimum weekly sales are 1000 and the maximum is 6000. They also estimate that the most likely outcome is around 3000. The probability that future sales will be between 2000 and 2500 is 12.5%.
+**Example:** Bite Bliss is planning a new store in Williamsburg. It is estimated that the minimum weekly sales are 1000 and the maximum is 6000. They also estimate that the most likely outcome is around 3000. The probability that future sales will be between 2000 and 2500 is 12.5%. Excel has no triangular distribution function, but the cumulative probability follows from its formula. For a value $x$ in the lower part of the range ($a \le x < c$), $F(x)=\frac{(x-a)^2}{(b-a)(c-a)}$. In Excel:
 
-```{r}
-library(extraDistr)
-ptriang(2500,1000,6000,3000)-ptriang(2000,1000,6000,3000)
+``` excel
+=(2500-1000)^2/((6000-1000)*(3000-1000)) - (2000-1000)^2/((6000-1000)*(3000-1000))
 ```
 
-## Useful R Functions
+This returns $0.225 - 0.10 = 0.125$.
 
-To calculate the density of continuous random variables use the `dunif()`, `dnorm()`, and `dexp()` functions. For the triangular distribution use the extraDistr package and the `dtriang()` function.
+## Continuous Distributions in Excel
 
-To calculate probabilities of continuous random variables use the `punif()`, `pnorm()`, `pexp()`, and `ptriang()` functions.
+Excel provides functions for the normal and exponential distributions. The uniform and triangular distributions do not have dedicated functions, but their probabilities follow directly from their formulas.
 
-To calculate quartiles of continuous random variables use the `qunif()`, `qnorm()`,`qexp()`, and `qtriang()` functions.
+**Uniform.** The density is $f(x)=1/(b-a)$ and the cumulative probability is $P(X \le x)=(x-a)/(b-a)$. Both are computed with ordinary arithmetic.
 
-To calculate generate random variables based on continuous random variables use the `runif()`, `rnorm()`, `rexp()`, and `rtriang()` functions.
+**Normal.** Use `=NORM.DIST(x, mean, standard_dev, cumulative)` — set `cumulative` to `TRUE` for $P(X \le x)$ and `FALSE` for the density. For the standard normal ($\mu=0$, $\sigma=1$) use `=NORM.S.DIST(z, cumulative)`. To find a value given a probability (a quantile), use `=NORM.INV(probability, mean, standard_dev)` or `=NORM.S.INV(probability)`.
+
+**Exponential.** Use `=EXPON.DIST(x, lambda, cumulative)`, where `lambda` is the rate $\lambda = 1/\mu$. Set `cumulative` to `TRUE` for $P(X \le x)$ and `FALSE` for the density.
+
+**Triangular.** Compute the cumulative probability from its formula: $F(x)=\frac{(x-a)^2}{(b-a)(c-a)}$ for $a \le x < c$, and $F(x)=1-\frac{(b-x)^2}{(b-a)(b-c)}$ for $c \le x \le b$.
+
+## Excel Function Summary
+
+Below is a list of the Excel functions used in this section:
+
+- `=NORM.DIST(x, mean, standard_dev, cumulative)` returns the normal probability (`TRUE` for the cumulative distribution, `FALSE` for the density).
+
+- `=NORM.S.DIST(z, cumulative)` returns the standard normal probability.
+
+- `=NORM.INV(probability, mean, standard_dev)` and `=NORM.S.INV(probability)` return the value (quantile) corresponding to a given cumulative probability.
+
+- `=EXPON.DIST(x, lambda, cumulative)` returns the exponential probability, where `lambda` is the rate $1/\mu$.
+
+- The **uniform** and **triangular** distributions have no built-in functions; compute their probabilities directly from the formulas above.
 
 ## Exercises
 
 The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:
 
--   Calculating probabilities for continuous random variables.
+- Calculating probabilities for continuous random variables.
 
--   Calculating the expected value and standard deviation.
+- Calculating the expected value and standard deviation.
 
--   Applying the uniform, normal, and exponential distributions.
+- Applying the uniform, normal, and exponential distributions.
 
-Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.
+Answers are provided below. Try not to peek until you have formulated your own answer and double checked your work for any mistakes.
 
 ### Exercise 1 {.unnumbered}
 
-For the following exercises, make your calculations by hand and verify results with a calculator or R.
+For the following exercises, make your calculations by hand and verify results with a calculator or Excel.
 
 1.  A random variable $X$ follows a continuous uniform distribution with minimum of $-2$ and maximum of $4$. Determine the height of the density function $f(x)$, the mean, the standard deviation, and calculate $P(X \leq -1)$.
 
@@ -131,29 +132,12 @@ For the following exercises, make your calculations by hand and verify results w
 
 *The height of the density function* $f(x)=0.1667$, the mean is $1$, standard deviation is $1.73$, and $P(X \leq -1)=0.1667$.
 
-$f(x)$ can be easily estimated by using the formula of the continuous uniform random variable. $f(x)=\frac{1}{b-a}$. Using R as a calculator we find:
+*The uniform distribution has no Excel function, so each quantity is computed directly from its formula:*
 
-```{r}
-1/(4-(-2))
-```
-
-*The mean is given by* $\mu = \frac{a+b}{2}$. In R we determine that the mean is:
-
-```{r}
-(-2+4)/2
-```
-
-*The standard deviation is* $\sigma = \sqrt {\frac{(b-a)^2}{12}}$. Using R we find:
-
-```{r}
-sqrt((4-(-2))^2/12)
-```
-
-*Finally, we can find the probability of* $Z$ being less than $-1$ by using the `punif()` function:
-
-```{r}
-punif(-1,-2,4)
-```
+- Height $f(x)=\frac{1}{b-a}$: `=1/(4-(-2))` → $0.1667$
+- Mean $\mu=\frac{a+b}{2}$: `=(-2+4)/2` → $1$
+- Standard deviation $\sigma=\sqrt{\frac{(b-a)^2}{12}}$: `=SQRT((4-(-2))^2/12)` → $1.73$
+- $P(X \leq -1)=\frac{x-a}{b-a}$: `=(-1-(-2))/(4-(-2))` → $0.1667$
 
 </details>
 
@@ -165,17 +149,10 @@ punif(-1,-2,4)
 
 *The probability that you will arrive on time is* $0.875$. If the time of the errand is 30 minutes, then the probability goes down to $0.75$.
 
-*There is a* $120$ minute interval in which the IP can arrive. The density function is given by $f(x)=1/120$. Using R we can find $P(X>15)$:
+*There is a* $120$ minute interval in which the provider can arrive, so $P(X>t)=1-\frac{t}{120}$. In Excel:
 
-```{r}
-punif(15,0,120,lower.tail=F)
-```
-
-*Once more we can find* $P(X>30)$:
-
-```{r}
-punif(30,0,120,lower.tail=F)
-```
+- `=1 - 15/120` → $0.875$
+- `=1 - 30/120` → $0.75$
 
 </details>
 
@@ -189,30 +166,12 @@ punif(30,0,120,lower.tail=F)
 
 $P(-0.67 \leq Z \leq -0.23)=0.158$, $P(0 \leq Z \leq 1.96)=0.475$, $P(-1.28 \leq Z \leq 0)=0.4$ and $P(Z > 4.2) \approx 0$.
 
-*Use the `pnorm()` function to find the probabilities.* $P(-0.67 \leq Z \leq -0.23)$:
+*Use the `=NORM.S.DIST()` function for the standard normal distribution:*
 
-```{r}
-pnorm(-0.23)-pnorm(-0.67)
-```
-
-$P(0 \leq Z \leq 1.96)$
-
-```{r}
-pnorm(1.96)-pnorm(0)
-```
-
-$P(-1.28 \leq Z \leq 0)$
-
-```{r}
-pnorm(0)-pnorm(-1.28)
-```
-
-$P(Z > 4.2)$
-
-```{r}
-options(scipen=999)
-pnorm(4.2,lower.tail = F)
-```
+- `=NORM.S.DIST(-0.23, TRUE) - NORM.S.DIST(-0.67, TRUE)` → $0.158$
+- `=NORM.S.DIST(1.96, TRUE) - NORM.S.DIST(0, TRUE)` → $0.475$
+- `=NORM.S.DIST(0, TRUE) - NORM.S.DIST(-1.28, TRUE)` → $0.4$
+- `=1 - NORM.S.DIST(4.2, TRUE)` → $\approx 0$
 
 </details>
 
@@ -224,31 +183,12 @@ pnorm(4.2,lower.tail = F)
 
 $P(Y>7.6)=0.005386$, $P(7.4 \leq Y \leq 10.6)=0.0071$, a $y$ such that $P(Y>y)=0.025$ is $6.42$, and a $y$ such that $P(y \leq Y \leq 2.5)$ is $-2.56$.
 
-*Let's use once more the `pnorm()` function in R.*
+*Use `=NORM.DIST()` for probabilities and `=NORM.INV()` for quantiles:*
 
-$P(Y>7.6)$
-
-```{r}
-pnorm(7.6,2.5,2,lower.tail = F)
-```
-
-$P(7.4 \leq Y \leq 10.6)$
-
-```{r}
-pnorm(10.6,2.5,2)-pnorm(7.4,2.5,2)
-```
-
-$y$ such that $P(Y>y)=0.025$
-
-```{r}
-qnorm(0.025,2.5,2,lower.tail = F)
-```
-
-$y$ such that $P(y \leq Y \leq 2.5)=0.4943$. Note that $2.5$ is the mean. Hence we are looking for a $y$ that has $0.5-0.4943=0.0057$ on the left:
-
-```{r}
-qnorm(0.0057,2.5,2)
-```
+- `=1 - NORM.DIST(7.6, 2.5, 2, TRUE)` → $0.005386$
+- `=NORM.DIST(10.6, 2.5, 2, TRUE) - NORM.DIST(7.4, 2.5, 2, TRUE)` → $0.0071$
+- $P(Y>y)=0.025$ means $y$ is the $97.5$th percentile: `=NORM.INV(0.975, 2.5, 2)` → $6.42$
+- Since $2.5$ is the mean, $P(y \leq Y \leq 2.5)=0.4943$ leaves $0.5-0.4943=0.0057$ in the left tail: `=NORM.INV(0.0057, 2.5, 2)` → $-2.56$
 
 </details>
 
@@ -260,17 +200,10 @@ qnorm(0.0057,2.5,2)
 
 *The probability is* $10.56$%. A game lasting no more than $2.069$ hours would be in the bottom $1$%.
 
-*Let's use `pnorm()` once more in R.*
+*In Excel:*
 
-```{r}
-pnorm(2.5,3,0.4)
-```
-
-*For the threshold we can use `qnorm()`:*
-
-```{r}
-qnorm(0.01,3,0.4)
-```
+- `=NORM.DIST(2.5, 3, 0.4, TRUE)` → $0.1056$
+- `=NORM.INV(0.01, 3, 0.4)` → $2.069$
 
 </details>
 
@@ -284,11 +217,9 @@ qnorm(0.01,3,0.4)
 
 *The standard deviation is equal to the mean* $0.1$. $P(0.10 \leq S \leq 0.2)=0.2325$
 
-*Let's use `pexp()` in R:*
+*The rate is* $\lambda = 1/\mu = 1/0.1 = 10$. In Excel:
 
-```{r}
-pexp(0.2,rate = 10)-pexp(0.1,rate = 10)
-```
+- `=EXPON.DIST(0.2, 10, TRUE) - EXPON.DIST(0.1, 10, TRUE)` → $0.2325$
 
 </details>
 
@@ -298,12 +229,10 @@ pexp(0.2,rate = 10)-pexp(0.1,rate = 10)
 
 <summary>Answer</summary>
 
-*The mean time between car arrivals is* $1/360=0.002778$. The probability that the next car will arrive within the next 10 seconds is $0.6321$.
+*The mean time between car arrivals is* $1/360=0.002778$ hours. The probability that the next car will arrive within the next 10 seconds is $0.6321$.
 
-*Once more we use `pexp()` in R:*
+*Ten seconds is* $10/3600 = 1/360$ of an hour. Using a rate of $\lambda = 360$ cars per hour in Excel:
 
-```{r}
-pexp(1/360,360)
-```
+- `=EXPON.DIST(1/360, 360, TRUE)` → $0.6321$
 
 </details>

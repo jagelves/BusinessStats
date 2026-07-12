@@ -80,9 +80,9 @@ The **hypergeometric distribution** is a probability distribution that describes
 
 The **hypergeometric** experiment differs from the binomial since:
 
--   trials are not independent.
+- trials are not independent.
 
--   the probability of success changes from trial to trial.
+- the probability of success changes from trial to trial.
 
 The **probability mass function** is given by:
 
@@ -110,11 +110,11 @@ where $\mu$ is the expected number of successes in any given interval and also t
 
 An experiment satisfies a Poisson process if:
 
--   The number of successes with a specified time or space interval equals any integer between zero and infinity.
+- The number of successes with a specified time or space interval equals any integer between zero and infinity.
 
--   The number of successes counted in non-overlapping intervals are independent.
+- The number of successes counted in non-overlapping intervals are independent.
 
--   The probability of success in any interval is the same for all intervals of equal size and is proportional to the size of the interval.
+- The probability of success in any interval is the same for all intervals of equal size and is proportional to the size of the interval.
 
 **Example:** Imagine a fast-food restaurant’s drive-thru where, on average, 10 cars arrive in a 15-minute span. What’s the likelihood of exactly 5 cars showing up in 15 minutes?
 
@@ -122,102 +122,56 @@ We can use the Poisson PMF function for this problem. The arrival rate is 10 car
 
 $$f(5)= \frac {10^{5} e^{-10}}{5!}=0.0378$$ There is a 3.78% chance of five cars arriving within a 15 minute interval.
 
-## Finding Probabilities in R
+## Discrete Distributions in Excel
 
-To calculate probabilities based on discrete random variables use the `dbinom()`, `dhyper()`, and `dpois()` functions. For the uniform distribution use the `extraDistr` package and the `dunif()` function. For example, to confirm the results of the dice example use the following code:
+Excel has built-in functions for the binomial, Poisson, and hypergeometric distributions. The discrete uniform distribution does not have a dedicated function, but its probabilities are easy to compute by hand.
 
-```{r}
-library(extraDistr)
-ddunif(2,1,6)
-```
+**Probability mass function (PMF).** Set the last (cumulative) argument to `FALSE` to get the probability of an exact value.
 
-The probability of rolling a 2 on a die is 0.167. The function's first argument is $x$, the second argument is the lower limit (i.e., 1) and the third argument is the upper limit (i.e., 6). To confirm the result of the basketball example, use the `dibinom()` function. Below is the code:
+- Binomial: `=BINOM.DIST(x, n, p, FALSE)`. For the basketball example, `=BINOM.DIST(3, 3, 0.9, FALSE)` → $0.729$.
+- Poisson: `=POISSON.DIST(x, mean, FALSE)`. For the drive-thru example, `=POISSON.DIST(5, 10, FALSE)` → $0.0378$.
+- Hypergeometric: `=HYPGEOM.DIST(x, n, r, N, FALSE)`, where `x` is the number of successes in the sample, `n` is the sample size, `r` is the number of successes in the population, and `N` is the population size. For the fuse example, `=HYPGEOM.DIST(1, 3, 5, 12, FALSE)` → $0.4772$.
+- Discrete uniform: the probability of any single value is `=1/n`. For the die, `=1/6` → $0.167$.
 
-```{r}
-dbinom(3,3,0.9)
-```
+**Cumulative probabilities.** Set the last argument to `TRUE` to get $P(X \le x)$.
 
-The first argument is x (number of successes), the second argument is n (the number of trials), and the last argument is p (the probability of success). To confirm the result of the fuse box problem we can use the `dhyper()` function in R:
+- Die $P(X \le 3)$: for the discrete uniform the cumulative probability is $(x-a+1)/n$, so `=(3-1+1)/6` → $0.5$.
+- Basketball $P(\text{at least 2 shots}) = 1 - P(X \le 1)$: `=1 - BINOM.DIST(1, 3, 0.9, TRUE)` → $0.972$.
+- For any upper-tail probability, subtract the cumulative from $1$.
 
-```{r}
-dhyper(1,5,7,3)
-```
+**Quantiles.** For the binomial, `=BINOM.INV(n, p, alpha)` returns the smallest value $x$ such that $P(X \le x) \ge alpha$. Excel has no inverse function for the Poisson, hypergeometric, or discrete uniform distributions; for those, build a column of cumulative probabilities and read off the smallest value whose cumulative probability reaches the desired percentile.
 
-The first argument is one more time x (number of successes in the sample), the second argument is r (the number of successes in the population), the third argument is N-r (the total number of failures), and the fourth argument is n (the sample size). Finally, for the drive-thru example we use the `dpois()` function to confirm that the probability of five arrivals is 3.78%.
+**Generating random numbers.** Use the Analysis ToolPak: `Data → Data Analysis → Random Number Generation`. Choose the distribution (for example, Binomial), enter the parameters (number of trials and probability of success), specify how many values to generate, and Excel fills a column with random draws. You can then summarize them with a PivotTable or a histogram.
 
-```{r}
-dpois(5,10)
-```
+## Excel Function Summary
 
-## Cumulative Probabilities in R.
+Below is a list of the Excel functions used in this section:
 
-To calculate cumulative probabilities use the `pbinom()`, `phyper()`, `ppois()`, and `pdunif()` functions. For example, the probability of tossing a 3 or lower when tossing a die is 1/2. This is confirmed with the code:
+- `=BINOM.DIST(x, n, p, cumulative)` returns the binomial probability. Use `FALSE` for the PMF and `TRUE` for the cumulative distribution.
 
-```{r}
-pdunif(3,1,6)
-```
+- `=BINOM.INV(n, p, alpha)` returns the smallest value of $x$ for which the cumulative binomial probability is at least `alpha`.
 
-Likewise, the probability of making at least 2 shots in our basketball example is:
+- `=POISSON.DIST(x, mean, cumulative)` returns the Poisson probability (`FALSE` for the PMF, `TRUE` for the cumulative distribution).
 
-```{r}
-pbinom(1,3,0.9, lower.tail = F)
-```
+- `=HYPGEOM.DIST(sample_s, number_sample, population_s, number_pop, cumulative)` returns the hypergeometric probability.
 
-Note the use of the *lower.tail* argument. This allows us to find the cumulative distribution to the right (i.e., upper tail of the distribution).
-
-## Finding quantiles in R
-
-Quantiles can be calculated using the `qbinom()`, `qhyper()`, `qpois()`, and `qdunif()` functions. If we wanted to find the 70% percentile for the rolling die example we can write:
-
-```{r}
-qdunif(0.7,1,6)
-```
-
-This means that about 70% of the values when rolling a die are less than or equal to 5. Note that 83.33% in fact of rolls are less than or equal to 5. R chooses the closes integer when calculating the quantile.
-
-Let's recall the fuse box problem where an inspector samples some boxes and determines whether they are defective or not. The inputs for the problem are $N=12$, $n=3$, and $r=5$. For this problem we can find the 80% percentile with the `qhyper()` function.
-
-```{r}
-qhyper(0.8,5,7,3)
-```
-
-That is, 80% of the outcomes are at two or less defective items.
-
-## Generating Random numbers using R
-
-To generate random numbers use the `rbinom()`, `rhyper()`, `rpois()`, and `rdunif()` functions. Let's generate 100 random numbers from the basketball example to look at the distribution of outcomes.
-
-```{r}
-shots<-rbinom(100,3,0.9)
-```
-
-The first input in the function is the number of random numbers we want to generate from the binomial distribution. We can now plot using `ggplot`.
-
-```{r message=FALSE}
-library(tidyverse)
-library(ggthemes)
-ggplot() + geom_bar(aes(shots), col="black",
-                    bg="grey", alpha=0.5) +
-  theme_clean()
-```
-
-The graph shows how the shooter makes all three shots about 72 times out of 100 shots.
+- **Data Analysis ToolPak → Random Number Generation** draws random values from a chosen distribution.
 
 ## Exercises
 
 The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:
 
--   Calculating probabilities for discrete random variables.
+- Calculating probabilities for discrete random variables.
 
--   Calculating the expected value and standard deviation.
+- Calculating the expected value and standard deviation.
 
--   Applying the binomial, Poisson and hypergeometric probability distributions.
+- Applying the binomial, Poisson and hypergeometric probability distributions.
 
-Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.
+Answers are provided below. Try not to peek until you have formulated your own answer and double checked your work for any mistakes.
 
 ### Exercise 1 {.unnumbered}
 
-For the following exercises, make your calculations by hand and verify results with a calculator or R.
+For the following exercises, make your calculations by hand and verify results with a calculator or Excel.
 
 1.  Consider the table below. Calculate the mean and standard deviation. What is the probability that $x<15$?
 
@@ -232,24 +186,11 @@ For the following exercises, make your calculations by hand and verify results w
 
 *The expected value is* $10.75$ and the standard deviation is $5.31$. The probability of $x<15$ is $0.65$.
 
-*In R we can create vectors for both* $x$ and the probabilities $P(X=x)$.
+*In Excel, enter the values x in column A and the probabilities P(X=x) in column B:*
 
-```{r}
-x<-c(5,10,15,20)
-px<-c(0.35,0.3,0.2,0.15)
-```
-
-*The expected value is the sum product of probabilities and values. Formally,* $\sum_{i=1}^{n}x_{i}p_{i}$ and in R:
-
-```{r}
-(ex<-sum(x*px))
-```
-
-*The standard deviation is given by* $\sqrt{\sum_{i=1}^{n}(x_{i}-\mu)^2p_{i}}$. We can calculate it in R with the following code:
-
-```{r}
-(sd<-sqrt(sum((x-ex)^2*px)))
-```
+- `=SUMPRODUCT(A2:A5, B2:B5)` → $10.75$ (expected value)
+- `=SQRT(SUMPRODUCT((A2:A5-10.75)^2, B2:B5))` → $5.31$ (standard deviation)
+- $P(x<15) = 0.35 + 0.3 = 0.65$
 
 </details>
 
@@ -264,26 +205,13 @@ px<-c(0.35,0.3,0.2,0.15)
 
 <summary>Answer</summary>
 
-*The expected value is* $-17.4$ and the standard deviation is $6.86$. The probability of is $0.25$.
+*The expected value is* $-17.4$ and the standard deviation is $6.86$. The probability of $x \geq -9$ is $0.25$.
 
-*Let's create the vectors once more in R.*
+*In Excel, with y in column A and P(Y=y) in column B:*
 
-```{r}
-y<-c(-23,-17,-9,-3)
-py<-c(0.5,0.25,0.15,0.1)
-```
-
-*The expected value is given by:*
-
-```{r}
-(ey<-sum(y*py))
-```
-
-*The standard deviation is given by:*
-
-```{r}
-(sdy<-sqrt(sum((y-ey)^2*py)))
-```
+- `=SUMPRODUCT(A2:A5, B2:B5)` → $-17.4$
+- `=SQRT(SUMPRODUCT((A2:A5-(-17.4))^2, B2:B5))` → $6.86$
+- $P(y \geq -9) = 0.15 + 0.1 = 0.25$
 
 </details>
 
@@ -301,51 +229,14 @@ py<-c(0.5,0.25,0.15,0.1)
 
 *Both funds have the same expected return of* $6$. The safest return comes from fund 1 since the standard deviation is only $11.14$ vs. $31.05$ for fund 2.
 
-*In R we can create a data frame with probabilities and the performance of the funds.*
+*In Excel, enter the probabilities in column A, Fund 1 in column B, and Fund 2 in column C:*
 
-```{r}
-funds<-data.frame(probs=c(0.2,0.5,0.3),fund1=c(20,10,-10), fund2=c(40,20,-40))
-```
+- `=SUMPRODUCT(A2:A4, B2:B4)` → $6$ (Fund 1 expected return)
+- `=SUMPRODUCT(A2:A4, C2:C4)` → $6$ (Fund 2 expected return)
+- `=SQRT(SUMPRODUCT((B2:B4-6)^2, A2:A4))` → $11.14$ (Fund 1 std. dev.)
+- `=SQRT(SUMPRODUCT((C2:C4-6)^2, A2:A4))` → $31.05$ (Fund 2 std. dev.)
 
-*Let's create a function for the expected value and standard deviation. For the expected value:*
-
-```{r}
-Expected_Value<-function(x,p){
-  sum(x*p)
-}
-```
-
-*Now we can use the formula to calculate the expected value of fund1:*
-
-```{r}
-Expected_Value(funds$fund1,funds$probs)
-```
-
-*and fund 2:*
-
-```{r}
-Expected_Value(funds$fund2,funds$probs)
-```
-
-*For the standard deviation we can create another function:*
-
-```{r}
-Standard_Deviation<-function(x,p){
-  sqrt(sum((x-Expected_Value(x,p))^2*p))
-}
-```
-
-*Using the function to get the standard deviation of fund 1 we get:*
-
-```{r}
-Standard_Deviation(funds$fund1,funds$probs)
-```
-
-*and for fund 2:*
-
-```{r}
-Standard_Deviation(funds$fund2,funds$probs)
-```
+*Since both funds have the same expected return, choose Fund 1 — it achieves that return with much less risk.*
 
 </details>
 
@@ -364,17 +255,10 @@ Standard_Deviation(funds$fund2,funds$probs)
 
 *The expected return of the portfolio is* $10.4$ and the standard deviation is $14.60$.
 
-*In R we can start by calculating the expected return. This is given by the formula* $\alpha R_{1} +\beta R_{2}$:
+*The portfolio weights are* $\alpha=2/5=0.4$ for X and $\beta=3/5=0.6$ for Y. In Excel:
 
-```{r}
-(ER<-(2/5)*8+(3/5)*12)
-```
-
-*Next we can find the standard deviation with the formula* $\sqrt{\alpha^2 \sigma_{1}^2+\beta^2 \sigma_{2}+\alpha \beta \rho \sigma_{1} \sigma_{2}}$:
-
-```{r}
-(Risk<-sqrt(0.4^2*12^2 + 0.6^2*20^2+2*0.4*0.6*0.4*12*20))
-```
+- Expected return $\alpha R_1 + \beta R_2$: `=0.4*8 + 0.6*12` → $10.4$
+- Standard deviation $\sqrt{\alpha^2 \sigma_1^2+\beta^2 \sigma_2^2+2\alpha\beta\rho\sigma_1\sigma_2}$: `=SQRT(0.4^2*12^2 + 0.6^2*20^2 + 2*0.4*0.6*0.4*12*20)` → $14.60$
 
 </details>
 
@@ -388,17 +272,10 @@ Standard_Deviation(funds$fund2,funds$probs)
 
 $P(Z=1)=0.31$, and $P(Z \geq 2)=0.57$. The expected value is $np=1.75$ and the standard deviation is $\sqrt{np(1-p)}=1.067$.
 
-*Let's use R and the `dbinom()` function to find* $P(Z=1)$.
+*In Excel:*
 
-```{r}
-dbinom(1,5,0.35)
-```
-
-*We can now use `pbinom()` to find the cumulative distribution. Since we want the right tale of the distribution, we will specify this with an argument.*
-
-```{r}
-pbinom(1,5,0.35, lower.tail=F)
-```
+- `=BINOM.DIST(1, 5, 0.35, FALSE)` → $0.31$
+- `=1 - BINOM.DIST(1, 5, 0.35, TRUE)` → $0.57$
 
 </details>
 
@@ -410,17 +287,10 @@ pbinom(1,5,0.35, lower.tail=F)
 
 $P(W>160)=0.14$, and $P(155 \leq W \leq 165 )=0.45$. The expected value is $np=154$ and the standard deviation is $\sqrt{np(1-p)}=5.95$.
 
-*Using the `pbinom()` function we find that* $P(W>160)$.
+*In Excel:*
 
-```{r}
-pbinom(160,200,0.77, lower.tail = F)
-```
-
-*We make two calculations to find the probability. First,* $P(W \leq 165)$ and then $P(W \geq 154)$. The difference between these two, gives us the desired outcome.
-
-```{r}
-pbinom(165,200,0.77, lower.tail=T)-pbinom(154,200,0.77, lower.tail=T)
-```
+- `=1 - BINOM.DIST(160, 200, 0.77, TRUE)` → $0.14$
+- `=BINOM.DIST(165, 200, 0.77, TRUE) - BINOM.DIST(154, 200, 0.77, TRUE)` → $0.45$
 
 </details>
 
@@ -432,29 +302,14 @@ pbinom(165,200,0.77, lower.tail=T)-pbinom(154,200,0.77, lower.tail=T)
 
 *The probabilities are the same. Each event has a probability of* $0.3456$. If the probability changes to $0.5$ now the event of two women and two men is more likely.
 
-*Let's calculate the probabilities in R. First, the probability of three men and one woman.*
+*In Excel:*
 
-```{r}
-dbinom(3,4,0.6)
-```
+- `=BINOM.DIST(3, 4, 0.6, FALSE)` → $0.3456$ (three men)
+- `=BINOM.DIST(2, 4, 0.6, FALSE)` → $0.3456$ (two men)
+- `=BINOM.DIST(3, 4, 0.5, FALSE)` → $0.25$
+- `=BINOM.DIST(2, 4, 0.5, FALSE)` → $0.375$
 
-*Now the probability of two men and two women.*
-
-```{r}
-dbinom(2,4,0.6)
-```
-
-*Changing the probabilities reveals that:*
-
-```{r}
-dbinom(3,4,0.5)
-```
-
-```{r}
-dbinom(2,4,0.5)
-```
-
-*Having two of each is the most likely outcome.*
+*At* $p=0.5$, having two of each is the most likely outcome.
 
 </details>
 
@@ -468,17 +323,10 @@ dbinom(2,4,0.5)
 
 *The* $P(S=2)=0.25$ and $P(S \geq 2)=0.44$. The expected value and the variance is $1.5$.
 
-*In R we will make use of the `dpois()` function:*
+*In Excel:*
 
-```{r}
-dpois(2,1.5)
-```
-
-*For the second probability we will use `ppois()`:*
-
-```{r}
-ppois(1,1.5, lower.tail=F)
-```
+- `=POISSON.DIST(2, 1.5, FALSE)` → $0.25$
+- `=1 - POISSON.DIST(1, 1.5, TRUE)` → $0.44$
 
 </details>
 
@@ -490,17 +338,10 @@ ppois(1,1.5, lower.tail=F)
 
 *The* $P(T=14)=0.039$ and $P(18 \leq T \leq 23)=0.49$.
 
-*Using the `dpois()` function once more:*
+*In Excel:*
 
-```{r}
-dpois(14,20)
-```
-
-*For the second probability we will find the difference between two probabilities:*
-
-```{r}
-ppois(23,20, lower.tail=T)-ppois(17,20, lower.tail=T)
-```
+- `=POISSON.DIST(14, 20, FALSE)` → $0.039$
+- `=POISSON.DIST(23, 20, TRUE) - POISSON.DIST(17, 20, TRUE)` → $0.49$
 
 </details>
 
@@ -512,11 +353,9 @@ ppois(23,20, lower.tail=T)-ppois(17,20, lower.tail=T)
 
 *The probability of administering more than* $8$ but less than $12$ shots is $0.3$.
 
-*Let's first note that if* $84$ shots are administered on average weekly, then $12$ are administered daily. Now we can use this average and the `ppois()` function to find the probability:
+*If* $84$ shots are administered on average weekly, then $12$ are administered daily. Using this daily mean in Excel:
 
-```{r}
-ppois(11,12)-ppois(8,12)
-```
+- `=POISSON.DIST(11, 12, TRUE) - POISSON.DIST(8, 12, TRUE)` → $0.30$
 
 </details>
 
@@ -530,23 +369,11 @@ ppois(11,12)-ppois(8,12)
 
 $P(X=0)=0.58$, $P(X=1)=0.37$, and $P(X \leq 1)=0.94$.
 
-*In R we can use the `dhyper()` function*
+*In Excel (successes in population* $r=3$, population $N=25$, sample $n=4$):
 
-```{r}
-dhyper(0,3,22,4)
-```
-
-*once more for the second probability:*
-
-```{r}
-dhyper(1, 3, 22, 4)
-```
-
-*For the last probability we can add the previous probabilities or use the `phyper()` function:*
-
-```{r}
-phyper(1, 3, 22, 4)
-```
+- `=HYPGEOM.DIST(0, 4, 3, 25, FALSE)` → $0.58$
+- `=HYPGEOM.DIST(1, 4, 3, 25, FALSE)` → $0.37$
+- `=HYPGEOM.DIST(1, 4, 3, 25, TRUE)` → $0.94$
 
 </details>
 
@@ -558,11 +385,9 @@ phyper(1, 3, 22, 4)
 
 *The probability is* $0.078$.
 
-*In R we use the `dhyper()` function once more:*
+*In Excel (successes in population* $r=25$, population $N=100$, sample $n=20$):
 
-```{r}
-phyper(7, 25, 75, 20, lower.tail = F)
-```
+- `=1 - HYPGEOM.DIST(7, 20, 25, 100, TRUE)` → $0.078$
 
 </details>
 
@@ -572,31 +397,14 @@ phyper(7, 25, 75, 20, lower.tail = F)
 
 <summary>Answer</summary>
 
-*The probability of matching two white balls is* $5%$. Winning the jackpot is extremely unlikely! A probability of $0.00000000512$. It is more likely to be struck by lightning according to the CDC.
+*The probability of matching two white balls is* $5\%$. Winning the jackpot is extremely unlikely! A probability of $0.00000000512$. It is more likely to be struck by lightning according to the CDC.
 
-*In R use the `dhyper()` function:*
+*In Excel, treat the five drawn white balls as the successes in a population of* $59$, with the player's five picks as the sample:
 
-```{r}
-dhyper(2, 5, 54, 5)
-```
+- `=HYPGEOM.DIST(2, 5, 5, 59, FALSE)` → $0.05$ (match two white balls)
 
-*For the jackpot we first calculate the probability of getting all of the white balls.*
+*For the jackpot, multiply the probability of matching all five white balls by the probability of matching the single Powerball (1 of 39):*
 
-```{r}
-options(digits = 5,scipen=999)
-dhyper(5, 5, 54, 5)
-```
-
-*Now the probability of getting the Powerball.*
-
-```{r}
-dhyper(1, 1, 38, 1)
-```
-
-*Since the two events are independent, we can multiply them to find the probability of a jackpot.*
-
-```{r}
-dhyper(5, 5, 54, 5)*dhyper(1, 1, 38, 1)
-```
+- `=HYPGEOM.DIST(5, 5, 5, 59, FALSE) * HYPGEOM.DIST(1, 1, 1, 39, FALSE)` → $0.00000000512$
 
 </details>

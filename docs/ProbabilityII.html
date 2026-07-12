@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -296,11 +262,9 @@ window.Quarto = {
   <li><a href="#binomial-distribution" id="toc-binomial-distribution" class="nav-link" data-scroll-target="#binomial-distribution"><span class="header-section-number">9.4</span> Binomial Distribution</a></li>
   <li><a href="#the-hypergeometric-distribution" id="toc-the-hypergeometric-distribution" class="nav-link" data-scroll-target="#the-hypergeometric-distribution"><span class="header-section-number">9.5</span> The Hypergeometric Distribution</a></li>
   <li><a href="#poisson-distribution" id="toc-poisson-distribution" class="nav-link" data-scroll-target="#poisson-distribution"><span class="header-section-number">9.6</span> Poisson Distribution</a></li>
-  <li><a href="#finding-probabilities-in-r" id="toc-finding-probabilities-in-r" class="nav-link" data-scroll-target="#finding-probabilities-in-r"><span class="header-section-number">9.7</span> Finding Probabilities in R</a></li>
-  <li><a href="#cumulative-probabilities-in-r." id="toc-cumulative-probabilities-in-r." class="nav-link" data-scroll-target="#cumulative-probabilities-in-r."><span class="header-section-number">9.8</span> Cumulative Probabilities in R.</a></li>
-  <li><a href="#finding-quantiles-in-r" id="toc-finding-quantiles-in-r" class="nav-link" data-scroll-target="#finding-quantiles-in-r"><span class="header-section-number">9.9</span> Finding quantiles in R</a></li>
-  <li><a href="#generating-random-numbers-using-r" id="toc-generating-random-numbers-using-r" class="nav-link" data-scroll-target="#generating-random-numbers-using-r"><span class="header-section-number">9.10</span> Generating Random numbers using R</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">9.11</span> Exercises</a>
+  <li><a href="#discrete-distributions-in-excel" id="toc-discrete-distributions-in-excel" class="nav-link" data-scroll-target="#discrete-distributions-in-excel"><span class="header-section-number">9.7</span> Discrete Distributions in Excel</a></li>
+  <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">9.8</span> Excel Function Summary</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">9.9</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -429,110 +393,48 @@ details summary {
 <p>We can use the Poisson PMF function for this problem. The arrival rate is 10 cars every 15 minutes. So there are 10 successes in the 15 minute interval. We can substitute values into the PMF:</p>
 <p><span class="math display">\[f(5)= \frac {10^{5} e^{-10}}{5!}=0.0378\]</span> There is a 3.78% chance of five cars arriving within a 15 minute interval.</p>
 </section>
-<section id="finding-probabilities-in-r" class="level2" data-number="9.7">
-<h2 data-number="9.7" class="anchored" data-anchor-id="finding-probabilities-in-r"><span class="header-section-number">9.7</span> Finding Probabilities in R</h2>
-<p>To calculate probabilities based on discrete random variables use the <code>dbinom()</code>, <code>dhyper()</code>, and <code>dpois()</code> functions. For the uniform distribution use the <code>extraDistr</code> package and the <code>dunif()</code> function. For example, to confirm the results of the dice example use the following code:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(extraDistr)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ddunif</span>(<span class="dv">2</span>,<span class="dv">1</span>,<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1666667</code></pre>
-</div>
-</div>
-<p>The probability of rolling a 2 on a die is 0.167. The function’s first argument is <span class="math inline">\(x\)</span>, the second argument is the lower limit (i.e., 1) and the third argument is the upper limit (i.e., 6). To confirm the result of the basketball example, use the <code>dibinom()</code> function. Below is the code:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">3</span>,<span class="dv">3</span>,<span class="fl">0.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.729</code></pre>
-</div>
-</div>
-<p>The first argument is x (number of successes), the second argument is n (the number of trials), and the last argument is p (the probability of success). To confirm the result of the fuse box problem we can use the <code>dhyper()</code> function in R:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4772727</code></pre>
-</div>
-</div>
-<p>The first argument is one more time x (number of successes in the sample), the second argument is r (the number of successes in the population), the third argument is N-r (the total number of failures), and the fourth argument is n (the sample size). Finally, for the drive-thru example we use the <code>dpois()</code> function to confirm that the probability of five arrivals is 3.78%.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="dv">5</span>,<span class="dv">10</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.03783327</code></pre>
-</div>
-</div>
+<section id="discrete-distributions-in-excel" class="level2" data-number="9.7">
+<h2 data-number="9.7" class="anchored" data-anchor-id="discrete-distributions-in-excel"><span class="header-section-number">9.7</span> Discrete Distributions in Excel</h2>
+<p>Excel has built-in functions for the binomial, Poisson, and hypergeometric distributions. The discrete uniform distribution does not have a dedicated function, but its probabilities are easy to compute by hand.</p>
+<p><strong>Probability mass function (PMF).</strong> Set the last (cumulative) argument to <code>FALSE</code> to get the probability of an exact value.</p>
+<ul>
+<li>Binomial: <code>=BINOM.DIST(x, n, p, FALSE)</code>. For the basketball example, <code>=BINOM.DIST(3, 3, 0.9, FALSE)</code> → <span class="math inline">\(0.729\)</span>.</li>
+<li>Poisson: <code>=POISSON.DIST(x, mean, FALSE)</code>. For the drive-thru example, <code>=POISSON.DIST(5, 10, FALSE)</code> → <span class="math inline">\(0.0378\)</span>.</li>
+<li>Hypergeometric: <code>=HYPGEOM.DIST(x, n, r, N, FALSE)</code>, where <code>x</code> is the number of successes in the sample, <code>n</code> is the sample size, <code>r</code> is the number of successes in the population, and <code>N</code> is the population size. For the fuse example, <code>=HYPGEOM.DIST(1, 3, 5, 12, FALSE)</code> → <span class="math inline">\(0.4772\)</span>.</li>
+<li>Discrete uniform: the probability of any single value is <code>=1/n</code>. For the die, <code>=1/6</code> → <span class="math inline">\(0.167\)</span>.</li>
+</ul>
+<p><strong>Cumulative probabilities.</strong> Set the last argument to <code>TRUE</code> to get <span class="math inline">\(P(X \le x)\)</span>.</p>
+<ul>
+<li>Die <span class="math inline">\(P(X \le 3)\)</span>: for the discrete uniform the cumulative probability is <span class="math inline">\((x-a+1)/n\)</span>, so <code>=(3-1+1)/6</code> → <span class="math inline">\(0.5\)</span>.</li>
+<li>Basketball <span class="math inline">\(P(\text{at least 2 shots}) = 1 - P(X \le 1)\)</span>: <code>=1 - BINOM.DIST(1, 3, 0.9, TRUE)</code> → <span class="math inline">\(0.972\)</span>.</li>
+<li>For any upper-tail probability, subtract the cumulative from <span class="math inline">\(1\)</span>.</li>
+</ul>
+<p><strong>Quantiles.</strong> For the binomial, <code>=BINOM.INV(n, p, alpha)</code> returns the smallest value <span class="math inline">\(x\)</span> such that <span class="math inline">\(P(X \le x) \ge alpha\)</span>. Excel has no inverse function for the Poisson, hypergeometric, or discrete uniform distributions; for those, build a column of cumulative probabilities and read off the smallest value whose cumulative probability reaches the desired percentile.</p>
+<p><strong>Generating random numbers.</strong> Use the Analysis ToolPak: <code>Data → Data Analysis → Random Number Generation</code>. Choose the distribution (for example, Binomial), enter the parameters (number of trials and probability of success), specify how many values to generate, and Excel fills a column with random draws. You can then summarize them with a PivotTable or a histogram.</p>
 </section>
-<section id="cumulative-probabilities-in-r." class="level2" data-number="9.8">
-<h2 data-number="9.8" class="anchored" data-anchor-id="cumulative-probabilities-in-r."><span class="header-section-number">9.8</span> Cumulative Probabilities in R.</h2>
-<p>To calculate cumulative probabilities use the <code>pbinom()</code>, <code>phyper()</code>, <code>ppois()</code>, and <code>pdunif()</code> functions. For example, the probability of tossing a 3 or lower when tossing a die is 1/2. This is confirmed with the code:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pdunif</span>(<span class="dv">3</span>,<span class="dv">1</span>,<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5</code></pre>
-</div>
-</div>
-<p>Likewise, the probability of making at least 2 shots in our basketball example is:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">1</span>,<span class="dv">3</span>,<span class="fl">0.9</span>, <span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.972</code></pre>
-</div>
-</div>
-<p>Note the use of the <em>lower.tail</em> argument. This allows us to find the cumulative distribution to the right (i.e., upper tail of the distribution).</p>
+<section id="excel-function-summary" class="level2" data-number="9.8">
+<h2 data-number="9.8" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">9.8</span> Excel Function Summary</h2>
+<p>Below is a list of the Excel functions used in this section:</p>
+<ul>
+<li><p><code>=BINOM.DIST(x, n, p, cumulative)</code> returns the binomial probability. Use <code>FALSE</code> for the PMF and <code>TRUE</code> for the cumulative distribution.</p></li>
+<li><p><code>=BINOM.INV(n, p, alpha)</code> returns the smallest value of <span class="math inline">\(x\)</span> for which the cumulative binomial probability is at least <code>alpha</code>.</p></li>
+<li><p><code>=POISSON.DIST(x, mean, cumulative)</code> returns the Poisson probability (<code>FALSE</code> for the PMF, <code>TRUE</code> for the cumulative distribution).</p></li>
+<li><p><code>=HYPGEOM.DIST(sample_s, number_sample, population_s, number_pop, cumulative)</code> returns the hypergeometric probability.</p></li>
+<li><p><strong>Data Analysis ToolPak → Random Number Generation</strong> draws random values from a chosen distribution.</p></li>
+</ul>
 </section>
-<section id="finding-quantiles-in-r" class="level2" data-number="9.9">
-<h2 data-number="9.9" class="anchored" data-anchor-id="finding-quantiles-in-r"><span class="header-section-number">9.9</span> Finding quantiles in R</h2>
-<p>Quantiles can be calculated using the <code>qbinom()</code>, <code>qhyper()</code>, <code>qpois()</code>, and <code>qdunif()</code> functions. If we wanted to find the 70% percentile for the rolling die example we can write:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qdunif</span>(<span class="fl">0.7</span>,<span class="dv">1</span>,<span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 5</code></pre>
-</div>
-</div>
-<p>This means that about 70% of the values when rolling a die are less than or equal to 5. Note that 83.33% in fact of rolls are less than or equal to 5. R chooses the closes integer when calculating the quantile.</p>
-<p>Let’s recall the fuse box problem where an inspector samples some boxes and determines whether they are defective or not. The inputs for the problem are <span class="math inline">\(N=12\)</span>, <span class="math inline">\(n=3\)</span>, and <span class="math inline">\(r=5\)</span>. For this problem we can find the 80% percentile with the <code>qhyper()</code> function.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qhyper</span>(<span class="fl">0.8</span>,<span class="dv">5</span>,<span class="dv">7</span>,<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2</code></pre>
-</div>
-</div>
-<p>That is, 80% of the outcomes are at two or less defective items.</p>
-</section>
-<section id="generating-random-numbers-using-r" class="level2" data-number="9.10">
-<h2 data-number="9.10" class="anchored" data-anchor-id="generating-random-numbers-using-r"><span class="header-section-number">9.10</span> Generating Random numbers using R</h2>
-<p>To generate random numbers use the <code>rbinom()</code>, <code>rhyper()</code>, <code>rpois()</code>, and <code>rdunif()</code> functions. Let’s generate 100 random numbers from the basketball example to look at the distribution of outcomes.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>shots<span class="ot">&lt;-</span><span class="fu">rbinom</span>(<span class="dv">100</span>,<span class="dv">3</span>,<span class="fl">0.9</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p>The first input in the function is the number of random numbers we want to generate from the binomial distribution. We can now plot using <code>ggplot</code>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>() <span class="sc">+</span> <span class="fu">geom_bar</span>(<span class="fu">aes</span>(shots), <span class="at">col=</span><span class="st">"black"</span>,</span>
-<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>                    <span class="at">bg=</span><span class="st">"grey"</span>, <span class="at">alpha=</span><span class="fl">0.5</span>) <span class="sc">+</span></span>
-<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="ProbabilityII_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The graph shows how the shooter makes all three shots about 72 times out of 100 shots.</p>
-</section>
-<section id="exercises" class="level2" data-number="9.11">
-<h2 data-number="9.11" class="anchored" data-anchor-id="exercises"><span class="header-section-number">9.11</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="9.9">
+<h2 data-number="9.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">9.9</span> Exercises</h2>
 <p>The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating probabilities for discrete random variables.</p></li>
 <li><p>Calculating the expected value and standard deviation.</p></li>
 <li><p>Applying the binomial, Poisson and hypergeometric probability distributions.</p></li>
 </ul>
-<p>Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.</p>
+<p>Answers are provided below. Try not to peek until you have formulated your own answer and double checked your work for any mistakes.</p>
 <section id="exercise-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-1">Exercise 1</h3>
-<p>For the following exercises, make your calculations by hand and verify results with a calculator or R.</p>
+<p>For the following exercises, make your calculations by hand and verify results with a calculator or Excel.</p>
 <ol type="1">
 <li>Consider the table below. Calculate the mean and standard deviation. What is the probability that <span class="math inline">\(x&lt;15\)</span>?</li>
 </ol>
@@ -559,25 +461,12 @@ details summary {
 Answer
 </summary>
 <p><em>The expected value is</em> <span class="math inline">\(10.75\)</span> and the standard deviation is <span class="math inline">\(5.31\)</span>. The probability of <span class="math inline">\(x&lt;15\)</span> is <span class="math inline">\(0.65\)</span>.</p>
-<p><em>In R we can create vectors for both</em> <span class="math inline">\(x\)</span> and the probabilities <span class="math inline">\(P(X=x)\)</span>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">10</span>,<span class="dv">15</span>,<span class="dv">20</span>)</span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>px<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">0.35</span>,<span class="fl">0.3</span>,<span class="fl">0.2</span>,<span class="fl">0.15</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><em>The expected value is the sum product of probabilities and values. Formally,</em> <span class="math inline">\(\sum_{i=1}^{n}x_{i}p_{i}\)</span> and in R:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(ex<span class="ot">&lt;-</span><span class="fu">sum</span>(x<span class="sc">*</span>px))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 10.75</code></pre>
-</div>
-</div>
-<p><em>The standard deviation is given by</em> <span class="math inline">\(\sqrt{\sum_{i=1}^{n}(x_{i}-\mu)^2p_{i}}\)</span>. We can calculate it in R with the following code:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>(sd<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">sum</span>((x<span class="sc">-</span>ex)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>px)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 5.30919</code></pre>
-</div>
-</div>
+<p><em>In Excel, enter the values x in column A and the probabilities P(X=x) in column B:</em></p>
+<ul>
+<li><code>=SUMPRODUCT(A2:A5, B2:B5)</code> → <span class="math inline">\(10.75\)</span> (expected value)</li>
+<li><code>=SQRT(SUMPRODUCT((A2:A5-10.75)^2, B2:B5))</code> → <span class="math inline">\(5.31\)</span> (standard deviation)</li>
+<li><span class="math inline">\(P(x&lt;15) = 0.35 + 0.3 = 0.65\)</span></li>
+</ul>
 </details>
 <ol start="2" type="1">
 <li>Consider the table below. Calculate the mean and standard deviation. What is the probability that <span class="math inline">\(x\geq-9\)</span>?</li>
@@ -604,26 +493,13 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The expected value is</em> <span class="math inline">\(-17.4\)</span> and the standard deviation is <span class="math inline">\(6.86\)</span>. The probability of is <span class="math inline">\(0.25\)</span>.</p>
-<p><em>Let’s create the vectors once more in R.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="sc">-</span><span class="dv">23</span>,<span class="sc">-</span><span class="dv">17</span>,<span class="sc">-</span><span class="dv">9</span>,<span class="sc">-</span><span class="dv">3</span>)</span>
-<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>py<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">0.5</span>,<span class="fl">0.25</span>,<span class="fl">0.15</span>,<span class="fl">0.1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><em>The expected value is given by:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>(ey<span class="ot">&lt;-</span><span class="fu">sum</span>(y<span class="sc">*</span>py))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -17.4</code></pre>
-</div>
-</div>
-<p><em>The standard deviation is given by:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>(sdy<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fu">sum</span>((y<span class="sc">-</span>ey)<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>py)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 6.858571</code></pre>
-</div>
-</div>
+<p><em>The expected value is</em> <span class="math inline">\(-17.4\)</span> and the standard deviation is <span class="math inline">\(6.86\)</span>. The probability of <span class="math inline">\(x \geq -9\)</span> is <span class="math inline">\(0.25\)</span>.</p>
+<p><em>In Excel, with y in column A and P(Y=y) in column B:</em></p>
+<ul>
+<li><code>=SUMPRODUCT(A2:A5, B2:B5)</code> → <span class="math inline">\(-17.4\)</span></li>
+<li><code>=SQRT(SUMPRODUCT((A2:A5-(-17.4))^2, B2:B5))</code> → <span class="math inline">\(6.86\)</span></li>
+<li><span class="math inline">\(P(y \geq -9) = 0.15 + 0.1 = 0.25\)</span></li>
+</ul>
 </details>
 <ol start="3" type="1">
 <li>The returns on a couple of funds depends on the state of the economy. The economy is expected to be Good with a probability of 20%, Fair with probability of 50% and Poor with probability of 30%. Which fund would you choose if you want to maximize your return? What would you choose if you really dislike risk?</li>
@@ -659,50 +535,14 @@ Answer
 Answer
 </summary>
 <p><em>Both funds have the same expected return of</em> <span class="math inline">\(6\)</span>. The safest return comes from fund 1 since the standard deviation is only <span class="math inline">\(11.14\)</span> vs.&nbsp;<span class="math inline">\(31.05\)</span> for fund 2.</p>
-<p><em>In R we can create a data frame with probabilities and the performance of the funds.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>funds<span class="ot">&lt;-</span><span class="fu">data.frame</span>(<span class="at">probs=</span><span class="fu">c</span>(<span class="fl">0.2</span>,<span class="fl">0.5</span>,<span class="fl">0.3</span>),<span class="at">fund1=</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">10</span>,<span class="sc">-</span><span class="dv">10</span>), <span class="at">fund2=</span><span class="fu">c</span>(<span class="dv">40</span>,<span class="dv">20</span>,<span class="sc">-</span><span class="dv">40</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><em>Let’s create a function for the expected value and standard deviation. For the expected value:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>Expected_Value<span class="ot">&lt;-</span><span class="cf">function</span>(x,p){</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sum</span>(x<span class="sc">*</span>p)</span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><em>Now we can use the formula to calculate the expected value of fund1:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Expected_Value</span>(funds<span class="sc">$</span>fund1,funds<span class="sc">$</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 6</code></pre>
-</div>
-</div>
-<p><em>and fund 2:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Expected_Value</span>(funds<span class="sc">$</span>fund2,funds<span class="sc">$</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 6</code></pre>
-</div>
-</div>
-<p><em>For the standard deviation we can create another function:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>Standard_Deviation<span class="ot">&lt;-</span><span class="cf">function</span>(x,p){</span>
-<span id="cb35-2"><a href="#cb35-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sqrt</span>(<span class="fu">sum</span>((x<span class="sc">-</span><span class="fu">Expected_Value</span>(x,p))<span class="sc">^</span><span class="dv">2</span><span class="sc">*</span>p))</span>
-<span id="cb35-3"><a href="#cb35-3" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><em>Using the function to get the standard deviation of fund 1 we get:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Standard_Deviation</span>(funds<span class="sc">$</span>fund1,funds<span class="sc">$</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 11.13553</code></pre>
-</div>
-</div>
-<p><em>and for fund 2:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="fu">Standard_Deviation</span>(funds<span class="sc">$</span>fund2,funds<span class="sc">$</span>probs)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 31.04835</code></pre>
-</div>
-</div>
+<p><em>In Excel, enter the probabilities in column A, Fund 1 in column B, and Fund 2 in column C:</em></p>
+<ul>
+<li><code>=SUMPRODUCT(A2:A4, B2:B4)</code> → <span class="math inline">\(6\)</span> (Fund 1 expected return)</li>
+<li><code>=SUMPRODUCT(A2:A4, C2:C4)</code> → <span class="math inline">\(6\)</span> (Fund 2 expected return)</li>
+<li><code>=SQRT(SUMPRODUCT((B2:B4-6)^2, A2:A4))</code> → <span class="math inline">\(11.14\)</span> (Fund 1 std. dev.)</li>
+<li><code>=SQRT(SUMPRODUCT((C2:C4-6)^2, A2:A4))</code> → <span class="math inline">\(31.05\)</span> (Fund 2 std. dev.)</li>
+</ul>
+<p><em>Since both funds have the same expected return, choose Fund 1 — it achieves that return with much less risk.</em></p>
 </details>
 </section>
 <section id="exercise-2" class="level3 unnumbered">
@@ -736,20 +576,11 @@ Answer
 Answer
 </summary>
 <p><em>The expected return of the portfolio is</em> <span class="math inline">\(10.4\)</span> and the standard deviation is <span class="math inline">\(14.60\)</span>.</p>
-<p><em>In R we can start by calculating the expected return. This is given by the formula</em> <span class="math inline">\(\alpha R_{1} +\beta R_{2}\)</span>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a>(ER<span class="ot">&lt;-</span>(<span class="dv">2</span><span class="sc">/</span><span class="dv">5</span>)<span class="sc">*</span><span class="dv">8</span><span class="sc">+</span>(<span class="dv">3</span><span class="sc">/</span><span class="dv">5</span>)<span class="sc">*</span><span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 10.4</code></pre>
-</div>
-</div>
-<p><em>Next we can find the standard deviation with the formula</em> <span class="math inline">\(\sqrt{\alpha^2 \sigma_{1}^2+\beta^2 \sigma_{2}+\alpha \beta \rho \sigma_{1} \sigma_{2}}\)</span>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a>(Risk<span class="ot">&lt;-</span><span class="fu">sqrt</span>(<span class="fl">0.4</span><span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">12</span><span class="sc">^</span><span class="dv">2</span> <span class="sc">+</span> <span class="fl">0.6</span><span class="sc">^</span><span class="dv">2</span><span class="sc">*</span><span class="dv">20</span><span class="sc">^</span><span class="dv">2</span><span class="sc">+</span><span class="dv">2</span><span class="sc">*</span><span class="fl">0.4</span><span class="sc">*</span><span class="fl">0.6</span><span class="sc">*</span><span class="fl">0.4</span><span class="sc">*</span><span class="dv">12</span><span class="sc">*</span><span class="dv">20</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 14.59863</code></pre>
-</div>
-</div>
+<p><em>The portfolio weights are</em> <span class="math inline">\(\alpha=2/5=0.4\)</span> for X and <span class="math inline">\(\beta=3/5=0.6\)</span> for Y. In Excel:</p>
+<ul>
+<li>Expected return <span class="math inline">\(\alpha R_1 + \beta R_2\)</span>: <code>=0.4*8 + 0.6*12</code> → <span class="math inline">\(10.4\)</span></li>
+<li>Standard deviation <span class="math inline">\(\sqrt{\alpha^2 \sigma_1^2+\beta^2 \sigma_2^2+2\alpha\beta\rho\sigma_1\sigma_2}\)</span>: <code>=SQRT(0.4^2*12^2 + 0.6^2*20^2 + 2*0.4*0.6*0.4*12*20)</code> → <span class="math inline">\(14.60\)</span></li>
+</ul>
 </details>
 </section>
 <section id="exercise-3" class="level3 unnumbered">
@@ -762,20 +593,11 @@ Answer
 Answer
 </summary>
 <p><span class="math inline">\(P(Z=1)=0.31\)</span>, and <span class="math inline">\(P(Z \geq 2)=0.57\)</span>. The expected value is <span class="math inline">\(np=1.75\)</span> and the standard deviation is <span class="math inline">\(\sqrt{np(1-p)}=1.067\)</span>.</p>
-<p><em>Let’s use R and the <code>dbinom()</code> function to find</em> <span class="math inline">\(P(Z=1)\)</span>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="fl">0.35</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3123859</code></pre>
-</div>
-</div>
-<p><em>We can now use <code>pbinom()</code> to find the cumulative distribution. Since we want the right tale of the distribution, we will specify this with an argument.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">1</span>,<span class="dv">5</span>,<span class="fl">0.35</span>, <span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.571585</code></pre>
-</div>
-</div>
+<p><em>In Excel:</em></p>
+<ul>
+<li><code>=BINOM.DIST(1, 5, 0.35, FALSE)</code> → <span class="math inline">\(0.31\)</span></li>
+<li><code>=1 - BINOM.DIST(1, 5, 0.35, TRUE)</code> → <span class="math inline">\(0.57\)</span></li>
+</ul>
 </details>
 <ol start="2" type="1">
 <li>Let <span class="math inline">\(W\)</span> be a binomial random variable with <span class="math inline">\(n=200\)</span> and <span class="math inline">\(p=0.77\)</span> use the binomial formula to find <span class="math inline">\(P(W&gt;160)\)</span>, <span class="math inline">\(P(155 \leq W \leq 165)\)</span>. What is the expected value and standard deviation of <span class="math inline">\(W\)</span>?</li>
@@ -785,20 +607,11 @@ Answer
 Answer
 </summary>
 <p><span class="math inline">\(P(W&gt;160)=0.14\)</span>, and <span class="math inline">\(P(155 \leq W \leq 165 )=0.45\)</span>. The expected value is <span class="math inline">\(np=154\)</span> and the standard deviation is <span class="math inline">\(\sqrt{np(1-p)}=5.95\)</span>.</p>
-<p><em>Using the <code>pbinom()</code> function we find that</em> <span class="math inline">\(P(W&gt;160)\)</span>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">160</span>,<span class="dv">200</span>,<span class="fl">0.77</span>, <span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.136611</code></pre>
-</div>
-</div>
-<p><em>We make two calculations to find the probability. First,</em> <span class="math inline">\(P(W \leq 165)\)</span> and then <span class="math inline">\(P(W \geq 154)\)</span>. The difference between these two, gives us the desired outcome.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="fu">pbinom</span>(<span class="dv">165</span>,<span class="dv">200</span>,<span class="fl">0.77</span>, <span class="at">lower.tail=</span>T)<span class="sc">-</span><span class="fu">pbinom</span>(<span class="dv">154</span>,<span class="dv">200</span>,<span class="fl">0.77</span>, <span class="at">lower.tail=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4487104</code></pre>
-</div>
-</div>
+<p><em>In Excel:</em></p>
+<ul>
+<li><code>=1 - BINOM.DIST(160, 200, 0.77, TRUE)</code> → <span class="math inline">\(0.14\)</span></li>
+<li><code>=BINOM.DIST(165, 200, 0.77, TRUE) - BINOM.DIST(154, 200, 0.77, TRUE)</code> → <span class="math inline">\(0.45\)</span></li>
+</ul>
 </details>
 <ol start="3" type="1">
 <li>Sixty percent of a firm’s employees are men. Suppose four of the firm’s employees are randomly selected. What is more likely, finding three men and one woman, or two men and one woman? Does your answer change if the proportion falls to <span class="math inline">\(50\)</span>%?</li>
@@ -808,34 +621,14 @@ Answer
 Answer
 </summary>
 <p><em>The probabilities are the same. Each event has a probability of</em> <span class="math inline">\(0.3456\)</span>. If the probability changes to <span class="math inline">\(0.5\)</span> now the event of two women and two men is more likely.</p>
-<p><em>Let’s calculate the probabilities in R. First, the probability of three men and one woman.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3456</code></pre>
-</div>
-</div>
-<p><em>Now the probability of two men and two women.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb54"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb54-1"><a href="#cb54-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="fl">0.6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3456</code></pre>
-</div>
-</div>
-<p><em>Changing the probabilities reveals that:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">3</span>,<span class="dv">4</span>,<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.25</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb58"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb58-1"><a href="#cb58-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dbinom</span>(<span class="dv">2</span>,<span class="dv">4</span>,<span class="fl">0.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.375</code></pre>
-</div>
-</div>
-<p><em>Having two of each is the most likely outcome.</em></p>
+<p><em>In Excel:</em></p>
+<ul>
+<li><code>=BINOM.DIST(3, 4, 0.6, FALSE)</code> → <span class="math inline">\(0.3456\)</span> (three men)</li>
+<li><code>=BINOM.DIST(2, 4, 0.6, FALSE)</code> → <span class="math inline">\(0.3456\)</span> (two men)</li>
+<li><code>=BINOM.DIST(3, 4, 0.5, FALSE)</code> → <span class="math inline">\(0.25\)</span></li>
+<li><code>=BINOM.DIST(2, 4, 0.5, FALSE)</code> → <span class="math inline">\(0.375\)</span></li>
+</ul>
+<p><em>At</em> <span class="math inline">\(p=0.5\)</span>, having two of each is the most likely outcome.</p>
 </details>
 </section>
 <section id="exercise-4" class="level3 unnumbered">
@@ -848,20 +641,11 @@ Answer
 Answer
 </summary>
 <p><em>The</em> <span class="math inline">\(P(S=2)=0.25\)</span> and <span class="math inline">\(P(S \geq 2)=0.44\)</span>. The expected value and the variance is <span class="math inline">\(1.5\)</span>.</p>
-<p><em>In R we will make use of the <code>dpois()</code> function:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb60"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb60-1"><a href="#cb60-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="dv">2</span>,<span class="fl">1.5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2510214</code></pre>
-</div>
-</div>
-<p><em>For the second probability we will use <code>ppois()</code>:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb62"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb62-1"><a href="#cb62-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">1</span>,<span class="fl">1.5</span>, <span class="at">lower.tail=</span>F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4421746</code></pre>
-</div>
-</div>
+<p><em>In Excel:</em></p>
+<ul>
+<li><code>=POISSON.DIST(2, 1.5, FALSE)</code> → <span class="math inline">\(0.25\)</span></li>
+<li><code>=1 - POISSON.DIST(1, 1.5, TRUE)</code> → <span class="math inline">\(0.44\)</span></li>
+</ul>
 </details>
 <ol start="2" type="1">
 <li>Assume that <span class="math inline">\(T\)</span> is a Poisson process with mean of <span class="math inline">\(\mu=20\)</span>. Calculate <span class="math inline">\(P(T=14)\)</span> and <span class="math inline">\(P(18 \leq T \leq 23)\)</span>.</li>
@@ -871,20 +655,11 @@ Answer
 Answer
 </summary>
 <p><em>The</em> <span class="math inline">\(P(T=14)=0.039\)</span> and <span class="math inline">\(P(18 \leq T \leq 23)=0.49\)</span>.</p>
-<p><em>Using the <code>dpois()</code> function once more:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb64"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb64-1"><a href="#cb64-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="dv">14</span>,<span class="dv">20</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.03873664</code></pre>
-</div>
-</div>
-<p><em>For the second probability we will find the difference between two probabilities:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb66"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb66-1"><a href="#cb66-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">23</span>,<span class="dv">20</span>, <span class="at">lower.tail=</span>T)<span class="sc">-</span><span class="fu">ppois</span>(<span class="dv">17</span>,<span class="dv">20</span>, <span class="at">lower.tail=</span>T)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4904644</code></pre>
-</div>
-</div>
+<p><em>In Excel:</em></p>
+<ul>
+<li><code>=POISSON.DIST(14, 20, FALSE)</code> → <span class="math inline">\(0.039\)</span></li>
+<li><code>=POISSON.DIST(23, 20, TRUE) - POISSON.DIST(17, 20, TRUE)</code> → <span class="math inline">\(0.49\)</span></li>
+</ul>
 </details>
 <ol start="3" type="1">
 <li>A local pharmacy administers on average <span class="math inline">\(84\)</span> Covid-19 vaccines per week. The vaccines shots are evenly administered across all days. Find the probability that the number of vaccine shots administered on a Wednesday is more than eight but less than <span class="math inline">\(12\)</span>.</li>
@@ -894,13 +669,10 @@ Answer
 Answer
 </summary>
 <p><em>The probability of administering more than</em> <span class="math inline">\(8\)</span> but less than <span class="math inline">\(12\)</span> shots is <span class="math inline">\(0.3\)</span>.</p>
-<p><em>Let’s first note that if</em> <span class="math inline">\(84\)</span> shots are administered on average weekly, then <span class="math inline">\(12\)</span> are administered daily. Now we can use this average and the <code>ppois()</code> function to find the probability:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb68"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb68-1"><a href="#cb68-1" aria-hidden="true" tabindex="-1"></a><span class="fu">ppois</span>(<span class="dv">11</span>,<span class="dv">12</span>)<span class="sc">-</span><span class="fu">ppois</span>(<span class="dv">8</span>,<span class="dv">12</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3065696</code></pre>
-</div>
-</div>
+<p><em>If</em> <span class="math inline">\(84\)</span> shots are administered on average weekly, then <span class="math inline">\(12\)</span> are administered daily. Using this daily mean in Excel:</p>
+<ul>
+<li><code>=POISSON.DIST(11, 12, TRUE) - POISSON.DIST(8, 12, TRUE)</code> → <span class="math inline">\(0.30\)</span></li>
+</ul>
 </details>
 </section>
 <section id="exercise-5" class="level3 unnumbered">
@@ -913,27 +685,12 @@ Answer
 Answer
 </summary>
 <p><span class="math inline">\(P(X=0)=0.58\)</span>, <span class="math inline">\(P(X=1)=0.37\)</span>, and <span class="math inline">\(P(X \leq 1)=0.94\)</span>.</p>
-<p><em>In R we can use the <code>dhyper()</code> function</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb70"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb70-1"><a href="#cb70-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">0</span>,<span class="dv">3</span>,<span class="dv">22</span>,<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5782609</code></pre>
-</div>
-</div>
-<p><em>once more for the second probability:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb72"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb72-1"><a href="#cb72-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">22</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3652174</code></pre>
-</div>
-</div>
-<p><em>For the last probability we can add the previous probabilities or use the <code>phyper()</code> function:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb74"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb74-1"><a href="#cb74-1" aria-hidden="true" tabindex="-1"></a><span class="fu">phyper</span>(<span class="dv">1</span>, <span class="dv">3</span>, <span class="dv">22</span>, <span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9434783</code></pre>
-</div>
-</div>
+<p><em>In Excel (successes in population</em> <span class="math inline">\(r=3\)</span>, population <span class="math inline">\(N=25\)</span>, sample <span class="math inline">\(n=4\)</span>):</p>
+<ul>
+<li><code>=HYPGEOM.DIST(0, 4, 3, 25, FALSE)</code> → <span class="math inline">\(0.58\)</span></li>
+<li><code>=HYPGEOM.DIST(1, 4, 3, 25, FALSE)</code> → <span class="math inline">\(0.37\)</span></li>
+<li><code>=HYPGEOM.DIST(1, 4, 3, 25, TRUE)</code> → <span class="math inline">\(0.94\)</span></li>
+</ul>
 </details>
 <ol start="2" type="1">
 <li>Compute the probability of at least eight successes in a random sample of <span class="math inline">\(20\)</span> items obtained from a population of <span class="math inline">\(100\)</span> items that contains <span class="math inline">\(25\)</span> successes. What are the expected value and standard deviation of the number of successes?</li>
@@ -943,13 +700,10 @@ Answer
 Answer
 </summary>
 <p><em>The probability is</em> <span class="math inline">\(0.078\)</span>.</p>
-<p><em>In R we use the <code>dhyper()</code> function once more:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb76"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb76-1"><a href="#cb76-1" aria-hidden="true" tabindex="-1"></a><span class="fu">phyper</span>(<span class="dv">7</span>, <span class="dv">25</span>, <span class="dv">75</span>, <span class="dv">20</span>, <span class="at">lower.tail =</span> F)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.07767093</code></pre>
-</div>
-</div>
+<p><em>In Excel (successes in population</em> <span class="math inline">\(r=25\)</span>, population <span class="math inline">\(N=100\)</span>, sample <span class="math inline">\(n=20\)</span>):</p>
+<ul>
+<li><code>=1 - HYPGEOM.DIST(7, 20, 25, 100, TRUE)</code> → <span class="math inline">\(0.078\)</span></li>
+</ul>
 </details>
 <ol start="3" type="1">
 <li>For <span class="math inline">\(1\)</span> dollar a player gets to select six numbers for the base game of Powerball. In the game, five balls are randomly drawn from <span class="math inline">\(59\)</span> consecutively numbered white balls. One ball, called the Powerball, is randomly drawn from <span class="math inline">\(39\)</span> consecutively numbered red balls. What is the probability that a player is able to match two out of five randomly drawn white balls? What is the probability of winning the jackpot?</li>
@@ -958,36 +712,15 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The probability of matching two white balls is</em> <span class="math inline">\(5%\)</span>. Winning the jackpot is extremely unlikely! A probability of <span class="math inline">\(0.00000000512\)</span>. It is more likely to be struck by lightning according to the CDC.</p>
-<p><em>In R use the <code>dhyper()</code> function:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb78"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb78-1"><a href="#cb78-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">2</span>, <span class="dv">5</span>, <span class="dv">54</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.04954472</code></pre>
-</div>
-</div>
-<p><em>For the jackpot we first calculate the probability of getting all of the white balls.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb80"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb80-1"><a href="#cb80-1" aria-hidden="true" tabindex="-1"></a><span class="fu">options</span>(<span class="at">digits =</span> <span class="dv">5</span>,<span class="at">scipen=</span><span class="dv">999</span>)</span>
-<span id="cb80-2"><a href="#cb80-2" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">54</span>, <span class="dv">5</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.00000019974</code></pre>
-</div>
-</div>
-<p><em>Now the probability of getting the Powerball.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb82"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb82-1"><a href="#cb82-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">38</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.025641</code></pre>
-</div>
-</div>
-<p><em>Since the two events are independent, we can multiply them to find the probability of a jackpot.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb84"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb84-1"><a href="#cb84-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dhyper</span>(<span class="dv">5</span>, <span class="dv">5</span>, <span class="dv">54</span>, <span class="dv">5</span>)<span class="sc">*</span><span class="fu">dhyper</span>(<span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">38</span>, <span class="dv">1</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.0000000051217</code></pre>
-</div>
-</div>
+<p><em>The probability of matching two white balls is</em> <span class="math inline">\(5\%\)</span>. Winning the jackpot is extremely unlikely! A probability of <span class="math inline">\(0.00000000512\)</span>. It is more likely to be struck by lightning according to the CDC.</p>
+<p><em>In Excel, treat the five drawn white balls as the successes in a population of</em> <span class="math inline">\(59\)</span>, with the player’s five picks as the sample:</p>
+<ul>
+<li><code>=HYPGEOM.DIST(2, 5, 5, 59, FALSE)</code> → <span class="math inline">\(0.05\)</span> (match two white balls)</li>
+</ul>
+<p><em>For the jackpot, multiply the probability of matching all five white balls by the probability of matching the single Powerball (1 of 39):</em></p>
+<ul>
+<li><code>=HYPGEOM.DIST(5, 5, 5, 59, FALSE) * HYPGEOM.DIST(1, 1, 1, 39, FALSE)</code> → <span class="math inline">\(0.00000000512\)</span></li>
+</ul>
 </details>
 
 
