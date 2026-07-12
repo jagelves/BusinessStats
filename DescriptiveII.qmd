@@ -196,13 +196,13 @@ The following exercises will help you practice summarizing data with tables and 
 
 - Creating contingency tables.
 
-Answers are provided below. Try not to peek until you have a formulated your own answer and double checked your work for any mistakes.
+Answers are provided below. Try not to peek until you have formulated your own answer and double checked your work for any mistakes.
 
 ### Exercise 1 {.unnumbered}
 
-You will need the **Brain Cancer** data set to answer this question. You can get the data using the link below:
+You will need the **Brain Cancer** data set to answer this question. You can download it here:
 
-[{{< fa file-excel >}} Download Data](dow.xlsx){.btn .btn-success}
+[{{< fa file-excel >}} Download Data](BC.xlsx){.btn .btn-success}
 
 1.  Construct a frequency and relative frequency table of the *Diagnosis* variable. What was the most common diagnosis? What percentage of the sample had this diagnosis?
 
@@ -213,19 +213,14 @@ You will need the **Brain Cancer** data set to answer this question. You can get
 ::: {style="padding-left: 1.5em;"}
 *The most common diagnosis is Meningioma, a slow-growing tumor that forms from the membranous layers surrounding the brain and spinal cord. The diagnosis represents about* $48.28$% of the sample.
 
-*The frequency distribution should have the following numbers:*
+| Diagnosis  | Frequency | Relative |
+|:----------:|:---------:|:--------:|
+| Meningioma | 42        | 48.28%   |
+| LG glioma  | 9         | 10.34%   |
+| HG glioma  | 22        | 25.29%   |
+| Other      | 14        | 16.09%   |
 
-```{r echo=FALSE, message=FALSE}
-library(ISLR2)
-table(BrainCancer$diagnosis)
-```
-
-*The relative frequency distribution has the following numbers:*
-
-```{r echo=FALSE, message=FALSE}
-freq<-table(BrainCancer$diagnosis)
-prop.table(freq)
-```
+*In Excel, build a PivotTable: drag the `diagnosis` field to the Rows area and again to the Values area (Excel counts each category). To add the relative frequency, drag `diagnosis` to the Values area a second time and set `Value Field Settings → Show Values As → % of Column Total`. Alternatively, use `=COUNTIF(range, "Meningioma")` for each category and divide by the total `=COUNTA(range)`.*
 :::
 
 </details>
@@ -237,15 +232,9 @@ prop.table(freq)
 <summary>Answer</summary>
 
 ::: {style="padding-left: 1.5em;"}
-*The majority of diagnosis are Meningioma. Low grade glioma is the least common of diagnosis. High grade glioma and other diagnosis have about the same frequency.*
+*The majority of diagnoses are Meningioma. Low grade glioma is the least common. High grade glioma and Other have about the same frequency.*
 
-```{r echo=FALSE}
-library(tidyverse)
-library(ggthemes)
-ggplot(data=BrainCancer) + 
-  geom_bar(aes(diagnosis), alpha=0.5, col="black") + 
-  theme_clean()
-```
+*With the PivotTable selected, go to `Insert → Charts → Clustered Column` to create the bar chart.*
 :::
 
 </details>
@@ -257,26 +246,21 @@ ggplot(data=BrainCancer) +
 <summary>Answer</summary>
 
 ::: {style="padding-left: 1.5em;"}
-$33$ people did not survive Meningioma. The survival rate of Meningioma is only $21.43$%.
+$33$ people did not survive Meningioma — the highest number of non-survivals. The survival rate of Meningioma is only $21.43$%.
 
-*tThe contingency table for the two variables should have the following numbers:*
+| Status | Meningioma | LG glioma | HG glioma | Other |
+|:------:|:----------:|:---------:|:---------:|:-----:|
+| 0      | 33         | 5         | 5         | 9     |
+| 1      | 9          | 4         | 17        | 5     |
 
-```{r echo=FALSE}
-(freq2<-table(BrainCancer$status,BrainCancer$diagnosis))
-```
-
-*The survival rates are:*
-
-```{r echo=FALSE}
-prop.table(freq2,margin = 2)
-```
+*In Excel, build a PivotTable with `diagnosis` in the Columns area, `status` in the Rows area, and `status` in the Values area as a count. To obtain the survival rates, set `Show Values As → % of Column Total`; the survival rate for Meningioma is $9/42 = 21.43$%.*
 :::
 
 </details>
 
 ### Exercise 2 {.unnumbered}
 
-You will need the **Air Quality** data set to answer this question. You can get the data using the link below:
+You will need the **Air Quality** data set to answer this question. You can download it here:
 
 [{{< fa file-excel >}} Download Data](AQ.xlsx){.btn .btn-success}
 
@@ -286,15 +270,17 @@ You will need the **Air Quality** data set to answer this question. You can get 
 
 <summary>Answer</summary>
 
-*The highest frequency is in the* $80 < x ≤ 90$ bin. $8$ temperatures were between $50 < x ≤ 60$ degrees.
+*The highest frequency is in the* $80 < x \le 90$ bin. $8$ temperatures were between $50 < x \le 60$ degrees.
 
-*The frequency distribution should have the following numbers:*
+| Interval   | Frequency |
+|:----------:|:---------:|
+| $(50,60]$  | 8         |
+| $(60,70]$  | 25        |
+| $(70,80]$  | 52        |
+| $(80,90]$  | 54        |
+| $(90,100]$ | 14        |
 
-```{r echo=FALSE}
-intervals <- cut_width(airquality$Temp, width = 10,
-                       boundary=50)
-table(intervals)
-```
+*In Excel, add a helper column with an `=IFS()` formula to assign each temperature to its class, then build a PivotTable to count the observations in each bin, exactly as shown in the chapter.*
 
 </details>
 
@@ -304,27 +290,17 @@ table(intervals)
 
 <summary>Answer</summary>
 
-*The temperature was* $5.22$% of the time between $50$ and $60$; The temperature was $70$ or less $33$ times; The temperature was above $70$, $78.43$% of the time.
+*The temperature was* $5.23$% of the time between $50$ and $60$; the temperature was $70$ or less $33$ times; the temperature was above $70$, $78.43$% of the time.
 
-*The relative frequency distribution is given by:*
+| Interval   | Frequency | Relative | Cumulative | Rel. Cumulative |
+|:----------:|:---------:|:--------:|:----------:|:---------------:|
+| $(50,60]$  | 8         | 5.23%    | 8          | 5.23%           |
+| $(60,70]$  | 25        | 16.34%   | 33         | 21.57%          |
+| $(70,80]$  | 52        | 33.99%   | 85         | 55.56%          |
+| $(80,90]$  | 54        | 35.29%   | 139        | 90.85%          |
+| $(90,100]$ | 14        | 9.15%    | 153        | 100.00%         |
 
-```{r echo=FALSE}
-freq<-table(intervals) 
-prop.table(freq)
-```
-
-*Below the cumulative distribution numbers:*
-
-```{r echo=FALSE}
-cumulfreq<-cumsum(freq)
-cumulfreq
-```
-
-*Lastly, the relative cumulative distribution:*
-
-```{r echo=FALSE}
-cumsum(prop.table(freq))
-```
+*In the PivotTable, drag the bin field to the Values area a second time and use `Show Values As → % of Column Total` for the relative frequency, and `Show Values As → Running Total In` for the cumulative and relative cumulative distributions.*
 
 </details>
 
@@ -334,23 +310,15 @@ cumsum(prop.table(freq))
 
 <summary>Answer</summary>
 
-*The distribution is not perfectly symmetric. It is skewed slightly to the left (see histogram.)*
+*The distribution is not perfectly symmetric. It is skewed slightly to the left.*
 
-```{r echo=FALSE}
-ggplot() + 
-  geom_histogram(aes(airquality$Temp), col="black", 
-                 bg="grey",alpha=0.2,
-                 bins=5,
-                 binwidth = 10,
-                 boundary=0) + theme_clean() +
-  labs(x="Temperature", y="Frequency")
-```
+*With the PivotTable selected, insert a Clustered Column chart and set the `Gap Width` to $0$% to turn it into a histogram.*
 
 </details>
 
 ### Exercise 3 {.unnumbered}
 
-You will need the **Portfolio** data set. You can get the data using the link below:
+You will need the **Portfolio** data set to answer this question. You can download it here:
 
 [{{< fa file-excel >}} Download Data](port.xlsx){.btn .btn-success}
 
@@ -362,13 +330,7 @@ You will need the **Portfolio** data set. You can get the data using the link be
 
 *From* $1901$ through $2000$, both portfolios have behaved very similarly. Returns are between $-3$% and $3$%, there is no trend, and positive (negative) returns for X seem to match with positive (negative) returns of Y.
 
-```{r echo=FALSE}
-ggplot() +
-  geom_line(aes(y=Portfolio$Y,x=seq(1901,2000)), col="blue") +
-  geom_line(aes(y=Portfolio$X,x=seq(1901,2000)), col="grey") +
-  theme_clean() +
-  labs(x="Year", y="Return")
-```
+*In Excel, add a Year column running from $1901$ to $2000$. Select the Year, X, and Y columns and go to `Insert → Charts → Line`. Excel plots one line per portfolio and adds a legend automatically. Use `Chart Design → Change Colors` (or right-click a series → `Format Data Series`) to give X and Y distinct colors.*
 
 </details>
 
@@ -376,7 +338,7 @@ ggplot() +
 
 A company surveyed 40 employees about their primary department. The responses are saved in the Excel file below:
 
-[{{< fa file-excel >}} Download Data](survey.xlsx){.btn .btn-success}
+[{{< fa file-excel >}} Download Data](Survey.xlsx){.btn .btn-success}
 
 1.  Create a frequency distribution table for these departments.
 
@@ -384,10 +346,18 @@ A company surveyed 40 employees about their primary department. The responses ar
 
 <summary>Answer</summary>
 
-```{r echo=FALSE}
-dept <- c("Marketing", "Sales", "Finance", "Operations", "Marketing", "HR", "IT", "Finance", "Customer Service", "Marketing", "Sales", "Finance", "Operations", "R&D", "Marketing", "Finance", "Customer Service", "Operations", "Marketing", "Finance", "HR", "Sales", "Customer Service", "Operations", "Marketing", "Finance", "IT", "R&D", "Customer Service", "Operations", "Sales", "Finance", "Customer Service", "Marketing", "Finance", "HR", "Customer Service", "Operations", "R&D", "Sales")
-table(dept)
-```
+| Department       | Frequency |
+|:----------------:|:---------:|
+| Customer Service | 6         |
+| Finance          | 8         |
+| HR               | 3         |
+| IT               | 2         |
+| Marketing        | 7         |
+| Operations       | 6         |
+| R&D              | 3         |
+| Sales            | 5         |
+
+*In Excel, build a PivotTable with `dept` in the Rows area and again in the Values area as a count, or use `=COUNTIF(range, "Finance")` for each department.*
 
 </details>
 
@@ -397,9 +367,18 @@ table(dept)
 
 <summary>Answer</summary>
 
-```{r echo=FALSE}
-prop.table(table(dept)) * 100
-```
+| Department       | Relative |
+|:----------------:|:--------:|
+| Customer Service | 15.0%    |
+| Finance          | 20.0%    |
+| HR               | 7.5%     |
+| IT               | 5.0%     |
+| Marketing        | 17.5%    |
+| Operations       | 15.0%    |
+| R&D              | 7.5%     |
+| Sales            | 12.5%    |
+
+*In the PivotTable, drag `dept` to the Values area a second time and set `Show Values As → % of Column Total`. Alternatively, divide each `=COUNTIF()` result by the total `=COUNTA(range)`.*
 
 </details>
 
@@ -409,40 +388,34 @@ prop.table(table(dept)) * 100
 
 <summary>Answer</summary>
 
-```{r echo=FALSE}
-ggplot() +
-  geom_bar(aes(x=dept), bg="grey", 
-           col="black", alpha=0.5) +
-  theme_clean()
-```
-
 *The highest frequency is in the Finance department with 8 employees. The relative frequency is 20%.*
+
+*With the PivotTable selected, go to `Insert → Charts → Clustered Column` to create the bar chart.*
 
 </details>
 
 ### Exercise 5 {.unnumbered}
 
-A class of 50 students took a business statistics exam (out of 100 points). Their scores were recorded in Excel:
+A class of 50 students took a business statistics exam (out of 100 points). Their scores are recorded in the Excel file below:
 
-[{{< fa file-excel >}} Download Data](BusStat.xlsx){.btn .btn-success}
+[{{< fa file-excel >}} Download Data](Busstat.xlsx){.btn .btn-success}
 
-1.  Construct a histogram using 7 classes with width 10, starting at 50 (bins: \[50,60), \[60,70), etc.). In which bin is the highest frequency? How many students scored in that range?
+1.  Construct a histogram using five classes with width 10, starting at 50 (bins: \[50,60), \[60,70), etc.). In which bin is the highest frequency? How many students scored in that range?
 
 <details>
 
 <summary>Answer</summary>
 
-```{r echo=FALSE}
-scores <- c(75.6, 66.9, 83.4, 67.2, 95.3, 90.5, 54.4, 76.8, 88.5, 63.3, 95.1, 69.9, 80.4, 91.9, 66.7, 58.0, 81.9, 78.7, 51.9, 55.4, 94.5, 71.8, 65.8, 54.6, 92.6, 68.7, 76.4, 57.1, 72.4, 90.1, 54.4, 66.6, 84.2, 74.3, 95.6, 51.6, 79.9, 65.8, 89.5, 70.4, 88.4, 83.3, 87.7, 62.3, 59.1, 60.3, 53.5, 50.1, 51.1, 52.6)
+*The highest frequency is in the* \[50,60) *bin with 13 students.*
 
-ggplot() + 
-  geom_histogram(aes(x=scores),
-                 breaks = seq(50, 100, by = 10),
-                 closed = "left",
-                 col="black", bg="grey") +
-  theme_clean()
-```
+| Bin        | Frequency |
+|:----------:|:---------:|
+| $[50,60)$  | 13        |
+| $[60,70)$  | 11        |
+| $[70,80)$  | 9         |
+| $[80,90)$  | 9         |
+| $[90,100)$ | 7         |
 
-*The highest frequency is in the bin (60,70\] with 9 students.*
+*In Excel, add a helper column with an `=IFS()` formula to assign each score to its class, build a PivotTable to count the scores in each bin, then insert a Clustered Column chart and set the `Gap Width` to $0$% to turn it into a histogram.*
 
 </details>
