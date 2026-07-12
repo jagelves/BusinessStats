@@ -28,21 +28,19 @@ There are two interpretations of probability. The **frequentist** interpretation
 
 The following concepts form the foundation of probability theory. They provide a structure that is useful when analyzing uncertainty and randomness.
 
--   An **experiment** is a process that leads to one of several outcomes. *Ex: Tossing a Die, Tossing a Coin, Drawing a Card, etc.*
+- An **experiment** is a process that leads to one of several outcomes. *Ex: Tossing a Die, Tossing a Coin, Drawing a Card, etc.*
 
--   An **outcome** is the result of an experiment. *Ex: A coin landing on heads, drawing the ace of spades.*
+- An **outcome** is the result of an experiment. *Ex: A coin landing on heads, drawing the ace of spades.*
 
--   The **sample space** $(S)$ of an experiment contains all possible outcomes of the experiment. *Ex:* $S=\{1,2,3,4,5,6\}$ is the sample space for tossing a die.
+- The **sample space** $(S)$ of an experiment contains all possible outcomes of the experiment. *Ex:* $S=\{1,2,3,4,5,6\}$ is the sample space for tossing a die.
 
--   An **event** is a subset of the sample space. *Ex:* $A=\{2,4,6\}$ is the event of tossing an even number when rolling a die. $B=\{1A,1D,1S,1H\}$ is the event of drawing an ace from a deck of cards.
+- An **event** is a subset of the sample space. *Ex:* $A=\{2,4,6\}$ is the event of tossing an even number when rolling a die. $B=\{1A,1D,1S,1H\}$ is the event of drawing an ace from a deck of cards.
 
 ## Basic Probability Concepts
 
 A **probability** is a numerical value that measures the likelihood that an event occurs. To calculate **probabilities**, we find the ratio between favorable outcomes and total outcomes. Hence, the probability of an event is given by:
 
-$$
-P(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outocomes\ in\ Sample \ Space}
-$$
+$$P(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outocomes\ in\ Sample \ Space}$$
 
 The probability of A satisfies $0\leq P(A) \leq1$. Since A is a subset of S, the number of elements in A is at most that of the sample space S. Hence, if A=S, then P(A)=1. If A is a null event (i.e., has no elements) P(A)=0 and is impossible. We can conclude that P(A) ranges from 0 to 1, inclusive.
 
@@ -54,17 +52,13 @@ Given these concepts if follows that the sum of the probabilities of a list of *
 
 If we randomly draw one card from a standard deck, the sample space $S$ consists of all 52 cards. Suppose we define event $A$ as *drawing a red card*. Since there are 26 red cards, the probability is:
 
-$$
-P(A) = \frac{\text{Number of red cards}}{\text{Total number of cards}} = \frac{26}{52} = 0.5
-$$
+$$P(A) = \frac{\text{Number of red cards}}{\text{Total number of cards}} = \frac{26}{52} = 0.5$$
 
 Since $( 0 \leq P(A) \leq 1)$, this follows the basic probability rule. Next let's consider mutually exclusive events. Let event $B$ be drawing a heart and event $C$ be drawing a spade. Since a single drawn card cannot be both a heart and a spade, these events are mutually exclusive.
 
 The four suits (*hearts, diamonds, clubs, spades*) form an exhaustive set, because every card belongs to exactly one suit. The sum of their probabilities equals 1:
 
-$$
-P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \frac{13}{52} + \frac{13}{52} + \frac{13}{52} + \frac{13}{52} = 1
-$$
+$$P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \frac{13}{52} + \frac{13}{52} + \frac{13}{52} + \frac{13}{52} = 1$$
 
 Note the this also satisfies the rule $\sum P(x_i) = 1$, where $x_i$ represents each possible outcome (suit).
 
@@ -217,29 +211,45 @@ As with combinations, there might be situations were we wish to count when repet
 
 *Ex: You are trying to guess the combination of a lock that has three possible numbers. Since there are 10 numbers to choose from, there are* $10^3=1000$ possible permutations.
 
-## Probability in R
+## Probability in Excel
 
-The `table()` function can be used to construct frequency distributions.
+Excel has a collection of functions that make counting and probability calculations straightforward.
 
-The `factorial()` function returns the factorial of a number.
+**Contingency tables:** Use a **PivotTable** (`Insert → PivotTable`) to build a contingency table from raw data — place one variable in the Rows area, the other in the Columns area, and any field in the Values area as a count. To turn the counts into a joint probability table, use `Value Field Settings → Show Values As → % of Grand Total`. You can also count a specific combination of conditions directly with `=COUNTIFS(range1, criteria1, range2, criteria2)`.
 
-The `gtools` package contains the `combinations()` and `permutations()` functions used to calculate combinations and permutations. Use the *repeats.allowed* argument to specify counting with repetition or no repetition. The *v* argument allows you to specify a vector of elements.
+**Factorial:** The `=FACT(number)` function returns the factorial of a number. For example, `=FACT(5)` returns $120$.
+
+**Combinations:** The `=COMBIN(number, number_chosen)` function counts the number of combinations without repetition. Use `=COMBINA(number, number_chosen)` when repetition is allowed.
+
+**Permutations:** The `=PERMUT(number, number_chosen)` function counts the number of permutations without repetition. Use `=PERMUTATIONA(number, number_chosen)` when repetition is allowed.
+
+## Excel Function Summary
+
+Below is a list of the Excel functions used in this section:
+
+- `=COUNTIFS(range1, criteria1, ...)` counts the observations that satisfy several conditions at once, useful for building contingency tables.
+
+- `=FACT(number)` returns the factorial of a number.
+
+- `=COMBIN(number, number_chosen)` returns the number of combinations without repetition; `=COMBINA(number, number_chosen)` allows repetition.
+
+- `=PERMUT(number, number_chosen)` returns the number of permutations without repetition; `=PERMUTATIONA(number, number_chosen)` allows repetition.
 
 ## Exercises
 
 The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:
 
--   Calculating simple probabilities.
+- Calculating simple probabilities.
 
--   Applying probability rules.
+- Applying probability rules.
 
--   Using counting rules.
+- Using counting rules.
 
 Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.
 
 ### Exercise 1 {.unnumbered}
 
-For the following exercises, make your calculations by hand and verify results with a calculator or R.
+For the following exercises, make your calculations by hand and verify results with a calculator or Excel.
 
 1.  A sample space $S$ yields five equally likely events, $A$, $B$, $C$, $D$, and $E$. Find $P(D)$, $P(B^c)$, and $P(A \cup C \cup E)$.
 
@@ -247,9 +257,9 @@ For the following exercises, make your calculations by hand and verify results w
 
 <summary>Answer</summary>
 
--   $P(D)=1/5=0.2$ since all events are equally likely.
--   $P(B^c)=4/5=0.8$
--   $P(A \cup C \cup E)=P(A + C + E)=3/5=0.6$.
+- $P(D)=1/5=0.2$ since all events are equally likely.
+- $P(B^c)=4/5=0.8$
+- $P(A \cup C \cup E)=P(A + C + E)=3/5=0.6$.
 
 </details>
 
@@ -259,8 +269,8 @@ For the following exercises, make your calculations by hand and verify results w
 
 <summary>Answer</summary>
 
--   *Events* $A$ and $B$ are not mutually exclusive since they share some of the same elements.
--   *The events are not exhaustive since the union of both doesn't create the sample space.*
+- *Events* $A$ and $B$ are not mutually exclusive since they share some of the same elements.
+- *The events are not exhaustive since the union of both doesn't create the sample space.*
 
 </details>
 
@@ -270,16 +280,16 @@ For the following exercises, make your calculations by hand and verify results w
 
 <summary>Answer</summary>
 
--   *The probability is* $68.8$%.
--   *The events are mutually exclusive. If someone is classified as obese, the person is not classified again as overweight.*
--   *The events are not exhaustive since there are people in the U.S. that have a normal weight.*
--   *The probability that the person drawn has normal weight is* $31.2$%.
+- *The probability is* $68.8$%.
+- *The events are mutually exclusive. If someone is classified as obese, the person is not classified again as overweight.*
+- *The events are not exhaustive since there are people in the U.S. that have a normal weight.*
+- *The probability that the person drawn has normal weight is* $31.2$%.
 
 </details>
 
 ### Exercise 2 {.unnumbered}
 
-For the following exercises, make your calculations by hand and verify results with a calculator or R.
+For the following exercises, make your calculations by hand and verify results with a calculator or Excel.
 
 1.  Let $P(A)=0.65$, $P(B)=0.3$, and $P(A|B)=0.45$. Calculate $P(A \cap B)$, $P(A \cup B)$, and $P(B|A)$.
 
@@ -287,15 +297,14 @@ For the following exercises, make your calculations by hand and verify results w
 
 <summary>Answer</summary>
 
-*From the multiplication rule,* $$
-P(A|B)*P(B)=P(A \cap B)
-$$
+*From the multiplication rule,*
+$$P(A|B)*P(B)=P(A \cap B)$$
 
-*substituting values yields:* $$
-P(A \cap B)=0.45*0.3=0.135
-$$ *From the addition rule,* $$
-P(A \cup B)=P(A)+P(B)-P(A \cap B)
-$$ *substituting yields:* $$P(A \cup B)=0.65+0.3-0.135=0.815$$ *From the multiplication rule once again,* $$P(B|A)=\frac{P(A \cap B)}{P(A)}$$ *substituting values yields,* $$P(B|A)=0.135/0.65=0.2076923$$
+*substituting values yields:*
+$$P(A \cap B)=0.45*0.3=0.135$$
+*From the addition rule,*
+$$P(A \cup B)=P(A)+P(B)-P(A \cap B)$$
+*substituting yields:* $$P(A \cup B)=0.65+0.3-0.135=0.815$$ *From the multiplication rule once again,* $$P(B|A)=\frac{P(A \cap B)}{P(A)}$$ *substituting values yields,* $$P(B|A)=0.135/0.65=0.2076923$$
 
 </details>
 
@@ -347,7 +356,9 @@ $$ *substituting yields:* $$P(A \cup B)=0.65+0.3-0.135=0.815$$ *From the multipl
 
 ### Exercise 4 {.unnumbered}
 
-You will need the **Crash** data set and R to answer this question. The data shows information on several car crashes. Specifically, if the crash was Head-On or Not Head-On and whether there was Daylight or No Daylight. You can find the data here: https://jagelves.github.io/Data/Crash.csv
+You will need the **Crash** data set to answer this question. The data shows information on several car crashes. Specifically, whether the crash was Head-On or Not Head-On and whether there was Daylight or No Daylight. You can download it here:
+
+[{{< fa file-excel >}} Download Data](Crash.xlsx){.btn .btn-success}
 
 1.  Create a contingency table.
 
@@ -355,26 +366,17 @@ You will need the **Crash** data set and R to answer this question. The data sho
 
 <summary>Answer</summary>
 
-*The probability of a Head-On crash is* $(166+108)/4858=0.056$. The probability of a daylight crash is $(166+3258)/4858=0.70$. The probability that the car crash is Head-On given daylight is $166/(166+3258)=0.048$.
+*The contingency table below shows the counts for each combination of Crash Type and Light Condition:*
 
-*Start by loading the data into R.*
+|             | Daylight | Not Daylight | Total |
+|:-----------:|:--------:|:------------:|:-----:|
+|   Head-on   |   166    |     108      |  274  |
+| Not Head-On |   3258   |     1326     | 4584  |
+|    Total    |   3424   |     1434     | 4858  |
 
-```{r message=FALSE}
-library(tidyverse)
-Crash<-read_csv("https://jagelves.github.io/Data/Crash.csv")
-```
+*In Excel, build a PivotTable: drag `Crash Type` to the Rows area, `Light Condition` to the Columns area, and either field to the Values area as a Count. To turn the counts into a joint probability table, use `Value Field Settings → Show Values As → % of Grand Total`. You can also count any single cell directly. Assuming `Crash Type` is in column B and `Light Condition` in column C:*
 
-*To create a contingency table use the `table()` command in R.*
-
-```{r}
-(freq<-table(Crash$`Crash Type`,Crash$`Light Condition`))
-```
-
-*This table is used to calculate probabilities. We can pass it through the `prop.table()` function to get the contingency table.*
-
-```{r}
-round(prop.table(freq),2)
-```
+- `=COUNTIFS(B:B, "Head-on", C:C, "Daylight")` → $166$
 
 </details>
 
@@ -384,11 +386,19 @@ round(prop.table(freq),2)
 
 <summary>Answer</summary>
 
-*The probability of a head-on crash is:*
+*a) The probability of a Head-On crash is:*
 
-$$P(\text{Head-on})=0.03+0.02=0.05$$ *The probability that the crash is in daylight is:*
+$$P(\text{Head-on})=\frac{166+108}{4858}=\frac{274}{4858}=0.056$$
 
-$$P(Daylight)=0.03+0.67=0.70$$ $$P(Daylight)=\frac{P(\text{Head-on})}{P(Daylight)}=\frac{0.03}{0.70}$$
+*b) The probability that the crash is in daylight is:*
+
+$$P(\text{Daylight})=\frac{166+3258}{4858}=\frac{3424}{4858}=0.70$$
+
+*c) The probability that a crash is Head-On given daylight is:*
+
+$$P(\text{Head-on}\mid\text{Daylight})=\frac{P(\text{Head-on}\cap\text{Daylight})}{P(\text{Daylight})}=\frac{166}{3424}=0.048$$
+
+*In Excel these follow from the PivotTable counts. For example, part a) is `=COUNTIF(B:B,"Head-on") / COUNTA(B2:B4859)`.*
 
 </details>
 
@@ -398,7 +408,7 @@ $$P(Daylight)=0.03+0.67=0.70$$ $$P(Daylight)=\frac{P(\text{Head-on})}{P(Daylight
 
 <summary>Answer</summary>
 
-*The two variables are dependent since* $P(Head-On|Daylight) \neq P(Head-On)$, that is $0.048 \neq 0.56$.
+*The two variables are dependent since* $P(\text{Head-on}\mid\text{Daylight}) \neq P(\text{Head-on})$, that is $0.048 \neq 0.056$.
 
 </details>
 
@@ -426,33 +436,20 @@ $P(A^c)=1-P(A)=1-0.7=0.3$, $P(A \cap B)=𝑃(𝐵|𝐴)𝑃(𝐴) = 0.55(0.70) =
 
 ### Exercise 6 {.unnumbered}
 
-1.  Calculate the following values and verify your results using R. a) 3!, b) 4!, c) $C_6^8$, d) $P_6^8$.
+1.  Calculate the following values and verify your results using Excel. a) 3!, b) 4!, c) $C_6^8$, d) $P_6^8$.
 
 <details>
 
 <summary>Answer</summary>
 
-$3!=3 \times 2 \times 1=6$, $4!=6 \times 4=24$, $C_6^8=28$, and $P_6^8=20,160$
+$3!=3 \times 2 \times 1=6$, $4!=4 \times 3 \times 2 \times 1=24$, $C_6^8=28$, and $P_6^8=20{,}160$.
 
-*In R we can just use the factorial command. So* $3!$ is:
+*In Excel:*
 
-```{r}
-factorial(3)
-```
-
-*and* $4!$ is:
-
-```{r}
-factorial(4)
-```
-
-*For combinations and permutations we can use the `gtools` package:*
-
-```{r}
-library(gtools)
-C<-combinations(8,6)
-nrow(C)
-```
+- `=FACT(3)` → $6$
+- `=FACT(4)` → $24$
+- `=COMBIN(8, 6)` → $28$
+- `=PERMUT(8, 6)` → $20{,}160$
 
 </details>
 
@@ -462,18 +459,11 @@ nrow(C)
 
 <summary>Answer</summary>
 
-*If order doesn't matter, there are* $252$ ways. If order matters, then there are $30,240$ ways.
+*If order doesn't matter, there are* $252$ ways. If order matters, then there are $30{,}240$ ways.
 
-*In R we can once more use the combination and permutation functions:*
+*In Excel:*
 
-```{r}
-B1<-combinations(10,5)
-nrow(B1)
-```
-
-```{r}
-B2<-permutations(10,5)
-nrow(B2)
-```
+- `=COMBIN(10, 5)` → $252$
+- `=PERMUT(10, 5)` → $30{,}240$
 
 </details>

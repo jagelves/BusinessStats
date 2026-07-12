@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,6 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9904b5196d746cb5bc47063911474b57.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -309,8 +277,9 @@ window.Quarto = {
   <li><a href="#combinations" id="toc-combinations" class="nav-link" data-scroll-target="#combinations">Combinations</a></li>
   <li><a href="#permutations" id="toc-permutations" class="nav-link" data-scroll-target="#permutations">Permutations</a></li>
   </ul></li>
-  <li><a href="#probability-in-r" id="toc-probability-in-r" class="nav-link" data-scroll-target="#probability-in-r"><span class="header-section-number">8.8</span> Probability in R</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.9</span> Exercises</a>
+  <li><a href="#probability-in-excel" id="toc-probability-in-excel" class="nav-link" data-scroll-target="#probability-in-excel"><span class="header-section-number">8.8</span> Probability in Excel</a></li>
+  <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">8.9</span> Excel Function Summary</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.10</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -376,22 +345,16 @@ details summary {
 <section id="basic-probability-concepts" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="basic-probability-concepts"><span class="header-section-number">8.3</span> Basic Probability Concepts</h2>
 <p>A <strong>probability</strong> is a numerical value that measures the likelihood that an event occurs. To calculate <strong>probabilities</strong>, we find the ratio between favorable outcomes and total outcomes. Hence, the probability of an event is given by:</p>
-<p><span class="math display">\[
-P(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outocomes\ in\ Sample \ Space}
-\]</span></p>
+<p><span class="math display">\[P(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outocomes\ in\ Sample \ Space}\]</span></p>
 <p>The probability of A satisfies <span class="math inline">\(0\leq P(A) \leq1\)</span>. Since A is a subset of S, the number of elements in A is at most that of the sample space S. Hence, if A=S, then P(A)=1. If A is a null event (i.e., has no elements) P(A)=0 and is impossible. We can conclude that P(A) ranges from 0 to 1, inclusive.</p>
 <p>In many cases, we analyze how multiple events interact within the sample space, particularly when they either exclude each other or collectively cover all possible outcomes.<strong>Mutually exclusive</strong> events do not share any common outcomes. The occurrence of one event precludes the occurrence of others. <strong>Exhaustive</strong> events include all outcomes in the sample space.</p>
 <p>Given these concepts if follows that the sum of the probabilities of a list of <strong>mutually exclusive</strong> and <strong>exhaustive</strong> events equals <span class="math inline">\(1\)</span>. Formally, we state: <span class="math inline">\(\sum P(x_i)=1\)</span>, where <span class="math inline">\(x_i\)</span> is outcome <span class="math inline">\(i\)</span>.</p>
 <p><strong>Example:</strong> Let’s consider a standard deck of 52 playing cards to illustrate the key probability concepts.</p>
 <p>If we randomly draw one card from a standard deck, the sample space <span class="math inline">\(S\)</span> consists of all 52 cards. Suppose we define event <span class="math inline">\(A\)</span> as <em>drawing a red card</em>. Since there are 26 red cards, the probability is:</p>
-<p><span class="math display">\[
-P(A) = \frac{\text{Number of red cards}}{\text{Total number of cards}} = \frac{26}{52} = 0.5
-\]</span></p>
+<p><span class="math display">\[P(A) = \frac{\text{Number of red cards}}{\text{Total number of cards}} = \frac{26}{52} = 0.5\]</span></p>
 <p>Since <span class="math inline">\(( 0 \leq P(A) \leq 1)\)</span>, this follows the basic probability rule. Next let’s consider mutually exclusive events. Let event <span class="math inline">\(B\)</span> be drawing a heart and event <span class="math inline">\(C\)</span> be drawing a spade. Since a single drawn card cannot be both a heart and a spade, these events are mutually exclusive.</p>
 <p>The four suits (<em>hearts, diamonds, clubs, spades</em>) form an exhaustive set, because every card belongs to exactly one suit. The sum of their probabilities equals 1:</p>
-<p><span class="math display">\[
-P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \frac{13}{52} + \frac{13}{52} + \frac{13}{52} + \frac{13}{52} = 1
-\]</span></p>
+<p><span class="math display">\[P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \frac{13}{52} + \frac{13}{52} + \frac{13}{52} + \frac{13}{52} = 1\]</span></p>
 <p>Note the this also satisfies the rule <span class="math inline">\(\sum P(x_i) = 1\)</span>, where <span class="math inline">\(x_i\)</span> represents each possible outcome (suit).</p>
 </section>
 <section id="venn-diagram" class="level2" data-number="8.4">
@@ -557,14 +520,26 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 <p><em>Ex: You are trying to guess the combination of a lock that has three possible numbers. Since there are 10 numbers to choose from, there are</em> <span class="math inline">\(10^3=1000\)</span> possible permutations.</p>
 </section>
 </section>
-<section id="probability-in-r" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="probability-in-r"><span class="header-section-number">8.8</span> Probability in R</h2>
-<p>The <code>table()</code> function can be used to construct frequency distributions.</p>
-<p>The <code>factorial()</code> function returns the factorial of a number.</p>
-<p>The <code>gtools</code> package contains the <code>combinations()</code> and <code>permutations()</code> functions used to calculate combinations and permutations. Use the <em>repeats.allowed</em> argument to specify counting with repetition or no repetition. The <em>v</em> argument allows you to specify a vector of elements.</p>
+<section id="probability-in-excel" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="probability-in-excel"><span class="header-section-number">8.8</span> Probability in Excel</h2>
+<p>Excel has a collection of functions that make counting and probability calculations straightforward.</p>
+<p><strong>Contingency tables:</strong> Use a <strong>PivotTable</strong> (<code>Insert → PivotTable</code>) to build a contingency table from raw data — place one variable in the Rows area, the other in the Columns area, and any field in the Values area as a count. To turn the counts into a joint probability table, use <code>Value Field Settings → Show Values As → % of Grand Total</code>. You can also count a specific combination of conditions directly with <code>=COUNTIFS(range1, criteria1, range2, criteria2)</code>.</p>
+<p><strong>Factorial:</strong> The <code>=FACT(number)</code> function returns the factorial of a number. For example, <code>=FACT(5)</code> returns <span class="math inline">\(120\)</span>.</p>
+<p><strong>Combinations:</strong> The <code>=COMBIN(number, number_chosen)</code> function counts the number of combinations without repetition. Use <code>=COMBINA(number, number_chosen)</code> when repetition is allowed.</p>
+<p><strong>Permutations:</strong> The <code>=PERMUT(number, number_chosen)</code> function counts the number of permutations without repetition. Use <code>=PERMUTATIONA(number, number_chosen)</code> when repetition is allowed.</p>
 </section>
-<section id="exercises" class="level2" data-number="8.9">
-<h2 data-number="8.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.9</span> Exercises</h2>
+<section id="excel-function-summary" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">8.9</span> Excel Function Summary</h2>
+<p>Below is a list of the Excel functions used in this section:</p>
+<ul>
+<li><p><code>=COUNTIFS(range1, criteria1, ...)</code> counts the observations that satisfy several conditions at once, useful for building contingency tables.</p></li>
+<li><p><code>=FACT(number)</code> returns the factorial of a number.</p></li>
+<li><p><code>=COMBIN(number, number_chosen)</code> returns the number of combinations without repetition; <code>=COMBINA(number, number_chosen)</code> allows repetition.</p></li>
+<li><p><code>=PERMUT(number, number_chosen)</code> returns the number of permutations without repetition; <code>=PERMUTATIONA(number, number_chosen)</code> allows repetition.</p></li>
+</ul>
+</section>
+<section id="exercises" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.10</span> Exercises</h2>
 <p>The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating simple probabilities.</p></li>
@@ -574,7 +549,7 @@ P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \fr
 <p>Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.</p>
 <section id="exercise-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-1">Exercise 1</h3>
-<p>For the following exercises, make your calculations by hand and verify results with a calculator or R.</p>
+<p>For the following exercises, make your calculations by hand and verify results with a calculator or Excel.</p>
 <ol type="1">
 <li>A sample space <span class="math inline">\(S\)</span> yields five equally likely events, <span class="math inline">\(A\)</span>, <span class="math inline">\(B\)</span>, <span class="math inline">\(C\)</span>, <span class="math inline">\(D\)</span>, and <span class="math inline">\(E\)</span>. Find <span class="math inline">\(P(D)\)</span>, <span class="math inline">\(P(B^c)\)</span>, and <span class="math inline">\(P(A \cup C \cup E)\)</span>.</li>
 </ol>
@@ -617,7 +592,7 @@ Answer
 </section>
 <section id="exercise-2" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise 2</h3>
-<p>For the following exercises, make your calculations by hand and verify results with a calculator or R.</p>
+<p>For the following exercises, make your calculations by hand and verify results with a calculator or Excel.</p>
 <ol type="1">
 <li>Let <span class="math inline">\(P(A)=0.65\)</span>, <span class="math inline">\(P(B)=0.3\)</span>, and <span class="math inline">\(P(A|B)=0.45\)</span>. Calculate <span class="math inline">\(P(A \cap B)\)</span>, <span class="math inline">\(P(A \cup B)\)</span>, and <span class="math inline">\(P(B|A)\)</span>.</li>
 </ol>
@@ -625,14 +600,8 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>From the multiplication rule,</em> <span class="math display">\[
-P(A|B)*P(B)=P(A \cap B)
-\]</span></p>
-<p><em>substituting values yields:</em> <span class="math display">\[
-P(A \cap B)=0.45*0.3=0.135
-\]</span> <em>From the addition rule,</em> <span class="math display">\[
-P(A \cup B)=P(A)+P(B)-P(A \cap B)
-\]</span> <em>substituting yields:</em> <span class="math display">\[P(A \cup B)=0.65+0.3-0.135=0.815\]</span> <em>From the multiplication rule once again,</em> <span class="math display">\[P(B|A)=\frac{P(A \cap B)}{P(A)}\]</span> <em>substituting values yields,</em> <span class="math display">\[P(B|A)=0.135/0.65=0.2076923\]</span></p>
+<p><em>From the multiplication rule,</em> <span class="math display">\[P(A|B)*P(B)=P(A \cap B)\]</span></p>
+<p><em>substituting values yields:</em> <span class="math display">\[P(A \cap B)=0.45*0.3=0.135\]</span> <em>From the addition rule,</em> <span class="math display">\[P(A \cup B)=P(A)+P(B)-P(A \cap B)\]</span> <em>substituting yields:</em> <span class="math display">\[P(A \cup B)=0.65+0.3-0.135=0.815\]</span> <em>From the multiplication rule once again,</em> <span class="math display">\[P(B|A)=\frac{P(A \cap B)}{P(A)}\]</span> <em>substituting values yields,</em> <span class="math display">\[P(B|A)=0.135/0.65=0.2076923\]</span></p>
 </details>
 <ol start="2" type="1">
 <li>Let <span class="math inline">\(P(A)=0.4\)</span>, <span class="math inline">\(P(B)=0.5\)</span>, and <span class="math inline">\(P(A^c \cap B^c)=0.24\)</span>. Calculate <span class="math inline">\(P(A^c|B^c)\)</span>, <span class="math inline">\(P(A^c \cup B^c)\)</span>, and <span class="math inline">\(P(A \cup B)\)</span>.</li>
@@ -715,7 +684,8 @@ Answer
 </section>
 <section id="exercise-4" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h3>
-<p>You will need the <strong>Crash</strong> data set and R to answer this question. The data shows information on several car crashes. Specifically, if the crash was Head-On or Not Head-On and whether there was Daylight or No Daylight. You can find the data here: https://jagelves.github.io/Data/Crash.csv</p>
+<p>You will need the <strong>Crash</strong> data set to answer this question. The data shows information on several car crashes. Specifically, whether the crash was Head-On or Not Head-On and whether there was Daylight or No Daylight. You can download it here:</p>
+<p><a href="Crash.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <ol type="1">
 <li>Create a contingency table.</li>
 </ol>
@@ -723,32 +693,41 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The probability of a Head-On crash is</em> <span class="math inline">\((166+108)/4858=0.056\)</span>. The probability of a daylight crash is <span class="math inline">\((166+3258)/4858=0.70\)</span>. The probability that the car crash is Head-On given daylight is <span class="math inline">\(166/(166+3258)=0.048\)</span>.</p>
-<p><em>Start by loading the data into R.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Crash<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/Crash.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><em>To create a contingency table use the <code>table()</code> command in R.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(freq<span class="ot">&lt;-</span><span class="fu">table</span>(Crash<span class="sc">$</span><span class="st">`</span><span class="at">Crash Type</span><span class="st">`</span>,Crash<span class="sc">$</span><span class="st">`</span><span class="at">Light Condition</span><span class="st">`</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>             
-              Daylight Not Daylight
-  Head-on          166          108
-  Not Head-On     3258         1326</code></pre>
-</div>
-</div>
-<p><em>This table is used to calculate probabilities. We can pass it through the <code>prop.table()</code> function to get the contingency table.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">prop.table</span>(freq),<span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>             
-              Daylight Not Daylight
-  Head-on         0.03         0.02
-  Not Head-On     0.67         0.27</code></pre>
-</div>
-</div>
+<p><em>The contingency table below shows the counts for each combination of Crash Type and Light Condition:</em></p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;">Daylight</th>
+<th style="text-align: center;">Not Daylight</th>
+<th style="text-align: center;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Head-on</td>
+<td style="text-align: center;">166</td>
+<td style="text-align: center;">108</td>
+<td style="text-align: center;">274</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Not Head-On</td>
+<td style="text-align: center;">3258</td>
+<td style="text-align: center;">1326</td>
+<td style="text-align: center;">4584</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;">3424</td>
+<td style="text-align: center;">1434</td>
+<td style="text-align: center;">4858</td>
+</tr>
+</tbody>
+</table>
+<p><em>In Excel, build a PivotTable: drag <code>Crash Type</code> to the Rows area, <code>Light Condition</code> to the Columns area, and either field to the Values area as a Count. To turn the counts into a joint probability table, use <code>Value Field Settings → Show Values As → % of Grand Total</code>. You can also count any single cell directly. Assuming <code>Crash Type</code> is in column B and <code>Light Condition</code> in column C:</em></p>
+<ul>
+<li><code>=COUNTIFS(B:B, "Head-on", C:C, "Daylight")</code> → <span class="math inline">\(166\)</span></li>
+</ul>
 </details>
 <ol start="2" type="1">
 <li>Find the probability that a) a car crash is Head-On, b) a car crash is in daylight c) a car crash is Head-On given that there is daylight.</li>
@@ -757,9 +736,13 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The probability of a head-on crash is:</em></p>
-<p><span class="math display">\[P(\text{Head-on})=0.03+0.02=0.05\]</span> <em>The probability that the crash is in daylight is:</em></p>
-<p><span class="math display">\[P(Daylight)=0.03+0.67=0.70\]</span> <span class="math display">\[P(Daylight)=\frac{P(\text{Head-on})}{P(Daylight)}=\frac{0.03}{0.70}\]</span></p>
+<p><em>a) The probability of a Head-On crash is:</em></p>
+<p><span class="math display">\[P(\text{Head-on})=\frac{166+108}{4858}=\frac{274}{4858}=0.056\]</span></p>
+<p><em>b) The probability that the crash is in daylight is:</em></p>
+<p><span class="math display">\[P(\text{Daylight})=\frac{166+3258}{4858}=\frac{3424}{4858}=0.70\]</span></p>
+<p><em>c) The probability that a crash is Head-On given daylight is:</em></p>
+<p><span class="math display">\[P(\text{Head-on}\mid\text{Daylight})=\frac{P(\text{Head-on}\cap\text{Daylight})}{P(\text{Daylight})}=\frac{166}{3424}=0.048\]</span></p>
+<p><em>In Excel these follow from the PivotTable counts. For example, part a) is <code>=COUNTIF(B:B,"Head-on") / COUNTA(B2:B4859)</code>.</em></p>
 </details>
 <ol start="3" type="1">
 <li>Show that Crashes and Light are dependent.</li>
@@ -768,7 +751,7 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The two variables are dependent since</em> <span class="math inline">\(P(Head-On|Daylight) \neq P(Head-On)\)</span>, that is <span class="math inline">\(0.048 \neq 0.56\)</span>.</p>
+<p><em>The two variables are dependent since</em> <span class="math inline">\(P(\text{Head-on}\mid\text{Daylight}) \neq P(\text{Head-on})\)</span>, that is <span class="math inline">\(0.048 \neq 0.056\)</span>.</p>
 </details>
 </section>
 <section id="exercise-5" class="level3 unnumbered">
@@ -795,36 +778,20 @@ Answer
 <section id="exercise-6" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-6">Exercise 6</h3>
 <ol type="1">
-<li>Calculate the following values and verify your results using R. a) 3!, b) 4!, c) <span class="math inline">\(C_6^8\)</span>, d) <span class="math inline">\(P_6^8\)</span>.</li>
+<li>Calculate the following values and verify your results using Excel. a) 3!, b) 4!, c) <span class="math inline">\(C_6^8\)</span>, d) <span class="math inline">\(P_6^8\)</span>.</li>
 </ol>
 <details>
 <summary>
 Answer
 </summary>
-<p><span class="math inline">\(3!=3 \times 2 \times 1=6\)</span>, <span class="math inline">\(4!=6 \times 4=24\)</span>, <span class="math inline">\(C_6^8=28\)</span>, and <span class="math inline">\(P_6^8=20,160\)</span></p>
-<p><em>In R we can just use the factorial command. So</em> <span class="math inline">\(3!\)</span> is:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 6</code></pre>
-</div>
-</div>
-<p><em>and</em> <span class="math inline">\(4!\)</span> is:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">factorial</span>(<span class="dv">4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 24</code></pre>
-</div>
-</div>
-<p><em>For combinations and permutations we can use the <code>gtools</code> package:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(gtools)</span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>C<span class="ot">&lt;-</span><span class="fu">combinations</span>(<span class="dv">8</span>,<span class="dv">6</span>)</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(C)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 28</code></pre>
-</div>
-</div>
+<p><span class="math inline">\(3!=3 \times 2 \times 1=6\)</span>, <span class="math inline">\(4!=4 \times 3 \times 2 \times 1=24\)</span>, <span class="math inline">\(C_6^8=28\)</span>, and <span class="math inline">\(P_6^8=20{,}160\)</span>.</p>
+<p><em>In Excel:</em></p>
+<ul>
+<li><code>=FACT(3)</code> → <span class="math inline">\(6\)</span></li>
+<li><code>=FACT(4)</code> → <span class="math inline">\(24\)</span></li>
+<li><code>=COMBIN(8, 6)</code> → <span class="math inline">\(28\)</span></li>
+<li><code>=PERMUT(8, 6)</code> → <span class="math inline">\(20{,}160\)</span></li>
+</ul>
 </details>
 <ol start="2" type="1">
 <li>There are 10 players in a local basketball team. If we chose 5 players to randomly start a game, in how many ways can we select the five players if order doesn’t matter? What if order matters?</li>
@@ -833,22 +800,12 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>If order doesn’t matter, there are</em> <span class="math inline">\(252\)</span> ways. If order matters, then there are <span class="math inline">\(30,240\)</span> ways.</p>
-<p><em>In R we can once more use the combination and permutation functions:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>B1<span class="ot">&lt;-</span><span class="fu">combinations</span>(<span class="dv">10</span>,<span class="dv">5</span>)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(B1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 252</code></pre>
-</div>
-</div>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>B2<span class="ot">&lt;-</span><span class="fu">permutations</span>(<span class="dv">10</span>,<span class="dv">5</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">nrow</span>(B2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 30240</code></pre>
-</div>
-</div>
+<p><em>If order doesn’t matter, there are</em> <span class="math inline">\(252\)</span> ways. If order matters, then there are <span class="math inline">\(30{,}240\)</span> ways.</p>
+<p><em>In Excel:</em></p>
+<ul>
+<li><code>=COMBIN(10, 5)</code> → <span class="math inline">\(252\)</span></li>
+<li><code>=PERMUT(10, 5)</code> → <span class="math inline">\(30{,}240\)</span></li>
+</ul>
 </details>
 
 
