@@ -376,7 +376,7 @@ ggplot() +
 
 A company surveyed 40 employees about their primary department. The responses are saved in the Excel file below:
 
-[{{< fa file-excel >}} Download Data](Survey.xlsx){.btn .btn-success}
+[{{< fa file-excel >}} Download Data](survey.xlsx){.btn .btn-success}
 
 1.  Create a frequency distribution table for these departments.
 
@@ -424,7 +424,7 @@ ggplot() +
 
 A class of 50 students took a business statistics exam (out of 100 points). Their scores were recorded in Excel:
 
-[{{< fa file-excel >}} Download Data](Busstat.xlsx){.btn .btn-success}
+[{{< fa file-excel >}} Download Data](BusStat.xlsx){.btn .btn-success}
 
 1.  Construct a histogram using 7 classes with width 10, starting at 50 (bins: \[50,60), \[60,70), etc.). In which bin is the highest frequency? How many students scored in that range?
 
