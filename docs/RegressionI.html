@@ -268,6 +268,7 @@ window.Quarto = {
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
   <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
+  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -526,6 +527,7 @@ details summary {
 <li>Calculating covariance and correlation.</li>
 <li>Creating scatter diagrams in Excel.</li>
 <li>Calculating the coefficient of determination.</li>
+<li>Interpreting measures of association in a real-world context.</li>
 </ul>
 <p>Answers are provided below. Try not to peek until you have formulated your own answer and double checked your work for any mistakes.</p>
 <section id="exercise-1" class="level3 unnumbered">
@@ -664,14 +666,14 @@ Answer
 <p>You will need the <strong>mtcars</strong> data set to answer this question. You can download it here:</p>
 <p><a href="mtcars.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <ol type="1">
-<li>Calculate the correlation coefficient between <code>hp</code> and <code>mpg</code>. Is the relationship direct or inverse? How strong is it? Interpret the result.</li>
+<li>Calculate the correlation coefficient between <code>hp</code> and <code>mpg</code>. Explain the results. Specifically, the direction of the relationship and the strength given the context of the problem.</li>
 </ol>
 <details>
 <summary>
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>The correlation coefficient is <span class="math inline">\(-0.78\)</span>, indicating a moderately strong inverse relationship between mpg and hp. As horsepower increases, fuel efficiency decreases — which makes intuitive sense.</em></p>
+<p><em>The correlation coefficient is <span class="math inline">\(-0.78\)</span>. This is indicative of a moderately strong inverse relationship between mpg and hp. As horsepower increases, fuel efficiency tends to decrease.</em></p>
 <p><em>In Excel, assuming <code>mpg</code> is in column A and <code>hp</code> is in column B:</em></p>
 <ul>
 <li><code>=CORREL(A2:A33, B2:B33)</code> → <span class="math inline">\(-0.78\)</span></li>
@@ -679,26 +681,27 @@ Answer
 </div>
 </details>
 <ol start="2" type="1">
-<li>Create a scatter diagram of <code>hp</code> (x-axis) and <code>mpg</code> (y-axis) in Excel. Add a linear trend line. Describe the pattern you observe.</li>
+<li>Create a scatter diagram of the two variables. Is the scatter diagram what you expected after you calculated the correlation coefficient?</li>
 </ol>
 <details>
 <summary>
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>The scatter diagram is downward sloping: as horsepower increases, miles per gallon tends to decrease. The points lie moderately close to the trend line, which is consistent with the moderately strong inverse correlation of <span class="math inline">\(-0.78\)</span>.</em></p>
+<p><em>The scatter diagram is downward sloping and most points are close to the trend line. It is what was expected from a correlation coefficient of <span class="math inline">\(-0.78\)</span>.</em></p>
+<p><em>In Excel, select the <code>hp</code> and <code>mpg</code> columns and go to <code>Insert → Charts → Scatter</code>. To add the trend line, right-click any point and choose <code>Add Trendline → Linear</code>.</em></p>
 </div>
 </details>
 <ol start="3" type="1">
-<li>Calculate the coefficient of determination. What percentage of the variation in <code>mpg</code> is explained by <code>hp</code>?</li>
+<li>Calculate the coefficient of determination. How close is it to one? What else could be explaining the variation in the <code>mpg</code>? Let your dependent variable be <code>mpg</code>.</li>
 </ol>
 <details>
 <summary>
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>The coefficient of determination is <span class="math inline">\(R^2 = (-0.78)^2 = 0.60\)</span>. This means that <span class="math inline">\(60\%\)</span> of the variation in miles per gallon is explained by horsepower. The remaining <span class="math inline">\(40\%\)</span> is explained by other factors such as the car’s weight, engine size, and fuel efficiency.</em></p>
-<p><em>In Excel:</em></p>
+<p><em>The coefficient of determination is <span class="math inline">\(0.60\)</span>. This value is not very close to one. This is expected since miles per gallon can also vary because of the car’s weight and fuel efficiency. It makes sense that <code>hp</code> only explains <span class="math inline">\(60\%\)</span> of the total variation.</em></p>
+<p><em>In Excel, square the correlation coefficient:</em></p>
 <ul>
 <li><code>=CORREL(A2:A33, B2:B33)^2</code> → <span class="math inline">\(0.60\)</span></li>
 </ul>
@@ -710,31 +713,79 @@ Answer
 <p>You will need the <strong>College</strong> data set to answer this question. You can download it here:</p>
 <p><a href="College.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <ol type="1">
-<li>Create a scatter diagram between <code>GRAD_DEBT_MDN</code> (Median Debt) on the y-axis and <code>MD_EARN_WNE_P10</code> (Median Earnings) on the x-axis. Describe the relationship between the two variables.</li>
+<li>Create a scatter diagram between <code>GRAD_DEBT_MDN</code> (Median Debt) on the y-axis and <code>MD_EARN_WNE_P10</code> (Median Earnings) on the x-axis. What type of relationship do you observe between the variables?</li>
 </ol>
 <details>
 <summary>
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>The scatter diagram shows a direct relationship: institutions whose graduates have higher median earnings also tend to have higher median debt. The upward pattern is moderate rather than tight, with a fair amount of scatter around the trend line.</em></p>
+<p><em>It seems like there is a direct relationship between both variables. The more debt a graduate takes on, the higher the earnings tend to be.</em></p>
+<p><em>In Excel, select the <code>MD_EARN_WNE_P10</code> and <code>GRAD_DEBT_MDN</code> columns and go to <code>Insert → Charts → Scatter</code>. Add a linear trend line by right-clicking a point and choosing <code>Add Trendline → Linear</code>.</em></p>
 </div>
 </details>
 <ol start="2" type="1">
-<li>Calculate the correlation coefficient and the coefficient of determination between the two variables. Is the relationship direct or inverse? How strong is it? What percentage of the variation in earnings is explained by debt?</li>
+<li>Calculate the correlation coefficient and the coefficient of determination. According to the data, are higher debts correlated with higher earnings?</li>
 </ol>
 <details>
 <summary>
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>The correlation coefficient is <span class="math inline">\(r = 0.46\)</span>, indicating a moderate direct relationship between earnings and debt. The coefficient of determination <span class="math inline">\(R^2 = 0.21\)</span> indicates that only <span class="math inline">\(21\%\)</span> of the variation in earnings can be explained by debt. Other factors such as field of study, institution type, and location likely explain the remaining variation.</em></p>
+<p><em>The correlation coefficient shows a moderate direct relationship between earnings and debt, <span class="math inline">\(r = 0.46\)</span>. The coefficient of determination indicates that only <span class="math inline">\(21\%\)</span> of the variation in earnings can be explained by debt.</em></p>
 <p><em>In Excel, assuming <code>GRAD_DEBT_MDN</code> is in column A and <code>MD_EARN_WNE_P10</code> is in column B:</em></p>
 <ul>
 <li><code>=CORREL(A2:A1000, B2:B1000)</code> → <span class="math inline">\(0.46\)</span></li>
 <li><code>=CORREL(A2:A1000, B2:B1000)^2</code> → <span class="math inline">\(0.21\)</span></li>
 </ul>
 <p><em>Note: use <code>=CORREL()</code> rather than <code>=COVARIANCE.S()</code> when there are missing values, as CORREL handles them more gracefully in Excel.</em></p>
+</div>
+</details>
+</section>
+<section id="exercise-4" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h3>
+<p>You will need the <strong>HomePrices</strong> data set to answer this question. You can download it here:</p>
+<p><a href="HomePrices.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
+<ol type="1">
+<li>Create a scatter diagram between <code>bedrooms</code> (number of bedrooms) and <code>Price</code> (home sale price). What type of relationship do you observe between the two variables? Does the direction make intuitive sense?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div style="padding-left: 1.5em;">
+<p><em>There is a direct relationship between bedrooms and price. As the number of bedrooms increases, sale prices tend to rise. This is intuitive since larger homes generally command higher market values.</em></p>
+<p><em>In Excel, select the <code>bedrooms</code> and <code>Price</code> columns and go to <code>Insert → Charts → Scatter</code>. Add a linear trend line by right-clicking a point and choosing <code>Add Trendline → Linear</code>.</em></p>
+</div>
+</details>
+<ol start="2" type="1">
+<li>Calculate the correlation coefficient between <code>bedrooms</code> and <code>Price</code>. Explain the direction and strength of the relationship in the context of the housing market.</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div style="padding-left: 1.5em;">
+<p><em>The correlation coefficient is <span class="math inline">\(r = 0.92\)</span>, indicating a strong direct relationship between bedrooms and sale price. Larger homes tend to sell for higher prices, though many other factors (location, condition, amenities) also influence price, which prevents a perfect correlation.</em></p>
+<p><em>In Excel, assuming <code>bedrooms</code> is in column A and <code>Price</code> is in column B:</em></p>
+<ul>
+<li><code>=CORREL(A2:A348, B2:B348)</code> → <span class="math inline">\(0.92\)</span></li>
+</ul>
+</div>
+</details>
+<ol start="3" type="1">
+<li>Calculate the coefficient of determination. What percentage of the variation in <code>Price</code> is explained by <code>bedrooms</code>? What other factors might account for the remaining variation?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<div style="padding-left: 1.5em;">
+<p><em>The coefficient of determination is <span class="math inline">\(R^2 = 0.85\)</span>, so about <span class="math inline">\(85\%\)</span> of the variation in home prices is explained by the number of bedrooms alone. The remaining variation is likely driven by factors such as location, number of bathrooms, lot size, school district quality, and the overall condition of the property.</em></p>
+<p><em>In Excel, square the correlation coefficient:</em></p>
+<ul>
+<li><code>=CORREL(A2:A348, B2:B348)^2</code> → <span class="math inline">\(0.85\)</span></li>
+</ul>
 </div>
 </details>
 

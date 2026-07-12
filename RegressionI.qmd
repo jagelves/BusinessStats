@@ -200,6 +200,7 @@ the exercises work on:
 - Calculating covariance and correlation.
 - Creating scatter diagrams in Excel.
 - Calculating the coefficient of determination.
+- Interpreting measures of association in a real-world context.
 
 Answers are provided below. Try not to peek until you have formulated
 your own answer and double checked your work for any mistakes.
@@ -281,17 +282,17 @@ You can download it here:
 
 [{{< fa file-excel >}} Download Data](mtcars.xlsx){.btn .btn-success}
 
-1. Calculate the correlation coefficient between `hp` and `mpg`. Is
-the relationship direct or inverse? How strong is it? Interpret the
-result.
+1. Calculate the correlation coefficient between `hp` and `mpg`.
+Explain the results. Specifically, the direction of the relationship
+and the strength given the context of the problem.
 
 <details>
 <summary>Answer</summary>
 <div style="padding-left: 1.5em;">
 
-*The correlation coefficient is $-0.78$, indicating a moderately
-strong inverse relationship between mpg and hp. As horsepower
-increases, fuel efficiency decreases — which makes intuitive sense.*
+*The correlation coefficient is $-0.78$. This is indicative of a
+moderately strong inverse relationship between mpg and hp. As
+horsepower increases, fuel efficiency tends to decrease.*
 
 *In Excel, assuming `mpg` is in column A and `hp` is in column B:*
 
@@ -300,34 +301,39 @@ increases, fuel efficiency decreases — which makes intuitive sense.*
 </div>
 </details>
 
-2. Create a scatter diagram of `hp` (x-axis) and `mpg` (y-axis)
-in Excel. Add a linear trend line. Describe the pattern you observe.
+2. Create a scatter diagram of the two variables. Is the scatter
+diagram what you expected after you calculated the correlation
+coefficient?
 
 <details>
 <summary>Answer</summary>
 <div style="padding-left: 1.5em;">
 
-*The scatter diagram is downward sloping: as horsepower increases,
-miles per gallon tends to decrease. The points lie moderately close
-to the trend line, which is consistent with the moderately strong
-inverse correlation of $-0.78$.*
+*The scatter diagram is downward sloping and most points are close
+to the trend line. It is what was expected from a correlation
+coefficient of $-0.78$.*
+
+*In Excel, select the `hp` and `mpg` columns and go to
+`Insert → Charts → Scatter`. To add the trend line, right-click any
+point and choose `Add Trendline → Linear`.*
 
 </div>
 </details>
 
-3. Calculate the coefficient of determination. What percentage of
-the variation in `mpg` is explained by `hp`?
+3. Calculate the coefficient of determination. How close is it to
+one? What else could be explaining the variation in the `mpg`? Let
+your dependent variable be `mpg`.
 
 <details>
 <summary>Answer</summary>
 <div style="padding-left: 1.5em;">
 
-*The coefficient of determination is $R^2 = (-0.78)^2 = 0.60$. This
-means that $60\%$ of the variation in miles per gallon is explained
-by horsepower. The remaining $40\%$ is explained by other factors
-such as the car's weight, engine size, and fuel efficiency.*
+*The coefficient of determination is $0.60$. This value is not very
+close to one. This is expected since miles per gallon can also vary
+because of the car's weight and fuel efficiency. It makes sense that
+`hp` only explains $60\%$ of the total variation.*
 
-*In Excel:*
+*In Excel, square the correlation coefficient:*
 
 - `=CORREL(A2:A33, B2:B33)^2` → $0.60$
 
@@ -343,35 +349,34 @@ You can download it here:
 
 1. Create a scatter diagram between `GRAD_DEBT_MDN` (Median Debt)
 on the y-axis and `MD_EARN_WNE_P10` (Median Earnings) on the x-axis.
-Describe the relationship between the two variables.
+What type of relationship do you observe between the variables?
 
 <details>
 <summary>Answer</summary>
 <div style="padding-left: 1.5em;">
 
-*The scatter diagram shows a direct relationship: institutions whose
-graduates have higher median earnings also tend to have higher median
-debt. The upward pattern is moderate rather than tight, with a fair
-amount of scatter around the trend line.*
+*It seems like there is a direct relationship between both variables.
+The more debt a graduate takes on, the higher the earnings tend to be.*
+
+*In Excel, select the `MD_EARN_WNE_P10` and `GRAD_DEBT_MDN` columns
+and go to `Insert → Charts → Scatter`. Add a linear trend line by
+right-clicking a point and choosing `Add Trendline → Linear`.*
 
 </div>
 </details>
 
 2. Calculate the correlation coefficient and the coefficient of
-determination between the two variables. Is the relationship direct
-or inverse? How strong is it? What percentage of the variation in
-earnings is explained by debt?
+determination. According to the data, are higher debts correlated
+with higher earnings?
 
 <details>
 <summary>Answer</summary>
 <div style="padding-left: 1.5em;">
 
-*The correlation coefficient is $r = 0.46$, indicating a moderate
-direct relationship between earnings and debt. The coefficient of
-determination $R^2 = 0.21$ indicates that only $21\%$ of the
-variation in earnings can be explained by debt. Other factors such
-as field of study, institution type, and location likely explain
-the remaining variation.*
+*The correlation coefficient shows a moderate direct relationship
+between earnings and debt, $r = 0.46$. The coefficient of
+determination indicates that only $21\%$ of the variation in
+earnings can be explained by debt.*
 
 *In Excel, assuming `GRAD_DEBT_MDN` is in column A and
 `MD_EARN_WNE_P10` is in column B:*
@@ -379,8 +384,78 @@ the remaining variation.*
 - `=CORREL(A2:A1000, B2:B1000)` → $0.46$
 - `=CORREL(A2:A1000, B2:B1000)^2` → $0.21$
 
-*Note: use `=CORREL()` rather than `=COVARIANCE.S()` when there
-are missing values, as CORREL handles them more gracefully in Excel.*
+*Note: use `=CORREL()` rather than `=COVARIANCE.S()` when there are
+missing values, as CORREL handles them more gracefully in Excel.*
+
+</div>
+</details>
+
+### Exercise 4 {.unnumbered}
+
+You will need the **HomePrices** data set to answer this question.
+You can download it here:
+
+[{{< fa file-excel >}} Download Data](HomePrices.xlsx){.btn .btn-success}
+
+1. Create a scatter diagram between `bedrooms` (number of bedrooms)
+and `Price` (home sale price). What type of relationship do you
+observe between the two variables? Does the direction make intuitive
+sense?
+
+<details>
+<summary>Answer</summary>
+<div style="padding-left: 1.5em;">
+
+*There is a direct relationship between bedrooms and price. As the
+number of bedrooms increases, sale prices tend to rise. This is
+intuitive since larger homes generally command higher market values.*
+
+*In Excel, select the `bedrooms` and `Price` columns and go to
+`Insert → Charts → Scatter`. Add a linear trend line by right-clicking
+a point and choosing `Add Trendline → Linear`.*
+
+</div>
+</details>
+
+2. Calculate the correlation coefficient between `bedrooms` and
+`Price`. Explain the direction and strength of the relationship in
+the context of the housing market.
+
+<details>
+<summary>Answer</summary>
+<div style="padding-left: 1.5em;">
+
+*The correlation coefficient is $r = 0.92$, indicating a strong
+direct relationship between bedrooms and sale price. Larger homes
+tend to sell for higher prices, though many other factors (location,
+condition, amenities) also influence price, which prevents a perfect
+correlation.*
+
+*In Excel, assuming `bedrooms` is in column A and `Price` is in
+column B:*
+
+- `=CORREL(A2:A348, B2:B348)` → $0.92$
+
+</div>
+</details>
+
+3. Calculate the coefficient of determination. What percentage of
+the variation in `Price` is explained by `bedrooms`? What other
+factors might account for the remaining variation?
+
+<details>
+<summary>Answer</summary>
+<div style="padding-left: 1.5em;">
+
+*The coefficient of determination is $R^2 = 0.85$, so about $85\%$
+of the variation in home prices is explained by the number of
+bedrooms alone. The remaining variation is likely driven by factors
+such as location, number of bathrooms, lot size, school district
+quality, and the overall condition of the property.*
+
+*In Excel, square the correlation coefficient:*
+
+- `=CORREL(A2:A348, B2:B348)^2` → $0.85$
 
 </div>
 </details>
