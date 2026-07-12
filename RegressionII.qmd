@@ -359,19 +359,19 @@ work on:
 - Calculating measures of goodness of fit.
 - Prediction using the regression line.
 
-Answers are provided below. Try not to peak until you have 
+Answers are provided below. Try not to peek until you have 
 formulated your own answer and double checked your work for 
 any mistakes.
 
 ### Exercise 1 {.unnumbered}
 
 For the following exercises, make your calculations by hand and 
-verify results using R functions when possible.
+verify results using Excel functions when possible.
 
-1.  Consider the data below. Calculate the deviations from the 
-mean for each variable and use the results to estimate the 
-regression line. Use R to verify your result. On average by how 
-much does *y* increase per unit increase of *x*?
+1. Consider the data below. Calculate the deviations from the mean 
+for each variable and use the results to estimate the regression 
+line. Verify your result using Excel. On average, by how much does 
+*y* increase per unit increase of *x*?
 
 | **x** | 20  | 21  | 15  | 18  | 25  |
 |:-----:|:---:|:---:|:---:|:---:|:---:|
@@ -379,366 +379,276 @@ much does *y* increase per unit increase of *x*?
 
 <details>
 <summary>Answer</summary>
+<div style="padding-left: 1.5em;">
 
-*The regression lines is* $\hat{y}=-4.93+1.09x$. For each unit 
-increase in x, y increases on average $1.09$.
+*The regression line is $\hat{y}=-4.93+1.09x$. For each unit increase 
+in $x$, $y$ increases on average by $1.09$.*
 
-*Start by generating the deviations from the mean for each 
-variable. For x the deviations are:*
+*Start with the deviations from the mean ($\bar{x}=19.8$, 
+$\bar{y}=16.6$):*
 
-```{r}
-x<-c(20,21,15,18,25)
-(devx<-x-mean(x))
-```
+| $x_i$ | $y_i$ | $x_i-\bar{x}$ | $y_i-\bar{y}$ | Product | $(x_i-\bar{x})^2$ |
+|:-----:|:-----:|:-------------:|:-------------:|:-------:|:-----------------:|
+| 20    | 17    | $0.2$         | $0.4$         | $0.08$  | $0.04$            |
+| 21    | 19    | $1.2$         | $2.4$         | $2.88$  | $1.44$            |
+| 15    | 12    | $-4.8$        | $-4.6$        | $22.08$ | $23.04$           |
+| 18    | 13    | $-1.8$        | $-3.6$        | $6.48$  | $3.24$            |
+| 25    | 22    | $5.2$         | $5.4$         | $28.08$ | $27.04$           |
 
-*Next, find the deviations for y:*
+$$\hat{\beta}=\frac{\sum(x_i-\bar{x})(y_i-\bar{y})}{\sum(x_i-\bar{x})^2}=\frac{59.6}{54.8}=1.09$$
 
-```{r}
-y<-c(17,19,12,13,22)
-(devy<-y-mean(y))
-```
+$$\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}=16.6-1.09(19.8)=-4.93$$
 
-*For the slope we need to find the deviation squared of the x's. 
-This can easily be done in R:*
+*To verify in Excel, enter x in column A and y in column B and use:*
 
-```{r}
-(devx2<-devx^2)
-```
+- `=SLOPE(B2:B6, A2:A6)` → $1.09$
+- `=INTERCEPT(B2:B6, A2:A6)` → $-4.93$
 
-*The slope is calculated by* 
-$\frac{\sum_{i=i}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=i}^{n}(x_{i}-\bar{x})^2}$. 
-In R we can just find the ratio between the summations of 
-(devx)(devy) and devx2.
-
-```{r}
-(slope<-sum(devx*devy)/sum(devx2))
-```
-
-*The intercept is given by* $\bar{y}-\beta(\bar{x})$. In R we 
-find that the intercept is equal to:
-
-```{r}
-(intercept<-mean(y)-slope*mean(x))
-```
-
-*Our results can be easily verified by using the `lm()` and 
-`coef()` functions in R.*
-
-```{r}
-fitEx1<-lm(y~x)
-coef(fitEx1)
-```
-
+</div>
 </details>
 
-2.  Calculate *SST*, *SSR*, and *SSE*. Confirm your results in R. 
-What is the $R^2$? What is the Standard Error estimate? Is the 
-regression line a good fit for the data?
+2. Calculate *SST*, *SSR*, and *SSE*. What is the $R^2$? What is the 
+Standard Error estimate? Is the regression line a good fit for the 
+data?
 
 <details>
 <summary>Answer</summary>
+<div style="padding-left: 1.5em;">
 
-*SST is* $69.2$, SSR is $64.82$ and SSE is $4.38$ (note that 
-$SSR+SSE=SST$). The $R^2$ is just $\frac{SSR}{SST}=0.94$ and 
-the Standard Error estimate is $1.21$. They both indicate a great 
-fit of the regression line to the data.
+*SST is $69.2$, SSR is $64.82$ and SSE is $4.38$ (note that 
+$SSR+SSE=SST$). The $R^2$ is $\frac{SSR}{SST}=0.94$ and the Standard 
+Error estimate is $1.21$. Both indicate a great fit of the regression 
+line to the data.*
 
-*Let's start by calculating the SST. This is just* 
-$\sum{(y_{i}-\bar{y})^2}$.
+*In Excel, with x in column A and y in column B:*
 
-```{r}
-(SST<-sum((y-mean(y))^2))
-```
+- `=DEVSQ(B2:B6)` → $SST = 69.2$
+- `=RSQ(B2:B6, A2:A6)` → $R^2 = 0.94$
+- `=STEYX(B2:B6, A2:A6)` → $s_e = 1.21$
 
-*Next, we can calculate SSR. This is calculated by the following 
-formula* $\sum{(\hat{y_{i}}-\bar{y})^2}$. To obtain the predicted 
-values in R, we can use the output of the `lm()` function. Recall 
-our fitEx1 object created in Exercise 1. It has fitted.values 
-included:
+*Then $SSR = R^2 \times SST = 64.82$ and $SSE = SST - SSR = 4.38$. 
+You can also obtain all of these at once from 
+`Data → Data Analysis → Regression`, which reports the ANOVA table 
+(SSR, SSE, SST), $R^2$, and the Standard Error in a single output.*
 
-```{r}
-(SSR<-sum((fitEx1$fitted.values-mean(y))^2))
-```
-
-*The ratio of SSR to SST is the* $R^2$:
-
-```{r}
-(R2<-SSR/SST)
-```
-
-*Finally, let's calculate SSE* $\sum{(y_{i}-\hat{y_{i}})^2}$:
-
-```{r}
-(SSE<-sum((y-fitEx1$fitted.values)^2))
-```
-
-*With the SSE we can calculate the Standard Error estimate:*
-
-```{r}
-sqrt(SSE/3)
-```
-
-*We can confirm these results using the `summary()` function.*
-
-```{r}
-summary(fitEx1)
-```
-
+</div>
 </details>
 
-3.  Assume that *x* is observed to be *32*, what is your 
-prediction of *y*? How confident are you in this prediction?
+3. Assume that *x* is observed to be *32*. What is your prediction 
+of *y*? How confident are you in this prediction?
 
 <details>
 <summary>Answer</summary>
+<div style="padding-left: 1.5em;">
 
-*If* $x=32$ then $\hat{y}=29.87$. The regression is a good fit, 
-so we can feel good about our prediction. However, we would be 
-concerned about the sample size of the data.
+*If $x=32$ then $\hat{y}=-4.93+1.09(32)=29.87$. The regression is a 
+good fit, so we can feel good about our prediction. However, we would 
+be concerned about the small sample size of the data.*
 
-*In R we can obtain a prediction by using the `predict()` 
-function. This function requires a data frame as an input for 
-new data.*
+*In Excel:*
 
-```{r}
-predict(fitEx1, newdata = data.frame(x=c(32)))
-```
+- `=FORECAST.LINEAR(32, B2:B6, A2:A6)` → $29.87$
 
+</div>
 </details>
 
 ### Exercise 2 {.unnumbered}
 
 You will need the **Education** data set to answer this question. 
-You can find the data set at 
-https://jagelves.github.io/Data/Education.csv . The data shows 
-the years of education (*Education*), and annual salary in 
-thousands (*Salary*) for a sample of $100$ people.
+You can download it here:
 
-1.  Estimate the regression line using R. By how much does an 
-extra year of education increase the annual salary on average? 
-What is the salary of someone without any education?
+[{{< fa file-excel >}} Download Data](Education.xlsx){.btn .btn-success}
+
+The data shows the years of education (*Education*) and the annual 
+salary in thousands (*Salary*) for a sample of $100$ people.
+
+1. Estimate the regression line using Excel. By how much does an 
+extra year of education increase the annual salary on average? What 
+is the salary of someone without any education?
 
 <details>
 <summary>Answer</summary>
+<div style="padding-left: 1.5em;">
 
-*An extra year of education increases the annual salary about* 
-$5,300$ dollars (slope). A person that has no education would 
-be expected to earn $17,258$ dollars (intercept).
+*An extra year of education increases the annual salary by about 
+$\$5,300$ (the slope). A person with no education would be expected 
+to earn about $\$17,258$ (the intercept).*
 
-*Start by loading the data in R:*
+*In Excel, assuming `Salary` is in column B and `Education` is in 
+column C:*
 
-```{r message=FALSE}
-library(tidyverse)
-Education<-read_csv("https://jagelves.github.io/Data/Education.csv")
-```
+- `=SLOPE(B2:B101, C2:C101)` → $5.30$
+- `=INTERCEPT(B2:B101, C2:C101)` → $17.26$
 
-*Next, let's use the `lm()` function to estimate the regression 
-line and obtain the coefficients:*
+*You can also use `Data → Data Analysis → Regression` with `Salary` 
+as the Input Y Range and `Education` as the Input X Range.*
 
-```{r}
-fitEducation<-lm(Salary~Education, data = Education)
-coefficients(fitEducation)
-```
-
+</div>
 </details>
 
-2.  Confirm that the regression line is a good fit for the data. 
-What is the estimated salary of a person with $16$ years of 
-education?
+2. Confirm that the regression line is a good fit for the data. What 
+is the estimated salary of a person with $16$ years of education?
 
 <details>
 <summary>Answer</summary>
+<div style="padding-left: 1.5em;">
 
-*The* $R^2$ is $0.668$ and the standard error is $21$. The line 
-is a moderately good fit. If someone has $16$ years of education, 
-the regression line would predict a salary of $102,000$ dollars.
+*The $R^2$ is $0.67$ and the standard error is about $21$. The line 
+is a moderately good fit. A person with $16$ years of education is 
+predicted to earn about $\$102,000$.*
 
-*Let's get the* $R^2$ and the Standard Error estimate by using 
-the `summary()` function and fitEducation object.
+*In Excel:*
 
-```{r}
-summary(fitEducation)
-```
+- `=RSQ(B2:B101, C2:C101)` → $0.67$
+- `=STEYX(B2:B101, C2:C101)` → $21$
+- `=FORECAST.LINEAR(16, B2:B101, C2:C101)` → $102.08$
 
-*Lastly, let's use the regression line to predict the salary for 
-someone who has* $16$ years of education.
-
-```{r}
-predict(fitEducation, newdata = data.frame(Education=c(16)))
-```
-
+</div>
 </details>
 
 ### Exercise 3 {.unnumbered}
 
 You will need the **FoodSpend** data set to answer this question. 
-You can find this data set at 
-https://jagelves.github.io/Data/FoodSpend.csv .
+You can download it here:
 
-1.  Omit any NA's that the data has. Create a dummy variable that 
-is equal to $1$ if an individual owns a home and $0$ if the 
-individual doesn't. Find the mean of your dummy variable. What 
-proportion of the sample owns a home?
+[{{< fa file-excel >}} Download Data](FoodSpend.xlsx){.btn .btn-success}
+
+1. Remove any observations with missing values. Create a dummy 
+variable that is equal to $1$ if an individual owns a home and $0$ 
+if the individual does not. Find the mean of your dummy variable. 
+What proportion of the sample owns a home?
 
 <details>
 <summary>Answer</summary>
+<div style="padding-left: 1.5em;">
 
-*Approximately,* $36$% of the sample owns a home.
+*Approximately $36\%$ of the sample owns a home (mean $=0.3625$).*
 
-*Start by loading the data into R and removing all NA's:*
+*In Excel, assuming `OwnHome` is in column A and `Food` is in column 
+B, first delete any rows with missing values. Then add a helper 
+column C with the dummy variable:*
 
-```{r}
-Spend<-read_csv("https://jagelves.github.io/Data/FoodSpend.csv")
-Spend<-na.omit(Spend)
+```excel
+=IF(A2="Yes", 1, 0)
 ```
 
-*To create a dummy variable for OwnHome we can use the `ifelse()` 
-function:*
+*Copy it down for all rows and take the average:*
 
-```{r}
-Spend$dummyOH<-ifelse(Spend$OwnHome=="Yes",1,0)
-```
+- `=AVERAGE(C2:C81)` → $0.3625$
 
-*The average of the dummy variable is given by:*
-
-```{r}
-mean(Spend$dummyOH)
-```
-
+</div>
 </details>
 
-2.  Run a regression with *Food* being the dependent variable and 
-your dummy variable as the independent variable. What is the 
+2. Run a regression with *Food* as the dependent variable and your 
+dummy variable as the independent variable. What is the 
 interpretation of the intercept and slope?
 
 <details>
 <summary>Answer</summary>
+<div style="padding-left: 1.5em;">
 
-*The intercept is the average food expenditure of individuals 
-without homes (*$6417$). The slope is the difference in food 
-expenditures between individuals that do have homes minus those 
-who don't. Individuals that do have a home spend about $-2516$ 
-less on food than those who don't have homes.
+*The intercept ($\approx 6473$) is the average food expenditure of 
+individuals without homes. The slope ($\approx -3418$) is the 
+difference in food expenditure between individuals who own a home 
+and those who do not — home owners spend about $\$3,418$ less on food 
+than non-owners.*
 
-*To run the regression use the `lm()` function:*
+*In Excel, with `Food` in column B and the dummy in column C:*
 
-```{r}
-lm(Food~dummyOH,data=Spend)
-```
+- `=INTERCEPT(B2:B81, C2:C81)` → $6473$
+- `=SLOPE(B2:B81, C2:C81)` → $-3418$
 
+</div>
 </details>
 
-3.  Now run a regression with *Food* being the independent 
-variable and your dummy variable as the dependent variable. What 
-is the interpretation of the intercept and slope? Hint: you might 
-want to plot the scatter diagram and the regression line.
+3. Now run a regression with your dummy variable as the dependent 
+variable and *Food* as the independent variable. What is the 
+interpretation of the intercept and slope? Hint: you might want to 
+plot the scatter diagram and the regression line.
 
 <details>
 <summary>Answer</summary>
+<div style="padding-left: 1.5em;">
 
-*The scatter plot shows that most of the points for home owners 
-are below* $6000$. For non-home owners they are mainly above 
-$6000$. The line can be used to predict the likelihood of owning 
-a home given someone's food expenditure. The slope tells us how 
-that likelihood changes as the food expenditure increases by 1 — 
-in general, the likelihood of owning a home decreases as food 
-expenditure increases.
+*The regression line is $\widehat{dummy}=1.432-0.000204\,Food$. This 
+is a linear probability model: it predicts the likelihood of owning 
+a home from food expenditure. The slope tells us how that likelihood 
+changes as food expenditure increases by one dollar — in general, the 
+likelihood of owning a home decreases as food expenditure increases. 
+The scatter plot shows that most home owners have food expenditures 
+below $\$6,000$, while non-owners are mostly above it.*
 
-*Run the `lm()` function once again:*
+*In Excel, with the dummy in column C and `Food` in column B:*
 
-```{r}
-fitFood<-lm(dummyOH~Food,data=Spend)
-coefficients(fitFood)
-```
+- `=INTERCEPT(C2:C81, B2:B81)` → $1.432$
+- `=SLOPE(C2:C81, B2:B81)` → $-0.000204$
 
-*For the scatter plot use the following code:*
+*For the scatter plot, select `Food` and the dummy variable, go to 
+`Insert → Charts → Scatter`, and add a linear trend line by 
+right-clicking a point and choosing `Add Trendline → Linear`.*
 
-```{r}
-library(ggthemes)
-Spend %>% ggplot() + 
-  geom_point(aes(y=dummyOH,x=Food), 
-             col="black", pch=21, bg="grey") +
-  geom_smooth(aes(y=dummyOH,x=Food), method="lm",
-              formula=y~x, se=F) + 
-  theme_clean()
-```
-
+</div>
 </details>
 
 ### Exercise 4 {.unnumbered}
 
 You will need the **Population** data set to answer this question. 
-You can find this data set at 
-https://jagelves.github.io/Data/Population.csv .
+You can download it here:
 
-1.  Run a regression of *Population* on *Year*. How well does 
-the regression line fit the data?
+[{{< fa file-excel >}} Download Data](Population.xlsx){.btn .btn-success}
+
+1. Run a regression of *Population* on *Year* for Japan. How well 
+does the regression line fit the data?
 
 <details>
 <summary>Answer</summary>
+<div style="padding-left: 1.5em;">
 
-*If we follow the* $R^2=0.81$ the model fits the data very well.
+*With an $R^2=0.81$, the model fits the data very well.*
 
-*Let's load the data from the web:*
+*In Excel, first isolate Japan: select the data, go to 
+`Data → Filter`, and filter `Country.Name` to `Japan`. Copy the 
+$62$ Japan rows to a new sheet. Assuming `Year` is in column C and 
+`Population` is in column D:*
 
-```{r}
-Population<-read_csv("https://jagelves.github.io/Data/Population.csv")
-```
+- `=RSQ(D2:D63, C2:C63)` → $0.81$
 
-*Now let's filter the data so that we can focus on the population 
-for Japan.*
-
-```{r message=FALSE}
-Japan<-filter(Population,Country.Name=="Japan")
-```
-
-*Next, we can run the regression of Population against the Year. 
-Let's also run the `summary()` function to obtain the fit and 
-the coefficients.*
-
-```{r}
-fit<-lm(Population~Year,data=Japan)
-summary(fit)
-```
-
+</div>
 </details>
 
-2.  Create a prediction for Japan's population in 2030. What is 
-your prediction?
+2. Create a prediction for Japan's population in 2030. What is your 
+prediction?
 
 <details>
 <summary>Answer</summary>
+<div style="padding-left: 1.5em;">
 
-*The prediction for* $2030$ is about $140$ million people.
+*The prediction for $2030$ is about $140$ million people 
+($140{,}268{,}585$).*
 
-*Let's use the `predict()` function:*
+*In Excel:*
 
-```{r}
-predict(fit,newdata=data.frame(Year=c(2030)))
-```
+- `=FORECAST.LINEAR(2030, D2:D63, C2:C63)` → $140{,}268{,}585$
 
+</div>
 </details>
 
-3.  Create a scatter diagram and include the regression line. 
-How confident are you of your prediction after looking at the 
-diagram?
+3. Create a scatter diagram and include the regression line. How 
+confident are you of your prediction after looking at the diagram?
 
 <details>
 <summary>Answer</summary>
+<div style="padding-left: 1.5em;">
 
 *After looking at the scatter plot, it seems unlikely that the 
-population in Japan will hit* $140$ million. Population has been 
-decreasing in Japan!
+population in Japan will hit $140$ million. In the most recent years 
+the population has been decreasing, so the straight-line trend 
+overstates the future population — the prediction should be treated 
+with caution.*
 
-*Use `ggplot` to create the figure.*
+*In Excel, select the `Year` and `Population` columns for Japan, go 
+to `Insert → Charts → Scatter`, and add a linear trend line by 
+right-clicking a point and choosing `Add Trendline → Linear`.*
 
-```{r}
-Japan %>% ggplot() +
-  geom_point(aes(y=Population,x=Year), 
-             col="black", pch=21, bg="grey") +
-  geom_smooth(aes(y=Population,x=Year), 
-              formula=y~x, method="lm", se=F) +
-  theme_clean()
-```
-
+</div>
 </details>

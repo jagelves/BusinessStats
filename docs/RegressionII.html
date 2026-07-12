@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -623,12 +589,12 @@ details summary {
 <li>Calculating measures of goodness of fit.</li>
 <li>Prediction using the regression line.</li>
 </ul>
-<p>Answers are provided below. Try not to peak until you have formulated your own answer and double checked your work for any mistakes.</p>
+<p>Answers are provided below. Try not to peek until you have formulated your own answer and double checked your work for any mistakes.</p>
 <section id="exercise-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-1">Exercise 1</h3>
-<p>For the following exercises, make your calculations by hand and verify results using R functions when possible.</p>
+<p>For the following exercises, make your calculations by hand and verify results using Excel functions when possible.</p>
 <ol type="1">
-<li>Consider the data below. Calculate the deviations from the mean for each variable and use the results to estimate the regression line. Use R to verify your result. On average by how much does <em>y</em> increase per unit increase of <em>x</em>?</li>
+<li>Consider the data below. Calculate the deviations from the mean for each variable and use the results to estimate the regression line. Verify your result using Excel. On average, by how much does <em>y</em> increase per unit increase of <em>x</em>?</li>
 </ol>
 <table class="caption-top table">
 <thead>
@@ -656,164 +622,134 @@ details summary {
 <summary>
 Answer
 </summary>
-<p><em>The regression lines is</em> <span class="math inline">\(\hat{y}=-4.93+1.09x\)</span>. For each unit increase in x, y increases on average <span class="math inline">\(1.09\)</span>.</p>
-<p><em>Start by generating the deviations from the mean for each variable. For x the deviations are:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">20</span>,<span class="dv">21</span>,<span class="dv">15</span>,<span class="dv">18</span>,<span class="dv">25</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>(devx<span class="ot">&lt;-</span>x<span class="sc">-</span><span class="fu">mean</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.2  1.2 -4.8 -1.8  5.2</code></pre>
-</div>
-</div>
-<p><em>Next, find the deviations for y:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">19</span>,<span class="dv">12</span>,<span class="dv">13</span>,<span class="dv">22</span>)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>(devy<span class="ot">&lt;-</span>y<span class="sc">-</span><span class="fu">mean</span>(y))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.4  2.4 -4.6 -3.6  5.4</code></pre>
-</div>
-</div>
-<p><em>For the slope we need to find the deviation squared of the x’s. This can easily be done in R:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>(devx2<span class="ot">&lt;-</span>devx<span class="sc">^</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1]  0.04  1.44 23.04  3.24 27.04</code></pre>
-</div>
-</div>
-<p><em>The slope is calculated by</em> <span class="math inline">\(\frac{\sum_{i=i}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=i}^{n}(x_{i}-\bar{x})^2}\)</span>. In R we can just find the ratio between the summations of (devx)(devy) and devx2.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(slope<span class="ot">&lt;-</span><span class="fu">sum</span>(devx<span class="sc">*</span>devy)<span class="sc">/</span><span class="fu">sum</span>(devx2))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.087591</code></pre>
-</div>
-</div>
-<p><em>The intercept is given by</em> <span class="math inline">\(\bar{y}-\beta(\bar{x})\)</span>. In R we find that the intercept is equal to:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>(intercept<span class="ot">&lt;-</span><span class="fu">mean</span>(y)<span class="sc">-</span>slope<span class="sc">*</span><span class="fu">mean</span>(x))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -4.934307</code></pre>
-</div>
-</div>
-<p><em>Our results can be easily verified by using the <code>lm()</code> and <code>coef()</code> functions in R.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>fitEx1<span class="ot">&lt;-</span><span class="fu">lm</span>(y<span class="sc">~</span>x)</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coef</span>(fitEx1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>(Intercept)           x 
-  -4.934307    1.087591 </code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>The regression line is <span class="math inline">\(\hat{y}=-4.93+1.09x\)</span>. For each unit increase in <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> increases on average by <span class="math inline">\(1.09\)</span>.</em></p>
+<p><em>Start with the deviations from the mean (<span class="math inline">\(\bar{x}=19.8\)</span>, <span class="math inline">\(\bar{y}=16.6\)</span>):</em></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 20%">
+<col style="width: 20%">
+<col style="width: 12%">
+<col style="width: 26%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;"><span class="math inline">\(x_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(y_i\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(x_i-\bar{x}\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(y_i-\bar{y}\)</span></th>
+<th style="text-align: center;">Product</th>
+<th style="text-align: center;"><span class="math inline">\((x_i-\bar{x})^2\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">17</td>
+<td style="text-align: center;"><span class="math inline">\(0.2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.08\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0.04\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">21</td>
+<td style="text-align: center;">19</td>
+<td style="text-align: center;"><span class="math inline">\(1.2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2.4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(2.88\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1.44\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">15</td>
+<td style="text-align: center;">12</td>
+<td style="text-align: center;"><span class="math inline">\(-4.8\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-4.6\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(22.08\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(23.04\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">18</td>
+<td style="text-align: center;">13</td>
+<td style="text-align: center;"><span class="math inline">\(-1.8\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-3.6\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(6.48\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(3.24\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">22</td>
+<td style="text-align: center;"><span class="math inline">\(5.2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(5.4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(28.08\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(27.04\)</span></td>
+</tr>
+</tbody>
+</table>
+<p><span class="math display">\[\hat{\beta}=\frac{\sum(x_i-\bar{x})(y_i-\bar{y})}{\sum(x_i-\bar{x})^2}=\frac{59.6}{54.8}=1.09\]</span></p>
+<p><span class="math display">\[\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}=16.6-1.09(19.8)=-4.93\]</span></p>
+<p><em>To verify in Excel, enter x in column A and y in column B and use:</em></p>
+<ul>
+<li><code>=SLOPE(B2:B6, A2:A6)</code> → <span class="math inline">\(1.09\)</span></li>
+<li><code>=INTERCEPT(B2:B6, A2:A6)</code> → <span class="math inline">\(-4.93\)</span></li>
+</ul>
 </div>
 </details>
 <ol start="2" type="1">
-<li>Calculate <em>SST</em>, <em>SSR</em>, and <em>SSE</em>. Confirm your results in R. What is the <span class="math inline">\(R^2\)</span>? What is the Standard Error estimate? Is the regression line a good fit for the data?</li>
+<li>Calculate <em>SST</em>, <em>SSR</em>, and <em>SSE</em>. What is the <span class="math inline">\(R^2\)</span>? What is the Standard Error estimate? Is the regression line a good fit for the data?</li>
 </ol>
 <details>
 <summary>
 Answer
 </summary>
-<p><em>SST is</em> <span class="math inline">\(69.2\)</span>, SSR is <span class="math inline">\(64.82\)</span> and SSE is <span class="math inline">\(4.38\)</span> (note that <span class="math inline">\(SSR+SSE=SST\)</span>). The <span class="math inline">\(R^2\)</span> is just <span class="math inline">\(\frac{SSR}{SST}=0.94\)</span> and the Standard Error estimate is <span class="math inline">\(1.21\)</span>. They both indicate a great fit of the regression line to the data.</p>
-<p><em>Let’s start by calculating the SST. This is just</em> <span class="math inline">\(\sum{(y_{i}-\bar{y})^2}\)</span>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>(SST<span class="ot">&lt;-</span><span class="fu">sum</span>((y<span class="sc">-</span><span class="fu">mean</span>(y))<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 69.2</code></pre>
-</div>
-</div>
-<p><em>Next, we can calculate SSR. This is calculated by the following formula</em> <span class="math inline">\(\sum{(\hat{y_{i}}-\bar{y})^2}\)</span>. To obtain the predicted values in R, we can use the output of the <code>lm()</code> function. Recall our fitEx1 object created in Exercise 1. It has fitted.values included:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>(SSR<span class="ot">&lt;-</span><span class="fu">sum</span>((fitEx1<span class="sc">$</span>fitted.values<span class="sc">-</span><span class="fu">mean</span>(y))<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 64.82044</code></pre>
-</div>
-</div>
-<p><em>The ratio of SSR to SST is the</em> <span class="math inline">\(R^2\)</span>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>(R2<span class="ot">&lt;-</span>SSR<span class="sc">/</span>SST)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.9367115</code></pre>
-</div>
-</div>
-<p><em>Finally, let’s calculate SSE</em> <span class="math inline">\(\sum{(y_{i}-\hat{y_{i}})^2}\)</span>:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>(SSE<span class="ot">&lt;-</span><span class="fu">sum</span>((y<span class="sc">-</span>fitEx1<span class="sc">$</span>fitted.values)<span class="sc">^</span><span class="dv">2</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4.379562</code></pre>
-</div>
-</div>
-<p><em>With the SSE we can calculate the Standard Error estimate:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(SSE<span class="sc">/</span><span class="dv">3</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.208244</code></pre>
-</div>
-</div>
-<p><em>We can confirm these results using the <code>summary()</code> function.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitEx1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = y ~ x)
-
-Residuals:
-      1       2       3       4       5 
- 0.1825  1.0949  0.6204 -1.6423 -0.2555 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)   
-(Intercept)  -4.9343     3.2766  -1.506  0.22916   
-x             1.0876     0.1632   6.663  0.00689 **
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 1.208 on 3 degrees of freedom
-Multiple R-squared:  0.9367,    Adjusted R-squared:  0.9156 
-F-statistic:  44.4 on 1 and 3 DF,  p-value: 0.00689</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>SST is <span class="math inline">\(69.2\)</span>, SSR is <span class="math inline">\(64.82\)</span> and SSE is <span class="math inline">\(4.38\)</span> (note that <span class="math inline">\(SSR+SSE=SST\)</span>). The <span class="math inline">\(R^2\)</span> is <span class="math inline">\(\frac{SSR}{SST}=0.94\)</span> and the Standard Error estimate is <span class="math inline">\(1.21\)</span>. Both indicate a great fit of the regression line to the data.</em></p>
+<p><em>In Excel, with x in column A and y in column B:</em></p>
+<ul>
+<li><code>=DEVSQ(B2:B6)</code> → <span class="math inline">\(SST = 69.2\)</span></li>
+<li><code>=RSQ(B2:B6, A2:A6)</code> → <span class="math inline">\(R^2 = 0.94\)</span></li>
+<li><code>=STEYX(B2:B6, A2:A6)</code> → <span class="math inline">\(s_e = 1.21\)</span></li>
+</ul>
+<p><em>Then <span class="math inline">\(SSR = R^2 \times SST = 64.82\)</span> and <span class="math inline">\(SSE = SST - SSR = 4.38\)</span>. You can also obtain all of these at once from <code>Data → Data Analysis → Regression</code>, which reports the ANOVA table (SSR, SSE, SST), <span class="math inline">\(R^2\)</span>, and the Standard Error in a single output.</em></p>
 </div>
 </details>
 <ol start="3" type="1">
-<li>Assume that <em>x</em> is observed to be <em>32</em>, what is your prediction of <em>y</em>? How confident are you in this prediction?</li>
+<li>Assume that <em>x</em> is observed to be <em>32</em>. What is your prediction of <em>y</em>? How confident are you in this prediction?</li>
 </ol>
 <details>
 <summary>
 Answer
 </summary>
-<p><em>If</em> <span class="math inline">\(x=32\)</span> then <span class="math inline">\(\hat{y}=29.87\)</span>. The regression is a good fit, so we can feel good about our prediction. However, we would be concerned about the sample size of the data.</p>
-<p><em>In R we can obtain a prediction by using the <code>predict()</code> function. This function requires a data frame as an input for new data.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fitEx1, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">x=</span><span class="fu">c</span>(<span class="dv">32</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       1 
-29.86861 </code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>If <span class="math inline">\(x=32\)</span> then <span class="math inline">\(\hat{y}=-4.93+1.09(32)=29.87\)</span>. The regression is a good fit, so we can feel good about our prediction. However, we would be concerned about the small sample size of the data.</em></p>
+<p><em>In Excel:</em></p>
+<ul>
+<li><code>=FORECAST.LINEAR(32, B2:B6, A2:A6)</code> → <span class="math inline">\(29.87\)</span></li>
+</ul>
 </div>
 </details>
 </section>
 <section id="exercise-2" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise 2</h3>
-<p>You will need the <strong>Education</strong> data set to answer this question. You can find the data set at https://jagelves.github.io/Data/Education.csv . The data shows the years of education (<em>Education</em>), and annual salary in thousands (<em>Salary</em>) for a sample of <span class="math inline">\(100\)</span> people.</p>
+<p>You will need the <strong>Education</strong> data set to answer this question. You can download it here:</p>
+<p><a href="Education.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
+<p>The data shows the years of education (<em>Education</em>) and the annual salary in thousands (<em>Salary</em>) for a sample of <span class="math inline">\(100\)</span> people.</p>
 <ol type="1">
-<li>Estimate the regression line using R. By how much does an extra year of education increase the annual salary on average? What is the salary of someone without any education?</li>
+<li>Estimate the regression line using Excel. By how much does an extra year of education increase the annual salary on average? What is the salary of someone without any education?</li>
 </ol>
 <details>
 <summary>
 Answer
 </summary>
-<p><em>An extra year of education increases the annual salary about</em> <span class="math inline">\(5,300\)</span> dollars (slope). A person that has no education would be expected to earn <span class="math inline">\(17,258\)</span> dollars (intercept).</p>
-<p><em>Start by loading the data in R:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(tidyverse)</span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>Education<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/Education.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><em>Next, let’s use the <code>lm()</code> function to estimate the regression line and obtain the coefficients:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>fitEducation<span class="ot">&lt;-</span><span class="fu">lm</span>(Salary<span class="sc">~</span>Education, <span class="at">data =</span> Education)</span>
-<span id="cb29-2"><a href="#cb29-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(fitEducation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>(Intercept)   Education 
-  17.258190    5.301149 </code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>An extra year of education increases the annual salary by about <span class="math inline">\(\$5,300\)</span> (the slope). A person with no education would be expected to earn about <span class="math inline">\(\$17,258\)</span> (the intercept).</em></p>
+<p><em>In Excel, assuming <code>Salary</code> is in column B and <code>Education</code> is in column C:</em></p>
+<ul>
+<li><code>=SLOPE(B2:B101, C2:C101)</code> → <span class="math inline">\(5.30\)</span></li>
+<li><code>=INTERCEPT(B2:B101, C2:C101)</code> → <span class="math inline">\(17.26\)</span></li>
+</ul>
+<p><em>You can also use <code>Data → Data Analysis → Regression</code> with <code>Salary</code> as the Input Y Range and <code>Education</code> as the Input X Range.</em></p>
 </div>
 </details>
 <ol start="2" type="1">
@@ -823,190 +759,89 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>The</em> <span class="math inline">\(R^2\)</span> is <span class="math inline">\(0.668\)</span> and the standard error is <span class="math inline">\(21\)</span>. The line is a moderately good fit. If someone has <span class="math inline">\(16\)</span> years of education, the regression line would predict a salary of <span class="math inline">\(102,000\)</span> dollars.</p>
-<p><em>Let’s get the</em> <span class="math inline">\(R^2\)</span> and the Standard Error estimate by using the <code>summary()</code> function and fitEducation object.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fitEducation)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Salary ~ Education, data = Education)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--62.177  -9.548   1.988  15.330  45.444 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  17.2582     4.0768   4.233  5.2e-05 ***
-Education     5.3011     0.3751  14.134  &lt; 2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 20.98 on 98 degrees of freedom
-Multiple R-squared:  0.6709,    Adjusted R-squared:  0.6675 
-F-statistic: 199.8 on 1 and 98 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
-</div>
-<p><em>Lastly, let’s use the regression line to predict the salary for someone who has</em> <span class="math inline">\(16\)</span> years of education.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fitEducation, <span class="at">newdata =</span> <span class="fu">data.frame</span>(<span class="at">Education=</span><span class="fu">c</span>(<span class="dv">16</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       1 
-102.0766 </code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>The <span class="math inline">\(R^2\)</span> is <span class="math inline">\(0.67\)</span> and the standard error is about <span class="math inline">\(21\)</span>. The line is a moderately good fit. A person with <span class="math inline">\(16\)</span> years of education is predicted to earn about <span class="math inline">\(\$102,000\)</span>.</em></p>
+<p><em>In Excel:</em></p>
+<ul>
+<li><code>=RSQ(B2:B101, C2:C101)</code> → <span class="math inline">\(0.67\)</span></li>
+<li><code>=STEYX(B2:B101, C2:C101)</code> → <span class="math inline">\(21\)</span></li>
+<li><code>=FORECAST.LINEAR(16, B2:B101, C2:C101)</code> → <span class="math inline">\(102.08\)</span></li>
+</ul>
 </div>
 </details>
 </section>
 <section id="exercise-3" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
-<p>You will need the <strong>FoodSpend</strong> data set to answer this question. You can find this data set at https://jagelves.github.io/Data/FoodSpend.csv .</p>
+<p>You will need the <strong>FoodSpend</strong> data set to answer this question. You can download it here:</p>
+<p><a href="FoodSpend.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <ol type="1">
-<li>Omit any NA’s that the data has. Create a dummy variable that is equal to <span class="math inline">\(1\)</span> if an individual owns a home and <span class="math inline">\(0\)</span> if the individual doesn’t. Find the mean of your dummy variable. What proportion of the sample owns a home?</li>
+<li>Remove any observations with missing values. Create a dummy variable that is equal to <span class="math inline">\(1\)</span> if an individual owns a home and <span class="math inline">\(0\)</span> if the individual does not. Find the mean of your dummy variable. What proportion of the sample owns a home?</li>
 </ol>
 <details>
 <summary>
 Answer
 </summary>
-<p><em>Approximately,</em> <span class="math inline">\(36\)</span>% of the sample owns a home.</p>
-<p><em>Start by loading the data into R and removing all NA’s:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>Spend<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/FoodSpend.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Rows: 80 Columns: 2
-── Column specification ────────────────────────────────────────────────────────
-Delimiter: ","
-chr (1): OwnHome
-dbl (1): Food
-
-ℹ Use `spec()` to retrieve the full column specification for this data.
-ℹ Specify the column types or set `show_col_types = FALSE` to quiet this message.</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>Spend<span class="ot">&lt;-</span><span class="fu">na.omit</span>(Spend)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><em>To create a dummy variable for OwnHome we can use the <code>ifelse()</code> function:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a>Spend<span class="sc">$</span>dummyOH<span class="ot">&lt;-</span><span class="fu">ifelse</span>(Spend<span class="sc">$</span>OwnHome<span class="sc">==</span><span class="st">"Yes"</span>,<span class="dv">1</span>,<span class="dv">0</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><em>The average of the dummy variable is given by:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(Spend<span class="sc">$</span>dummyOH)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3625</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>Approximately <span class="math inline">\(36\%\)</span> of the sample owns a home (mean <span class="math inline">\(=0.3625\)</span>).</em></p>
+<p><em>In Excel, assuming <code>OwnHome</code> is in column A and <code>Food</code> is in column B, first delete any rows with missing values. Then add a helper column C with the dummy variable:</em></p>
+<pre class="excel"><code>=IF(A2="Yes", 1, 0)</code></pre>
+<p><em>Copy it down for all rows and take the average:</em></p>
+<ul>
+<li><code>=AVERAGE(C2:C81)</code> → <span class="math inline">\(0.3625\)</span></li>
+</ul>
 </div>
 </details>
 <ol start="2" type="1">
-<li>Run a regression with <em>Food</em> being the dependent variable and your dummy variable as the independent variable. What is the interpretation of the intercept and slope?</li>
+<li>Run a regression with <em>Food</em> as the dependent variable and your dummy variable as the independent variable. What is the interpretation of the intercept and slope?</li>
 </ol>
 <details>
 <summary>
 Answer
 </summary>
-<p><em>The intercept is the average food expenditure of individuals without homes (</em><span class="math inline">\(6417\)</span>). The slope is the difference in food expenditures between individuals that do have homes minus those who don’t. Individuals that do have a home spend about <span class="math inline">\(-2516\)</span> less on food than those who don’t have homes.</p>
-<p><em>To run the regression use the <code>lm()</code> function:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a><span class="fu">lm</span>(Food<span class="sc">~</span>dummyOH,<span class="at">data=</span>Spend)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Food ~ dummyOH, data = Spend)
-
-Coefficients:
-(Intercept)      dummyOH  
-       6473        -3418  </code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>The intercept (<span class="math inline">\(\approx 6473\)</span>) is the average food expenditure of individuals without homes. The slope (<span class="math inline">\(\approx -3418\)</span>) is the difference in food expenditure between individuals who own a home and those who do not — home owners spend about <span class="math inline">\(\$3,418\)</span> less on food than non-owners.</em></p>
+<p><em>In Excel, with <code>Food</code> in column B and the dummy in column C:</em></p>
+<ul>
+<li><code>=INTERCEPT(B2:B81, C2:C81)</code> → <span class="math inline">\(6473\)</span></li>
+<li><code>=SLOPE(B2:B81, C2:C81)</code> → <span class="math inline">\(-3418\)</span></li>
+</ul>
 </div>
 </details>
 <ol start="3" type="1">
-<li>Now run a regression with <em>Food</em> being the independent variable and your dummy variable as the dependent variable. What is the interpretation of the intercept and slope? Hint: you might want to plot the scatter diagram and the regression line.</li>
+<li>Now run a regression with your dummy variable as the dependent variable and <em>Food</em> as the independent variable. What is the interpretation of the intercept and slope? Hint: you might want to plot the scatter diagram and the regression line.</li>
 </ol>
 <details>
 <summary>
 Answer
 </summary>
-<p><em>The scatter plot shows that most of the points for home owners are below</em> <span class="math inline">\(6000\)</span>. For non-home owners they are mainly above <span class="math inline">\(6000\)</span>. The line can be used to predict the likelihood of owning a home given someone’s food expenditure. The slope tells us how that likelihood changes as the food expenditure increases by 1 — in general, the likelihood of owning a home decreases as food expenditure increases.</p>
-<p><em>Run the <code>lm()</code> function once again:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>fitFood<span class="ot">&lt;-</span><span class="fu">lm</span>(dummyOH<span class="sc">~</span>Food,<span class="at">data=</span>Spend)</span>
-<span id="cb43-2"><a href="#cb43-2" aria-hidden="true" tabindex="-1"></a><span class="fu">coefficients</span>(fitFood)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  (Intercept)          Food 
- 1.4320766616 -0.0002043632 </code></pre>
-</div>
-</div>
-<p><em>For the scatter plot use the following code:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggthemes)</span>
-<span id="cb45-2"><a href="#cb45-2" aria-hidden="true" tabindex="-1"></a>Spend <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span> </span>
-<span id="cb45-3"><a href="#cb45-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>dummyOH,<span class="at">x=</span>Food), </span>
-<span id="cb45-4"><a href="#cb45-4" aria-hidden="true" tabindex="-1"></a>             <span class="at">col=</span><span class="st">"black"</span>, <span class="at">pch=</span><span class="dv">21</span>, <span class="at">bg=</span><span class="st">"grey"</span>) <span class="sc">+</span></span>
-<span id="cb45-5"><a href="#cb45-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>dummyOH,<span class="at">x=</span>Food), <span class="at">method=</span><span class="st">"lm"</span>,</span>
-<span id="cb45-6"><a href="#cb45-6" aria-hidden="true" tabindex="-1"></a>              <span class="at">formula=</span>y<span class="sc">~</span>x, <span class="at">se=</span>F) <span class="sc">+</span> </span>
-<span id="cb45-7"><a href="#cb45-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="RegressionII_files/figure-html/unnamed-chunk-23-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>The regression line is <span class="math inline">\(\widehat{dummy}=1.432-0.000204\,Food\)</span>. This is a linear probability model: it predicts the likelihood of owning a home from food expenditure. The slope tells us how that likelihood changes as food expenditure increases by one dollar — in general, the likelihood of owning a home decreases as food expenditure increases. The scatter plot shows that most home owners have food expenditures below <span class="math inline">\(\$6,000\)</span>, while non-owners are mostly above it.</em></p>
+<p><em>In Excel, with the dummy in column C and <code>Food</code> in column B:</em></p>
+<ul>
+<li><code>=INTERCEPT(C2:C81, B2:B81)</code> → <span class="math inline">\(1.432\)</span></li>
+<li><code>=SLOPE(C2:C81, B2:B81)</code> → <span class="math inline">\(-0.000204\)</span></li>
+</ul>
+<p><em>For the scatter plot, select <code>Food</code> and the dummy variable, go to <code>Insert → Charts → Scatter</code>, and add a linear trend line by right-clicking a point and choosing <code>Add Trendline → Linear</code>.</em></p>
 </div>
 </details>
 </section>
 <section id="exercise-4" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h3>
-<p>You will need the <strong>Population</strong> data set to answer this question. You can find this data set at https://jagelves.github.io/Data/Population.csv .</p>
+<p>You will need the <strong>Population</strong> data set to answer this question. You can download it here:</p>
+<p><a href="Population.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <ol type="1">
-<li>Run a regression of <em>Population</em> on <em>Year</em>. How well does the regression line fit the data?</li>
+<li>Run a regression of <em>Population</em> on <em>Year</em> for Japan. How well does the regression line fit the data?</li>
 </ol>
 <details>
 <summary>
 Answer
 </summary>
-<p><em>If we follow the</em> <span class="math inline">\(R^2=0.81\)</span> the model fits the data very well.</p>
-<p><em>Let’s load the data from the web:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>Population<span class="ot">&lt;-</span><span class="fu">read_csv</span>(<span class="st">"https://jagelves.github.io/Data/Population.csv"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>New names:
-Rows: 16492 Columns: 4
-── Column specification
-──────────────────────────────────────────────────────── Delimiter: "," chr
-(1): Country.Name dbl (3): ...1, Year, Population
-ℹ Use `spec()` to retrieve the full column specification for this data. ℹ
-Specify the column types or set `show_col_types = FALSE` to quiet this message.
-• `` -&gt; `...1`</code></pre>
-</div>
-</div>
-<p><em>Now let’s filter the data so that we can focus on the population for Japan.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>Japan<span class="ot">&lt;-</span><span class="fu">filter</span>(Population,Country.Name<span class="sc">==</span><span class="st">"Japan"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><em>Next, we can run the regression of Population against the Year. Let’s also run the <code>summary()</code> function to obtain the fit and the coefficients.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>fit<span class="ot">&lt;-</span><span class="fu">lm</span>(Population<span class="sc">~</span>Year,<span class="at">data=</span>Japan)</span>
-<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Population ~ Year, data = Japan)
-
-Residuals:
-     Min       1Q   Median       3Q      Max 
--9583497 -4625571  1214644  4376784  5706004 
-
-Coefficients:
-              Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept) -988297581   68811582  -14.36   &lt;2e-16 ***
-Year            555944      34569   16.08   &lt;2e-16 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 4871000 on 60 degrees of freedom
-Multiple R-squared:  0.8117,    Adjusted R-squared:  0.8086 
-F-statistic: 258.6 on 1 and 60 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>With an <span class="math inline">\(R^2=0.81\)</span>, the model fits the data very well.</em></p>
+<p><em>In Excel, first isolate Japan: select the data, go to <code>Data → Filter</code>, and filter <code>Country.Name</code> to <code>Japan</code>. Copy the <span class="math inline">\(62\)</span> Japan rows to a new sheet. Assuming <code>Year</code> is in column C and <code>Population</code> is in column D:</em></p>
+<ul>
+<li><code>=RSQ(D2:D63, C2:C63)</code> → <span class="math inline">\(0.81\)</span></li>
+</ul>
 </div>
 </details>
 <ol start="2" type="1">
@@ -1016,14 +851,12 @@ F-statistic: 258.6 on 1 and 60 DF,  p-value: &lt; 2.2e-16</code></pre>
 <summary>
 Answer
 </summary>
-<p><em>The prediction for</em> <span class="math inline">\(2030\)</span> is about <span class="math inline">\(140\)</span> million people.</p>
-<p><em>Let’s use the <code>predict()</code> function:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fit,<span class="at">newdata=</span><span class="fu">data.frame</span>(<span class="at">Year=</span><span class="fu">c</span>(<span class="dv">2030</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>        1 
-140268585 </code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>The prediction for <span class="math inline">\(2030\)</span> is about <span class="math inline">\(140\)</span> million people (<span class="math inline">\(140{,}268{,}585\)</span>).</em></p>
+<p><em>In Excel:</em></p>
+<ul>
+<li><code>=FORECAST.LINEAR(2030, D2:D63, C2:C63)</code> → <span class="math inline">\(140{,}268{,}585\)</span></li>
+</ul>
 </div>
 </details>
 <ol start="3" type="1">
@@ -1033,22 +866,9 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>After looking at the scatter plot, it seems unlikely that the population in Japan will hit</em> <span class="math inline">\(140\)</span> million. Population has been decreasing in Japan!</p>
-<p><em>Use <code>ggplot</code> to create the figure.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>Japan <span class="sc">%&gt;%</span> <span class="fu">ggplot</span>() <span class="sc">+</span></span>
-<span id="cb53-2"><a href="#cb53-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_point</span>(<span class="fu">aes</span>(<span class="at">y=</span>Population,<span class="at">x=</span>Year), </span>
-<span id="cb53-3"><a href="#cb53-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">col=</span><span class="st">"black"</span>, <span class="at">pch=</span><span class="dv">21</span>, <span class="at">bg=</span><span class="st">"grey"</span>) <span class="sc">+</span></span>
-<span id="cb53-4"><a href="#cb53-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_smooth</span>(<span class="fu">aes</span>(<span class="at">y=</span>Population,<span class="at">x=</span>Year), </span>
-<span id="cb53-5"><a href="#cb53-5" aria-hidden="true" tabindex="-1"></a>              <span class="at">formula=</span>y<span class="sc">~</span>x, <span class="at">method=</span><span class="st">"lm"</span>, <span class="at">se=</span>F) <span class="sc">+</span></span>
-<span id="cb53-6"><a href="#cb53-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_clean</span>()</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="RegressionII_files/figure-html/unnamed-chunk-28-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>After looking at the scatter plot, it seems unlikely that the population in Japan will hit <span class="math inline">\(140\)</span> million. In the most recent years the population has been decreasing, so the straight-line trend overstates the future population — the prediction should be treated with caution.</em></p>
+<p><em>In Excel, select the <code>Year</code> and <code>Population</code> columns for Japan, go to <code>Insert → Charts → Scatter</code>, and add a linear trend line by right-clicking a point and choosing <code>Add Trendline → Linear</code>.</em></p>
 </div>
 </details>
 
