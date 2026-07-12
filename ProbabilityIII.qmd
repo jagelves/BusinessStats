@@ -26,19 +26,25 @@ The probability of a continuous random variable assuming a single value is zero.
 
 ## Uniform Distribution
 
-The **uniform** probability density function is given by: $$f(x)= \frac {1}{b-a}$$ when $a \leq x \leq b$ and $0$ otherwise. Here $b$ is the upper limit of the distribution and $a$ is the lower limit. The **expected value** of the uniform distribution is:
+The **uniform** distribution assigns equal density across an interval $[a,b]$:
 
-$$E(x)= \frac {a+b}{2}$$
+::: callout-formula
+**THE UNIFORM DISTRIBUTION** $$f(x)= \frac {1}{b-a} \quad (a \leq x \leq b)$$ $$E(x)= \frac {a+b}{2} \qquad var(x)= \frac {(b-a)^2}{12}$$ where $a$ is the lower limit and $b$ is the upper limit; $f(x)=0$ outside $[a,b]$.
+:::
 
-The **variance** of the uniform distribution is
-
-$$var(x)= \frac {(b-a)^2} {12}$$ **Example:** Consider the travel time between NY and CHI. Typically, this trips can take anywhere from 120-140 minutes. The specific time of a particular flight is unpredictable, but assumed to be anywhere between this interval. We assume a uniform distribution with upper limit of 140 and lower limit of 120. The probability that the flight take 122 minutes is zero since the interval has an infinite amount of possible values. The probability of the flight taking 130 minutes or less is 0.5. $$f(x<=130)=\frac{130-120}{20}=0.5$$ The uniform distribution has no dedicated Excel function, but its cumulative probability follows directly from the formula. In Excel, `=(130-120)/(140-120)` returns $0.5$.
+::: callout-example
+**Example:** Consider the travel time between NY and CHI. Typically, this trips can take anywhere from 120-140 minutes. The specific time of a particular flight is unpredictable, but assumed to be anywhere between this interval. We assume a uniform distribution with upper limit of 140 and lower limit of 120. The probability that the flight take 122 minutes is zero since the interval has an infinite amount of possible values. The probability of the flight taking 130 minutes or less is 0.5. $$f(x<=130)=\frac{130-120}{20}=0.5$$ The uniform distribution has no dedicated Excel function, but its cumulative probability follows directly from the formula. In Excel, `=(130-120)/(140-120)` returns $0.5$.
+:::
 
 ## Normal Distribution
 
 The **normal** PDF is given by
 
-$$f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1}{2} (\frac {x-\mu}{\sigma})^2}$$ where $\mu$ is the mean, $\sigma$ is the standard deviation, $\pi$ is 3.1415... , and $e$ is 2.7282... . The normal distribution has the following properties:
+::: callout-formula
+**THE NORMAL DISTRIBUTION** $$f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1}{2} (\frac {x-\mu}{\sigma})^2}$$ where $\mu$ is the mean, $\sigma$ is the standard deviation, $\pi \approx 3.1416$, and $e \approx 2.7183$.
+:::
+
+The normal distribution has the following properties:
 
 - It is symmetrical about the mean $\mu$.
 
@@ -50,30 +56,37 @@ $$f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1}{2} (\frac {x-\mu}{\sigma})^2
 
 The **standard normal** has a mean of $0$ and a standard deviation of $1$. Otherwise, it has the exact same properties as the normal distribution.
 
+::: callout-example
 **Example:** Dr Tires is planning on offering a mileage guarantee on each set of tires they sell. They are considering a 40,000 mile guarantee. Given that the mean tire mileage is 36,500 miles with a standard deviation of 5,000 miles, we can estimate that the probability that a tire lasts more than 40,000 miles is 24.2%. In Excel, use `=1 - NORM.DIST(40000, 36500, 5000, TRUE)`, which returns $0.242$.
+:::
 
 ## Exponential Distribution
 
 The **exponential distribution** is useful in computing probabilities for the time it takes to complete a task. It describes the time between events in a Poisson process.
 
-The probability density function is given by $$f(x)=1/{\mu} \times e^{\frac{-x}{\mu}}=\lambda e^{-{\lambda} x}$$ **Example:** Let $x$ represent the loading time for a truck at the Dock Dash loading dock. If the average loading time is 15 minutes, the probability that loading a truck will take 6 minutes or less is 32.97%. In Excel, the exponential functions use the rate $\lambda = 1/\mu = 1/15$: `=EXPON.DIST(6, 1/15, TRUE)` returns $0.3297$.
+The probability density function is given by:
+
+::: callout-formula
+**THE EXPONENTIAL DISTRIBUTION** $$f(x)=\frac{1}{\mu} e^{-x/\mu}=\lambda e^{-\lambda x}$$ where $\mu$ is the mean and $\lambda = 1/\mu$ is the rate.
+:::
+
+::: callout-example
+**Example:** Let $x$ represent the loading time for a truck at the Dock Dash loading dock. If the average loading time is 15 minutes, the probability that loading a truck will take 6 minutes or less is 32.97%. In Excel, the exponential functions use the rate $\lambda = 1/\mu = 1/15$: `=EXPON.DIST(6, 1/15, TRUE)` returns $0.3297$.
 
 We can also estimate that the probability that it takes between 6 and 18 minutes is 36.91%: `=EXPON.DIST(18, 1/15, TRUE) - EXPON.DIST(6, 1/15, TRUE)` returns $0.3691$.
+:::
 
 ## Triangular Distribution
 
 The **triangular distribution** is characterized by a single mode (the peak of the distribution) and two boundaries. It is often used in situations where the lower and upper bounds of a potential outcome are known, but the exact likelihood of the outcome is uncertain.
 
-The probability density function is given by $$f(x)=\frac {2(x-a)}{(b-a)(c-a)}$$ for $a \leq x < c$
+The probability density function, expected value, and variance are:
 
-$$f(x)=\frac {2}{(b-a)}$$ for $x=c$ and
+::: callout-formula
+**THE TRIANGULAR DISTRIBUTION** $$f(x)=\frac {2(x-a)}{(b-a)(c-a)} \;\; (a \leq x < c), \quad f(x)=\frac {2}{b-a} \;\; (x=c), \quad f(x)=\frac {2(b-x)}{(b-a)(b-c)} \;\; (c < x \leq b)$$ $$E(x)= \frac {a+b+c}{3} \qquad var(x) = \frac {a^2+b^2+c^2-ab-ac-bc}{18}$$ where $a$ is the minimum, $b$ is the maximum, and $c$ is the mode; $f(x)=0$ outside $[a,b]$.
+:::
 
-$$f(x)=\frac {2(b-x)}{(b-a)(b-c)}$$
-
-for $c < x \leq b$, and $f(x)=0$ otherwise. The **expected value** of the distribution is $$E(x)= \frac {a+b+c}{3}$$ The **variance** of the triangular distribution is
-
-$$var(x) = \frac {a^2+b^2+c^2-ab-ac-bc}{18}$$
-
+::: callout-example
 **Example:** Bite Bliss is planning a new store in Williamsburg. It is estimated that the minimum weekly sales are 1000 and the maximum is 6000. They also estimate that the most likely outcome is around 3000. The probability that future sales will be between 2000 and 2500 is 12.5%. Excel has no triangular distribution function, but the cumulative probability follows from its formula. For a value $x$ in the lower part of the range ($a \le x < c$), $F(x)=\frac{(x-a)^2}{(b-a)(c-a)}$. In Excel:
 
 ``` excel
@@ -81,6 +94,7 @@ $$var(x) = \frac {a^2+b^2+c^2-ab-ac-bc}{18}$$
 ```
 
 This returns $0.225 - 0.10 = 0.125$.
+:::
 
 ## Continuous Distributions in Excel
 

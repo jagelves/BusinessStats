@@ -1,70 +1,189 @@
 # Excel Basics
 
-Below you will find a collection of basic Excel concepts along with a dictionary of the functions used throughout the descriptive statistics and regression chapters. Use the first sections to review how Excel organizes and references data, and use the dictionary as a quick reference for the functions that appear in each chapter.
+This chapter reviews the essential Excel skills used throughout the book. The first sections walk through the Excel interface, how to navigate a worksheet, how references and formulas work, and the built-in functions for working with numbers, dates, text, and lookups. The chapter then closes with a dictionary of the statistical functions used in each chapter, so you can quickly find the right tool when you need it. No prior experience is assumed — if you have used Excel before, treat the early sections as a refresher.
+
+## The Excel Interface
+
+Excel is an **electronic spreadsheet**. A spreadsheet is a grid made up of **cells**, and each cell holds a single piece of data — either text or a number. A cell is identified by its **column** (a letter) and its **row** (a number), so the cell in the first column and first row is `A1`. The **Name Box**, at the left end of the formula bar, always shows the reference of the currently selected cell; you can also type a reference (or a range name) into it and press `Enter` to jump straight to that location.
+
+The **Home tab** collects the formatting tools you will use most often: fonts, number formats, borders, fill colors, and alignment. Formatting changes how a value is displayed without changing the value itself.
+
+What makes a spreadsheet powerful is that cells can be *related to one another* through formulas. Instead of typing a result, you write a formula that references other cells, and Excel keeps the result up to date as those cells change.
+
+A handful of keyboard shortcuts will save you a great deal of time. On Windows use `Ctrl`; on a Mac use `Cmd`.
+
+| Action |    Shortcut    |
+|:-------|:--------------:|
+| Copy   | `Ctrl/Cmd + C` |
+| Paste  | `Ctrl/Cmd + V` |
+| Cut    | `Ctrl/Cmd + X` |
+| Undo   | `Ctrl/Cmd + Z` |
+| Redo   | `Ctrl/Cmd + Y` |
+| Find   | `Ctrl/Cmd + F` |
+
+To keep your work organized, you can rename a worksheet by double-clicking its tab and typing a new name, and you can color-code a tab by right-clicking it and choosing `Tab Color`. Selecting a block of data and choosing `Home → Format as Table` (or pressing `Ctrl + T`) turns the range into a structured **Excel Table** with built-in filtering, banded rows, and named columns.
 
 ### Cells and References {.unnumbered}
 
-A **cell** is the basic building block of a worksheet. Each cell is identified by its column letter and row number, such as `A1` or `C15`. You store a value or a formula in a cell simply by typing into it. This is the Excel equivalent of assigning a value to an object.
-
-When a formula refers to another cell, it uses a **cell reference**. References come in three forms:
+When a formula refers to another cell, it uses a **cell reference**. References come in three forms, and the difference matters as soon as you copy a formula:
 
 - **Relative** (`A1`) adjusts automatically when the formula is copied to another cell.
-
 - **Absolute** (`$A$1`) stays fixed when copied. The dollar signs lock both the column and the row.
-
 - **Mixed** (`$A1` or `A$1`) locks only the column or only the row.
 
-For example, `=A1*2` multiplies the value in `A1` by two. Pressing `F4` while editing a reference cycles through the relative, absolute, and mixed forms.
+For example, `=A1*2` multiplies the value in `A1` by two. Pressing `F4` (or `Cmd + T` on a Mac) while editing a reference cycles through the relative, absolute, and mixed forms.
 
 ### Ranges {.unnumbered}
 
-A **range** is a group of adjacent cells, written as the top-left cell, a colon, and the bottom-right cell. For example, `A1:A10` is a single column of ten cells, and `A1:C10` is a rectangular block. A range is the Excel equivalent of a vector — a list of values that most statistical functions take as an input.
+A **range** is a group of adjacent cells, written as the top-left cell, a colon, and the bottom-right cell. For example, `A1:A10` is a single column of ten cells, and `A1:C10` is a rectangular block. A range is the Excel equivalent of a list of values, and it is what most functions take as an input. You can reference an entire column with `A:A` or an entire row with `1:1`.
 
-You can reference an entire column with `A:A` or an entire row with `1:1`. To give a range a memorable name, select it and go to `Formulas → Define Name`; you can then use the name in formulas instead of the cell addresses.
+## Entering Formulas and Functions
 
-### Worksheets and Tables {.unnumbered}
+Every calculation in Excel begins with an equals sign (`=`). A **function** relates an input (its arguments) to an output. The workflow is always the same: type `=`, name the function, read the tooltip that Excel shows to remind you of the arguments, fill in the arguments separated by commas, and press `Enter`. If you are unsure how a function works, click the **`fx`** button next to the formula bar for guided help.
 
-Data in Excel is stored in a **worksheet** in a tabular format, much like a data frame. Columns represent variables and rows represent observations, with the first row typically holding the headers. For a cleaner structure, select your data and press `Ctrl + T` (or go to `Insert → Table`) to convert the range into an **Excel Table**. Tables make it easy to sort, filter, and refer to columns by name.
-
-### The Data Analysis ToolPak {.unnumbered}
-
-Some analyses — such as regression — require the **Analysis ToolPak**, an add-in that ships with Excel but is turned off by default. Enabling an add-in is the Excel equivalent of installing and loading a package. To enable it on Windows, go to `File → Options → Add-ins → Manage: Excel Add-ins → Go`, check `Analysis ToolPak`, and click `OK`. On a Mac, use `Tools → Excel Add-ins`. Once enabled, the ToolPak appears under `Data → Data Analysis`.
-
-### Importing Data {.unnumbered}
-
-To **import** a CSV file, use `File → Open` and select the file, or go to `Data → Get Data → From Text/CSV` for more control over how the columns are separated. To preview large data sets, freeze the header row with `View → Freeze Panes`, and use `Ctrl + ↓` or `Ctrl + End` to jump to the last observation.
-
-### Formulas and Functions {.unnumbered}
-
-Every calculation in Excel begins with an equals sign (`=`). A **function** relates an input (its arguments) to an output. For example, the `SUM` function takes a range of numeric values and returns their total:
+The two functions you will reach for first are `SUM` and `AVERAGE`. To total the values in cells `A2` through `A5`:
 
 ``` excel
 =SUM(A2:A5)
 ```
 
-Arguments are separated by commas, and some are optional. Many functions accept a **criteria** argument that filters the data, such as `=AVERAGEIF(A2:A100, ">=1", B2:B100)`. A few calculations — like a conditional variance — must be entered as **array formulas**. In older versions of Excel you complete these by pressing `Ctrl + Shift + Enter` instead of just `Enter`. If a formula cannot be evaluated, Excel returns an error such as `#DIV/0!`, `#VALUE!`, `#N/A`, or `#REF!`.
+and to average them:
 
-### Data Types {.unnumbered}
+``` excel
+=AVERAGE(A2:A5)
+```
+
+Once a formula is written, you rarely retype it. Select the cell and drag the small square at its bottom-right corner (the **fill handle**) to copy the formula. Because references are relative by default, copying **down** makes Excel adjust the row numbers, and copying **across** makes it adjust the column letters. This is what lets a single formula compute a whole column of results. Many functions also accept a **criteria** argument that filters the data, such as `=AVERAGEIF(A2:A100, ">=1", B2:B100)`. If a formula cannot be evaluated, Excel returns an error such as `#DIV/0!`, `#VALUE!`, `#N/A`, or `#REF!`.
+
+### Order of Operations {.unnumbered}
+
+Excel evaluates formulas following the standard order of operations: parentheses first, then exponents, then multiplication and division, and finally addition and subtraction. For example, `=2^3*2+2` is evaluated as $(2^3) \times 2 + 2 = 18$, and `=2+4*5` is evaluated as $2 + (4 \times 5) = 22$. When in doubt, add parentheses to make the intended order explicit — `=(2+4)*5` returns $30$.
+
+### Array Formulas {.unnumbered}
+
+A few calculations — like a conditional variance — must be entered as **array formulas**, which operate on an entire range at once. In modern Excel these "spill" automatically, but in older versions you must complete them by pressing `Ctrl + Shift + Enter` instead of just `Enter`.
+
+## Navigating and Selecting
+
+Moving quickly around a large worksheet is a skill worth practicing. Turning off the grid with `View → Gridlines` gives a cleaner canvas, especially when building a report or a chart.
+
+The navigation shortcuts below let you move and select without the mouse:
+
+- `Ctrl + Arrow` jumps to the edge of the current block of data in that direction.
+- `Ctrl + Shift + Arrow` **selects** everything from the active cell to the edge of the data — the fastest way to grab a whole column of values.
+- `F2` (`fn + F2` on some Macs) toggles the active cell into edit mode so you can see and adjust the formula in place.
+- `Ctrl + Enter` fills every cell in a selection with the same formula at once.
+
+When you want to keep headers visible while scrolling, use `View → Freeze Panes`. `View → Split` divides the window into independently scrolling panes, and you can `Hide` rows, columns, or entire sheets you do not want to see.
+
+## Range Names
+
+Rather than referring to `$B$2:$B$100`, you can give a range a memorable **name** and use it in formulas and charts. There are three ways to create one: select the range and go to `Formulas → Define Name`; type a name directly into the **Name Box** and press `Enter`; or select a block that includes labels and use `Formulas → Create from Selection` to name each column or row from its header.
+
+Names follow a few rules: they cannot contain spaces, they cannot look like a cell reference (so `Q1` is not allowed as a name), and they must begin with a letter or underscore. Use the **Name Manager** (`Formulas → Name Manager`) to review, edit, or delete existing names. A well-named range such as `Returns` makes `=AVERAGE(Returns)` far easier to read and audit than a raw address.
+
+## Data Types
 
 The main data types in Excel are number, text, logical, date, and error.
 
 - **Number** includes integers and decimals. Numbers are right-aligned in a cell by default.
-
 - **Text** represents labels or strings and is left-aligned by default.
-
 - **Logical** values are `TRUE` or `FALSE`, usually produced by a comparison.
-
-- **Date and time** values are stored as serial numbers counting the days since January 1, 1900, which is why dates can be added and subtracted.
-
+- **Date and time** values are stored as serial numbers (see below), which is why dates can be added and subtracted.
 - **Error** values are the result of an invalid operation, such as dividing by zero.
 
-### Comparison and Logical Operators {.unnumbered}
+## Working with Dates and Time
 
-Comparison operators return a logical value (`TRUE` or `FALSE`). The primary operators are `=` (equal to), `<>` (not equal to), `>` (greater than), `<` (less than), `>=` (at least), and `<=` (at most). They are frequently combined with the `IF`, `AND`, `OR`, and `NOT` functions. When used inside a criteria argument, an operator is written as text in quotes, for example `">=1"` in a `COUNTIF` or `AVERAGEIF` formula.
+Excel stores every date as a **serial number**: day `1` is January 1, 1900, day `2` is January 2, 1900, and so on. The **integer part** of the number counts the days since that starting point, while the **decimal part** represents the time as a fraction of a 24-hour day. So `0` corresponds to `12:00 am`, `0.5` corresponds to `12:00 pm`, and a value like `44000.75` is a specific date at `6:00 pm`.
 
-## Dictionary of Functions
+Because dates are really numbers, the way a cell is *formatted* determines whether you see `1/1/2024` or `45292`. If a calculation returns a date when you wanted a plain number (or vice versa), change the cell's number format under `Home → Number`. To pull just the **time** (the decimal part) out of a date-time value, use `MOD` with a divisor of $1$:
 
-The remainder of the chapter lists the Excel functions and tools used in the book, grouped by the chapter in which they first appear.
+``` excel
+=MOD(A1, 1)
+```
+
+Useful date and time functions include `=TODAY()` and `=NOW()` for the current date and date-time, `=DATE(year, month, day)` to build a date, and `=YEAR()`, `=MONTH()`, `=DAY()`, and `=WEEKDAY()` to extract the parts of a date.
+
+## Working with Text
+
+Text functions let you clean and reshape labels — for example, splitting a "Last, First" name into two columns. The most useful ones are:
+
+- `=TRIM(text)` removes extra spaces, leaving only single spaces between words.
+- `=LEN(text)` returns the number of characters in the text.
+- `=LEFT(text, n)` and `=RIGHT(text, n)` return the first or last `n` characters.
+- `=MID(text, start, n)` returns `n` characters beginning at position `start`.
+- `=SEARCH(find, text)` (or `=FIND`) returns the position of a character or substring; `SEARCH` is not case-sensitive, `FIND` is.
+- `=UPPER(text)`, `=LOWER(text)`, and `=PROPER(text)` change capitalization.
+- `=SUBSTITUTE(text, old, new)` replaces every occurrence of `old` with `new`.
+- `=REPLACE(text, start, n, new)` replaces `n` characters starting at a position with new text.
+
+As an example, suppose cell `D6` contains `Doe, John`. The position of the comma is `=SEARCH(",", D6)`, which returns `4`. The last name is then `=LEFT(D6, SEARCH(",", D6) - 1)` → `Doe`, and the first name is `=RIGHT(D6, LEN(D6) - SEARCH(",", D6) - 1)` → `John`. To join text back together, use the ampersand operator: `=B6 & " " & A6`, or the `=CONCAT()` function.
+
+## Lookup Functions
+
+Lookup functions find a value in a table based on a key. `=VLOOKUP(lookup_value, table, column_number, [match])` searches down the first column of a table and returns a value from a column to its right; `=HLOOKUP()` does the same across the first row. The modern replacement, `=XLOOKUP(lookup_value, lookup_range, return_range)`, is more flexible because the lookup and return ranges can be anywhere and it can look left as well as right.
+
+The optional match argument controls **exact** versus **approximate** matching. An approximate (binary) search assumes the lookup column is **sorted**: Excel repeatedly compares the target with the middle value and discards half the list each time, which is very fast on large data sets — but it returns wrong answers if the data is not sorted. For most business lookups you want an exact match.
+
+Lookups also support **wildcards** in the search text: `?` matches any single character (so `B?ll` matches `Ball` and `Bell`), and `*` matches any number of characters (so `B*ll` matches `Ball`, `Bell`, and `Barbell`). Use `~` before a `?` or `*` when you need to match the literal character.
+
+## Logical and Conditional Functions
+
+The `=IF(test, value_if_true, value_if_false)` function returns one of two values depending on whether a condition is met, and `IF` statements can be nested inside one another. When you have several conditions to check in order, `=IFS(test1, value1, test2, value2, ...)` is cleaner. The logical helpers `=AND(...)`, `=OR(...)`, and `=NOT(...)` combine or reverse conditions.
+
+A closely related family aggregates values that meet a condition:
+
+- `=COUNTIF(range, criteria)` counts the cells that satisfy a condition, and `=COUNTIFS(...)` handles several conditions at once.
+- `=SUMIF(range, criteria, sum_range)` totals the values that meet a condition, and `=SUMIFS(...)` allows several conditions.
+- `=AVERAGEIF(range, criteria, average_range)` averages the values that meet a condition.
+
+When a criterion is a comparison, write it as text in quotes, for example `">2"` or `">=1"`. To rank values, `=RANK.AVG(number, range)` returns the position of a value within a list (averaging ties). A common use is to highlight the top items in a chart: rank each value, then use a formula such as `=IF(rank <= 5, value, NA())` so that only the top five carry a value and the rest return `NA()`.
+
+## OFFSET and MATCH
+
+`=MATCH(lookup_value, array, 0)` returns the **position** of a value within a row or column (the `0` requests an exact match). It does not return the value itself — it tells you *where* the value sits, which you can then feed to another function.
+
+`=OFFSET(reference, rows, cols, [height], [width])` returns a range that is a given number of rows and columns away from a starting `reference`. The optional `height` and `width` arguments let it return a whole block rather than a single cell. Combining `MATCH` (to locate a position) with `OFFSET` (to retrieve the value at that position) creates flexible lookups; the same idea is often written with `INDEX` and `MATCH`.
+
+Because `OFFSET` can size a range on the fly, it is the key to **dynamic ranges**. Pairing it with `=COUNTA(range)` — which counts the non-empty cells — lets you define a named range that automatically grows as you add data. A chart built on that name then updates itself whenever new rows arrive, with no manual re-selection.
+
+## Sorting, Filtering, and Dynamic Arrays
+
+The `Data → Sort` and `Data → Filter` tools reorder and subset a table interactively. Excel also provides **dynamic array** functions that return a whole range of results that "spill" into neighboring cells:
+
+- `=SORT(range)` returns the range sorted.
+- `=FILTER(range, condition)` returns only the rows that satisfy a condition.
+- `=RANK(number, range)` returns the rank of a value.
+
+These combine naturally with the conditional functions. For example, to keep only the years that appear in a second, larger list, you can flag matches with `COUNTIF` and pass the result to `FILTER`:
+
+``` excel
+=FILTER(Years, COUNTIF(OtherYears, Years))
+```
+
+`COUNTIF` returns a `1` for each year found in `OtherYears` and a `0` otherwise, and `FILTER` keeps only the rows flagged with a `1`.
+
+## Importing and Web Data
+
+To bring outside data into Excel you can open a CSV directly with `File → Open`, or use `Data → Get Data → From Text/CSV` for control over how columns are separated. `Data → Get Data → From Web` pulls tables from a web page — for example, stock history from a finance site. Imported data becomes a **query**; under `Data → Queries & Connections` (and `Data Source Settings`) you can refresh it, change the source, or adjust how it loads. Excel's **Stocks** and **Geography** data types can also enrich a plain list of tickers or country names with live fields. When previewing a large import, freeze the header row with `View → Freeze Panes` and jump to the end with `Ctrl + Down` or `Ctrl + End`.
+
+## PivotTables
+
+A **PivotTable** (`Insert → PivotTable`) automatically summarizes and counts data, making it the primary tool for building frequency and relative frequency distributions. You drag fields into the **Rows**, **Columns**, and **Values** areas, and Excel aggregates the underlying data for you — counting, summing, or averaging — without writing a single formula. PivotTables are used throughout the descriptive statistics chapters; see *Descriptive Statistics II* for a worked example.
+
+## Charts and Visualization
+
+Charts are created from `Insert → Charts`. Choosing the right type matters: use a **bar chart** to compare categories and a **line chart** to show change over time. A good chart maximizes the *data-to-ink ratio* — that is, it removes anything that does not convey information. In practice that means removing gridlines, adding subtle borders to bars, cleaning up the axes (sensible tick marks and units), placing the title inside the plot, and adding data labels by right-clicking a series and choosing `Add Data Labels`.
+
+To compare two series, add a second set of values to the chart. When the two series are on very different scales — a count and a percentage, say — plot one of them on a **secondary axis** using a **combo chart** (`Chart Design → Change Chart Type → Combo`). You can **highlight** a particular bar, such as the maximum or the top few, by adding a helper column that returns the value only for the rows to highlight and `NA()` for the rest; because Excel does not plot `NA()`, only the highlighted bars appear, and setting the series overlap to `100%` layers them on top of the originals. A **dummy variable** that switches between `0` and `1` can be plotted as a shaded band to mark periods such as recessions. Once you have styled a chart the way you like, right-click it and choose `Save as Template` to reuse the formatting later.
+
+## The Data Analysis ToolPak
+
+Some analyses — such as regression — require the **Analysis ToolPak**, an add-in that ships with Excel but is turned off by default. To enable it on Windows, go to `File → Options → Add-ins → Manage: Excel Add-ins → Go`, check `Analysis ToolPak`, and click `OK`. On a Mac, use `Tools → Excel Add-ins`. Once enabled, the ToolPak appears under `Data → Data Analysis` and provides one-click tools for descriptive statistics, regression, random number generation, and more.
+
+## Statistical Function Dictionary
+
+The remainder of the chapter lists the statistical Excel functions used in the book, grouped by the chapter in which they first appear. Each is explained in detail, with worked examples, in its home chapter.
 
 ### General Purpose {.unnumbered}
 
@@ -116,38 +235,40 @@ The remainder of the chapter lists the Excel functions and tools used in the boo
 
 - **Coefficient of Variation** has no dedicated function; compute it as `=STDEV.S(range) / AVERAGE(range)`.
 
-- **Sharpe Ratio** also has no dedicated function; compute it as `=(AVERAGE(range) - rf) / STDEV.S(range)`, where `rf` is the risk-free rate.
-
 ### Measures of Shape and Position (Descriptive Stats V) {.unnumbered}
 
-- `=PERCENTILE.INC(array, k)` returns the $k$th percentile using the inclusive method $L_p = 1 + k(n-1)$, where `k` is a decimal between 0 and 1. `=PERCENTILE.EXC(array, k)` uses the exclusive method $L_p = k(n+1)$.
+- `=PERCENTILE.INC(array, k)` returns the $k$th percentile of a range using the formula $L_p = 1 + k(n-1)$, where $k$ is expressed as a decimal between 0 and 1. `=PERCENTILE.EXC(array, k)` uses the alternative formula $L_p = k(n+1)$.
 
-- `=QUARTILE.INC(array, quart)` returns the five-point summary. The `quart` argument takes the values 0 (minimum), 1 ($Q_1$), 2 (median), 3 ($Q_3$), and 4 (maximum). The IQR is `=QUARTILE.INC(array, 3) - QUARTILE.INC(array, 1)`.
+- `=QUARTILE.INC(array, quart)` returns the five point summary. The argument `quart` takes values 0 (minimum), 1 ($Q_1$), 2 (median), 3 ($Q_3$), and 4 (maximum).
 
-- `=STANDARDIZE(x, mean, std_dev)` calculates the z-score of a value. It can also be computed manually as `=(x - AVERAGE(range)) / STDEV.S(range)`.
+- `=STANDARDIZE(x, mean, std_dev)` calculates the z-score for a value. It can also be computed manually as `=(x - AVERAGE(range)) / STDEV.S(range)`.
 
-- `=SKEW(range)` calculates the skewness using the Fisher-Pearson standardized moment coefficient.
+- `=SKEW(range)` calculates the skewness of a range.
 
-- `=KURT(range)` calculates the excess kurtosis. A positive value indicates heavy tails (leptokurtic) and a negative value indicates light tails (platykurtic).
+- `=KURT(range)` calculates the excess kurtosis of a range.
 
 ### Measures of Association (Regression I) {.unnumbered}
 
-- `=COVARIANCE.S(array1, array2)` calculates the sample covariance between two variables; `=COVARIANCE.P(array1, array2)` calculates the population covariance.
+- `=COVARIANCE.S(array1, array2)` calculates the sample covariance between two variables; `=COVARIANCE.P()` calculates the population covariance.
 
 - `=CORREL(array1, array2)` calculates the correlation coefficient, which is always between $-1$ and $1$.
 
-- `=CORREL(array1, array2)^2` calculates the coefficient of determination $R^2$ by squaring the correlation coefficient. Excel has no standalone $R^2$ function for two variables.
+- `=CORREL(array1, array2)^2` calculates the coefficient of determination $R^2$ by squaring the correlation coefficient.
 
 ### Regression (Regression II) {.unnumbered}
 
-- **Data Analysis ToolPak → Regression** is the primary tool for estimating regression models. It returns the coefficients, $R^2$, adjusted $R^2$, standard error, and the ANOVA table in a single output.
+- **Data Analysis ToolPak → Regression** returns the coefficients, $R^2$, adjusted $R^2$, standard error, and the ANOVA table in a single output.
 
-- `=SLOPE(y_range, x_range)` calculates the slope $\hat{\beta}$ of a simple regression line.
+- `=SLOPE(y_range, x_range)` and `=INTERCEPT(y_range, x_range)` return the slope and intercept of a simple regression line.
 
-- `=INTERCEPT(y_range, x_range)` calculates the intercept $\hat{\alpha}$ of a simple regression line.
+- `=FORECAST.LINEAR(x, y_range, x_range)` returns the predicted value of $y$ for a given $x$.
 
-- `=FORECAST.LINEAR(x, y_range, x_range)` returns the predicted value of $y$ for a given value of $x$.
+- `=RSQ(y_range, x_range)` returns the $R^2$, and `=STEYX(y_range, x_range)` returns the residual standard error.
 
-- `=RSQ(y_range, x_range)` returns the $R^2$ of a simple regression.
+### Probability Distributions (Probability I–III) {.unnumbered}
 
-- `=STEYX(y_range, x_range)` returns the residual standard error $s_e$ of a simple regression.
+- `=FACT(number)`, `=COMBIN(n, x)`, and `=PERMUT(n, x)` return the factorial, number of combinations, and number of permutations. Use `=COMBINA()` and `=PERMUTATIONA()` when repetition is allowed.
+
+- `=BINOM.DIST(x, n, p, cumulative)`, `=POISSON.DIST(x, mean, cumulative)`, and `=HYPGEOM.DIST(sample_s, number_sample, population_s, number_pop, cumulative)` return discrete probabilities (`FALSE` for the PMF, `TRUE` for the cumulative distribution). `=BINOM.INV(n, p, alpha)` returns a binomial quantile.
+
+- `=NORM.DIST(x, mean, std_dev, cumulative)` and `=NORM.S.DIST(z, cumulative)` return normal probabilities, while `=NORM.INV(probability, mean, std_dev)` and `=NORM.S.INV(probability)` return normal quantiles. `=EXPON.DIST(x, lambda, cumulative)` returns exponential probabilities.

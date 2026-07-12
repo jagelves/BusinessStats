@@ -315,15 +315,21 @@ details summary {
 </section>
 <section id="uniform-distribution" class="level2" data-number="10.2">
 <h2 data-number="10.2" class="anchored" data-anchor-id="uniform-distribution"><span class="header-section-number">10.2</span> Uniform Distribution</h2>
-<p>The <strong>uniform</strong> probability density function is given by: <span class="math display">\[f(x)= \frac {1}{b-a}\]</span> when <span class="math inline">\(a \leq x \leq b\)</span> and <span class="math inline">\(0\)</span> otherwise. Here <span class="math inline">\(b\)</span> is the upper limit of the distribution and <span class="math inline">\(a\)</span> is the lower limit. The <strong>expected value</strong> of the uniform distribution is:</p>
-<p><span class="math display">\[E(x)= \frac {a+b}{2}\]</span></p>
-<p>The <strong>variance</strong> of the uniform distribution is</p>
-<p><span class="math display">\[var(x)= \frac {(b-a)^2} {12}\]</span> <strong>Example:</strong> Consider the travel time between NY and CHI. Typically, this trips can take anywhere from 120-140 minutes. The specific time of a particular flight is unpredictable, but assumed to be anywhere between this interval. We assume a uniform distribution with upper limit of 140 and lower limit of 120. The probability that the flight take 122 minutes is zero since the interval has an infinite amount of possible values. The probability of the flight taking 130 minutes or less is 0.5. <span class="math display">\[f(x&lt;=130)=\frac{130-120}{20}=0.5\]</span> The uniform distribution has no dedicated Excel function, but its cumulative probability follows directly from the formula. In Excel, <code>=(130-120)/(140-120)</code> returns <span class="math inline">\(0.5\)</span>.</p>
+<p>The <strong>uniform</strong> distribution assigns equal density across an interval <span class="math inline">\([a,b]\)</span>:</p>
+<div class="callout-formula">
+<p><strong>THE UNIFORM DISTRIBUTION</strong> <span class="math display">\[f(x)= \frac {1}{b-a} \quad (a \leq x \leq b)\]</span> <span class="math display">\[E(x)= \frac {a+b}{2} \qquad var(x)= \frac {(b-a)^2}{12}\]</span> where <span class="math inline">\(a\)</span> is the lower limit and <span class="math inline">\(b\)</span> is the upper limit; <span class="math inline">\(f(x)=0\)</span> outside <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> Consider the travel time between NY and CHI. Typically, this trips can take anywhere from 120-140 minutes. The specific time of a particular flight is unpredictable, but assumed to be anywhere between this interval. We assume a uniform distribution with upper limit of 140 and lower limit of 120. The probability that the flight take 122 minutes is zero since the interval has an infinite amount of possible values. The probability of the flight taking 130 minutes or less is 0.5. <span class="math display">\[f(x&lt;=130)=\frac{130-120}{20}=0.5\]</span> The uniform distribution has no dedicated Excel function, but its cumulative probability follows directly from the formula. In Excel, <code>=(130-120)/(140-120)</code> returns <span class="math inline">\(0.5\)</span>.</p>
+</div>
 </section>
 <section id="normal-distribution" class="level2" data-number="10.3">
 <h2 data-number="10.3" class="anchored" data-anchor-id="normal-distribution"><span class="header-section-number">10.3</span> Normal Distribution</h2>
 <p>The <strong>normal</strong> PDF is given by</p>
-<p><span class="math display">\[f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1}{2} (\frac {x-\mu}{\sigma})^2}\]</span> where <span class="math inline">\(\mu\)</span> is the mean, <span class="math inline">\(\sigma\)</span> is the standard deviation, <span class="math inline">\(\pi\)</span> is 3.1415… , and <span class="math inline">\(e\)</span> is 2.7282… . The normal distribution has the following properties:</p>
+<div class="callout-formula">
+<p><strong>THE NORMAL DISTRIBUTION</strong> <span class="math display">\[f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1}{2} (\frac {x-\mu}{\sigma})^2}\]</span> where <span class="math inline">\(\mu\)</span> is the mean, <span class="math inline">\(\sigma\)</span> is the standard deviation, <span class="math inline">\(\pi \approx 3.1416\)</span>, and <span class="math inline">\(e \approx 2.7183\)</span>.</p>
+</div>
+<p>The normal distribution has the following properties:</p>
 <ul>
 <li><p>It is symmetrical about the mean <span class="math inline">\(\mu\)</span>.</p></li>
 <li><p>The mean is at the middle and divides the area of the distribution into halves.</p></li>
@@ -331,25 +337,34 @@ details summary {
 <li><p>The distribution is completely determined by its mean and standard deviation.</p></li>
 </ul>
 <p>The <strong>standard normal</strong> has a mean of <span class="math inline">\(0\)</span> and a standard deviation of <span class="math inline">\(1\)</span>. Otherwise, it has the exact same properties as the normal distribution.</p>
+<div class="callout-example">
 <p><strong>Example:</strong> Dr Tires is planning on offering a mileage guarantee on each set of tires they sell. They are considering a 40,000 mile guarantee. Given that the mean tire mileage is 36,500 miles with a standard deviation of 5,000 miles, we can estimate that the probability that a tire lasts more than 40,000 miles is 24.2%. In Excel, use <code>=1 - NORM.DIST(40000, 36500, 5000, TRUE)</code>, which returns <span class="math inline">\(0.242\)</span>.</p>
+</div>
 </section>
 <section id="exponential-distribution" class="level2" data-number="10.4">
 <h2 data-number="10.4" class="anchored" data-anchor-id="exponential-distribution"><span class="header-section-number">10.4</span> Exponential Distribution</h2>
 <p>The <strong>exponential distribution</strong> is useful in computing probabilities for the time it takes to complete a task. It describes the time between events in a Poisson process.</p>
-<p>The probability density function is given by <span class="math display">\[f(x)=1/{\mu} \times e^{\frac{-x}{\mu}}=\lambda e^{-{\lambda} x}\]</span> <strong>Example:</strong> Let <span class="math inline">\(x\)</span> represent the loading time for a truck at the Dock Dash loading dock. If the average loading time is 15 minutes, the probability that loading a truck will take 6 minutes or less is 32.97%. In Excel, the exponential functions use the rate <span class="math inline">\(\lambda = 1/\mu = 1/15\)</span>: <code>=EXPON.DIST(6, 1/15, TRUE)</code> returns <span class="math inline">\(0.3297\)</span>.</p>
+<p>The probability density function is given by:</p>
+<div class="callout-formula">
+<p><strong>THE EXPONENTIAL DISTRIBUTION</strong> <span class="math display">\[f(x)=\frac{1}{\mu} e^{-x/\mu}=\lambda e^{-\lambda x}\]</span> where <span class="math inline">\(\mu\)</span> is the mean and <span class="math inline">\(\lambda = 1/\mu\)</span> is the rate.</p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> Let <span class="math inline">\(x\)</span> represent the loading time for a truck at the Dock Dash loading dock. If the average loading time is 15 minutes, the probability that loading a truck will take 6 minutes or less is 32.97%. In Excel, the exponential functions use the rate <span class="math inline">\(\lambda = 1/\mu = 1/15\)</span>: <code>=EXPON.DIST(6, 1/15, TRUE)</code> returns <span class="math inline">\(0.3297\)</span>.</p>
 <p>We can also estimate that the probability that it takes between 6 and 18 minutes is 36.91%: <code>=EXPON.DIST(18, 1/15, TRUE) - EXPON.DIST(6, 1/15, TRUE)</code> returns <span class="math inline">\(0.3691\)</span>.</p>
+</div>
 </section>
 <section id="triangular-distribution" class="level2" data-number="10.5">
 <h2 data-number="10.5" class="anchored" data-anchor-id="triangular-distribution"><span class="header-section-number">10.5</span> Triangular Distribution</h2>
 <p>The <strong>triangular distribution</strong> is characterized by a single mode (the peak of the distribution) and two boundaries. It is often used in situations where the lower and upper bounds of a potential outcome are known, but the exact likelihood of the outcome is uncertain.</p>
-<p>The probability density function is given by <span class="math display">\[f(x)=\frac {2(x-a)}{(b-a)(c-a)}\]</span> for <span class="math inline">\(a \leq x &lt; c\)</span></p>
-<p><span class="math display">\[f(x)=\frac {2}{(b-a)}\]</span> for <span class="math inline">\(x=c\)</span> and</p>
-<p><span class="math display">\[f(x)=\frac {2(b-x)}{(b-a)(b-c)}\]</span></p>
-<p>for <span class="math inline">\(c &lt; x \leq b\)</span>, and <span class="math inline">\(f(x)=0\)</span> otherwise. The <strong>expected value</strong> of the distribution is <span class="math display">\[E(x)= \frac {a+b+c}{3}\]</span> The <strong>variance</strong> of the triangular distribution is</p>
-<p><span class="math display">\[var(x) = \frac {a^2+b^2+c^2-ab-ac-bc}{18}\]</span></p>
+<p>The probability density function, expected value, and variance are:</p>
+<div class="callout-formula">
+<p><strong>THE TRIANGULAR DISTRIBUTION</strong> <span class="math display">\[f(x)=\frac {2(x-a)}{(b-a)(c-a)} \;\; (a \leq x &lt; c), \quad f(x)=\frac {2}{b-a} \;\; (x=c), \quad f(x)=\frac {2(b-x)}{(b-a)(b-c)} \;\; (c &lt; x \leq b)\]</span> <span class="math display">\[E(x)= \frac {a+b+c}{3} \qquad var(x) = \frac {a^2+b^2+c^2-ab-ac-bc}{18}\]</span> where <span class="math inline">\(a\)</span> is the minimum, <span class="math inline">\(b\)</span> is the maximum, and <span class="math inline">\(c\)</span> is the mode; <span class="math inline">\(f(x)=0\)</span> outside <span class="math inline">\([a,b]\)</span>.</p>
+</div>
+<div class="callout-example">
 <p><strong>Example:</strong> Bite Bliss is planning a new store in Williamsburg. It is estimated that the minimum weekly sales are 1000 and the maximum is 6000. They also estimate that the most likely outcome is around 3000. The probability that future sales will be between 2000 and 2500 is 12.5%. Excel has no triangular distribution function, but the cumulative probability follows from its formula. For a value <span class="math inline">\(x\)</span> in the lower part of the range (<span class="math inline">\(a \le x &lt; c\)</span>), <span class="math inline">\(F(x)=\frac{(x-a)^2}{(b-a)(c-a)}\)</span>. In Excel:</p>
 <pre class="excel"><code>=(2500-1000)^2/((6000-1000)*(3000-1000)) - (2000-1000)^2/((6000-1000)*(3000-1000))</code></pre>
 <p>This returns <span class="math inline">\(0.225 - 0.10 = 0.125\)</span>.</p>
+</div>
 </section>
 <section id="continuous-distributions-in-excel" class="level2" data-number="10.6">
 <h2 data-number="10.6" class="anchored" data-anchor-id="continuous-distributions-in-excel"><span class="header-section-number">10.6</span> Continuous Distributions in Excel</h2>

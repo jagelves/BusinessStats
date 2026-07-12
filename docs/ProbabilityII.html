@@ -328,8 +328,16 @@ details summary {
 <section id="expected-value-and-variance" class="level2" data-number="9.2">
 <h2 data-number="9.2" class="anchored" data-anchor-id="expected-value-and-variance"><span class="header-section-number">9.2</span> Expected Value and Variance</h2>
 <p>When summarizing a random variable, we are mostly interested in the variable’s central tendency (Expected Value) and dispersion (Variance).</p>
-<p>The <strong>expected value</strong> (mean) is a measure of central location. For a discrete random variable it is given by: <span class="math display">\[E(x)=\mu=\sum xf(x)\]</span> where <span class="math inline">\(f(x)\)</span> is the probability mass function. For a continuous random variable it is given by <span class="math inline">\(E(x)= \int_{-\infty}^{\infty} x f(x) dx\)</span>, where <span class="math inline">\(f(x)\)</span> is the probability density function.</p>
-<p>The <strong>variance</strong> summarizes the deviation of the values of the random variable from the mean. It is calculated by: <span class="math display">\[var(x)=E[(x-E(x))^2]=E(x^2)-[E(x)]^2\]</span> Note that this formula can be used for both discrete and continuous random variables.</p>
+<p>The <strong>expected value</strong> (mean) is a measure of central location. For a discrete random variable it is given by:</p>
+<div class="callout-formula">
+<p><strong>THE EXPECTED VALUE</strong> <span class="math display">\[E(x)=\mu=\sum xf(x)\]</span> where <span class="math inline">\(f(x)\)</span> is the probability mass function. For a continuous random variable it is <span class="math inline">\(E(x)= \int_{-\infty}^{\infty} x f(x)\, dx\)</span>, where <span class="math inline">\(f(x)\)</span> is the probability density function.</p>
+</div>
+<p>The <strong>variance</strong> summarizes the deviation of the values of the random variable from the mean. It is calculated by:</p>
+<div class="callout-formula">
+<p><strong>THE VARIANCE</strong> <span class="math display">\[var(x)=E[(x-E(x))^2]=E(x^2)-[E(x)]^2\]</span></p>
+</div>
+<p>Note that this formula can be used for both discrete and continuous random variables.</p>
+<div class="callout-example">
 <p><strong>Example:</strong> Let’s consider an incentive pay scheme for a company. The table below summarizes the scheme:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -343,23 +351,30 @@ details summary {
 <p>If a worker receives a “Superior” rating, they earn a $10,000 bonus. Based on years of employee data, the company has determined that a “Superior” rating occurs 15% of the time. It also lists all of the possible ratings of its employees and their likelihood on the table.</p>
 <p>To summarize this distribution we can calculate the mean bonus paid. Using the expected value formula we find that the company pays 4,200 dollars on average in compensation.</p>
 <p><span class="math display">\[E(x)=(10 \times 0.15) + (6 \times 0.25) + (3 \times 0.4) + (0 \times 0.2)=4.2\]</span> The variability of the compensation is given by: <span class="math display">\[var(x)=(100 \times 0.15) + (36 \times 0.25) + (9 \times 0.4) + (0 \times 0.2)-(4.2)^2=9.96\]</span> The expected value and the variance has helped us summarize the results of the company’s incentive scheme. Mainly, the company pays on average an incentive of 4,200 dollars give or take 3,156 dollars.</p>
+</div>
 </section>
 <section id="discrete-uniform-distribution" class="level2" data-number="9.3">
 <h2 data-number="9.3" class="anchored" data-anchor-id="discrete-uniform-distribution"><span class="header-section-number">9.3</span> Discrete Uniform Distribution</h2>
 <p>The <strong>discrete uniform distribution</strong> is a probability distribution that assigns equal probability to each outcome in a finite set of possible outcomes. In other words, each outcome in the set is equally likely to occur.</p>
-<p>The <strong>probability mass function</strong> is given by: <span class="math display">\[f(x)=1/n\]</span> where <span class="math inline">\(n\)</span> is the number of elements in the sample space (all possible outcomes). The <strong>expected value</strong> is given by: <span class="math display">\[E(x)=\frac {\sum x_i}{n}\]</span> where <span class="math inline">\(x_i\)</span> are the possible values, and <span class="math inline">\(n\)</span> is the number of possible values. The <strong>variance</strong> is given by: <span class="math display">\[var(x)=\frac {\sum (x_i-E(x))^2}{n}\]</span> <strong>Example:</strong> Consider tossing a fair die. Since all outcomes are equally likely, the probability of the die landing on 6 is <span class="math inline">\(f(x)=1/6\)</span>. The expected value on a roll of a die is <span class="math inline">\(E(x)=\frac {1+2+3+4+5+6}{6}=3.5\)</span> and the variance is <span class="math inline">\(var(x)=\frac {(-2.5)^2+(-1.5)^2+(-0.5)^2+0.5^2+1.5^2+2.5^2}{6}\approx 2.92\)</span>.</p>
+<div class="callout-formula">
+<p><strong>THE DISCRETE UNIFORM DISTRIBUTION</strong> <span class="math display">\[f(x)=1/n\]</span> <span class="math display">\[E(x)=\frac {\sum x_i}{n}\]</span> <span class="math display">\[var(x)=\frac {\sum (x_i-E(x))^2}{n}\]</span> where <span class="math inline">\(n\)</span> is the number of possible outcomes and <span class="math inline">\(x_i\)</span> are the possible values.</p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> Consider tossing a fair die. Since all outcomes are equally likely, the probability of the die landing on 6 is <span class="math inline">\(f(x)=1/6\)</span>. The expected value on a roll of a die is <span class="math inline">\(E(x)=\frac {1+2+3+4+5+6}{6}=3.5\)</span> and the variance is <span class="math inline">\(var(x)=\frac {(-2.5)^2+(-1.5)^2+(-0.5)^2+0.5^2+1.5^2+2.5^2}{6}\approx 2.92\)</span>.</p>
+</div>
 </section>
 <section id="binomial-distribution" class="level2" data-number="9.4">
 <h2 data-number="9.4" class="anchored" data-anchor-id="binomial-distribution"><span class="header-section-number">9.4</span> Binomial Distribution</h2>
 <p>The binomial distribution is a probability distribution that describes the outcome of a sequence of <span class="math inline">\(n\)</span> independent Bernoulli trials. In a Bernoulli trial, there are only two possible outcomes: “success” and “failure”. The probability of success is denoted by <span class="math inline">\(p\)</span>, and the probability of failure is denoted by <span class="math inline">\(q = 1 - p\)</span>. In a sequence of <span class="math inline">\(n\)</span> independent Bernoulli trials, the number of successes (<span class="math inline">\(x\)</span>) is a random variable that follows a binomial distribution.</p>
-<p>The <strong>probability mass function</strong> is given by: <span class="math display">\[f(x)=C_x^n (p^x)(1-p)^{n-x}\]</span> where <span class="math inline">\(n\)</span> is the number of trials, <span class="math inline">\(x\)</span> is the number of successes, <span class="math inline">\(p\)</span> is the probability of success, and <span class="math inline">\(C_x^n\)</span> is the number of ways there can be <span class="math inline">\(x\)</span> successes in <span class="math inline">\(n\)</span> trials.</p>
-<p>The <strong>expected value</strong> of the binomial distribution is</p>
-<p><span class="math display">\[E(x)=np\]</span></p>
-<p>The <strong>variance</strong> of the binomial distribution is</p>
-<p><span class="math display">\[var(x)=np(1-p)\]</span> <strong>Example:</strong> Consider the following scenario. Imagine your favorite team in the NBA Finals, trailing by 2 points with seconds left. Your star player, a 90% free-throw shooter, gets three shots. What’s the chance your team takes the lead?</p>
+<div class="callout-formula">
+<p><strong>THE BINOMIAL DISTRIBUTION</strong> <span class="math display">\[f(x)=C_x^n (p^x)(1-p)^{n-x}\]</span> <span class="math display">\[E(x)=np \qquad var(x)=np(1-p)\]</span> where <span class="math inline">\(n\)</span> is the number of trials, <span class="math inline">\(x\)</span> is the number of successes, <span class="math inline">\(p\)</span> is the probability of success, and <span class="math inline">\(C_x^n\)</span> is the number of ways there can be <span class="math inline">\(x\)</span> successes in <span class="math inline">\(n\)</span> trials.</p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> Consider the following scenario. Imagine your favorite team in the NBA Finals, trailing by 2 points with seconds left. Your star player, a 90% free-throw shooter, gets three shots. What’s the chance your team takes the lead?</p>
 <p>Since shooting free-throws can be thought as a binomial experiment, we can find the probability using the binomial probability mass function. To take the lead, the star player needs to make all three shots. We can substitute three into the function:</p>
 <p><span class="math display">\[f(3)=C_3^3 (0.9^3)(0.1)^{0}=0.9^3=0.729\]</span></p>
 <p>The function indicates that there is a 72.9% chance of taking the lead.</p>
+</div>
 </section>
 <section id="the-hypergeometric-distribution" class="level2" data-number="9.5">
 <h2 data-number="9.5" class="anchored" data-anchor-id="the-hypergeometric-distribution"><span class="header-section-number">9.5</span> The Hypergeometric Distribution</h2>
@@ -369,29 +384,33 @@ details summary {
 <li><p>trials are not independent.</p></li>
 <li><p>the probability of success changes from trial to trial.</p></li>
 </ul>
-<p>The <strong>probability mass function</strong> is given by:</p>
-<p><span class="math display">\[f(x)=\frac {C_x^r C_{n-x}^{N-r}}{C_n^N}\]</span></p>
-<p>where <span class="math inline">\(n\)</span> is the number of trials, <span class="math inline">\(x\)</span> is the number of successes, <span class="math inline">\(r\)</span> is the number of elements in the population labeled as success, and <span class="math inline">\(N\)</span> is the number of elements in the population.</p>
-<p>The <strong>expected value</strong> of the hypergeometric distribution is: <span class="math display">\[E(x)=n \frac {r}{N}\]</span></p>
-<p>The <strong>variance</strong> of the hypergeometric distribution is: <span class="math display">\[var(x)= n \frac {r}{N} (1- \frac {r}{N}) (\frac {N-n}{N-1})\]</span> <strong>Example:</strong> Picture a box of 12 electric fuses from the manufacturer Ontario Electric. Five fuses are known to be defective. An inspector randomly picks 3 fuses to test. What is the probability that exactly one of the three chosen is defective?</p>
+<div class="callout-formula">
+<p><strong>THE HYPERGEOMETRIC DISTRIBUTION</strong> <span class="math display">\[f(x)=\frac {C_x^r C_{n-x}^{N-r}}{C_n^N}\]</span> <span class="math display">\[E(x)=n \frac {r}{N} \qquad var(x)= n \frac {r}{N} \left(1- \frac {r}{N}\right) \left(\frac {N-n}{N-1}\right)\]</span> where <span class="math inline">\(n\)</span> is the sample size, <span class="math inline">\(x\)</span> is the number of successes in the sample, <span class="math inline">\(r\)</span> is the number of successes in the population, and <span class="math inline">\(N\)</span> is the number of elements in the population.</p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> Picture a box of 12 electric fuses from the manufacturer Ontario Electric. Five fuses are known to be defective. An inspector randomly picks 3 fuses to test. What is the probability that exactly one of the three chosen is defective?</p>
 <p>We can use the hypergeometric probability mass function to solve this problem. From the problem we know that <span class="math inline">\(N=12\)</span>, <span class="math inline">\(n=3\)</span>, <span class="math inline">\(r=5\)</span>, and <span class="math inline">\(x=1\)</span>. Substituting these values into the PMF yields:</p>
 <p><span class="math display">\[f(1)=\frac {C_1^5 C_{4}^{7}}{C_3^{12}}=0.4772\]</span></p>
 <p>There is a 47.72% chance that the inspector finds a defective fuse in his sample of three.</p>
+</div>
 </section>
 <section id="poisson-distribution" class="level2" data-number="9.6">
 <h2 data-number="9.6" class="anchored" data-anchor-id="poisson-distribution"><span class="header-section-number">9.6</span> Poisson Distribution</h2>
 <p>The <strong>Poisson distribution</strong> estimates the number of successes (<span class="math inline">\(x\)</span>) over a specified interval of time or space.</p>
-<p>The <strong>probability mass function</strong> is given by: <span class="math display">\[f(x)= \frac {\mu^{x} e^{-\mu}}{x!}\]</span></p>
-<p>where <span class="math inline">\(\mu\)</span> is the expected number of successes in any given interval and also the variance, and <span class="math inline">\(e\)</span> is Euler’s number (2.71828…).</p>
+<div class="callout-formula">
+<p><strong>THE POISSON DISTRIBUTION</strong> <span class="math display">\[f(x)= \frac {\mu^{x} e^{-\mu}}{x!}\]</span> where <span class="math inline">\(\mu\)</span> is the expected number of successes in any given interval (and also the variance), and <span class="math inline">\(e\)</span> is Euler’s number (<span class="math inline">\(2.71828...\)</span>).</p>
+</div>
 <p>An experiment satisfies a Poisson process if:</p>
 <ul>
 <li><p>The number of successes with a specified time or space interval equals any integer between zero and infinity.</p></li>
 <li><p>The number of successes counted in non-overlapping intervals are independent.</p></li>
 <li><p>The probability of success in any interval is the same for all intervals of equal size and is proportional to the size of the interval.</p></li>
 </ul>
+<div class="callout-example">
 <p><strong>Example:</strong> Imagine a fast-food restaurant’s drive-thru where, on average, 10 cars arrive in a 15-minute span. What’s the likelihood of exactly 5 cars showing up in 15 minutes?</p>
 <p>We can use the Poisson PMF function for this problem. The arrival rate is 10 cars every 15 minutes. So there are 10 successes in the 15 minute interval. We can substitute values into the PMF:</p>
 <p><span class="math display">\[f(5)= \frac {10^{5} e^{-10}}{5!}=0.0378\]</span> There is a 3.78% chance of five cars arriving within a 15 minute interval.</p>
+</div>
 </section>
 <section id="discrete-distributions-in-excel" class="level2" data-number="9.7">
 <h2 data-number="9.7" class="anchored" data-anchor-id="discrete-distributions-in-excel"><span class="header-section-number">9.7</span> Discrete Distributions in Excel</h2>

@@ -330,7 +330,9 @@ details summary {
 <section id="frequentist-vs.-bayesian-statistics" class="level2" data-number="8.1">
 <h2 data-number="8.1" class="anchored" data-anchor-id="frequentist-vs.-bayesian-statistics"><span class="header-section-number">8.1</span> Frequentist Vs. Bayesian Statistics</h2>
 <p>There are two interpretations of probability. The <strong>frequentist</strong> interpretation assumes that probabilities represent proportions of specific events occurring over infinitely identical trials. In contrast, the <strong>Bayesian</strong> interpretation assumes that probabilities are subjective beliefs about the relative likelihood of events. Despite their philosophical differences, both approaches adhere to the core rules of probability —including the Addition Rule, Multiplication Rule, and Bayes’ Theorem— which provide a consistent mathematical foundation for making probabilistic inferences.</p>
-<p><em>Ex: A company might use frequentist statistics to determine the average return rate of a product, but apply Bayesian methods to adjust sales forecasts based on changing consumer behavior.</em></p>
+<div class="callout-example">
+<p><strong>Example:</strong> A company might use frequentist statistics to determine the average return rate of a product, but apply Bayesian methods to adjust sales forecasts based on changing consumer behavior.</p>
+</div>
 </section>
 <section id="experiments-and-sets" class="level2" data-number="8.2">
 <h2 data-number="8.2" class="anchored" data-anchor-id="experiments-and-sets"><span class="header-section-number">8.2</span> Experiments and Sets</h2>
@@ -345,17 +347,21 @@ details summary {
 <section id="basic-probability-concepts" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="basic-probability-concepts"><span class="header-section-number">8.3</span> Basic Probability Concepts</h2>
 <p>A <strong>probability</strong> is a numerical value that measures the likelihood that an event occurs. To calculate <strong>probabilities</strong>, we find the ratio between favorable outcomes and total outcomes. Hence, the probability of an event is given by:</p>
-<p><span class="math display">\[P(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outocomes\ in\ Sample \ Space}\]</span></p>
+<div class="callout-formula">
+<p><strong>PROBABILITY OF AN EVENT</strong> <span class="math display">\[P(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outcomes\ in\ Sample \ Space}\]</span></p>
+</div>
 <p>The probability of A satisfies <span class="math inline">\(0\leq P(A) \leq1\)</span>. Since A is a subset of S, the number of elements in A is at most that of the sample space S. Hence, if A=S, then P(A)=1. If A is a null event (i.e., has no elements) P(A)=0 and is impossible. We can conclude that P(A) ranges from 0 to 1, inclusive.</p>
 <p>In many cases, we analyze how multiple events interact within the sample space, particularly when they either exclude each other or collectively cover all possible outcomes.<strong>Mutually exclusive</strong> events do not share any common outcomes. The occurrence of one event precludes the occurrence of others. <strong>Exhaustive</strong> events include all outcomes in the sample space.</p>
 <p>Given these concepts if follows that the sum of the probabilities of a list of <strong>mutually exclusive</strong> and <strong>exhaustive</strong> events equals <span class="math inline">\(1\)</span>. Formally, we state: <span class="math inline">\(\sum P(x_i)=1\)</span>, where <span class="math inline">\(x_i\)</span> is outcome <span class="math inline">\(i\)</span>.</p>
+<div class="callout-example">
 <p><strong>Example:</strong> Let’s consider a standard deck of 52 playing cards to illustrate the key probability concepts.</p>
 <p>If we randomly draw one card from a standard deck, the sample space <span class="math inline">\(S\)</span> consists of all 52 cards. Suppose we define event <span class="math inline">\(A\)</span> as <em>drawing a red card</em>. Since there are 26 red cards, the probability is:</p>
 <p><span class="math display">\[P(A) = \frac{\text{Number of red cards}}{\text{Total number of cards}} = \frac{26}{52} = 0.5\]</span></p>
 <p>Since <span class="math inline">\(( 0 \leq P(A) \leq 1)\)</span>, this follows the basic probability rule. Next let’s consider mutually exclusive events. Let event <span class="math inline">\(B\)</span> be drawing a heart and event <span class="math inline">\(C\)</span> be drawing a spade. Since a single drawn card cannot be both a heart and a spade, these events are mutually exclusive.</p>
 <p>The four suits (<em>hearts, diamonds, clubs, spades</em>) form an exhaustive set, because every card belongs to exactly one suit. The sum of their probabilities equals 1:</p>
 <p><span class="math display">\[P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \frac{13}{52} + \frac{13}{52} + \frac{13}{52} + \frac{13}{52} = 1\]</span></p>
-<p>Note the this also satisfies the rule <span class="math inline">\(\sum P(x_i) = 1\)</span>, where <span class="math inline">\(x_i\)</span> represents each possible outcome (suit).</p>
+<p>Note that this also satisfies the rule <span class="math inline">\(\sum P(x_i) = 1\)</span>, where <span class="math inline">\(x_i\)</span> represents each possible outcome (suit).</p>
+</div>
 </section>
 <section id="venn-diagram" class="level2" data-number="8.4">
 <h2 data-number="8.4" class="anchored" data-anchor-id="venn-diagram"><span class="header-section-number">8.4</span> Venn Diagram</h2>
@@ -386,28 +392,59 @@ details summary {
 <p>Probability rules help us quantify uncertainty, avoid cognitive biases, and make rational predictions based on available data. These rules allow us to make reliable decisions. Below we introduce some useful rules.</p>
 <section id="complement-rule" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="complement-rule">Complement Rule</h3>
-<p>The <strong>Complement Rule</strong> state that: <span class="math display">\[P(A^c)=1-P(A)\]</span> where <span class="math inline">\(A^c\)</span> is the complement of <span class="math inline">\(A\)</span>. This rule is useful when calculating probabilities for complex scenarios, where finding the probability of the complement is easier than computing the event itself.</p>
-<p><em>Ex: The probability of drawing a spade, diamond or clubs can be estimated by just calculating the probability of drawing a heart. Since the probability of drawing a heart is</em> <span class="math inline">\(P(Heart)=\frac{13}{52}\)</span>, then using the complement rule, <span class="math inline">\(P(Not \text{Heart})=1-\frac{13}{52}=\frac{39}{52}\)</span></p>
+<p>The <strong>Complement Rule</strong> states that:</p>
+<div class="callout-formula">
+<p><strong>THE COMPLEMENT RULE</strong> <span class="math display">\[P(A^c)=1-P(A)\]</span> where <span class="math inline">\(A^c\)</span> is the complement of <span class="math inline">\(A\)</span>.</p>
+</div>
+<p>This rule is useful when calculating probabilities for complex scenarios, where finding the probability of the complement is easier than computing the event itself.</p>
+<div class="callout-example">
+<p><strong>Example:</strong> The probability of drawing a spade, diamond or clubs can be estimated by just calculating the probability of drawing a heart. Since the probability of drawing a heart is <span class="math inline">\(P(Heart)=\frac{13}{52}\)</span>, then using the complement rule, <span class="math inline">\(P(Not \text{Heart})=1-\frac{13}{52}=\frac{39}{52}\)</span>.</p>
+</div>
 </section>
 <section id="addition-rule" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="addition-rule">Addition Rule</h3>
 <p>The <strong>Addition Rule</strong> states:</p>
-<p><span class="math display">\[P(A \cup B)=P(A)+P(B)-P(A \cap B)\]</span> where <span class="math inline">\(\cap\)</span> is intersection and <span class="math inline">\(\cup\)</span> is union. This formula prevents double-counting when events overlap by including the intersection of events.</p>
-<p><em>Ex: Let’s calculate the probability of drawing either a heart or a face card. If we let event</em> <span class="math inline">\(A\)</span>, be drawing a heart, and event <span class="math inline">\(B\)</span> be drawing a face card, the probability is given by: <span class="math display">\[P(A \cup B)=\frac{13}{52}+\frac{12}{52}-\frac{3}{52}=\frac{22}{52}\]</span></p>
+<div class="callout-formula">
+<p><strong>THE ADDITION RULE</strong> <span class="math display">\[P(A \cup B)=P(A)+P(B)-P(A \cap B)\]</span> where <span class="math inline">\(\cap\)</span> is intersection and <span class="math inline">\(\cup\)</span> is union.</p>
+</div>
+<p>This formula prevents double-counting when events overlap by including the intersection of events.</p>
+<div class="callout-example">
+<p><strong>Example:</strong> Let’s calculate the probability of drawing either a heart or a face card. If we let event <span class="math inline">\(A\)</span> be drawing a heart, and event <span class="math inline">\(B\)</span> be drawing a face card, the probability is given by: <span class="math display">\[P(A \cup B)=\frac{13}{52}+\frac{12}{52}-\frac{3}{52}=\frac{22}{52}\]</span></p>
+</div>
 </section>
 <section id="multiplication-rule" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="multiplication-rule">Multiplication Rule</h3>
-<p>The <strong>Multiplication Rule</strong> states: <span class="math display">\[P(A \cap B)= P(A|B)P(B)\]</span> where <span class="math inline">\(P(A|B)\)</span> is the conditional probability. <strong>Conditional probability</strong> measures the likelihood of an event occurring given that another event has already happened. If we reorganize the formula above we can get:</p>
-<p><span class="math display">\[P(A|B)=\frac{P(A \cap B)}{P(B)}\]</span> Note that his formula focuses on cases where Event B has already occurred. We can then find the fraction the cases where Event A also happens.</p>
-<p><em>Ex: Suppose we randomly draw two cards from a standard deck of 52 cards, without replacement. The probability that both cards are aces is given by:</em></p>
-<p><span class="math display">\[P(Ace \cap Ace)=P(Ace|Ace) \times P(Ace)= \frac {4}{52} \times \frac{3}{51}\]</span> Lastly, if events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, we can simplify the multiplication rule to:</p>
-<p><span class="math display">\[P(A \cap B)= P(A)P(B)\]</span> Hence, we can define independence as: events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if the occurrence (or non occurrence) of one does not affect the probability of the other occurring.</p>
-<p><em>Ex1: Suppose we randomly draw a card from a standard deck, replace it, and then draw another card. The probability of drawing heart in the first draw is</em> <span class="math inline">\(13/52\)</span>, the probability of drawing a spade in the second draw is also <span class="math inline">\(13/52\)</span>.</p>
-<p><em>Ex2: Suppose that the weather is sunny, this has no effect on the outcome of a lottery. Hence, the weather and lottery outcomes are independent</em></p>
+<p>The <strong>Multiplication Rule</strong> states:</p>
+<div class="callout-formula">
+<p><strong>THE MULTIPLICATION RULE</strong> <span class="math display">\[P(A \cap B)= P(A|B)P(B)\]</span> where <span class="math inline">\(P(A|B)\)</span> is the conditional probability.</p>
+</div>
+<p><strong>Conditional probability</strong> measures the likelihood of an event occurring given that another event has already happened. If we reorganize the formula above we can get:</p>
+<div class="callout-formula">
+<p><strong>CONDITIONAL PROBABILITY</strong> <span class="math display">\[P(A|B)=\frac{P(A \cap B)}{P(B)}\]</span></p>
+</div>
+<p>Note that this formula focuses on cases where Event B has already occurred. We can then find the fraction of the cases where Event A also happens.</p>
+<div class="callout-example">
+<p><strong>Example:</strong> Suppose we randomly draw two cards from a standard deck of 52 cards, without replacement. The probability that both cards are aces is given by: <span class="math display">\[P(Ace \cap Ace)=P(Ace|Ace) \times P(Ace)= \frac {4}{52} \times \frac{3}{51}\]</span></p>
+</div>
+<p>Lastly, if events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, we can simplify the multiplication rule to:</p>
+<div class="callout-formula">
+<p><strong>INDEPENDENCE</strong> <span class="math display">\[P(A \cap B)= P(A)P(B)\]</span></p>
+</div>
+<p>Hence, we can define independence as: events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent if the occurrence (or non occurrence) of one does not affect the probability of the other occurring.</p>
+<div class="callout-example">
+<p><strong>Example:</strong> Suppose we randomly draw a card from a standard deck, replace it, and then draw another card. The probability of drawing a heart in the first draw is <span class="math inline">\(13/52\)</span>, and the probability of drawing a spade in the second draw is also <span class="math inline">\(13/52\)</span>.</p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> Suppose that the weather is sunny; this has no effect on the outcome of a lottery. Hence, the weather and lottery outcomes are independent.</p>
+</div>
 </section>
 <section id="law-of-total-probability" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="law-of-total-probability">Law of Total Probability</h3>
-<p>The <strong>Law of Total Probability</strong> states: <span class="math display">\[P(A)=P(A \cap B)+P(A\cap B^c)\]</span> The formula mainly states that If an event <span class="math inline">\(A\)</span> can occur in multiple mutually exclusive scenarios (or conditions), then the total probability of <span class="math inline">\(A\)</span> is the sum of its probabilities under each scenario, weighted by how often those scenarios occur. By using the multiplication rule we can alternately show the law of total probability as: <span class="math display">\[P(A)=P(A|B)P(B)+P(A|B^c)P(B^c)\]</span> The Venn diagram helps us visualize the law of total probability.</p>
+<p>The <strong>Law of Total Probability</strong> states:</p>
+<div class="callout-formula">
+<p><strong>LAW OF TOTAL PROBABILITY</strong> <span class="math display">\[P(A)=P(A \cap B)+P(A\cap B^c)\]</span> which, using the multiplication rule, can also be written as <span class="math display">\[P(A)=P(A|B)P(B)+P(A|B^c)P(B^c)\]</span></p>
+</div>
+<p>The formula mainly states that if an event <span class="math inline">\(A\)</span> can occur in multiple mutually exclusive scenarios (or conditions), then the total probability of <span class="math inline">\(A\)</span> is the sum of its probabilities under each scenario, weighted by how often those scenarios occur. The Venn diagram helps us visualize the law of total probability.</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -418,17 +455,24 @@ details summary {
 </div>
 </div>
 <p>The image shows how event <span class="math inline">\(A\)</span> can occur. Essentially, when <span class="math inline">\(B\)</span> occurs <span class="math inline">\(A\)</span> is possible in the left semicircle. When <span class="math inline">\(B^c\)</span>, then <span class="math inline">\(A\)</span> is possible in the right semicircle. The addition of both semicircles, complete set <span class="math inline">\(A\)</span>.</p>
-<p><em>Ex: Consider the sets face cards and hearts. The entire set of hearts can be completed by taking face cards that are hearts, and non face cards (the complement of face cards) and hearts.</em></p>
+<div class="callout-example">
+<p><strong>Example:</strong> Consider the sets face cards and hearts. The entire set of hearts can be completed by taking face cards that are hearts, and non face cards (the complement of face cards) that are hearts.</p>
+</div>
 </section>
 <section id="bayes-theorem" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="bayes-theorem">Bayes’ Theorem</h3>
 <p><strong>Bayes’ Theorem</strong> states:</p>
-<p><span class="math display">\[P(A|B)= \frac{P(B|A)P(A)}{P(B)}\]</span> In essence, Bayes’ theorem is a way of updating probabilities in light of new evidence. The theorem tells us that the probability of an event A given that we have observed some evidence is equal to the prior probability (<span class="math inline">\(P(A)\)</span>) times a factor that measures the informativeness of the observed evidence <span class="math inline">\(P(B|A)/P(B)\)</span>.</p>
+<div class="callout-formula">
+<p><strong>BAYES’ THEOREM</strong> <span class="math display">\[P(A|B)= \frac{P(B|A)P(A)}{P(B)}\]</span></p>
+</div>
+<p>In essence, Bayes’ theorem is a way of updating probabilities in light of new evidence. The theorem tells us that the probability of an event A given that we have observed some evidence is equal to the prior probability (<span class="math inline">\(P(A)\)</span>) times a factor that measures the informativeness of the observed evidence <span class="math inline">\(P(B|A)/P(B)\)</span>.</p>
+<div class="callout-example">
 <p><strong>Example:</strong> Assume that a rare form of cancer affects 1% of the population. That is, 1 out of 100 people will likely be affected by it. There is a test for the cancer, but it is imperfect. In particular, if you don’t have cancer, the test says that you do 10% of the time (false positive rate). Also, if you do have cancer, it will tell you that you don’t have it 5% of the time. Let’s say you get tested, and your doctor calls you and says you have tested positive. How likely is it that you have this type of cancer?</p>
 <p>We can use the Law of Total Probability and Bayes’ theorem to answer this question. Let’s first identify what we want to estimate. Since we need to figure out the likelihood of having cancer, given that we tested positive, we are looking for <span class="math inline">\(P(C|+)\)</span>. Now, we can set up Bayes’ rule to see what additional information we need to find our desired value. Bayes’ rule states:</p>
 <p><span class="math display">\[P(C|+)= \frac{P(+|C)P(C)}{P(+)}\]</span> Since the problem does not provide the <span class="math inline">\(P(+)\)</span> we must estimate it with the Law of Total Probability, mainly:</p>
 <p><span class="math display">\[P(+)=P(+|C)P(C)+P(+|NC)P(NC)=(0.95 \times 0.01+(0.1 \times 0.99)=0.1085\]</span> We can now use this probability to find our new belief that we have cancer:</p>
-<p><span class="math display">\[P(C|+)= \frac{(0.95 \times 0.01) }{0.1085}=0.0875\]</span> In conclusion, if we before thought we had a <span class="math inline">\(1%\)</span> chance of having the rare form of cancer, once we were told that we tested positive, we should update our belief to about <span class="math inline">\(8.75%\)</span>.</p>
+<p><span class="math display">\[P(C|+)= \frac{(0.95 \times 0.01) }{0.1085}=0.0875\]</span> In conclusion, if we before thought we had a <span class="math inline">\(1\%\)</span> chance of having the rare form of cancer, once we were told that we tested positive, we should update our belief to about <span class="math inline">\(8.75\%\)</span>.</p>
+</div>
 </section>
 </section>
 <section id="contingency-tables" class="level2" data-number="8.6">
@@ -497,27 +541,47 @@ details summary {
 </tbody>
 </table>
 <p>The table shows that there are six possible ways to organize a group of three people. The <strong>Factorial</strong> counts how many ways a group of <span class="math inline">\(N\)</span> objects can be organized. Formally, we write:</p>
-<p><span class="math display">\[Factorial=N!\]</span></p>
-<p>where the operator <span class="math inline">\(!\)</span> means to take the product of all positive integers from <span class="math inline">\(N\)</span> down to <span class="math inline">\(1\)</span>. Additionally, <span class="math inline">\(0!\)</span> is equal to zero. If we then try to find in how many ways we can organize a group of three people, we can avoid enumeration by calculating <span class="math inline">\(3!=3 \times 2 \times 1=6\)</span>.</p>
-<p><em>Ex: Let’s assume that a manager has locked down the first five batters in a given game, but is undecided on the batting order. The number of ways that he can organize the five batters is given by</em> <span class="math inline">\(5!=5 \times 4 \times 3 \times 2 \times 1=120\)</span>.</p>
+<div class="callout-formula">
+<p><strong>THE FACTORIAL</strong> <span class="math display">\[Factorial=N!\]</span> where the operator <span class="math inline">\(!\)</span> means to take the product of all positive integers from <span class="math inline">\(N\)</span> down to <span class="math inline">\(1\)</span>. Note that <span class="math inline">\(0!\)</span> is equal to one.</p>
+</div>
+<p>If we then try to find in how many ways we can organize a group of three people, we can avoid enumeration by calculating <span class="math inline">\(3!=3 \times 2 \times 1=6\)</span>.</p>
+<div class="callout-example">
+<p><strong>Example:</strong> Let’s assume that a manager has locked down the first five batters in a given game, but is undecided on the batting order. The number of ways that he can organize the five batters is given by <span class="math inline">\(5!=5 \times 4 \times 3 \times 2 \times 1=120\)</span>.</p>
+</div>
 </section>
 <section id="combinations" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="combinations">Combinations</h3>
-<p>The <strong>Combination</strong> function counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. The order in which the <span class="math inline">\(x\)</span> objects are listed does not matter. If repetition is not allowed use: <span class="math display">\[C(n, x)= \frac{n!}{(n-x)!x!}\]</span> <em>Ex: Let’s imaging visiting the Mexican restaurant Chipotle. We are choosing a bowl for lunch and we can choose from the following items: beans, chicken, rice, pico, guac, and beef. If we are only allowed to select four items out of the six, in how many ways can we construct a bowl? Below we use the combination formula to show that there are</em> <span class="math inline">\(15\)</span> possible bowls.</p>
-<p><span class="math display">\[C(6, 4)= \frac{6!}{(6-4)!4!}=\frac{6 \times 5}{2}=15\]</span></p>
+<p>The <strong>Combination</strong> function counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. The order in which the <span class="math inline">\(x\)</span> objects are listed does not matter. If repetition is not allowed use:</p>
+<div class="callout-formula">
+<p><strong>COMBINATIONS (No Repetition)</strong> <span class="math display">\[C(n, x)= \frac{n!}{(n-x)!x!}\]</span></p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> Let’s imagine visiting the Mexican restaurant Chipotle. We are choosing a bowl for lunch and we can choose from the following items: beans, chicken, rice, pico, guac, and beef. If we are only allowed to select four items out of the six, in how many ways can we construct a bowl? Below we use the combination formula to show that there are <span class="math inline">\(15\)</span> possible bowls. <span class="math display">\[C(6, 4)= \frac{6!}{(6-4)!4!}=\frac{6 \times 5}{2}=15\]</span></p>
+</div>
 <p>There are situations when we wish to count all possible combinations inclusive of repetition of elements. If repetition is allowed we use the following formula:</p>
-<p><span class="math display">\[C(n+x-1,x)=\frac{(x+n-1)!}{(n-1)!x!}\]</span></p>
-<p><em>Ex: Imagine you visit the ice cream store. You want a three scoop dish of ice cream. In how many ways can you choose your dish if the flavors are vanilla, chocolate, smores, brownie, and chips? Below we use the combination formula with repetition to show that the answer is</em> <span class="math inline">\(35\)</span>.</p>
-<p><span class="math display">\[C(7,3)=\frac{(5+3-1)!}{(5-1)!3!}= 7 \times 5=35\]</span></p>
+<div class="callout-formula">
+<p><strong>COMBINATIONS (With Repetition)</strong> <span class="math display">\[C(n+x-1,x)=\frac{(x+n-1)!}{(n-1)!x!}\]</span></p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> Imagine you visit the ice cream store. You want a three scoop dish of ice cream. In how many ways can you choose your dish if the flavors are vanilla, chocolate, smores, brownie, and chips? Below we use the combination formula with repetition to show that the answer is <span class="math inline">\(35\)</span>. <span class="math display">\[C(7,3)=\frac{(5+3-1)!}{(5-1)!3!}= 7 \times 5=35\]</span></p>
+</div>
 </section>
 <section id="permutations" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="permutations">Permutations</h3>
 <p>The <strong>Permutation</strong> function also counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. However, the order in which the <span class="math inline">\(x\)</span> objects are listed does matter. Note that since order matters, the permutation will always have a higher number of possible outcomes relative to the combination. When repetition is not allowed, permutations can be counted by:</p>
-<p><span class="math display">\[P(n,x)= \frac{n!}{(n-x)!}\]</span></p>
-<p><em>Ex: The Olympic medal finals for the 100 meters sprint has eight runners competing for three medals. How many medal podiums are possible? There are a total of</em> <span class="math inline">\(336\)</span>. Below you can see the calculation.</p>
-<p><span class="math display">\[P(8,3)= \frac{8!}{5!}= 8 \times 7 \times 6=336\]</span></p>
-<p>As with combinations, there might be situations were we wish to count when repetition is allowed. If this is this case, use: <span class="math display">\[P(n,x)=n^x\]</span></p>
-<p><em>Ex: You are trying to guess the combination of a lock that has three possible numbers. Since there are 10 numbers to choose from, there are</em> <span class="math inline">\(10^3=1000\)</span> possible permutations.</p>
+<div class="callout-formula">
+<p><strong>PERMUTATIONS (No Repetition)</strong> <span class="math display">\[P(n,x)= \frac{n!}{(n-x)!}\]</span></p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> The Olympic medal finals for the 100 meters sprint has eight runners competing for three medals. How many medal podiums are possible? There are a total of <span class="math inline">\(336\)</span>. Below you can see the calculation. <span class="math display">\[P(8,3)= \frac{8!}{5!}= 8 \times 7 \times 6=336\]</span></p>
+</div>
+<p>As with combinations, there might be situations where we wish to count when repetition is allowed. If this is the case, use:</p>
+<div class="callout-formula">
+<p><strong>PERMUTATIONS (With Repetition)</strong> <span class="math display">\[P(n,x)=n^x\]</span></p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> You are trying to guess the combination of a lock that has three possible numbers. Since there are 10 numbers to choose from, there are <span class="math inline">\(10^3=1000\)</span> possible permutations.</p>
+</div>
 </section>
 </section>
 <section id="probability-in-excel" class="level2" data-number="8.8">

@@ -32,10 +32,21 @@ For restaurant owners, the number of customers they attract is a crucial variabl
 
 When summarizing a random variable, we are mostly interested in the variable's central tendency (Expected Value) and dispersion (Variance).
 
-The **expected value** (mean) is a measure of central location. For a discrete random variable it is given by: $$E(x)=\mu=\sum xf(x)$$ where $f(x)$ is the probability mass function. For a continuous random variable it is given by $E(x)= \int_{-\infty}^{\infty} x f(x) dx$, where $f(x)$ is the probability density function.
+The **expected value** (mean) is a measure of central location. For a discrete random variable it is given by:
 
-The **variance** summarizes the deviation of the values of the random variable from the mean. It is calculated by: $$var(x)=E[(x-E(x))^2]=E(x^2)-[E(x)]^2$$ Note that this formula can be used for both discrete and continuous random variables.
+::: callout-formula
+**THE EXPECTED VALUE** $$E(x)=\mu=\sum xf(x)$$ where $f(x)$ is the probability mass function. For a continuous random variable it is $E(x)= \int_{-\infty}^{\infty} x f(x)\, dx$, where $f(x)$ is the probability density function.
+:::
 
+The **variance** summarizes the deviation of the values of the random variable from the mean. It is calculated by:
+
+::: callout-formula
+**THE VARIANCE** $$var(x)=E[(x-E(x))^2]=E(x^2)-[E(x)]^2$$
+:::
+
+Note that this formula can be used for both discrete and continuous random variables.
+
+::: callout-example
 **Example:** Let's consider an incentive pay scheme for a company. The table below summarizes the scheme:
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
@@ -47,32 +58,37 @@ If a worker receives a "Superior" rating, they earn a \$10,000 bonus. Based on y
 To summarize this distribution we can calculate the mean bonus paid. Using the expected value formula we find that the company pays 4,200 dollars on average in compensation.
 
 $$E(x)=(10 \times 0.15) + (6 \times 0.25) + (3 \times 0.4) + (0 \times 0.2)=4.2$$ The variability of the compensation is given by: $$var(x)=(100 \times 0.15) + (36 \times 0.25) + (9 \times 0.4) + (0 \times 0.2)-(4.2)^2=9.96$$ The expected value and the variance has helped us summarize the results of the company's incentive scheme. Mainly, the company pays on average an incentive of 4,200 dollars give or take 3,156 dollars.
+:::
 
 ## Discrete Uniform Distribution
 
 The **discrete uniform distribution** is a probability distribution that assigns equal probability to each outcome in a finite set of possible outcomes. In other words, each outcome in the set is equally likely to occur.
 
-The **probability mass function** is given by: $$f(x)=1/n$$ where $n$ is the number of elements in the sample space (all possible outcomes). The **expected value** is given by: $$E(x)=\frac {\sum x_i}{n}$$ where $x_i$ are the possible values, and $n$ is the number of possible values. The **variance** is given by: $$var(x)=\frac {\sum (x_i-E(x))^2}{n}$$ **Example:** Consider tossing a fair die. Since all outcomes are equally likely, the probability of the die landing on 6 is $f(x)=1/6$. The expected value on a roll of a die is $E(x)=\frac {1+2+3+4+5+6}{6}=3.5$ and the variance is $var(x)=\frac {(-2.5)^2+(-1.5)^2+(-0.5)^2+0.5^2+1.5^2+2.5^2}{6}\approx 2.92$.
+::: callout-formula
+**THE DISCRETE UNIFORM DISTRIBUTION** $$f(x)=1/n$$ $$E(x)=\frac {\sum x_i}{n}$$ $$var(x)=\frac {\sum (x_i-E(x))^2}{n}$$ where $n$ is the number of possible outcomes and $x_i$ are the possible values.
+:::
+
+::: callout-example
+**Example:** Consider tossing a fair die. Since all outcomes are equally likely, the probability of the die landing on 6 is $f(x)=1/6$. The expected value on a roll of a die is $E(x)=\frac {1+2+3+4+5+6}{6}=3.5$ and the variance is $var(x)=\frac {(-2.5)^2+(-1.5)^2+(-0.5)^2+0.5^2+1.5^2+2.5^2}{6}\approx 2.92$.
+:::
 
 ## Binomial Distribution
 
 The binomial distribution is a probability distribution that describes the outcome of a sequence of $n$ independent Bernoulli trials. In a Bernoulli trial, there are only two possible outcomes: "success" and "failure". The probability of success is denoted by $p$, and the probability of failure is denoted by $q = 1 - p$. In a sequence of $n$ independent Bernoulli trials, the number of successes ($x$) is a random variable that follows a binomial distribution.
 
-The **probability mass function** is given by: $$f(x)=C_x^n (p^x)(1-p)^{n-x}$$ where $n$ is the number of trials, $x$ is the number of successes, $p$ is the probability of success, and $C_x^n$ is the number of ways there can be $x$ successes in $n$ trials.
+::: callout-formula
+**THE BINOMIAL DISTRIBUTION** $$f(x)=C_x^n (p^x)(1-p)^{n-x}$$ $$E(x)=np \qquad var(x)=np(1-p)$$ where $n$ is the number of trials, $x$ is the number of successes, $p$ is the probability of success, and $C_x^n$ is the number of ways there can be $x$ successes in $n$ trials.
+:::
 
-The **expected value** of the binomial distribution is
-
-$$E(x)=np$$
-
-The **variance** of the binomial distribution is
-
-$$var(x)=np(1-p)$$ **Example:** Consider the following scenario. Imagine your favorite team in the NBA Finals, trailing by 2 points with seconds left. Your star player, a 90% free-throw shooter, gets three shots. What’s the chance your team takes the lead?
+::: callout-example
+**Example:** Consider the following scenario. Imagine your favorite team in the NBA Finals, trailing by 2 points with seconds left. Your star player, a 90% free-throw shooter, gets three shots. What’s the chance your team takes the lead?
 
 Since shooting free-throws can be thought as a binomial experiment, we can find the probability using the binomial probability mass function. To take the lead, the star player needs to make all three shots. We can substitute three into the function:
 
 $$f(3)=C_3^3 (0.9^3)(0.1)^{0}=0.9^3=0.729$$
 
 The function indicates that there is a 72.9% chance of taking the lead.
+:::
 
 ## The Hypergeometric Distribution
 
@@ -84,29 +100,27 @@ The **hypergeometric** experiment differs from the binomial since:
 
 - the probability of success changes from trial to trial.
 
-The **probability mass function** is given by:
+::: callout-formula
+**THE HYPERGEOMETRIC DISTRIBUTION** $$f(x)=\frac {C_x^r C_{n-x}^{N-r}}{C_n^N}$$ $$E(x)=n \frac {r}{N} \qquad var(x)= n \frac {r}{N} \left(1- \frac {r}{N}\right) \left(\frac {N-n}{N-1}\right)$$ where $n$ is the sample size, $x$ is the number of successes in the sample, $r$ is the number of successes in the population, and $N$ is the number of elements in the population.
+:::
 
-$$f(x)=\frac {C_x^r C_{n-x}^{N-r}}{C_n^N}$$
-
-where $n$ is the number of trials, $x$ is the number of successes, $r$ is the number of elements in the population labeled as success, and $N$ is the number of elements in the population.
-
-The **expected value** of the hypergeometric distribution is: $$E(x)=n \frac {r}{N}$$
-
-The **variance** of the hypergeometric distribution is: $$var(x)= n \frac {r}{N} (1- \frac {r}{N}) (\frac {N-n}{N-1})$$ **Example:** Picture a box of 12 electric fuses from the manufacturer Ontario Electric. Five fuses are known to be defective. An inspector randomly picks 3 fuses to test. What is the probability that exactly one of the three chosen is defective?
+::: callout-example
+**Example:** Picture a box of 12 electric fuses from the manufacturer Ontario Electric. Five fuses are known to be defective. An inspector randomly picks 3 fuses to test. What is the probability that exactly one of the three chosen is defective?
 
 We can use the hypergeometric probability mass function to solve this problem. From the problem we know that $N=12$, $n=3$, $r=5$, and $x=1$. Substituting these values into the PMF yields:
 
 $$f(1)=\frac {C_1^5 C_{4}^{7}}{C_3^{12}}=0.4772$$
 
 There is a 47.72% chance that the inspector finds a defective fuse in his sample of three.
+:::
 
 ## Poisson Distribution
 
 The **Poisson distribution** estimates the number of successes ($x$) over a specified interval of time or space.
 
-The **probability mass function** is given by: $$f(x)= \frac {\mu^{x} e^{-\mu}}{x!}$$
-
-where $\mu$ is the expected number of successes in any given interval and also the variance, and $e$ is Euler's number (2.71828...).
+::: callout-formula
+**THE POISSON DISTRIBUTION** $$f(x)= \frac {\mu^{x} e^{-\mu}}{x!}$$ where $\mu$ is the expected number of successes in any given interval (and also the variance), and $e$ is Euler's number ($2.71828...$).
+:::
 
 An experiment satisfies a Poisson process if:
 
@@ -116,11 +130,13 @@ An experiment satisfies a Poisson process if:
 
 - The probability of success in any interval is the same for all intervals of equal size and is proportional to the size of the interval.
 
+::: callout-example
 **Example:** Imagine a fast-food restaurant’s drive-thru where, on average, 10 cars arrive in a 15-minute span. What’s the likelihood of exactly 5 cars showing up in 15 minutes?
 
 We can use the Poisson PMF function for this problem. The arrival rate is 10 cars every 15 minutes. So there are 10 successes in the 15 minute interval. We can substitute values into the PMF:
 
 $$f(5)= \frac {10^{5} e^{-10}}{5!}=0.0378$$ There is a 3.78% chance of five cars arriving within a 15 minute interval.
+:::
 
 ## Discrete Distributions in Excel
 

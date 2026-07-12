@@ -256,15 +256,30 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#cells-and-references" id="toc-cells-and-references" class="nav-link active" data-scroll-target="#cells-and-references">Cells and References</a></li>
+  <li><a href="#the-excel-interface" id="toc-the-excel-interface" class="nav-link active" data-scroll-target="#the-excel-interface"><span class="header-section-number">15.1</span> The Excel Interface</a>
+  <ul class="collapse">
+  <li><a href="#cells-and-references" id="toc-cells-and-references" class="nav-link" data-scroll-target="#cells-and-references">Cells and References</a></li>
   <li><a href="#ranges" id="toc-ranges" class="nav-link" data-scroll-target="#ranges">Ranges</a></li>
-  <li><a href="#worksheets-and-tables" id="toc-worksheets-and-tables" class="nav-link" data-scroll-target="#worksheets-and-tables">Worksheets and Tables</a></li>
-  <li><a href="#the-data-analysis-toolpak" id="toc-the-data-analysis-toolpak" class="nav-link" data-scroll-target="#the-data-analysis-toolpak">The Data Analysis ToolPak</a></li>
-  <li><a href="#importing-data" id="toc-importing-data" class="nav-link" data-scroll-target="#importing-data">Importing Data</a></li>
-  <li><a href="#formulas-and-functions" id="toc-formulas-and-functions" class="nav-link" data-scroll-target="#formulas-and-functions">Formulas and Functions</a></li>
-  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types">Data Types</a></li>
-  <li><a href="#comparison-and-logical-operators" id="toc-comparison-and-logical-operators" class="nav-link" data-scroll-target="#comparison-and-logical-operators">Comparison and Logical Operators</a></li>
-  <li><a href="#dictionary-of-functions" id="toc-dictionary-of-functions" class="nav-link" data-scroll-target="#dictionary-of-functions"><span class="header-section-number">15.1</span> Dictionary of Functions</a>
+  </ul></li>
+  <li><a href="#entering-formulas-and-functions" id="toc-entering-formulas-and-functions" class="nav-link" data-scroll-target="#entering-formulas-and-functions"><span class="header-section-number">15.2</span> Entering Formulas and Functions</a>
+  <ul class="collapse">
+  <li><a href="#order-of-operations" id="toc-order-of-operations" class="nav-link" data-scroll-target="#order-of-operations">Order of Operations</a></li>
+  <li><a href="#array-formulas" id="toc-array-formulas" class="nav-link" data-scroll-target="#array-formulas">Array Formulas</a></li>
+  </ul></li>
+  <li><a href="#navigating-and-selecting" id="toc-navigating-and-selecting" class="nav-link" data-scroll-target="#navigating-and-selecting"><span class="header-section-number">15.3</span> Navigating and Selecting</a></li>
+  <li><a href="#range-names" id="toc-range-names" class="nav-link" data-scroll-target="#range-names"><span class="header-section-number">15.4</span> Range Names</a></li>
+  <li><a href="#data-types" id="toc-data-types" class="nav-link" data-scroll-target="#data-types"><span class="header-section-number">15.5</span> Data Types</a></li>
+  <li><a href="#working-with-dates-and-time" id="toc-working-with-dates-and-time" class="nav-link" data-scroll-target="#working-with-dates-and-time"><span class="header-section-number">15.6</span> Working with Dates and Time</a></li>
+  <li><a href="#working-with-text" id="toc-working-with-text" class="nav-link" data-scroll-target="#working-with-text"><span class="header-section-number">15.7</span> Working with Text</a></li>
+  <li><a href="#lookup-functions" id="toc-lookup-functions" class="nav-link" data-scroll-target="#lookup-functions"><span class="header-section-number">15.8</span> Lookup Functions</a></li>
+  <li><a href="#logical-and-conditional-functions" id="toc-logical-and-conditional-functions" class="nav-link" data-scroll-target="#logical-and-conditional-functions"><span class="header-section-number">15.9</span> Logical and Conditional Functions</a></li>
+  <li><a href="#offset-and-match" id="toc-offset-and-match" class="nav-link" data-scroll-target="#offset-and-match"><span class="header-section-number">15.10</span> OFFSET and MATCH</a></li>
+  <li><a href="#sorting-filtering-and-dynamic-arrays" id="toc-sorting-filtering-and-dynamic-arrays" class="nav-link" data-scroll-target="#sorting-filtering-and-dynamic-arrays"><span class="header-section-number">15.11</span> Sorting, Filtering, and Dynamic Arrays</a></li>
+  <li><a href="#importing-and-web-data" id="toc-importing-and-web-data" class="nav-link" data-scroll-target="#importing-and-web-data"><span class="header-section-number">15.12</span> Importing and Web Data</a></li>
+  <li><a href="#pivottables" id="toc-pivottables" class="nav-link" data-scroll-target="#pivottables"><span class="header-section-number">15.13</span> PivotTables</a></li>
+  <li><a href="#charts-and-visualization" id="toc-charts-and-visualization" class="nav-link" data-scroll-target="#charts-and-visualization"><span class="header-section-number">15.14</span> Charts and Visualization</a></li>
+  <li><a href="#the-data-analysis-toolpak" id="toc-the-data-analysis-toolpak" class="nav-link" data-scroll-target="#the-data-analysis-toolpak"><span class="header-section-number">15.15</span> The Data Analysis ToolPak</a></li>
+  <li><a href="#statistical-function-dictionary" id="toc-statistical-function-dictionary" class="nav-link" data-scroll-target="#statistical-function-dictionary"><span class="header-section-number">15.16</span> Statistical Function Dictionary</a>
   <ul class="collapse">
   <li><a href="#general-purpose" id="toc-general-purpose" class="nav-link" data-scroll-target="#general-purpose">General Purpose</a></li>
   <li><a href="#tables-and-charts-descriptive-stats-ii" id="toc-tables-and-charts-descriptive-stats-ii" class="nav-link" data-scroll-target="#tables-and-charts-descriptive-stats-ii">Tables and Charts (Descriptive Stats II)</a></li>
@@ -273,6 +288,7 @@ window.Quarto = {
   <li><a href="#measures-of-shape-and-position-descriptive-stats-v" id="toc-measures-of-shape-and-position-descriptive-stats-v" class="nav-link" data-scroll-target="#measures-of-shape-and-position-descriptive-stats-v">Measures of Shape and Position (Descriptive Stats V)</a></li>
   <li><a href="#measures-of-association-regression-i" id="toc-measures-of-association-regression-i" class="nav-link" data-scroll-target="#measures-of-association-regression-i">Measures of Association (Regression I)</a></li>
   <li><a href="#regression-regression-ii" id="toc-regression-regression-ii" class="nav-link" data-scroll-target="#regression-regression-ii">Regression (Regression II)</a></li>
+  <li><a href="#probability-distributions-probability-iiii" id="toc-probability-distributions-probability-iiii" class="nav-link" data-scroll-target="#probability-distributions-probability-iiii">Probability Distributions (Probability I–III)</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -299,59 +315,185 @@ window.Quarto = {
 </header>
 
 
-<p>Below you will find a collection of basic Excel concepts along with a dictionary of the functions used throughout the descriptive statistics and regression chapters. Use the first sections to review how Excel organizes and references data, and use the dictionary as a quick reference for the functions that appear in each chapter.</p>
+<p>This chapter reviews the essential Excel skills used throughout the book. The first sections walk through the Excel interface, how to navigate a worksheet, how references and formulas work, and the built-in functions for working with numbers, dates, text, and lookups. The chapter then closes with a dictionary of the statistical functions used in each chapter, so you can quickly find the right tool when you need it. No prior experience is assumed — if you have used Excel before, treat the early sections as a refresher.</p>
+<section id="the-excel-interface" class="level2" data-number="15.1">
+<h2 data-number="15.1" class="anchored" data-anchor-id="the-excel-interface"><span class="header-section-number">15.1</span> The Excel Interface</h2>
+<p>Excel is an <strong>electronic spreadsheet</strong>. A spreadsheet is a grid made up of <strong>cells</strong>, and each cell holds a single piece of data — either text or a number. A cell is identified by its <strong>column</strong> (a letter) and its <strong>row</strong> (a number), so the cell in the first column and first row is <code>A1</code>. The <strong>Name Box</strong>, at the left end of the formula bar, always shows the reference of the currently selected cell; you can also type a reference (or a range name) into it and press <code>Enter</code> to jump straight to that location.</p>
+<p>The <strong>Home tab</strong> collects the formatting tools you will use most often: fonts, number formats, borders, fill colors, and alignment. Formatting changes how a value is displayed without changing the value itself.</p>
+<p>What makes a spreadsheet powerful is that cells can be <em>related to one another</em> through formulas. Instead of typing a result, you write a formula that references other cells, and Excel keeps the result up to date as those cells change.</p>
+<p>A handful of keyboard shortcuts will save you a great deal of time. On Windows use <code>Ctrl</code>; on a Mac use <code>Cmd</code>.</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: left;">Action</th>
+<th style="text-align: center;">Shortcut</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Copy</td>
+<td style="text-align: center;"><code>Ctrl/Cmd + C</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Paste</td>
+<td style="text-align: center;"><code>Ctrl/Cmd + V</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Cut</td>
+<td style="text-align: center;"><code>Ctrl/Cmd + X</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Undo</td>
+<td style="text-align: center;"><code>Ctrl/Cmd + Z</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Redo</td>
+<td style="text-align: center;"><code>Ctrl/Cmd + Y</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Find</td>
+<td style="text-align: center;"><code>Ctrl/Cmd + F</code></td>
+</tr>
+</tbody>
+</table>
+<p>To keep your work organized, you can rename a worksheet by double-clicking its tab and typing a new name, and you can color-code a tab by right-clicking it and choosing <code>Tab Color</code>. Selecting a block of data and choosing <code>Home → Format as Table</code> (or pressing <code>Ctrl + T</code>) turns the range into a structured <strong>Excel Table</strong> with built-in filtering, banded rows, and named columns.</p>
 <section id="cells-and-references" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="cells-and-references">Cells and References</h3>
-<p>A <strong>cell</strong> is the basic building block of a worksheet. Each cell is identified by its column letter and row number, such as <code>A1</code> or <code>C15</code>. You store a value or a formula in a cell simply by typing into it. This is the Excel equivalent of assigning a value to an object.</p>
-<p>When a formula refers to another cell, it uses a <strong>cell reference</strong>. References come in three forms:</p>
+<p>When a formula refers to another cell, it uses a <strong>cell reference</strong>. References come in three forms, and the difference matters as soon as you copy a formula:</p>
 <ul>
-<li><p><strong>Relative</strong> (<code>A1</code>) adjusts automatically when the formula is copied to another cell.</p></li>
-<li><p><strong>Absolute</strong> (<code>$A$1</code>) stays fixed when copied. The dollar signs lock both the column and the row.</p></li>
-<li><p><strong>Mixed</strong> (<code>$A1</code> or <code>A$1</code>) locks only the column or only the row.</p></li>
+<li><strong>Relative</strong> (<code>A1</code>) adjusts automatically when the formula is copied to another cell.</li>
+<li><strong>Absolute</strong> (<code>$A$1</code>) stays fixed when copied. The dollar signs lock both the column and the row.</li>
+<li><strong>Mixed</strong> (<code>$A1</code> or <code>A$1</code>) locks only the column or only the row.</li>
 </ul>
-<p>For example, <code>=A1*2</code> multiplies the value in <code>A1</code> by two. Pressing <code>F4</code> while editing a reference cycles through the relative, absolute, and mixed forms.</p>
+<p>For example, <code>=A1*2</code> multiplies the value in <code>A1</code> by two. Pressing <code>F4</code> (or <code>Cmd + T</code> on a Mac) while editing a reference cycles through the relative, absolute, and mixed forms.</p>
 </section>
 <section id="ranges" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="ranges">Ranges</h3>
-<p>A <strong>range</strong> is a group of adjacent cells, written as the top-left cell, a colon, and the bottom-right cell. For example, <code>A1:A10</code> is a single column of ten cells, and <code>A1:C10</code> is a rectangular block. A range is the Excel equivalent of a vector — a list of values that most statistical functions take as an input.</p>
-<p>You can reference an entire column with <code>A:A</code> or an entire row with <code>1:1</code>. To give a range a memorable name, select it and go to <code>Formulas → Define Name</code>; you can then use the name in formulas instead of the cell addresses.</p>
+<p>A <strong>range</strong> is a group of adjacent cells, written as the top-left cell, a colon, and the bottom-right cell. For example, <code>A1:A10</code> is a single column of ten cells, and <code>A1:C10</code> is a rectangular block. A range is the Excel equivalent of a list of values, and it is what most functions take as an input. You can reference an entire column with <code>A:A</code> or an entire row with <code>1:1</code>.</p>
 </section>
-<section id="worksheets-and-tables" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="worksheets-and-tables">Worksheets and Tables</h3>
-<p>Data in Excel is stored in a <strong>worksheet</strong> in a tabular format, much like a data frame. Columns represent variables and rows represent observations, with the first row typically holding the headers. For a cleaner structure, select your data and press <code>Ctrl + T</code> (or go to <code>Insert → Table</code>) to convert the range into an <strong>Excel Table</strong>. Tables make it easy to sort, filter, and refer to columns by name.</p>
 </section>
-<section id="the-data-analysis-toolpak" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="the-data-analysis-toolpak">The Data Analysis ToolPak</h3>
-<p>Some analyses — such as regression — require the <strong>Analysis ToolPak</strong>, an add-in that ships with Excel but is turned off by default. Enabling an add-in is the Excel equivalent of installing and loading a package. To enable it on Windows, go to <code>File → Options → Add-ins → Manage: Excel Add-ins → Go</code>, check <code>Analysis ToolPak</code>, and click <code>OK</code>. On a Mac, use <code>Tools → Excel Add-ins</code>. Once enabled, the ToolPak appears under <code>Data → Data Analysis</code>.</p>
-</section>
-<section id="importing-data" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="importing-data">Importing Data</h3>
-<p>To <strong>import</strong> a CSV file, use <code>File → Open</code> and select the file, or go to <code>Data → Get Data → From Text/CSV</code> for more control over how the columns are separated. To preview large data sets, freeze the header row with <code>View → Freeze Panes</code>, and use <code>Ctrl + ↓</code> or <code>Ctrl + End</code> to jump to the last observation.</p>
-</section>
-<section id="formulas-and-functions" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="formulas-and-functions">Formulas and Functions</h3>
-<p>Every calculation in Excel begins with an equals sign (<code>=</code>). A <strong>function</strong> relates an input (its arguments) to an output. For example, the <code>SUM</code> function takes a range of numeric values and returns their total:</p>
+<section id="entering-formulas-and-functions" class="level2" data-number="15.2">
+<h2 data-number="15.2" class="anchored" data-anchor-id="entering-formulas-and-functions"><span class="header-section-number">15.2</span> Entering Formulas and Functions</h2>
+<p>Every calculation in Excel begins with an equals sign (<code>=</code>). A <strong>function</strong> relates an input (its arguments) to an output. The workflow is always the same: type <code>=</code>, name the function, read the tooltip that Excel shows to remind you of the arguments, fill in the arguments separated by commas, and press <code>Enter</code>. If you are unsure how a function works, click the <strong><code>fx</code></strong> button next to the formula bar for guided help.</p>
+<p>The two functions you will reach for first are <code>SUM</code> and <code>AVERAGE</code>. To total the values in cells <code>A2</code> through <code>A5</code>:</p>
 <pre class="excel"><code>=SUM(A2:A5)</code></pre>
-<p>Arguments are separated by commas, and some are optional. Many functions accept a <strong>criteria</strong> argument that filters the data, such as <code>=AVERAGEIF(A2:A100, "&gt;=1", B2:B100)</code>. A few calculations — like a conditional variance — must be entered as <strong>array formulas</strong>. In older versions of Excel you complete these by pressing <code>Ctrl + Shift + Enter</code> instead of just <code>Enter</code>. If a formula cannot be evaluated, Excel returns an error such as <code>#DIV/0!</code>, <code>#VALUE!</code>, <code>#N/A</code>, or <code>#REF!</code>.</p>
+<p>and to average them:</p>
+<pre class="excel"><code>=AVERAGE(A2:A5)</code></pre>
+<p>Once a formula is written, you rarely retype it. Select the cell and drag the small square at its bottom-right corner (the <strong>fill handle</strong>) to copy the formula. Because references are relative by default, copying <strong>down</strong> makes Excel adjust the row numbers, and copying <strong>across</strong> makes it adjust the column letters. This is what lets a single formula compute a whole column of results. Many functions also accept a <strong>criteria</strong> argument that filters the data, such as <code>=AVERAGEIF(A2:A100, "&gt;=1", B2:B100)</code>. If a formula cannot be evaluated, Excel returns an error such as <code>#DIV/0!</code>, <code>#VALUE!</code>, <code>#N/A</code>, or <code>#REF!</code>.</p>
+<section id="order-of-operations" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="order-of-operations">Order of Operations</h3>
+<p>Excel evaluates formulas following the standard order of operations: parentheses first, then exponents, then multiplication and division, and finally addition and subtraction. For example, <code>=2^3*2+2</code> is evaluated as <span class="math inline">\((2^3) \times 2 + 2 = 18\)</span>, and <code>=2+4*5</code> is evaluated as <span class="math inline">\(2 + (4 \times 5) = 22\)</span>. When in doubt, add parentheses to make the intended order explicit — <code>=(2+4)*5</code> returns <span class="math inline">\(30\)</span>.</p>
 </section>
-<section id="data-types" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="data-types">Data Types</h3>
+<section id="array-formulas" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="array-formulas">Array Formulas</h3>
+<p>A few calculations — like a conditional variance — must be entered as <strong>array formulas</strong>, which operate on an entire range at once. In modern Excel these “spill” automatically, but in older versions you must complete them by pressing <code>Ctrl + Shift + Enter</code> instead of just <code>Enter</code>.</p>
+</section>
+</section>
+<section id="navigating-and-selecting" class="level2" data-number="15.3">
+<h2 data-number="15.3" class="anchored" data-anchor-id="navigating-and-selecting"><span class="header-section-number">15.3</span> Navigating and Selecting</h2>
+<p>Moving quickly around a large worksheet is a skill worth practicing. Turning off the grid with <code>View → Gridlines</code> gives a cleaner canvas, especially when building a report or a chart.</p>
+<p>The navigation shortcuts below let you move and select without the mouse:</p>
+<ul>
+<li><code>Ctrl + Arrow</code> jumps to the edge of the current block of data in that direction.</li>
+<li><code>Ctrl + Shift + Arrow</code> <strong>selects</strong> everything from the active cell to the edge of the data — the fastest way to grab a whole column of values.</li>
+<li><code>F2</code> (<code>fn + F2</code> on some Macs) toggles the active cell into edit mode so you can see and adjust the formula in place.</li>
+<li><code>Ctrl + Enter</code> fills every cell in a selection with the same formula at once.</li>
+</ul>
+<p>When you want to keep headers visible while scrolling, use <code>View → Freeze Panes</code>. <code>View → Split</code> divides the window into independently scrolling panes, and you can <code>Hide</code> rows, columns, or entire sheets you do not want to see.</p>
+</section>
+<section id="range-names" class="level2" data-number="15.4">
+<h2 data-number="15.4" class="anchored" data-anchor-id="range-names"><span class="header-section-number">15.4</span> Range Names</h2>
+<p>Rather than referring to <code>$B$2:$B$100</code>, you can give a range a memorable <strong>name</strong> and use it in formulas and charts. There are three ways to create one: select the range and go to <code>Formulas → Define Name</code>; type a name directly into the <strong>Name Box</strong> and press <code>Enter</code>; or select a block that includes labels and use <code>Formulas → Create from Selection</code> to name each column or row from its header.</p>
+<p>Names follow a few rules: they cannot contain spaces, they cannot look like a cell reference (so <code>Q1</code> is not allowed as a name), and they must begin with a letter or underscore. Use the <strong>Name Manager</strong> (<code>Formulas → Name Manager</code>) to review, edit, or delete existing names. A well-named range such as <code>Returns</code> makes <code>=AVERAGE(Returns)</code> far easier to read and audit than a raw address.</p>
+</section>
+<section id="data-types" class="level2" data-number="15.5">
+<h2 data-number="15.5" class="anchored" data-anchor-id="data-types"><span class="header-section-number">15.5</span> Data Types</h2>
 <p>The main data types in Excel are number, text, logical, date, and error.</p>
 <ul>
-<li><p><strong>Number</strong> includes integers and decimals. Numbers are right-aligned in a cell by default.</p></li>
-<li><p><strong>Text</strong> represents labels or strings and is left-aligned by default.</p></li>
-<li><p><strong>Logical</strong> values are <code>TRUE</code> or <code>FALSE</code>, usually produced by a comparison.</p></li>
-<li><p><strong>Date and time</strong> values are stored as serial numbers counting the days since January 1, 1900, which is why dates can be added and subtracted.</p></li>
-<li><p><strong>Error</strong> values are the result of an invalid operation, such as dividing by zero.</p></li>
+<li><strong>Number</strong> includes integers and decimals. Numbers are right-aligned in a cell by default.</li>
+<li><strong>Text</strong> represents labels or strings and is left-aligned by default.</li>
+<li><strong>Logical</strong> values are <code>TRUE</code> or <code>FALSE</code>, usually produced by a comparison.</li>
+<li><strong>Date and time</strong> values are stored as serial numbers (see below), which is why dates can be added and subtracted.</li>
+<li><strong>Error</strong> values are the result of an invalid operation, such as dividing by zero.</li>
 </ul>
 </section>
-<section id="comparison-and-logical-operators" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="comparison-and-logical-operators">Comparison and Logical Operators</h3>
-<p>Comparison operators return a logical value (<code>TRUE</code> or <code>FALSE</code>). The primary operators are <code>=</code> (equal to), <code>&lt;&gt;</code> (not equal to), <code>&gt;</code> (greater than), <code>&lt;</code> (less than), <code>&gt;=</code> (at least), and <code>&lt;=</code> (at most). They are frequently combined with the <code>IF</code>, <code>AND</code>, <code>OR</code>, and <code>NOT</code> functions. When used inside a criteria argument, an operator is written as text in quotes, for example <code>"&gt;=1"</code> in a <code>COUNTIF</code> or <code>AVERAGEIF</code> formula.</p>
+<section id="working-with-dates-and-time" class="level2" data-number="15.6">
+<h2 data-number="15.6" class="anchored" data-anchor-id="working-with-dates-and-time"><span class="header-section-number">15.6</span> Working with Dates and Time</h2>
+<p>Excel stores every date as a <strong>serial number</strong>: day <code>1</code> is January 1, 1900, day <code>2</code> is January 2, 1900, and so on. The <strong>integer part</strong> of the number counts the days since that starting point, while the <strong>decimal part</strong> represents the time as a fraction of a 24-hour day. So <code>0</code> corresponds to <code>12:00 am</code>, <code>0.5</code> corresponds to <code>12:00 pm</code>, and a value like <code>44000.75</code> is a specific date at <code>6:00 pm</code>.</p>
+<p>Because dates are really numbers, the way a cell is <em>formatted</em> determines whether you see <code>1/1/2024</code> or <code>45292</code>. If a calculation returns a date when you wanted a plain number (or vice versa), change the cell’s number format under <code>Home → Number</code>. To pull just the <strong>time</strong> (the decimal part) out of a date-time value, use <code>MOD</code> with a divisor of <span class="math inline">\(1\)</span>:</p>
+<pre class="excel"><code>=MOD(A1, 1)</code></pre>
+<p>Useful date and time functions include <code>=TODAY()</code> and <code>=NOW()</code> for the current date and date-time, <code>=DATE(year, month, day)</code> to build a date, and <code>=YEAR()</code>, <code>=MONTH()</code>, <code>=DAY()</code>, and <code>=WEEKDAY()</code> to extract the parts of a date.</p>
 </section>
-<section id="dictionary-of-functions" class="level2" data-number="15.1">
-<h2 data-number="15.1" class="anchored" data-anchor-id="dictionary-of-functions"><span class="header-section-number">15.1</span> Dictionary of Functions</h2>
-<p>The remainder of the chapter lists the Excel functions and tools used in the book, grouped by the chapter in which they first appear.</p>
+<section id="working-with-text" class="level2" data-number="15.7">
+<h2 data-number="15.7" class="anchored" data-anchor-id="working-with-text"><span class="header-section-number">15.7</span> Working with Text</h2>
+<p>Text functions let you clean and reshape labels — for example, splitting a “Last, First” name into two columns. The most useful ones are:</p>
+<ul>
+<li><code>=TRIM(text)</code> removes extra spaces, leaving only single spaces between words.</li>
+<li><code>=LEN(text)</code> returns the number of characters in the text.</li>
+<li><code>=LEFT(text, n)</code> and <code>=RIGHT(text, n)</code> return the first or last <code>n</code> characters.</li>
+<li><code>=MID(text, start, n)</code> returns <code>n</code> characters beginning at position <code>start</code>.</li>
+<li><code>=SEARCH(find, text)</code> (or <code>=FIND</code>) returns the position of a character or substring; <code>SEARCH</code> is not case-sensitive, <code>FIND</code> is.</li>
+<li><code>=UPPER(text)</code>, <code>=LOWER(text)</code>, and <code>=PROPER(text)</code> change capitalization.</li>
+<li><code>=SUBSTITUTE(text, old, new)</code> replaces every occurrence of <code>old</code> with <code>new</code>.</li>
+<li><code>=REPLACE(text, start, n, new)</code> replaces <code>n</code> characters starting at a position with new text.</li>
+</ul>
+<p>As an example, suppose cell <code>D6</code> contains <code>Doe, John</code>. The position of the comma is <code>=SEARCH(",", D6)</code>, which returns <code>4</code>. The last name is then <code>=LEFT(D6, SEARCH(",", D6) - 1)</code> → <code>Doe</code>, and the first name is <code>=RIGHT(D6, LEN(D6) - SEARCH(",", D6) - 1)</code> → <code>John</code>. To join text back together, use the ampersand operator: <code>=B6 &amp; " " &amp; A6</code>, or the <code>=CONCAT()</code> function.</p>
+</section>
+<section id="lookup-functions" class="level2" data-number="15.8">
+<h2 data-number="15.8" class="anchored" data-anchor-id="lookup-functions"><span class="header-section-number">15.8</span> Lookup Functions</h2>
+<p>Lookup functions find a value in a table based on a key. <code>=VLOOKUP(lookup_value, table, column_number, [match])</code> searches down the first column of a table and returns a value from a column to its right; <code>=HLOOKUP()</code> does the same across the first row. The modern replacement, <code>=XLOOKUP(lookup_value, lookup_range, return_range)</code>, is more flexible because the lookup and return ranges can be anywhere and it can look left as well as right.</p>
+<p>The optional match argument controls <strong>exact</strong> versus <strong>approximate</strong> matching. An approximate (binary) search assumes the lookup column is <strong>sorted</strong>: Excel repeatedly compares the target with the middle value and discards half the list each time, which is very fast on large data sets — but it returns wrong answers if the data is not sorted. For most business lookups you want an exact match.</p>
+<p>Lookups also support <strong>wildcards</strong> in the search text: <code>?</code> matches any single character (so <code>B?ll</code> matches <code>Ball</code> and <code>Bell</code>), and <code>*</code> matches any number of characters (so <code>B*ll</code> matches <code>Ball</code>, <code>Bell</code>, and <code>Barbell</code>). Use <code>~</code> before a <code>?</code> or <code>*</code> when you need to match the literal character.</p>
+</section>
+<section id="logical-and-conditional-functions" class="level2" data-number="15.9">
+<h2 data-number="15.9" class="anchored" data-anchor-id="logical-and-conditional-functions"><span class="header-section-number">15.9</span> Logical and Conditional Functions</h2>
+<p>The <code>=IF(test, value_if_true, value_if_false)</code> function returns one of two values depending on whether a condition is met, and <code>IF</code> statements can be nested inside one another. When you have several conditions to check in order, <code>=IFS(test1, value1, test2, value2, ...)</code> is cleaner. The logical helpers <code>=AND(...)</code>, <code>=OR(...)</code>, and <code>=NOT(...)</code> combine or reverse conditions.</p>
+<p>A closely related family aggregates values that meet a condition:</p>
+<ul>
+<li><code>=COUNTIF(range, criteria)</code> counts the cells that satisfy a condition, and <code>=COUNTIFS(...)</code> handles several conditions at once.</li>
+<li><code>=SUMIF(range, criteria, sum_range)</code> totals the values that meet a condition, and <code>=SUMIFS(...)</code> allows several conditions.</li>
+<li><code>=AVERAGEIF(range, criteria, average_range)</code> averages the values that meet a condition.</li>
+</ul>
+<p>When a criterion is a comparison, write it as text in quotes, for example <code>"&gt;2"</code> or <code>"&gt;=1"</code>. To rank values, <code>=RANK.AVG(number, range)</code> returns the position of a value within a list (averaging ties). A common use is to highlight the top items in a chart: rank each value, then use a formula such as <code>=IF(rank &lt;= 5, value, NA())</code> so that only the top five carry a value and the rest return <code>NA()</code>.</p>
+</section>
+<section id="offset-and-match" class="level2" data-number="15.10">
+<h2 data-number="15.10" class="anchored" data-anchor-id="offset-and-match"><span class="header-section-number">15.10</span> OFFSET and MATCH</h2>
+<p><code>=MATCH(lookup_value, array, 0)</code> returns the <strong>position</strong> of a value within a row or column (the <code>0</code> requests an exact match). It does not return the value itself — it tells you <em>where</em> the value sits, which you can then feed to another function.</p>
+<p><code>=OFFSET(reference, rows, cols, [height], [width])</code> returns a range that is a given number of rows and columns away from a starting <code>reference</code>. The optional <code>height</code> and <code>width</code> arguments let it return a whole block rather than a single cell. Combining <code>MATCH</code> (to locate a position) with <code>OFFSET</code> (to retrieve the value at that position) creates flexible lookups; the same idea is often written with <code>INDEX</code> and <code>MATCH</code>.</p>
+<p>Because <code>OFFSET</code> can size a range on the fly, it is the key to <strong>dynamic ranges</strong>. Pairing it with <code>=COUNTA(range)</code> — which counts the non-empty cells — lets you define a named range that automatically grows as you add data. A chart built on that name then updates itself whenever new rows arrive, with no manual re-selection.</p>
+</section>
+<section id="sorting-filtering-and-dynamic-arrays" class="level2" data-number="15.11">
+<h2 data-number="15.11" class="anchored" data-anchor-id="sorting-filtering-and-dynamic-arrays"><span class="header-section-number">15.11</span> Sorting, Filtering, and Dynamic Arrays</h2>
+<p>The <code>Data → Sort</code> and <code>Data → Filter</code> tools reorder and subset a table interactively. Excel also provides <strong>dynamic array</strong> functions that return a whole range of results that “spill” into neighboring cells:</p>
+<ul>
+<li><code>=SORT(range)</code> returns the range sorted.</li>
+<li><code>=FILTER(range, condition)</code> returns only the rows that satisfy a condition.</li>
+<li><code>=RANK(number, range)</code> returns the rank of a value.</li>
+</ul>
+<p>These combine naturally with the conditional functions. For example, to keep only the years that appear in a second, larger list, you can flag matches with <code>COUNTIF</code> and pass the result to <code>FILTER</code>:</p>
+<pre class="excel"><code>=FILTER(Years, COUNTIF(OtherYears, Years))</code></pre>
+<p><code>COUNTIF</code> returns a <code>1</code> for each year found in <code>OtherYears</code> and a <code>0</code> otherwise, and <code>FILTER</code> keeps only the rows flagged with a <code>1</code>.</p>
+</section>
+<section id="importing-and-web-data" class="level2" data-number="15.12">
+<h2 data-number="15.12" class="anchored" data-anchor-id="importing-and-web-data"><span class="header-section-number">15.12</span> Importing and Web Data</h2>
+<p>To bring outside data into Excel you can open a CSV directly with <code>File → Open</code>, or use <code>Data → Get Data → From Text/CSV</code> for control over how columns are separated. <code>Data → Get Data → From Web</code> pulls tables from a web page — for example, stock history from a finance site. Imported data becomes a <strong>query</strong>; under <code>Data → Queries &amp; Connections</code> (and <code>Data Source Settings</code>) you can refresh it, change the source, or adjust how it loads. Excel’s <strong>Stocks</strong> and <strong>Geography</strong> data types can also enrich a plain list of tickers or country names with live fields. When previewing a large import, freeze the header row with <code>View → Freeze Panes</code> and jump to the end with <code>Ctrl + Down</code> or <code>Ctrl + End</code>.</p>
+</section>
+<section id="pivottables" class="level2" data-number="15.13">
+<h2 data-number="15.13" class="anchored" data-anchor-id="pivottables"><span class="header-section-number">15.13</span> PivotTables</h2>
+<p>A <strong>PivotTable</strong> (<code>Insert → PivotTable</code>) automatically summarizes and counts data, making it the primary tool for building frequency and relative frequency distributions. You drag fields into the <strong>Rows</strong>, <strong>Columns</strong>, and <strong>Values</strong> areas, and Excel aggregates the underlying data for you — counting, summing, or averaging — without writing a single formula. PivotTables are used throughout the descriptive statistics chapters; see <em>Descriptive Statistics II</em> for a worked example.</p>
+</section>
+<section id="charts-and-visualization" class="level2" data-number="15.14">
+<h2 data-number="15.14" class="anchored" data-anchor-id="charts-and-visualization"><span class="header-section-number">15.14</span> Charts and Visualization</h2>
+<p>Charts are created from <code>Insert → Charts</code>. Choosing the right type matters: use a <strong>bar chart</strong> to compare categories and a <strong>line chart</strong> to show change over time. A good chart maximizes the <em>data-to-ink ratio</em> — that is, it removes anything that does not convey information. In practice that means removing gridlines, adding subtle borders to bars, cleaning up the axes (sensible tick marks and units), placing the title inside the plot, and adding data labels by right-clicking a series and choosing <code>Add Data Labels</code>.</p>
+<p>To compare two series, add a second set of values to the chart. When the two series are on very different scales — a count and a percentage, say — plot one of them on a <strong>secondary axis</strong> using a <strong>combo chart</strong> (<code>Chart Design → Change Chart Type → Combo</code>). You can <strong>highlight</strong> a particular bar, such as the maximum or the top few, by adding a helper column that returns the value only for the rows to highlight and <code>NA()</code> for the rest; because Excel does not plot <code>NA()</code>, only the highlighted bars appear, and setting the series overlap to <code>100%</code> layers them on top of the originals. A <strong>dummy variable</strong> that switches between <code>0</code> and <code>1</code> can be plotted as a shaded band to mark periods such as recessions. Once you have styled a chart the way you like, right-click it and choose <code>Save as Template</code> to reuse the formatting later.</p>
+</section>
+<section id="the-data-analysis-toolpak" class="level2" data-number="15.15">
+<h2 data-number="15.15" class="anchored" data-anchor-id="the-data-analysis-toolpak"><span class="header-section-number">15.15</span> The Data Analysis ToolPak</h2>
+<p>Some analyses — such as regression — require the <strong>Analysis ToolPak</strong>, an add-in that ships with Excel but is turned off by default. To enable it on Windows, go to <code>File → Options → Add-ins → Manage: Excel Add-ins → Go</code>, check <code>Analysis ToolPak</code>, and click <code>OK</code>. On a Mac, use <code>Tools → Excel Add-ins</code>. Once enabled, the ToolPak appears under <code>Data → Data Analysis</code> and provides one-click tools for descriptive statistics, regression, random number generation, and more.</p>
+</section>
+<section id="statistical-function-dictionary" class="level2" data-number="15.16">
+<h2 data-number="15.16" class="anchored" data-anchor-id="statistical-function-dictionary"><span class="header-section-number">15.16</span> Statistical Function Dictionary</h2>
+<p>The remainder of the chapter lists the statistical Excel functions used in the book, grouped by the chapter in which they first appear. Each is explained in detail, with worked examples, in its home chapter.</p>
 <section id="general-purpose" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="general-purpose">General Purpose</h3>
 <ul>
@@ -391,36 +533,41 @@ window.Quarto = {
 <li><p><code>=STDEV.S(range)</code> calculates the sample standard deviation (the square root of the sample variance); <code>=STDEV.P(range)</code> calculates the population standard deviation.</p></li>
 <li><p><code>=VAR(IF(criteria_range="condition", value_range))</code> and <code>=STDEV(IF(criteria_range="condition", value_range))</code> calculate a conditional variance and standard deviation. Excel has no native <code>VARIF</code> or <code>STDEVIF</code>, so these are entered as array formulas.</p></li>
 <li><p><strong>Coefficient of Variation</strong> has no dedicated function; compute it as <code>=STDEV.S(range) / AVERAGE(range)</code>.</p></li>
-<li><p><strong>Sharpe Ratio</strong> also has no dedicated function; compute it as <code>=(AVERAGE(range) - rf) / STDEV.S(range)</code>, where <code>rf</code> is the risk-free rate.</p></li>
 </ul>
 </section>
 <section id="measures-of-shape-and-position-descriptive-stats-v" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="measures-of-shape-and-position-descriptive-stats-v">Measures of Shape and Position (Descriptive Stats V)</h3>
 <ul>
-<li><p><code>=PERCENTILE.INC(array, k)</code> returns the <span class="math inline">\(k\)</span>th percentile using the inclusive method <span class="math inline">\(L_p = 1 + k(n-1)\)</span>, where <code>k</code> is a decimal between 0 and 1. <code>=PERCENTILE.EXC(array, k)</code> uses the exclusive method <span class="math inline">\(L_p = k(n+1)\)</span>.</p></li>
-<li><p><code>=QUARTILE.INC(array, quart)</code> returns the five-point summary. The <code>quart</code> argument takes the values 0 (minimum), 1 (<span class="math inline">\(Q_1\)</span>), 2 (median), 3 (<span class="math inline">\(Q_3\)</span>), and 4 (maximum). The IQR is <code>=QUARTILE.INC(array, 3) - QUARTILE.INC(array, 1)</code>.</p></li>
-<li><p><code>=STANDARDIZE(x, mean, std_dev)</code> calculates the z-score of a value. It can also be computed manually as <code>=(x - AVERAGE(range)) / STDEV.S(range)</code>.</p></li>
-<li><p><code>=SKEW(range)</code> calculates the skewness using the Fisher-Pearson standardized moment coefficient.</p></li>
-<li><p><code>=KURT(range)</code> calculates the excess kurtosis. A positive value indicates heavy tails (leptokurtic) and a negative value indicates light tails (platykurtic).</p></li>
+<li><p><code>=PERCENTILE.INC(array, k)</code> returns the <span class="math inline">\(k\)</span>th percentile of a range using the formula <span class="math inline">\(L_p = 1 + k(n-1)\)</span>, where <span class="math inline">\(k\)</span> is expressed as a decimal between 0 and 1. <code>=PERCENTILE.EXC(array, k)</code> uses the alternative formula <span class="math inline">\(L_p = k(n+1)\)</span>.</p></li>
+<li><p><code>=QUARTILE.INC(array, quart)</code> returns the five point summary. The argument <code>quart</code> takes values 0 (minimum), 1 (<span class="math inline">\(Q_1\)</span>), 2 (median), 3 (<span class="math inline">\(Q_3\)</span>), and 4 (maximum).</p></li>
+<li><p><code>=STANDARDIZE(x, mean, std_dev)</code> calculates the z-score for a value. It can also be computed manually as <code>=(x - AVERAGE(range)) / STDEV.S(range)</code>.</p></li>
+<li><p><code>=SKEW(range)</code> calculates the skewness of a range.</p></li>
+<li><p><code>=KURT(range)</code> calculates the excess kurtosis of a range.</p></li>
 </ul>
 </section>
 <section id="measures-of-association-regression-i" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="measures-of-association-regression-i">Measures of Association (Regression I)</h3>
 <ul>
-<li><p><code>=COVARIANCE.S(array1, array2)</code> calculates the sample covariance between two variables; <code>=COVARIANCE.P(array1, array2)</code> calculates the population covariance.</p></li>
+<li><p><code>=COVARIANCE.S(array1, array2)</code> calculates the sample covariance between two variables; <code>=COVARIANCE.P()</code> calculates the population covariance.</p></li>
 <li><p><code>=CORREL(array1, array2)</code> calculates the correlation coefficient, which is always between <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span>.</p></li>
-<li><p><code>=CORREL(array1, array2)^2</code> calculates the coefficient of determination <span class="math inline">\(R^2\)</span> by squaring the correlation coefficient. Excel has no standalone <span class="math inline">\(R^2\)</span> function for two variables.</p></li>
+<li><p><code>=CORREL(array1, array2)^2</code> calculates the coefficient of determination <span class="math inline">\(R^2\)</span> by squaring the correlation coefficient.</p></li>
 </ul>
 </section>
 <section id="regression-regression-ii" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="regression-regression-ii">Regression (Regression II)</h3>
 <ul>
-<li><p><strong>Data Analysis ToolPak → Regression</strong> is the primary tool for estimating regression models. It returns the coefficients, <span class="math inline">\(R^2\)</span>, adjusted <span class="math inline">\(R^2\)</span>, standard error, and the ANOVA table in a single output.</p></li>
-<li><p><code>=SLOPE(y_range, x_range)</code> calculates the slope <span class="math inline">\(\hat{\beta}\)</span> of a simple regression line.</p></li>
-<li><p><code>=INTERCEPT(y_range, x_range)</code> calculates the intercept <span class="math inline">\(\hat{\alpha}\)</span> of a simple regression line.</p></li>
-<li><p><code>=FORECAST.LINEAR(x, y_range, x_range)</code> returns the predicted value of <span class="math inline">\(y\)</span> for a given value of <span class="math inline">\(x\)</span>.</p></li>
-<li><p><code>=RSQ(y_range, x_range)</code> returns the <span class="math inline">\(R^2\)</span> of a simple regression.</p></li>
-<li><p><code>=STEYX(y_range, x_range)</code> returns the residual standard error <span class="math inline">\(s_e\)</span> of a simple regression.</p></li>
+<li><p><strong>Data Analysis ToolPak → Regression</strong> returns the coefficients, <span class="math inline">\(R^2\)</span>, adjusted <span class="math inline">\(R^2\)</span>, standard error, and the ANOVA table in a single output.</p></li>
+<li><p><code>=SLOPE(y_range, x_range)</code> and <code>=INTERCEPT(y_range, x_range)</code> return the slope and intercept of a simple regression line.</p></li>
+<li><p><code>=FORECAST.LINEAR(x, y_range, x_range)</code> returns the predicted value of <span class="math inline">\(y\)</span> for a given <span class="math inline">\(x\)</span>.</p></li>
+<li><p><code>=RSQ(y_range, x_range)</code> returns the <span class="math inline">\(R^2\)</span>, and <code>=STEYX(y_range, x_range)</code> returns the residual standard error.</p></li>
+</ul>
+</section>
+<section id="probability-distributions-probability-iiii" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="probability-distributions-probability-iiii">Probability Distributions (Probability I–III)</h3>
+<ul>
+<li><p><code>=FACT(number)</code>, <code>=COMBIN(n, x)</code>, and <code>=PERMUT(n, x)</code> return the factorial, number of combinations, and number of permutations. Use <code>=COMBINA()</code> and <code>=PERMUTATIONA()</code> when repetition is allowed.</p></li>
+<li><p><code>=BINOM.DIST(x, n, p, cumulative)</code>, <code>=POISSON.DIST(x, mean, cumulative)</code>, and <code>=HYPGEOM.DIST(sample_s, number_sample, population_s, number_pop, cumulative)</code> return discrete probabilities (<code>FALSE</code> for the PMF, <code>TRUE</code> for the cumulative distribution). <code>=BINOM.INV(n, p, alpha)</code> returns a binomial quantile.</p></li>
+<li><p><code>=NORM.DIST(x, mean, std_dev, cumulative)</code> and <code>=NORM.S.DIST(z, cumulative)</code> return normal probabilities, while <code>=NORM.INV(probability, mean, std_dev)</code> and <code>=NORM.S.INV(probability)</code> return normal quantiles. <code>=EXPON.DIST(x, lambda, cumulative)</code> returns exponential probabilities.</p></li>
 </ul>
 
 
