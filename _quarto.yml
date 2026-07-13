@@ -11,7 +11,7 @@ book:
   
   title: "Business Statistics"
   author: "J. Alejandro Gelves"
-  date: "09/6/2024"
+  date: "09/6/2026"
   cover-image: cover.png
   chapters:
     - index.qmd

@@ -191,6 +191,12 @@ Below is a list of the Excel functions used in this section:
   determination $R^2$ by squaring the correlation coefficient. Excel
   does not have a standalone $R^2$ function for two variables.
 
+## Chapter Summary Cheat Sheet
+
+```{r echo=FALSE, out.width="100%", fig.align='center'}
+knitr::include_graphics("images/Association.png")
+```
+
 ## Exercises
 
 The following exercises will help you understand statistical measures
