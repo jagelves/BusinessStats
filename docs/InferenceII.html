@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,6 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9904b5196d746cb5bc47063911474b57.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -290,17 +258,15 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#constructing-confidence-intervals-for-means" id="toc-constructing-confidence-intervals-for-means" class="nav-link active" data-scroll-target="#constructing-confidence-intervals-for-means"><span class="header-section-number">12.1</span> Constructing Confidence Intervals for Means</a>
-  <ul class="collapse">
-  <li><a href="#example-1-life-expectancy" id="toc-example-1-life-expectancy" class="nav-link" data-scroll-target="#example-1-life-expectancy"><span class="header-section-number">12.1.1</span> Example 1: Life Expectancy</a></li>
-  </ul></li>
-  <li><a href="#constructing-confidence-intervals-for-proportions" id="toc-constructing-confidence-intervals-for-proportions" class="nav-link" data-scroll-target="#constructing-confidence-intervals-for-proportions"><span class="header-section-number">12.2</span> Constructing Confidence Intervals for Proportions</a>
-  <ul class="collapse">
-  <li><a href="#example-2-success-rate" id="toc-example-2-success-rate" class="nav-link" data-scroll-target="#example-2-success-rate"><span class="header-section-number">12.2.1</span> Example 2: Success Rate</a></li>
-  </ul></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">12.3</span> Summary</a></li>
-  <li><a href="#useful-r-functions" id="toc-useful-r-functions" class="nav-link" data-scroll-target="#useful-r-functions"><span class="header-section-number">12.4</span> Useful R Functions</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">12.5</span> Exercises</a>
+  <li><a href="#confidence-intervals" id="toc-confidence-intervals" class="nav-link active" data-scroll-target="#confidence-intervals"><span class="header-section-number">12.1</span> Confidence Intervals</a></li>
+  <li><a href="#confidence-intervals-for-the-mean" id="toc-confidence-intervals-for-the-mean" class="nav-link" data-scroll-target="#confidence-intervals-for-the-mean"><span class="header-section-number">12.2</span> Confidence Intervals for the Mean</a></li>
+  <li><a href="#the-t-distribution" id="toc-the-t-distribution" class="nav-link" data-scroll-target="#the-t-distribution"><span class="header-section-number">12.3</span> The t-Distribution</a></li>
+  <li><a href="#confidence-intervals-for-a-proportion" id="toc-confidence-intervals-for-a-proportion" class="nav-link" data-scroll-target="#confidence-intervals-for-a-proportion"><span class="header-section-number">12.4</span> Confidence Intervals for a Proportion</a></li>
+  <li><a href="#determining-the-sample-size" id="toc-determining-the-sample-size" class="nav-link" data-scroll-target="#determining-the-sample-size"><span class="header-section-number">12.5</span> Determining the Sample Size</a></li>
+  <li><a href="#confidence-intervals-in-excel" id="toc-confidence-intervals-in-excel" class="nav-link" data-scroll-target="#confidence-intervals-in-excel"><span class="header-section-number">12.6</span> Confidence Intervals in Excel</a></li>
+  <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">12.7</span> Excel Function Summary</a></li>
+  <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">12.8</span> Chapter Summary Cheat Sheet</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">12.9</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -345,172 +311,170 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>A <strong>confidence interval (CI)</strong> provides a range of plausible values for a population parameter, along with a confidence level indicating the probability that the interval contains the true parameter.</p>
-<p>For example, a 95% CI means that if we repeated the sampling process 100 times, about 95 of the intervals would contain the true population parameter.</p>
+<p>A single number is rarely the whole story. When a business estimates average customer spending or the proportion of defective units from a sample, the estimate is almost never exactly right — it carries sampling error. Reporting a lone <strong>point estimate</strong> hides this uncertainty. Instead, we surround the estimate with a range of plausible values and attach a level of confidence to it. This chapter shows how to build these <strong>confidence intervals</strong> for means and proportions, how the sample size and confidence level affect their width, and how to construct them in Excel.</p>
+<section id="confidence-intervals" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="confidence-intervals"><span class="header-section-number">12.1</span> Confidence Intervals</h2>
+<p>A <strong>confidence interval (CI)</strong> is a range of plausible values for a population parameter, together with a <strong>confidence level</strong> that states how often the procedure captures the true parameter. A 95% confidence interval means that if we repeated the sampling process many times, about 95% of the intervals produced would contain the true population parameter.</p>
+<p>The confidence level and the <strong>significance level</strong> <span class="math inline">\(\alpha\)</span> are two sides of the same coin: a 95% confidence level corresponds to <span class="math inline">\(\alpha = 0.05\)</span>, the risk that the interval misses the parameter. Every confidence interval has the same shape — a point estimate plus or minus a <strong>margin of error</strong>:</p>
+<div class="callout-formula">
+<p><strong>THE CONFIDENCE INTERVAL</strong> <span class="math display">\[\text{point estimate} \pm \text{margin of error}\]</span> The margin of error is a <strong>critical value</strong> (from the normal or <span class="math inline">\(t\)</span> distribution) multiplied by the <strong>standard error</strong> of the estimate.</p>
+</div>
+<p>Two forces control the width of the interval. A <strong>higher confidence level</strong> widens it (more certainty requires a bigger net), and a <strong>larger sample</strong> narrows it (more data gives a more precise estimate).</p>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A confidence interval describes the <em>procedure</em>, not a single interval. Once computed, a specific interval either contains the parameter or it does not — the 95% refers to how often the method succeeds over many samples.</p>
+</div>
+</div>
+</section>
+<section id="confidence-intervals-for-the-mean" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="confidence-intervals-for-the-mean"><span class="header-section-number">12.2</span> Confidence Intervals for the Mean</h2>
+<p>When the population standard deviation <span class="math inline">\(\sigma\)</span> is known and the sampling distribution is normal (by the Central Limit Theorem), the confidence interval for the mean uses a <span class="math inline">\(z\)</span> critical value:</p>
+<div class="callout-formula">
+<p><strong>CONFIDENCE INTERVAL FOR THE MEAN (</strong><span class="math inline">\(\sigma\)</span> known) <span class="math display">\[\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}\]</span> where <span class="math inline">\(\bar{x}\)</span> is the sample mean, <span class="math inline">\(z_{\alpha/2}\)</span> is the normal critical value (e.g., <span class="math inline">\(1.96\)</span> for 95%), <span class="math inline">\(\sigma\)</span> is the population standard deviation, and <span class="math inline">\(n\)</span> is the sample size.</p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> A sample of <span class="math inline">\(n = 50\)</span> gives an average life expectancy of <span class="math inline">\(\bar{x} = 78.1\)</span> years, and the population standard deviation is <span class="math inline">\(\sigma = 4.5\)</span>. For a 90% confidence interval, <span class="math inline">\(z_{0.05} \approx 1.645\)</span>. The standard error is <span class="math display">\[\frac{\sigma}{\sqrt{n}} = \frac{4.5}{\sqrt{50}} \approx 0.637\]</span> so the interval is <span class="math display">\[78.1 \pm 1.645 \times 0.637 \approx 78.1 \pm 1.05 = [77.05,\ 79.15]\]</span> We are 90% confident that the true mean life expectancy is between <span class="math inline">\(77.05\)</span> and <span class="math inline">\(79.15\)</span> years.</p>
+</div>
+</section>
+<section id="the-t-distribution" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="the-t-distribution"><span class="header-section-number">12.3</span> The t-Distribution</h2>
+<p>In practice we almost never know the population standard deviation <span class="math inline">\(\sigma\)</span>. When we estimate it with the sample standard deviation <span class="math inline">\(s\)</span>, the extra uncertainty means the normal distribution is no longer exact. Instead we use the <span class="math inline">\(t\)</span>-distribution, which is bell-shaped like the normal but has heavier tails. The <span class="math inline">\(t\)</span>-distribution has one parameter, the <strong>degrees of freedom</strong> (<span class="math inline">\(n - 1\)</span>); as the sample size grows, its tails thin out and it converges to the normal distribution.</p>
+<div class="callout-formula">
+<p><strong>CONFIDENCE INTERVAL FOR THE MEAN (</strong><span class="math inline">\(\sigma\)</span> unknown) <span class="math display">\[\bar{x} \pm t_{\alpha/2} \cdot \frac{s}{\sqrt{n}}\]</span> where <span class="math inline">\(s\)</span> is the sample standard deviation and <span class="math inline">\(t_{\alpha/2}\)</span> is the <span class="math inline">\(t\)</span> critical value with <span class="math inline">\(n - 1\)</span> degrees of freedom.</p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> A sample of <span class="math inline">\(n = 20\)</span> customer wait times has a mean of <span class="math inline">\(\bar{x} = 8.4\)</span> minutes and a sample standard deviation of <span class="math inline">\(s = 2.1\)</span>. For a 95% confidence interval with <span class="math inline">\(n - 1 = 19\)</span> degrees of freedom, <span class="math inline">\(t_{0.025} \approx 2.093\)</span>. The margin of error is <span class="math display">\[2.093 \times \frac{2.1}{\sqrt{20}} \approx 0.98\]</span> so the interval is <span class="math inline">\(8.4 \pm 0.98 = [7.42,\ 9.38]\)</span> minutes. Because we estimated <span class="math inline">\(\sigma\)</span> from the sample, the <span class="math inline">\(t\)</span> critical value (<span class="math inline">\(2.093\)</span>) is slightly larger than the corresponding <span class="math inline">\(z\)</span> value (<span class="math inline">\(1.96\)</span>), making the interval a little wider.</p>
+</div>
+</section>
+<section id="confidence-intervals-for-a-proportion" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="confidence-intervals-for-a-proportion"><span class="header-section-number">12.4</span> Confidence Intervals for a Proportion</h2>
+<p>For a population proportion <span class="math inline">\(p\)</span>, the sample proportion <span class="math inline">\(\hat{p} = x/n\)</span> is approximately normal by the Central Limit Theorem, so the interval uses a <span class="math inline">\(z\)</span> critical value:</p>
+<div class="callout-formula">
+<p><strong>CONFIDENCE INTERVAL FOR A PROPORTION</strong> <span class="math display">\[\hat{p} \pm z_{\alpha/2} \cdot \sqrt{\frac{\hat{p}(1-\hat{p})}{n}}\]</span> where <span class="math inline">\(\hat{p}\)</span> is the sample proportion and <span class="math inline">\(n\)</span> is the sample size.</p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> A random sample of <span class="math inline">\(100\)</span> yields <span class="math inline">\(40\)</span> successes, so <span class="math inline">\(\hat{p} = 0.4\)</span>. For a 90% confidence interval, <span class="math inline">\(z_{0.05} \approx 1.645\)</span>. The standard error is <span class="math display">\[\sqrt{\frac{0.4 \times 0.6}{100}} \approx 0.049\]</span> so the interval is <span class="math display">\[0.4 \pm 1.645 \times 0.049 \approx 0.4 \pm 0.081 = [0.319,\ 0.481]\]</span> We are 90% confident that the true population proportion is between <span class="math inline">\(31.9\%\)</span> and <span class="math inline">\(48.1\%\)</span>.</p>
+</div>
+</section>
+<section id="determining-the-sample-size" class="level2" data-number="12.5">
+<h2 data-number="12.5" class="anchored" data-anchor-id="determining-the-sample-size"><span class="header-section-number">12.5</span> Determining the Sample Size</h2>
+<p>Because the margin of error shrinks as <span class="math inline">\(n\)</span> grows, we can turn the question around: how large a sample do we need to achieve a desired margin of error <span class="math inline">\(E\)</span>? Solving the margin-of-error expression for <span class="math inline">\(n\)</span> gives:</p>
+<div class="callout-formula">
+<p><strong>REQUIRED SAMPLE SIZE</strong> <span class="math display">\[\text{Mean:} \quad n = \left(\frac{z_{\alpha/2}\,\sigma}{E}\right)^2 \qquad\qquad \text{Proportion:} \quad n = \hat{p}(1-\hat{p})\left(\frac{z_{\alpha/2}}{E}\right)^2\]</span> Always round <span class="math inline">\(n\)</span> <strong>up</strong> to the next whole number. If <span class="math inline">\(\hat{p}\)</span> is unknown, use <span class="math inline">\(\hat{p} = 0.5\)</span> for the most conservative (largest) sample size.</p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> To estimate a mean within <span class="math inline">\(E = 2\)</span> units at 95% confidence when <span class="math inline">\(\sigma = 10\)</span>: <span class="math display">\[n = \left(\frac{1.96 \times 10}{2}\right)^2 = (9.8)^2 = 96.04 \rightarrow 97\]</span> A sample of <span class="math inline">\(97\)</span> observations is needed.</p>
+</div>
+</section>
+<section id="confidence-intervals-in-excel" class="level2" data-number="12.6">
+<h2 data-number="12.6" class="anchored" data-anchor-id="confidence-intervals-in-excel"><span class="header-section-number">12.6</span> Confidence Intervals in Excel</h2>
+<p>Excel can produce the margin of error directly, so a confidence interval is just the sample mean plus or minus that margin.</p>
+<p><strong>Critical values.</strong> For a <span class="math inline">\(z\)</span> critical value use <code>=NORM.S.INV(1 - alpha/2)</code> — for example, <code>=NORM.S.INV(0.975)</code> returns <span class="math inline">\(1.96\)</span>. For a <span class="math inline">\(t\)</span> critical value use <code>=T.INV.2T(alpha, deg_freedom)</code>, which returns the positive two-tailed value directly — for example, <code>=T.INV.2T(0.05, 19)</code> returns <span class="math inline">\(2.093\)</span>.</p>
+<p><strong>Margin of error for a mean.</strong> Excel has two dedicated functions that return the margin of error in one step. Use <code>=CONFIDENCE.NORM(alpha, standard_dev, size)</code> when <span class="math inline">\(\sigma\)</span> is known, and <code>=CONFIDENCE.T(alpha, standard_dev, size)</code> when it is estimated by <span class="math inline">\(s\)</span>. The <code>alpha</code> argument is the significance level (<code>0.05</code> for 95%).</p>
+<pre class="excel"><code>=CONFIDENCE.T(0.05, 2.1, 20)</code></pre>
+<p>This returns <span class="math inline">\(0.98\)</span>, the margin of error for the wait-time example. The interval is then <code>=8.4 - 0.98</code> and <code>=8.4 + 0.98</code>.</p>
+<p><strong>Margin of error for a proportion.</strong> There is no dedicated function, so build it from the standard error:</p>
+<pre class="excel"><code>=NORM.S.INV(1 - 0.05/2) * SQRT(0.4*(1-0.4)/100)</code></pre>
+<p>This returns <span class="math inline">\(0.096\)</span>, the 95% margin of error for the proportion example.</p>
+</section>
+<section id="excel-function-summary" class="level2" data-number="12.7">
+<h2 data-number="12.7" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">12.7</span> Excel Function Summary</h2>
+<p>Below is a list of the Excel functions used in this section:</p>
 <ul>
-<li>Confidence level (e.g., 95%) = 1 - significance level <span class="math inline">\((\alpha = 0.05)\)</span>.</li>
-<li>The remaining <span class="math inline">\((\alpha)\)</span> represents the risk of error (Type I error in hypothesis testing context).</li>
+<li><p><code>=CONFIDENCE.NORM(alpha, standard_dev, size)</code> returns the margin of error for a mean using the normal distribution (when <span class="math inline">\(\sigma\)</span> is known).</p></li>
+<li><p><code>=CONFIDENCE.T(alpha, standard_dev, size)</code> returns the margin of error for a mean using the <span class="math inline">\(t\)</span>-distribution (when <span class="math inline">\(\sigma\)</span> is unknown).</p></li>
+<li><p><code>=NORM.S.INV(probability)</code> returns a <span class="math inline">\(z\)</span> critical value; <code>=T.INV.2T(probability, deg_freedom)</code> returns a two-tailed <span class="math inline">\(t\)</span> critical value.</p></li>
+<li><p><code>=AVERAGE(range)</code> and <code>=STDEV.S(range)</code> return the sample mean and sample standard deviation.</p></li>
 </ul>
-<p>CIs account for sampling variability and are wider for lower confidence levels or smaller samples.</p>
-<section id="constructing-confidence-intervals-for-means" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="constructing-confidence-intervals-for-means"><span class="header-section-number">12.1</span> Constructing Confidence Intervals for Means</h2>
-<p>For a population mean, assuming normality (via CLT), the CI is:</p>
-<p><span class="math display">\[\bar{x} \pm z_{\alpha/2} \cdot \frac{\sigma}{\sqrt{n}}\]</span> or, if <span class="math inline">\((\sigma)\)</span> is unknown (common), use the t-distribution:</p>
-<p><span class="math display">\[\bar{x} \pm t_{\alpha/2} \cdot \frac{s}{\sqrt{n}}\]</span> - <span class="math inline">\((\bar{x})\)</span>: Sample mean - <span class="math inline">\((z_{\alpha/2})\)</span> or <span class="math inline">\((t_{\alpha/2})\)</span>: Critical value from standard normal or t-distribution (e.g., 1.96 for 95% CI with large n) - <span class="math inline">\((s)\)</span>: Sample standard deviation - <span class="math inline">\((n)\)</span>: Sample size</p>
-<p>The term after <span class="math inline">\((\pm)\)</span> is the <strong>margin of error</strong>.</p>
-<section id="example-1-life-expectancy" class="level3" data-number="12.1.1">
-<h3 data-number="12.1.1" class="anchored" data-anchor-id="example-1-life-expectancy"><span class="header-section-number">12.1.1</span> Example 1: Life Expectancy</h3>
-<p>Suppose the average life expectancy sample mean is <span class="math inline">\(\bar{x} = 78.1\)</span> years, with population standard deviation <span class="math inline">\(\sigma = 4.5\)</span>, and <span class="math inline">\(n = 50\)</span>. For a 90% CI <span class="math inline">\(z_{0.05} \approx 1.645\)</span>:</p>
-<p><span class="math display">\[\frac{\sigma}{\sqrt{n}} = \frac{4.5}{\sqrt{50}} \approx 0.637\]</span></p>
-<p><span class="math display">\[78.1 \pm 1.645 \times 0.637 \approx 78.1 \pm 1.05\]</span></p>
-<p>Lower limit (LL): 77.05<br>
-Upper limit (UL): 79.15</p>
-<p>We are 90% confident that the true population mean life expectancy is between 77.05 and 79.15 years.</p>
 </section>
+<section id="chapter-summary-cheat-sheet" class="level2" data-number="12.8">
+<h2 data-number="12.8" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">12.8</span> Chapter Summary Cheat Sheet</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Confidence_Intervals.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
-<section id="constructing-confidence-intervals-for-proportions" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="constructing-confidence-intervals-for-proportions"><span class="header-section-number">12.2</span> Constructing Confidence Intervals for Proportions</h2>
-<p>For a population proportion <span class="math inline">\((p)\)</span>, the CI is:</p>
-<p><span class="math display">\[\bar{p} \pm z_{\alpha/2} \cdot \sqrt{\frac{\bar{p}(1-\bar{p})}{n}}\]</span> - <span class="math inline">\(\bar{p}\)</span>: Sample proportion (successes / n) - Assumes normality via CLT for proportions.</p>
-<section id="example-2-success-rate" class="level3" data-number="12.2.1">
-<h3 data-number="12.2.1" class="anchored" data-anchor-id="example-2-success-rate"><span class="header-section-number">12.2.1</span> Example 2: Success Rate</h3>
-<p>A random sample of 100 yields 40 successes, so <span class="math inline">\(\bar{p} = 0.4\)</span>. For a 90% CI <span class="math inline">\(z_{0.05} \approx 1.645\)</span>:</p>
-<p><span class="math display">\[SE = \sqrt{\frac{0.4 \times 0.6}{100}} = \sqrt{0.0024} \approx 0.049\]</span></p>
-<p><span class="math display">\[0.4 \pm 1.645 \times 0.049 \approx 0.4 \pm 0.081\]</span></p>
-<p>LL: 0.319<br>
-UL: 0.481</p>
-<p>We are 90% confident that the true population proportion is between 31.9% and 48.1%.</p>
-</section>
-</section>
-<section id="summary" class="level2" data-number="12.3">
-<h2 data-number="12.3" class="anchored" data-anchor-id="summary"><span class="header-section-number">12.3</span> Summary</h2>
-<p>Statistical inference bridges the gap between samples and populations through sampling distributions and the CLT. Confidence intervals offer a practical way to express uncertainty in estimates, essential for business decisions like market analysis or quality control. Remember, higher confidence levels widen intervals, and larger samples narrow them, improving precision.</p>
-</section>
-<section id="useful-r-functions" class="level2" data-number="12.4">
-<h2 data-number="12.4" class="anchored" data-anchor-id="useful-r-functions"><span class="header-section-number">12.4</span> Useful R Functions</h2>
-<p>The <code>qnorm()</code> and <code>qt()</code> functions calculate quartiles for the normal and <span class="math inline">\(t\)</span> distributions, respectively.</p>
-<p>The <code>if()</code> function creates a conditional statement in R.</p>
-</section>
-<section id="exercises" class="level2" data-number="12.5">
-<h2 data-number="12.5" class="anchored" data-anchor-id="exercises"><span class="header-section-number">12.5</span> Exercises</h2>
-<p>The following exercises will help you test your knowledge on Statistical Inference. In particular, the exercises work on:</p>
+<section id="exercises" class="level2" data-number="12.9">
+<h2 data-number="12.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">12.9</span> Exercises</h2>
+<p>The following exercises will help you test your knowledge of confidence intervals. In particular, the exercises work on:</p>
 <ul>
 <li>Simulating confidence intervals.</li>
-<li>Estimating confidence intervals in R.</li>
+<li>Estimating confidence intervals for means using the <span class="math inline">\(t\)</span>-distribution.</li>
 <li>Estimating confidence intervals for proportions.</li>
 </ul>
-<p>Try not to peek at the answers until you have formulated your own answer and double-checked your work for any mistakes.</p>
+<p>Try not to peek at the answers until you have formulated your own answer and double checked your work for any mistakes.</p>
 <section id="exercise-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-1">Exercise 1</h3>
-<p>In this exercise you will be simulating confidence intervals.</p>
+<p>In this exercise you will simulate confidence intervals in Excel. The idea is to draw many samples, build a confidence interval around each one, and see how often the interval captures the population mean.</p>
 <ol type="1">
-<li><p>Set the seed to <span class="math inline">\(9\)</span>. Create a random sample of 1000 data points and store it in an object called <em>Population</em>. Use the exponential distribution with rate of <span class="math inline">\(0.02\)</span> to generate the data. Calculate the mean and standard deviation of <em>Population</em> and call them <em>PopMean</em> and <em>PopSD</em> respectively. What are the mean and standard deviation of <em>Population</em>?</p>
+<li><p>Using the exponential distribution with a rate of <span class="math inline">\(0.02\)</span>, generate <span class="math inline">\(10{,}000\)</span> samples of size <span class="math inline">\(50\)</span>. Arrange the data so that <strong>each row is one sample</strong>. What are the population mean and standard deviation?</p>
 <details>
 <summary>
 <p>Answer</p>
 </summary>
-<p><em>The mean of Population is 48.61. The standard deviation is 47.94.</em></p>
-<p><em>Start by generating values from the exponential distribution. You can use the <code>rexp()</code> function in R to do this. Setting the seed to 9 yields:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">9</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Population <span class="ot">&lt;-</span> <span class="fu">rexp</span>(<span class="dv">1000</span>, <span class="fl">0.02</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><em>The population mean is:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>(PopMean <span class="ot">&lt;-</span> <span class="fu">mean</span>(Population))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 48.61053</code></pre>
-</div>
-</div>
-<p><em>The standard deviation is:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>(PopSD <span class="ot">&lt;-</span> <span class="fu">sd</span>(Population))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 47.94411</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>For an exponential distribution with rate</em> <span class="math inline">\(\lambda = 0.02\)</span>, the mean and standard deviation are both <span class="math inline">\(1/\lambda = 50\)</span>. To draw an exponential value in Excel, transform a uniform random number:</p>
+<ul>
+<li><code>=-LN(RAND())/0.02</code></li>
+</ul>
+<p><em>Fill a block of</em> <span class="math inline">\(10{,}000\)</span> rows and <span class="math inline">\(50\)</span> columns with this formula; each row is a sample of size <span class="math inline">\(50\)</span>. (The values recalculate on every edit — copy the block and use <code>Paste Special → Values</code> to freeze them.)</p>
 </div>
 </details></li>
-<li><p>Create a for loop (with 10,000 iterations) that takes a sample of 50 points from <em>Population</em>, calculates the mean, and then stores the result in a vector called <em>SampleMeans</em>. What is the mean of the <em>SampleMeans</em>?</p>
+<li><p>Compute the mean of each sample (each row). What are the mean and standard deviation of the <span class="math inline">\(10{,}000\)</span> sample means?</p>
 <details>
 <summary>
 <p>Answer</p>
 </summary>
-<p><em>The mean is very close to the population mean 48.83. The standard deviation is 6.83.</em></p>
-<p><em>In R you can use a for loop to create the vector of sample means.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>nrep <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>SampleMeans <span class="ot">&lt;-</span> <span class="fu">c</span>()</span>
-<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>nrep){</span>
-<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">sample</span>(Population, <span class="dv">50</span>, <span class="at">replace =</span> T)</span>
-<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>  SampleMeans <span class="ot">&lt;-</span> <span class="fu">c</span>(SampleMeans, <span class="fu">mean</span>(x))</span>
-<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>}</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</div>
-<p><em>The mean of SampleMeans is:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>(xbar <span class="ot">&lt;-</span> <span class="fu">mean</span>(SampleMeans))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 48.7005</code></pre>
-</div>
-</div>
-<p><em>The standard deviation is:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>(Standard <span class="ot">&lt;-</span> <span class="fu">sd</span>(SampleMeans))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 6.827595</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>In the column just after the data, average each row and copy the formula down all</em> <span class="math inline">\(10{,}000\)</span> rows:</p>
+<ul>
+<li><code>=AVERAGE(A2:AX2)</code> → the mean of the first sample</li>
+</ul>
+<p><em>Summarizing the</em> <span class="math inline">\(10{,}000\)</span> sample means:</p>
+<ul>
+<li><code>=AVERAGE(...)</code> → about <span class="math inline">\(50\)</span>, matching the population mean</li>
+<li><code>=STDEV.S(...)</code> → about <span class="math inline">\(7.07\)</span>, which matches the standard error <span class="math inline">\(\sigma/\sqrt{n} = 50/\sqrt{50} \approx 7.07\)</span></li>
+</ul>
 </div>
 </details></li>
-<li><p>Create a <span class="math inline">\(90\)</span>% confidence interval using the first data point in the <em>SampleMeans</em> vector. Does the confidence interval include <em>PopMean</em>?</p>
+<li><p>Using the standard error from part 2, construct a <span class="math inline">\(90\%\)</span> confidence interval around the first sample mean. Does it include the population mean of <span class="math inline">\(50\)</span>?</p>
 <details>
 <summary>
 <p>Answer</p>
 </summary>
-<p><em>The confidence interval is [47.71, 70.17]. Since the population mean is equal to 48.61, the confidence interval does include the population mean.</em></p>
-<p><em>Let’s construct the upper and lower limits of the interval in R.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>(ll <span class="ot">&lt;-</span> SampleMeans[<span class="dv">1</span>] <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.05</span>) <span class="sc">*</span> Standard)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 47.71385</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>(ul <span class="ot">&lt;-</span> SampleMeans[<span class="dv">1</span>] <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.05</span>) <span class="sc">*</span> Standard)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 70.17464</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>With the standard error stored in a cell (call it <code>SE</code></em> <span class="math inline">\(\approx 7.07\)</span>), the limits are the sample mean plus or minus <span class="math inline">\(z_{0.05} \times SE\)</span>:</p>
+<ul>
+<li><code>=FirstMean - NORM.S.INV(0.95)*SE</code> → lower limit</li>
+<li><code>=FirstMean + NORM.S.INV(0.95)*SE</code> → upper limit</li>
+</ul>
+<p><em>Because a typical sample mean sits near</em> <span class="math inline">\(50\)</span>, the interval will usually contain the population mean. About <span class="math inline">\(90\%\)</span> of such intervals do.</p>
 </div>
 </details></li>
-<li><p>Now take the minimum of the <em>SampleMeans</em> vector. Create a new <span class="math inline">\(90\)</span>% confidence interval. Does the interval include <em>PopMean</em>? Out of the <span class="math inline">\(10,000\)</span> intervals that you could construct with the vector <em>SampleMeans</em>, how many would you expect to include <em>PopMean</em>?</p>
+<li><p>Build a <span class="math inline">\(90\%\)</span> confidence interval around every sample mean and count how many include the population mean. About how many of the <span class="math inline">\(10{,}000\)</span> intervals do you expect to succeed?</p>
 <details>
 <summary>
 <p>Answer</p>
 </summary>
-<p><em>The confidence interval is [14.86, 37.32]. This interval does not include the population mean of 48.61. Out of the 10,000 confidence intervals, one would expect about 9,000 to include the population mean.</em></p>
-<p><em>Let’s find the confidence interval limits using R.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>(Minll <span class="ot">&lt;-</span> <span class="fu">min</span>(SampleMeans) <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.05</span>) <span class="sc">*</span> Standard)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 14.85631</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>(Minul <span class="ot">&lt;-</span> <span class="fu">min</span>(SampleMeans) <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.05</span>) <span class="sc">*</span> Standard)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 37.31709</code></pre>
-</div>
-</div>
-<p><em>We can confirm in R that about 9,000 of the intervals include PopMean. Once more, let’s use a for loop to construct confidence intervals for each element in SampleMeans and check whether the PopMean is included. The count variable keeps track of how many intervals include the population mean.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>count <span class="ot">=</span> <span class="dv">0</span></span>
-<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> SampleMeans){</span>
-<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>  (ll <span class="ot">&lt;-</span> i <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.05</span>) <span class="sc">*</span> Standard)</span>
-<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  (ul <span class="ot">&lt;-</span> i <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.05</span>) <span class="sc">*</span> Standard)</span>
-<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="cf">if</span> (PopMean <span class="sc">&lt;=</span> ul <span class="sc">&amp;</span> PopMean <span class="sc">&gt;=</span> ll){</span>
-<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>    count <span class="ot">=</span> count <span class="sc">+</span> <span class="dv">1</span></span>
-<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a>  }</span>
-<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>count</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 8978</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>Rather than build</em> <span class="math inline">\(10{,}000\)</span> pairs of limits, note that an interval includes <span class="math inline">\(50\)</span> exactly when the sample mean is within <span class="math inline">\(z_{0.05} \times SE\)</span> of <span class="math inline">\(50\)</span>. Add a helper column:</p>
+<ul>
+<li><code>=IF(ABS(SampleMean - 50) &lt;= NORM.S.INV(0.95)*SE, 1, 0)</code></li>
+</ul>
+<p><em>Copy it down and sum it with <code>=SUM(...)</code>. About</em> <span class="math inline">\(9{,}000\)</span> of the <span class="math inline">\(10{,}000\)</span> intervals contain the population mean — that is exactly what a <span class="math inline">\(90\%\)</span> confidence level means.</p>
 </div>
 </details></li>
 </ol>
@@ -518,201 +482,89 @@ UL: 0.481</p>
 <section id="exercise-2" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise 2</h3>
 <ol type="1">
-<li><p>A random sample of <span class="math inline">\(24\)</span> observations is used to estimate the population mean. The sample mean is <span class="math inline">\(104.6\)</span> and the standard deviation is <span class="math inline">\(28.8\)</span>. The population is normally distributed. Construct a <span class="math inline">\(90\)</span>% and <span class="math inline">\(95\)</span>% confidence interval for the population mean. How does the confidence level affect the size of the interval?</p>
+<li><p>A random sample of <span class="math inline">\(24\)</span> observations is used to estimate the population mean. The sample mean is <span class="math inline">\(104.6\)</span> and the standard deviation is <span class="math inline">\(28.8\)</span>. The population is normally distributed. Construct a <span class="math inline">\(90\%\)</span> and a <span class="math inline">\(95\%\)</span> confidence interval for the population mean. How does the confidence level affect the size of the interval?</p>
 <details>
 <summary>
 <p>Answer</p>
 </summary>
-<p><em>The 90% confidence interval is [94.52, 114.67] and the 95% confidence interval is [92.68, 116.76]. The larger the confidence level, the larger the interval.</em></p>
-<p><em>Let’s construct the intervals using R. Since the population standard deviation is unknown we will use the t-distribution. The interval is constructed as (</em>{x} t_{/2} ).</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>(ul90 <span class="ot">&lt;-</span> <span class="fl">104.6</span> <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.05</span>, <span class="dv">23</span>) <span class="sc">*</span> <span class="fl">28.8</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">24</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 114.6755</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>(ll90 <span class="ot">&lt;-</span> <span class="fl">104.6</span> <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.05</span>, <span class="dv">23</span>) <span class="sc">*</span> <span class="fl">28.8</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">24</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 94.52453</code></pre>
-</div>
-</div>
-<p><em>For the 95% confidence interval we adjust the significance level accordingly.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>(ul95 <span class="ot">&lt;-</span> <span class="fl">104.6</span> <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">23</span>) <span class="sc">*</span> <span class="fl">28.8</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">24</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 116.7612</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a>(ll95 <span class="ot">&lt;-</span> <span class="fl">104.6</span> <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">23</span>) <span class="sc">*</span> <span class="fl">28.8</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">24</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 92.43883</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>The 90% interval is</em> <span class="math inline">\([94.52,\ 114.68]\)</span> and the 95% interval is <span class="math inline">\([92.44,\ 116.76]\)</span>. The higher the confidence level, the wider the interval.</p>
+<p><em>Since</em> <span class="math inline">\(\sigma\)</span> is unknown, use the <span class="math inline">\(t\)</span>-distribution. <code>CONFIDENCE.T</code> returns the margin of error directly:</p>
+<ul>
+<li><code>=CONFIDENCE.T(0.10, 28.8, 24)</code> → <span class="math inline">\(10.08\)</span>, so the 90% interval is <span class="math inline">\(104.6 \pm 10.08\)</span></li>
+<li><code>=CONFIDENCE.T(0.05, 28.8, 24)</code> → <span class="math inline">\(12.16\)</span>, so the 95% interval is <span class="math inline">\(104.6 \pm 12.16\)</span></li>
+</ul>
 </div>
 </details></li>
-<li><p>A random sample from a normally distributed population yields a mean of <span class="math inline">\(48.68\)</span> and a standard deviation of <span class="math inline">\(33.64\)</span>. Compute a <span class="math inline">\(95\)</span>% confidence interval assuming a) that the sample size is <span class="math inline">\(16\)</span> and b) the sample size is <span class="math inline">\(25\)</span>. What happens to the confidence interval as the sample size increases?</p>
+<li><p>A random sample from a normally distributed population yields a mean of <span class="math inline">\(48.68\)</span> and a standard deviation of <span class="math inline">\(33.64\)</span>. Compute a <span class="math inline">\(95\%\)</span> confidence interval assuming (a) the sample size is <span class="math inline">\(16\)</span> and (b) the sample size is <span class="math inline">\(25\)</span>. What happens to the interval as the sample size increases?</p>
 <details>
 <summary>
 <p>Answer</p>
 </summary>
-<p><em>The confidence interval for a sample size of 16 is [30.75, 66.61]. The confidence interval when the sample size is 25 is [34.79, 62.57]. As the sample size gets larger, the confidence interval gets narrower and more precise.</em></p>
-<p><em>Let’s use R again to calculate the confidence interval. For a sample size of 16 the interval is:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a>(ul16 <span class="ot">&lt;-</span> <span class="fl">48.68</span> <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">15</span>) <span class="sc">*</span> <span class="fl">33.64</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">16</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 66.60549</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>(ll16 <span class="ot">&lt;-</span> <span class="fl">48.68</span> <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">15</span>) <span class="sc">*</span> <span class="fl">33.64</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">16</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 30.75451</code></pre>
-</div>
-</div>
-<p><em>Increasing the sample size to 25 yields:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>(ul25 <span class="ot">&lt;-</span> <span class="fl">48.68</span> <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">24</span>) <span class="sc">*</span> <span class="fl">33.64</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">25</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 62.56591</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>(ll25 <span class="ot">&lt;-</span> <span class="fl">48.68</span> <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">24</span>) <span class="sc">*</span> <span class="fl">33.64</span> <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="dv">25</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 34.79409</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>The interval for</em> <span class="math inline">\(n = 16\)</span> is <span class="math inline">\([30.75,\ 66.61]\)</span> and for <span class="math inline">\(n = 25\)</span> is <span class="math inline">\([34.79,\ 62.57]\)</span>. As the sample size grows, the interval gets narrower and more precise.</p>
+<p><em>In Excel:</em></p>
+<ul>
+<li><code>=CONFIDENCE.T(0.05, 33.64, 16)</code> → <span class="math inline">\(17.93\)</span>, so the interval is <span class="math inline">\(48.68 \pm 17.93\)</span></li>
+<li><code>=CONFIDENCE.T(0.05, 33.64, 25)</code> → <span class="math inline">\(13.89\)</span>, so the interval is <span class="math inline">\(48.68 \pm 13.89\)</span></li>
+</ul>
 </div>
 </details></li>
 </ol>
 </section>
 <section id="exercise-3" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
-<p>You will need the <strong>sleep</strong> data set for this problem. The data is built into R, and displays the effect of two sleep inducing drugs on students. Calculate a <span class="math inline">\(95\)</span>% confidence interval for group 1 and for group 2. Which drug would you expect to be more effective at increasing sleeping times?</p>
+<p>You will need the <strong>sleep</strong> data set for this problem. It records the extra hours of sleep (<em>extra</em>) for ten students under each of two sleep-inducing drugs (<em>group</em>). Construct a <span class="math inline">\(95\%\)</span> confidence interval for each group. Which drug appears more effective at increasing sleeping time?</p>
+<p><a href="sleep.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <details>
 <summary>
 Answer
 </summary>
-<p><em>The 95% confidence interval for group 1 is [-0.53, 2.03]. Let’s first calculate the standard error for group 1.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>(se1 <span class="ot">&lt;-</span> <span class="fu">sd</span>(sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">1</span>]) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">1</span>])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.5657345</code></pre>
+<div style="padding-left: 1.5em;">
+<p><em>The 95% interval for Group 1 is</em> <span class="math inline">\([-0.53,\ 2.03]\)</span> and for Group 2 is <span class="math inline">\([0.90,\ 3.76]\)</span>.</p>
+<p><em>The data is sorted by group, so with <code>extra</code> in column A the ten Group 1 values are in <code>A2:A11</code> and the ten Group 2 values in <code>A12:A21</code>. For each group, find the mean and the margin of error:</em></p>
+<ul>
+<li><code>=AVERAGE(A2:A11)</code> → <span class="math inline">\(0.75\)</span> for Group 1, and <code>=AVERAGE(A12:A21)</code> → <span class="math inline">\(2.33\)</span> for Group 2</li>
+<li><code>=CONFIDENCE.T(0.05, STDEV.S(A2:A11), 10)</code> → the margin of error, giving <code>AVERAGE ± margin</code></li>
+</ul>
+<p><em>(You can also get each group’s mean with <code>=AVERAGEIF(B:B, "1", A:A)</code>.) Drug 2 appears more effective. Its interval lies entirely above zero, so it is unlikely to have no effect, and its mean increase in sleep is <span class="math inline">\(2.33\)</span> hours, well above Drug 1’s <span class="math inline">\(0.75\)</span> hours.</em></p>
 </div>
-</div>
-<p><em>We can now use the standard error to estimate the lower and upper limits of the confidence interval.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>(ll1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">1</span>]) <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">9</span>) <span class="sc">*</span> se1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.5297804</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>(ul1 <span class="ot">&lt;-</span> <span class="fu">mean</span>(sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">1</span>]) <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">9</span>) <span class="sc">*</span> se1)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.02978</code></pre>
-</div>
-</div>
-<p><em>The 95% confidence interval for group 2 is [0.90, 3.76].Let’s repeat the procedure for group 2. Start by finding the standard error.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a>(se2 <span class="ot">&lt;-</span> <span class="fu">sd</span>(sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">2</span>]) <span class="sc">/</span> <span class="fu">sqrt</span>(<span class="fu">length</span>(sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">2</span>])))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6331666</code></pre>
-</div>
-</div>
-<p><em>Using the standard error we can complete the confidence interval.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a>(ll2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">2</span>]) <span class="sc">+</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">9</span>) <span class="sc">*</span> se2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.8976775</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb47"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb47-1"><a href="#cb47-1" aria-hidden="true" tabindex="-1"></a>(ul2 <span class="ot">&lt;-</span> <span class="fu">mean</span>(sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">2</span>]) <span class="sc">-</span> <span class="fu">qt</span>(<span class="fl">0.025</span>, <span class="dv">9</span>) <span class="sc">*</span> se2)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.762322</code></pre>
-</div>
-</div>
-<p><em>Drug 2 is more effective. Drug 2 does not include zero in the interval, and the interval is to the right of zero. It is unlikely that drug 2 has no effect on students’ sleeping time. Additionally, Drug 2’s mean increase in sleeping hours is 2.33 vs.&nbsp;0.75 for drug 1.</em></p>
 </details>
 </section>
 <section id="exercise-4" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h3>
 <ol type="1">
-<li><p>A random sample of <span class="math inline">\(100\)</span> observations results in <span class="math inline">\(40\)</span> successes. Construct a <span class="math inline">\(90\)</span>% and <span class="math inline">\(95\)</span>% confidence interval for the population proportion. Can we conclude at either confidence level that the population proportion differs from <span class="math inline">\(0.5\)</span>?</p>
+<li><p>A random sample of <span class="math inline">\(100\)</span> observations results in <span class="math inline">\(40\)</span> successes. Construct a <span class="math inline">\(90\%\)</span> and a <span class="math inline">\(95\%\)</span> confidence interval for the population proportion. Can we conclude at either confidence level that the population proportion differs from <span class="math inline">\(0.5\)</span>?</p>
 <details>
 <summary>
 <p>Answer</p>
 </summary>
-<p><em>The 90% and 95% confidence intervals are [0.319, 0.481], and [0.304, 0.496] respectively. Since they do not include 0.5, we can conclude that the population proportion is significantly different from 0.5.</em></p>
-<p><em>We can create an object that stores the sample proportion and sample in R:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> <span class="fl">0.4</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a>(n <span class="ot">&lt;-</span> <span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 100</code></pre>
-</div>
-</div>
-<p><em>The 90% confidence interval is given by:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a>(Ex1ll90 <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.05</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.319419</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a>(Ex1ul90 <span class="ot">&lt;-</span> p <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.05</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.480581</code></pre>
-</div>
-</div>
-<p><em>The 95% confidence interval is:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>(Ex1ll95 <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3039818</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a>(Ex1ul95 <span class="ot">&lt;-</span> p <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">100</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4960182</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>The 90% interval is</em> <span class="math inline">\([0.319,\ 0.481]\)</span> and the 95% interval is <span class="math inline">\([0.304,\ 0.496]\)</span>. Neither includes <span class="math inline">\(0.5\)</span>, so at both levels we can conclude the population proportion differs from <span class="math inline">\(0.5\)</span>.</p>
+<p><em>With</em> <span class="math inline">\(\hat{p} = 0.4\)</span> and <span class="math inline">\(n = 100\)</span>, the standard error is <code>=SQRT(0.4*0.6/100)</code> <span class="math inline">\(= 0.049\)</span>. The margins of error are:</p>
+<ul>
+<li><code>=NORM.S.INV(0.95) * SQRT(0.4*0.6/100)</code> → <span class="math inline">\(0.081\)</span>, giving <span class="math inline">\(0.4 \pm 0.081\)</span></li>
+<li><code>=NORM.S.INV(0.975) * SQRT(0.4*0.6/100)</code> → <span class="math inline">\(0.096\)</span>, giving <span class="math inline">\(0.4 \pm 0.096\)</span></li>
+</ul>
 </div>
 </details></li>
-<li><p>You will need the <strong>HairEyeColor</strong> data set for this problem. The data is built into R, and displays the distribution of hair and eye color for <span class="math inline">\(592\)</span> statistics students. Construct a <span class="math inline">\(95\)</span> confidence interval for the proportion of Hazel eye color students.</p>
+<li><p>You will need the <strong>HairEyeColor</strong> data set for this problem. It records the hair and eye color of <span class="math inline">\(592\)</span> statistics students. Construct a <span class="math inline">\(95\%\)</span> confidence interval for the proportion of students with Hazel eyes.</p>
+<p><a href="HairEyeColor.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <details>
 <summary>
 <p>Answer</p>
 </summary>
-<p><em>The 95% confidence interval is [0.128, 0.186].</em></p>
-<p><em>The data can easily be viewed by calling <code>HairEyeColor</code> in R.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb61"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb61-1"><a href="#cb61-1" aria-hidden="true" tabindex="-1"></a>HairEyeColor</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>, , Sex = Male
-
-       Eye
-Hair    Brown Blue Hazel Green
-  Black    32   11    10     3
-  Brown    53   50    25    15
-  Red      10   10     7     7
-  Blond     3   30     5     8
-
-, , Sex = Female
-
-       Eye
-Hair    Brown Blue Hazel Green
-  Black    36    9     5     2
-  Brown    66   34    29    14
-  Red      16    7     7     7
-  Blond     4   64     5     8</code></pre>
-</div>
-</div>
-<p><em>Note that there are three dimensions to this table (Hair, Eye, Sex). We can calculate the proportion of Hazel eye colored students with the following command that makes use of indexing:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb63"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb63-1"><a href="#cb63-1" aria-hidden="true" tabindex="-1"></a>(p <span class="ot">&lt;-</span> (<span class="fu">sum</span>(HairEyeColor[, <span class="dv">3</span>, <span class="dv">1</span>]) <span class="sc">+</span> <span class="fu">sum</span>(HairEyeColor[, <span class="dv">3</span>, <span class="dv">2</span>])) <span class="sc">/</span> <span class="fu">sum</span>(HairEyeColor))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1570946</code></pre>
-</div>
-</div>
-<p><em>Now we can use this proportion to construct the intervals. Recall that for proportions the interval is calculated by (</em>{p} z_{/2} ). The 95% confidence interval is given by:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb65"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb65-1"><a href="#cb65-1" aria-hidden="true" tabindex="-1"></a>(Ex2ll95 <span class="ot">&lt;-</span> p <span class="sc">+</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">592</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1277818</code></pre>
-</div>
-<div class="sourceCode cell-code" id="cb67"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb67-1"><a href="#cb67-1" aria-hidden="true" tabindex="-1"></a>(Ex2ul95 <span class="ot">&lt;-</span> p <span class="sc">-</span> <span class="fu">qnorm</span>(<span class="fl">0.025</span>) <span class="sc">*</span> <span class="fu">sqrt</span>(p <span class="sc">*</span> (<span class="dv">1</span> <span class="sc">-</span> p) <span class="sc">/</span> <span class="dv">592</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.1864074</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>The 95% confidence interval is</em> <span class="math inline">\([0.128,\ 0.186]\)</span>.</p>
+<p><em>The data is in tidy form with columns <code>Hair</code>, <code>Eye</code>, <code>Sex</code>, and <code>n</code> (the count). Total the Hazel rows and divide by the overall total to get the sample proportion:</em></p>
+<ul>
+<li><code>=SUMIF(Eye_range, "Hazel", n_range)</code> → <span class="math inline">\(93\)</span> Hazel-eyed students</li>
+<li><code>=SUM(n_range)</code> → <span class="math inline">\(592\)</span> students, so <span class="math inline">\(\hat{p} = 93/592 = 0.157\)</span></li>
+</ul>
+<p><em>Then the margin of error and interval are:</em></p>
+<ul>
+<li><code>=NORM.S.INV(0.975) * SQRT(0.157*(1-0.157)/592)</code> → <span class="math inline">\(0.029\)</span>, giving <span class="math inline">\(0.157 \pm 0.029 = [0.128,\ 0.186]\)</span></li>
+</ul>
 </div>
 </details></li>
 </ol>
