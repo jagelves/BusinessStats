@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,6 +41,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9904b5196d746cb5bc47063911474b57.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -293,7 +261,10 @@ window.Quarto = {
   <li><a href="#correlation-significance" id="toc-correlation-significance" class="nav-link active" data-scroll-target="#correlation-significance"><span class="header-section-number">14.1</span> Correlation Significance</a></li>
   <li><a href="#difference-of-means-tests" id="toc-difference-of-means-tests" class="nav-link" data-scroll-target="#difference-of-means-tests"><span class="header-section-number">14.2</span> Difference of Means Tests</a></li>
   <li><a href="#regression-inference" id="toc-regression-inference" class="nav-link" data-scroll-target="#regression-inference"><span class="header-section-number">14.3</span> Regression Inference</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">14.4</span> Exercises</a>
+  <li><a href="#regression-and-inference-in-excel" id="toc-regression-and-inference-in-excel" class="nav-link" data-scroll-target="#regression-and-inference-in-excel"><span class="header-section-number">14.4</span> Regression and Inference in Excel</a></li>
+  <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">14.5</span> Excel Function Summary</a></li>
+  <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">14.6</span> Chapter Summary Cheat Sheet</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">14.7</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -338,63 +309,57 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>In this chapter, you will begin mastering the concepts of correlation significance, difference of means tests, and regression inference, empowering you with the tools to uncover meaningful relationships and differences in data while assessing their statistical significance. These skills will enable you to make informed business decisions, such as evaluating the strength of market trends, comparing performance across groups, or determining the impact of variables in predictive models, ensuring your conclusions are robust and actionable.</p>
+<p>This final chapter brings hypothesis testing and regression together. You will learn to judge whether a correlation is real or just noise, whether two groups truly differ, and whether a regression coefficient carries any explanatory weight. These are the tools that turn a descriptive relationship into a defensible conclusion — letting you evaluate market trends, compare performance across groups, and decide which predictors actually matter in a model.</p>
 <section id="correlation-significance" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="correlation-significance"><span class="header-section-number">14.1</span> Correlation Significance</h2>
-<p>To determine the statistical significance of the correlation coefficient we test:</p>
+<p>A sample correlation coefficient is almost never exactly zero, even when the two variables are unrelated. To decide whether an observed correlation reflects a real relationship in the population, we test the population correlation <span class="math inline">\(\rho\)</span>:</p>
 <ul>
-<li><p><span class="math inline">\(H_o: \rho \geq 0\)</span>; <span class="math inline">\(H_a: \rho &lt;0\)</span> left tail</p></li>
-<li><p><span class="math inline">\(H_o: \rho \leq 0\)</span>; <span class="math inline">\(H_a: \rho &gt;0\)</span> right tail</p></li>
-<li><p><span class="math inline">\(H_o: \rho = 0\)</span>; <span class="math inline">\(H_a: \rho \neq 0\)</span> two tails</p></li>
+<li><span class="math inline">\(H_0: \rho \geq 0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \rho &lt; 0\)</span> — left-tailed</li>
+<li><span class="math inline">\(H_0: \rho \leq 0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \rho &gt; 0\)</span> — right-tailed</li>
+<li><span class="math inline">\(H_0: \rho = 0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \rho \ne 0\)</span> — two-tailed</li>
 </ul>
-<p>The test statistic for the correlation is given by <span class="math inline">\(t_{df}= \frac{r_{xy}\sqrt{n-2}}{\sqrt{1-r_{xy}^2}}\)</span>, where <span class="math inline">\(df=n-2\)</span> and <span class="math inline">\(r_{xy}\)</span> is the sample correlation coefficient.</p>
-<p>Run the <code>cor.test()</code> function to perform the test on two vectors. Here is a list of arguments to use:</p>
-<ul>
-<li><p><em>alternative</em>: is a choice between “two.sided”, “less” and “greater”.</p></li>
-<li><p><em>conf.level</em>: sets the confidence level. Enter as a decimal and not percentage.</p></li>
-</ul>
+<div class="callout-formula">
+<p><strong>CORRELATION TEST STATISTIC</strong> <span class="math display">\[t = \frac{r_{xy}\sqrt{n-2}}{\sqrt{1-r_{xy}^2}}\]</span> with degrees of freedom <span class="math inline">\(df = n - 2\)</span>, where <span class="math inline">\(r_{xy}\)</span> is the sample correlation coefficient and <span class="math inline">\(n\)</span> is the sample size.</p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> A sample of <span class="math inline">\(n = 30\)</span> shows a correlation of <span class="math inline">\(r = 0.5\)</span> between advertising and sales. Testing <span class="math inline">\(H_0: \rho = 0\)</span> against <span class="math inline">\(H_a: \rho \ne 0\)</span>: <span class="math display">\[t = \frac{0.5\sqrt{30-2}}{\sqrt{1-0.5^2}} = \frac{0.5 \times 5.29}{0.866} = 3.06\]</span> With <span class="math inline">\(df = 28\)</span>, the two-tailed p-value is about <span class="math inline">\(0.005\)</span>. Because <span class="math inline">\(0.005 &lt; 0.05\)</span>, we reject the null and conclude the correlation is statistically significant.</p>
+</div>
 </section>
 <section id="difference-of-means-tests" class="level2" data-number="14.2">
 <h2 data-number="14.2" class="anchored" data-anchor-id="difference-of-means-tests"><span class="header-section-number">14.2</span> Difference of Means Tests</h2>
-<p>Tests for inference about the difference of two population means.</p>
-<ul>
-<li><p>The test for unpaired mean differences (not equal variances) is given by <span class="math inline">\(t_{df}= \frac {(\bar x_1 - \bar x_2)- \bar d_o}{\sqrt {\frac {s_1^2}{n_1} \frac{s_2^2}{n_2}}}\)</span>.</p></li>
-<li><p>The test for unpaired mean difference (equal variances) is given by <span class="math inline">\(t_{df}= \frac {(\bar x_1 - \bar x_2)- \bar d_o}{\sqrt {s_p^2 (\frac {1}{n_1} + \frac {1}{n_2})}}\)</span>.</p></li>
-<li><p>The test for paired mean difference is given by <span class="math inline">\(t_{df}= \frac {\bar d- d_o}{\frac {s}{\sqrt{n}}}\)</span>.</p></li>
-</ul>
-<p>Run these test in R by using the <code>t.test()</code> function. Here is a list of arguments to use:</p>
-<ul>
-<li><p><em>paired</em>: use True for paired, False for independent. The default is False.</p></li>
-<li><p><em>var.equal</em>: use True for equal variances, False for unequal. The default is False.</p></li>
-<li><p><em>mu</em>: a value that indicate the hypothesized value of the mean or mean difference.</p></li>
-<li><p><em>alternative</em>: is a choice between “two.sided”, “less” and “greater”.</p></li>
-<li><p><em>conf.level</em>: sets the confidence level. Enter as a decimal and not percentage.</p></li>
-</ul>
+<p>We often want to know whether two populations have different means — for example, whether two divisions post different sales, or whether a treatment changes an outcome. The test statistic depends on how the two samples relate.</p>
+<div class="callout-formula">
+<p><strong>DIFFERENCE OF MEANS TEST STATISTICS</strong> <span class="math display">\[\text{Unpaired, unequal variances:} \quad t = \frac{(\bar{x}_1 - \bar{x}_2) - d_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\]</span> <span class="math display">\[\text{Unpaired, equal variances:} \quad t = \frac{(\bar{x}_1 - \bar{x}_2) - d_0}{\sqrt{s_p^2\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}\]</span> <span class="math display">\[\text{Paired:} \quad t = \frac{\bar{d} - d_0}{s / \sqrt{n}}\]</span> where <span class="math inline">\(d_0\)</span> is the hypothesized difference, <span class="math inline">\(s_p^2\)</span> is the pooled variance, and <span class="math inline">\(\bar{d}\)</span> and <span class="math inline">\(s\)</span> are the mean and standard deviation of the paired differences.</p>
+</div>
+<p>A <strong>paired</strong> test is used when the two samples are naturally linked — the same subjects measured twice (before and after), for instance. An <strong>unpaired</strong> (independent) test is used when the two samples come from separate groups.</p>
 </section>
 <section id="regression-inference" class="level2" data-number="14.3">
 <h2 data-number="14.3" class="anchored" data-anchor-id="regression-inference"><span class="header-section-number">14.3</span> Regression Inference</h2>
-<p>When running regression a couple of test can be performed on the coefficients to determine significance:</p>
-<ul>
-<li><p>The first test competing hypothesis are <span class="math inline">\(H_o: \beta_j = 0\)</span>; <span class="math inline">\(H_a: \beta_j \ne 0\)</span>. The test statistic for the intercept (slope) coefficient is given by <span class="math inline">\(t_{df}= \frac {b_j}{se(b_j)}\)</span>.</p></li>
-<li><p>The second test competing hypothesis are <span class="math inline">\(H_o: \beta_1=\beta_2=...\beta_k=0\)</span>; <span class="math inline">\(H_a:\)</span> <em>at least one</em> <span class="math inline">\(\beta_i \neq 0\)</span>. The joint test of significance is given by <span class="math inline">\(F_{df_1,df_2} = \frac {SSR/k}{SSE/(n-k-1)} = \frac {MSR}{MSE}\)</span>. The Anova table below shows more detail on this test.</p></li>
-</ul>
+<p>After fitting a regression, two kinds of tests tell us whether the model has explanatory power.</p>
+<p><strong>Testing a single coefficient.</strong> Each coefficient is tested against zero — is this predictor related to <span class="math inline">\(y\)</span>, holding the others fixed?</p>
+<div class="callout-formula">
+<p><strong>TEST FOR A SINGLE COEFFICIENT</strong> <span class="math display">\[H_0: \beta_j = 0 \quad\text{vs.}\quad H_a: \beta_j \ne 0, \qquad t = \frac{b_j}{se(b_j)}\]</span> where <span class="math inline">\(b_j\)</span> is the estimated coefficient and <span class="math inline">\(se(b_j)\)</span> is its standard error, with <span class="math inline">\(df = n - k - 1\)</span>.</p>
+</div>
+<p><strong>Testing joint significance.</strong> The <span class="math inline">\(F\)</span>-test asks whether <em>all</em> the slope coefficients are zero at once — is the model, as a whole, better than no predictors?</p>
+<div class="callout-formula">
+<p><strong>JOINT SIGNIFICANCE (F-TEST)</strong> <span class="math display">\[H_0: \beta_1 = \beta_2 = \dots = \beta_k = 0, \qquad F = \frac{SSR/k}{SSE/(n-k-1)} = \frac{MSR}{MSE}\]</span> where <span class="math inline">\(k\)</span> is the number of predictors and <span class="math inline">\(n\)</span> is the sample size.</p>
+</div>
+<p>The ANOVA table organizes these pieces:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
-<col style="width: 16%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 27%">
 <col style="width: 20%">
-<col style="width: 16%">
 </colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Anova</th>
+<th style="text-align: center;">Source</th>
 <th style="text-align: center;">df</th>
 <th style="text-align: center;">SS</th>
 <th style="text-align: center;">MS</th>
 <th style="text-align: center;">F</th>
-<th style="text-align: center;">Significance</th>
 </tr>
 </thead>
 <tbody>
@@ -402,16 +367,14 @@ details summary {
 <td style="text-align: center;">Regression</td>
 <td style="text-align: center;"><span class="math inline">\(k\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(SSR\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(MSR=\frac{SSR}{k}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(F_{df_1,df_2} = \frac {MSR}{MSE}\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(P(F) \geq \frac{MSR}{MSE}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(MSR = \frac{SSR}{k}\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(F = \frac{MSR}{MSE}\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">Residual</td>
 <td style="text-align: center;"><span class="math inline">\(n-k-1\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(SSE\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(MSE=\frac {SSE}{n-k-1}\)</span></td>
-<td style="text-align: center;"></td>
+<td style="text-align: center;"><span class="math inline">\(MSE = \frac{SSE}{n-k-1}\)</span></td>
 <td style="text-align: center;"></td>
 </tr>
 <tr class="odd">
@@ -420,71 +383,82 @@ details summary {
 <td style="text-align: center;"><span class="math inline">\(SST\)</span></td>
 <td style="text-align: center;"></td>
 <td style="text-align: center;"></td>
-<td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
-<p>To conduct these tests, save the <code>lm()</code> model into an object. The <code>summary()</code> function can then be used to retrieve the results of the tests on the model’s parameters. Use the <code>anova()</code> function to obtain the Anova table.</p>
 </section>
-<section id="exercises" class="level2" data-number="14.4">
-<h2 data-number="14.4" class="anchored" data-anchor-id="exercises"><span class="header-section-number">14.4</span> Exercises</h2>
-<p>The following exercises will help you test your knowledge on Regression and Inference. In particular, the exercises work on:</p>
+<section id="regression-and-inference-in-excel" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="regression-and-inference-in-excel"><span class="header-section-number">14.4</span> Regression and Inference in Excel</h2>
+<p><strong>Correlation significance.</strong> Compute the correlation with <code>=CORREL(x_range, y_range)</code>, then turn it into a test statistic and p-value:</p>
+<pre class="excel"><code>=(r*SQRT(n-2)) / SQRT(1 - r^2)</code></pre>
+<p>followed by <code>=T.DIST.2T(ABS(t), n-2)</code> for a two-tailed test (or <code>=T.DIST</code> / <code>=T.DIST.RT</code> for one tail).</p>
+<p><strong>Difference of means.</strong> The <code>=T.TEST(array1, array2, tails, type)</code> function returns the p-value directly. The <code>tails</code> argument is <code>1</code> (one-tailed) or <code>2</code> (two-tailed); the <code>type</code> argument is <code>1</code> (paired), <code>2</code> (two-sample, equal variances), or <code>3</code> (two-sample, unequal variances). For full output — the test statistic, critical values, and both one- and two-tailed p-values — use the <strong>Data Analysis ToolPak</strong>, which offers <code>t-Test: Paired Two Sample for Means</code>, <code>t-Test: Two-Sample Assuming Equal Variances</code>, and <code>t-Test: Two-Sample Assuming Unequal Variances</code>.</p>
+<p><strong>Regression inference.</strong> Run <code>Data → Data Analysis → Regression</code>. The output reports each coefficient with its standard error, <span class="math inline">\(t\)</span>-statistic, and p-value (the individual coefficient tests), the <span class="math inline">\(F\)</span>-statistic with its <strong>Significance F</strong> (the joint test), and the ANOVA table — everything in this chapter in a single step.</p>
+</section>
+<section id="excel-function-summary" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">14.5</span> Excel Function Summary</h2>
+<p>Below is a list of the Excel functions and tools used in this section:</p>
 <ul>
-<li>Determining the significance of correlations.</li>
-<li>Conduct paired and unpaired test of means and proportions.</li>
-<li>Determining the significance of the slope and intercept estimates both individually and jointly.</li>
-<li>Developing prediction intervals.</li>
+<li><p><code>=CORREL(x_range, y_range)</code> returns the correlation coefficient, the starting point for a correlation test.</p></li>
+<li><p><code>=T.TEST(array1, array2, tails, type)</code> returns the p-value of a difference-of-means test. <code>type</code> is <code>1</code> (paired), <code>2</code> (equal variances), or <code>3</code> (unequal variances).</p></li>
+<li><p><code>=T.DIST.2T(x, deg_freedom)</code>, <code>=T.DIST(x, df, TRUE)</code>, and <code>=T.DIST.RT(x, df)</code> convert a test statistic to a p-value.</p></li>
+<li><p><strong>Data Analysis ToolPak → t-Test</strong> performs the three difference-of-means tests with full output.</p></li>
+<li><p><strong>Data Analysis ToolPak → Regression</strong> returns coefficients, standard errors, <span class="math inline">\(t\)</span>-statistics, p-values, the <span class="math inline">\(F\)</span>-statistic, <span class="math inline">\(R^2\)</span>, and the ANOVA table.</p></li>
 </ul>
-<p>Try not to peek at the answers until you have formulated your own answer and double-checked your work for any mistakes.</p>
+</section>
+<section id="chapter-summary-cheat-sheet" class="level2" data-number="14.6">
+<h2 data-number="14.6" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">14.6</span> Chapter Summary Cheat Sheet</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Regression_Inference.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exercises" class="level2" data-number="14.7">
+<h2 data-number="14.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">14.7</span> Exercises</h2>
+<p>The following exercises will help you test your knowledge of regression and inference. In particular, the exercises work on:</p>
+<ul>
+<li>Determining the significance of a correlation.</li>
+<li>Conducting paired and unpaired tests of means.</li>
+<li>Determining the significance of regression coefficients, individually and jointly.</li>
+<li>Making predictions from a regression model.</li>
+</ul>
+<p>Try not to peek at the answers until you have formulated your own answer and double checked your work for any mistakes.</p>
 <section id="exercise-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-1">Exercise 1</h3>
 <ol type="1">
-<li><p>Consider the following competing hypothesis: <span class="math inline">\(H_{o}: \rho=0\)</span>, <span class="math inline">\(H_{a}: \rho \neq 0\)</span>. A sample of <span class="math inline">\(25\)</span> observations reveals that the correlation coefficient between two variables is <span class="math inline">\(0.15\)</span>. At a <span class="math inline">\(5\)</span>% confidence level, can we reject the null hypothesis?</p>
+<li><p>Consider the competing hypotheses <span class="math inline">\(H_{0}: \rho = 0\)</span>, <span class="math inline">\(H_{a}: \rho \neq 0\)</span>. A sample of <span class="math inline">\(25\)</span> observations reveals a correlation coefficient of <span class="math inline">\(0.15\)</span> between two variables. At a <span class="math inline">\(5\%\)</span> significance level, can we reject the null hypothesis?</p>
 <details>
 <summary>
 <p>Answer</p>
 </summary>
-<p><em>At the 5% significance level, we cannot reject the null since the p-value is 0.47 &gt; 0.05.</em></p>
-<p><em>Recall that the t-stat is calculated by (). We can use R as a calculator to calculate this value:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>rxy <span class="ot">&lt;-</span> <span class="fl">0.15</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">25</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>(tstat <span class="ot">&lt;-</span> (rxy <span class="sc">*</span> <span class="fu">sqrt</span>(n <span class="sc">-</span> <span class="dv">2</span>)) <span class="sc">/</span> (<span class="fu">sqrt</span>(<span class="dv">1</span> <span class="sc">-</span> rxy<span class="sc">^</span><span class="dv">2</span>)))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7276069</code></pre>
-</div>
-</div>
-<p><em>Now, we can estimate the p-value using the <code>pt()</code> function:</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span> <span class="sc">*</span> <span class="fu">pt</span>(tstat, n <span class="sc">-</span> <span class="dv">2</span>, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.4741966</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>We cannot reject the null: the p-value of</em> <span class="math inline">\(0.47\)</span> is greater than <span class="math inline">\(0.05\)</span>.</p>
+<p><em>In Excel:</em></p>
+<ul>
+<li><code>=(0.15*SQRT(25-2)) / SQRT(1 - 0.15^2)</code> → <span class="math inline">\(0.73\)</span> (test statistic)</li>
+<li><code>=T.DIST.2T(0.73, 23)</code> → <span class="math inline">\(0.47\)</span> (two-tailed p-value)</li>
+</ul>
 </div>
 </details></li>
-<li><p>Install the <code>ISLR2</code> package in R. Use the <strong>Hitters</strong> data set to look at the relationship between <em>Hits</em> and <em>Salary</em>. Specifically, calculate the correlation coefficient and test the competing hypothesis <span class="math inline">\(H_{o}: \rho=0\)</span>, <span class="math inline">\(H_{a}: \rho \neq 0\)</span> at the <span class="math inline">\(1\)</span>% significance level.</p>
+<li><p>Use the <strong>Hitters</strong> data set to examine the relationship between <em>Hits</em> and <em>Salary</em>. Calculate the correlation coefficient and test <span class="math inline">\(H_{0}: \rho = 0\)</span> against <span class="math inline">\(H_{a}: \rho \neq 0\)</span> at the <span class="math inline">\(1\%\)</span> significance level.</p>
+<p><a href="Hitters.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <details>
 <summary>
 <p>Answer</p>
 </summary>
-<p><em>The estimated correlation of 0.44 and the t-value is 7.89. Since the p-value is approximately 0, we reject the null hypothesis (H_{o}: ).</em></p>
-<p><em>Once the <code>ISLR2</code> package is downloaded, it can be loaded to R using the <code>library()</code> function. The <code>cor.test()</code> function conducts the appropriate test of significance.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(Hitters<span class="sc">$</span>Salary, Hitters<span class="sc">$</span>Hits, <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Pearson's product-moment correlation
-
-data:  Hitters$Salary and Hitters$Hits
-t = 7.8863, df = 261, p-value = 8.531e-14
-alternative hypothesis: true correlation is not equal to 0
-95 percent confidence interval:
- 0.3355210 0.5314332
-sample estimates:
-      cor 
-0.4386747 </code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>The correlation is</em> <span class="math inline">\(0.44\)</span> and the test statistic is <span class="math inline">\(7.89\)</span>. The p-value is approximately <span class="math inline">\(0\)</span>, so we reject the null hypothesis — the correlation between Hits and Salary is highly significant.</p>
+<p><em>In Excel (there are</em> <span class="math inline">\(263\)</span> players with a recorded salary):</p>
+<ul>
+<li><code>=CORREL(Hits_range, Salary_range)</code> → <span class="math inline">\(0.44\)</span></li>
+<li><code>=(0.44*SQRT(263-2)) / SQRT(1 - 0.44^2)</code> → <span class="math inline">\(7.89\)</span> (test statistic)</li>
+<li><code>=T.DIST.2T(7.89, 261)</code> → approximately <span class="math inline">\(0\)</span></li>
+</ul>
 </div>
 </details></li>
 </ol>
@@ -492,144 +466,83 @@ sample estimates:
 <section id="exercise-2" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-2">Exercise 2</h3>
 <ol type="1">
-<li><p>Install the <code>ISLR2</code> package in R. Use the <strong>Hitters</strong> data set to investigate if the average hits were significantly different between the two divisions (American and National). Use the <em>NewLeague</em> and <em>Hits</em> variables to test the hypothesis at the <span class="math inline">\(5\)</span>% significance level. Is there reason to believe that the population variances are different?</p>
+<li><p>Use the <strong>Hitters</strong> data set to investigate whether the average number of <em>Hits</em> differs between the two leagues (American and National), using the <em>NewLeague</em> and <em>Hits</em> variables. Test at the <span class="math inline">\(5\%\)</span> significance level. Is there reason to believe the population variances differ?</p>
+<p><a href="Hitters.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <details>
 <summary>
 <p>Answer</p>
 </summary>
-<p><em>There is no reason to believe that the population variances are different. Players are recruited from what seems to be a common pool. At a 5% significance level, the difference of the two means is not significantly different from zero. We can’t reject the null hypothesis.</em></p>
-<p><em>We will use the <code>t.test()</code> function in R to test the hypothesis. We note that the test is not paired, two-sided, and assumes equal variances in the population.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(Hitters<span class="sc">$</span>Hits[Hitters<span class="sc">$</span>NewLeague <span class="sc">==</span> <span class="st">"A"</span>],</span>
-<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>       Hitters<span class="sc">$</span>Hits[Hitters<span class="sc">$</span>NewLeague <span class="sc">==</span> <span class="st">"N"</span>], <span class="at">paired =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">"two.sided"</span>, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">var.equal =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Two Sample t-test
-
-data:  Hitters$Hits[Hitters$NewLeague == "A"] and Hitters$Hits[Hitters$NewLeague == "N"]
-t = 1.0862, df = 320, p-value = 0.2782
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- -4.581286 15.875028
-sample estimates:
-mean of x mean of y 
-103.58523  97.93836 </code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>There is no strong reason to believe the variances differ — players are recruited from a common pool. At the</em> <span class="math inline">\(5\%\)</span> level the difference in mean Hits is not significant, so we cannot reject the null.</p>
+<p><em>Copy the Hits for <code>NewLeague = "A"</code> into one column and the Hits for <code>NewLeague = "N"</code> into another (or filter the data). This is an unpaired, two-tailed test assuming equal variances:</em></p>
+<ul>
+<li><code>=T.TEST(A_range, N_range, 2, 2)</code> → <span class="math inline">\(0.28\)</span> (p-value)</li>
+</ul>
+<p><em>Since</em> <span class="math inline">\(0.28 &gt; 0.05\)</span>, we fail to reject the null.</p>
 </div>
 </details></li>
-<li><p>Use the <code>ISLR2</code> package for this question. Particularly, use the <strong>BrainCancer</strong> data set to test whether males have a higher average survival time than women. Use the <em>sex</em> and <em>time</em> variables to test the hypothesis at the <span class="math inline">\(5\)</span>% significance level. Is there reason to believe that the population variances are different?</p>
+<li><p>Use the <strong>BrainCancer</strong> data set to test whether males have a higher average survival <em>time</em> than females, using the <em>sex</em> and <em>time</em> variables. Test at the <span class="math inline">\(5\%\)</span> significance level. Is there reason to believe the population variances differ?</p>
+<p><a href="BC.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <details>
 <summary>
 <p>Answer</p>
 </summary>
-<p><em>There might be reason to believe that the population variances are different. Women and men are known to have medical differences. At a 5% significance level, the average survival time of men seems not to be larger than that of women. We can’t reject the null hypothesis (H_{o}: {x}<em>{1} - {x}</em>{2} ).</em></p>
-<p><em>Once more use the <code>t.test()</code> function in R to test the hypothesis. Note that the test is not paired, right-tailed, and assumes different variances in the population.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(BrainCancer<span class="sc">$</span>time[BrainCancer<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"Male"</span>],</span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>       BrainCancer<span class="sc">$</span>time[BrainCancer<span class="sc">$</span>sex <span class="sc">==</span> <span class="st">"Female"</span>], <span class="at">paired =</span> <span class="cn">FALSE</span>, </span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">"greater"</span>, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">var.equal =</span> <span class="cn">FALSE</span>,</span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>       <span class="at">conf.level =</span> <span class="fl">0.95</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  BrainCancer$time[BrainCancer$sex == "Male"] and BrainCancer$time[BrainCancer$sex == "Female"]
-t = -0.30524, df = 84.867, p-value = 0.6195
-alternative hypothesis: true difference in means is greater than 0
-95 percent confidence interval:
- -8.504999       Inf
-sample estimates:
-mean of x mean of y 
- 26.78302  28.10200 </code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>There may be reason to believe the variances differ, so we use an unequal-variance test. At the</em> <span class="math inline">\(5\%\)</span> level we cannot reject <span class="math inline">\(H_{0}: \mu_{male} - \mu_{female} \leq 0\)</span> — there is no evidence that males survive longer.</p>
+<p><em>Run <code>Data → Data Analysis → t-Test: Two-Sample Assuming Unequal Variances</code> on the male and female survival times. The male mean (</em><span class="math inline">\(26.78\)</span>) is actually <strong>below</strong> the female mean (<span class="math inline">\(28.10\)</span>), giving a test statistic of <span class="math inline">\(-0.31\)</span>. Because the difference points opposite to the alternative, the one-tailed p-value is about <span class="math inline">\(0.62\)</span> — far above <span class="math inline">\(0.05\)</span> — so we fail to reject the null.</p>
 </div>
 </details></li>
 </ol>
 </section>
 <section id="exercise-3" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
-<ol type="1">
-<li><p>Use the <strong>sleep</strong> data set included in R. At the <span class="math inline">\(1\)</span>% significance level, is there an effect of the drug on the <span class="math inline">\(10\)</span> patients? Assume that the <em>group</em> variable denotes before (<span class="math inline">\(1\)</span>) the drug is administered and after (<span class="math inline">\(2\)</span>) the drug is administered.</p>
+<p>Use the <strong>sleep</strong> data set. At the <span class="math inline">\(1\%\)</span> significance level, is there an effect of the drug on the <span class="math inline">\(10\)</span> patients? Treat <em>group</em> <span class="math inline">\(1\)</span> as the measurement before the drug and <em>group</em> <span class="math inline">\(2\)</span> as after, so the two groups are the <strong>same</strong> patients measured twice.</p>
+<p><a href="sleep.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <details>
 <summary>
-<p>Answer</p>
+Answer
 </summary>
-<p><em>The drug seems to have an effect as we can reject the null hypothesis (H_{o}: {d} = 0). The difference of means seems to be statistically different from zero.</em></p>
-<p><em>Use the <code>t.test()</code> function once more in R. Make sure to note that the test is paired and two-tailed.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">1</span>],</span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>       sleep<span class="sc">$</span>extra[sleep<span class="sc">$</span>group <span class="sc">==</span> <span class="dv">2</span>], <span class="at">paired =</span> <span class="cn">TRUE</span>,</span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a>       <span class="at">alternative =</span> <span class="st">"two.sided"</span>, <span class="at">mu =</span> <span class="dv">0</span>, <span class="at">conf.level =</span> <span class="fl">0.99</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Paired t-test
-
-data:  sleep$extra[sleep$group == 1] and sleep$extra[sleep$group == 2]
-t = -4.0621, df = 9, p-value = 0.002833
-alternative hypothesis: true mean difference is not equal to 0
-99 percent confidence interval:
- -2.8440519 -0.3159481
-sample estimates:
-mean difference 
-          -1.58 </code></pre>
+<div style="padding-left: 1.5em;">
+<p><em>The drug has an effect: we reject</em> <span class="math inline">\(H_{0}: \bar{d} = 0\)</span>. The mean difference in extra sleep is statistically different from zero.</p>
+<p><em>Because the same patients are measured twice, use a paired, two-tailed test. With the Group 1 values in <code>A2:A11</code> and the Group 2 values in <code>A12:A21</code>:</em></p>
+<ul>
+<li><code>=T.TEST(A2:A11, A12:A21, 2, 1)</code> → <span class="math inline">\(0.0028\)</span> (p-value)</li>
+</ul>
+<p><em>Since</em> <span class="math inline">\(0.0028 &lt; 0.01\)</span>, we reject the null at the <span class="math inline">\(1\%\)</span> level.</p>
 </div>
-</div>
-</details></li>
-</ol>
+</details>
 </section>
 <section id="exercise-4" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h3>
 <ol type="1">
-<li><p>Install the <code>ISLR2</code> package in R. Use the <strong>Hitters</strong> data set to investigate the effect of <em>HmRun</em>, <em>RBI</em>, and <em>Years</em> on a player’s <em>Salary</em>. Which variables are statistically different from zero? Are the variables jointly significant? Does the <span class="math inline">\(R^2\)</span> suggest a good fit of the data to the model?</p>
+<li><p>Use the <strong>Hitters</strong> data set to investigate the effect of <em>HmRun</em>, <em>RBI</em>, and <em>Years</em> on a player’s <em>Salary</em>. Which variables are statistically different from zero? Are the variables jointly significant? Does the <span class="math inline">\(R^2\)</span> suggest a good fit?</p>
+<p><a href="Hitters.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <details>
 <summary>
 <p>Answer</p>
 </summary>
-<p><em>Both RBI and Years are statistically significant, and the salary of a player increases as they gain more experience and have more RBIs. Home runs do not seem to have an impact on the salary of a player according to the data. The F-statistic reveals that the coefficients are jointly significant since the p-value is approximately zero. Both the Multiple and Adjusted (R^2) suggest that the model only accounts for 32% of the variation in Salary. We might have to include more variables in our model to better explain the salary of a player.</em></p>
-<p><em>We can run a linear regression in R by using the <code>lm()</code> function. We’ll use the <code>summary()</code> function to get more details on the model’s performance.</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">lm</span>(Salary <span class="sc">~</span> HmRun <span class="sc">+</span> RBI <span class="sc">+</span> Years, <span class="at">data =</span> Hitters)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-Call:
-lm(formula = Salary ~ HmRun + RBI + Years, data = Hitters)
-
-Residuals:
-    Min      1Q  Median      3Q     Max 
--752.31 -197.27  -66.80   97.73 2151.78 
-
-Coefficients:
-            Estimate Std. Error t value Pr(&gt;|t|)    
-(Intercept)  -90.086     61.142  -1.473    0.142    
-HmRun         -7.346      4.972  -1.478    0.141    
-RBI            9.156      1.685   5.432 1.28e-07 ***
-Years         32.818      4.838   6.783 7.97e-11 ***
----
-Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
-
-Residual standard error: 372.2 on 259 degrees of freedom
-  (59 observations deleted due to missingness)
-Multiple R-squared:  0.3269,    Adjusted R-squared:  0.3191 
-F-statistic: 41.93 on 3 and 259 DF,  p-value: &lt; 2.2e-16</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>RBI and Years are statistically significant (p-values near</em> <span class="math inline">\(0\)</span>): salary rises with experience and with RBIs. Home runs are <strong>not</strong> significant (p-value about <span class="math inline">\(0.14\)</span>). The <span class="math inline">\(F\)</span>-statistic is highly significant, so the predictors are jointly significant. However, the <span class="math inline">\(R^2\)</span> and adjusted <span class="math inline">\(R^2\)</span> are only about <span class="math inline">\(0.32\)</span>, so the model explains just <span class="math inline">\(32\%\)</span> of the variation in salary — more variables would be needed for a better fit.</p>
+<p><em>Copy <code>HmRun</code>, <code>RBI</code>, and <code>Years</code> into three adjacent columns (the ToolPak needs a contiguous X range), then run <code>Data → Data Analysis → Regression</code> with <code>Salary</code> as the Input Y Range and those three columns as the Input X Range. The output gives:</em></p>
+<ul>
+<li>each coefficient’s <strong>p-value</strong> (the individual tests): RBI and Years significant, HmRun not</li>
+<li>the <strong>Significance F</strong> (the joint test): approximately <span class="math inline">\(0\)</span></li>
+<li><strong>R Square</strong> and <strong>Adjusted R Square</strong>: about <span class="math inline">\(0.33\)</span> and <span class="math inline">\(0.32\)</span></li>
+</ul>
 </div>
 </details></li>
-<li><p>José Altuve had <span class="math inline">\(28\)</span> home runs, <span class="math inline">\(57\)</span> RBI’s, and has been in the league for <span class="math inline">\(12\)</span> years. What is the model’s predicted salary for him? What is the <span class="math inline">\(95\)</span>% prediction interval? Note: The model predicts his salary if he played in <span class="math inline">\(1987\)</span>.</p>
+<li><p>José Altuve had <span class="math inline">\(28\)</span> home runs, <span class="math inline">\(57\)</span> RBIs, and <span class="math inline">\(12\)</span> years in the league. What salary does the model predict for him, and what is the <span class="math inline">\(95\%\)</span> prediction interval? (The model predicts a 1987 salary.)</p>
 <details>
 <summary>
 <p>Answer</p>
 </summary>
-<p><em>The predicted salary is 619.93, and the 95% prediction interval is [-129.89, 1369.7].</em></p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>new <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(<span class="at">HmRun =</span> <span class="dv">28</span>, <span class="at">RBI =</span> <span class="dv">57</span>, <span class="at">Years =</span> <span class="dv">12</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">predict</span>(fit, <span class="at">newdata =</span> new, <span class="at">level =</span> <span class="fl">0.95</span>, <span class="at">interval =</span> <span class="st">"prediction"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>       fit       lwr      upr
-1 619.9268 -129.8905 1369.744</code></pre>
-</div>
+<div style="padding-left: 1.5em;">
+<p><em>The predicted salary is</em> <span class="math inline">\(619.93\)</span> (thousand dollars), with a <span class="math inline">\(95\%\)</span> prediction interval of <span class="math inline">\([-129.89,\ 1369.7]\)</span>.</p>
+<p><em>Using the coefficients from the regression output (</em><span class="math inline">\(\hat{\alpha}=-90.09\)</span>, <span class="math inline">\(b_{HmRun}=-7.35\)</span>, <span class="math inline">\(b_{RBI}=9.16\)</span>, <span class="math inline">\(b_{Years}=32.82\)</span>), the point prediction is:</p>
+<ul>
+<li><code>=-90.09 + (-7.35)*28 + 9.16*57 + 32.82*12</code> → <span class="math inline">\(619.93\)</span></li>
+</ul>
+<p><em>The prediction interval widens the estimate by</em> <span class="math inline">\(t \times s_e\)</span>, where <span class="math inline">\(t =\)</span> <code>T.INV.2T(0.05, 259)</code> <span class="math inline">\(\approx 1.97\)</span> and <span class="math inline">\(s_e\)</span> is the regression’s standard error (<span class="math inline">\(\approx 381\)</span> for a new observation). This gives <span class="math inline">\(619.93 \pm 749.8 = [-129.89,\ 1369.7]\)</span>. The interval is very wide — and even includes negative salaries — because the model explains only about a third of the variation in salary.</p>
 </div>
 </details></li>
 </ol>

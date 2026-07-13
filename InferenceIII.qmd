@@ -24,7 +24,7 @@ The **null hypothesis** ($H_0$) is a statement about a population parameter — 
 
 Suppose we hypothesize that the average annual income in the U.S. is \$50,000. When we take a large sample, the sample mean behaves like a normal random variable (by the Central Limit Theorem) centered at the hypothesized value. Our job is to decide whether the observed sample mean is "close enough" to \$50,000 to have plausibly come from that distribution, or "far enough" that we should doubt the null and favor the alternative.
 
-::: {.callout-example}
+::: callout-example
 **Example:** We test whether the average income is \$50,000. A sample of $100$ people has a mean of \$48,000. Is \$48,000 close to \$50,000, or far? It depends entirely on the **standard error** of the sampling distribution:
 
 - If the standard error were small (say \$1,000), then \$48,000 is two standard errors below \$50,000 — strong evidence *against* the null.
@@ -35,10 +35,8 @@ Distance alone tells us nothing; distance measured in standard errors is what ma
 
 We capture that idea with the **test statistic**, which measures how far the sample mean sits from the hypothesized value in standard-error units.
 
-::: {.callout-formula}
-**TEST STATISTIC FOR A MEAN**
-$$t = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}$$
-with degrees of freedom $df = n - 1$, where $\bar{x}$ is the sample mean, $\mu_0$ is the hypothesized mean, $s$ is the sample standard deviation, and $n$ is the sample size.
+::: callout-formula
+**TEST STATISTIC FOR A MEAN** $$t = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}$$ with degrees of freedom $df = n - 1$, where $\bar{x}$ is the sample mean, $\mu_0$ is the hypothesized mean, $s$ is the sample standard deviation, and $n$ is the sample size.
 :::
 
 The larger the test statistic in absolute value, the stronger the evidence against the null hypothesis.
@@ -71,10 +69,10 @@ There are two equivalent ways to decide whether the observed difference is too l
 
 Because a decision is made from a sample, it can be wrong in two ways.
 
-|                        | $H_0$ is true              | $H_0$ is false            |
-|:-----------------------|:--------------------------:|:-------------------------:|
-| **Reject $H_0$**       | Type I error ($\alpha$)    | Correct decision (power)  |
-| **Fail to reject $H_0$** | Correct decision         | Type II error ($\beta$)   |
+|                          |      $H_0$ is true      |      $H_0$ is false      |
+|:---------------------|:------------------------:|:-----------------------:|
+| **Reject** $H_0$         | Type I error ($\alpha$) | Correct decision (power) |
+| **Fail to reject** $H_0$ |    Correct decision     | Type II error ($\beta$)  |
 
 A **Type I error** is rejecting a true null hypothesis (a false positive); its probability is the significance level $\alpha$. A **Type II error** is failing to reject a false null hypothesis (a false negative); its probability is $\beta$. The **power** of a test, $1 - \beta$, is the chance of correctly detecting a real effect. Lowering $\alpha$ guards against false positives but makes false negatives more likely, so the choice of $\alpha$ balances the two risks.
 
@@ -82,14 +80,12 @@ A **Type I error** is rejecting a true null hypothesis (a false positive); its p
 
 1.  **State the hypotheses.** Write $H_0$ and $H_a$ using the forms above.
 
-2.  **Choose the significance level $\alpha$.** Common choices are $0.10$, $0.05$, and $0.01$, corresponding to confidence levels of $90\%$, $95\%$, and $99\%$.
+2.  **Choose the significance level** $\alpha$. Common choices are $0.10$, $0.05$, and $0.01$, corresponding to confidence levels of $90\%$, $95\%$, and $99\%$.
 
 3.  **Compute the test statistic.** For a mean, use the $t$ statistic given above. For a proportion, use:
 
-    ::: {.callout-formula}
-    **TEST STATISTIC FOR A PROPORTION**
-    $$z = \frac{\hat{p} - p_0}{\sqrt{p_0(1 - p_0)/n}}$$
-    where $\hat{p}$ is the sample proportion, $p_0$ is the hypothesized proportion, and $n$ is the sample size. Note that the hypothesized $p_0$ is used in the standard error.
+    ::: callout-formula
+    **TEST STATISTIC FOR A PROPORTION** $$z = \frac{\hat{p} - p_0}{\sqrt{p_0(1 - p_0)/n}}$$ where $\hat{p}$ is the sample proportion, $p_0$ is the hypothesized proportion, and $n$ is the sample size. Note that the hypothesized $p_0$ is used in the standard error.
     :::
 
 4.  **Find the p-value** (replacing $t$ with $z$ for proportions):
@@ -106,11 +102,11 @@ Excel does not have a one-click one-sample test, but every piece is a single for
 
 **The test statistic.** With the data in a range, the $t$ statistic for a mean is:
 
-```excel
+``` excel
 =(AVERAGE(A2:A21) - 100) / (STDEV.S(A2:A21) / SQRT(COUNT(A2:A21)))
 ```
 
-**p-values from the $t$-distribution.** Use `=T.DIST(t, df, TRUE)` for a left-tailed test, `=T.DIST.RT(t, df)` for a right-tailed test, and `=T.DIST.2T(ABS(t), df)` for a two-tailed test. For the critical value use `=T.INV.2T(alpha, df)` (two-tailed) or `=T.INV(alpha, df)` (one-tailed).
+**p-values from the** $t$-distribution. Use `=T.DIST(t, df, TRUE)` for a left-tailed test, `=T.DIST.RT(t, df)` for a right-tailed test, and `=T.DIST.2T(ABS(t), df)` for a two-tailed test. For the critical value use `=T.INV.2T(alpha, df)` (two-tailed) or `=T.INV(alpha, df)` (one-tailed).
 
 **p-values for a proportion.** The proportion test statistic is a $z$ value, so use the standard normal: `=NORM.S.DIST(z, TRUE)` for a left-tailed test, `=1 - NORM.S.DIST(z, TRUE)` for a right-tailed test, and `=2*(1 - NORM.S.DIST(ABS(z), TRUE))` for a two-tailed test.
 
@@ -138,9 +134,9 @@ knitr::include_graphics("images/Hypothesis_Testing.png")
 
 The following exercises will help you test your knowledge of hypothesis testing. In particular, the exercises work on:
 
--   Stating null and alternative hypotheses.
--   Testing hypotheses about a population mean.
--   Testing hypotheses about a population proportion.
+- Stating null and alternative hypotheses.
+- Testing hypotheses about a population mean.
+- Testing hypotheses about a population proportion.
 
 Try not to peek at the answers until you have formulated your own answer and double checked your work for any mistakes.
 
@@ -152,18 +148,17 @@ Try not to peek at the answers until you have formulated your own answer and dou
 
     <summary>Answer</summary>
 
-    <div style="padding-left: 1.5em;">
-
-    *The test statistic is $-1.6$. The two-tailed p-value is $13.04\%$, which is greater than $5\%$, so we cannot reject the null. The population mean is not statistically different from $50$.*
+    ::: {style="padding-left: 1.5em;"}
+    *The test statistic is* $-1.6$. The two-tailed p-value is $13.04\%$, which is greater than $5\%$, so we cannot reject the null. The population mean is not statistically different from $50$.
 
     *In Excel:*
 
     - `=(46 - 50) / (10 / SQRT(16))` → $-1.6$ (test statistic)
     - `=T.DIST.2T(ABS(-1.6), 15)` → $0.1304$ (two-tailed p-value)
 
-    *The critical value `=T.INV.2T(0.05, 15)` is $2.131$. Since $|-1.6| < 2.131$, we fail to reject the null.*
+    *The critical value `=T.INV.2T(0.05, 15)` is* $2.131$. Since $|-1.6| < 2.131$, we fail to reject the null.
+    :::
 
-    </div>
     </details>
 
 2.  Consider the following hypothesis: $H_{0}: \mu \geq 100$, $H_{a}: \mu < 100$. A sample from a normally distributed population yields the values in the table below. Test the hypothesis at a $1\%$ significance level.
@@ -176,17 +171,16 @@ Try not to peek at the answers until you have formulated your own answer and dou
 
     <summary>Answer</summary>
 
-    <div style="padding-left: 1.5em;">
-
-    *The null hypothesis cannot be rejected: the left-tailed p-value of $1.9\%$ is greater than the $1\%$ significance level.*
+    ::: {style="padding-left: 1.5em;"}
+    *The null hypothesis cannot be rejected: the left-tailed p-value of* $1.9\%$ is greater than the $1\%$ significance level.
 
     *Enter the data in a range (say `A2:A7`). In Excel:*
 
     - `=AVERAGE(A2:A7)` → $92$ and `=STDEV.S(A2:A7)` → $6.96$
     - `=(92 - 100) / (6.96 / SQRT(6))` → $-2.82$ (test statistic)
     - `=T.DIST(-2.82, 5, TRUE)` → $0.019$ (left-tailed p-value)
+    :::
 
-    </div>
     </details>
 
 3.  Consider the following hypothesis: $H_{0}: \mu \leq 210$, $H_{a}: \mu > 210$. A sample from a normally distributed population yields the values in the table below. Test the hypothesis at a $10\%$ significance level.
@@ -199,17 +193,16 @@ Try not to peek at the answers until you have formulated your own answer and dou
 
     <summary>Answer</summary>
 
-    <div style="padding-left: 1.5em;">
-
-    *The null hypothesis can be rejected: the right-tailed p-value of $0.2\%$ is less than the $10\%$ significance level.*
+    ::: {style="padding-left: 1.5em;"}
+    *The null hypothesis can be rejected: the right-tailed p-value of* $0.2\%$ is less than the $10\%$ significance level.
 
     *Enter the data in a range (say `A2:A11`). In Excel:*
 
     - `=AVERAGE(A2:A11)` → $256.4$ and `=STDEV.S(A2:A11)` → $38.28$
     - `=(256.4 - 210) / (38.28 / SQRT(10))` → $3.83$ (test statistic)
     - `=T.DIST.RT(3.83, 9)` → $0.002$ (right-tailed p-value)
+    :::
 
-    </div>
     </details>
 
 ### Exercise 2 {.unnumbered}
@@ -222,9 +215,8 @@ According to [nps.gov](https://www.nps.gov), the time between Old Faithful's eru
 
 <summary>Answer</summary>
 
-<div style="padding-left: 1.5em;">
-
-*The claim that the average waiting time is $92$ minutes can be rejected at the $10\%$, $5\%$, and $1\%$ significance levels.*
+::: {style="padding-left: 1.5em;"}
+*The claim that the average waiting time is* $92$ minutes can be rejected at the $10\%$, $5\%$, and $1\%$ significance levels.
 
 *With the `waiting` column in column B (272 observations), in Excel:*
 
@@ -232,9 +224,9 @@ According to [nps.gov](https://www.nps.gov), the time between Old Faithful's eru
 - `=(70.9 - 92) / (13.6 / SQRT(272))` → $-25.6$ (test statistic)
 - `=T.DIST.2T(ABS(-25.6), 271)` → approximately $0$ (two-tailed p-value)
 
-*The sample mean is so far below $92$ that the p-value is essentially zero, so we reject the null at any conventional level.*
+*The sample mean is so far below* $92$ that the p-value is essentially zero, so we reject the null at any conventional level.
+:::
 
-</div>
 </details>
 
 ### Exercise 3 {.unnumbered}
@@ -245,16 +237,15 @@ According to [nps.gov](https://www.nps.gov), the time between Old Faithful's eru
 
     <summary>Answer</summary>
 
-    <div style="padding-left: 1.5em;">
-
-    *The hypotheses are $H_{0}: p = 0.4$ and $H_{a}: p \neq 0.4$. The two-tailed p-value is $0.102$, greater than $0.05$, so we cannot reject the null. The population proportion is not significantly different from $0.4$.*
+    ::: {style="padding-left: 1.5em;"}
+    *The hypotheses are* $H_{0}: p = 0.4$ and $H_{a}: p \neq 0.4$. The two-tailed p-value is $0.102$, greater than $0.05$, so we cannot reject the null. The population proportion is not significantly different from $0.4$.
 
     *In Excel:*
 
     - `=(0.48 - 0.4) / SQRT(0.4*(1-0.4)/100)` → $1.633$ (test statistic)
     - `=2*(1 - NORM.S.DIST(1.633, TRUE))` → $0.102$ (two-tailed p-value)
+    :::
 
-    </div>
     </details>
 
 2.  A sample of $320$ observations yields $128$ successes. Test $H_{0}: p \geq 0.45$ against $H_{a}: p < 0.45$ at a $5\%$ significance level.
@@ -263,39 +254,37 @@ According to [nps.gov](https://www.nps.gov), the time between Old Faithful's eru
 
     <summary>Answer</summary>
 
-    <div style="padding-left: 1.5em;">
-
-    *The sample proportion is $128/320 = 0.4$. The left-tailed p-value of $3.6\%$ is less than $5\%$, so we reject the null and conclude the population proportion is less than $0.45$.*
+    ::: {style="padding-left: 1.5em;"}
+    *The sample proportion is* $128/320 = 0.4$. The left-tailed p-value of $3.6\%$ is less than $5\%$, so we reject the null and conclude the population proportion is less than $0.45$.
 
     *In Excel:*
 
     - `=(0.4 - 0.45) / SQRT(0.45*(1-0.45)/320)` → $-1.80$ (test statistic)
     - `=NORM.S.DIST(-1.80, TRUE)` → $0.036$ (left-tailed p-value)
+    :::
 
-    </div>
     </details>
 
 3.  Determine whether more than $50\%$ of the observations in a population are below $10$, using the sample data below. Conduct the test at a $1\%$ significance level.
 
     |     |     |     |     |     |     |     |     |     |     |
     |:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
-    | 8   | 12  | 5   | 9   | 14  | 11  | 9   | 3   | 7   | 12  |
+    |  8  | 12  |  5  |  9  | 14  | 11  |  9  |  3  |  7  | 12  |
 
     <details>
 
     <summary>Answer</summary>
 
-    <div style="padding-left: 1.5em;">
-
-    *The hypotheses are $H_{0}: p \leq 0.5$ and $H_{a}: p > 0.5$. The right-tailed p-value of $0.26$ is greater than the $1\%$ significance level, so we cannot reject the null. We therefore **cannot** conclude that more than $50\%$ of the population is below $10$.*
+    ::: {style="padding-left: 1.5em;"}
+    *The hypotheses are* $H_{0}: p \leq 0.5$ and $H_{a}: p > 0.5$. The right-tailed p-value of $0.26$ is greater than the $1\%$ significance level, so we cannot reject the null. We therefore **cannot** conclude that more than $50\%$ of the population is below $10$.
 
     *Enter the data in a range (say `A2:A11`). In Excel:*
 
     - `=COUNTIF(A2:A11, "<10") / COUNT(A2:A11)` → $0.6$ (sample proportion)
     - `=(0.6 - 0.5) / SQRT(0.5*(1-0.5)/10)` → $0.632$ (test statistic)
     - `=1 - NORM.S.DIST(0.632, TRUE)` → $0.264$ (right-tailed p-value)
+    :::
 
-    </div>
     </details>
 
 ### Exercise 4 {.unnumbered}
@@ -308,9 +297,8 @@ According to [worldatlas.com](https://www.worldatlas.com), $5\%$ of the populati
 
 <summary>Answer</summary>
 
-<div style="padding-left: 1.5em;">
-
-*We reject the null hypothesis: the proportion of hazel-eyed students is significantly different from $5\%$.*
+::: {style="padding-left: 1.5em;"}
+*We reject the null hypothesis: the proportion of hazel-eyed students is significantly different from* $5\%$.
 
 *The data is tidy, with columns `Hair`, `Eye`, `Sex`, and `n`. In Excel:*
 
@@ -318,7 +306,7 @@ According to [worldatlas.com](https://www.worldatlas.com), $5\%$ of the populati
 - `=(0.157 - 0.05) / SQRT(0.05*(1-0.05)/592)` → $11.96$ (test statistic)
 - `=2*(1 - NORM.S.DIST(11.96, TRUE))` → approximately $0$ (two-tailed p-value)
 
-*The sample proportion of $15.7\%$ is nearly $12$ standard errors above the claimed $5\%$, so we reject the null decisively.*
+*The sample proportion of* $15.7\%$ is nearly $12$ standard errors above the claimed $5\%$, so we reject the null decisively.
+:::
 
-</div>
 </details>
