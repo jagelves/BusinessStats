@@ -122,6 +122,12 @@ Below is a list of the Excel functions used in this section:
 
 - The **uniform** and **triangular** distributions have no built-in functions; compute their probabilities directly from the formulas above.
 
+## Chapter Summary Cheat Sheet
+
+```{r echo=FALSE, out.width="100%", fig.align='center'}
+knitr::include_graphics("images/Continuous_Distributions.png")
+```
+
 ## Exercises
 
 The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:

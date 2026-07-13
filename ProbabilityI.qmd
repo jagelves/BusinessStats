@@ -309,6 +309,12 @@ Below is a list of the Excel functions used in this section:
 
 - `=PERMUT(number, number_chosen)` returns the number of permutations without repetition; `=PERMUTATIONA(number, number_chosen)` allows repetition.
 
+## Chapter Summary Cheat Sheet
+
+```{r echo=FALSE, out.width="100%", fig.align='center'}
+knitr::include_graphics("images/Probability_Rules.png")
+```
+
 ## Exercises
 
 The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:

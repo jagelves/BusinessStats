@@ -271,7 +271,8 @@ window.Quarto = {
   </ul></li>
   <li><a href="#regression-in-excel" id="toc-regression-in-excel" class="nav-link" data-scroll-target="#regression-in-excel"><span class="header-section-number">7.4</span> Regression in Excel</a></li>
   <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">7.5</span> Excel Function Summary</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.6</span> Exercises</a>
+  <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">7.6</span> Chapter Summary Cheat Sheet</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.7</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -520,7 +521,7 @@ details summary {
 <h3 class="unnumbered anchored" data-anchor-id="adjusted-r2">Adjusted <span class="math inline">\(R^2\)</span></h3>
 <p>The <strong>adjusted</strong> <span class="math inline">\(R^2\)</span> penalizes a model for including additional explanatory variables, preventing artificial inflation of <span class="math inline">\(R^2\)</span>.</p>
 <div class="callout-formula">
-<p><strong>THE ADJUSTED <span class="math inline">\(R^2\)</span></strong> <span class="math display">\[\bar{R}^2=1-(1-R^2)\frac{n-1}{n-k-1}\]</span> where <span class="math inline">\(k\)</span> is the number of explanatory variables and <span class="math inline">\(n\)</span> is the sample size.</p>
+<p><strong>THE ADJUSTED</strong> <span class="math inline">\(R^2\)</span> <span class="math display">\[\bar{R}^2=1-(1-R^2)\frac{n-1}{n-k-1}\]</span> where <span class="math inline">\(k\)</span> is the number of explanatory variables and <span class="math inline">\(n\)</span> is the sample size.</p>
 </div>
 <div class="callout-example">
 <p><strong>Example:</strong> For the Weight example with both Exercise and Calories (<span class="math inline">\(k=2\)</span>, <span class="math inline">\(n=5\)</span>, <span class="math inline">\(R^2=0.96\)</span>):</p>
@@ -581,8 +582,20 @@ details summary {
 <li><p><code>=STEYX(y_range, x_range)</code> returns the residual standard error <span class="math inline">\(s_e\)</span> for a simple regression.</p></li>
 </ul>
 </section>
-<section id="exercises" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.6</span> Exercises</h2>
+<section id="chapter-summary-cheat-sheet" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">7.6</span> Chapter Summary Cheat Sheet</h2>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="images/Regression_Line.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+<section id="exercises" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.7</span> Exercises</h2>
 <p>The following exercises will help you get practice on Regression Line estimation and interpretation. In particular, the exercises work on:</p>
 <ul>
 <li>Estimating the slope and intercept.</li>
@@ -623,8 +636,8 @@ details summary {
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>The regression line is <span class="math inline">\(\hat{y}=-4.93+1.09x\)</span>. For each unit increase in <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> increases on average by <span class="math inline">\(1.09\)</span>.</em></p>
-<p><em>Start with the deviations from the mean (<span class="math inline">\(\bar{x}=19.8\)</span>, <span class="math inline">\(\bar{y}=16.6\)</span>):</em></p>
+<p><em>The regression line is</em> <span class="math inline">\(\hat{y}=-4.93+1.09x\)</span>. For each unit increase in <span class="math inline">\(x\)</span>, <span class="math inline">\(y\)</span> increases on average by <span class="math inline">\(1.09\)</span>.</p>
+<p><em>Start with the deviations from the mean (</em><span class="math inline">\(\bar{x}=19.8\)</span>, <span class="math inline">\(\bar{y}=16.6\)</span>):</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 9%">
@@ -704,14 +717,14 @@ Answer
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>SST is <span class="math inline">\(69.2\)</span>, SSR is <span class="math inline">\(64.82\)</span> and SSE is <span class="math inline">\(4.38\)</span> (note that <span class="math inline">\(SSR+SSE=SST\)</span>). The <span class="math inline">\(R^2\)</span> is <span class="math inline">\(\frac{SSR}{SST}=0.94\)</span> and the Standard Error estimate is <span class="math inline">\(1.21\)</span>. Both indicate a great fit of the regression line to the data.</em></p>
+<p><em>SST is</em> <span class="math inline">\(69.2\)</span>, SSR is <span class="math inline">\(64.82\)</span> and SSE is <span class="math inline">\(4.38\)</span> (note that <span class="math inline">\(SSR+SSE=SST\)</span>). The <span class="math inline">\(R^2\)</span> is <span class="math inline">\(\frac{SSR}{SST}=0.94\)</span> and the Standard Error estimate is <span class="math inline">\(1.21\)</span>. Both indicate a great fit of the regression line to the data.</p>
 <p><em>In Excel, with x in column A and y in column B:</em></p>
 <ul>
 <li><code>=DEVSQ(B2:B6)</code> → <span class="math inline">\(SST = 69.2\)</span></li>
 <li><code>=RSQ(B2:B6, A2:A6)</code> → <span class="math inline">\(R^2 = 0.94\)</span></li>
 <li><code>=STEYX(B2:B6, A2:A6)</code> → <span class="math inline">\(s_e = 1.21\)</span></li>
 </ul>
-<p><em>Then <span class="math inline">\(SSR = R^2 \times SST = 64.82\)</span> and <span class="math inline">\(SSE = SST - SSR = 4.38\)</span>. You can also obtain all of these at once from <code>Data → Data Analysis → Regression</code>, which reports the ANOVA table (SSR, SSE, SST), <span class="math inline">\(R^2\)</span>, and the Standard Error in a single output.</em></p>
+<p><em>Then</em> <span class="math inline">\(SSR = R^2 \times SST = 64.82\)</span> and <span class="math inline">\(SSE = SST - SSR = 4.38\)</span>. You can also obtain all of these at once from <code>Data → Data Analysis → Regression</code>, which reports the ANOVA table (SSR, SSE, SST), <span class="math inline">\(R^2\)</span>, and the Standard Error in a single output.</p>
 </div>
 </details>
 <ol start="3" type="1">
@@ -722,7 +735,7 @@ Answer
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>If <span class="math inline">\(x=32\)</span> then <span class="math inline">\(\hat{y}=-4.93+1.09(32)=29.87\)</span>. The regression is a good fit, so we can feel good about our prediction. However, we would be concerned about the small sample size of the data.</em></p>
+<p><em>If</em> <span class="math inline">\(x=32\)</span> then <span class="math inline">\(\hat{y}=-4.93+1.09(32)=29.87\)</span>. The regression is a good fit, so we can feel good about our prediction. However, we would be concerned about the small sample size of the data.</p>
 <p><em>In Excel:</em></p>
 <ul>
 <li><code>=FORECAST.LINEAR(32, B2:B6, A2:A6)</code> → <span class="math inline">\(29.87\)</span></li>
@@ -743,7 +756,7 @@ Answer
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>An extra year of education increases the annual salary by about <span class="math inline">\(\$5,300\)</span> (the slope). A person with no education would be expected to earn about <span class="math inline">\(\$17,258\)</span> (the intercept).</em></p>
+<p><em>An extra year of education increases the annual salary by about</em> <span class="math inline">\(\$5,300\)</span> (the slope). A person with no education would be expected to earn about <span class="math inline">\(\$17,258\)</span> (the intercept).</p>
 <p><em>In Excel, assuming <code>Salary</code> is in column B and <code>Education</code> is in column C:</em></p>
 <ul>
 <li><code>=SLOPE(B2:B101, C2:C101)</code> → <span class="math inline">\(5.30\)</span></li>
@@ -760,7 +773,7 @@ Answer
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>The <span class="math inline">\(R^2\)</span> is <span class="math inline">\(0.67\)</span> and the standard error is about <span class="math inline">\(21\)</span>. The line is a moderately good fit. A person with <span class="math inline">\(16\)</span> years of education is predicted to earn about <span class="math inline">\(\$102,000\)</span>.</em></p>
+<p><em>The</em> <span class="math inline">\(R^2\)</span> is <span class="math inline">\(0.67\)</span> and the standard error is about <span class="math inline">\(21\)</span>. The line is a moderately good fit. A person with <span class="math inline">\(16\)</span> years of education is predicted to earn about <span class="math inline">\(\$102,000\)</span>.</p>
 <p><em>In Excel:</em></p>
 <ul>
 <li><code>=RSQ(B2:B101, C2:C101)</code> → <span class="math inline">\(0.67\)</span></li>
@@ -782,7 +795,7 @@ Answer
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>Approximately <span class="math inline">\(36\%\)</span> of the sample owns a home (mean <span class="math inline">\(=0.3625\)</span>).</em></p>
+<p><em>Approximately</em> <span class="math inline">\(36\%\)</span> of the sample owns a home (mean <span class="math inline">\(=0.3625\)</span>).</p>
 <p><em>In Excel, assuming <code>OwnHome</code> is in column A and <code>Food</code> is in column B, first delete any rows with missing values. Then add a helper column C with the dummy variable:</em></p>
 <pre class="excel"><code>=IF(A2="Yes", 1, 0)</code></pre>
 <p><em>Copy it down for all rows and take the average:</em></p>
@@ -799,7 +812,7 @@ Answer
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>The intercept (<span class="math inline">\(\approx 6473\)</span>) is the average food expenditure of individuals without homes. The slope (<span class="math inline">\(\approx -3418\)</span>) is the difference in food expenditure between individuals who own a home and those who do not — home owners spend about <span class="math inline">\(\$3,418\)</span> less on food than non-owners.</em></p>
+<p><em>The intercept (</em><span class="math inline">\(\approx 6473\)</span>) is the average food expenditure of individuals without homes. The slope (<span class="math inline">\(\approx -3418\)</span>) is the difference in food expenditure between individuals who own a home and those who do not — home owners spend about <span class="math inline">\(\$3,418\)</span> less on food than non-owners.</p>
 <p><em>In Excel, with <code>Food</code> in column B and the dummy in column C:</em></p>
 <ul>
 <li><code>=INTERCEPT(B2:B81, C2:C81)</code> → <span class="math inline">\(6473\)</span></li>
@@ -815,7 +828,7 @@ Answer
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>The regression line is <span class="math inline">\(\widehat{dummy}=1.432-0.000204\,Food\)</span>. This is a linear probability model: it predicts the likelihood of owning a home from food expenditure. The slope tells us how that likelihood changes as food expenditure increases by one dollar — in general, the likelihood of owning a home decreases as food expenditure increases. The scatter plot shows that most home owners have food expenditures below <span class="math inline">\(\$6,000\)</span>, while non-owners are mostly above it.</em></p>
+<p><em>The regression line is</em> <span class="math inline">\(\widehat{dummy}=1.432-0.000204\,Food\)</span>. This is a linear probability model: it predicts the likelihood of owning a home from food expenditure. The slope tells us how that likelihood changes as food expenditure increases by one dollar — in general, the likelihood of owning a home decreases as food expenditure increases. The scatter plot shows that most home owners have food expenditures below <span class="math inline">\(\$6,000\)</span>, while non-owners are mostly above it.</p>
 <p><em>In Excel, with the dummy in column C and <code>Food</code> in column B:</em></p>
 <ul>
 <li><code>=INTERCEPT(C2:C81, B2:B81)</code> → <span class="math inline">\(1.432\)</span></li>
@@ -837,8 +850,8 @@ Answer
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>With an <span class="math inline">\(R^2=0.81\)</span>, the model fits the data very well.</em></p>
-<p><em>In Excel, first isolate Japan: select the data, go to <code>Data → Filter</code>, and filter <code>Country.Name</code> to <code>Japan</code>. Copy the <span class="math inline">\(62\)</span> Japan rows to a new sheet. Assuming <code>Year</code> is in column C and <code>Population</code> is in column D:</em></p>
+<p><em>With an</em> <span class="math inline">\(R^2=0.81\)</span>, the model fits the data very well.</p>
+<p><em>In Excel, first isolate Japan: select the data, go to <code>Data → Filter</code>, and filter <code>Country.Name</code> to <code>Japan</code>. Copy the</em> <span class="math inline">\(62\)</span> Japan rows to a new sheet. Assuming <code>Year</code> is in column C and <code>Population</code> is in column D:</p>
 <ul>
 <li><code>=RSQ(D2:D63, C2:C63)</code> → <span class="math inline">\(0.81\)</span></li>
 </ul>
@@ -852,7 +865,7 @@ Answer
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>The prediction for <span class="math inline">\(2030\)</span> is about <span class="math inline">\(140\)</span> million people (<span class="math inline">\(140{,}268{,}585\)</span>).</em></p>
+<p><em>The prediction for</em> <span class="math inline">\(2030\)</span> is about <span class="math inline">\(140\)</span> million people (<span class="math inline">\(140{,}268{,}585\)</span>).</p>
 <p><em>In Excel:</em></p>
 <ul>
 <li><code>=FORECAST.LINEAR(2030, D2:D63, C2:C63)</code> → <span class="math inline">\(140{,}268{,}585\)</span></li>
@@ -867,7 +880,7 @@ Answer
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>After looking at the scatter plot, it seems unlikely that the population in Japan will hit <span class="math inline">\(140\)</span> million. In the most recent years the population has been decreasing, so the straight-line trend overstates the future population — the prediction should be treated with caution.</em></p>
+<p><em>After looking at the scatter plot, it seems unlikely that the population in Japan will hit</em> <span class="math inline">\(140\)</span> million. In the most recent years the population has been decreasing, so the straight-line trend overstates the future population — the prediction should be treated with caution.</p>
 <p><em>In Excel, select the <code>Year</code> and <code>Population</code> columns for Japan, go to <code>Insert → Charts → Scatter</code>, and add a linear trend line by right-clicking a point and choosing <code>Add Trendline → Linear</code>.</em></p>
 </div>
 </details>
