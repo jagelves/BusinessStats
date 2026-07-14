@@ -70,6 +70,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-PLNY5BZ16X"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-PLNY5BZ16X', { 'anonymize_ip': true});
+</script>
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FWC3RCL4BF"></script>
 <script>
@@ -265,6 +274,7 @@ window.Quarto = {
   <li><a href="#probability-rules" id="toc-probability-rules" class="nav-link" data-scroll-target="#probability-rules"><span class="header-section-number">8.5</span> Probability Rules</a>
   <ul class="collapse">
   <li><a href="#complement-rule" id="toc-complement-rule" class="nav-link" data-scroll-target="#complement-rule">Complement Rule</a></li>
+  <li><a href="#de-morgans-laws" id="toc-de-morgans-laws" class="nav-link" data-scroll-target="#de-morgans-laws">De Morgan’s Laws</a></li>
   <li><a href="#addition-rule" id="toc-addition-rule" class="nav-link" data-scroll-target="#addition-rule">Addition Rule</a></li>
   <li><a href="#multiplication-rule" id="toc-multiplication-rule" class="nav-link" data-scroll-target="#multiplication-rule">Multiplication Rule</a></li>
   <li><a href="#law-of-total-probability" id="toc-law-of-total-probability" class="nav-link" data-scroll-target="#law-of-total-probability">Law of Total Probability</a></li>
@@ -273,6 +283,7 @@ window.Quarto = {
   <li><a href="#contingency-tables" id="toc-contingency-tables" class="nav-link" data-scroll-target="#contingency-tables"><span class="header-section-number">8.6</span> Contingency Tables</a></li>
   <li><a href="#counting-rules" id="toc-counting-rules" class="nav-link" data-scroll-target="#counting-rules"><span class="header-section-number">8.7</span> Counting Rules</a>
   <ul class="collapse">
+  <li><a href="#the-fundamental-counting-principle" id="toc-the-fundamental-counting-principle" class="nav-link" data-scroll-target="#the-fundamental-counting-principle">The Fundamental Counting Principle</a></li>
   <li><a href="#factorial" id="toc-factorial" class="nav-link" data-scroll-target="#factorial">Factorial</a></li>
   <li><a href="#combinations" id="toc-combinations" class="nav-link" data-scroll-target="#combinations">Combinations</a></li>
   <li><a href="#permutations" id="toc-permutations" class="nav-link" data-scroll-target="#permutations">Permutations</a></li>
@@ -402,6 +413,16 @@ details summary {
 <p><strong>Example:</strong> The probability of drawing a spade, diamond or clubs can be estimated by just calculating the probability of drawing a heart. Since the probability of drawing a heart is <span class="math inline">\(P(Heart)=\frac{13}{52}\)</span>, then using the complement rule, <span class="math inline">\(P(Not \text{Heart})=1-\frac{13}{52}=\frac{39}{52}\)</span>.</p>
 </div>
 </section>
+<section id="de-morgans-laws" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="de-morgans-laws">De Morgan’s Laws</h3>
+<p><strong>De Morgan’s Laws</strong> relate the complement of a union to the complement of an intersection. They are handy for rewriting a complicated event as an easier-to-compute one.</p>
+<div class="callout-formula">
+<p><strong>DE MORGAN’S LAWS</strong> <span class="math display">\[(A \cup B)^c = A^c \cap B^c \qquad\qquad (A \cap B)^c = A^c \cup B^c\]</span> The complement of a union is the intersection of the complements, and the complement of an intersection is the union of the complements.</p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> Roll a die with <span class="math inline">\(A=\{1,2,3\}\)</span> and <span class="math inline">\(B=\{2,4,6\}\)</span>. Their union is <span class="math inline">\(A \cup B=\{1,2,3,4,6\}\)</span>, so the complement is <span class="math inline">\((A \cup B)^c=\{5\}\)</span>. De Morgan’s Law gives the same answer from the complements: <span class="math inline">\(A^c \cap B^c=\{4,5,6\} \cap \{1,3,5\}=\{5\}\)</span>.</p>
+</div>
+</section>
 <section id="addition-rule" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="addition-rule">Addition Rule</h3>
 <p>The <strong>Addition Rule</strong> states:</p>
@@ -504,9 +525,19 @@ details summary {
 <section id="counting-rules" class="level2" data-number="8.7">
 <h2 data-number="8.7" class="anchored" data-anchor-id="counting-rules"><span class="header-section-number">8.7</span> Counting Rules</h2>
 <p>Counting rules are useful in probability as they allow us to determine the number of ways events can occur without listing out every possibility. Essentially, they facilitate the enumeration of possible outcomes for large sets.</p>
+<section id="the-fundamental-counting-principle" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="the-fundamental-counting-principle">The Fundamental Counting Principle</h3>
+<p>The most basic counting rule — and the one all the others build on — is the <strong>Fundamental Counting Principle</strong> (also called the Multiplication Principle). It states that if a task is completed in separate stages, the total number of ways to complete it is the product of the number of choices available at each stage.</p>
+<div class="callout-formula">
+<p><strong>THE FUNDAMENTAL COUNTING PRINCIPLE</strong> <span class="math display">\[m_1 \times m_2 \times \dots \times m_k\]</span> where <span class="math inline">\(m_i\)</span> is the number of choices at stage <span class="math inline">\(i\)</span>, for a task made up of <span class="math inline">\(k\)</span> stages.</p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> A restaurant offers <span class="math inline">\(3\)</span> appetizers, <span class="math inline">\(4\)</span> entrées, and <span class="math inline">\(2\)</span> desserts. The number of different three-course meals is <span class="math inline">\(3 \times 4 \times 2 = 24\)</span>.</p>
+</div>
+</section>
 <section id="factorial" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="factorial">Factorial</h3>
-<p>To illustrate our first counting rule, consider the number of ways that we can organize a group of three people (Ann, Beth, Charlie). The enumeration of all the possible orderings in this case is not that tedious and it can be shown in a table:</p>
+<p>To illustrate the factorial, consider the number of ways that we can organize a group of three people (Ann, Beth, Charlie). The enumeration of all the possible orderings in this case is not that tedious and it can be shown in a table:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">

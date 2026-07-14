@@ -102,6 +102,18 @@ This rule is useful when calculating probabilities for complex scenarios, where 
 **Example:** The probability of drawing a spade, diamond or clubs can be estimated by just calculating the probability of drawing a heart. Since the probability of drawing a heart is $P(Heart)=\frac{13}{52}$, then using the complement rule, $P(Not \text{Heart})=1-\frac{13}{52}=\frac{39}{52}$.
 :::
 
+### De Morgan's Laws {.unnumbered}
+
+**De Morgan's Laws** relate the complement of a union to the complement of an intersection. They are handy for rewriting a complicated event as an easier-to-compute one.
+
+::: callout-formula
+**DE MORGAN'S LAWS** $$(A \cup B)^c = A^c \cap B^c \qquad\qquad (A \cap B)^c = A^c \cup B^c$$ The complement of a union is the intersection of the complements, and the complement of an intersection is the union of the complements.
+:::
+
+::: callout-example
+**Example:** Roll a die with $A=\{1,2,3\}$ and $B=\{2,4,6\}$. Their union is $A \cup B=\{1,2,3,4,6\}$, so the complement is $(A \cup B)^c=\{5\}$. De Morgan's Law gives the same answer from the complements: $A^c \cap B^c=\{4,5,6\} \cap \{1,3,5\}=\{5\}$.
+:::
+
 ### Addition Rule {.unnumbered}
 
 The **Addition Rule** states:
@@ -216,9 +228,21 @@ In the middle of the table we have the joint probabilities or intersections of e
 
 Counting rules are useful in probability as they allow us to determine the number of ways events can occur without listing out every possibility. Essentially, they facilitate the enumeration of possible outcomes for large sets.
 
+### The Fundamental Counting Principle {.unnumbered}
+
+The most basic counting rule — and the one all the others build on — is the **Fundamental Counting Principle** (also called the Multiplication Principle). It states that if a task is completed in separate stages, the total number of ways to complete it is the product of the number of choices available at each stage.
+
+::: callout-formula
+**THE FUNDAMENTAL COUNTING PRINCIPLE** $$m_1 \times m_2 \times \dots \times m_k$$ where $m_i$ is the number of choices at stage $i$, for a task made up of $k$ stages.
+:::
+
+::: callout-example
+**Example:** A restaurant offers $3$ appetizers, $4$ entrées, and $2$ desserts. The number of different three-course meals is $3 \times 4 \times 2 = 24$.
+:::
+
 ### Factorial {.unnumbered}
 
-To illustrate our first counting rule, consider the number of ways that we can organize a group of three people (Ann, Beth, Charlie). The enumeration of all the possible orderings in this case is not that tedious and it can be shown in a table:
+To illustrate the factorial, consider the number of ways that we can organize a group of three people (Ann, Beth, Charlie). The enumeration of all the possible orderings in this case is not that tedious and it can be shown in a table:
 
 | Ordering |        Order         |
 |:--------:|:--------------------:|
