@@ -323,7 +323,7 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>Understanding where the “center” of a dataset lies is a fundamental step when interpreting and analyzing data. Measures of central location provide different ways to identify the “typical” value in a dataset, each with its unique strengths and limitations. Below I survey some of the most popular measures of central location.</p>
+<p>Understanding where the “center” of a dataset lies is a fundamental step when interpreting and analyzing data. Measures of central location provide different ways to identify the “typical” value in a dataset, each with its unique strengths and limitations. Below I survey some of the most popular measures of central location. These summaries continue the work of describing our data: having seen its overall shape, we now pin down its center — a single representative value that will later anchor the estimates we carry into inference.</p>
 <section id="sample-vs.-population-statistics" class="level2" data-number="3.1">
 <h2 data-number="3.1" class="anchored" data-anchor-id="sample-vs.-population-statistics"><span class="header-section-number">3.1</span> Sample Vs. Population Statistics</h2>
 <p>In this book you will find formulas for calculating sample statistics and population parameters. In general, you will use population formulas when you have data for the entire group you care about or when you are working with a theoretical distribution and the parameter is known; population formulas use <span class="math inline">\(N\)</span> in denominators and estimate parameters. Use sample formulas when your data are a subset drawn from a larger population and you want unbiased estimators of the population parameters; sample formulas use <span class="math inline">\(n\)</span> and the degrees of freedom correction. In practice most empirical work uses sample formulas because we rarely observe entire populations; below you will see both population and sample versions so you can choose the correct one depending on whether your data represent the full population or a sample.</p>
@@ -473,23 +473,23 @@ details summary {
 <p>Excel has a collection of functions that calculate measures of central location. Let’s consider the following data on approval ratings:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ramhfyqhlo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ramhfyqhlo table {
+<div id="hzhshvvkhm" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#hzhshvvkhm table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ramhfyqhlo thead, #ramhfyqhlo tbody, #ramhfyqhlo tfoot, #ramhfyqhlo tr, #ramhfyqhlo td, #ramhfyqhlo th {
+#hzhshvvkhm thead, #hzhshvvkhm tbody, #hzhshvvkhm tfoot, #hzhshvvkhm tr, #hzhshvvkhm td, #hzhshvvkhm th {
   border-style: none;
 }
 
-#ramhfyqhlo p {
+#hzhshvvkhm p {
   margin: 0;
   padding: 0;
 }
 
-#ramhfyqhlo .gt_table {
+#hzhshvvkhm .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -515,12 +515,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#ramhfyqhlo .gt_caption {
+#hzhshvvkhm .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ramhfyqhlo .gt_title {
+#hzhshvvkhm .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -532,7 +532,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#ramhfyqhlo .gt_subtitle {
+#hzhshvvkhm .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -544,7 +544,7 @@ details summary {
   border-top-width: 0;
 }
 
-#ramhfyqhlo .gt_heading {
+#hzhshvvkhm .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -556,13 +556,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#ramhfyqhlo .gt_bottom_border {
+#hzhshvvkhm .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ramhfyqhlo .gt_col_headings {
+#hzhshvvkhm .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -577,7 +577,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#ramhfyqhlo .gt_col_heading {
+#hzhshvvkhm .gt_col_heading {
   color: #333333;
   background-color: #EDE8E3;
   font-size: 100%;
@@ -597,7 +597,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#ramhfyqhlo .gt_column_spanner_outer {
+#hzhshvvkhm .gt_column_spanner_outer {
   color: #333333;
   background-color: #EDE8E3;
   font-size: 100%;
@@ -609,15 +609,15 @@ details summary {
   padding-right: 4px;
 }
 
-#ramhfyqhlo .gt_column_spanner_outer:first-child {
+#hzhshvvkhm .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ramhfyqhlo .gt_column_spanner_outer:last-child {
+#hzhshvvkhm .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ramhfyqhlo .gt_column_spanner {
+#hzhshvvkhm .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -629,11 +629,11 @@ details summary {
   width: 100%;
 }
 
-#ramhfyqhlo .gt_spanner_row {
+#hzhshvvkhm .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ramhfyqhlo .gt_group_heading {
+#hzhshvvkhm .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -659,7 +659,7 @@ details summary {
   text-align: left;
 }
 
-#ramhfyqhlo .gt_empty_group_heading {
+#hzhshvvkhm .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -674,15 +674,15 @@ details summary {
   vertical-align: middle;
 }
 
-#ramhfyqhlo .gt_from_md > :first-child {
+#hzhshvvkhm .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ramhfyqhlo .gt_from_md > :last-child {
+#hzhshvvkhm .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ramhfyqhlo .gt_row {
+#hzhshvvkhm .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -701,7 +701,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#ramhfyqhlo .gt_stub {
+#hzhshvvkhm .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -714,7 +714,7 @@ details summary {
   padding-right: 5px;
 }
 
-#ramhfyqhlo .gt_stub_row_group {
+#hzhshvvkhm .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -728,15 +728,15 @@ details summary {
   vertical-align: top;
 }
 
-#ramhfyqhlo .gt_row_group_first td {
+#hzhshvvkhm .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ramhfyqhlo .gt_row_group_first th {
+#hzhshvvkhm .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ramhfyqhlo .gt_summary_row {
+#hzhshvvkhm .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -746,16 +746,16 @@ details summary {
   padding-right: 5px;
 }
 
-#ramhfyqhlo .gt_first_summary_row {
+#hzhshvvkhm .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ramhfyqhlo .gt_first_summary_row.thick {
+#hzhshvvkhm .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ramhfyqhlo .gt_last_summary_row {
+#hzhshvvkhm .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -765,7 +765,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#ramhfyqhlo .gt_grand_summary_row {
+#hzhshvvkhm .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -775,7 +775,7 @@ details summary {
   padding-right: 5px;
 }
 
-#ramhfyqhlo .gt_first_grand_summary_row {
+#hzhshvvkhm .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -785,7 +785,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#ramhfyqhlo .gt_last_grand_summary_row_top {
+#hzhshvvkhm .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -795,11 +795,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#ramhfyqhlo .gt_striped {
+#hzhshvvkhm .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ramhfyqhlo .gt_table_body {
+#hzhshvvkhm .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -808,7 +808,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#ramhfyqhlo .gt_footnotes {
+#hzhshvvkhm .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -822,7 +822,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#ramhfyqhlo .gt_footnote {
+#hzhshvvkhm .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -831,7 +831,7 @@ details summary {
   padding-right: 5px;
 }
 
-#ramhfyqhlo .gt_sourcenotes {
+#hzhshvvkhm .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -845,7 +845,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#ramhfyqhlo .gt_sourcenote {
+#hzhshvvkhm .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -853,72 +853,72 @@ details summary {
   padding-right: 5px;
 }
 
-#ramhfyqhlo .gt_left {
+#hzhshvvkhm .gt_left {
   text-align: left;
 }
 
-#ramhfyqhlo .gt_center {
+#hzhshvvkhm .gt_center {
   text-align: center;
 }
 
-#ramhfyqhlo .gt_right {
+#hzhshvvkhm .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ramhfyqhlo .gt_font_normal {
+#hzhshvvkhm .gt_font_normal {
   font-weight: normal;
 }
 
-#ramhfyqhlo .gt_font_bold {
+#hzhshvvkhm .gt_font_bold {
   font-weight: bold;
 }
 
-#ramhfyqhlo .gt_font_italic {
+#hzhshvvkhm .gt_font_italic {
   font-style: italic;
 }
 
-#ramhfyqhlo .gt_super {
+#hzhshvvkhm .gt_super {
   font-size: 65%;
 }
 
-#ramhfyqhlo .gt_footnote_marks {
+#hzhshvvkhm .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ramhfyqhlo .gt_asterisk {
+#hzhshvvkhm .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ramhfyqhlo .gt_indent_1 {
+#hzhshvvkhm .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ramhfyqhlo .gt_indent_2 {
+#hzhshvvkhm .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ramhfyqhlo .gt_indent_3 {
+#hzhshvvkhm .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ramhfyqhlo .gt_indent_4 {
+#hzhshvvkhm .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ramhfyqhlo .gt_indent_5 {
+#hzhshvvkhm .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ramhfyqhlo .katex-display {
+#hzhshvvkhm .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ramhfyqhlo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#hzhshvvkhm div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>

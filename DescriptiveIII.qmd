@@ -16,7 +16,7 @@ details summary {
 
 # Descriptive Statistics III
 
-Understanding where the "center" of a dataset lies is a fundamental step when interpreting and analyzing data. Measures of central location provide different ways to identify the "typical" value in a dataset, each with its unique strengths and limitations. Below I survey some of the most popular measures of central location.
+Understanding where the "center" of a dataset lies is a fundamental step when interpreting and analyzing data. Measures of central location provide different ways to identify the "typical" value in a dataset, each with its unique strengths and limitations. Below I survey some of the most popular measures of central location. These summaries continue the work of describing our data: having seen its overall shape, we now pin down its center — a single representative value that will later anchor the estimates we carry into inference.
 
 ## Sample Vs. Population Statistics
 

@@ -16,7 +16,7 @@ details summary {
 
 # Regression and Inference
 
-This final chapter brings hypothesis testing and regression together. You will learn to judge whether a correlation is real or just noise, whether two groups truly differ, and whether a regression coefficient carries any explanatory weight. These are the tools that turn a descriptive relationship into a defensible conclusion — letting you evaluate market trends, compare performance across groups, and decide which predictors actually matter in a model.
+This final chapter brings hypothesis testing and regression together. You will learn to judge whether a correlation is real or just noise, whether two groups truly differ, and whether a regression coefficient carries any explanatory weight. These are the tools that turn a descriptive relationship into a defensible conclusion — letting you evaluate market trends, compare performance across groups, and decide which predictors actually matter in a model. It is a fitting close to the book: it unites the descriptive tool of regression with the inferential habit of asking whether a pattern is real, turning a fitted line into a tested claim about the world.
 
 ## Correlation Significance
 
@@ -44,6 +44,27 @@ We often want to know whether two populations have different means — for examp
 
 A **paired** test is used when the two samples are naturally linked — the same subjects measured twice (before and after), for instance. An **unpaired** (independent) test is used when the two samples come from separate groups.
 
+::: callout-example
+**Example (unpaired).** A company evaluates a training program. Six employees who took the program score a mean of $\bar{x}_1 = 33.17$ on a productivity assessment (with $s_1 = 7.55$), while six *different* employees who did not take it score a mean of $\bar{x}_2 = 30.00$ (with $s_2 = 7.18$). Testing $H_0: \mu_1 - \mu_2 = 0$ against $H_a: \mu_1 - \mu_2 \ne 0$ with unequal variances: $$t = \frac{(33.17 - 30.00) - 0}{\sqrt{\frac{7.55^2}{6} + \frac{7.18^2}{6}}} = \frac{3.17}{4.25} = 0.74$$ With about $10$ degrees of freedom the two-tailed p-value is roughly $0.47$. Because $0.47 > 0.05$, we fail to reject the null: the $3.17$-point gap is swamped by the large variation *between* employees, so we cannot conclude the program helped.
+:::
+
+::: callout-example
+**Example (paired).** Now suppose those same six employees were each measured *before and after* the program, so every "after" score is matched to that person's own "before" score:
+
+| Employee | Before | After | Difference |
+|:--------:|:------:|:-----:|:----------:|
+|    1     |   20   |  23   |     3      |
+|    2     |   32   |  36   |     4      |
+|    3     |   25   |  27   |     2      |
+|    4     |   40   |  43   |     3      |
+|    5     |   28   |  31   |     3      |
+|    6     |   35   |  39   |     4      |
+
+The group means are identical to the unpaired case ($30.00$ before, $33.17$ after), but now we work with each person's change. The individual gains are remarkably consistent: $\bar{d} = 3.17$ with $s = 0.75$. Testing $H_0: \mu_d = 0$ against $H_a: \mu_d \ne 0$: $$t = \frac{\bar{d} - 0}{s / \sqrt{n}} = \frac{3.17}{0.75 / \sqrt{6}} = 10.30$$ With $df = 5$ the two-tailed p-value is about $0.0001$. Because $0.0001 < 0.05$, we strongly reject the null: the program clearly raised productivity.
+:::
+
+The two examples use the **same numbers** yet reach opposite conclusions, and the reason is the design. The unpaired test must carry the large variation *between* employees — scores range from $20$ to $40$ — and that noise hides the modest improvement. The paired test cancels that person-to-person variation by looking only at each individual's change, leaving a small, consistent difference that stands out sharply ($s$ drops from about $7.5$ to $0.75$). Whenever the data are naturally matched, pairing is the more powerful choice.
+
 ## Regression Inference
 
 After fitting a regression, two kinds of tests tell us whether the model has explanatory power.
@@ -63,7 +84,7 @@ After fitting a regression, two kinds of tests tell us whether the model has exp
 The ANOVA table organizes these pieces:
 
 |   Source   |   df    |  SS   |            MS             |           F           |
-|:-----------:|:-----------:|:-----------:|:------------------:|:-------------:|
+|:----------:|:-------:|:-----:|:-------------------------:|:---------------------:|
 | Regression |   $k$   | $SSR$ |   $MSR = \frac{SSR}{k}$   | $F = \frac{MSR}{MSE}$ |
 |  Residual  | $n-k-1$ | $SSE$ | $MSE = \frac{SSE}{n-k-1}$ |                       |
 |   Total    |  $n-1$  | $SST$ |                           |                       |

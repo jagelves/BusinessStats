@@ -23,6 +23,10 @@ Understanding these relationships is critical for making informed
 decisions. By quantifying the strength and direction of associations,
 businesses can better interpret data, optimize strategies, and drive
 meaningful outcomes. Below we study important measures of association.
+Association still belongs to the *describe* stage of learning from data —
+here we characterize how two variables move together — but it also points
+ahead to inference, where we will ask whether a relationship seen in a
+sample is real or merely a product of chance.
 
 ## The Covariance
 

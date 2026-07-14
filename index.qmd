@@ -6,6 +6,14 @@ This course companion is designed to build your mastery of statistics and its re
 
 This book is also the product of many helping hands. In particular, I would like to extend my sincere thanks to my business statistics students — particularly Haipei Liu, Addison Alvine, and Sara Blair — for their invaluable feedback and thoughtful reviews. Any remaining errors are entirely my own.
 
+## Learning from Data
+
+At its heart, statistics is about learning from the world. We want to understand something — how customers behave, whether a new process works, where a market is headed — but the world is far too large to observe all at once. So we collect **data**: a partial, imperfect glimpse of the thing we actually care about. We then learn to organize and interpret that data, and finally to reason backward from the little we observed to what is likely true about the world as a whole.
+
+That final step is the crucial one, and it comes with a catch: a sample is never a perfect mirror of the population it was drawn from. Two analysts taking different samples will get slightly different numbers. **Probability** is the tool that lets us take this uncertainty seriously — to measure how much our data might mislead us and to state our conclusions with an honest degree of confidence. With it, we can take an idea we hold about the world — a **hypothesis** — and ask whether the evidence in front of us genuinely supports it, or whether what we are seeing could just be noise.
+
+This way of thinking is not confined to spreadsheets. We do it constantly in everyday life: we form an impression from limited experience, revise it as new evidence arrives, and try not to be fooled by coincidence. Learning statistics is really learning to do this carefully and deliberately. The chapters that follow build that single skill one piece at a time — collecting and describing data, modeling uncertainty with probability, and finally inferring and testing what the data tell us about the world.
+
 ## Why Excel?
 
 Excel is the common language of business. From finance and accounting to marketing and operations, professionals across every industry rely on it daily to organize data, uncover patterns, and communicate results.
@@ -29,7 +37,7 @@ Proficiency in Excel remains a foundational skill in business, even in an era in
 
 ## Roadmap
 
-This book follows a deliberate sequence designed to build your skills progressively. We begin with **Descriptive Statistics**, where you will learn to summarize, visualize, and explore data in Excel. Here you will develop the foundation of all statistical thinking. Next, we move to **Regression**, giving you a powerful tool for identifying relationships between variables and making predictions. With these analytical skills in hand, we then develop your understanding of **Probability**, which provides the theoretical backbone for drawing conclusions from data. We then bring everything together in **Inference**, where you will learn to make rigorous, evidence-based decisions from samples. Finally, the **Regression and Inference** chapter combines both threads, showing how to judge the reliability of a regression model. Each stage builds on the last, so that by the end you will have a complete statistical toolkit.
+This book follows a deliberate sequence that mirrors the process of learning from data described above. We begin with **Descriptive Statistics**, where you will learn to summarize, visualize, and explore data in Excel — the stage where we organize and interpret what we have observed. Next, we move to **Regression**, giving you a powerful tool for identifying relationships between variables and making predictions. With these analytical skills in hand, we then develop your understanding of **Probability**, which models the uncertainty that comes from seeing only a sample and provides the theoretical backbone for drawing conclusions from data. We then bring everything together in **Inference**, where you will learn to reason from a sample back to the population and to test whether your hypotheses hold — making rigorous, evidence-based decisions under uncertainty. Finally, the **Regression and Inference** chapter combines both threads, showing how to judge the reliability of a regression model. Each stage builds on the last, so that by the end you will have a complete statistical toolkit.
 
 If you are new to spreadsheets — or simply want a quick reference — start with the **Excel Basics** chapter at the end of the book. It reviews how Excel organizes data (cells, ranges, worksheets, and the Data Analysis ToolPak) and collects every function used throughout the book into a single dictionary you can return to whenever you need it.
 

@@ -16,7 +16,7 @@ details summary {
 
 # Descriptive Stats II
 
-Understanding and visualizing data distributions is a fundamental step in data analysis. It provides critical insights into the underlying characteristics of the data, which directly impact decision-making, model performance, and interpretation. Below, we introduce tabular and visual techniques to describe your data.
+Understanding and visualizing data distributions is a fundamental step in data analysis. It provides critical insights into the underlying characteristics of the data, which directly impact decision-making, model performance, and interpretation. Below, we introduce tabular and visual techniques to describe your data. This is the *describe* stage of learning from data: we organize the raw observations into tables and pictures so their patterns become visible, before attempting to draw any conclusions from them.
 
 ## Frequency Distributions (Categorical)
 

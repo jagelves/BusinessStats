@@ -15,7 +15,7 @@ details summary {
 
 # Regression II
 
-Quantifying relationships between variables is an important skill in business analytics. The regression line, representing the best linear fit between two variables, enables businesses to make predictions, identify trends, and optimize strategies using data-driven insights. Understanding how to calculate and interpret a regression line provides the foundation for analyzing business relationships, such as the effect of advertising on sales or customer satisfaction on revenue. Below, we delve into generating and analyzing a regression line.
+Quantifying relationships between variables is an important skill in business analytics. The regression line, representing the best linear fit between two variables, enables businesses to make predictions, identify trends, and optimize strategies using data-driven insights. Understanding how to calculate and interpret a regression line provides the foundation for analyzing business relationships, such as the effect of advertising on sales or customer satisfaction on revenue. Below, we delve into generating and analyzing a regression line. Fitting a line is a descriptive act — a compact summary of how the data behave — but it is also the model whose reliability we will later test in the inference chapters, once we ask how much a different sample might have shifted it.
 
 ## The Regression Line
 

@@ -16,7 +16,7 @@ details summary {
 
 # Inference I
 
-Statistical inference is a cornerstone of modern business decision-making. It enables companies to extract meaningful insights from data amid uncertainty and complexity. Businesses can predict customer behavior, optimize marketing strategies, and assess risks by drawing reliable conclusions from sample data. In this chapter, we explore how we can draw insights about a population using sample data.
+Statistical inference is a cornerstone of modern business decision-making. It enables companies to extract meaningful insights from data amid uncertainty and complexity. Businesses can predict customer behavior, optimize marketing strategies, and assess risks by drawing reliable conclusions from sample data. In this chapter, we explore how we can draw insights about a population using sample data. This is the stage the whole book has been building toward: moving from describing a sample to reasoning about the population behind it, using probability to keep our uncertainty honest.
 
 ## Statistical Inference
 

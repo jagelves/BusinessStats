@@ -70,6 +70,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-PLNY5BZ16X"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-PLNY5BZ16X', { 'anonymize_ip': true});
+</script>
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FWC3RCL4BF"></script>
 <script>
@@ -309,7 +318,7 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>This final chapter brings hypothesis testing and regression together. You will learn to judge whether a correlation is real or just noise, whether two groups truly differ, and whether a regression coefficient carries any explanatory weight. These are the tools that turn a descriptive relationship into a defensible conclusion — letting you evaluate market trends, compare performance across groups, and decide which predictors actually matter in a model.</p>
+<p>This final chapter brings hypothesis testing and regression together. You will learn to judge whether a correlation is real or just noise, whether two groups truly differ, and whether a regression coefficient carries any explanatory weight. These are the tools that turn a descriptive relationship into a defensible conclusion — letting you evaluate market trends, compare performance across groups, and decide which predictors actually matter in a model. It is a fitting close to the book: it unites the descriptive tool of regression with the inferential habit of asking whether a pattern is real, turning a fitted line into a tested claim about the world.</p>
 <section id="correlation-significance" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="correlation-significance"><span class="header-section-number">14.1</span> Correlation Significance</h2>
 <p>A sample correlation coefficient is almost never exactly zero, even when the two variables are unrelated. To decide whether an observed correlation reflects a real relationship in the population, we test the population correlation <span class="math inline">\(\rho\)</span>:</p>
@@ -332,6 +341,62 @@ details summary {
 <p><strong>DIFFERENCE OF MEANS TEST STATISTICS</strong> <span class="math display">\[\text{Unpaired, unequal variances:} \quad t = \frac{(\bar{x}_1 - \bar{x}_2) - d_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\]</span> <span class="math display">\[\text{Unpaired, equal variances:} \quad t = \frac{(\bar{x}_1 - \bar{x}_2) - d_0}{\sqrt{s_p^2\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}\]</span> <span class="math display">\[\text{Paired:} \quad t = \frac{\bar{d} - d_0}{s / \sqrt{n}}\]</span> where <span class="math inline">\(d_0\)</span> is the hypothesized difference, <span class="math inline">\(s_p^2\)</span> is the pooled variance, and <span class="math inline">\(\bar{d}\)</span> and <span class="math inline">\(s\)</span> are the mean and standard deviation of the paired differences.</p>
 </div>
 <p>A <strong>paired</strong> test is used when the two samples are naturally linked — the same subjects measured twice (before and after), for instance. An <strong>unpaired</strong> (independent) test is used when the two samples come from separate groups.</p>
+<div class="callout-example">
+<p><strong>Example (unpaired).</strong> A company evaluates a training program. Six employees who took the program score a mean of <span class="math inline">\(\bar{x}_1 = 33.17\)</span> on a productivity assessment (with <span class="math inline">\(s_1 = 7.55\)</span>), while six <em>different</em> employees who did not take it score a mean of <span class="math inline">\(\bar{x}_2 = 30.00\)</span> (with <span class="math inline">\(s_2 = 7.18\)</span>). Testing <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span> against <span class="math inline">\(H_a: \mu_1 - \mu_2 \ne 0\)</span> with unequal variances: <span class="math display">\[t = \frac{(33.17 - 30.00) - 0}{\sqrt{\frac{7.55^2}{6} + \frac{7.18^2}{6}}} = \frac{3.17}{4.25} = 0.74\]</span> With about <span class="math inline">\(10\)</span> degrees of freedom the two-tailed p-value is roughly <span class="math inline">\(0.47\)</span>. Because <span class="math inline">\(0.47 &gt; 0.05\)</span>, we fail to reject the null: the <span class="math inline">\(3.17\)</span>-point gap is swamped by the large variation <em>between</em> employees, so we cannot conclude the program helped.</p>
+</div>
+<div class="callout-example">
+<p><strong>Example (paired).</strong> Now suppose those same six employees were each measured <em>before and after</em> the program, so every “after” score is matched to that person’s own “before” score:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Employee</th>
+<th style="text-align: center;">Before</th>
+<th style="text-align: center;">After</th>
+<th style="text-align: center;">Difference</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">1</td>
+<td style="text-align: center;">20</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">32</td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">4</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">3</td>
+<td style="text-align: center;">25</td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">2</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">43</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">5</td>
+<td style="text-align: center;">28</td>
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">3</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">6</td>
+<td style="text-align: center;">35</td>
+<td style="text-align: center;">39</td>
+<td style="text-align: center;">4</td>
+</tr>
+</tbody>
+</table>
+<p>The group means are identical to the unpaired case (<span class="math inline">\(30.00\)</span> before, <span class="math inline">\(33.17\)</span> after), but now we work with each person’s change. The individual gains are remarkably consistent: <span class="math inline">\(\bar{d} = 3.17\)</span> with <span class="math inline">\(s = 0.75\)</span>. Testing <span class="math inline">\(H_0: \mu_d = 0\)</span> against <span class="math inline">\(H_a: \mu_d \ne 0\)</span>: <span class="math display">\[t = \frac{\bar{d} - 0}{s / \sqrt{n}} = \frac{3.17}{0.75 / \sqrt{6}} = 10.30\]</span> With <span class="math inline">\(df = 5\)</span> the two-tailed p-value is about <span class="math inline">\(0.0001\)</span>. Because <span class="math inline">\(0.0001 &lt; 0.05\)</span>, we strongly reject the null: the program clearly raised productivity.</p>
+</div>
+<p>The two examples use the <strong>same numbers</strong> yet reach opposite conclusions, and the reason is the design. The unpaired test must carry the large variation <em>between</em> employees — scores range from <span class="math inline">\(20\)</span> to <span class="math inline">\(40\)</span> — and that noise hides the modest improvement. The paired test cancels that person-to-person variation by looking only at each individual’s change, leaving a small, consistent difference that stands out sharply (<span class="math inline">\(s\)</span> drops from about <span class="math inline">\(7.5\)</span> to <span class="math inline">\(0.75\)</span>). Whenever the data are naturally matched, pairing is the more powerful choice.</p>
 </section>
 <section id="regression-inference" class="level2" data-number="14.3">
 <h2 data-number="14.3" class="anchored" data-anchor-id="regression-inference"><span class="header-section-number">14.3</span> Regression Inference</h2>
@@ -347,11 +412,11 @@ details summary {
 <p>The ANOVA table organizes these pieces:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 27%">
-<col style="width: 20%">
+<col style="width: 15%">
+<col style="width: 11%">
+<col style="width: 8%">
+<col style="width: 34%">
+<col style="width: 29%">
 </colgroup>
 <thead>
 <tr class="header">

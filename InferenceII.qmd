@@ -16,7 +16,7 @@ details summary {
 
 # Inference II
 
-A single number is rarely the whole story. When a business estimates average customer spending or the proportion of defective units from a sample, the estimate is almost never exactly right — it carries sampling error. Reporting a lone **point estimate** hides this uncertainty. Instead, we surround the estimate with a range of plausible values and attach a level of confidence to it. This chapter shows how to build these **confidence intervals** for means and proportions, how the sample size and confidence level affect their width, and how to construct them in Excel.
+A single number is rarely the whole story. When a business estimates average customer spending or the proportion of defective units from a sample, the estimate is almost never exactly right — it carries sampling error. Reporting a lone **point estimate** hides this uncertainty. Instead, we surround the estimate with a range of plausible values and attach a level of confidence to it. This chapter shows how to build these **confidence intervals** for means and proportions, how the sample size and confidence level affect their width, and how to construct them in Excel. A confidence interval is the natural next step in learning from data: having accepted that a single sample gives only an imperfect view of the world, we report a range of plausible values for the population instead of pretending our estimate is exact.
 
 ## Confidence Intervals
 

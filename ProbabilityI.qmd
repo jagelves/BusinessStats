@@ -16,7 +16,7 @@ details summary {
 
 # Probability I
 
-Decision-making under uncertainty is at the core of business strategy, risk management, and forecasting. This section will study tools and concepts that will make us smarter when making data-driven decisions. Mastering probability in finance, marketing, supply chain, or operations helps professionals analyze risks, optimize strategies, and stay competitive in uncertain environments. We start with the basic concepts and ideas of probability below.
+Decision-making under uncertainty is at the core of business strategy, risk management, and forecasting. This section will study tools and concepts that will make us smarter when making data-driven decisions. Mastering probability in finance, marketing, supply chain, or operations helps professionals analyze risks, optimize strategies, and stay competitive in uncertain environments. We start with the basic concepts and ideas of probability below. Probability marks a turning point in the book. Until now we have described data we already collected; from here we build the mathematics of uncertainty — the bridge that will later let us reason from an imperfect sample back to the world that produced it.
 
 ## Frequentist Vs. Bayesian Statistics
 

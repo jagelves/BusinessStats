@@ -16,7 +16,7 @@ details summary {
 
 # Inference III
 
-Business decisions are often framed as claims to be tested: a new supplier promises fewer defects, a marketing team believes a campaign lifted sales, an analyst suspects average spending has changed. **Hypothesis testing** is the formal procedure for deciding whether the evidence in a sample is strong enough to support such a claim, or whether the difference we see could just be sampling error. In this chapter you will learn to state null and alternative hypotheses, compute a test statistic, weigh it against a chosen level of risk, and reach a defensible conclusion — all in Excel.
+Business decisions are often framed as claims to be tested: a new supplier promises fewer defects, a marketing team believes a campaign lifted sales, an analyst suspects average spending has changed. **Hypothesis testing** is the formal procedure for deciding whether the evidence in a sample is strong enough to support such a claim, or whether the difference we see could just be sampling error. In this chapter you will learn to state null and alternative hypotheses, compute a test statistic, weigh it against a chosen level of risk, and reach a defensible conclusion — all in Excel. This is where the cycle closes: we began by wanting to learn something about the world, and hypothesis testing is the formal step of asking whether the data we collected actually support the idea we started with.
 
 ## Hypothesis Testing Intuition
 

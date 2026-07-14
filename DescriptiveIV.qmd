@@ -16,7 +16,7 @@ details summary {
 
 # Descriptive Stats IV
 
-Measures of dispersion provide insights into how much the values in a data set deviate from the central tendency. In a business context, understanding variability is essential for assessing risk, as it helps decision-makers anticipate fluctuations in revenue, costs, and market conditions. Below, we explore the main statistics that help us quantify variability and use them to make better business decisions.
+Measures of dispersion provide insights into how much the values in a data set deviate from the central tendency. In a business context, understanding variability is essential for assessing risk, as it helps decision-makers anticipate fluctuations in revenue, costs, and market conditions. Below, we explore the main statistics that help us quantify variability and use them to make better business decisions. Variability is central to everything that follows: it is precisely because data vary that a sample gives only an imperfect view of the world, so measuring that variation here lays the groundwork for the probability and inference chapters to come.
 
 ## The Range
 

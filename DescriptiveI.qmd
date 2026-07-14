@@ -16,7 +16,7 @@ details summary {
 
 # Descriptive Stats I
 
-Understanding the nature and classification of data is crucial for effective analysis and decision-making. Data are the building blocks of insights, providing a foundation for businesses, researchers, and policymakers to make informed choices. How we collect and categorize data significantly impacts how it is analyzed and interpreted. Below I highlight key types of data and their unique characteristics to help you get started with data analysis.
+Understanding the nature and classification of data is crucial for effective analysis and decision-making. Data are the building blocks of insights, providing a foundation for businesses, researchers, and policymakers to make informed choices. How we collect and categorize data significantly impacts how it is analyzed and interpreted. Below I highlight key types of data and their unique characteristics to help you get started with data analysis. In the arc of this book, this is where learning from data begins: before we can summarize what we have observed or infer what it means for the world, we first have to understand the raw material itself — what kind of data we have collected and how it is organized.
 
 ## Data and Types of Data
 

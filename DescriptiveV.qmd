@@ -16,7 +16,7 @@ details summary {
 
 # Descriptive Stats V
 
-There are statistical measures that describe the shape and distribution of the data beyond measures of central location or dispersion. They provide a view of how data is spread out, where it concentrates, and how it deviates from what might be expected. The tools shown below will help you describe the data's shape, symmetry, and anomalies.
+There are statistical measures that describe the shape and distribution of the data beyond measures of central location or dispersion. They provide a view of how data is spread out, where it concentrates, and how it deviates from what might be expected. The tools shown below will help you describe the data's shape, symmetry, and anomalies. With shape, center, and spread all in hand, our description of the data is complete — the foundation on which the coming chapters build models of uncertainty and draw conclusions about the world.
 
 ## Quantiles and Percentiles {#.quartiles}
 

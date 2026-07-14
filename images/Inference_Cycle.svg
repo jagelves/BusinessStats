@@ -1,0 +1,78 @@
+<svg viewBox="0 0 1280 720" xmlns="http://www.w3.org/2000/svg" font-family="Helvetica, Arial, sans-serif">
+  <!-- background -->
+  <rect x="0" y="0" width="1280" height="720" fill="#F0F0F0"/>
+
+  <!-- ===================== POPULATION ===================== -->
+  <circle cx="320" cy="290" r="160" fill="#9CB79E" stroke="#6E8A70" stroke-width="2.5"/>
+  <g fill="#F5E93B" stroke="#C9A227" stroke-width="1.5">
+    <circle cx="295" cy="180" r="8"/>
+    <circle cx="352" cy="200" r="8"/>
+    <circle cx="405" cy="230" r="8"/>
+    <circle cx="262" cy="245" r="8"/>
+    <circle cx="328" cy="250" r="8"/>
+    <circle cx="388" cy="270" r="8"/>
+    <circle cx="235" cy="292" r="8"/>
+    <circle cx="308" cy="298" r="8"/>
+    <circle cx="378" cy="305" r="8"/>
+    <circle cx="440" cy="285" r="8"/>
+    <circle cx="282" cy="335" r="8"/>
+    <circle cx="348" cy="342" r="8"/>
+    <circle cx="262" cy="368" r="8"/>
+    <circle cx="405" cy="350" r="8"/>
+    <circle cx="322" cy="390" r="8"/>
+    <circle cx="372" cy="400" r="8"/>
+    <circle cx="290" cy="412" r="8"/>
+    <circle cx="415" cy="402" r="8"/>
+  </g>
+  <text x="140" y="90" font-size="32" font-weight="600" fill="#222222">Population</text>
+  <text x="140" y="118" font-size="19" fill="#555555">the whole group we want to understand</text>
+  <!-- parameters -->
+  <text x="320" y="500" font-size="21" font-weight="600" fill="#222222" text-anchor="middle">Parameters (unknown)</text>
+  <text x="320" y="534" font-size="26" fill="#3A3A3A" text-anchor="middle" font-style="italic">&#956; &#160;&#160;&#160; &#963; &#160;&#160;&#160; p</text>
+
+  <!-- ===================== SAMPLE ===================== -->
+  <circle cx="975" cy="400" r="88" fill="#9BB4BF" stroke="#5E7C88" stroke-width="2.5"/>
+  <g fill="#F5E93B" stroke="#C9A227" stroke-width="1.5">
+    <circle cx="942" cy="370" r="8"/>
+    <circle cx="1002" cy="380" r="8"/>
+    <circle cx="957" cy="418" r="8"/>
+    <circle cx="996" cy="428" r="8"/>
+    <circle cx="978" cy="396" r="8"/>
+    <circle cx="1018" cy="410" r="8"/>
+  </g>
+  <text x="975" y="522" font-size="32" font-weight="600" fill="#222222" text-anchor="middle">Sample</text>
+  <text x="975" y="550" font-size="19" fill="#555555" text-anchor="middle">a random subset we actually observe</text>
+  <!-- statistics -->
+  <text x="975" y="588" font-size="21" font-weight="600" fill="#222222" text-anchor="middle">Statistics (computed)</text>
+  <text x="940" y="624" font-size="26" fill="#3A3A3A" text-anchor="middle" font-style="italic">x</text>
+  <line x1="930" y1="602" x2="950" y2="602" stroke="#3A3A3A" stroke-width="2"/>
+  <text x="975" y="624" font-size="26" fill="#3A3A3A" text-anchor="middle" font-style="italic">s</text>
+  <text x="1010" y="624" font-size="26" fill="#3A3A3A" text-anchor="middle" font-style="italic">p</text>
+  <polyline points="1004,603 1010,595 1016,603" fill="none" stroke="#3A3A3A" stroke-width="2"/>
+
+  <!-- ===================== ARROW 1 : down-right to sample ===================== -->
+  <g transform="translate(560,205) rotate(32)">
+    <polygon points="0,-18 175,-18 175,-38 250,0 175,38 175,18 0,18" fill="#2E6DB4"/>
+  </g>
+  <text x="600" y="70" font-size="27" font-style="italic" font-weight="600" fill="#2E6DB4">1. Take a random sample</text>
+  <rect x="600" y="88" width="200" height="34" rx="17" fill="#FFFFFF" stroke="#2E6DB4" stroke-width="1.6"/>
+  <text x="700" y="111" font-size="18" fill="#2E6DB4" text-anchor="middle">Collecting the data</text>
+
+  <!-- ===================== ARROW 3 : back up-left to population ===================== -->
+  <g transform="translate(845,485) rotate(200)">
+    <polygon points="0,-18 175,-18 175,-38 250,0 175,38 175,18 0,18" fill="#2E6DB4"/>
+  </g>
+  <text x="150" y="600" font-size="27" font-style="italic" font-weight="600" fill="#2E6DB4">3. Use probability to infer</text>
+  <text x="150" y="632" font-size="27" font-style="italic" font-weight="600" fill="#2E6DB4">the population parameter</text>
+  <rect x="150" y="650" width="238" height="34" rx="17" fill="#FFFFFF" stroke="#2E6DB4" stroke-width="1.6"/>
+  <text x="269" y="673" font-size="18" fill="#2E6DB4" text-anchor="middle">Probability + Inference</text>
+
+  <!-- ===================== STEP 2 (right of sample) ===================== -->
+  <text x="1065" y="388" font-size="26" font-style="italic" font-weight="600" fill="#2E6DB4">2. Calculate the</text>
+  <text x="1065" y="420" font-size="26" font-style="italic" font-weight="600" fill="#2E6DB4">sample statistic</text>
+  <rect x="1065" y="438" width="205" height="34" rx="17" fill="#FFFFFF" stroke="#4E7D4E" stroke-width="1.6"/>
+  <text x="1167" y="461" font-size="18" fill="#4E7D4E" text-anchor="middle">Descriptive Statistics</text>
+
+  <!-- ===================== CAPTION ===================== -->
+  <text x="640" y="706" font-size="18" fill="#666666" text-anchor="middle" font-style="italic">The sample gives an imperfect view of the population; probability measures how imperfect, and inference lets us test whether a hypothesis holds.</text>
+</svg>
