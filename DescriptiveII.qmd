@@ -186,6 +186,12 @@ The video below walks you through each of these steps:
 
 </details>
 
+## Chapter Summary Cheat Sheet
+
+```{r echo=FALSE, out.width="100%", fig.align='center'}
+knitr::include_graphics("images/Frequency_Distributions.png")
+```
+
 ## Exercises
 
 The following exercises will help you practice summarizing data with tables and simple graphs. In particular, the exercises work on:
@@ -215,10 +221,10 @@ You will need the **Brain Cancer** data set to answer this question. You can dow
 
 | Diagnosis  | Frequency | Relative |
 |:----------:|:---------:|:--------:|
-| Meningioma | 42        | 48.28%   |
-| LG glioma  | 9         | 10.34%   |
-| HG glioma  | 22        | 25.29%   |
-| Other      | 14        | 16.09%   |
+| Meningioma |    42     |  48.28%  |
+| LG glioma  |     9     |  10.34%  |
+| HG glioma  |    22     |  25.29%  |
+|   Other    |    14     |  16.09%  |
 
 *In Excel, build a PivotTable: drag the `diagnosis` field to the Rows area and again to the Values area (Excel counts each category). To add the relative frequency, drag `diagnosis` to the Values area a second time and set `Value Field Settings → Show Values As → % of Column Total`. Alternatively, use `=COUNTIF(range, "Meningioma")` for each category and divide by the total `=COUNTA(range)`.*
 :::
@@ -250,10 +256,10 @@ $33$ people did not survive Meningioma — the highest number of non-survivals. 
 
 | Status | Meningioma | LG glioma | HG glioma | Other |
 |:------:|:----------:|:---------:|:---------:|:-----:|
-| 0      | 33         | 5         | 5         | 9     |
-| 1      | 9          | 4         | 17        | 5     |
+|   0    |     33     |     5     |     5     |   9   |
+|   1    |     9      |     4     |    17     |   5   |
 
-*In Excel, build a PivotTable with `diagnosis` in the Columns area, `status` in the Rows area, and `status` in the Values area as a count. To obtain the survival rates, set `Show Values As → % of Column Total`; the survival rate for Meningioma is $9/42 = 21.43$%.*
+*In Excel, build a PivotTable with `diagnosis` in the Columns area, `status` in the Rows area, and `status` in the Values area as a count. To obtain the survival rates, set `Show Values As → % of Column Total`; the survival rate for Meningioma is* $9/42 = 21.43$%.
 :::
 
 </details>
@@ -272,13 +278,13 @@ You will need the **Air Quality** data set to answer this question. You can down
 
 *The highest frequency is in the* $80 < x \le 90$ bin. $8$ temperatures were between $50 < x \le 60$ degrees.
 
-| Interval   | Frequency |
+|  Interval  | Frequency |
 |:----------:|:---------:|
-| $(50,60]$  | 8         |
-| $(60,70]$  | 25        |
-| $(70,80]$  | 52        |
-| $(80,90]$  | 54        |
-| $(90,100]$ | 14        |
+| $(50,60]$  |     8     |
+| $(60,70]$  |    25     |
+| $(70,80]$  |    52     |
+| $(80,90]$  |    54     |
+| $(90,100]$ |    14     |
 
 *In Excel, add a helper column with an `=IFS()` formula to assign each temperature to its class, then build a PivotTable to count the observations in each bin, exactly as shown in the chapter.*
 
@@ -292,13 +298,13 @@ You will need the **Air Quality** data set to answer this question. You can down
 
 *The temperature was* $5.23$% of the time between $50$ and $60$; the temperature was $70$ or less $33$ times; the temperature was above $70$, $78.43$% of the time.
 
-| Interval   | Frequency | Relative | Cumulative | Rel. Cumulative |
+|  Interval  | Frequency | Relative | Cumulative | Rel. Cumulative |
 |:----------:|:---------:|:--------:|:----------:|:---------------:|
-| $(50,60]$  | 8         | 5.23%    | 8          | 5.23%           |
-| $(60,70]$  | 25        | 16.34%   | 33         | 21.57%          |
-| $(70,80]$  | 52        | 33.99%   | 85         | 55.56%          |
-| $(80,90]$  | 54        | 35.29%   | 139        | 90.85%          |
-| $(90,100]$ | 14        | 9.15%    | 153        | 100.00%         |
+| $(50,60]$  |     8     |  5.23%   |     8      |      5.23%      |
+| $(60,70]$  |    25     |  16.34%  |     33     |     21.57%      |
+| $(70,80]$  |    52     |  33.99%  |     85     |     55.56%      |
+| $(80,90]$  |    54     |  35.29%  |    139     |     90.85%      |
+| $(90,100]$ |    14     |  9.15%   |    153     |     100.00%     |
 
 *In the PivotTable, drag the bin field to the Values area a second time and use `Show Values As → % of Column Total` for the relative frequency, and `Show Values As → Running Total In` for the cumulative and relative cumulative distributions.*
 
@@ -312,7 +318,7 @@ You will need the **Air Quality** data set to answer this question. You can down
 
 *The distribution is not perfectly symmetric. It is skewed slightly to the left.*
 
-*With the PivotTable selected, insert a Clustered Column chart and set the `Gap Width` to $0$% to turn it into a histogram.*
+*With the PivotTable selected, insert a Clustered Column chart and set the `Gap Width` to* $0$% to turn it into a histogram.
 
 </details>
 
@@ -330,7 +336,7 @@ You will need the **Portfolio** data set to answer this question. You can downlo
 
 *From* $1901$ through $2000$, both portfolios have behaved very similarly. Returns are between $-3$% and $3$%, there is no trend, and positive (negative) returns for X seem to match with positive (negative) returns of Y.
 
-*In Excel, add a Year column running from $1901$ to $2000$. Select the Year, X, and Y columns and go to `Insert → Charts → Line`. Excel plots one line per portfolio and adds a legend automatically. Use `Chart Design → Change Colors` (or right-click a series → `Format Data Series`) to give X and Y distinct colors.*
+*In Excel, add a Year column running from* $1901$ to $2000$. Select the Year, X, and Y columns and go to `Insert → Charts → Line`. Excel plots one line per portfolio and adds a legend automatically. Use `Chart Design → Change Colors` (or right-click a series → `Format Data Series`) to give X and Y distinct colors.
 
 </details>
 
@@ -346,16 +352,16 @@ A company surveyed 40 employees about their primary department. The responses ar
 
 <summary>Answer</summary>
 
-| Department       | Frequency |
+|    Department    | Frequency |
 |:----------------:|:---------:|
-| Customer Service | 6         |
-| Finance          | 8         |
-| HR               | 3         |
-| IT               | 2         |
-| Marketing        | 7         |
-| Operations       | 6         |
-| R&D              | 3         |
-| Sales            | 5         |
+| Customer Service |     6     |
+|     Finance      |     8     |
+|        HR        |     3     |
+|        IT        |     2     |
+|    Marketing     |     7     |
+|    Operations    |     6     |
+|       R&D        |     3     |
+|      Sales       |     5     |
 
 *In Excel, build a PivotTable with `dept` in the Rows area and again in the Values area as a count, or use `=COUNTIF(range, "Finance")` for each department.*
 
@@ -367,16 +373,16 @@ A company surveyed 40 employees about their primary department. The responses ar
 
 <summary>Answer</summary>
 
-| Department       | Relative |
+|    Department    | Relative |
 |:----------------:|:--------:|
-| Customer Service | 15.0%    |
-| Finance          | 20.0%    |
-| HR               | 7.5%     |
-| IT               | 5.0%     |
-| Marketing        | 17.5%    |
-| Operations       | 15.0%    |
-| R&D              | 7.5%     |
-| Sales            | 12.5%    |
+| Customer Service |  15.0%   |
+|     Finance      |  20.0%   |
+|        HR        |   7.5%   |
+|        IT        |   5.0%   |
+|    Marketing     |  17.5%   |
+|    Operations    |  15.0%   |
+|       R&D        |   7.5%   |
+|      Sales       |  12.5%   |
 
 *In the PivotTable, drag `dept` to the Values area a second time and set `Show Values As → % of Column Total`. Alternatively, divide each `=COUNTIF()` result by the total `=COUNTA(range)`.*
 
@@ -408,14 +414,14 @@ A class of 50 students took a business statistics exam (out of 100 points). Thei
 
 *The highest frequency is in the* \[50,60) *bin with 13 students.*
 
-| Bin        | Frequency |
+|    Bin     | Frequency |
 |:----------:|:---------:|
-| $[50,60)$  | 13        |
-| $[60,70)$  | 11        |
-| $[70,80)$  | 9         |
-| $[80,90)$  | 9         |
-| $[90,100)$ | 7         |
+| $[50,60)$  |    13     |
+| $[60,70)$  |    11     |
+| $[70,80)$  |     9     |
+| $[80,90)$  |     9     |
+| $[90,100)$ |     7     |
 
-*In Excel, add a helper column with an `=IFS()` formula to assign each score to its class, build a PivotTable to count the scores in each bin, then insert a Clustered Column chart and set the `Gap Width` to $0$% to turn it into a histogram.*
+*In Excel, add a helper column with an `=IFS()` formula to assign each score to its class, build a PivotTable to count the scores in each bin, then insert a Clustered Column chart and set the `Gap Width` to* $0$% to turn it into a histogram.
 
 </details>

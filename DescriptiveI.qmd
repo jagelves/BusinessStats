@@ -22,15 +22,15 @@ Understanding the nature and classification of data is crucial for effective ana
 
 Let's start by defining data and the types of data structures that you might encounter when conducting analysis. **Data** are facts and figures collected, analyzed and summarized for presentation and interpretation. Data can be classified as:
 
--   **Cross Sectional Data** refers to data collected at the same (or approximately the same) point in time. *Ex: NFL standings in 1980 or Country GDP in 2015.*
+- **Cross Sectional Data** refers to data collected at the same (or approximately the same) point in time. *Ex: NFL standings in 1980 or Country GDP in 2015.*
 
--   **Time Series Data** refers to data collected over several time periods. *Ex: U.S. inflation rate from 2000-2010 or Tesla deliveries from 2016-2022.*
+- **Time Series Data** refers to data collected over several time periods. *Ex: U.S. inflation rate from 2000-2010 or Tesla deliveries from 2016-2022.*
 
--   **Structured Data** resides in a predefined row-column format (tidy). *Ex: spreadsheet data.*
+- **Structured Data** resides in a predefined row-column format (tidy). *Ex: spreadsheet data.*
 
--   **Unstructured Data** does not conform to a pre-defined row-column format. *Ex: Text, video, and other multimedia.*
+- **Unstructured Data** does not conform to a pre-defined row-column format. *Ex: Text, video, and other multimedia.*
 
-::: {.callout-example}
+::: callout-example
 **Example:** Consider a retail store analyzing its sales performance. If the store collects data on the total revenue generated *by each location* on Black Friday, it is cross-sectional data. On the other hand, if the store tracks *weekly sales for the past year* to observe trends, it is time series data. Structured data, like sales figures stored in *spreadsheets*, allows for easy comparison and analysis. Meanwhile, customer feedback gathered from *social media posts and video reviews* represents unstructured data, requiring advanced tools to extract meaningful insights.
 :::
 
@@ -38,11 +38,11 @@ Let's start by defining data and the types of data structures that you might enc
 
 A **data set** contains all data collected for a particular study. Understanding the structure the data set aids in communicating findings to stakeholders clearly and effectively. Data sets are composed of:
 
--   **Elements** are the entities on which data are collected. *Ex: Football teams, countries, and individuals.*
+- **Elements** are the entities on which data are collected. *Ex: Football teams, countries, and individuals.*
 
--   **Variables** are a set of characteristics collected for each element. *Ex: Goals scored, GDP, weight.*
+- **Variables** are a set of characteristics collected for each element. *Ex: Goals scored, GDP, weight.*
 
--   **Observations** are the set of measurements obtained for a particular element. *Ex: Salah, 20 (goals), 15 (assists). US, 2.3 (inflation), 4.5% (federal interest rate).*
+- **Observations** are the set of measurements obtained for a particular element. *Ex: Salah, 20 (goals), 15 (assists). US, 2.3 (inflation), 4.5% (federal interest rate).*
 
 | Elements  | Variable 1 | Variable 2 |
 |:---------:|:----------:|:----------:|
@@ -51,27 +51,27 @@ A **data set** contains all data collected for a particular study. Understanding
 | Element 3 |     \#     |     \#     |
 |    ...    |    ...     |    ...     |
 
-::: {.callout-example}
+::: callout-example
 **Example:** Consider the dataset on electric vehicles (EVs) displayed below:
 
-| Make   | Model       | Range_km | TopSpeed_kmh | Price_pounds | Charge_kmh |
-|--------|-------------|----------|--------------|--------------|------------|
-| Tesla  | Model 3     | 415      | 201          | 39,990       | 690        |
-| Tesla  | Model S     | 652      | 250          | 79,990       | 750        |
-| Nissan | Leaf        | 270      | 144          | 26,995       | 100        |
-| BMW    | i3          | 260      | 150          | 37,955       | 100        |
-| Audi   | e-tron      | 400      | 200          | 60,000       | 470        |
-| Ford   | Mustang     | 483      | 180          | 42,995       | 750        |
-| ...    | ...         | ...      | ...          | ...          | ...        |
+| Make   | Model   | Range_km | TopSpeed_kmh | Price_pounds | Charge_kmh |
+|--------|---------|----------|--------------|--------------|------------|
+| Tesla  | Model 3 | 415      | 201          | 39,990       | 690        |
+| Tesla  | Model S | 652      | 250          | 79,990       | 750        |
+| Nissan | Leaf    | 270      | 144          | 26,995       | 100        |
+| BMW    | i3      | 260      | 150          | 37,955       | 100        |
+| Audi   | e-tron  | 400      | 200          | 60,000       | 470        |
+| Ford   | Mustang | 483      | 180          | 42,995       | 750        |
+| ...    | ...     | ...      | ...          | ...          | ...        |
 
 In this data set, each row represents an electric vehicle model, making the elements the specific EV models rather than the manufacturers. The variables collected for each model include:
 
--   Make: The manufacturer of the EV.
--   Model: The specific name of the EV model.
--   Range_km: Driving range in kilometers on a full charge.
--   TopSpeed_kmh: Maximum speed in km/h.
--   Price_pounds: Price in pounds (£).
--   Charge_kmh: Charging speed in kilometers per hour.
+- Make: The manufacturer of the EV.
+- Model: The specific name of the EV model.
+- Range_km: Driving range in kilometers on a full charge.
+- TopSpeed_kmh: Maximum speed in km/h.
+- Price_pounds: Price in pounds (£).
+- Charge_kmh: Charging speed in kilometers per hour.
 
 An example observation is "Tesla Model 3," with the following data: Make: Tesla, Model: Model 3, Range_km: 415, TopSpeed_kmh: 201, Price_pounds: 39,990, Charge_kmh: 690.
 :::
@@ -82,51 +82,57 @@ Understanding scales of measurement is crucial for analyzing and interpreting da
 
 The **scales of measurements** determine the amount and type of information contained in each variable. In general, variables can be classified as **categorical** or **numerical**.
 
--   **Categorical** (qualitative) data includes labels or names to identify an attribute of each element. Categorical data can be **nominal** or **ordinal**.
+- **Categorical** (qualitative) data includes labels or names to identify an attribute of each element. Categorical data can be **nominal** or **ordinal**.
 
-    -   With **nominal** data, the order of the categories is arbitrary. Numbers (if used) serve only as identifiers. Common statistics used are based on counting frequencies and the mode (most common category) *Ex: Marital Status, Race/Ethnicity, or NFL division.*
+  - With **nominal** data, the order of the categories is arbitrary. Numbers (if used) serve only as identifiers. Common statistics used are based on counting frequencies and the mode (most common category) *Ex: Marital Status, Race/Ethnicity, or NFL division.*
 
-    -   With **ordinal** data, the order or rank of the categories is meaningful, but intervals between ranks are not necessarily equal or quantifiable. Common statistics are based on median, percentiles, or rank-order correlations. *Ex: Rating, Difficulty Level, or Spice Level.*
+  - With **ordinal** data, the order or rank of the categories is meaningful, but intervals between ranks are not necessarily equal or quantifiable. Common statistics are based on median, percentiles, or rank-order correlations. *Ex: Rating, Difficulty Level, or Spice Level.*
 
--   **Numerical** (quantitative) include numerical values that indicate how many (discrete) or how much (continuous). The data can be either **interval** or **ratio**.
+- **Numerical** (quantitative) include numerical values that indicate how many (discrete) or how much (continuous). The data can be either **interval** or **ratio**.
 
-    -   With **interval** data, the distance between values is expressed in terms of a fixed unit of measure. The zero value is arbitrary and does not represent the absence of the characteristic. Ratios are not meaningful. Common statistics are the arithmetic mean, standard deviation, or the Pearson correlation, *Ex: Temperature or Dates.*
+  - With **interval** data, the distance between values is expressed in terms of a fixed unit of measure. The zero value is arbitrary and does not represent the absence of the characteristic. Ratios are not meaningful. Common statistics are the arithmetic mean, standard deviation, or the Pearson correlation, *Ex: Temperature or Dates.*
 
-    -   With **ratio** data, the ratio between values is meaningful. The zero value is not arbitrary and represents the absence of the characteristic. All statistics are permissable including geometric mean, and the coefficient of variation. *Ex: Prices, Profits, Wins.*
+  - With **ratio** data, the ratio between values is meaningful. The zero value is not arbitrary and represents the absence of the characteristic. All statistics are permissable including geometric mean, and the coefficient of variation. *Ex: Prices, Profits, Wins.*
 
-::: {.callout-example}
+::: callout-example
 **Example:** Let's keep using the EV example. Consider the new data set below:
 
-| Car          | Brand  | Range | Rating | Year |
-|--------------|--------|-------|--------|------|
-| Model 3      | Tesla  | 415   | 4      | 2021 |
-| Model S      | Tesla  | 652   | 5      | 2021 |
-| Leaf         | Nissan | 270   | 3      | 2021 |
-| i3           | BMW    | 260   | 3      | 2021 |
-| e-tron       | Audi   | 400   | 4      | 2021 |
-| Mustang      | Ford   | 483   | 4      | 2021 |
-| ...          | ...    | ...   | ...    | ...  |
+| Car     | Brand  | Range | Rating | Year |
+|---------|--------|-------|--------|------|
+| Model 3 | Tesla  | 415   | 4      | 2021 |
+| Model S | Tesla  | 652   | 5      | 2021 |
+| Leaf    | Nissan | 270   | 3      | 2021 |
+| i3      | BMW    | 260   | 3      | 2021 |
+| e-tron  | Audi   | 400   | 4      | 2021 |
+| Mustang | Ford   | 483   | 4      | 2021 |
+| ...     | ...    | ...   | ...    | ...  |
 
 The variables can be classified as follows:
 
--   Car (Categorical - Nominal), consists of names of cars, which are labels used to identify each row. The order of these names does not matter, making it nominal data.
+- Car (Categorical - Nominal), consists of names of cars, which are labels used to identify each row. The order of these names does not matter, making it nominal data.
 
--   Brand (Categorical - Nominal) represents the manufacturer of the car (e.g., Ford, Audi). These are labels with no inherent order, making it nominal data.
+- Brand (Categorical - Nominal) represents the manufacturer of the car (e.g., Ford, Audi). These are labels with no inherent order, making it nominal data.
 
--   Range (Numerical - Ratio), refers to the car's driving range in miles. It is numerical and ratio because it has a meaningful zero (a car with zero range cannot move), and ratios are meaningful (e.g., a car with 250 miles range has double the range of one with 125 miles).
+- Range (Numerical - Ratio), refers to the car's driving range in miles. It is numerical and ratio because it has a meaningful zero (a car with zero range cannot move), and ratios are meaningful (e.g., a car with 250 miles range has double the range of one with 125 miles).
 
--   Rating (Categorical - Ordinal) represents a rank or score (e.g., 4, 3, 2). The order matters, as higher ratings indicate better performance. However, the intervals between ratings are not consistent, so it is ordinal data.
+- Rating (Categorical - Ordinal) represents a rank or score (e.g., 4, 3, 2). The order matters, as higher ratings indicate better performance. However, the intervals between ratings are not consistent, so it is ordinal data.
 
--   Year (Numerical - Interval) represents a point in time. While numerical, it is interval data because the zero point is arbitrary (e.g., year 0 does not indicate the "absence" of time), and ratios are not meaningful (e.g., 2020 is not "twice as late" as 1010).
+- Year (Numerical - Interval) represents a point in time. While numerical, it is interval data because the zero point is arbitrary (e.g., year 0 does not indicate the "absence" of time), and ratios are not meaningful (e.g., 2020 is not "twice as late" as 1010).
 :::
+
+## Chapter Summary Cheat Sheet
+
+```{r echo=FALSE, out.width="100%", fig.align='center'}
+knitr::include_graphics("images/Data_Types.png")
+```
 
 ## Exercises
 
 The following exercises will help you test your knowledge on the Scales of Measurement. In these exercises you will:
 
--   Identify numerical and categorical data.
+- Identify numerical and categorical data.
 
--   Classify data according to their scale of measurement.
+- Classify data according to their scale of measurement.
 
 Answers are provided below. Try not to peek until you formulate your own answer and double checked your work for any mistakes.
 
@@ -147,13 +153,13 @@ A bookstore has compiled data set on their current inventory. A portion of the d
 
 <summary>Answer</summary>
 
--   *The "Title" variable represents the names of books. Therefore, this is a categorical variable.*
+- *The "Title" variable represents the names of books. Therefore, this is a categorical variable.*
 
--   *"Price" represents the cost of each book in a numeric format, making it a numerical variable.*
+- *"Price" represents the cost of each book in a numeric format, making it a numerical variable.*
 
--   *"Year Published" indicates the publication year of each book. It is numerical.*
+- *"Year Published" indicates the publication year of each book. It is numerical.*
 
--   *If "Rating" represents a numerical score based on a continuous scale (e.g., average user ratings on a platform like Goodreads), it is numerical because arithmetic operations like averaging or comparing differences are meaningful.* *If "Rating" represents predefined categories (e.g., "Excellent," "Good," "Fair," "Poor") or is interpreted as ranks without meaningful differences between values, it would be categorical.*
+- *If "Rating" represents a numerical score based on a continuous scale (e.g., average user ratings on a platform like Goodreads), it is numerical because arithmetic operations like averaging or comparing differences are meaningful.* *If "Rating" represents predefined categories (e.g., "Excellent," "Good," "Fair," "Poor") or is interpreted as ranks without meaningful differences between values, it would be categorical.*
 
 </details>
 
@@ -163,13 +169,13 @@ A bookstore has compiled data set on their current inventory. A portion of the d
 
 <summary>Answer</summary>
 
--   *The measurement scale is nominal for "Title" since these are labels used to identify each book and do not have a numerical meaning or order.*
+- *The measurement scale is nominal for "Title" since these are labels used to identify each book and do not have a numerical meaning or order.*
 
--   *If "Rating" represents a score (e.g., 4.2, 4.0) given to each book, it is numerical and could be considered interval data because the scale represents a meaningful difference, but it may not have an absolute zero or meaningful ratios (e.g., a book rated 4.0 is not "twice as good" as one rated 2.0).*
+- *If "Rating" represents a score (e.g., 4.2, 4.0) given to each book, it is numerical and could be considered interval data because the scale represents a meaningful difference, but it may not have an absolute zero or meaningful ratios (e.g., a book rated 4.0 is not "twice as good" as one rated 2.0).*
 
--   *"Price" is a measurable quantity with a meaningful zero (e.g., a book priced at \$0 means it is free), making it ratio data.*
+- *"Price" is a measurable quantity with a meaningful zero (e.g., a book priced at \$0 means it is free), making it ratio data.*
 
--   *"Year" is interval data because the zero point is arbitrary (year 0 does not represent the absence of time) and differences between years are meaningful (e.g., 1897 - 1818 = 79 years).*
+- *"Year" is interval data because the zero point is arbitrary (year 0 does not represent the absence of time) and differences between years are meaningful (e.g., 1897 - 1818 = 79 years).*
 
 </details>
 
@@ -214,9 +220,8 @@ A car company tracks the number of deliveries every quarter. A portion of the da
 
 </details>
 
-
-
 ### Exercise 3 {.unnumbered}
+
 A coffee shop chain collects customer feedback data for analysis. For each visit/transaction recorded in their database, the following variables are stored:
 
 - Customer ID: A unique identifier assigned to each registered customer (e.g., C001234, C005678).
@@ -228,11 +233,9 @@ A coffee shop chain collects customer feedback data for analysis. For each visit
 
 <summary>Answer</summary>
 
-
 - *Customer ID: Categorical, Nominal. These are arbitrary labels used only for identification. There is no order or numerical meaning; you can only determine if two IDs are the same or different.*
 - *Satisfaction Level: Categorical, Ordinal. The ratings have a clear order (higher numbers indicate greater satisfaction), but the intervals between levels are not necessarily equal (the difference between 4 and 5 may not be perceived the same as between 1 and 2). Ratios are not meaningful.*
 - *Visit Duration: Numerical, Ratio. Time in minutes has a true zero (0 minutes means no time spent), equal intervals, and meaningful ratios (e.g., 60 minutes is twice as long as 30 minutes). All arithmetic operations are valid.*
 - *Beverage Type: Categorical, Nominal. These are unordered categories/labels for different drinks. You can group or count them, but there is no natural order or numerical relationship between categories like "Latte" and "Tea".*
 
 </details>
-
