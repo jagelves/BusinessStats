@@ -13,6 +13,7 @@ book:
   author: "J. Alejandro Gelves"
   date: "09/6/2026"
   cover-image: cover.png
+  google-analytics: "G-PLNY5BZ16X"
   chapters:
     - index.qmd
     - DescriptiveI.qmd
@@ -45,5 +46,3 @@ filters:
   - shinylive
   
 editor: visual
-
-google-analytics: "G-PLNY5BZ16X""
