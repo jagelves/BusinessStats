@@ -29,8 +29,7 @@ The **mean** is the average value for a numerical variable. It is a widely under
 The sample statistic is estimated by:
 
 ::: callout-formula
-**THE MEAN (Sample)**
-$$\bar{x}=\frac{\sum x_{i}}{n}$$
+**THE MEAN (Sample)** $$\bar{x}=\frac{\sum x_{i}}{n}$$
 
 where $\Sigma$ is the summation operator, $x_i$ is observation $i$, and $n$ is the number of observations in the sample.
 :::
@@ -38,8 +37,7 @@ where $\Sigma$ is the summation operator, $x_i$ is observation $i$, and $n$ is t
 The formula instructs you to add up all of the values in a variable and then divide by the sample size. If you wish to estimate the population parameter you can use:
 
 ::: callout-formula
-**THE MEAN (Population)**
-$$\mu=\frac{\sum x_{i}}{N}$$
+**THE MEAN (Population)** $$\mu=\frac{\sum x_{i}}{N}$$
 
 where $N$ is the population size.
 :::
@@ -83,9 +81,7 @@ The **mode** is the value with highest frequency from a set of observations. Thi
 The weighted mean is useful in scenarios where some data points are more significant than others, such as in financial portfolios, grade point averages, or survey results, as it accounts for variability in importance across observations. This measure requires additional information in the form of weights ($w_i$), which may not always be available or accurate. It is calculated the sum product of values ($x_i$) and weights ($w_i$) and then dividing by the sum of weights. Mathematically, the weighted average is:
 
 ::: callout-formula
-**THE WEIGHTED MEAN**
-$$\bar{x}_w=\frac{\sum w_{i}x_{i}}{\sum w_{i}}$$
-where $w_{i}$ represents the weight of the ith observation.
+**THE WEIGHTED MEAN** $$\bar{x}_w=\frac{\sum w_{i}x_{i}}{\sum w_{i}}$$ where $w_{i}$ represents the weight of the ith observation.
 :::
 
 Let's consider once more a couple of examples.
@@ -228,6 +224,7 @@ You can also download the data here:
 ```{r echo=FALSE, out.width="100%", fig.align='center'}
 knitr::include_graphics("images/Central_Location.png")
 ```
+
 ## Exercises
 
 The following exercises will help you practice the measures of central location. In particular, the exercises work on:
