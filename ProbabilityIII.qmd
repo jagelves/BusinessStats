@@ -83,7 +83,7 @@ The **triangular distribution** is characterized by a single mode (the peak of t
 The probability density function, expected value, and variance are:
 
 ::: callout-formula
-**THE TRIANGULAR DISTRIBUTION** $$f(x)=\frac {2(x-a)}{(b-a)(c-a)} \;\; (a \leq x < c), \quad f(x)=\frac {2}{b-a} \;\; (x=c), \quad f(x)=\frac {2(b-x)}{(b-a)(b-c)} \;\; (c < x \leq b)$$ $$E(x)= \frac {a+b+c}{3} \qquad var(x) = \frac {a^2+b^2+c^2-ab-ac-bc}{18}$$ where $a$ is the minimum, $b$ is the maximum, and $c$ is the mode; $f(x)=0$ outside $[a,b]$.
+**THE TRIANGULAR DISTRIBUTION** $$f(x)=\begin{cases} \dfrac{2(x-a)}{(b-a)(c-a)} & a \leq x < c \\[6pt] \dfrac{2}{b-a} & x = c \\[6pt] \dfrac{2(b-x)}{(b-a)(b-c)} & c < x \leq b \\[6pt] 0 & \text{otherwise} \end{cases}$$ $$E(x)= \frac{a+b+c}{3} \qquad var(x) = \frac{a^2+b^2+c^2-ab-ac-bc}{18}$$ where $a$ is the minimum, $b$ is the maximum, and $c$ is the mode.
 :::
 
 ::: callout-example

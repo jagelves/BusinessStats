@@ -68,6 +68,15 @@ ul.task-list li input[type="checkbox"] {
     "search-label": "Search"
   }
 }</script>
+<script async="" src="https://www.googletagmanager.com/gtag/js?id=G-PLNY5BZ16X"></script>
+
+<script type="text/javascript">
+
+window.dataLayer = window.dataLayer || [];
+function gtag(){dataLayer.push(arguments);}
+gtag('js', new Date());
+gtag('config', 'G-PLNY5BZ16X', { 'anonymize_ip': true});
+</script>
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FWC3RCL4BF"></script>
 <script>
@@ -359,7 +368,7 @@ details summary {
 <p>The <strong>triangular distribution</strong> is characterized by a single mode (the peak of the distribution) and two boundaries. It is often used in situations where the lower and upper bounds of a potential outcome are known, but the exact likelihood of the outcome is uncertain.</p>
 <p>The probability density function, expected value, and variance are:</p>
 <div class="callout-formula">
-<p><strong>THE TRIANGULAR DISTRIBUTION</strong> <span class="math display">\[f(x)=\frac {2(x-a)}{(b-a)(c-a)} \;\; (a \leq x &lt; c), \quad f(x)=\frac {2}{b-a} \;\; (x=c), \quad f(x)=\frac {2(b-x)}{(b-a)(b-c)} \;\; (c &lt; x \leq b)\]</span> <span class="math display">\[E(x)= \frac {a+b+c}{3} \qquad var(x) = \frac {a^2+b^2+c^2-ab-ac-bc}{18}\]</span> where <span class="math inline">\(a\)</span> is the minimum, <span class="math inline">\(b\)</span> is the maximum, and <span class="math inline">\(c\)</span> is the mode; <span class="math inline">\(f(x)=0\)</span> outside <span class="math inline">\([a,b]\)</span>.</p>
+<p><strong>THE TRIANGULAR DISTRIBUTION</strong> <span class="math display">\[f(x)=\begin{cases} \dfrac{2(x-a)}{(b-a)(c-a)} &amp; a \leq x &lt; c \\[6pt] \dfrac{2}{b-a} &amp; x = c \\[6pt] \dfrac{2(b-x)}{(b-a)(b-c)} &amp; c &lt; x \leq b \\[6pt] 0 &amp; \text{otherwise} \end{cases}\]</span> <span class="math display">\[E(x)= \frac{a+b+c}{3} \qquad var(x) = \frac{a^2+b^2+c^2-ab-ac-bc}{18}\]</span> where <span class="math inline">\(a\)</span> is the minimum, <span class="math inline">\(b\)</span> is the maximum, and <span class="math inline">\(c\)</span> is the mode.</p>
 </div>
 <div class="callout-example">
 <p><strong>Example:</strong> Bite Bliss is planning a new store in Williamsburg. It is estimated that the minimum weekly sales are 1000 and the maximum is 6000. They also estimate that the most likely outcome is around 3000. The probability that future sales will be between 2000 and 2500 is 12.5%. Excel has no triangular distribution function, but the cumulative probability follows from its formula. For a value <span class="math inline">\(x\)</span> in the lower part of the range (<span class="math inline">\(a \le x &lt; c\)</span>), <span class="math inline">\(F(x)=\frac{(x-a)^2}{(b-a)(c-a)}\)</span>. In Excel:</p>
