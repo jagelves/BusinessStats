@@ -184,6 +184,16 @@ The image shows how event $A$ can occur. Essentially, when $B$ occurs $A$ is pos
 **Example:** Consider the sets face cards and hearts. The entire set of hearts can be completed by taking face cards that are hearts, and non face cards (the complement of face cards) that are hearts.
 :::
 
+The same idea extends to **any** number of scenarios. If $B_1, B_2, \dots, B_k$ are mutually exclusive and together cover the whole sample space, the total probability of $A$ is found by summing across all of them:
+
+::: callout-formula
+**LAW OF TOTAL PROBABILITY (Several Events)** $$P(A)=\sum_{i=1}^{k} P(A \cap B_i)=\sum_{i=1}^{k} P(A|B_i)\,P(B_i)$$ where the events $B_1, B_2, \dots, B_k$ are mutually exclusive and exhaustive (they partition the sample space).
+:::
+
+::: callout-example
+**Example:** A factory makes a part on three machines. Machine 1 produces $50\%$ of the parts with a $2\%$ defect rate, Machine 2 produces $30\%$ with a $3\%$ defect rate, and Machine 3 produces $20\%$ with a $5\%$ defect rate. The overall probability that a randomly chosen part is defective is $$P(D)=(0.50)(0.02)+(0.30)(0.03)+(0.20)(0.05)=0.029$$ so about $2.9\%$ of all parts are defective.
+:::
+
 ### Bayes' Theorem {.unnumbered}
 
 **Bayes' Theorem** states:
@@ -253,7 +263,7 @@ To illustrate the factorial, consider the number of ways that we can organize a 
 |    5     | (Charlie, Ann, Beth) |
 |    6     | (Charlie, Beth, Ann) |
 
-The table shows that there are six possible ways to organize a group of three people. The **Factorial** counts how many ways a group of $N$ objects can be organized. Formally, we write:
+The table shows that there are six possible ways to organize a group of three people. This is really just the Fundamental Counting Principle at work: there are $3$ choices for the first spot, then $2$ remaining choices for the second, and only $1$ left for the third, giving $3 \times 2 \times 1 = 6$. The **Factorial** captures exactly this pattern — it counts how many ways a group of $N$ objects can be organized. Formally, we write:
 
 ::: callout-formula
 **THE FACTORIAL** $$Factorial=N!$$ where the operator $!$ means to take the product of all positive integers from $N$ down to $1$. Note that $0!$ is equal to one.

@@ -480,6 +480,13 @@ details summary {
 <div class="callout-example">
 <p><strong>Example:</strong> Consider the sets face cards and hearts. The entire set of hearts can be completed by taking face cards that are hearts, and non face cards (the complement of face cards) that are hearts.</p>
 </div>
+<p>The same idea extends to <strong>any</strong> number of scenarios. If <span class="math inline">\(B_1, B_2, \dots, B_k\)</span> are mutually exclusive and together cover the whole sample space, the total probability of <span class="math inline">\(A\)</span> is found by summing across all of them:</p>
+<div class="callout-formula">
+<p><strong>LAW OF TOTAL PROBABILITY (Several Events)</strong> <span class="math display">\[P(A)=\sum_{i=1}^{k} P(A \cap B_i)=\sum_{i=1}^{k} P(A|B_i)\,P(B_i)\]</span> where the events <span class="math inline">\(B_1, B_2, \dots, B_k\)</span> are mutually exclusive and exhaustive (they partition the sample space).</p>
+</div>
+<div class="callout-example">
+<p><strong>Example:</strong> A factory makes a part on three machines. Machine 1 produces <span class="math inline">\(50\%\)</span> of the parts with a <span class="math inline">\(2\%\)</span> defect rate, Machine 2 produces <span class="math inline">\(30\%\)</span> with a <span class="math inline">\(3\%\)</span> defect rate, and Machine 3 produces <span class="math inline">\(20\%\)</span> with a <span class="math inline">\(5\%\)</span> defect rate. The overall probability that a randomly chosen part is defective is <span class="math display">\[P(D)=(0.50)(0.02)+(0.30)(0.03)+(0.20)(0.05)=0.029\]</span> so about <span class="math inline">\(2.9\%\)</span> of all parts are defective.</p>
+</div>
 </section>
 <section id="bayes-theorem" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="bayes-theorem">Bayes’ Theorem</h3>
@@ -572,7 +579,7 @@ details summary {
 </tr>
 </tbody>
 </table>
-<p>The table shows that there are six possible ways to organize a group of three people. The <strong>Factorial</strong> counts how many ways a group of <span class="math inline">\(N\)</span> objects can be organized. Formally, we write:</p>
+<p>The table shows that there are six possible ways to organize a group of three people. This is really just the Fundamental Counting Principle at work: there are <span class="math inline">\(3\)</span> choices for the first spot, then <span class="math inline">\(2\)</span> remaining choices for the second, and only <span class="math inline">\(1\)</span> left for the third, giving <span class="math inline">\(3 \times 2 \times 1 = 6\)</span>. The <strong>Factorial</strong> captures exactly this pattern — it counts how many ways a group of <span class="math inline">\(N\)</span> objects can be organized. Formally, we write:</p>
 <div class="callout-formula">
 <p><strong>THE FACTORIAL</strong> <span class="math display">\[Factorial=N!\]</span> where the operator <span class="math inline">\(!\)</span> means to take the product of all positive integers from <span class="math inline">\(N\)</span> down to <span class="math inline">\(1\)</span>. Note that <span class="math inline">\(0!\)</span> is equal to one.</p>
 </div>
