@@ -278,10 +278,14 @@ window.Quarto = {
   <li><a href="#adjusted-r2" id="toc-adjusted-r2" class="nav-link" data-scroll-target="#adjusted-r2">Adjusted <span class="math inline">\(R^2\)</span></a></li>
   <li><a href="#residual-standard-error" id="toc-residual-standard-error" class="nav-link" data-scroll-target="#residual-standard-error">Residual Standard Error</a></li>
   </ul></li>
-  <li><a href="#regression-in-excel" id="toc-regression-in-excel" class="nav-link" data-scroll-target="#regression-in-excel"><span class="header-section-number">7.4</span> Regression in Excel</a></li>
-  <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">7.5</span> Excel Function Summary</a></li>
-  <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">7.6</span> Chapter Summary Cheat Sheet</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.7</span> Exercises</a>
+  <li><a href="#regression-with-dummy-variables" id="toc-regression-with-dummy-variables" class="nav-link" data-scroll-target="#regression-with-dummy-variables"><span class="header-section-number">7.4</span> Regression with Dummy Variables</a>
+  <ul class="collapse">
+  <li><a href="#dummy-variables-in-excel" id="toc-dummy-variables-in-excel" class="nav-link" data-scroll-target="#dummy-variables-in-excel">Dummy Variables in Excel</a></li>
+  </ul></li>
+  <li><a href="#regression-in-excel" id="toc-regression-in-excel" class="nav-link" data-scroll-target="#regression-in-excel"><span class="header-section-number">7.5</span> Regression in Excel</a></li>
+  <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">7.6</span> Excel Function Summary</a></li>
+  <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">7.7</span> Chapter Summary Cheat Sheet</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.8</span> Exercises</a>
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
@@ -552,8 +556,89 @@ details summary {
 </div>
 </section>
 </section>
-<section id="regression-in-excel" class="level2" data-number="7.4">
-<h2 data-number="7.4" class="anchored" data-anchor-id="regression-in-excel"><span class="header-section-number">7.4</span> Regression in Excel</h2>
+<section id="regression-with-dummy-variables" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="regression-with-dummy-variables"><span class="header-section-number">7.4</span> Regression with Dummy Variables</h2>
+<p>So far every predictor has been numerical. But many of the variables we care about in business are <strong>categorical</strong> — the brand of a product, whether a customer churned, the gender of a respondent, or the instructor teaching a class. Regression can use these variables too, once we encode them as numbers. The tool for doing so is the <strong>dummy variable</strong>.</p>
+<div class="callout-formula">
+<p><strong>THE DUMMY VARIABLE</strong> <span class="math display">\[d_i = \begin{cases} 1 &amp; \text{if observation } i \text{ is in the category} \\ 0 &amp; \text{otherwise} \end{cases}\]</span> A dummy (or <em>indicator</em>) variable equals <span class="math inline">\(1\)</span> when an observation belongs to a particular category and <span class="math inline">\(0\)</span> when it does not.</p>
+</div>
+<p><strong>A single dummy recovers a difference of means.</strong> Suppose we regress a numerical variable <span class="math inline">\(y\)</span> on a single dummy <span class="math inline">\(d\)</span>, giving <span class="math inline">\(\hat{y}=\hat{\beta_0}+\hat{\beta_1}d\)</span>. Because <span class="math inline">\(d\)</span> takes only two values, the line makes only two predictions. When <span class="math inline">\(d=0\)</span> the prediction is <span class="math inline">\(\hat{\beta_0}\)</span>; when <span class="math inline">\(d=1\)</span> it is <span class="math inline">\(\hat{\beta_0}+\hat{\beta_1}\)</span>. Those two predictions are exactly the two group averages:</p>
+<div class="callout-formula">
+<p><strong>A DUMMY AND THE GROUP MEANS</strong> <span class="math display">\[\hat{\beta_0}=\bar{y}_{0} \qquad \hat{\beta_1}=\bar{y}_{1}-\bar{y}_{0}\]</span> The intercept is the mean of the <strong>baseline</strong> group (the one coded <span class="math inline">\(0\)</span>), and the slope is the <em>difference</em> between the two group means.</p>
+</div>
+<p>In other words, regressing a variable on a single dummy is just another way of computing a difference of means — the slope <em>is</em> that difference.</p>
+<p><strong>More than two categories.</strong> When a categorical variable has <span class="math inline">\(k\)</span> categories, we create <span class="math inline">\(k-1\)</span> dummies and leave one category out to act as the <strong>baseline</strong> (or reference). Each remaining dummy’s coefficient measures the gap between its category’s mean and the baseline mean. We never include a dummy for <em>every</em> category alongside an intercept — doing so makes the columns perfectly collinear (the <strong>dummy variable trap</strong>), and the regression cannot be estimated.</p>
+<div class="callout-example">
+<p><strong>Example:</strong> The <strong>Spin</strong> data set records <span class="math inline">\(90\)</span> spin classes taught by three instructors — Olivia, Sam, and Ben — along with <code>Total_kj</code>, the total energy (in kilojoules) burned during each class. We want each instructor’s average energy output.</p>
+<p>Because there are three instructors, we build two dummies and let <strong>Olivia</strong> be the baseline:</p>
+<ul>
+<li><span class="math inline">\(Sam = 1\)</span> if the class was taught by Sam, <span class="math inline">\(0\)</span> otherwise.</li>
+<li><span class="math inline">\(Ben = 1\)</span> if the class was taught by Ben, <span class="math inline">\(0\)</span> otherwise.</li>
+</ul>
+<p>An Olivia class therefore has <span class="math inline">\(Sam=0\)</span> and <span class="math inline">\(Ben=0\)</span>. Regressing <code>Total_kj</code> on the two dummies gives:</p>
+<p><span class="math display">\[\widehat{Total\_kj}=197.03-75.67\,Sam+27.90\,Ben\]</span></p>
+<p>Reading off each instructor’s predicted (average) energy:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 26%">
+<col style="width: 9%">
+<col style="width: 9%">
+<col style="width: 31%">
+<col style="width: 23%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Instructor</th>
+<th style="text-align: center;"><span class="math inline">\(Sam\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(Ben\)</span></th>
+<th style="text-align: center;">Prediction</th>
+<th style="text-align: center;">Mean <code>Total_kj</code></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Olivia (baseline)</td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(197.03\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(197.03\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Sam</td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(197.03-75.67=121.37\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(121.37\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Ben</td>
+<td style="text-align: center;"><span class="math inline">\(0\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(1\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(197.03+27.90=224.93\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(224.93\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>The predictions land exactly on the three group averages. The intercept is Olivia’s mean; the coefficient on <span class="math inline">\(Sam\)</span> (<span class="math inline">\(-75.67\)</span>) says Sam’s classes burn about <span class="math inline">\(75.67\)</span> kJ <em>less</em> than Olivia’s on average, and the coefficient on <span class="math inline">\(Ben\)</span> (<span class="math inline">\(+27.90\)</span>) says Ben’s burn about <span class="math inline">\(27.90\)</span> kJ <em>more</em>. Regression with dummy variables has reproduced the group means — and, as a bonus, reported how far each group sits from the baseline.</p>
+</div>
+<section id="dummy-variables-in-excel" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="dummy-variables-in-excel">Dummy Variables in Excel</h3>
+<p><a href="Spin.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
+<ol type="1">
+<li><p>Add one column for each non-baseline category. With <code>Instructor</code> in column A, create a <strong>Sam</strong> dummy and a <strong>Ben</strong> dummy:</p>
+<pre class="excel"><code>=IF($A2="Sam", 1, 0)
+=IF($A2="Ben", 1, 0)</code></pre></li>
+<li><p>Copy both formulas down for all <span class="math inline">\(90\)</span> rows.</p></li>
+<li><p>Go to <code>Data → Data Analysis → Regression</code>. Set the <strong>Input Y Range</strong> to <code>Total_kj</code> and the <strong>Input X Range</strong> to the two dummy columns together, then click <code>OK</code>.</p></li>
+</ol>
+<p>The <strong>Intercept</strong> in the output is Olivia’s mean, and the two dummy coefficients are the differences from Olivia. You can confirm each group mean directly with <code>AVERAGEIF</code> (here <code>Total_kj</code> sits in column C):</p>
+<pre class="excel"><code>=AVERAGEIF(A2:A91, "Olivia", C2:C91)   → 197.03
+=AVERAGEIF(A2:A91, "Sam", C2:C91)      → 121.37
+=AVERAGEIF(A2:A91, "Ben", C2:C91)      → 224.93</code></pre>
+</section>
+</section>
+<section id="regression-in-excel" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="regression-in-excel"><span class="header-section-number">7.5</span> Regression in Excel</h2>
 <p>Excel provides a straightforward way to estimate regression models using the <strong>Data Analysis ToolPak</strong>. If it is not already enabled, go to <code>File → Options → Add-ins → Analysis ToolPak → Go</code> and check the box.</p>
 <p><a href="weight_exercise.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <p><strong>Simple Regression (Weight and Exercise):</strong></p>
@@ -579,8 +664,8 @@ details summary {
 <pre class="excel"><code>=B17 + B18 * 6</code></pre>
 <p>This returns the predicted price for an advertisement budget of <span class="math inline">\(6\)</span>.</p>
 </section>
-<section id="excel-function-summary" class="level2" data-number="7.5">
-<h2 data-number="7.5" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">7.5</span> Excel Function Summary</h2>
+<section id="excel-function-summary" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">7.6</span> Excel Function Summary</h2>
 <p>Below is a list of the Excel functions and tools used in this section:</p>
 <ul>
 <li><p><strong>Data Analysis ToolPak → Regression</strong> is the primary tool for estimating regression models in Excel. It returns coefficients, <span class="math inline">\(R^2\)</span>, adjusted <span class="math inline">\(R^2\)</span>, standard error, and the Anova table in a single output.</p></li>
@@ -589,10 +674,12 @@ details summary {
 <li><p><code>=FORECAST.LINEAR(x, y_range, x_range)</code> returns the predicted value of <span class="math inline">\(y\)</span> for a given value of <span class="math inline">\(x\)</span> using simple linear regression.</p></li>
 <li><p><code>=RSQ(y_range, x_range)</code> returns the <span class="math inline">\(R^2\)</span> for a simple regression.</p></li>
 <li><p><code>=STEYX(y_range, x_range)</code> returns the residual standard error <span class="math inline">\(s_e\)</span> for a simple regression.</p></li>
+<li><p><code>=IF(cell="Category", 1, 0)</code> builds a dummy variable, coding each row <span class="math inline">\(1\)</span> when it belongs to a category and <span class="math inline">\(0\)</span> otherwise.</p></li>
+<li><p><code>=AVERAGEIF(range, criteria, average_range)</code> returns the mean of a numerical column for the rows matching a category — a quick way to verify the group means produced by a dummy-variable regression.</p></li>
 </ul>
 </section>
-<section id="chapter-summary-cheat-sheet" class="level2" data-number="7.6">
-<h2 data-number="7.6" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">7.6</span> Chapter Summary Cheat Sheet</h2>
+<section id="chapter-summary-cheat-sheet" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">7.7</span> Chapter Summary Cheat Sheet</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -603,8 +690,8 @@ details summary {
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="7.7">
-<h2 data-number="7.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.7</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.8</span> Exercises</h2>
 <p>The following exercises will help you get practice on Regression Line estimation and interpretation. In particular, the exercises work on:</p>
 <ul>
 <li>Estimating the slope and intercept.</li>

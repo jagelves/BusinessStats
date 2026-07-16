@@ -204,6 +204,70 @@ $$s_e=\sqrt{\frac{1.01}{5-2-1}}=0.71$$
 The smaller residual standard error confirms that adding Calories improves the model's fit.
 :::
 
+## Regression with Dummy Variables
+
+So far every predictor has been numerical. But many of the variables we care about in business are **categorical** — the brand of a product, whether a customer churned, the gender of a respondent, or the instructor teaching a class. Regression can use these variables too, once we encode them as numbers. The tool for doing so is the **dummy variable**.
+
+::: callout-formula
+**THE DUMMY VARIABLE** $$d_i = \begin{cases} 1 & \text{if observation } i \text{ is in the category} \\ 0 & \text{otherwise} \end{cases}$$ A dummy (or *indicator*) variable equals $1$ when an observation belongs to a particular category and $0$ when it does not.
+:::
+
+**A single dummy recovers a difference of means.** Suppose we regress a numerical variable $y$ on a single dummy $d$, giving $\hat{y}=\hat{\beta_0}+\hat{\beta_1}d$. Because $d$ takes only two values, the line makes only two predictions. When $d=0$ the prediction is $\hat{\beta_0}$; when $d=1$ it is $\hat{\beta_0}+\hat{\beta_1}$. Those two predictions are exactly the two group averages:
+
+::: callout-formula
+**A DUMMY AND THE GROUP MEANS** $$\hat{\beta_0}=\bar{y}_{0} \qquad \hat{\beta_1}=\bar{y}_{1}-\bar{y}_{0}$$ The intercept is the mean of the **baseline** group (the one coded $0$), and the slope is the *difference* between the two group means.
+:::
+
+In other words, regressing a variable on a single dummy is just another way of computing a difference of means — the slope *is* that difference.
+
+**More than two categories.** When a categorical variable has $k$ categories, we create $k-1$ dummies and leave one category out to act as the **baseline** (or reference). Each remaining dummy's coefficient measures the gap between its category's mean and the baseline mean. We never include a dummy for *every* category alongside an intercept — doing so makes the columns perfectly collinear (the **dummy variable trap**), and the regression cannot be estimated.
+
+::: callout-example
+**Example:** The **Spin** data set records $90$ spin classes taught by three instructors — Olivia, Sam, and Ben — along with `Total_kj`, the total energy (in kilojoules) burned during each class. We want each instructor's average energy output.
+
+Because there are three instructors, we build two dummies and let **Olivia** be the baseline:
+
+- $Sam = 1$ if the class was taught by Sam, $0$ otherwise.
+- $Ben = 1$ if the class was taught by Ben, $0$ otherwise.
+
+An Olivia class therefore has $Sam=0$ and $Ben=0$. Regressing `Total_kj` on the two dummies gives:
+
+$$\widehat{Total\_kj}=197.03-75.67\,Sam+27.90\,Ben$$
+
+Reading off each instructor's predicted (average) energy:
+
+|    Instructor     | $Sam$ | $Ben$ |      Prediction       | Mean `Total_kj` |
+|:-----------------:|:-----:|:-----:|:---------------------:|:---------------:|
+| Olivia (baseline) |  $0$  |  $0$  |       $197.03$        |    $197.03$     |
+|        Sam        |  $1$  |  $0$  | $197.03-75.67=121.37$ |    $121.37$     |
+|        Ben        |  $0$  |  $1$  | $197.03+27.90=224.93$ |    $224.93$     |
+
+The predictions land exactly on the three group averages. The intercept is Olivia's mean; the coefficient on $Sam$ ($-75.67$) says Sam's classes burn about $75.67$ kJ *less* than Olivia's on average, and the coefficient on $Ben$ ($+27.90$) says Ben's burn about $27.90$ kJ *more*. Regression with dummy variables has reproduced the group means — and, as a bonus, reported how far each group sits from the baseline.
+:::
+
+### Dummy Variables in Excel {.unnumbered}
+
+[{{< fa file-excel >}} Download Data](Spin.xlsx){.btn .btn-success}
+
+1.  Add one column for each non-baseline category. With `Instructor` in column A, create a **Sam** dummy and a **Ben** dummy:
+
+    ``` excel
+    =IF($A2="Sam", 1, 0)
+    =IF($A2="Ben", 1, 0)
+    ```
+
+2.  Copy both formulas down for all $90$ rows.
+
+3.  Go to `Data → Data Analysis → Regression`. Set the **Input Y Range** to `Total_kj` and the **Input X Range** to the two dummy columns together, then click `OK`.
+
+The **Intercept** in the output is Olivia's mean, and the two dummy coefficients are the differences from Olivia. You can confirm each group mean directly with `AVERAGEIF` (here `Total_kj` sits in column C):
+
+``` excel
+=AVERAGEIF(A2:A91, "Olivia", C2:C91)   → 197.03
+=AVERAGEIF(A2:A91, "Sam", C2:C91)      → 121.37
+=AVERAGEIF(A2:A91, "Ben", C2:C91)      → 224.93
+```
+
 ## Regression in Excel
 
 Excel provides a straightforward way to estimate regression models using the **Data Analysis ToolPak**. If it is not already enabled, go to `File → Options → Add-ins → Analysis ToolPak → Go` and check the box.
@@ -255,6 +319,10 @@ Below is a list of the Excel functions and tools used in this section:
 - `=RSQ(y_range, x_range)` returns the $R^2$ for a simple regression.
 
 - `=STEYX(y_range, x_range)` returns the residual standard error $s_e$ for a simple regression.
+
+- `=IF(cell="Category", 1, 0)` builds a dummy variable, coding each row $1$ when it belongs to a category and $0$ otherwise.
+
+- `=AVERAGEIF(range, criteria, average_range)` returns the mean of a numerical column for the rows matching a category — a quick way to verify the group means produced by a dummy-variable regression.
 
 ## Chapter Summary Cheat Sheet
 
