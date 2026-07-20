@@ -44,7 +44,7 @@ We often want to know whether two populations have different means — for examp
 The degrees of freedom differ across the three tests:
 
 | Test | Degrees of freedom |
-|:--:|:--:|
+|:---------------:|:----------------------------------------------------:|
 | Unpaired, unequal variances | $df = \dfrac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}{\frac{(s_1^2/n_1)^2}{n_1-1} + \frac{(s_2^2/n_2)^2}{n_2-1}}$ (rounded down) |
 | Unpaired, equal variances | $df = n_1 + n_2 - 2$ |
 | Paired | $df = n - 1$, where $n$ is the number of **pairs**, not the number of observations |
@@ -92,7 +92,7 @@ After fitting a regression, two kinds of tests tell us whether the model has exp
 The ANOVA table organizes these pieces:
 
 |   Source   |   df    |  SS   |            MS             |           F           |
-|:----------:|:-------:|:-----:|:-------------------------:|:---------------------:|
+|:-----------:|:-----------:|:-----------:|:-----------------:|:--------------:|
 | Regression |   $k$   | $SSR$ |   $MSR = \frac{SSR}{k}$   | $F = \frac{MSR}{MSE}$ |
 |  Residual  | $n-k-1$ | $SSE$ | $MSE = \frac{SSE}{n-k-1}$ |                       |
 |   Total    |  $n-1$  | $SST$ |                           |                       |
