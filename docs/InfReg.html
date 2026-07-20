@@ -339,10 +339,37 @@ details summary {
 <p>We often want to know whether two populations have different means — for example, whether two divisions post different sales, or whether a treatment changes an outcome. The test statistic depends on how the two samples relate.</p>
 <div class="callout-formula">
 <p><strong>DIFFERENCE OF MEANS TEST STATISTICS</strong> <span class="math display">\[\text{Unpaired, unequal variances:} \quad t = \frac{(\bar{x}_1 - \bar{x}_2) - d_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\]</span> <span class="math display">\[\text{Unpaired, equal variances:} \quad t = \frac{(\bar{x}_1 - \bar{x}_2) - d_0}{\sqrt{s_p^2\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}\]</span> <span class="math display">\[\text{Paired:} \quad t = \frac{\bar{d} - d_0}{s / \sqrt{n}}\]</span> where <span class="math inline">\(d_0\)</span> is the hypothesized difference, <span class="math inline">\(s_p^2\)</span> is the pooled variance, and <span class="math inline">\(\bar{d}\)</span> and <span class="math inline">\(s\)</span> are the mean and standard deviation of the paired differences.</p>
+<p>The degrees of freedom differ across the three tests:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 50%">
+<col style="width: 50%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Test</th>
+<th style="text-align: center;">Degrees of freedom</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Unpaired, unequal variances</td>
+<td style="text-align: center;"><span class="math inline">\(df = \dfrac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}{\frac{(s_1^2/n_1)^2}{n_1-1} + \frac{(s_2^2/n_2)^2}{n_2-1}}\)</span> (rounded down)</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Unpaired, equal variances</td>
+<td style="text-align: center;"><span class="math inline">\(df = n_1 + n_2 - 2\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Paired</td>
+<td style="text-align: center;"><span class="math inline">\(df = n - 1\)</span>, where <span class="math inline">\(n\)</span> is the number of <strong>pairs</strong>, not the number of observations</td>
+</tr>
+</tbody>
+</table>
 </div>
 <p>A <strong>paired</strong> test is used when the two samples are naturally linked — the same subjects measured twice (before and after), for instance. An <strong>unpaired</strong> (independent) test is used when the two samples come from separate groups.</p>
 <div class="callout-example">
-<p><strong>Example (unpaired).</strong> A company evaluates a training program. Six employees who took the program score a mean of <span class="math inline">\(\bar{x}_1 = 33.17\)</span> on a productivity assessment (with <span class="math inline">\(s_1 = 7.55\)</span>), while six <em>different</em> employees who did not take it score a mean of <span class="math inline">\(\bar{x}_2 = 30.00\)</span> (with <span class="math inline">\(s_2 = 7.18\)</span>). Testing <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span> against <span class="math inline">\(H_a: \mu_1 - \mu_2 \ne 0\)</span> with unequal variances: <span class="math display">\[t = \frac{(33.17 - 30.00) - 0}{\sqrt{\frac{7.55^2}{6} + \frac{7.18^2}{6}}} = \frac{3.17}{4.25} = 0.74\]</span> With about <span class="math inline">\(10\)</span> degrees of freedom the two-tailed p-value is roughly <span class="math inline">\(0.47\)</span>. Because <span class="math inline">\(0.47 &gt; 0.05\)</span>, we fail to reject the null: the <span class="math inline">\(3.17\)</span>-point gap is swamped by the large variation <em>between</em> employees, so we cannot conclude the program helped.</p>
+<p><strong>Example (unpaired).</strong> A company evaluates a training program. Six employees who took the program score a mean of <span class="math inline">\(\bar{x}_1 = 33.17\)</span> on a productivity assessment (with <span class="math inline">\(s_1 = 7.55\)</span>), while six <em>different</em> employees who did not take it score a mean of <span class="math inline">\(\bar{x}_2 = 30.00\)</span> (with <span class="math inline">\(s_2 = 7.18\)</span>). Testing <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span> against <span class="math inline">\(H_a: \mu_1 - \mu_2 \ne 0\)</span> with unequal variances: <span class="math display">\[t = \frac{(33.17 - 30.00) - 0}{\sqrt{\frac{7.55^2}{6} + \frac{7.18^2}{6}}} = \frac{3.17}{4.25} = 0.74\]</span> The Welch formula gives about <span class="math inline">\(10\)</span> degrees of freedom, and the two-tailed p-value is roughly <span class="math inline">\(0.47\)</span>. Because <span class="math inline">\(0.47 &gt; 0.05\)</span>, we fail to reject the null: the <span class="math inline">\(3.17\)</span>-point gap is swamped by the large variation <em>between</em> employees, so we cannot conclude the program helped.</p>
 </div>
 <div class="callout-example">
 <p><strong>Example (paired).</strong> Now suppose those same six employees were each measured <em>before and after</em> the program, so every “after” score is matched to that person’s own “before” score:</p>
@@ -394,7 +421,7 @@ details summary {
 </tr>
 </tbody>
 </table>
-<p>The group means are identical to the unpaired case (<span class="math inline">\(30.00\)</span> before, <span class="math inline">\(33.17\)</span> after), but now we work with each person’s change. The individual gains are remarkably consistent: <span class="math inline">\(\bar{d} = 3.17\)</span> with <span class="math inline">\(s = 0.75\)</span>. Testing <span class="math inline">\(H_0: \mu_d = 0\)</span> against <span class="math inline">\(H_a: \mu_d \ne 0\)</span>: <span class="math display">\[t = \frac{\bar{d} - 0}{s / \sqrt{n}} = \frac{3.17}{0.75 / \sqrt{6}} = 10.30\]</span> With <span class="math inline">\(df = 5\)</span> the two-tailed p-value is about <span class="math inline">\(0.0001\)</span>. Because <span class="math inline">\(0.0001 &lt; 0.05\)</span>, we strongly reject the null: the program clearly raised productivity.</p>
+<p>The group means are identical to the unpaired case (<span class="math inline">\(30.00\)</span> before, <span class="math inline">\(33.17\)</span> after), but now we work with each person’s change. The individual gains are remarkably consistent: <span class="math inline">\(\bar{d} = 3.17\)</span> with <span class="math inline">\(s = 0.75\)</span>. Testing <span class="math inline">\(H_0: \mu_d = 0\)</span> against <span class="math inline">\(H_a: \mu_d \ne 0\)</span>: <span class="math display">\[t = \frac{\bar{d} - 0}{s / \sqrt{n}} = \frac{3.17}{0.75 / \sqrt{6}} = 10.30\]</span> With <span class="math inline">\(df = n - 1 = 6 - 1 = 5\)</span> (six <em>pairs</em>, not twelve observations) the two-tailed p-value is about <span class="math inline">\(0.0001\)</span>. Because <span class="math inline">\(0.0001 &lt; 0.05\)</span>, we strongly reject the null: the program clearly raised productivity.</p>
 </div>
 <p>The two examples use the <strong>same numbers</strong> yet reach opposite conclusions, and the reason is the design. The unpaired test must carry the large variation <em>between</em> employees — scores range from <span class="math inline">\(20\)</span> to <span class="math inline">\(40\)</span> — and that noise hides the modest improvement. The paired test cancels that person-to-person variation by looking only at each individual’s change, leaving a small, consistent difference that stands out sharply (<span class="math inline">\(s\)</span> drops from about <span class="math inline">\(7.5\)</span> to <span class="math inline">\(0.75\)</span>). Whenever the data are naturally matched, pairing is the more powerful choice.</p>
 </section>

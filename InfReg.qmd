@@ -40,12 +40,20 @@ We often want to know whether two populations have different means — for examp
 
 ::: callout-formula
 **DIFFERENCE OF MEANS TEST STATISTICS** $$\text{Unpaired, unequal variances:} \quad t = \frac{(\bar{x}_1 - \bar{x}_2) - d_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$$ $$\text{Unpaired, equal variances:} \quad t = \frac{(\bar{x}_1 - \bar{x}_2) - d_0}{\sqrt{s_p^2\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}$$ $$\text{Paired:} \quad t = \frac{\bar{d} - d_0}{s / \sqrt{n}}$$ where $d_0$ is the hypothesized difference, $s_p^2$ is the pooled variance, and $\bar{d}$ and $s$ are the mean and standard deviation of the paired differences.
+
+The degrees of freedom differ across the three tests:
+
+| Test | Degrees of freedom |
+|:--:|:--:|
+| Unpaired, unequal variances | $df = \dfrac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}{\frac{(s_1^2/n_1)^2}{n_1-1} + \frac{(s_2^2/n_2)^2}{n_2-1}}$ (rounded down) |
+| Unpaired, equal variances | $df = n_1 + n_2 - 2$ |
+| Paired | $df = n - 1$, where $n$ is the number of **pairs**, not the number of observations |
 :::
 
 A **paired** test is used when the two samples are naturally linked — the same subjects measured twice (before and after), for instance. An **unpaired** (independent) test is used when the two samples come from separate groups.
 
 ::: callout-example
-**Example (unpaired).** A company evaluates a training program. Six employees who took the program score a mean of $\bar{x}_1 = 33.17$ on a productivity assessment (with $s_1 = 7.55$), while six *different* employees who did not take it score a mean of $\bar{x}_2 = 30.00$ (with $s_2 = 7.18$). Testing $H_0: \mu_1 - \mu_2 = 0$ against $H_a: \mu_1 - \mu_2 \ne 0$ with unequal variances: $$t = \frac{(33.17 - 30.00) - 0}{\sqrt{\frac{7.55^2}{6} + \frac{7.18^2}{6}}} = \frac{3.17}{4.25} = 0.74$$ With about $10$ degrees of freedom the two-tailed p-value is roughly $0.47$. Because $0.47 > 0.05$, we fail to reject the null: the $3.17$-point gap is swamped by the large variation *between* employees, so we cannot conclude the program helped.
+**Example (unpaired).** A company evaluates a training program. Six employees who took the program score a mean of $\bar{x}_1 = 33.17$ on a productivity assessment (with $s_1 = 7.55$), while six *different* employees who did not take it score a mean of $\bar{x}_2 = 30.00$ (with $s_2 = 7.18$). Testing $H_0: \mu_1 - \mu_2 = 0$ against $H_a: \mu_1 - \mu_2 \ne 0$ with unequal variances: $$t = \frac{(33.17 - 30.00) - 0}{\sqrt{\frac{7.55^2}{6} + \frac{7.18^2}{6}}} = \frac{3.17}{4.25} = 0.74$$ The Welch formula gives about $10$ degrees of freedom, and the two-tailed p-value is roughly $0.47$. Because $0.47 > 0.05$, we fail to reject the null: the $3.17$-point gap is swamped by the large variation *between* employees, so we cannot conclude the program helped.
 :::
 
 ::: callout-example
@@ -60,7 +68,7 @@ A **paired** test is used when the two samples are naturally linked — the same
 |    5     |   28   |  31   |     3      |
 |    6     |   35   |  39   |     4      |
 
-The group means are identical to the unpaired case ($30.00$ before, $33.17$ after), but now we work with each person's change. The individual gains are remarkably consistent: $\bar{d} = 3.17$ with $s = 0.75$. Testing $H_0: \mu_d = 0$ against $H_a: \mu_d \ne 0$: $$t = \frac{\bar{d} - 0}{s / \sqrt{n}} = \frac{3.17}{0.75 / \sqrt{6}} = 10.30$$ With $df = 5$ the two-tailed p-value is about $0.0001$. Because $0.0001 < 0.05$, we strongly reject the null: the program clearly raised productivity.
+The group means are identical to the unpaired case ($30.00$ before, $33.17$ after), but now we work with each person's change. The individual gains are remarkably consistent: $\bar{d} = 3.17$ with $s = 0.75$. Testing $H_0: \mu_d = 0$ against $H_a: \mu_d \ne 0$: $$t = \frac{\bar{d} - 0}{s / \sqrt{n}} = \frac{3.17}{0.75 / \sqrt{6}} = 10.30$$ With $df = n - 1 = 6 - 1 = 5$ (six *pairs*, not twelve observations) the two-tailed p-value is about $0.0001$. Because $0.0001 < 0.05$, we strongly reject the null: the program clearly raised productivity.
 :::
 
 The two examples use the **same numbers** yet reach opposite conclusions, and the reason is the design. The unpaired test must carry the large variation *between* employees — scores range from $20$ to $40$ — and that noise hides the modest improvement. The paired test cancels that person-to-person variation by looking only at each individual's change, leaving a small, consistent difference that stands out sharply ($s$ drops from about $7.5$ to $0.75$). Whenever the data are naturally matched, pairing is the more powerful choice.
