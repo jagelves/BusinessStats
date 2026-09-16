@@ -20,40 +20,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -75,8 +41,6 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
 <link href="site_libs/bootstrap/bootstrap-9904b5196d746cb5bc47063911474b57.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
-<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
-<link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -321,9 +285,6 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
   <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
-  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
-  <li><a href="#exercise-4" id="toc-exercise-4" class="nav-link" data-scroll-target="#exercise-4">Exercise 4</a></li>
-  <li><a href="#exercise-5" id="toc-exercise-5" class="nav-link" data-scroll-target="#exercise-5">Exercise 5</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -468,8 +429,8 @@ details summary {
 <table class="caption-top table">
 <colgroup>
 <col style="width: 9%">
-<col style="width: 35%">
-<col style="width: 54%">
+<col style="width: 34%">
+<col style="width: 55%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -552,8 +513,8 @@ details summary {
 <table class="caption-top table">
 <colgroup>
 <col style="width: 9%">
-<col style="width: 35%">
-<col style="width: 54%">
+<col style="width: 34%">
+<col style="width: 55%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -651,23 +612,23 @@ details summary {
 <p>Excel provides functions to calculate all the shape and distribution measures covered in this chapter. We will use the same <code>faithful</code> dataset from R, which contains data on eruptions of the Old Faithful geyser in Yellowstone National Park. The variable <code>eruptions</code> measures the duration of each eruption in minutes.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="xdgntfdvlx" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xdgntfdvlx table {
+<div id="oxhmzbefwj" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#oxhmzbefwj table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xdgntfdvlx thead, #xdgntfdvlx tbody, #xdgntfdvlx tfoot, #xdgntfdvlx tr, #xdgntfdvlx td, #xdgntfdvlx th {
+#oxhmzbefwj thead, #oxhmzbefwj tbody, #oxhmzbefwj tfoot, #oxhmzbefwj tr, #oxhmzbefwj td, #oxhmzbefwj th {
   border-style: none;
 }
 
-#xdgntfdvlx p {
+#oxhmzbefwj p {
   margin: 0;
   padding: 0;
 }
 
-#xdgntfdvlx .gt_table {
+#oxhmzbefwj .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -693,12 +654,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#xdgntfdvlx .gt_caption {
+#oxhmzbefwj .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xdgntfdvlx .gt_title {
+#oxhmzbefwj .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -710,7 +671,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#xdgntfdvlx .gt_subtitle {
+#oxhmzbefwj .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -722,7 +683,7 @@ details summary {
   border-top-width: 0;
 }
 
-#xdgntfdvlx .gt_heading {
+#oxhmzbefwj .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -734,13 +695,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#xdgntfdvlx .gt_bottom_border {
+#oxhmzbefwj .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xdgntfdvlx .gt_col_headings {
+#oxhmzbefwj .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -755,7 +716,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#xdgntfdvlx .gt_col_heading {
+#oxhmzbefwj .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -775,7 +736,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#xdgntfdvlx .gt_column_spanner_outer {
+#oxhmzbefwj .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -787,15 +748,15 @@ details summary {
   padding-right: 4px;
 }
 
-#xdgntfdvlx .gt_column_spanner_outer:first-child {
+#oxhmzbefwj .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xdgntfdvlx .gt_column_spanner_outer:last-child {
+#oxhmzbefwj .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xdgntfdvlx .gt_column_spanner {
+#oxhmzbefwj .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -807,11 +768,11 @@ details summary {
   width: 100%;
 }
 
-#xdgntfdvlx .gt_spanner_row {
+#oxhmzbefwj .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xdgntfdvlx .gt_group_heading {
+#oxhmzbefwj .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -837,7 +798,7 @@ details summary {
   text-align: left;
 }
 
-#xdgntfdvlx .gt_empty_group_heading {
+#oxhmzbefwj .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -852,15 +813,15 @@ details summary {
   vertical-align: middle;
 }
 
-#xdgntfdvlx .gt_from_md > :first-child {
+#oxhmzbefwj .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xdgntfdvlx .gt_from_md > :last-child {
+#oxhmzbefwj .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xdgntfdvlx .gt_row {
+#oxhmzbefwj .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -879,7 +840,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#xdgntfdvlx .gt_stub {
+#oxhmzbefwj .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -892,7 +853,7 @@ details summary {
   padding-right: 5px;
 }
 
-#xdgntfdvlx .gt_stub_row_group {
+#oxhmzbefwj .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -906,15 +867,15 @@ details summary {
   vertical-align: top;
 }
 
-#xdgntfdvlx .gt_row_group_first td {
+#oxhmzbefwj .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xdgntfdvlx .gt_row_group_first th {
+#oxhmzbefwj .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xdgntfdvlx .gt_summary_row {
+#oxhmzbefwj .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -924,16 +885,16 @@ details summary {
   padding-right: 5px;
 }
 
-#xdgntfdvlx .gt_first_summary_row {
+#oxhmzbefwj .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xdgntfdvlx .gt_first_summary_row.thick {
+#oxhmzbefwj .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xdgntfdvlx .gt_last_summary_row {
+#oxhmzbefwj .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -943,7 +904,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#xdgntfdvlx .gt_grand_summary_row {
+#oxhmzbefwj .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -953,7 +914,7 @@ details summary {
   padding-right: 5px;
 }
 
-#xdgntfdvlx .gt_first_grand_summary_row {
+#oxhmzbefwj .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -963,7 +924,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#xdgntfdvlx .gt_last_grand_summary_row_top {
+#oxhmzbefwj .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -973,11 +934,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#xdgntfdvlx .gt_striped {
+#oxhmzbefwj .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xdgntfdvlx .gt_table_body {
+#oxhmzbefwj .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -986,7 +947,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#xdgntfdvlx .gt_footnotes {
+#oxhmzbefwj .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1000,7 +961,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#xdgntfdvlx .gt_footnote {
+#oxhmzbefwj .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1009,7 +970,7 @@ details summary {
   padding-right: 5px;
 }
 
-#xdgntfdvlx .gt_sourcenotes {
+#oxhmzbefwj .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1023,7 +984,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#xdgntfdvlx .gt_sourcenote {
+#oxhmzbefwj .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1031,72 +992,72 @@ details summary {
   padding-right: 5px;
 }
 
-#xdgntfdvlx .gt_left {
+#oxhmzbefwj .gt_left {
   text-align: left;
 }
 
-#xdgntfdvlx .gt_center {
+#oxhmzbefwj .gt_center {
   text-align: center;
 }
 
-#xdgntfdvlx .gt_right {
+#oxhmzbefwj .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xdgntfdvlx .gt_font_normal {
+#oxhmzbefwj .gt_font_normal {
   font-weight: normal;
 }
 
-#xdgntfdvlx .gt_font_bold {
+#oxhmzbefwj .gt_font_bold {
   font-weight: bold;
 }
 
-#xdgntfdvlx .gt_font_italic {
+#oxhmzbefwj .gt_font_italic {
   font-style: italic;
 }
 
-#xdgntfdvlx .gt_super {
+#oxhmzbefwj .gt_super {
   font-size: 65%;
 }
 
-#xdgntfdvlx .gt_footnote_marks {
+#oxhmzbefwj .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xdgntfdvlx .gt_asterisk {
+#oxhmzbefwj .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xdgntfdvlx .gt_indent_1 {
+#oxhmzbefwj .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xdgntfdvlx .gt_indent_2 {
+#oxhmzbefwj .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xdgntfdvlx .gt_indent_3 {
+#oxhmzbefwj .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xdgntfdvlx .gt_indent_4 {
+#oxhmzbefwj .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xdgntfdvlx .gt_indent_5 {
+#oxhmzbefwj .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xdgntfdvlx .katex-display {
+#oxhmzbefwj .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xdgntfdvlx div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#oxhmzbefwj div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1145,23 +1106,23 @@ details summary {
 <p>The z-scores for the first five observations of the <code>faithful</code> dataset are:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="qrjdjmtzql" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qrjdjmtzql table {
+<div id="vavctaalgs" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vavctaalgs table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qrjdjmtzql thead, #qrjdjmtzql tbody, #qrjdjmtzql tfoot, #qrjdjmtzql tr, #qrjdjmtzql td, #qrjdjmtzql th {
+#vavctaalgs thead, #vavctaalgs tbody, #vavctaalgs tfoot, #vavctaalgs tr, #vavctaalgs td, #vavctaalgs th {
   border-style: none;
 }
 
-#qrjdjmtzql p {
+#vavctaalgs p {
   margin: 0;
   padding: 0;
 }
 
-#qrjdjmtzql .gt_table {
+#vavctaalgs .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1187,12 +1148,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#qrjdjmtzql .gt_caption {
+#vavctaalgs .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qrjdjmtzql .gt_title {
+#vavctaalgs .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1204,7 +1165,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#qrjdjmtzql .gt_subtitle {
+#vavctaalgs .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1216,7 +1177,7 @@ details summary {
   border-top-width: 0;
 }
 
-#qrjdjmtzql .gt_heading {
+#vavctaalgs .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1228,13 +1189,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#qrjdjmtzql .gt_bottom_border {
+#vavctaalgs .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qrjdjmtzql .gt_col_headings {
+#vavctaalgs .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1249,7 +1210,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#qrjdjmtzql .gt_col_heading {
+#vavctaalgs .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1269,7 +1230,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#qrjdjmtzql .gt_column_spanner_outer {
+#vavctaalgs .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1281,15 +1242,15 @@ details summary {
   padding-right: 4px;
 }
 
-#qrjdjmtzql .gt_column_spanner_outer:first-child {
+#vavctaalgs .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qrjdjmtzql .gt_column_spanner_outer:last-child {
+#vavctaalgs .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qrjdjmtzql .gt_column_spanner {
+#vavctaalgs .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1301,11 +1262,11 @@ details summary {
   width: 100%;
 }
 
-#qrjdjmtzql .gt_spanner_row {
+#vavctaalgs .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qrjdjmtzql .gt_group_heading {
+#vavctaalgs .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1331,7 +1292,7 @@ details summary {
   text-align: left;
 }
 
-#qrjdjmtzql .gt_empty_group_heading {
+#vavctaalgs .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1346,15 +1307,15 @@ details summary {
   vertical-align: middle;
 }
 
-#qrjdjmtzql .gt_from_md > :first-child {
+#vavctaalgs .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qrjdjmtzql .gt_from_md > :last-child {
+#vavctaalgs .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qrjdjmtzql .gt_row {
+#vavctaalgs .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1373,7 +1334,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#qrjdjmtzql .gt_stub {
+#vavctaalgs .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1386,7 +1347,7 @@ details summary {
   padding-right: 5px;
 }
 
-#qrjdjmtzql .gt_stub_row_group {
+#vavctaalgs .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1400,15 +1361,15 @@ details summary {
   vertical-align: top;
 }
 
-#qrjdjmtzql .gt_row_group_first td {
+#vavctaalgs .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qrjdjmtzql .gt_row_group_first th {
+#vavctaalgs .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qrjdjmtzql .gt_summary_row {
+#vavctaalgs .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1418,16 +1379,16 @@ details summary {
   padding-right: 5px;
 }
 
-#qrjdjmtzql .gt_first_summary_row {
+#vavctaalgs .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qrjdjmtzql .gt_first_summary_row.thick {
+#vavctaalgs .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qrjdjmtzql .gt_last_summary_row {
+#vavctaalgs .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1437,7 +1398,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#qrjdjmtzql .gt_grand_summary_row {
+#vavctaalgs .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1447,7 +1408,7 @@ details summary {
   padding-right: 5px;
 }
 
-#qrjdjmtzql .gt_first_grand_summary_row {
+#vavctaalgs .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1457,7 +1418,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#qrjdjmtzql .gt_last_grand_summary_row_top {
+#vavctaalgs .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1467,11 +1428,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#qrjdjmtzql .gt_striped {
+#vavctaalgs .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qrjdjmtzql .gt_table_body {
+#vavctaalgs .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1480,7 +1441,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#qrjdjmtzql .gt_footnotes {
+#vavctaalgs .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1494,7 +1455,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#qrjdjmtzql .gt_footnote {
+#vavctaalgs .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1503,7 +1464,7 @@ details summary {
   padding-right: 5px;
 }
 
-#qrjdjmtzql .gt_sourcenotes {
+#vavctaalgs .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1517,7 +1478,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#qrjdjmtzql .gt_sourcenote {
+#vavctaalgs .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1525,72 +1486,72 @@ details summary {
   padding-right: 5px;
 }
 
-#qrjdjmtzql .gt_left {
+#vavctaalgs .gt_left {
   text-align: left;
 }
 
-#qrjdjmtzql .gt_center {
+#vavctaalgs .gt_center {
   text-align: center;
 }
 
-#qrjdjmtzql .gt_right {
+#vavctaalgs .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qrjdjmtzql .gt_font_normal {
+#vavctaalgs .gt_font_normal {
   font-weight: normal;
 }
 
-#qrjdjmtzql .gt_font_bold {
+#vavctaalgs .gt_font_bold {
   font-weight: bold;
 }
 
-#qrjdjmtzql .gt_font_italic {
+#vavctaalgs .gt_font_italic {
   font-style: italic;
 }
 
-#qrjdjmtzql .gt_super {
+#vavctaalgs .gt_super {
   font-size: 65%;
 }
 
-#qrjdjmtzql .gt_footnote_marks {
+#vavctaalgs .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qrjdjmtzql .gt_asterisk {
+#vavctaalgs .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qrjdjmtzql .gt_indent_1 {
+#vavctaalgs .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qrjdjmtzql .gt_indent_2 {
+#vavctaalgs .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qrjdjmtzql .gt_indent_3 {
+#vavctaalgs .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qrjdjmtzql .gt_indent_4 {
+#vavctaalgs .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qrjdjmtzql .gt_indent_5 {
+#vavctaalgs .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qrjdjmtzql .katex-display {
+#vavctaalgs .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qrjdjmtzql div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vavctaalgs div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1650,23 +1611,23 @@ details summary {
 <p>The five point summary for the <code>eruptions</code> variable is:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="qiezlyfkzd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qiezlyfkzd table {
+<div id="mgznvrxxfy" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mgznvrxxfy table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qiezlyfkzd thead, #qiezlyfkzd tbody, #qiezlyfkzd tfoot, #qiezlyfkzd tr, #qiezlyfkzd td, #qiezlyfkzd th {
+#mgznvrxxfy thead, #mgznvrxxfy tbody, #mgznvrxxfy tfoot, #mgznvrxxfy tr, #mgznvrxxfy td, #mgznvrxxfy th {
   border-style: none;
 }
 
-#qiezlyfkzd p {
+#mgznvrxxfy p {
   margin: 0;
   padding: 0;
 }
 
-#qiezlyfkzd .gt_table {
+#mgznvrxxfy .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1692,12 +1653,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#qiezlyfkzd .gt_caption {
+#mgznvrxxfy .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qiezlyfkzd .gt_title {
+#mgznvrxxfy .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1709,7 +1670,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#qiezlyfkzd .gt_subtitle {
+#mgznvrxxfy .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1721,7 +1682,7 @@ details summary {
   border-top-width: 0;
 }
 
-#qiezlyfkzd .gt_heading {
+#mgznvrxxfy .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1733,13 +1694,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#qiezlyfkzd .gt_bottom_border {
+#mgznvrxxfy .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qiezlyfkzd .gt_col_headings {
+#mgznvrxxfy .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1754,7 +1715,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#qiezlyfkzd .gt_col_heading {
+#mgznvrxxfy .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1774,7 +1735,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#qiezlyfkzd .gt_column_spanner_outer {
+#mgznvrxxfy .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1786,15 +1747,15 @@ details summary {
   padding-right: 4px;
 }
 
-#qiezlyfkzd .gt_column_spanner_outer:first-child {
+#mgznvrxxfy .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qiezlyfkzd .gt_column_spanner_outer:last-child {
+#mgznvrxxfy .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qiezlyfkzd .gt_column_spanner {
+#mgznvrxxfy .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1806,11 +1767,11 @@ details summary {
   width: 100%;
 }
 
-#qiezlyfkzd .gt_spanner_row {
+#mgznvrxxfy .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qiezlyfkzd .gt_group_heading {
+#mgznvrxxfy .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1836,7 +1797,7 @@ details summary {
   text-align: left;
 }
 
-#qiezlyfkzd .gt_empty_group_heading {
+#mgznvrxxfy .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1851,15 +1812,15 @@ details summary {
   vertical-align: middle;
 }
 
-#qiezlyfkzd .gt_from_md > :first-child {
+#mgznvrxxfy .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qiezlyfkzd .gt_from_md > :last-child {
+#mgznvrxxfy .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qiezlyfkzd .gt_row {
+#mgznvrxxfy .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1878,7 +1839,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#qiezlyfkzd .gt_stub {
+#mgznvrxxfy .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1891,7 +1852,7 @@ details summary {
   padding-right: 5px;
 }
 
-#qiezlyfkzd .gt_stub_row_group {
+#mgznvrxxfy .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1905,15 +1866,15 @@ details summary {
   vertical-align: top;
 }
 
-#qiezlyfkzd .gt_row_group_first td {
+#mgznvrxxfy .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qiezlyfkzd .gt_row_group_first th {
+#mgznvrxxfy .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qiezlyfkzd .gt_summary_row {
+#mgznvrxxfy .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1923,16 +1884,16 @@ details summary {
   padding-right: 5px;
 }
 
-#qiezlyfkzd .gt_first_summary_row {
+#mgznvrxxfy .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qiezlyfkzd .gt_first_summary_row.thick {
+#mgznvrxxfy .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qiezlyfkzd .gt_last_summary_row {
+#mgznvrxxfy .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1942,7 +1903,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#qiezlyfkzd .gt_grand_summary_row {
+#mgznvrxxfy .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1952,7 +1913,7 @@ details summary {
   padding-right: 5px;
 }
 
-#qiezlyfkzd .gt_first_grand_summary_row {
+#mgznvrxxfy .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1962,7 +1923,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#qiezlyfkzd .gt_last_grand_summary_row_top {
+#mgznvrxxfy .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1972,11 +1933,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#qiezlyfkzd .gt_striped {
+#mgznvrxxfy .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qiezlyfkzd .gt_table_body {
+#mgznvrxxfy .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1985,7 +1946,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#qiezlyfkzd .gt_footnotes {
+#mgznvrxxfy .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1999,7 +1960,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#qiezlyfkzd .gt_footnote {
+#mgznvrxxfy .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2008,7 +1969,7 @@ details summary {
   padding-right: 5px;
 }
 
-#qiezlyfkzd .gt_sourcenotes {
+#mgznvrxxfy .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2022,7 +1983,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#qiezlyfkzd .gt_sourcenote {
+#mgznvrxxfy .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2030,72 +1991,72 @@ details summary {
   padding-right: 5px;
 }
 
-#qiezlyfkzd .gt_left {
+#mgznvrxxfy .gt_left {
   text-align: left;
 }
 
-#qiezlyfkzd .gt_center {
+#mgznvrxxfy .gt_center {
   text-align: center;
 }
 
-#qiezlyfkzd .gt_right {
+#mgznvrxxfy .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qiezlyfkzd .gt_font_normal {
+#mgznvrxxfy .gt_font_normal {
   font-weight: normal;
 }
 
-#qiezlyfkzd .gt_font_bold {
+#mgznvrxxfy .gt_font_bold {
   font-weight: bold;
 }
 
-#qiezlyfkzd .gt_font_italic {
+#mgznvrxxfy .gt_font_italic {
   font-style: italic;
 }
 
-#qiezlyfkzd .gt_super {
+#mgznvrxxfy .gt_super {
   font-size: 65%;
 }
 
-#qiezlyfkzd .gt_footnote_marks {
+#mgznvrxxfy .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qiezlyfkzd .gt_asterisk {
+#mgznvrxxfy .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qiezlyfkzd .gt_indent_1 {
+#mgznvrxxfy .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qiezlyfkzd .gt_indent_2 {
+#mgznvrxxfy .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qiezlyfkzd .gt_indent_3 {
+#mgznvrxxfy .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qiezlyfkzd .gt_indent_4 {
+#mgznvrxxfy .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qiezlyfkzd .gt_indent_5 {
+#mgznvrxxfy .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qiezlyfkzd .katex-display {
+#mgznvrxxfy .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qiezlyfkzd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mgznvrxxfy div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2135,23 +2096,23 @@ details summary {
 <p>The skewness and kurtosis for the <code>eruptions</code> variable are:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="rpbqezuqxd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#rpbqezuqxd table {
+<div id="tublkdypir" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#tublkdypir table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#rpbqezuqxd thead, #rpbqezuqxd tbody, #rpbqezuqxd tfoot, #rpbqezuqxd tr, #rpbqezuqxd td, #rpbqezuqxd th {
+#tublkdypir thead, #tublkdypir tbody, #tublkdypir tfoot, #tublkdypir tr, #tublkdypir td, #tublkdypir th {
   border-style: none;
 }
 
-#rpbqezuqxd p {
+#tublkdypir p {
   margin: 0;
   padding: 0;
 }
 
-#rpbqezuqxd .gt_table {
+#tublkdypir .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2177,12 +2138,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#rpbqezuqxd .gt_caption {
+#tublkdypir .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#rpbqezuqxd .gt_title {
+#tublkdypir .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2194,7 +2155,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#rpbqezuqxd .gt_subtitle {
+#tublkdypir .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2206,7 +2167,7 @@ details summary {
   border-top-width: 0;
 }
 
-#rpbqezuqxd .gt_heading {
+#tublkdypir .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2218,13 +2179,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#rpbqezuqxd .gt_bottom_border {
+#tublkdypir .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#rpbqezuqxd .gt_col_headings {
+#tublkdypir .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2239,7 +2200,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#rpbqezuqxd .gt_col_heading {
+#tublkdypir .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2259,7 +2220,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#rpbqezuqxd .gt_column_spanner_outer {
+#tublkdypir .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2271,15 +2232,15 @@ details summary {
   padding-right: 4px;
 }
 
-#rpbqezuqxd .gt_column_spanner_outer:first-child {
+#tublkdypir .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#rpbqezuqxd .gt_column_spanner_outer:last-child {
+#tublkdypir .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#rpbqezuqxd .gt_column_spanner {
+#tublkdypir .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2291,11 +2252,11 @@ details summary {
   width: 100%;
 }
 
-#rpbqezuqxd .gt_spanner_row {
+#tublkdypir .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#rpbqezuqxd .gt_group_heading {
+#tublkdypir .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2321,7 +2282,7 @@ details summary {
   text-align: left;
 }
 
-#rpbqezuqxd .gt_empty_group_heading {
+#tublkdypir .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2336,15 +2297,15 @@ details summary {
   vertical-align: middle;
 }
 
-#rpbqezuqxd .gt_from_md > :first-child {
+#tublkdypir .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#rpbqezuqxd .gt_from_md > :last-child {
+#tublkdypir .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#rpbqezuqxd .gt_row {
+#tublkdypir .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2363,7 +2324,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#rpbqezuqxd .gt_stub {
+#tublkdypir .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2376,7 +2337,7 @@ details summary {
   padding-right: 5px;
 }
 
-#rpbqezuqxd .gt_stub_row_group {
+#tublkdypir .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2390,15 +2351,15 @@ details summary {
   vertical-align: top;
 }
 
-#rpbqezuqxd .gt_row_group_first td {
+#tublkdypir .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#rpbqezuqxd .gt_row_group_first th {
+#tublkdypir .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#rpbqezuqxd .gt_summary_row {
+#tublkdypir .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2408,16 +2369,16 @@ details summary {
   padding-right: 5px;
 }
 
-#rpbqezuqxd .gt_first_summary_row {
+#tublkdypir .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#rpbqezuqxd .gt_first_summary_row.thick {
+#tublkdypir .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#rpbqezuqxd .gt_last_summary_row {
+#tublkdypir .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2427,7 +2388,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#rpbqezuqxd .gt_grand_summary_row {
+#tublkdypir .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2437,7 +2398,7 @@ details summary {
   padding-right: 5px;
 }
 
-#rpbqezuqxd .gt_first_grand_summary_row {
+#tublkdypir .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2447,7 +2408,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#rpbqezuqxd .gt_last_grand_summary_row_top {
+#tublkdypir .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2457,11 +2418,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#rpbqezuqxd .gt_striped {
+#tublkdypir .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#rpbqezuqxd .gt_table_body {
+#tublkdypir .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2470,7 +2431,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#rpbqezuqxd .gt_footnotes {
+#tublkdypir .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2484,7 +2445,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#rpbqezuqxd .gt_footnote {
+#tublkdypir .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2493,7 +2454,7 @@ details summary {
   padding-right: 5px;
 }
 
-#rpbqezuqxd .gt_sourcenotes {
+#tublkdypir .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2507,7 +2468,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#rpbqezuqxd .gt_sourcenote {
+#tublkdypir .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2515,72 +2476,72 @@ details summary {
   padding-right: 5px;
 }
 
-#rpbqezuqxd .gt_left {
+#tublkdypir .gt_left {
   text-align: left;
 }
 
-#rpbqezuqxd .gt_center {
+#tublkdypir .gt_center {
   text-align: center;
 }
 
-#rpbqezuqxd .gt_right {
+#tublkdypir .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#rpbqezuqxd .gt_font_normal {
+#tublkdypir .gt_font_normal {
   font-weight: normal;
 }
 
-#rpbqezuqxd .gt_font_bold {
+#tublkdypir .gt_font_bold {
   font-weight: bold;
 }
 
-#rpbqezuqxd .gt_font_italic {
+#tublkdypir .gt_font_italic {
   font-style: italic;
 }
 
-#rpbqezuqxd .gt_super {
+#tublkdypir .gt_super {
   font-size: 65%;
 }
 
-#rpbqezuqxd .gt_footnote_marks {
+#tublkdypir .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#rpbqezuqxd .gt_asterisk {
+#tublkdypir .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#rpbqezuqxd .gt_indent_1 {
+#tublkdypir .gt_indent_1 {
   text-indent: 5px;
 }
 
-#rpbqezuqxd .gt_indent_2 {
+#tublkdypir .gt_indent_2 {
   text-indent: 10px;
 }
 
-#rpbqezuqxd .gt_indent_3 {
+#tublkdypir .gt_indent_3 {
   text-indent: 15px;
 }
 
-#rpbqezuqxd .gt_indent_4 {
+#tublkdypir .gt_indent_4 {
   text-indent: 20px;
 }
 
-#rpbqezuqxd .gt_indent_5 {
+#tublkdypir .gt_indent_5 {
   text-indent: 25px;
 }
 
-#rpbqezuqxd .katex-display {
+#tublkdypir .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#rpbqezuqxd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#tublkdypir div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2639,10 +2600,10 @@ details summary {
 <li><p>Identifying skewness.</p></li>
 <li><p>Identifying outliers.</p></li>
 </ul>
-<p>Answers are provided below. Try not to peak until you have a formulated your own answer and double checked your work for any mistakes.</p>
+<p>Answers are provided below. Try not to peak until you have formulated your own answer and double checked your work for any mistakes. Each solution is worked by hand and then verified with Excel, assuming the data is entered in column A of your spreadsheet.</p>
 <section id="exercise-1" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-1">Exercise 1</h3>
-<p>For the following exercises, make your calculations by hand and verify results using R functions when possible.</p>
+<p>For the following exercises, make your calculations by hand and verify results using Excel functions when possible.</p>
 <ol type="1">
 <li><p>Use the following observations to calculate the minimum, the first, second and third quartiles, and the maximum. Are there any outliers? Find the IQR to answer the question.</p>
 <table class="caption-top table">
@@ -2664,17 +2625,21 @@ details summary {
 Answer
 </summary>
 <p><em>The minimum is</em> <span class="math inline">\(0\)</span>, the first quartile is <span class="math inline">\(2\)</span>, second quartile is <span class="math inline">\(4\)</span>, third quartile is <span class="math inline">\(8\)</span>, and maximum is <span class="math inline">\(30\)</span>. <span class="math inline">\(30\)</span> is an outlier since it is beyond <span class="math inline">\(Q_{3}+1.5 \times IQR\)</span>.</p>
-<p><em>Quartiles are calculated using the percentile formula</em> <span class="math inline">\((n+1)P/100\)</span>. The data set has seven numbers. The first quartile’s location is <span class="math inline">\(8/4=2\)</span>, the second quartile’s location is <span class="math inline">\(8/2=4\)</span> and the third quartile’s location is <span class="math inline">\(24/4=6\)</span>. The values at these location, when data is organized in ascending order, are <span class="math inline">\(1\)</span>, <span class="math inline">\(4\)</span>, and <span class="math inline">\(10\)</span>.</p>
-<p><em>In R we can get the five number summary by using the <code>quantile()</code> function. Since there are various rules that can be used to calculate percentiles, we specify type</em> <span class="math inline">\(6\)</span> to match our rules.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>Ex1<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">3</span>,<span class="dv">10</span>,<span class="dv">4</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">30</span>,<span class="dv">6</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">quantile</span>(Ex1,<span class="at">type =</span> <span class="dv">6</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  0%  25%  50%  75% 100% 
-   0    1    4   10   30 </code></pre>
-</div>
-</div>
-<p><em>The interquartile range is needed to determine if there are any outliers. The</em> <span class="math inline">\(IQR\)</span> for this data set is <span class="math inline">\(Q_{3}-Q_{1}=9\)</span>. This reveals that <span class="math inline">\(30\)</span> is and outlier, since <span class="math inline">\(10+1.5 \times 9=23.5\)</span>. Everything beyond <span class="math inline">\(23.5\)</span> is an outlier.</p>
+<p><em>Quartiles are calculated with the location formula</em> <span class="math inline">\(L_p = 1 + k(n-1)\)</span>. The sorted data is <span class="math inline">\(\{0,1,3,4,6,10,30\}\)</span> with <span class="math inline">\(n = 7\)</span>:</p>
+<ul>
+<li><span class="math inline">\(L_{25} = 1 + 0.25(6) = 2.5 \Rightarrow Q_1 = 1 + 0.5(3-1) = 2\)</span></li>
+<li><span class="math inline">\(L_{50} = 1 + 0.50(6) = 4 \Rightarrow Median = 4\)</span></li>
+<li><span class="math inline">\(L_{75} = 1 + 0.75(6) = 5.5 \Rightarrow Q_3 = 6 + 0.5(10-6) = 8\)</span></li>
+</ul>
+<p><em>In Excel we get the five point summary with</em> <code>=QUARTILE.INC()</code>:</p>
+<pre class="excel"><code>=QUARTILE.INC(A:A, 0)   /* Minimum = 0  */
+=QUARTILE.INC(A:A, 1)   /* Q1      = 2  */
+=QUARTILE.INC(A:A, 2)   /* Median  = 4  */
+=QUARTILE.INC(A:A, 3)   /* Q3      = 8  */
+=QUARTILE.INC(A:A, 4)   /* Maximum = 30 */</code></pre>
+<p><em>The interquartile range is needed to determine if there are any outliers.</em> The <span class="math inline">\(IQR = Q_3 - Q_1 = 6\)</span>. Since <span class="math inline">\(Q_3 + 1.5 \times IQR = 8 + 1.5(6) = 17\)</span>, everything beyond <span class="math inline">\(17\)</span> is an outlier — so <span class="math inline">\(30\)</span> is an outlier.</p>
+<pre class="excel"><code>=QUARTILE.INC(A:A, 3) - QUARTILE.INC(A:A, 1)   /* IQR = 6  */
+=QUARTILE.INC(A:A, 3) + 1.5 * 6                 /* UL  = 17 */</code></pre>
 </details>
 <ol start="2" type="1">
 <li>Confirm your finding of an outlier by calculating the <span class="math inline">\(z\)</span>-score. Is <span class="math inline">\(30\)</span> an outlier when using a <span class="math inline">\(z\)</span>-Score?</li>
@@ -2683,14 +2648,10 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>If we use the</em> <span class="math inline">\(z\)</span>-score instead we find that <span class="math inline">\(30\)</span> is not an outlier since the <span class="math inline">\(z\)</span>-score is <span class="math inline">\(Z_{30}=2.15\)</span>. This observation is only <span class="math inline">\(2.15\)</span> standard deviations away from the mean.</p>
-<p><em>In R we can make a quick calculation of the</em> <span class="math inline">\(z\)</span>-Score to confirm our results. The <span class="math inline">\(z\)</span>-score is given by <span class="math inline">\(Z_{i}=\frac{x_{30}-\mu}{\sigma}\)</span>.</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>(Z30<span class="ot">&lt;-</span>(<span class="dv">30</span><span class="sc">-</span><span class="fu">mean</span>(Ex1))<span class="sc">/</span><span class="fu">sd</span>(Ex1))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 2.148711</code></pre>
-</div>
-</div>
+<p><em>If we use the</em> <span class="math inline">\(z\)</span>-score instead we find that <span class="math inline">\(30\)</span> is <strong>not</strong> an outlier since the <span class="math inline">\(z\)</span>-score is <span class="math inline">\(Z_{30}=2.15\)</span>. This observation is only <span class="math inline">\(2.15\)</span> standard deviations away from the mean.</p>
+<p><em>In Excel we make a quick calculation of the</em> <span class="math inline">\(z\)</span>-score to confirm our result. The <span class="math inline">\(z\)</span>-score is <span class="math inline">\(Z_{i}=\frac{x_{i}-\bar{x}}{s}\)</span>:</p>
+<pre class="excel"><code>=STANDARDIZE(30, AVERAGE(A:A), STDEV.S(A:A))   /* = 2.15 */</code></pre>
+<p><em>Since</em> <span class="math inline">\(2.15 &lt; 3\)</span>, the value <span class="math inline">\(30\)</span> is not flagged as an outlier by the <span class="math inline">\(z\)</span>-score method, even though the IQR method flagged it. The two methods can disagree.</p>
 </details>
 <ol start="3" type="1">
 <li>Use Chebyshev’s theorem to determine what percent of the data falls between the <span class="math inline">\(z\)</span>-score found in <span class="math inline">\(2\)</span>.</li>
@@ -2699,14 +2660,9 @@ Answer
 <summary>
 Answer
 </summary>
-<p><em>Chebyshev’s theorem states that</em> <span class="math inline">\(1-\frac{1}{z_{2}}\)</span> of the data lies between <span class="math inline">\(z\)</span> standard deviation from the mean.</p>
-<p><em>Substituting the</em> <span class="math inline">\(z\)</span>-score found in 2. we get <span class="math inline">\(78.34\)</span>% of the data lies between the standard deviation calculated. In R:</p>
-<div class="cell">
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1-1</span><span class="sc">/</span>(Z30)<span class="sc">^</span><span class="dv">2</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7834073</code></pre>
-</div>
-</div>
+<p><em>Chebyshev’s theorem states that</em> <span class="math inline">\(1-\frac{1}{z^{2}}\)</span> of the data lies between <span class="math inline">\(z\)</span> standard deviations from the mean.</p>
+<p><em>Substituting the</em> <span class="math inline">\(z\)</span>-score found in 2. we get that at least <span class="math inline">\(78.34\%\)</span> of the data lies within that many standard deviations of the mean. In Excel:</p>
+<pre class="excel"><code>=1 - 1/(2.15^2)    /* ≈ 0.7834, i.e. 78.34% */</code></pre>
 </details>
 </section>
 <section id="exercise-2" class="level3 unnumbered">
@@ -2742,6 +2698,9 @@ Answer
 <div style="padding-left: 1.5em;">
 <p><span class="math display">\[\bar{x} = \frac{2+2+2+6+13}{5} = \frac{25}{5} = 5\]</span></p>
 <p><span class="math display">\[s = \sqrt{\frac{9+9+9+1+64}{4}} = \sqrt{23} = 4.796\]</span></p>
+<p><em>In Excel:</em></p>
+<pre class="excel"><code>=AVERAGE(A2:A6)    /* mean = 5      */
+=STDEV.S(A2:A6)    /* s    = 4.796  */</code></pre>
 </div>
 </details>
 <ol start="2" type="1">
@@ -2754,11 +2713,11 @@ Answer
 <div style="padding-left: 1.5em;">
 <table class="caption-top table">
 <colgroup>
-<col style="width: 5%">
-<col style="width: 13%">
-<col style="width: 20%">
-<col style="width: 30%">
-<col style="width: 30%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 17%">
+<col style="width: 23%">
+<col style="width: 23%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -2807,6 +2766,10 @@ Answer
 </tr>
 </tbody>
 </table>
+<p><em>In Excel, put the standardized value in a helper column and copy it down, then square and cube it:</em></p>
+<pre class="excel"><code>=(A2 - AVERAGE($A$2:$A$6)) / STDEV.S($A$2:$A$6)   /* z    */
+=B2^3                                             /* z^3  */
+=B2^4                                             /* z^4  */</code></pre>
 </div>
 </details>
 <ol start="3" type="1">
@@ -2818,267 +2781,10 @@ Answer
 </summary>
 <div style="padding-left: 1.5em;">
 <p><span class="math display">\[Sk = \frac{5}{(4)(3)}\sum\left(\frac{x_i-\bar{x}}{s}\right)^3 = \frac{5}{12}(-0.244-0.244-0.244+0.009+4.630)\]</span> <span class="math display">\[= \frac{5}{12}(3.907) = 1.628\]</span></p>
-<p><em>Since <span class="math inline">\(Sk &gt; 0\)</span> the distribution is right-skewed. Three months had modest growth of <span class="math inline">\(2\%\)</span> while one exceptional month of <span class="math inline">\(13\%\)</span> pulls the tail to the right.</em></p>
-</div>
-</details>
-<ol start="4" type="1">
-<li>Use the results from part 2 to calculate the excess kurtosis. Is the distribution leptokurtic, mesokurtic, or platykurtic?</li>
-</ol>
-<details>
-<summary>
-Answer
-</summary>
-<div style="padding-left: 1.5em;">
-<p><span class="math display">\[K = \frac{5(6)}{(4)(3)(2)}\sum\left(\frac{x_i-\bar{x}}{s}\right)^4 - \frac{3(4)^2}{(3)(2)}\]</span> <span class="math display">\[= \frac{30}{24}(0.153+0.153+0.153+0.002+7.716) - \frac{48}{6}\]</span> <span class="math display">\[= \frac{30}{24}(8.177) - 8 = 10.221 - 8 = 2.221\]</span></p>
-<p><em>Since <span class="math inline">\(K &gt; 0\)</span> the distribution is leptokurtic — the tail is heavier than a normal distribution, driven by the exceptional month of <span class="math inline">\(13\%\)</span> growth.</em></p>
-</div>
-</details>
-<ol start="5" type="1">
-<li>Verify your results using <code>=SKEW()</code> and <code>=KURT()</code> in Excel.</li>
-</ol>
-<details>
-<summary>
-Answer
-</summary>
-<div style="padding-left: 1.5em;">
-<ul>
-<li><code>=SKEW(2,2,2,6,13)</code> → <span class="math inline">\(1.628\)</span></li>
-<li><code>=KURT(2,2,2,6,13)</code> → <span class="math inline">\(2.221\)</span></li>
-</ul>
-</div>
-</details>
-</section>
-<section id="exercise-3" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
-<p>You will need the <strong>Stocks</strong> data set to answer this question. You can find this data here:</p>
-<p><a href="stocks.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
-<p>The data is a sample of daily stock prices for ticker symbols TSLA (Tesla), VTI (S&amp;P 500) and GBTC (Bitcoin).</p>
-<ol type="1">
-<li>Construct a boxplot for Stock A. Is the data skewed or symmetric?</li>
-</ol>
-<details>
-<summary>
-Answer
-</summary>
-<p><em>The data is skewed to the right.</em></p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-11-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><em>The boxplot shows that there are no outliers. The data also looks like it has a slight skew to the right.</em></p>
-</details>
-<ol start="2" type="1">
-<li>Create a histogram of the data. Include a vertical line for the mean and median. Explain how the mean and median indicates a skew in the data. Calculate the skewness statistic to confirm your result.</li>
-</ol>
-<details>
-<summary>
-Answer
-</summary>
-<p><em>The mean is more sensitive to outliers than the median. Hence, when the data is skewed to the right we expect that the mean is larger than the median.</em></p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><em>The lines are close to each other but the mean is slightlty larger than the median. Let’s confirm with the skewness statistic</em>:</p>
-<div class="cell">
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2856304</code></pre>
-</div>
-</div>
-<p><em>This indicates that there is a slight skew to the right of the data.</em></p>
-</details>
-<ol start="3" type="1">
-<li>Use a line chart to plot your data. Can you explain why the data has a skew?</li>
-</ol>
-<details>
-<summary>
-Answer
-</summary>
-<p><em>The line chart indicates that the data has a downward trend in the early periods. This creates a few points that are large. In later periods the stock price stabilizes to lower levels.</em></p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</details>
-</section>
-<section id="exercise-4" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h3>
-<p>You will need the <strong>mtcars</strong> data set to answer this question. The dataset contains data on 32 automobile models and 11 variables including miles per gallon (mpg), number of cylinders (cyl), horsepower (hp), weight (wt), and transmission type (am), among others. You can find the data here:</p>
-<p><a href="mtcars.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
-<ol type="1">
-<li>Construct a boxplot for the <em>hp</em> variable. Which car is the outlier?</li>
-</ol>
-<details>
-<summary>
-Answer
-</summary>
-<p><em>The outlier is the Masserati Bora. The horse power is</em> <span class="math inline">\(335\)</span>.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-15-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><em>From the graph it seems like the outlier is beyond a horsepower of 275, which is th Masserati Bora!</em></p>
-</details>
-<ol start="2" type="1">
-<li>Create a histogram of the data. Is the data skewed or leptokurtic? Calculate the skewness and kurtosis statistics to confirm your result.</li>
-</ol>
-<details>
-<summary>
-Answer
-</summary>
-<p><em>The histogram looks skewed to the right. This is confirmed by the estimation of the coefficient of skewness of <span class="math inline">\(0.8\)</span>. The histogram also shows also heavy tails which is confirmed with the kurtosis being <span class="math inline">\(0.275&gt;0\)</span>.</em></p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-</details>
-<ol start="3" type="1">
-<li>Transform the data by taking a natural logarithm. Specifically, create a new variable called <em>Loghp</em>. Repeat the procedure in 2. Is the skew still there?</li>
-</ol>
-<details>
-<summary>
-Answer
-</summary>
-<p><em>The skew is still there, but the distribution now looks more symmetrical and the Skew coefficient has decreased to <span class="math inline">\(-0.1\)</span>. The kurtosis has turned platykurtic -0.73.</em></p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-17-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<em>The mean and the variance now look closer together.</em>
-</details>
-</section>
-<section id="exercise-5" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-5">Exercise 5</h3>
-<p>A quality control manager records the number of units produced per hour by a manufacturing machine over eight shifts:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: center;">1</th>
-<th style="text-align: center;">2</th>
-<th style="text-align: center;">3</th>
-<th style="text-align: center;">4</th>
-<th style="text-align: center;">5</th>
-<th style="text-align: center;">6</th>
-<th style="text-align: center;">7</th>
-<th style="text-align: center;">8</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">48</td>
-<td style="text-align: center;">52</td>
-<td style="text-align: center;">55</td>
-<td style="text-align: center;">58</td>
-<td style="text-align: center;">62</td>
-<td style="text-align: center;">65</td>
-<td style="text-align: center;">70</td>
-</tr>
-</tbody>
-</table>
-<ol type="1">
-<li>Find the five point summary: minimum, <span class="math inline">\(Q_1\)</span>, median, <span class="math inline">\(Q_3\)</span>, and maximum.</li>
-</ol>
-<details>
-<summary>
-Answer
-</summary>
-<div style="padding-left: 1.5em;">
-<p><em>Sort the data: <span class="math inline">\(\{5, 48, 52, 55, 58, 62, 65, 70\}\)</span>.</em></p>
-<p><em>Using <span class="math inline">\(L_p = 1 + k(n-1)\)</span>:</em></p>
-<p><em><span class="math inline">\(L_{25} = 1 + 0.25(7) = 2.75\)</span> → <span class="math inline">\(Q_1 = 48 + 0.75(52-48) = 51\)</span></em></p>
-<p><em><span class="math inline">\(L_{50} = 1 + 0.50(7) = 4.5\)</span> → <span class="math inline">\(Median = 55 + 0.5(58-55) = 56.5\)</span></em></p>
-<p><em><span class="math inline">\(L_{75} = 1 + 0.75(7) = 6.25\)</span> → <span class="math inline">\(Q_3 = 62 + 0.25(65-62) = 62.75\)</span></em></p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th style="text-align: center;"><span class="math inline">\(Min\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(Q_1\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(Median\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(Q_3\)</span></th>
-<th style="text-align: center;"><span class="math inline">\(Max\)</span></th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: center;">5</td>
-<td style="text-align: center;">51</td>
-<td style="text-align: center;">56.5</td>
-<td style="text-align: center;">62.75</td>
-<td style="text-align: center;">70</td>
-</tr>
-</tbody>
-</table>
-</div>
-</details>
-<ol start="2" type="1">
-<li>Calculate the IQR and the lower and upper outlier limits.</li>
-</ol>
-<details>
-<summary>
-Answer
-</summary>
-<div style="padding-left: 1.5em;">
-<p><span class="math display">\[IQR = Q_3 - Q_1 = 62.75 - 51 = 11.75\]</span></p>
-<p><span class="math display">\[LL = Q_1 - 1.5 \times IQR = 51 - 1.5(11.75) = 51 - 17.625 = 33.375\]</span></p>
-<p><span class="math display">\[UL = Q_3 + 1.5 \times IQR = 62.75 + 1.5(11.75) = 62.75 + 17.625 = 80.375\]</span></p>
-<p><em>Any observation below <span class="math inline">\(33.375\)</span> or above <span class="math inline">\(80.375\)</span> is an outlier. The value <span class="math inline">\(5\)</span> falls below the lower limit and is therefore identified as an outlier. This likely represents a shift where the machine malfunctioned or was taken offline for maintenance.</em></p>
-</div>
-</details>
-<ol start="3" type="1">
-<li>Draw a box plot with whiskers and clearly mark any outliers.</li>
-</ol>
-<details>
-<summary>
-Answer
-</summary>
-<div style="padding-left: 1.5em;">
-<p><em>The box plot is constructed using the five point summary. The whiskers extend from <span class="math inline">\(Q_1\)</span> to the smallest non-outlier value (<span class="math inline">\(48\)</span>) and from <span class="math inline">\(Q_3\)</span> to the largest non-outlier value (<span class="math inline">\(70\)</span>). The outlier <span class="math inline">\(5\)</span> is shown as a point below the lower whisker.</em></p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="DescriptiveV_files/figure-html/unnamed-chunk-18-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p><em>The box plot clearly shows the outlier at <span class="math inline">\(5\)</span> units as an isolated point well below the lower whisker. The remaining seven observations are tightly clustered between <span class="math inline">\(48\)</span> and <span class="math inline">\(70\)</span>, suggesting the machine operates consistently when functioning normally.</em></p>
-</div>
-</details>
 
 
-</section>
+</div>
+</details></section>
 </section>
 
 </main> <!-- /main -->
