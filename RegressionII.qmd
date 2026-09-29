@@ -249,18 +249,31 @@ The predictions land exactly on the three group averages. The intercept is Olivi
 
 [{{< fa file-excel >}} Download Data](Spin.xlsx){.btn .btn-success}
 
-1.  Add one column for each non-baseline category. With `Instructor` in column A, create a **Sam** dummy and a **Ben** dummy:
+With `Instructor` in column A and `Total_kj` in column C, we build the two dummies with `IF`. Rather than creating helper columns, `HSTACK` lets us assemble both dummies *inside* the `LINEST` call:
 
-    ``` excel
-    =IF($A2="Sam", 1, 0)
-    =IF($A2="Ben", 1, 0)
-    ```
+``` excel
+=LINEST(C2:C91, HSTACK(IF(A2:A91="Sam",1,0), IF(A2:A91="Ben",1,0)), TRUE, TRUE)
+```
 
-2.  Copy both formulas down for all $90$ rows.
+Remember that `LINEST` returns the coefficients **in reverse order**. Because we stacked $Sam$ first and $Ben$ second, the first row of the output reads:
 
-3.  Go to `Data → Data Analysis → Regression`. Set the **Input Y Range** to `Total_kj` and the **Input X Range** to the two dummy columns together, then click `OK`.
+| Position | Row 1 value |    Meaning     |
+|:--------:|:-----------:|:--------------:|
+|  Col 1   |   $27.90$   | coefficient on $Ben$  |
+|  Col 2   |  $-75.67$   | coefficient on $Sam$  |
+|  Col 3   |  $197.03$   | intercept (Olivia)    |
 
-The **Intercept** in the output is Olivia's mean, and the two dummy coefficients are the differences from Olivia. You can confirm each group mean directly with `AVERAGEIF` (here `Total_kj` sits in column C):
+If you prefer helper columns, put the two `IF` formulas in columns D and E and pass `D2:E91` as the $x$ range — the result is identical.
+
+To predict each instructor's average directly, use `TREND` with a new $x$ row for each combination:
+
+``` excel
+=TREND(C2:C91, HSTACK(IF(A2:A91="Sam",1,0), IF(A2:A91="Ben",1,0)), {0,0})  → 197.03
+=TREND(C2:C91, HSTACK(IF(A2:A91="Sam",1,0), IF(A2:A91="Ben",1,0)), {1,0})  → 121.37
+=TREND(C2:C91, HSTACK(IF(A2:A91="Sam",1,0), IF(A2:A91="Ben",1,0)), {0,1})  → 224.93
+```
+
+You can confirm each group mean directly with `AVERAGEIF`:
 
 ``` excel
 =AVERAGEIF(A2:A91, "Olivia", C2:C91)   → 197.03
@@ -270,59 +283,144 @@ The **Intercept** in the output is Olivia's mean, and the two dummy coefficients
 
 ## Regression in Excel
 
-Excel provides a straightforward way to estimate regression models using the **Data Analysis ToolPak**. If it is not already enabled, go to `File → Options → Add-ins → Analysis ToolPak → Go` and check the box.
+Excel estimates regressions through three worksheet functions. `LINEST` fits the model and reports every diagnostic we need; `TREND` produces predictions; and `HSTACK` assembles the independent variables into the single block that `LINEST` requires. All three work for simple *and* multiple regression, so one set of tools covers the whole chapter.
 
 [{{< fa file-excel >}} Download Data](weight_exercise.xlsx){.btn .btn-success}
 
-**Simple Regression (Weight and Exercise):**
+### Reading the LINEST Output {.unnumbered}
 
-1.  Go to `Data → Data Analysis → Regression`
-2.  Set the **Input Y Range** to the Weight column
-3.  Set the **Input X Range** to the Exercise column
-4.  Check **Labels** if your data includes headers
-5.  Select an output location and click `OK`
-
-Excel will produce a full regression output including the coefficients, $R^2$, Adjusted $R^2$, Standard Error, and Anova table — all in one step.
-
-**Reading the Excel Output:**
-
-- **Intercept** row → $\hat{\alpha}$
-- **X Variable 1** row → $\hat{\beta}$
-- **R Square** → $R^2$
-- **Adjusted R Square** → $\bar{R}^2$
-- **Standard Error** → $s_e$
-
-**Multiple Regression (Weight, Exercise, and Calories):**
-
-Follow the same steps but set the **Input X Range** to include both the Exercise and Calories columns. Excel handles multiple predictors automatically.
-
-**Making Predictions:** Once you have the coefficients from the output, use them directly in a formula. For the Advertisement and Price example, if the intercept is in cell B17 and slope in B18:
+`LINEST` is an **array function**. Written with both optional arguments set to `TRUE`, it returns a block of $5$ rows by $k+1$ columns:
 
 ``` excel
-=B17 + B18 * 6
+=LINEST(y_range, x_range, TRUE, TRUE)
 ```
 
-This returns the predicted price for an advertisement budget of $6$.
+The third argument asks Excel to estimate an intercept; the fourth asks for the full diagnostics. In current versions of Excel the result *spills* automatically — type the formula in one cell and press `Enter`. The block is laid out as follows, for a model with $k$ independent variables:
+
+|  Row  |        Column 1         |       Column 2        | Remaining columns |
+|:-----:|:-----------------------:|:---------------------:|:-----------------:|
+| **1** | $\hat{\beta_k}$ … $\hat{\beta_1}$, then $\hat{\beta_0}$ |  | coefficients |
+| **2** | standard error of each coefficient |            |                   |
+| **3** |         $R^2$           |         $s_e$         |     `#N/A`        |
+| **4** |    $F$ statistic        |  $df=n-k-1$           |     `#N/A`        |
+| **5** |         $SSR$           |         $SSE$         |     `#N/A`        |
+
+Two details matter enormously in practice.
+
+**Row 1 runs backwards.** The coefficients appear in reverse order of your $x$ columns — the *last* variable first and the intercept *last*. With one predictor the row is simply $\{\hat{\beta}, \hat{\alpha}\}$; with two it is $\{\hat{\beta_2}, \hat{\beta_1}, \hat{\beta_0}\}$. Misreading this is the most common `LINEST` error.
+
+**The $x$ range must be one contiguous block.** `LINEST` will not accept scattered columns. When your independent variables are not side by side, `HSTACK` joins them into a single array:
+
+``` excel
+=LINEST(B2:B6, HSTACK(C2:C6, F2:F6), TRUE, TRUE)
+```
+
+To pull a single number out of the block instead of spilling all of it, wrap the call in `INDEX(array, row, column)`.
+
+### Simple Regression (Weight and Exercise) {.unnumbered}
+
+With `Weight` in column A and `Exercise` in column B:
+
+``` excel
+=LINEST(A2:A6, B2:B6, TRUE, TRUE)
+```
+
+Reading the block, and recalling that row 1 is reversed:
+
+- `=INDEX(LINEST(A2:A6,B2:B6,TRUE,TRUE),1,1)` → $\hat{\beta}=-0.153$
+- `=INDEX(LINEST(A2:A6,B2:B6,TRUE,TRUE),1,2)` → $\hat{\alpha}=171.00$
+- `=INDEX(LINEST(A2:A6,B2:B6,TRUE,TRUE),3,1)` → $R^2=0.70$
+- `=INDEX(LINEST(A2:A6,B2:B6,TRUE,TRUE),3,2)` → $s_e=1.59$
+- `=INDEX(LINEST(A2:A6,B2:B6,TRUE,TRUE),5,1)` → $SSR=17.63$
+- `=INDEX(LINEST(A2:A6,B2:B6,TRUE,TRUE),5,2)` → $SSE=7.57$
+
+Since $SST=SSR+SSE$, the total variation is $17.63+7.57=25.2$, matching the value we computed by hand. (`=DEVSQ(A2:A6)` returns the same $25.2$ as a check.)
+
+### Multiple Regression (Weight, Exercise, and Calories) {.unnumbered}
+
+With `Calories` in column C, the two independent variables are adjacent, so `B2:C6` works directly. Using `HSTACK` makes the intent explicit and keeps the formula correct even if the columns are later moved apart:
+
+``` excel
+=LINEST(A2:A6, HSTACK(B2:B6, C2:C6), TRUE, TRUE)
+```
+
+The first row of the output is $\{0.069,\ -0.025,\ 83.96\}$ — reading **right to left**, that is an intercept of $83.96$, a coefficient of $-0.025$ on Exercise, and $0.069$ on Calories, giving
+
+$$\hat{y_i}=83.96-0.025x+0.069z$$
+
+The remaining diagnostics come from the same block:
+
+- `=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),3,1)` → $R^2=0.96$
+- `=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),3,2)` → $s_e=0.71$
+- `=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),4,2)` → $df=n-k-1=2$
+- `=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),5,1)` → $SSR=24.19$
+- `=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),5,2)` → $SSE=1.01$
+
+### Building the Anova Table {.unnumbered}
+
+`LINEST` reports the *total* $SSR$ for a model, not the contribution of each variable. To split $SSR$ by variable, run the models in sequence and take the difference:
+
+``` excel
+=INDEX(LINEST(A2:A6, B2:B6, TRUE, TRUE), 5, 1)                      → 17.63   (x alone)
+=INDEX(LINEST(A2:A6, HSTACK(B2:B6,C2:C6), TRUE, TRUE), 5, 1)        → 24.19   (x and z)
+```
+
+The difference, $24.19-17.63=6.55$, is what Calories adds once Exercise is already in the model. The residual $SSE=1.01$ comes from row 5, column 2 of the larger model. Those three numbers are exactly the Anova table above.
+
+### Adjusted $R^2$ {.unnumbered}
+
+`LINEST` does not report $\bar{R}^2$, but every ingredient is in the block. With $R^2$ in row 3 column 1 and $df=n-k-1$ in row 4 column 2:
+
+``` excel
+=1-(1-INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),3,1))
+     *(COUNT(A2:A6)-1)/INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),4,2)
+```
+
+which returns $0.92$, matching the hand calculation.
+
+### Making Predictions {.unnumbered}
+
+`TREND` applies the fitted model to new values of the independent variables. It accepts the same $x$ block as `LINEST`, so it works for one predictor or many:
+
+``` excel
+=TREND(y_range, x_range, new_x_range, TRUE)
+```
+
+For the Advertisement and Price example, with a budget of $6$:
+
+``` excel
+=TREND(B2:B5, A2:A5, 6)   → 14.7
+```
+
+For the Weight model, predicting a person who exercises $35$ minutes and eats $1210$ calories:
+
+``` excel
+=TREND(A2:A6, HSTACK(B2:B6, C2:C6), HSTACK(35, 1210))
+```
+
+The `new_x` block must have the same number of columns, in the same order, as the $x$ block used to fit the model. Omitting `new_x` returns the fitted value for every observation in the original data.
 
 ## Excel Function Summary
 
-Below is a list of the Excel functions and tools used in this section:
+Below is a list of the Excel functions used in this section:
 
-- **Data Analysis ToolPak → Regression** is the primary tool for estimating regression models in Excel. It returns coefficients, $R^2$, adjusted $R^2$, standard error, and the Anova table in a single output.
+- `=LINEST(y_range, x_range, TRUE, TRUE)` estimates the regression and returns a $5 \times (k+1)$ block containing the coefficients, their standard errors, $R^2$, $s_e$, the $F$ statistic, the degrees of freedom, $SSR$ and $SSE$. Works for any number of independent variables. **Row 1 is in reverse order**, ending with the intercept.
 
-- `=SLOPE(y_range, x_range)` calculates the slope $\hat{\beta}$ of the simple regression line directly.
+- `=INDEX(LINEST(...), row, column)` extracts a single value from the `LINEST` block. Common picks: `(1,1)` the slope of the last $x$, `(3,1)` $R^2$, `(3,2)` $s_e$, `(4,2)` $df$, `(5,1)` $SSR$, `(5,2)` $SSE$.
 
-- `=INTERCEPT(y_range, x_range)` calculates the intercept $\hat{\alpha}$ of the simple regression line directly.
+- `=HSTACK(range1, range2, ...)` joins ranges side by side into a single array, so that non-adjacent independent variables can be passed to `LINEST` or `TREND`. It also lets dummy variables be built inline without helper columns.
 
-- `=FORECAST.LINEAR(x, y_range, x_range)` returns the predicted value of $y$ for a given value of $x$ using simple linear regression.
-
-- `=RSQ(y_range, x_range)` returns the $R^2$ for a simple regression.
-
-- `=STEYX(y_range, x_range)` returns the residual standard error $s_e$ for a simple regression.
+- `=TREND(y_range, x_range, new_x_range, TRUE)` returns predicted values of $y$. Handles simple and multiple regression; `new_x_range` must match the column layout of `x_range`.
 
 - `=IF(cell="Category", 1, 0)` builds a dummy variable, coding each row $1$ when it belongs to a category and $0$ otherwise.
 
 - `=AVERAGEIF(range, criteria, average_range)` returns the mean of a numerical column for the rows matching a category — a quick way to verify the group means produced by a dummy-variable regression.
+
+- `=DEVSQ(y_range)` returns $SST$ directly, as a check on $SSR+SSE$.
+
+::: callout-note
+**A note on versions.** `HSTACK` requires Microsoft 365 or Excel 2024. In earlier versions, place the independent variables in adjacent columns and pass the block directly to `LINEST` and `TREND` — every other formula in this chapter is unchanged. `LINEST` and `TREND` are array formulas: in versions before dynamic arrays, select the full output range first and confirm with `Ctrl+Shift+Enter`.
+:::
 
 ## Chapter Summary Cheat Sheet
 
@@ -371,10 +469,14 @@ $$\hat{\beta}=\frac{\sum(x_i-\bar{x})(y_i-\bar{y})}{\sum(x_i-\bar{x})^2}=\frac{5
 
 $$\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}=16.6-1.09(19.8)=-4.93$$
 
-*To verify in Excel, enter x in column A and y in column B and use:*
+*To verify in Excel, enter x in column A and y in column B. A single* `LINEST` *returns both coefficients, with the intercept last:*
 
-- `=SLOPE(B2:B6, A2:A6)` → $1.09$
-- `=INTERCEPT(B2:B6, A2:A6)` → $-4.93$
+``` excel
+=LINEST(B2:B6, A2:A6, TRUE, TRUE)
+```
+
+- `=INDEX(LINEST(B2:B6,A2:A6,TRUE,TRUE),1,1)` → $\hat{\beta}=1.09$
+- `=INDEX(LINEST(B2:B6,A2:A6,TRUE,TRUE),1,2)` → $\hat{\alpha}=-4.93$
 :::
 
 </details>
@@ -388,13 +490,14 @@ $$\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}=16.6-1.09(19.8)=-4.93$$
 ::: {style="padding-left: 1.5em;"}
 *SST is* $69.2$, SSR is $64.82$ and SSE is $4.38$ (note that $SSR+SSE=SST$). The $R^2$ is $\frac{SSR}{SST}=0.94$ and the Standard Error estimate is $1.21$. Both indicate a great fit of the regression line to the data.
 
-*In Excel, with x in column A and y in column B:*
+*All four numbers come out of the same* `LINEST` *block, so spill it once with* `=LINEST(B2:B6, A2:A6, TRUE, TRUE)` *and read off:*
 
-- `=DEVSQ(B2:B6)` → $SST = 69.2$
-- `=RSQ(B2:B6, A2:A6)` → $R^2 = 0.94$
-- `=STEYX(B2:B6, A2:A6)` → $s_e = 1.21$
+- `=INDEX(LINEST(B2:B6,A2:A6,TRUE,TRUE),5,1)` → $SSR = 64.82$
+- `=INDEX(LINEST(B2:B6,A2:A6,TRUE,TRUE),5,2)` → $SSE = 4.38$
+- `=INDEX(LINEST(B2:B6,A2:A6,TRUE,TRUE),3,1)` → $R^2 = 0.94$
+- `=INDEX(LINEST(B2:B6,A2:A6,TRUE,TRUE),3,2)` → $s_e = 1.21$
 
-*Then* $SSR = R^2 \times SST = 64.82$ and $SSE = SST - SSR = 4.38$. You can also obtain all of these at once from `Data → Data Analysis → Regression`, which reports the ANOVA table (SSR, SSE, SST), $R^2$, and the Standard Error in a single output.
+*Then* $SST = SSR + SSE = 69.2$, which `=DEVSQ(B2:B6)` confirms.
 :::
 
 </details>
@@ -410,7 +513,7 @@ $$\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}=16.6-1.09(19.8)=-4.93$$
 
 *In Excel:*
 
-- `=FORECAST.LINEAR(32, B2:B6, A2:A6)` → $29.87$
+- `=TREND(B2:B6, A2:A6, 32)` → $29.87$
 :::
 
 </details>
@@ -434,10 +537,12 @@ The data shows the years of education (*Education*) and the annual salary in tho
 
 *In Excel, assuming `Salary` is in column B and `Education` is in column C:*
 
-- `=SLOPE(B2:B101, C2:C101)` → $5.30$
-- `=INTERCEPT(B2:B101, C2:C101)` → $17.26$
+``` excel
+=LINEST(B2:B101, C2:C101, TRUE, TRUE)
+```
 
-*You can also use `Data → Data Analysis → Regression` with `Salary` as the Input Y Range and `Education` as the Input X Range.*
+- `=INDEX(LINEST(B2:B101,C2:C101,TRUE,TRUE),1,1)` → $5.30$
+- `=INDEX(LINEST(B2:B101,C2:C101,TRUE,TRUE),1,2)` → $17.26$
 :::
 
 </details>
@@ -453,9 +558,9 @@ The data shows the years of education (*Education*) and the annual salary in tho
 
 *In Excel:*
 
-- `=RSQ(B2:B101, C2:C101)` → $0.67$
-- `=STEYX(B2:B101, C2:C101)` → $21$
-- `=FORECAST.LINEAR(16, B2:B101, C2:C101)` → $102.08$
+- `=INDEX(LINEST(B2:B101,C2:C101,TRUE,TRUE),3,1)` → $R^2 = 0.67$
+- `=INDEX(LINEST(B2:B101,C2:C101,TRUE,TRUE),3,2)` → $s_e = 21$
+- `=TREND(B2:B101, C2:C101, 16)` → $102.08$
 :::
 
 </details>
@@ -484,6 +589,8 @@ You will need the **FoodSpend** data set to answer this question. You can downlo
 *Copy it down for all rows and take the average:*
 
 - `=AVERAGE(C2:C81)` → $0.3625$
+
+*You can also skip the helper column entirely — the same proportion is* `=AVERAGE(IF(A2:A81="Yes",1,0))`.
 :::
 
 </details>
@@ -499,8 +606,17 @@ You will need the **FoodSpend** data set to answer this question. You can downlo
 
 *In Excel, with `Food` in column B and the dummy in column C:*
 
-- `=INTERCEPT(B2:B81, C2:C81)` → $6473$
-- `=SLOPE(B2:B81, C2:C81)` → $-3418$
+``` excel
+=LINEST(B2:B81, C2:C81, TRUE, TRUE)
+```
+
+- `=INDEX(LINEST(B2:B81,C2:C81,TRUE,TRUE),1,2)` → intercept $= 6473$
+- `=INDEX(LINEST(B2:B81,C2:C81,TRUE,TRUE),1,1)` → slope $= -3418$
+
+*Because a single dummy just splits the sample in two, the two predictions are the two group means:*
+
+- `=TREND(B2:B81, C2:C81, 0)` → $6473$, the same as `=AVERAGEIF(A2:A81,"No",B2:B81)`
+- `=TREND(B2:B81, C2:C81, 1)` → $3055$, the same as `=AVERAGEIF(A2:A81,"Yes",B2:B81)`
 :::
 
 </details>
@@ -516,8 +632,8 @@ You will need the **FoodSpend** data set to answer this question. You can downlo
 
 *In Excel, with the dummy in column C and `Food` in column B:*
 
-- `=INTERCEPT(C2:C81, B2:B81)` → $1.432$
-- `=SLOPE(C2:C81, B2:B81)` → $-0.000204$
+- `=INDEX(LINEST(C2:C81,B2:B81,TRUE,TRUE),1,2)` → intercept $= 1.432$
+- `=INDEX(LINEST(C2:C81,B2:B81,TRUE,TRUE),1,1)` → slope $= -0.000204$
 
 *For the scatter plot, select `Food` and the dummy variable, go to `Insert → Charts → Scatter`, and add a linear trend line by right-clicking a point and choosing `Add Trendline → Linear`.*
 :::
@@ -541,7 +657,7 @@ You will need the **Population** data set to answer this question. You can downl
 
 *In Excel, first isolate Japan: select the data, go to `Data → Filter`, and filter `Country.Name` to `Japan`. Copy the* $62$ Japan rows to a new sheet. Assuming `Year` is in column C and `Population` is in column D:
 
-- `=RSQ(D2:D63, C2:C63)` → $0.81$
+- `=INDEX(LINEST(D2:D63,C2:C63,TRUE,TRUE),3,1)` → $R^2 = 0.81$
 :::
 
 </details>
@@ -557,7 +673,7 @@ You will need the **Population** data set to answer this question. You can downl
 
 *In Excel:*
 
-- `=FORECAST.LINEAR(2030, D2:D63, C2:C63)` → $140{,}268{,}585$
+- `=TREND(D2:D63, C2:C63, 2030)` → $140{,}268{,}585$
 :::
 
 </details>

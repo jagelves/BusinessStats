@@ -282,7 +282,15 @@ window.Quarto = {
   <ul class="collapse">
   <li><a href="#dummy-variables-in-excel" id="toc-dummy-variables-in-excel" class="nav-link" data-scroll-target="#dummy-variables-in-excel">Dummy Variables in Excel</a></li>
   </ul></li>
-  <li><a href="#regression-in-excel" id="toc-regression-in-excel" class="nav-link" data-scroll-target="#regression-in-excel"><span class="header-section-number">7.5</span> Regression in Excel</a></li>
+  <li><a href="#regression-in-excel" id="toc-regression-in-excel" class="nav-link" data-scroll-target="#regression-in-excel"><span class="header-section-number">7.5</span> Regression in Excel</a>
+  <ul class="collapse">
+  <li><a href="#reading-the-linest-output" id="toc-reading-the-linest-output" class="nav-link" data-scroll-target="#reading-the-linest-output">Reading the LINEST Output</a></li>
+  <li><a href="#simple-regression-weight-and-exercise" id="toc-simple-regression-weight-and-exercise" class="nav-link" data-scroll-target="#simple-regression-weight-and-exercise">Simple Regression (Weight and Exercise)</a></li>
+  <li><a href="#multiple-regression-weight-exercise-and-calories" id="toc-multiple-regression-weight-exercise-and-calories" class="nav-link" data-scroll-target="#multiple-regression-weight-exercise-and-calories">Multiple Regression (Weight, Exercise, and Calories)</a></li>
+  <li><a href="#building-the-anova-table" id="toc-building-the-anova-table" class="nav-link" data-scroll-target="#building-the-anova-table">Building the Anova Table</a></li>
+  <li><a href="#adjusted-r2-1" id="toc-adjusted-r2-1" class="nav-link" data-scroll-target="#adjusted-r2-1">Adjusted <span class="math inline">\(R^2\)</span></a></li>
+  <li><a href="#making-predictions" id="toc-making-predictions" class="nav-link" data-scroll-target="#making-predictions">Making Predictions</a></li>
+  </ul></li>
   <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">7.6</span> Excel Function Summary</a></li>
   <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">7.7</span> Chapter Summary Cheat Sheet</a></li>
   <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.8</span> Exercises</a>
@@ -624,14 +632,41 @@ details summary {
 <section id="dummy-variables-in-excel" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="dummy-variables-in-excel">Dummy Variables in Excel</h3>
 <p><a href="Spin.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
-<ol type="1">
-<li><p>Add one column for each non-baseline category. With <code>Instructor</code> in column A, create a <strong>Sam</strong> dummy and a <strong>Ben</strong> dummy:</p>
-<pre class="excel"><code>=IF($A2="Sam", 1, 0)
-=IF($A2="Ben", 1, 0)</code></pre></li>
-<li><p>Copy both formulas down for all <span class="math inline">\(90\)</span> rows.</p></li>
-<li><p>Go to <code>Data → Data Analysis → Regression</code>. Set the <strong>Input Y Range</strong> to <code>Total_kj</code> and the <strong>Input X Range</strong> to the two dummy columns together, then click <code>OK</code>.</p></li>
-</ol>
-<p>The <strong>Intercept</strong> in the output is Olivia’s mean, and the two dummy coefficients are the differences from Olivia. You can confirm each group mean directly with <code>AVERAGEIF</code> (here <code>Total_kj</code> sits in column C):</p>
+<p>With <code>Instructor</code> in column A and <code>Total_kj</code> in column C, we build the two dummies with <code>IF</code>. Rather than creating helper columns, <code>HSTACK</code> lets us assemble both dummies <em>inside</em> the <code>LINEST</code> call:</p>
+<pre class="excel"><code>=LINEST(C2:C91, HSTACK(IF(A2:A91="Sam",1,0), IF(A2:A91="Ben",1,0)), TRUE, TRUE)</code></pre>
+<p>Remember that <code>LINEST</code> returns the coefficients <strong>in reverse order</strong>. Because we stacked <span class="math inline">\(Sam\)</span> first and <span class="math inline">\(Ben\)</span> second, the first row of the output reads:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Position</th>
+<th style="text-align: center;">Row 1 value</th>
+<th style="text-align: center;">Meaning</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Col 1</td>
+<td style="text-align: center;"><span class="math inline">\(27.90\)</span></td>
+<td style="text-align: center;">coefficient on <span class="math inline">\(Ben\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Col 2</td>
+<td style="text-align: center;"><span class="math inline">\(-75.67\)</span></td>
+<td style="text-align: center;">coefficient on <span class="math inline">\(Sam\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Col 3</td>
+<td style="text-align: center;"><span class="math inline">\(197.03\)</span></td>
+<td style="text-align: center;">intercept (Olivia)</td>
+</tr>
+</tbody>
+</table>
+<p>If you prefer helper columns, put the two <code>IF</code> formulas in columns D and E and pass <code>D2:E91</code> as the <span class="math inline">\(x\)</span> range — the result is identical.</p>
+<p>To predict each instructor’s average directly, use <code>TREND</code> with a new <span class="math inline">\(x\)</span> row for each combination:</p>
+<pre class="excel"><code>=TREND(C2:C91, HSTACK(IF(A2:A91="Sam",1,0), IF(A2:A91="Ben",1,0)), {0,0})  → 197.03
+=TREND(C2:C91, HSTACK(IF(A2:A91="Sam",1,0), IF(A2:A91="Ben",1,0)), {1,0})  → 121.37
+=TREND(C2:C91, HSTACK(IF(A2:A91="Sam",1,0), IF(A2:A91="Ben",1,0)), {0,1})  → 224.93</code></pre>
+<p>You can confirm each group mean directly with <code>AVERAGEIF</code>:</p>
 <pre class="excel"><code>=AVERAGEIF(A2:A91, "Olivia", C2:C91)   → 197.03
 =AVERAGEIF(A2:A91, "Sam", C2:C91)      → 121.37
 =AVERAGEIF(A2:A91, "Ben", C2:C91)      → 224.93</code></pre>
@@ -639,44 +674,147 @@ details summary {
 </section>
 <section id="regression-in-excel" class="level2" data-number="7.5">
 <h2 data-number="7.5" class="anchored" data-anchor-id="regression-in-excel"><span class="header-section-number">7.5</span> Regression in Excel</h2>
-<p>Excel provides a straightforward way to estimate regression models using the <strong>Data Analysis ToolPak</strong>. If it is not already enabled, go to <code>File → Options → Add-ins → Analysis ToolPak → Go</code> and check the box.</p>
+<p>Excel estimates regressions through three worksheet functions. <code>LINEST</code> fits the model and reports every diagnostic we need; <code>TREND</code> produces predictions; and <code>HSTACK</code> assembles the independent variables into the single block that <code>LINEST</code> requires. All three work for simple <em>and</em> multiple regression, so one set of tools covers the whole chapter.</p>
 <p><a href="weight_exercise.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
-<p><strong>Simple Regression (Weight and Exercise):</strong></p>
-<ol type="1">
-<li>Go to <code>Data → Data Analysis → Regression</code></li>
-<li>Set the <strong>Input Y Range</strong> to the Weight column</li>
-<li>Set the <strong>Input X Range</strong> to the Exercise column</li>
-<li>Check <strong>Labels</strong> if your data includes headers</li>
-<li>Select an output location and click <code>OK</code></li>
-</ol>
-<p>Excel will produce a full regression output including the coefficients, <span class="math inline">\(R^2\)</span>, Adjusted <span class="math inline">\(R^2\)</span>, Standard Error, and Anova table — all in one step.</p>
-<p><strong>Reading the Excel Output:</strong></p>
+<section id="reading-the-linest-output" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="reading-the-linest-output">Reading the LINEST Output</h3>
+<p><code>LINEST</code> is an <strong>array function</strong>. Written with both optional arguments set to <code>TRUE</code>, it returns a block of <span class="math inline">\(5\)</span> rows by <span class="math inline">\(k+1\)</span> columns:</p>
+<pre class="excel"><code>=LINEST(y_range, x_range, TRUE, TRUE)</code></pre>
+<p>The third argument asks Excel to estimate an intercept; the fourth asks for the full diagnostics. In current versions of Excel the result <em>spills</em> automatically — type the formula in one cell and press <code>Enter</code>. The block is laid out as follows, for a model with <span class="math inline">\(k\)</span> independent variables:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 33%">
+<col style="width: 31%">
+<col style="width: 25%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: center;">Row</th>
+<th style="text-align: center;">Column 1</th>
+<th style="text-align: center;">Column 2</th>
+<th style="text-align: center;">Remaining columns</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><strong>1</strong></td>
+<td style="text-align: center;"><span class="math inline">\(\hat{\beta_k}\)</span> … <span class="math inline">\(\hat{\beta_1}\)</span>, then <span class="math inline">\(\hat{\beta_0}\)</span></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;">coefficients</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>2</strong></td>
+<td style="text-align: center;">standard error of each coefficient</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>3</strong></td>
+<td style="text-align: center;"><span class="math inline">\(R^2\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(s_e\)</span></td>
+<td style="text-align: center;"><code>#N/A</code></td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><strong>4</strong></td>
+<td style="text-align: center;"><span class="math inline">\(F\)</span> statistic</td>
+<td style="text-align: center;"><span class="math inline">\(df=n-k-1\)</span></td>
+<td style="text-align: center;"><code>#N/A</code></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;"><strong>5</strong></td>
+<td style="text-align: center;"><span class="math inline">\(SSR\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(SSE\)</span></td>
+<td style="text-align: center;"><code>#N/A</code></td>
+</tr>
+</tbody>
+</table>
+<p>Two details matter enormously in practice.</p>
+<p><strong>Row 1 runs backwards.</strong> The coefficients appear in reverse order of your <span class="math inline">\(x\)</span> columns — the <em>last</em> variable first and the intercept <em>last</em>. With one predictor the row is simply <span class="math inline">\(\{\hat{\beta}, \hat{\alpha}\}\)</span>; with two it is <span class="math inline">\(\{\hat{\beta_2}, \hat{\beta_1}, \hat{\beta_0}\}\)</span>. Misreading this is the most common <code>LINEST</code> error.</p>
+<p><strong>The <span class="math inline">\(x\)</span> range must be one contiguous block.</strong> <code>LINEST</code> will not accept scattered columns. When your independent variables are not side by side, <code>HSTACK</code> joins them into a single array:</p>
+<pre class="excel"><code>=LINEST(B2:B6, HSTACK(C2:C6, F2:F6), TRUE, TRUE)</code></pre>
+<p>To pull a single number out of the block instead of spilling all of it, wrap the call in <code>INDEX(array, row, column)</code>.</p>
+</section>
+<section id="simple-regression-weight-and-exercise" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="simple-regression-weight-and-exercise">Simple Regression (Weight and Exercise)</h3>
+<p>With <code>Weight</code> in column A and <code>Exercise</code> in column B:</p>
+<pre class="excel"><code>=LINEST(A2:A6, B2:B6, TRUE, TRUE)</code></pre>
+<p>Reading the block, and recalling that row 1 is reversed:</p>
 <ul>
-<li><strong>Intercept</strong> row → <span class="math inline">\(\hat{\alpha}\)</span></li>
-<li><strong>X Variable 1</strong> row → <span class="math inline">\(\hat{\beta}\)</span></li>
-<li><strong>R Square</strong> → <span class="math inline">\(R^2\)</span></li>
-<li><strong>Adjusted R Square</strong> → <span class="math inline">\(\bar{R}^2\)</span></li>
-<li><strong>Standard Error</strong> → <span class="math inline">\(s_e\)</span></li>
+<li><code>=INDEX(LINEST(A2:A6,B2:B6,TRUE,TRUE),1,1)</code> → <span class="math inline">\(\hat{\beta}=-0.153\)</span></li>
+<li><code>=INDEX(LINEST(A2:A6,B2:B6,TRUE,TRUE),1,2)</code> → <span class="math inline">\(\hat{\alpha}=171.00\)</span></li>
+<li><code>=INDEX(LINEST(A2:A6,B2:B6,TRUE,TRUE),3,1)</code> → <span class="math inline">\(R^2=0.70\)</span></li>
+<li><code>=INDEX(LINEST(A2:A6,B2:B6,TRUE,TRUE),3,2)</code> → <span class="math inline">\(s_e=1.59\)</span></li>
+<li><code>=INDEX(LINEST(A2:A6,B2:B6,TRUE,TRUE),5,1)</code> → <span class="math inline">\(SSR=17.63\)</span></li>
+<li><code>=INDEX(LINEST(A2:A6,B2:B6,TRUE,TRUE),5,2)</code> → <span class="math inline">\(SSE=7.57\)</span></li>
 </ul>
-<p><strong>Multiple Regression (Weight, Exercise, and Calories):</strong></p>
-<p>Follow the same steps but set the <strong>Input X Range</strong> to include both the Exercise and Calories columns. Excel handles multiple predictors automatically.</p>
-<p><strong>Making Predictions:</strong> Once you have the coefficients from the output, use them directly in a formula. For the Advertisement and Price example, if the intercept is in cell B17 and slope in B18:</p>
-<pre class="excel"><code>=B17 + B18 * 6</code></pre>
-<p>This returns the predicted price for an advertisement budget of <span class="math inline">\(6\)</span>.</p>
+<p>Since <span class="math inline">\(SST=SSR+SSE\)</span>, the total variation is <span class="math inline">\(17.63+7.57=25.2\)</span>, matching the value we computed by hand. (<code>=DEVSQ(A2:A6)</code> returns the same <span class="math inline">\(25.2\)</span> as a check.)</p>
+</section>
+<section id="multiple-regression-weight-exercise-and-calories" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="multiple-regression-weight-exercise-and-calories">Multiple Regression (Weight, Exercise, and Calories)</h3>
+<p>With <code>Calories</code> in column C, the two independent variables are adjacent, so <code>B2:C6</code> works directly. Using <code>HSTACK</code> makes the intent explicit and keeps the formula correct even if the columns are later moved apart:</p>
+<pre class="excel"><code>=LINEST(A2:A6, HSTACK(B2:B6, C2:C6), TRUE, TRUE)</code></pre>
+<p>The first row of the output is <span class="math inline">\(\{0.069,\ -0.025,\ 83.96\}\)</span> — reading <strong>right to left</strong>, that is an intercept of <span class="math inline">\(83.96\)</span>, a coefficient of <span class="math inline">\(-0.025\)</span> on Exercise, and <span class="math inline">\(0.069\)</span> on Calories, giving</p>
+<p><span class="math display">\[\hat{y_i}=83.96-0.025x+0.069z\]</span></p>
+<p>The remaining diagnostics come from the same block:</p>
+<ul>
+<li><code>=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),3,1)</code> → <span class="math inline">\(R^2=0.96\)</span></li>
+<li><code>=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),3,2)</code> → <span class="math inline">\(s_e=0.71\)</span></li>
+<li><code>=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),4,2)</code> → <span class="math inline">\(df=n-k-1=2\)</span></li>
+<li><code>=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),5,1)</code> → <span class="math inline">\(SSR=24.19\)</span></li>
+<li><code>=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),5,2)</code> → <span class="math inline">\(SSE=1.01\)</span></li>
+</ul>
+</section>
+<section id="building-the-anova-table" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="building-the-anova-table">Building the Anova Table</h3>
+<p><code>LINEST</code> reports the <em>total</em> <span class="math inline">\(SSR\)</span> for a model, not the contribution of each variable. To split <span class="math inline">\(SSR\)</span> by variable, run the models in sequence and take the difference:</p>
+<pre class="excel"><code>=INDEX(LINEST(A2:A6, B2:B6, TRUE, TRUE), 5, 1)                      → 17.63   (x alone)
+=INDEX(LINEST(A2:A6, HSTACK(B2:B6,C2:C6), TRUE, TRUE), 5, 1)        → 24.19   (x and z)</code></pre>
+<p>The difference, <span class="math inline">\(24.19-17.63=6.55\)</span>, is what Calories adds once Exercise is already in the model. The residual <span class="math inline">\(SSE=1.01\)</span> comes from row 5, column 2 of the larger model. Those three numbers are exactly the Anova table above.</p>
+</section>
+<section id="adjusted-r2-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="adjusted-r2-1">Adjusted <span class="math inline">\(R^2\)</span></h3>
+<p><code>LINEST</code> does not report <span class="math inline">\(\bar{R}^2\)</span>, but every ingredient is in the block. With <span class="math inline">\(R^2\)</span> in row 3 column 1 and <span class="math inline">\(df=n-k-1\)</span> in row 4 column 2:</p>
+<pre class="excel"><code>=1-(1-INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),3,1))
+     *(COUNT(A2:A6)-1)/INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),4,2)</code></pre>
+<p>which returns <span class="math inline">\(0.92\)</span>, matching the hand calculation.</p>
+</section>
+<section id="making-predictions" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="making-predictions">Making Predictions</h3>
+<p><code>TREND</code> applies the fitted model to new values of the independent variables. It accepts the same <span class="math inline">\(x\)</span> block as <code>LINEST</code>, so it works for one predictor or many:</p>
+<pre class="excel"><code>=TREND(y_range, x_range, new_x_range, TRUE)</code></pre>
+<p>For the Advertisement and Price example, with a budget of <span class="math inline">\(6\)</span>:</p>
+<pre class="excel"><code>=TREND(B2:B5, A2:A5, 6)   → 14.7</code></pre>
+<p>For the Weight model, predicting a person who exercises <span class="math inline">\(35\)</span> minutes and eats <span class="math inline">\(1210\)</span> calories:</p>
+<pre class="excel"><code>=TREND(A2:A6, HSTACK(B2:B6, C2:C6), HSTACK(35, 1210))</code></pre>
+<p>The <code>new_x</code> block must have the same number of columns, in the same order, as the <span class="math inline">\(x\)</span> block used to fit the model. Omitting <code>new_x</code> returns the fitted value for every observation in the original data.</p>
+</section>
 </section>
 <section id="excel-function-summary" class="level2" data-number="7.6">
 <h2 data-number="7.6" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">7.6</span> Excel Function Summary</h2>
-<p>Below is a list of the Excel functions and tools used in this section:</p>
+<p>Below is a list of the Excel functions used in this section:</p>
 <ul>
-<li><p><strong>Data Analysis ToolPak → Regression</strong> is the primary tool for estimating regression models in Excel. It returns coefficients, <span class="math inline">\(R^2\)</span>, adjusted <span class="math inline">\(R^2\)</span>, standard error, and the Anova table in a single output.</p></li>
-<li><p><code>=SLOPE(y_range, x_range)</code> calculates the slope <span class="math inline">\(\hat{\beta}\)</span> of the simple regression line directly.</p></li>
-<li><p><code>=INTERCEPT(y_range, x_range)</code> calculates the intercept <span class="math inline">\(\hat{\alpha}\)</span> of the simple regression line directly.</p></li>
-<li><p><code>=FORECAST.LINEAR(x, y_range, x_range)</code> returns the predicted value of <span class="math inline">\(y\)</span> for a given value of <span class="math inline">\(x\)</span> using simple linear regression.</p></li>
-<li><p><code>=RSQ(y_range, x_range)</code> returns the <span class="math inline">\(R^2\)</span> for a simple regression.</p></li>
-<li><p><code>=STEYX(y_range, x_range)</code> returns the residual standard error <span class="math inline">\(s_e\)</span> for a simple regression.</p></li>
+<li><p><code>=LINEST(y_range, x_range, TRUE, TRUE)</code> estimates the regression and returns a <span class="math inline">\(5 \times (k+1)\)</span> block containing the coefficients, their standard errors, <span class="math inline">\(R^2\)</span>, <span class="math inline">\(s_e\)</span>, the <span class="math inline">\(F\)</span> statistic, the degrees of freedom, <span class="math inline">\(SSR\)</span> and <span class="math inline">\(SSE\)</span>. Works for any number of independent variables. <strong>Row 1 is in reverse order</strong>, ending with the intercept.</p></li>
+<li><p><code>=INDEX(LINEST(...), row, column)</code> extracts a single value from the <code>LINEST</code> block. Common picks: <code>(1,1)</code> the slope of the last <span class="math inline">\(x\)</span>, <code>(3,1)</code> <span class="math inline">\(R^2\)</span>, <code>(3,2)</code> <span class="math inline">\(s_e\)</span>, <code>(4,2)</code> <span class="math inline">\(df\)</span>, <code>(5,1)</code> <span class="math inline">\(SSR\)</span>, <code>(5,2)</code> <span class="math inline">\(SSE\)</span>.</p></li>
+<li><p><code>=HSTACK(range1, range2, ...)</code> joins ranges side by side into a single array, so that non-adjacent independent variables can be passed to <code>LINEST</code> or <code>TREND</code>. It also lets dummy variables be built inline without helper columns.</p></li>
+<li><p><code>=TREND(y_range, x_range, new_x_range, TRUE)</code> returns predicted values of <span class="math inline">\(y\)</span>. Handles simple and multiple regression; <code>new_x_range</code> must match the column layout of <code>x_range</code>.</p></li>
 <li><p><code>=IF(cell="Category", 1, 0)</code> builds a dummy variable, coding each row <span class="math inline">\(1\)</span> when it belongs to a category and <span class="math inline">\(0\)</span> otherwise.</p></li>
 <li><p><code>=AVERAGEIF(range, criteria, average_range)</code> returns the mean of a numerical column for the rows matching a category — a quick way to verify the group means produced by a dummy-variable regression.</p></li>
+<li><p><code>=DEVSQ(y_range)</code> returns <span class="math inline">\(SST\)</span> directly, as a check on <span class="math inline">\(SSR+SSE\)</span>.</p></li>
 </ul>
+<div class="callout callout-style-default callout-note callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>A note on versions.</strong> <code>HSTACK</code> requires Microsoft 365 or Excel 2024. In earlier versions, place the independent variables in adjacent columns and pass the block directly to <code>LINEST</code> and <code>TREND</code> — every other formula in this chapter is unchanged. <code>LINEST</code> and <code>TREND</code> are array formulas: in versions before dynamic arrays, select the full output range first and confirm with <code>Ctrl+Shift+Enter</code>.</p>
+</div>
+</div>
 </section>
 <section id="chapter-summary-cheat-sheet" class="level2" data-number="7.7">
 <h2 data-number="7.7" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">7.7</span> Chapter Summary Cheat Sheet</h2>
@@ -798,10 +936,11 @@ Answer
 </table>
 <p><span class="math display">\[\hat{\beta}=\frac{\sum(x_i-\bar{x})(y_i-\bar{y})}{\sum(x_i-\bar{x})^2}=\frac{59.6}{54.8}=1.09\]</span></p>
 <p><span class="math display">\[\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}=16.6-1.09(19.8)=-4.93\]</span></p>
-<p><em>To verify in Excel, enter x in column A and y in column B and use:</em></p>
+<p><em>To verify in Excel, enter x in column A and y in column B. A single</em> <code>LINEST</code> <em>returns both coefficients, with the intercept last:</em></p>
+<pre class="excel"><code>=LINEST(B2:B6, A2:A6, TRUE, TRUE)</code></pre>
 <ul>
-<li><code>=SLOPE(B2:B6, A2:A6)</code> → <span class="math inline">\(1.09\)</span></li>
-<li><code>=INTERCEPT(B2:B6, A2:A6)</code> → <span class="math inline">\(-4.93\)</span></li>
+<li><code>=INDEX(LINEST(B2:B6,A2:A6,TRUE,TRUE),1,1)</code> → <span class="math inline">\(\hat{\beta}=1.09\)</span></li>
+<li><code>=INDEX(LINEST(B2:B6,A2:A6,TRUE,TRUE),1,2)</code> → <span class="math inline">\(\hat{\alpha}=-4.93\)</span></li>
 </ul>
 </div>
 </details>
@@ -814,13 +953,14 @@ Answer
 </summary>
 <div style="padding-left: 1.5em;">
 <p><em>SST is</em> <span class="math inline">\(69.2\)</span>, SSR is <span class="math inline">\(64.82\)</span> and SSE is <span class="math inline">\(4.38\)</span> (note that <span class="math inline">\(SSR+SSE=SST\)</span>). The <span class="math inline">\(R^2\)</span> is <span class="math inline">\(\frac{SSR}{SST}=0.94\)</span> and the Standard Error estimate is <span class="math inline">\(1.21\)</span>. Both indicate a great fit of the regression line to the data.</p>
-<p><em>In Excel, with x in column A and y in column B:</em></p>
+<p><em>All four numbers come out of the same</em> <code>LINEST</code> <em>block, so spill it once with</em> <code>=LINEST(B2:B6, A2:A6, TRUE, TRUE)</code> <em>and read off:</em></p>
 <ul>
-<li><code>=DEVSQ(B2:B6)</code> → <span class="math inline">\(SST = 69.2\)</span></li>
-<li><code>=RSQ(B2:B6, A2:A6)</code> → <span class="math inline">\(R^2 = 0.94\)</span></li>
-<li><code>=STEYX(B2:B6, A2:A6)</code> → <span class="math inline">\(s_e = 1.21\)</span></li>
+<li><code>=INDEX(LINEST(B2:B6,A2:A6,TRUE,TRUE),5,1)</code> → <span class="math inline">\(SSR = 64.82\)</span></li>
+<li><code>=INDEX(LINEST(B2:B6,A2:A6,TRUE,TRUE),5,2)</code> → <span class="math inline">\(SSE = 4.38\)</span></li>
+<li><code>=INDEX(LINEST(B2:B6,A2:A6,TRUE,TRUE),3,1)</code> → <span class="math inline">\(R^2 = 0.94\)</span></li>
+<li><code>=INDEX(LINEST(B2:B6,A2:A6,TRUE,TRUE),3,2)</code> → <span class="math inline">\(s_e = 1.21\)</span></li>
 </ul>
-<p><em>Then</em> <span class="math inline">\(SSR = R^2 \times SST = 64.82\)</span> and <span class="math inline">\(SSE = SST - SSR = 4.38\)</span>. You can also obtain all of these at once from <code>Data → Data Analysis → Regression</code>, which reports the ANOVA table (SSR, SSE, SST), <span class="math inline">\(R^2\)</span>, and the Standard Error in a single output.</p>
+<p><em>Then</em> <span class="math inline">\(SST = SSR + SSE = 69.2\)</span>, which <code>=DEVSQ(B2:B6)</code> confirms.</p>
 </div>
 </details>
 <ol start="3" type="1">
@@ -834,7 +974,7 @@ Answer
 <p><em>If</em> <span class="math inline">\(x=32\)</span> then <span class="math inline">\(\hat{y}=-4.93+1.09(32)=29.87\)</span>. The regression is a good fit, so we can feel good about our prediction. However, we would be concerned about the small sample size of the data.</p>
 <p><em>In Excel:</em></p>
 <ul>
-<li><code>=FORECAST.LINEAR(32, B2:B6, A2:A6)</code> → <span class="math inline">\(29.87\)</span></li>
+<li><code>=TREND(B2:B6, A2:A6, 32)</code> → <span class="math inline">\(29.87\)</span></li>
 </ul>
 </div>
 </details>
@@ -854,11 +994,11 @@ Answer
 <div style="padding-left: 1.5em;">
 <p><em>An extra year of education increases the annual salary by about</em> <span class="math inline">\(\$5,300\)</span> (the slope). A person with no education would be expected to earn about <span class="math inline">\(\$17,258\)</span> (the intercept).</p>
 <p><em>In Excel, assuming <code>Salary</code> is in column B and <code>Education</code> is in column C:</em></p>
+<pre class="excel"><code>=LINEST(B2:B101, C2:C101, TRUE, TRUE)</code></pre>
 <ul>
-<li><code>=SLOPE(B2:B101, C2:C101)</code> → <span class="math inline">\(5.30\)</span></li>
-<li><code>=INTERCEPT(B2:B101, C2:C101)</code> → <span class="math inline">\(17.26\)</span></li>
+<li><code>=INDEX(LINEST(B2:B101,C2:C101,TRUE,TRUE),1,1)</code> → <span class="math inline">\(5.30\)</span></li>
+<li><code>=INDEX(LINEST(B2:B101,C2:C101,TRUE,TRUE),1,2)</code> → <span class="math inline">\(17.26\)</span></li>
 </ul>
-<p><em>You can also use <code>Data → Data Analysis → Regression</code> with <code>Salary</code> as the Input Y Range and <code>Education</code> as the Input X Range.</em></p>
 </div>
 </details>
 <ol start="2" type="1">
@@ -872,9 +1012,9 @@ Answer
 <p><em>The</em> <span class="math inline">\(R^2\)</span> is <span class="math inline">\(0.67\)</span> and the standard error is about <span class="math inline">\(21\)</span>. The line is a moderately good fit. A person with <span class="math inline">\(16\)</span> years of education is predicted to earn about <span class="math inline">\(\$102,000\)</span>.</p>
 <p><em>In Excel:</em></p>
 <ul>
-<li><code>=RSQ(B2:B101, C2:C101)</code> → <span class="math inline">\(0.67\)</span></li>
-<li><code>=STEYX(B2:B101, C2:C101)</code> → <span class="math inline">\(21\)</span></li>
-<li><code>=FORECAST.LINEAR(16, B2:B101, C2:C101)</code> → <span class="math inline">\(102.08\)</span></li>
+<li><code>=INDEX(LINEST(B2:B101,C2:C101,TRUE,TRUE),3,1)</code> → <span class="math inline">\(R^2 = 0.67\)</span></li>
+<li><code>=INDEX(LINEST(B2:B101,C2:C101,TRUE,TRUE),3,2)</code> → <span class="math inline">\(s_e = 21\)</span></li>
+<li><code>=TREND(B2:B101, C2:C101, 16)</code> → <span class="math inline">\(102.08\)</span></li>
 </ul>
 </div>
 </details>
@@ -898,6 +1038,7 @@ Answer
 <ul>
 <li><code>=AVERAGE(C2:C81)</code> → <span class="math inline">\(0.3625\)</span></li>
 </ul>
+<p><em>You can also skip the helper column entirely — the same proportion is</em> <code>=AVERAGE(IF(A2:A81="Yes",1,0))</code>.</p>
 </div>
 </details>
 <ol start="2" type="1">
@@ -910,9 +1051,15 @@ Answer
 <div style="padding-left: 1.5em;">
 <p><em>The intercept (</em><span class="math inline">\(\approx 6473\)</span>) is the average food expenditure of individuals without homes. The slope (<span class="math inline">\(\approx -3418\)</span>) is the difference in food expenditure between individuals who own a home and those who do not — home owners spend about <span class="math inline">\(\$3,418\)</span> less on food than non-owners.</p>
 <p><em>In Excel, with <code>Food</code> in column B and the dummy in column C:</em></p>
+<pre class="excel"><code>=LINEST(B2:B81, C2:C81, TRUE, TRUE)</code></pre>
 <ul>
-<li><code>=INTERCEPT(B2:B81, C2:C81)</code> → <span class="math inline">\(6473\)</span></li>
-<li><code>=SLOPE(B2:B81, C2:C81)</code> → <span class="math inline">\(-3418\)</span></li>
+<li><code>=INDEX(LINEST(B2:B81,C2:C81,TRUE,TRUE),1,2)</code> → intercept <span class="math inline">\(= 6473\)</span></li>
+<li><code>=INDEX(LINEST(B2:B81,C2:C81,TRUE,TRUE),1,1)</code> → slope <span class="math inline">\(= -3418\)</span></li>
+</ul>
+<p><em>Because a single dummy just splits the sample in two, the two predictions are the two group means:</em></p>
+<ul>
+<li><code>=TREND(B2:B81, C2:C81, 0)</code> → <span class="math inline">\(6473\)</span>, the same as <code>=AVERAGEIF(A2:A81,"No",B2:B81)</code></li>
+<li><code>=TREND(B2:B81, C2:C81, 1)</code> → <span class="math inline">\(3055\)</span>, the same as <code>=AVERAGEIF(A2:A81,"Yes",B2:B81)</code></li>
 </ul>
 </div>
 </details>
@@ -927,8 +1074,8 @@ Answer
 <p><em>The regression line is</em> <span class="math inline">\(\widehat{dummy}=1.432-0.000204\,Food\)</span>. This is a linear probability model: it predicts the likelihood of owning a home from food expenditure. The slope tells us how that likelihood changes as food expenditure increases by one dollar — in general, the likelihood of owning a home decreases as food expenditure increases. The scatter plot shows that most home owners have food expenditures below <span class="math inline">\(\$6,000\)</span>, while non-owners are mostly above it.</p>
 <p><em>In Excel, with the dummy in column C and <code>Food</code> in column B:</em></p>
 <ul>
-<li><code>=INTERCEPT(C2:C81, B2:B81)</code> → <span class="math inline">\(1.432\)</span></li>
-<li><code>=SLOPE(C2:C81, B2:B81)</code> → <span class="math inline">\(-0.000204\)</span></li>
+<li><code>=INDEX(LINEST(C2:C81,B2:B81,TRUE,TRUE),1,2)</code> → intercept <span class="math inline">\(= 1.432\)</span></li>
+<li><code>=INDEX(LINEST(C2:C81,B2:B81,TRUE,TRUE),1,1)</code> → slope <span class="math inline">\(= -0.000204\)</span></li>
 </ul>
 <p><em>For the scatter plot, select <code>Food</code> and the dummy variable, go to <code>Insert → Charts → Scatter</code>, and add a linear trend line by right-clicking a point and choosing <code>Add Trendline → Linear</code>.</em></p>
 </div>
@@ -949,7 +1096,7 @@ Answer
 <p><em>With an</em> <span class="math inline">\(R^2=0.81\)</span>, the model fits the data very well.</p>
 <p><em>In Excel, first isolate Japan: select the data, go to <code>Data → Filter</code>, and filter <code>Country.Name</code> to <code>Japan</code>. Copy the</em> <span class="math inline">\(62\)</span> Japan rows to a new sheet. Assuming <code>Year</code> is in column C and <code>Population</code> is in column D:</p>
 <ul>
-<li><code>=RSQ(D2:D63, C2:C63)</code> → <span class="math inline">\(0.81\)</span></li>
+<li><code>=INDEX(LINEST(D2:D63,C2:C63,TRUE,TRUE),3,1)</code> → <span class="math inline">\(R^2 = 0.81\)</span></li>
 </ul>
 </div>
 </details>
@@ -964,7 +1111,7 @@ Answer
 <p><em>The prediction for</em> <span class="math inline">\(2030\)</span> is about <span class="math inline">\(140\)</span> million people (<span class="math inline">\(140{,}268{,}585\)</span>).</p>
 <p><em>In Excel:</em></p>
 <ul>
-<li><code>=FORECAST.LINEAR(2030, D2:D63, C2:C63)</code> → <span class="math inline">\(140{,}268{,}585\)</span></li>
+<li><code>=TREND(D2:D63, C2:C63, 2030)</code> → <span class="math inline">\(140{,}268{,}585\)</span></li>
 </ul>
 </div>
 </details>
