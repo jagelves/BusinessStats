@@ -277,3 +277,9 @@ div.callout-formula > :last-child, div.callout-example > :last-child { margin-bo
 .bs-crosstab table tbody tr:last-child td:last-child { background: var(--bs-part); color: var(--bs-paper); border-radius: 0 0 10px 0; }
 .bs-crosstab table thead th:last-child { border-radius: 10px 10px 0 0; }
 .bs-crosstab caption, .bs-crosstab .table-caption { caption-side: bottom; text-align: center; color: var(--bs-ink-3); font-size: .85rem; padding-top: .75rem; }
+
+// ---------- Table captions + math in headers
+main table caption, main .table-caption {
+  caption-side: bottom; text-align: center; color: var(--bs-ink-3) !important; font-size: .85rem; padding-top: .75rem;
+}
+main table thead th mjx-container, main table thead th .math { text-transform: none !important; letter-spacing: 0; }

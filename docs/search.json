@@ -433,7 +433,7 @@
     "href": "ProbabilityII.html#expected-value-and-variance",
     "title": "9  Probability II",
     "section": "9.2 Expected Value and Variance",
-    "text": "9.2 Expected Value and Variance\nWhen summarizing a random variable, we are mostly interested in the variable’s central tendency (Expected Value) and dispersion (Variance).\nThe expected value (mean) is a measure of central location. For a discrete random variable it is given by:\n\nTHE EXPECTED VALUE \\[E(x)=\\mu=\\sum xf(x)\\] where \\(f(x)\\) is the probability mass function. For a continuous random variable it is \\(E(x)= \\int_{-\\infty}^{\\infty} x f(x)\\, dx\\), where \\(f(x)\\) is the probability density function.\n\nThe variance summarizes the deviation of the values of the random variable from the mean. It is calculated by:\n\nTHE VARIANCE \\[var(x)=E[(x-E(x))^2]=E(x^2)-[E(x)]^2\\]\n\nNote that this formula can be used for both discrete and continuous random variables.\n\nExample: Let’s consider an incentive pay scheme for a company. The table below summarizes the scheme:\n\n\n\n\n\n\n\n\n\nIf a worker receives a “Superior” rating, they earn a $10,000 bonus. Based on years of employee data, the company has determined that a “Superior” rating occurs 15% of the time. It also lists all of the possible ratings of its employees and their likelihood on the table.\nTo summarize this distribution we can calculate the mean bonus paid. Using the expected value formula we find that the company pays 4,200 dollars on average in compensation.\n\\[E(x)=(10 \\times 0.15) + (6 \\times 0.25) + (3 \\times 0.4) + (0 \\times 0.2)=4.2\\] The variability of the compensation is given by: \\[var(x)=(100 \\times 0.15) + (36 \\times 0.25) + (9 \\times 0.4) + (0 \\times 0.2)-(4.2)^2=9.96\\] The expected value and the variance has helped us summarize the results of the company’s incentive scheme. Mainly, the company pays on average an incentive of 4,200 dollars give or take 3,156 dollars.",
+    "text": "9.2 Expected Value and Variance\nWhen summarizing a random variable, we are mostly interested in the variable’s central tendency (Expected Value) and dispersion (Variance).\nThe expected value (mean) is a measure of central location. For a discrete random variable it is given by:\n\nTHE EXPECTED VALUE \\[E(x)=\\mu=\\sum xf(x)\\] where \\(f(x)\\) is the probability mass function. For a continuous random variable it is \\(E(x)= \\int_{-\\infty}^{\\infty} x f(x)\\, dx\\), where \\(f(x)\\) is the probability density function.\n\nThe variance summarizes the deviation of the values of the random variable from the mean. It is calculated by:\n\nTHE VARIANCE \\[var(x)=E[(x-E(x))^2]=E(x^2)-[E(x)]^2\\]\n\nNote that this formula can be used for both discrete and continuous random variables.\n\nExample: Let’s consider an incentive pay scheme for a company. The table below summarizes the scheme:\n\nIncentive pay scheme\n\n\nBonus, \\(x\\) (in $1,000)\nPerformance type\nProbability, \\(f(x)\\)\n\n\n\n\n10\nSuperior\n0.15\n\n\n6\nGood\n0.25\n\n\n3\nFair\n0.40\n\n\n0\nPoor\n0.20\n\n\n\nIf a worker receives a “Superior” rating, they earn a $10,000 bonus. Based on years of employee data, the company has determined that a “Superior” rating occurs 15% of the time. It also lists all of the possible ratings of its employees and their likelihood on the table.\nTo summarize this distribution we can calculate the mean bonus paid. Using the expected value formula we find that the company pays 4,200 dollars on average in compensation.\n\\[E(x)=(10 \\times 0.15) + (6 \\times 0.25) + (3 \\times 0.4) + (0 \\times 0.2)=4.2\\] The variability of the compensation is given by: \\[var(x)=(100 \\times 0.15) + (36 \\times 0.25) + (9 \\times 0.4) + (0 \\times 0.2)-(4.2)^2=9.96\\] The expected value and the variance has helped us summarize the results of the company’s incentive scheme. Mainly, the company pays on average an incentive of 4,200 dollars give or take 3,156 dollars.",
     "crumbs": [
       "Uncertainty",
       "<span class='chapter-number'>9</span>  <span class='chapter-title'>Probability II</span>"
@@ -1757,6 +1757,17 @@
     "crumbs": [
       "Relate",
       "<span class='chapter-number'>7</span>  <span class='chapter-title'>Regression II</span>"
+    ]
+  },
+  {
+    "objectID": "ProbabilityII.html#random-variables",
+    "href": "ProbabilityII.html#random-variables",
+    "title": "9  Probability II",
+    "section": "",
+    "text": "Experiments and their random variables\n\n\n\n\n\n\n\nExperiment\nRandom variable (\\(x\\))\nPossible values\n\n\n\n\nContact five customers\nNumber of customers who place an order\n0, 1, 2, 3, 4, 5\n\n\nOperate a restaurant for one day\nNumber of customers\n0, 1, 2, 3, …\n\n\nSell a car\nResult of sale\n0 = no sale; 1 = sale",
+    "crumbs": [
+      "Uncertainty",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Probability II</span>"
     ]
   }
 ]
