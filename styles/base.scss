@@ -260,3 +260,20 @@ body:has(.bs-hero) .bs-meta { display: none !important; }
 // ---------- Small polish
 details > ul, details > ol { padding-left: 2.25rem; }
 div.callout-formula > :last-child, div.callout-example > :last-child { margin-bottom: 0; }
+
+// ---------- Contingency / joint probability tables
+.bs-crosstab { margin: 1.75rem 0; }
+.bs-crosstab table { width: auto !important; min-width: min(100%, 420px); margin: 0 auto; border-collapse: separate; border-spacing: 0; }
+.bs-crosstab table thead th {
+  text-transform: none; letter-spacing: 0; font-size: .95rem; color: var(--bs-ink);
+  border-bottom: 1px solid var(--bs-ink) !important; padding: .55rem 1.4rem;
+}
+.bs-crosstab table td { padding: .6rem 1.4rem; font-size: 1rem; text-align: center; border-bottom: 1px solid var(--bs-line) !important; }
+.bs-crosstab table td:first-child { font-weight: 600; text-align: left; border-right: 1px solid var(--bs-line); }
+.bs-crosstab table th:first-child { border-right: 1px solid var(--bs-line); }
+.bs-crosstab table td:last-child, .bs-crosstab table th:last-child,
+.bs-crosstab table tbody tr:last-child td { background: var(--bs-part-soft); font-weight: 600; }
+.bs-crosstab table tbody tr:last-child td { border-top: 1px solid var(--bs-ink) !important; border-bottom: none !important; }
+.bs-crosstab table tbody tr:last-child td:last-child { background: var(--bs-part); color: var(--bs-paper); border-radius: 0 0 10px 0; }
+.bs-crosstab table thead th:last-child { border-radius: 10px 10px 0 0; }
+.bs-crosstab caption, .bs-crosstab .table-caption { caption-side: bottom; text-align: center; color: var(--bs-ink-3); font-size: .85rem; padding-top: .75rem; }

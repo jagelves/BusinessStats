@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-ebc9bf21172222eecf4329b9f87ba86d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-49fd6e24b7b0e91a63863389575bd35b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-600bcc64d222a202d65a30c9b09e4c03.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
@@ -552,24 +552,72 @@ details summary {
 <h2 data-number="8.6" class="anchored" data-anchor-id="contingency-tables"><span class="header-section-number">8.6</span> Contingency Tables</h2>
 <p>A <strong>contingency table</strong> (or cross-tabulation) summarizes the relationship between two or events (or variables). It is particularly helpful when analyzing frequencies of events and there relationship to other events.</p>
 <p>The contingency table below shows the frequency of event A and B occurring/not occurring.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/cont.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
+<div class="bs-crosstab">
+<table class="caption-top table">
+<caption>Contingency table: frequencies of A and B (n = 100)</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(B\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(B^c\)</span></th>
+<th style="text-align: center;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(A\)</span></td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">34</td>
+<td style="text-align: center;">60</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(A^c\)</span></td>
+<td style="text-align: center;">14</td>
+<td style="text-align: center;">26</td>
+<td style="text-align: center;">40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;">40</td>
+<td style="text-align: center;">60</td>
+<td style="text-align: center;">100</td>
+</tr>
+</tbody>
+</table>
 </div>
 <p>We can see that event A occurs 60 times and that event B occurs 40 times. Most importantly, we can also see how the two events are not mutually exclusive, since A and B occur 26 times. The table can be easily translated to probabilities, by divinding each entry by the total amount of outcomes (i.e., 100). We call the table that includes probabilities the <strong>joint probability table</strong>.</p>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/joint.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:75.0%"></p>
-</figure>
-</div>
-</div>
+<div class="bs-crosstab">
+<table class="caption-top table">
+<caption>Joint probability table: joint probabilities inside, marginal probabilities in the Total row and column</caption>
+<thead>
+<tr class="header">
+<th style="text-align: center;"></th>
+<th style="text-align: center;"><span class="math inline">\(B\)</span></th>
+<th style="text-align: center;"><span class="math inline">\(B^c\)</span></th>
+<th style="text-align: center;">Total</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;"><span class="math inline">\(A\)</span></td>
+<td style="text-align: center;">0.26</td>
+<td style="text-align: center;">0.34</td>
+<td style="text-align: center;">0.60</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;"><span class="math inline">\(A^c\)</span></td>
+<td style="text-align: center;">0.14</td>
+<td style="text-align: center;">0.26</td>
+<td style="text-align: center;">0.40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;">0.40</td>
+<td style="text-align: center;">0.60</td>
+<td style="text-align: center;">1</td>
+</tr>
+</tbody>
+</table>
 </div>
 <p>In the middle of the table we have the joint probabilities or intersections of events (i.e., <span class="math inline">\(A \cap B\)</span>, <span class="math inline">\(A \cap B^c\)</span>, etc.). The values in the totals columns or rows are the probabilities of each event happening (i.e., <span class="math inline">\(P(A)\)</span>, <span class="math inline">\(P(B^c)\)</span>, etc.). We call these probabilities <strong>marginal probabilities</strong> since they reside at the margin of the table.</p>
 </section>

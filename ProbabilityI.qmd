@@ -222,15 +222,27 @@ A **contingency table** (or cross-tabulation) summarizes the relationship betwee
 
 The contingency table below shows the frequency of event A and B occurring/not occurring.
 
-```{r echo=FALSE, out.width="75%", fig.align='center'}
-knitr::include_graphics("images/cont.png")
-```
+::: bs-crosstab
+|       | $B$ | $B^c$ | Total |
+|:-----:|:---:|:-----:|:-----:|
+|  $A$  | 26  |  34   |  60   |
+| $A^c$ | 14  |  26   |  40   |
+| Total | 40  |  60   |  100  |
+
+: Contingency table: frequencies of A and B (n = 100)
+:::
 
 We can see that event A occurs 60 times and that event B occurs 40 times. Most importantly, we can also see how the two events are not mutually exclusive, since A and B occur 26 times. The table can be easily translated to probabilities, by divinding each entry by the total amount of outcomes (i.e., 100). We call the table that includes probabilities the **joint probability table**.
 
-```{r echo=FALSE, out.width="75%", fig.align='center'}
-knitr::include_graphics("images/joint.png")
-```
+::: bs-crosstab
+|       | $B$  | $B^c$ | Total |
+|:-----:|:----:|:-----:|:-----:|
+|  $A$  | 0.26 | 0.34  | 0.60  |
+| $A^c$ | 0.14 | 0.26  | 0.40  |
+| Total | 0.40 | 0.60  |   1   |
+
+: Joint probability table: joint probabilities inside, marginal probabilities in the Total row and column
+:::
 
 In the middle of the table we have the joint probabilities or intersections of events (i.e., $A \cap B$, $A \cap B^c$, etc.). The values in the totals columns or rows are the probabilities of each event happening (i.e., $P(A)$, $P(B^c)$, etc.). We call these probabilities **marginal probabilities** since they reside at the margin of the table.
 
