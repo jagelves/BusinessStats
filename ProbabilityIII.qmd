@@ -60,6 +60,10 @@ The **standard normal** has a mean of $0$ and a standard deviation of $1$. Other
 **Example:** Dr Tires is planning on offering a mileage guarantee on each set of tires they sell. They are considering a 40,000 mile guarantee. Given that the mean tire mileage is 36,500 miles with a standard deviation of 5,000 miles, we can estimate that the probability that a tire lasts more than 40,000 miles is 24.2%. In Excel, use `=1 - NORM.DIST(40000, 36500, 5000, TRUE)`, which returns $0.242$.
 :::
 
+::: {.content-visible when-format="html"}
+{{< include widgets/_normal.qmd >}}
+:::
+
 ## Exponential Distribution
 
 The **exponential distribution** is useful in computing probabilities for the time it takes to complete a task. It describes the time between events in a Poisson process.

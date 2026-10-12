@@ -1,0 +1,60 @@
+::: {.bs-widget}
+::: {.bs-widget-head}
+[Try it]{.bs-widget-tag} [Correlation explorer]{.bs-widget-title}
+:::
+[Drag the slider to set how strongly ad spend and sales move together. Then add an outlier and see how a single point can change $r$ and $R^2$.]{.bs-widget-sub}
+
+```{ojs}
+//| echo: false
+viewof rTarget = Inputs.range([-1, 1], {value: 0.7, step: 0.05, label: "Target correlation"})
+viewof rN = Inputs.range([10, 200], {value: 50, step: 5, label: "Number of stores"})
+viewof rOut = Inputs.toggle({label: "Add an outlier", value: false})
+viewof rGo = Inputs.button("New sample")
+```
+
+```{ojs}
+//| echo: false
+rBase = {
+  rGo;
+  const g = d3.randomNormal.source(d3.randomLcg(Math.random()))(0, 1);
+  return d3.range(rN).map(() => [g(), g()]);
+}
+rPts = {
+  const pts = rBase.map(([z1, z2]) => {
+    const zy = rTarget * z1 + Math.sqrt(Math.max(0, 1 - rTarget**2)) * z2;
+    return {x: 50 + 15 * z1, y: 200 + 40 * zy, out: false};
+  });
+  if (rOut) pts.push({x: 105, y: rTarget >= 0 ? 90 : 330, out: true});
+  return pts;
+}
+rStats = {
+  const n = rPts.length, mx = d3.mean(rPts, d => d.x), my = d3.mean(rPts, d => d.y);
+  const sxy = d3.sum(rPts, d => (d.x - mx) * (d.y - my)) / (n - 1);
+  const sx = d3.deviation(rPts, d => d.x), sy = d3.deviation(rPts, d => d.y);
+  const r = sxy / (sx * sy), b1 = sxy / (sx * sx), b0 = my - b1 * mx;
+  return {sxy, r, r2: r * r, b0, b1};
+}
+Plot.plot({
+  height: 300, marginLeft: 44, marginBottom: 40,
+  style: {fontFamily: "Inter, sans-serif", fontSize: "12px", background: "transparent", color: "var(--bs-ink-2)"},
+  x: {label: "Ad spend ($000s) →", domain: [0, 115]},
+  y: {label: "↑ Sales ($000s)", domain: [40, 360], grid: true},
+  marks: [
+    Plot.dot(rPts.filter(d => !d.out), {x: "x", y: "y", r: 3.5, fill: "var(--bs-part)", fillOpacity: 0.65}),
+    Plot.dot(rPts.filter(d => d.out), {x: "x", y: "y", r: 7, stroke: "var(--bs-plot-2)", strokeWidth: 2.5}),
+    Plot.line([[0, rStats.b0], [115, rStats.b0 + 115 * rStats.b1]], {stroke: "var(--bs-ink)", strokeWidth: 1.5})
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+html`<div class="bs-stats">
+  <div class="bs-stat"><div class="k">Covariance s<sub>xy</sub></div><div class="v">${rStats.sxy.toFixed(1)}</div></div>
+  <div class="bs-stat hl"><div class="k">Correlation r</div><div class="v">${rStats.r.toFixed(2)}</div></div>
+  <div class="bs-stat"><div class="k">R²</div><div class="v">${(rStats.r2*100).toFixed(0)}%</div></div>
+  <div class="bs-stat"><div class="k">Strength</div><div class="v" style="font-size:1.05rem;padding-top:.35rem">${Math.abs(rStats.r) >= 0.7 ? "Strong" : Math.abs(rStats.r) >= 0.3 ? "Moderate" : "Weak"} ${rStats.r >= 0 ? "direct" : "inverse"}</div></div>
+</div>
+<div class="bs-excel"><span class="lbl">Excel</span><span>=COVARIANCE.S(A2:A${rPts.length+1}, B2:B${rPts.length+1})</span><span>=CORREL(A2:A${rPts.length+1}, B2:B${rPts.length+1})</span><span>=CORREL(A2:A${rPts.length+1}, B2:B${rPts.length+1})^2</span></div>`
+```
+:::

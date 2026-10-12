@@ -1,0 +1,38 @@
+/*-- scss:defaults --*/
+$web-font-path: false;
+$body-bg: #0B0F19;
+$body-color: #E2E8F0;
+$link-color: #A5B4FC;
+$primary: #818CF8;
+$code-color: #C7D2FE;
+$border-color: #1E293B;
+$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+$font-family-monospace: "JetBrains Mono", ui-monospace, Menlo, monospace;
+$headings-font-family: "Inter Tight", "Inter", system-ui, sans-serif;
+$font-size-root: 17px;
+$line-height-base: 1.7;
+$toc-color: #94A3B8;
+$sidebar-bg: #0B0F19;
+$footer-bg: #0B0F19;
+
+/*-- scss:rules --*/
+:root {
+  --bs-ink: #F1F5F9;
+  --bs-ink-2: #A3B0C2;
+  --bs-ink-3: #64748B;
+  --bs-paper: #0B0F19;
+  --bs-paper-2: #111726;
+  --bs-paper-3: #172033;
+  --bs-line: #1F2A3D;
+  --bs-accent: #818CF8;
+  --bs-accent-soft: #1A1D3A;
+  --bs-accent-ink: #C7D2FE;
+  --bs-example: #2DD4BF;
+  --bs-example-soft: #0D2226;
+  --bs-part: #818CF8;
+  --bs-part-soft: #1A1D3A;
+  --bs-plot-1: #818CF8;
+  --bs-plot-2: #FB7185;
+}
+img:not(.no-invert) { border-radius: 10px; }
+.quarto-figure img, main img { background: #fff; padding: 6px; }

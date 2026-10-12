@@ -20,6 +20,40 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -37,10 +71,12 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="site_libs/quarto-html/anchor.min.js"></script>
 <link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="site_libs/quarto-html/quarto-syntax-highlighting-2486e1f0a3ee9ee1fc393803a1361cdb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-2905fe08c56da356d8ad793442f29f1f.css" rel="stylesheet" class="quarto-color-scheme" id="quarto-text-highlighting-styles">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-ebc9bf21172222eecf4329b9f87ba86d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-9904b5196d746cb5bc47063911474b57.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-49fd6e24b7b0e91a63863389575bd35b.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
   "copy-button": false,
@@ -77,6 +113,7 @@ function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
 gtag('config', 'G-PLNY5BZ16X', { 'anonymize_ip': true});
 </script>
+<style>html{ scroll-behavior: smooth; }</style>
 <!-- Google tag (gtag.js) -->
 <script async="" src="https://www.googletagmanager.com/gtag/js?id=G-FWC3RCL4BF"></script>
 <script>
@@ -86,6 +123,8 @@ gtag('config', 'G-PLNY5BZ16X', { 'anonymize_ip': true});
 
   gtag('config', 'G-FWC3RCL4BF');
 </script>
+<script type="module" src="site_libs/quarto-ojs/quarto-ojs-runtime.js"></script>
+<link href="site_libs/quarto-ojs/quarto-ojs.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -128,7 +167,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ProbabilityIII.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability III</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ProbabilityI.html">Uncertainty</a></li><li class="breadcrumb-item"><a href="./ProbabilityIII.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability III</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -144,6 +183,14 @@ window.Quarto = {
     <div class="pt-lg-2 mt-2 text-left sidebar-header">
     <div class="sidebar-title mb-0 py-0">
       <a href="./">Business Statistics</a> 
+        <div class="sidebar-tools-main">
+  <a href="" class="quarto-color-scheme-toggle quarto-navigation-tool  px-1" onclick="window.quartoToggleColorScheme(); return false;" title="Toggle dark mode"><i class="bi"></i></a>
+  <a href="" class="quarto-reader-toggle quarto-navigation-tool px-1" onclick="window.quartoToggleReader(); return false;" title="Toggle reader mode">
+  <div class="quarto-reader-toggle-btn">
+  <i class="bi"></i>
+  </div>
+</a>
+</div>
     </div>
       </div>
         <div class="mt-2 flex-shrink-0 align-items-center">
@@ -159,102 +206,157 @@ window.Quarto = {
  <span class="menu-text">Introduction</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Describe</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./DescriptiveI.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Descriptive Stats I</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./DescriptiveII.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Descriptive Stats II</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./DescriptiveIII.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Descriptive Statistics III</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./DescriptiveIV.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Descriptive Stats IV</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./DescriptiveV.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Descriptive Stats V</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Relate</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./RegressionI.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Regression I</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./RegressionII.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Regression II</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Uncertainty</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ProbabilityI.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Probability I</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ProbabilityII.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Probability II</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./ProbabilityIII.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability III</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Infer</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./InferenceI.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Inference I</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./InferenceII.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Inference II</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./InferenceIII.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Inference III</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./InfReg.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Regression and Inference</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
+ <span class="menu-text">Toolkit</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Excel Basics.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Excel Basics</span></span></a>
   </div>
 </li>
-        <li class="sidebar-item">
+          <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./references.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text">References</span></a>
   </div>
 </li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -262,9 +364,9 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
+    <h2 id="toc-title">On this page</h2>
    
-  <ul>
+  <ul class="collapse">
   <li><a href="#continuous-random-variables" id="toc-continuous-random-variables" class="nav-link active" data-scroll-target="#continuous-random-variables"><span class="header-section-number">10.1</span> Continuous Random Variables</a></li>
   <li><a href="#uniform-distribution" id="toc-uniform-distribution" class="nav-link" data-scroll-target="#uniform-distribution"><span class="header-section-number">10.2</span> Uniform Distribution</a></li>
   <li><a href="#normal-distribution" id="toc-normal-distribution" class="nav-link" data-scroll-target="#normal-distribution"><span class="header-section-number">10.3</span> Normal Distribution</a></li>
@@ -273,19 +375,14 @@ window.Quarto = {
   <li><a href="#continuous-distributions-in-excel" id="toc-continuous-distributions-in-excel" class="nav-link" data-scroll-target="#continuous-distributions-in-excel"><span class="header-section-number">10.6</span> Continuous Distributions in Excel</a></li>
   <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">10.7</span> Excel Function Summary</a></li>
   <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">10.8</span> Chapter Summary Cheat Sheet</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.9</span> Exercises</a>
-  <ul class="collapse">
-  <li><a href="#exercise-1" id="toc-exercise-1" class="nav-link" data-scroll-target="#exercise-1">Exercise 1</a></li>
-  <li><a href="#exercise-2" id="toc-exercise-2" class="nav-link" data-scroll-target="#exercise-2">Exercise 2</a></li>
-  <li><a href="#exercise-3" id="toc-exercise-3" class="nav-link" data-scroll-target="#exercise-3">Exercise 3</a></li>
-  </ul></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.9</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./ProbabilityI.html">Uncertainty</a></li><li class="breadcrumb-item"><a href="./ProbabilityIII.html"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability III</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Probability III</span></h1>
 </div>
@@ -349,6 +446,155 @@ details summary {
 <p>The <strong>standard normal</strong> has a mean of <span class="math inline">\(0\)</span> and a standard deviation of <span class="math inline">\(1\)</span>. Otherwise, it has the exact same properties as the normal distribution.</p>
 <div class="callout-example">
 <p><strong>Example:</strong> Dr Tires is planning on offering a mileage guarantee on each set of tires they sell. They are considering a 40,000 mile guarantee. Given that the mean tire mileage is 36,500 miles with a standard deviation of 5,000 miles, we can estimate that the probability that a tire lasts more than 40,000 miles is 24.2%. In Excel, use <code>=1 - NORM.DIST(40000, 36500, 5000, TRUE)</code>, which returns <span class="math inline">\(0.242\)</span>.</p>
+</div>
+<div class="bs-widget">
+<div class="bs-widget-head">
+<p><span class="bs-widget-tag">Try it</span> <span class="bs-widget-title">Normal probability explorer</span></p>
+</div>
+<p><span class="bs-widget-sub">Set the mean and standard deviation, pick a cutoff, and watch the shaded area — that area <em>is</em> the probability. The defaults reproduce the Dr Tires example.</span></p>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="1" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>viewof nMu <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">100000</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">36500</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Mean μ"</span>})</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>viewof nSd <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">500</span><span class="op">,</span> <span class="dv">20000</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">5000</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">250</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Std. dev. σ"</span>})</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>viewof nTail <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">radio</span>([<span class="st">"P(X ≤ a)"</span><span class="op">,</span> <span class="st">"P(X ≥ a)"</span><span class="op">,</span> <span class="st">"P(a ≤ X ≤ b)"</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="st">"P(X ≥ a)"</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Find"</span>})</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>viewof nA <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([nMu <span class="op">-</span> <span class="dv">4</span><span class="op">*</span>nSd<span class="op">,</span> nMu <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>nSd]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">40000</span><span class="op">,</span> nMu <span class="op">-</span> <span class="dv">4</span><span class="op">*</span>nSd)<span class="op">,</span> nMu <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>nSd)<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"a"</span>})</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>viewof nB <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([nMu <span class="op">-</span> <span class="dv">4</span><span class="op">*</span>nSd<span class="op">,</span> nMu <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>nSd]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">45000</span><span class="op">,</span> nMu <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>nSd)<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"b"</span><span class="op">,</span> <span class="dt">disabled</span><span class="op">:</span> nTail <span class="op">!==</span> <span class="st">"P(a ≤ X ≤ b)"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-1-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="1" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>normCdf <span class="op">=</span> (x<span class="op">,</span> m<span class="op">,</span> s) <span class="kw">=&gt;</span> {</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> z <span class="op">=</span> (x <span class="op">-</span> m) <span class="op">/</span> (s <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">SQRT2</span>)<span class="op">,</span> t <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> <span class="fl">0.3275911</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(z))<span class="op">;</span></span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> y <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> (((((<span class="fl">1.061405429</span><span class="op">*</span>t <span class="op">-</span> <span class="fl">1.453152027</span>)<span class="op">*</span>t) <span class="op">+</span> <span class="fl">1.421413741</span>)<span class="op">*</span>t <span class="op">-</span> <span class="fl">0.284496736</span>)<span class="op">*</span>t <span class="op">+</span> <span class="fl">0.254829592</span>)<span class="op">*</span>t<span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span>z<span class="op">*</span>z)<span class="op">;</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fl">0.5</span> <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sign</span>(z) <span class="op">*</span> y)<span class="op">;</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>nLo <span class="op">=</span> nTail <span class="op">===</span> <span class="st">"P(X ≤ a)"</span> <span class="op">?</span> nMu <span class="op">-</span> <span class="fl">4.5</span><span class="op">*</span>nSd <span class="op">:</span> (nTail <span class="op">===</span> <span class="st">"P(X ≥ a)"</span> <span class="op">?</span> nA <span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(nA<span class="op">,</span> nB))</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>nHi <span class="op">=</span> nTail <span class="op">===</span> <span class="st">"P(X ≤ a)"</span> <span class="op">?</span> nA <span class="op">:</span> (nTail <span class="op">===</span> <span class="st">"P(X ≥ a)"</span> <span class="op">?</span> nMu <span class="op">+</span> <span class="fl">4.5</span><span class="op">*</span>nSd <span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(nA<span class="op">,</span> nB))</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>nProb <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">0</span><span class="op">,</span> <span class="fu">normCdf</span>(nHi<span class="op">,</span> nMu<span class="op">,</span> nSd) <span class="op">-</span> <span class="fu">normCdf</span>(nLo<span class="op">,</span> nMu<span class="op">,</span> nSd))</span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>nCurve <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">241</span>)<span class="op">.</span><span class="fu">map</span>(i <span class="kw">=&gt;</span> {</span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> x <span class="op">=</span> nMu <span class="op">-</span> <span class="dv">4</span><span class="op">*</span>nSd <span class="op">+</span> i <span class="op">*</span> (<span class="dv">8</span><span class="op">*</span>nSd<span class="op">/</span><span class="dv">240</span>)<span class="op">;</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> {x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span><span class="fl">0.5</span><span class="op">*</span>((x<span class="op">-</span>nMu)<span class="op">/</span>nSd)<span class="op">**</span><span class="dv">2</span>) <span class="op">/</span> (nSd<span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>))}<span class="op">;</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>nFmt <span class="op">=</span> d3<span class="op">.</span><span class="fu">format</span>(<span class="st">",.0f"</span>)</span>
+<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>nExcel <span class="op">=</span> nTail <span class="op">===</span> <span class="st">"P(X ≤ a)"</span> <span class="op">?</span> <span class="vs">`=NORM.DIST(</span><span class="sc">${</span>nA<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nMu<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nSd<span class="sc">}</span><span class="vs">, TRUE)`</span></span>
+<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>       <span class="op">:</span> nTail <span class="op">===</span> <span class="st">"P(X ≥ a)"</span> <span class="op">?</span> <span class="vs">`=1 - NORM.DIST(</span><span class="sc">${</span>nA<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nMu<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nSd<span class="sc">}</span><span class="vs">, TRUE)`</span></span>
+<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>       <span class="op">:</span> <span class="vs">`=NORM.DIST(</span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(nA<span class="op">,</span>nB)<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nMu<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nSd<span class="sc">}</span><span class="vs">, TRUE) - NORM.DIST(</span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(nA<span class="op">,</span>nB)<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nMu<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nSd<span class="sc">}</span><span class="vs">, TRUE)`</span></span>
+<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">260</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">36</span><span class="op">,</span></span>
+<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">style</span><span class="op">:</span> {<span class="dt">fontFamily</span><span class="op">:</span> <span class="st">"Inter, sans-serif"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="st">"12px"</span><span class="op">,</span> <span class="dt">background</span><span class="op">:</span> <span class="st">"transparent"</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">"var(--bs-ink-2)"</span>}<span class="op">,</span></span>
+<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">tickFormat</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="fu">nFmt</span>(d)<span class="op">,</span> <span class="dt">ticks</span><span class="op">:</span> <span class="dv">7</span>}<span class="op">,</span></span>
+<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span>}<span class="op">,</span></span>
+<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">areaY</span>(nCurve<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&gt;=</span> nLo <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&lt;=</span> nHi)<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"var(--bs-part)"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.22</span>})<span class="op">,</span></span>
+<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">lineY</span>(nCurve<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-ink)"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.75</span>})<span class="op">,</span></span>
+<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([nMu]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-ink-3)"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"3,3"</span>})<span class="op">,</span></span>
+<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>(nTail <span class="op">===</span> <span class="st">"P(a ≤ X ≤ b)"</span> <span class="op">?</span> [nA<span class="op">,</span> nB] <span class="op">:</span> [nA]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-part)"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
+<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-line)"</span>})</span>
+<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-8" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="0" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -1;"><span id="cb3-0"><a href="#cb3-0" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div class="bs-stats"&gt;</span></span>
+<span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat hl"&gt;&lt;div class="k"&gt;</span><span class="sc">${</span>nTail<span class="op">.</span><span class="fu">replace</span>(<span class="st">"a"</span><span class="op">,</span> <span class="fu">nFmt</span>(nA))<span class="op">.</span><span class="fu">replace</span>(<span class="st">"b"</span><span class="op">,</span> <span class="fu">nFmt</span>(nB))<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span>nProb<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat"&gt;&lt;div class="k"&gt;As a percent&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span>(nProb<span class="op">*</span><span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">%&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat"&gt;&lt;div class="k"&gt;z-score of a&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span>((nA <span class="op">-</span> nMu)<span class="op">/</span>nSd)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div class="bs-excel"&gt;&lt;span class="lbl"&gt;Excel&lt;/span&gt;&lt;span&gt;</span><span class="sc">${</span>nExcel<span class="sc">}</span><span class="vs">&lt;/span&gt;&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-3" data-nodetype="expression">
+
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="exponential-distribution" class="level2" data-number="10.4">
@@ -533,6 +779,17 @@ Answer
 </section>
 
 </main> <!-- /main -->
+<script type="ojs-module-contents">
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBuTXUgPSBJbnB1dHMucmFuZ2UoWzAsIDEwMDAwMF0sIHt2YWx1ZTogMzY1MDAsIHN0ZXA6IDUwMCwgbGFiZWw6IFwiTWVhbiDOvFwifSlcbnZpZXdvZiBuU2QgPSBJbnB1dHMucmFuZ2UoWzUwMCwgMjAwMDBdLCB7dmFsdWU6IDUwMDAsIHN0ZXA6IDI1MCwgbGFiZWw6IFwiU3RkLiBkZXYuIM+DXCJ9KVxudmlld29mIG5UYWlsID0gSW5wdXRzLnJhZGlvKFtcIlAoWCDiiaQgYSlcIiwgXCJQKFgg4omlIGEpXCIsIFwiUChhIOKJpCBYIOKJpCBiKVwiXSwge3ZhbHVlOiBcIlAoWCDiiaUgYSlcIiwgbGFiZWw6IFwiRmluZFwifSlcbnZpZXdvZiBuQSA9IElucHV0cy5yYW5nZShbbk11IC0gNCpuU2QsIG5NdSArIDQqblNkXSwge3ZhbHVlOiBNYXRoLm1pbihNYXRoLm1heCg0MDAwMCwgbk11IC0gNCpuU2QpLCBuTXUgKyA0Km5TZCksIHN0ZXA6IDEwMCwgbGFiZWw6IFwiYVwifSlcbnZpZXdvZiBuQiA9IElucHV0cy5yYW5nZShbbk11IC0gNCpuU2QsIG5NdSArIDQqblNkXSwge3ZhbHVlOiBNYXRoLm1pbig0NTAwMCwgbk11ICsgNCpuU2QpLCBzdGVwOiAxMDAsIGxhYmVsOiBcImJcIiwgZGlzYWJsZWQ6IG5UYWlsICE9PSBcIlAoYSDiiaQgWCDiiaQgYilcIn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJub3JtQ2RmID0gKHgsIG0sIHMpID0+IHtcbiAgY29uc3QgeiA9ICh4IC0gbSkgLyAocyAqIE1hdGguU1FSVDIpLCB0ID0gMSAvICgxICsgMC4zMjc1OTExICogTWF0aC5hYnMoeikpO1xuICBjb25zdCB5ID0gMSAtICgoKCgoMS4wNjE0MDU0MjkqdCAtIDEuNDUzMTUyMDI3KSp0KSArIDEuNDIxNDEzNzQxKSp0IC0gMC4yODQ0OTY3MzYpKnQgKyAwLjI1NDgyOTU5MikqdCpNYXRoLmV4cCgteip6KTtcbiAgcmV0dXJuIDAuNSAqICgxICsgTWF0aC5zaWduKHopICogeSk7XG59XG5uTG8gPSBuVGFpbCA9PT0gXCJQKFgg4omkIGEpXCIgPyBuTXUgLSA0LjUqblNkIDogKG5UYWlsID09PSBcIlAoWCDiiaUgYSlcIiA/IG5BIDogTWF0aC5taW4obkEsIG5CKSlcbm5IaSA9IG5UYWlsID09PSBcIlAoWCDiiaQgYSlcIiA/IG5BIDogKG5UYWlsID09PSBcIlAoWCDiiaUgYSlcIiA/IG5NdSArIDQuNSpuU2QgOiBNYXRoLm1heChuQSwgbkIpKVxublByb2IgPSBNYXRoLm1heCgwLCBub3JtQ2RmKG5IaSwgbk11LCBuU2QpIC0gbm9ybUNkZihuTG8sIG5NdSwgblNkKSlcbm5DdXJ2ZSA9IGQzLnJhbmdlKDAsIDI0MSkubWFwKGkgPT4ge1xuICBjb25zdCB4ID0gbk11IC0gNCpuU2QgKyBpICogKDgqblNkLzI0MCk7XG4gIHJldHVybiB7eCwgeTogTWF0aC5leHAoLTAuNSooKHgtbk11KS9uU2QpKioyKSAvIChuU2QqTWF0aC5zcXJ0KDIqTWF0aC5QSSkpfTtcbn0pXG5uRm10ID0gZDMuZm9ybWF0KFwiLC4wZlwiKVxubkV4Y2VsID0gblRhaWwgPT09IFwiUChYIOKJpCBhKVwiID8gYD1OT1JNLkRJU1QoJHtuQX0sICR7bk11fSwgJHtuU2R9LCBUUlVFKWBcbiAgICAgICA6IG5UYWlsID09PSBcIlAoWCDiiaUgYSlcIiA/IGA9MSAtIE5PUk0uRElTVCgke25BfSwgJHtuTXV9LCAke25TZH0sIFRSVUUpYFxuICAgICAgIDogYD1OT1JNLkRJU1QoJHtNYXRoLm1heChuQSxuQil9LCAke25NdX0sICR7blNkfSwgVFJVRSkgLSBOT1JNLkRJU1QoJHtNYXRoLm1pbihuQSxuQil9LCAke25NdX0sICR7blNkfSwgVFJVRSlgXG5cblBsb3QucGxvdCh7XG4gIGhlaWdodDogMjYwLCBtYXJnaW5MZWZ0OiAxMCwgbWFyZ2luUmlnaHQ6IDEwLCBtYXJnaW5Cb3R0b206IDM2LFxuICBzdHlsZToge2ZvbnRGYW1pbHk6IFwiSW50ZXIsIHNhbnMtc2VyaWZcIiwgZm9udFNpemU6IFwiMTJweFwiLCBiYWNrZ3JvdW5kOiBcInRyYW5zcGFyZW50XCIsIGNvbG9yOiBcInZhcigtLWJzLWluay0yKVwifSxcbiAgeDoge2xhYmVsOiBudWxsLCB0aWNrRm9ybWF0OiBkID0+IG5GbXQoZCksIHRpY2tzOiA3fSxcbiAgeToge2F4aXM6IG51bGx9LFxuICBtYXJrczogW1xuICAgIFBsb3QuYXJlYVkobkN1cnZlLmZpbHRlcihkID0+IGQueCA+PSBuTG8gJiYgZC54IDw9IG5IaSksIHt4OiBcInhcIiwgeTogXCJ5XCIsIGZpbGw6IFwidmFyKC0tYnMtcGFydClcIiwgZmlsbE9wYWNpdHk6IDAuMjJ9KSxcbiAgICBQbG90LmxpbmVZKG5DdXJ2ZSwge3g6IFwieFwiLCB5OiBcInlcIiwgc3Ryb2tlOiBcInZhcigtLWJzLWluaylcIiwgc3Ryb2tlV2lkdGg6IDEuNzV9KSxcbiAgICBQbG90LnJ1bGVYKFtuTXVdLCB7c3Ryb2tlOiBcInZhcigtLWJzLWluay0zKVwiLCBzdHJva2VEYXNoYXJyYXk6IFwiMywzXCJ9KSxcbiAgICBQbG90LnJ1bGVYKG5UYWlsID09PSBcIlAoYSDiiaQgWCDiiaQgYilcIiA/IFtuQSwgbkJdIDogW25BXSwge3N0cm9rZTogXCJ2YXIoLS1icy1wYXJ0KVwiLCBzdHJva2VXaWR0aDogMn0pLFxuICAgIFBsb3QucnVsZVkoWzBdLCB7c3Ryb2tlOiBcInZhcigtLWJzLWxpbmUpXCJ9KVxuICBdXG59KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaHRtbGA8ZGl2IGNsYXNzPVwiYnMtc3RhdHNcIj5cbiAgPGRpdiBjbGFzcz1cImJzLXN0YXQgaGxcIj48ZGl2IGNsYXNzPVwia1wiPiR7blRhaWwucmVwbGFjZShcImFcIiwgbkZtdChuQSkpLnJlcGxhY2UoXCJiXCIsIG5GbXQobkIpKX08L2Rpdj48ZGl2IGNsYXNzPVwidlwiPiR7blByb2IudG9GaXhlZCgzKX08L2Rpdj48L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImJzLXN0YXRcIj48ZGl2IGNsYXNzPVwia1wiPkFzIGEgcGVyY2VudDwvZGl2PjxkaXYgY2xhc3M9XCJ2XCI+JHsoblByb2IqMTAwKS50b0ZpeGVkKDEpfSU8L2Rpdj48L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImJzLXN0YXRcIj48ZGl2IGNsYXNzPVwia1wiPnotc2NvcmUgb2YgYTwvZGl2PjxkaXYgY2xhc3M9XCJ2XCI+JHsoKG5BIC0gbk11KS9uU2QpLnRvRml4ZWQoMil9PC9kaXY+PC9kaXY+XG48L2Rpdj5cbjxkaXYgY2xhc3M9XCJicy1leGNlbFwiPjxzcGFuIGNsYXNzPVwibGJsXCI+RXhjZWw8L3NwYW4+PHNwYW4+JHtuRXhjZWx9PC9zcGFuPjwvZGl2PmBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnbk11JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ25TZCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCduVGFpbCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCduQScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCduQicpIn1dfQ==
+</script>
+<script type="module">
+if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }
+window._ojs.paths.runtimeToDoc = "../..";
+window._ojs.paths.runtimeToRoot = "../..";
+window._ojs.paths.docToRoot = "";
+window._ojs.selfContained = false;
+window._ojs.runtime.interpretFromScriptTags();
+</script>
 <script id="quarto-html-after-body" type="application/javascript">
 window.document.addEventListener("DOMContentLoaded", function (event) {
   const toggleBodyColorMode = (bsSheetEl) => {
@@ -553,6 +810,150 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   }
   toggleBodyColorPrimary();  
+  const disableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'prefetch';
+    }
+  }
+  const enableStylesheet = (stylesheets) => {
+    for (let i=0; i < stylesheets.length; i++) {
+      const stylesheet = stylesheets[i];
+      stylesheet.rel = 'stylesheet';
+    }
+  }
+  const manageTransitions = (selector, allowTransitions) => {
+    const els = window.document.querySelectorAll(selector);
+    for (let i=0; i < els.length; i++) {
+      const el = els[i];
+      if (allowTransitions) {
+        el.classList.remove('notransition');
+      } else {
+        el.classList.add('notransition');
+      }
+    }
+  }
+  const toggleGiscusIfUsed = (isAlternate, darkModeDefault) => {
+    const baseTheme = document.querySelector('#giscus-base-theme')?.value ?? 'light';
+    const alternateTheme = document.querySelector('#giscus-alt-theme')?.value ?? 'dark';
+    let newTheme = '';
+    if(darkModeDefault) {
+      newTheme = isAlternate ? baseTheme : alternateTheme;
+    } else {
+      newTheme = isAlternate ? alternateTheme : baseTheme;
+    }
+    const changeGiscusTheme = () => {
+      // From: https://github.com/giscus/giscus/issues/336
+      const sendMessage = (message) => {
+        const iframe = document.querySelector('iframe.giscus-frame');
+        if (!iframe) return;
+        iframe.contentWindow.postMessage({ giscus: message }, 'https://giscus.app');
+      }
+      sendMessage({
+        setConfig: {
+          theme: newTheme
+        }
+      });
+    }
+    const isGiscussLoaded = window.document.querySelector('iframe.giscus-frame') !== null;
+    if (isGiscussLoaded) {
+      changeGiscusTheme();
+    }
+  }
+  const toggleColorMode = (alternate) => {
+    // Switch the stylesheets
+    const alternateStylesheets = window.document.querySelectorAll('link.quarto-color-scheme.quarto-color-alternate');
+    manageTransitions('#quarto-margin-sidebar .nav-link', false);
+    if (alternate) {
+      enableStylesheet(alternateStylesheets);
+      for (const sheetNode of alternateStylesheets) {
+        if (sheetNode.id === "quarto-bootstrap") {
+          toggleBodyColorMode(sheetNode);
+        }
+      }
+    } else {
+      disableStylesheet(alternateStylesheets);
+      toggleBodyColorPrimary();
+    }
+    manageTransitions('#quarto-margin-sidebar .nav-link', true);
+    // Switch the toggles
+    const toggles = window.document.querySelectorAll('.quarto-color-scheme-toggle');
+    for (let i=0; i < toggles.length; i++) {
+      const toggle = toggles[i];
+      if (toggle) {
+        if (alternate) {
+          toggle.classList.add("alternate");     
+        } else {
+          toggle.classList.remove("alternate");
+        }
+      }
+    }
+    // Hack to workaround the fact that safari doesn't
+    // properly recolor the scrollbar when toggling (#1455)
+    if (navigator.userAgent.indexOf('Safari') > 0 && navigator.userAgent.indexOf('Chrome') == -1) {
+      manageTransitions("body", false);
+      window.scrollTo(0, 1);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+        manageTransitions("body", true);
+      }, 40);  
+    }
+  }
+  const isFileUrl = () => { 
+    return window.location.protocol === 'file:';
+  }
+  const hasAlternateSentinel = () => {  
+    let styleSentinel = getColorSchemeSentinel();
+    if (styleSentinel !== null) {
+      return styleSentinel === "alternate";
+    } else {
+      return false;
+    }
+  }
+  const setStyleSentinel = (alternate) => {
+    const value = alternate ? "alternate" : "default";
+    if (!isFileUrl()) {
+      window.localStorage.setItem("quarto-color-scheme", value);
+    } else {
+      localAlternateSentinel = value;
+    }
+  }
+  const getColorSchemeSentinel = () => {
+    if (!isFileUrl()) {
+      const storageValue = window.localStorage.getItem("quarto-color-scheme");
+      return storageValue != null ? storageValue : localAlternateSentinel;
+    } else {
+      return localAlternateSentinel;
+    }
+  }
+  const darkModeDefault = false;
+  let localAlternateSentinel = darkModeDefault ? 'alternate' : 'default';
+  // Dark / light mode switch
+  window.quartoToggleColorScheme = () => {
+    // Read the current dark / light value 
+    let toAlternate = !hasAlternateSentinel();
+    toggleColorMode(toAlternate);
+    setStyleSentinel(toAlternate);
+    toggleGiscusIfUsed(toAlternate, darkModeDefault);
+  };
+  // Ensure there is a toggle, if there isn't float one in the top right
+  if (window.document.querySelector('.quarto-color-scheme-toggle') === null) {
+    const a = window.document.createElement('a');
+    a.classList.add('top-right');
+    a.classList.add('quarto-color-scheme-toggle');
+    a.href = "";
+    a.onclick = function() { try { window.quartoToggleColorScheme(); } catch {} return false; };
+    const i = window.document.createElement("i");
+    i.classList.add('bi');
+    a.appendChild(i);
+    window.document.body.appendChild(a);
+  }
+  // Switch to dark mode if need be
+  if (hasAlternateSentinel()) {
+    toggleColorMode(true);
+  } else {
+    toggleColorMode(false);
+  }
   const icon = "";
   const anchorJS = new window.AnchorJS();
   anchorJS.options = {
@@ -969,18 +1370,20 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 <footer class="footer">
   <div class="nav-footer">
     <div class="nav-footer-left">
-<p>Business Statistics by J. Alejandro Gelves.</p>
+<p>Business Statistics · J. Alejandro Gelves</p>
 </div>   
     <div class="nav-footer-center">
       &nbsp;
     </div>
     <div class="nav-footer-right">
-<p>This book was built with <a href="https://quarto.org/">Quarto</a>.</p>
+<p>Built with <a href="https://quarto.org/">Quarto</a></p>
 </div>
   </div>
 </footer>
+<script src="assets/book.js"></script>
 
 
 
 
+<script src="site_libs/quarto-html/zenscroll-min.js"></script>
 </body></html>

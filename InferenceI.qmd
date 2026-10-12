@@ -127,6 +127,10 @@ This lets us use the normal ($z$) distribution for probability statements even w
 - If the population is normal, the sampling distribution of $\bar{X}$ is exactly normal for any $n$.
 - If the population is non-normal, the sampling distribution of $\bar{X}$ is approximately normal for large $n$ (a common rule of thumb is $n > 30$).
 
+::: {.content-visible when-format="html"}
+{{< include widgets/_clt.qmd >}}
+:::
+
 ## Inference for Proportions
 
 Inference also applies to **proportions** — for example, the proportion of left-handed people or of customers who churn. A proportion is the outcome of a binomial process: the number of successes $x$ in $n$ trials, where $x/n$ is the proportion of successes. To estimate the population proportion $p$, we use the **sample proportion** $\hat{p} = x/n$, which is unbiased ($E[\hat{p}] = p$). Its standard error is:

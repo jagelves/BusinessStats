@@ -3,46 +3,76 @@ project:
   output-dir: docs
 
 book:
-  page-footer:
-    left: | 
-      Business Statistics by J. Alejandro Gelves.
-    right: |
-      This book was built with <a href="https://quarto.org/">Quarto</a>.
-  
   title: "Business Statistics"
   author: "J. Alejandro Gelves"
   date: "09/6/2026"
   cover-image: cover.png
   google-analytics: "G-PLNY5BZ16X"
+  search: true
+  reader-mode: true
+  page-navigation: true
+  sidebar:
+    style: floating
+    collapse-level: 2
+  page-footer:
+    left: |
+      Business Statistics · J. Alejandro Gelves
+    right: |
+      Built with <a href="https://quarto.org/">Quarto</a>
   chapters:
     - index.qmd
-    - DescriptiveI.qmd
-    - DescriptiveII.qmd
-    - DescriptiveIII.qmd
-    - DescriptiveIV.qmd
-    - DescriptiveV.qmd
-    - RegressionI.qmd
-    - RegressionII.qmd
-    - ProbabilityI.qmd
-    - ProbabilityII.qmd
-    - ProbabilityIII.qmd
-    - InferenceI.qmd
-    - InferenceII.qmd
-    - InferenceIII.qmd
-    - InfReg.qmd
-    - Excel Basics.qmd
-    - references.qmd
-    
+    - part: "Describe"
+      chapters:
+        - DescriptiveI.qmd
+        - DescriptiveII.qmd
+        - DescriptiveIII.qmd
+        - DescriptiveIV.qmd
+        - DescriptiveV.qmd
+    - part: "Relate"
+      chapters:
+        - RegressionI.qmd
+        - RegressionII.qmd
+    - part: "Uncertainty"
+      chapters:
+        - ProbabilityI.qmd
+        - ProbabilityII.qmd
+        - ProbabilityIII.qmd
+    - part: "Infer"
+      chapters:
+        - InferenceI.qmd
+        - InferenceII.qmd
+        - InferenceIII.qmd
+        - InfReg.qmd
+    - part: "Toolkit"
+      chapters:
+        - Excel Basics.qmd
+        - references.qmd
+
 bibliography: references.bib
 
 format:
   html:
-    theme: [cosmo, custom.scss]
+    theme:
+      light: [cosmo, styles/light.scss, styles/base.scss]
+      dark: [cosmo, styles/dark.scss, styles/base.scss]
+    respect-user-color-scheme: true
     include-in-header: custom-head.html
+    include-after-body:
+      text: |
+        <script src="assets/book.js"></script>
+    resources:
+      - assets/book.js
+    toc: true
+    toc-depth: 2
+    toc-title: "On this page"
+    code-copy: true
+    smooth-scroll: true
+    anchor-sections: true
+    fig-align: center
   pdf:
     documentclass: scrreprt
 
 filters:
   - shinylive
-  
+
 editor: visual

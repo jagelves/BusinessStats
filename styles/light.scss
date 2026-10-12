@@ -1,0 +1,36 @@
+/*-- scss:defaults --*/
+$web-font-path: false;
+$body-bg: #FFFFFF;
+$body-color: #0F172A;
+$link-color: #4F46E5;
+$primary: #4F46E5;
+$code-color: #4338CA;
+$border-color: #E5E7EB;
+$font-family-sans-serif: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+$font-family-monospace: "JetBrains Mono", ui-monospace, Menlo, monospace;
+$headings-font-family: "Inter Tight", "Inter", system-ui, sans-serif;
+$font-size-root: 17px;
+$line-height-base: 1.7;
+$toc-color: #64748B;
+$sidebar-bg: #FFFFFF;
+$footer-bg: #FFFFFF;
+
+/*-- scss:rules --*/
+:root {
+  --bs-ink: #0F172A;
+  --bs-ink-2: #475569;
+  --bs-ink-3: #94A3B8;
+  --bs-paper: #FFFFFF;
+  --bs-paper-2: #F8FAFC;
+  --bs-paper-3: #F1F5F9;
+  --bs-line: #E5E7EB;
+  --bs-accent: #4F46E5;
+  --bs-accent-soft: #EEF2FF;
+  --bs-accent-ink: #3730A3;
+  --bs-example: #0F766E;
+  --bs-example-soft: #F0FDFA;
+  --bs-part: #4F46E5;
+  --bs-part-soft: #EEF2FF;
+  --bs-plot-1: #4F46E5;
+  --bs-plot-2: #E11D48;
+}

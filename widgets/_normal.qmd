@@ -1,0 +1,59 @@
+::: {.bs-widget}
+::: {.bs-widget-head}
+[Try it]{.bs-widget-tag} [Normal probability explorer]{.bs-widget-title}
+:::
+[Set the mean and standard deviation, pick a cutoff, and watch the shaded area — that area *is* the probability. The defaults reproduce the Dr Tires example.]{.bs-widget-sub}
+
+```{ojs}
+//| echo: false
+viewof nMu = Inputs.range([0, 100000], {value: 36500, step: 500, label: "Mean μ"})
+viewof nSd = Inputs.range([500, 20000], {value: 5000, step: 250, label: "Std. dev. σ"})
+viewof nTail = Inputs.radio(["P(X ≤ a)", "P(X ≥ a)", "P(a ≤ X ≤ b)"], {value: "P(X ≥ a)", label: "Find"})
+viewof nA = Inputs.range([nMu - 4*nSd, nMu + 4*nSd], {value: Math.min(Math.max(40000, nMu - 4*nSd), nMu + 4*nSd), step: 100, label: "a"})
+viewof nB = Inputs.range([nMu - 4*nSd, nMu + 4*nSd], {value: Math.min(45000, nMu + 4*nSd), step: 100, label: "b", disabled: nTail !== "P(a ≤ X ≤ b)"})
+```
+
+```{ojs}
+//| echo: false
+normCdf = (x, m, s) => {
+  const z = (x - m) / (s * Math.SQRT2), t = 1 / (1 + 0.3275911 * Math.abs(z));
+  const y = 1 - (((((1.061405429*t - 1.453152027)*t) + 1.421413741)*t - 0.284496736)*t + 0.254829592)*t*Math.exp(-z*z);
+  return 0.5 * (1 + Math.sign(z) * y);
+}
+nLo = nTail === "P(X ≤ a)" ? nMu - 4.5*nSd : (nTail === "P(X ≥ a)" ? nA : Math.min(nA, nB))
+nHi = nTail === "P(X ≤ a)" ? nA : (nTail === "P(X ≥ a)" ? nMu + 4.5*nSd : Math.max(nA, nB))
+nProb = Math.max(0, normCdf(nHi, nMu, nSd) - normCdf(nLo, nMu, nSd))
+nCurve = d3.range(0, 241).map(i => {
+  const x = nMu - 4*nSd + i * (8*nSd/240);
+  return {x, y: Math.exp(-0.5*((x-nMu)/nSd)**2) / (nSd*Math.sqrt(2*Math.PI))};
+})
+nFmt = d3.format(",.0f")
+nExcel = nTail === "P(X ≤ a)" ? `=NORM.DIST(${nA}, ${nMu}, ${nSd}, TRUE)`
+       : nTail === "P(X ≥ a)" ? `=1 - NORM.DIST(${nA}, ${nMu}, ${nSd}, TRUE)`
+       : `=NORM.DIST(${Math.max(nA,nB)}, ${nMu}, ${nSd}, TRUE) - NORM.DIST(${Math.min(nA,nB)}, ${nMu}, ${nSd}, TRUE)`
+
+Plot.plot({
+  height: 260, marginLeft: 10, marginRight: 10, marginBottom: 36,
+  style: {fontFamily: "Inter, sans-serif", fontSize: "12px", background: "transparent", color: "var(--bs-ink-2)"},
+  x: {label: null, tickFormat: d => nFmt(d), ticks: 7},
+  y: {axis: null},
+  marks: [
+    Plot.areaY(nCurve.filter(d => d.x >= nLo && d.x <= nHi), {x: "x", y: "y", fill: "var(--bs-part)", fillOpacity: 0.22}),
+    Plot.lineY(nCurve, {x: "x", y: "y", stroke: "var(--bs-ink)", strokeWidth: 1.75}),
+    Plot.ruleX([nMu], {stroke: "var(--bs-ink-3)", strokeDasharray: "3,3"}),
+    Plot.ruleX(nTail === "P(a ≤ X ≤ b)" ? [nA, nB] : [nA], {stroke: "var(--bs-part)", strokeWidth: 2}),
+    Plot.ruleY([0], {stroke: "var(--bs-line)"})
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+html`<div class="bs-stats">
+  <div class="bs-stat hl"><div class="k">${nTail.replace("a", nFmt(nA)).replace("b", nFmt(nB))}</div><div class="v">${nProb.toFixed(3)}</div></div>
+  <div class="bs-stat"><div class="k">As a percent</div><div class="v">${(nProb*100).toFixed(1)}%</div></div>
+  <div class="bs-stat"><div class="k">z-score of a</div><div class="v">${((nA - nMu)/nSd).toFixed(2)}</div></div>
+</div>
+<div class="bs-excel"><span class="lbl">Excel</span><span>${nExcel}</span></div>`
+```
+:::

@@ -98,6 +98,10 @@ $$R^2 = (-0.89)^2 = 0.79$$
 This indicates that about $79\%$ of the variation in BND can be explained by changes in SPY. The two variables are closely related.
 :::
 
+::: {.content-visible when-format="html"}
+{{< include widgets/_corr.qmd >}}
+:::
+
 ## Measures of Association in Excel
 
 Excel provides straightforward functions to calculate all three measures of association. Let's use the SPY and BND data from the example above.

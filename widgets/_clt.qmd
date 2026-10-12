@@ -1,0 +1,81 @@
+::: {.bs-widget}
+::: {.bs-widget-head}
+[Try it]{.bs-widget-tag} [Central Limit Theorem simulator]{.bs-widget-title}
+:::
+[Pick a population — even a very skewed one — and a sample size. We draw many samples, compute each sample's mean, and plot those means. Increase $n$ and watch the histogram turn into a bell curve that tightens around $\mu$.]{.bs-widget-sub}
+
+```{ojs}
+//| echo: false
+viewof cPop = Inputs.select(["Right-skewed (wait times)", "Uniform (0 to 100)", "Bimodal (two customer types)"], {label: "Population"})
+viewof cN = Inputs.range([1, 100], {value: 2, step: 1, label: "Sample size n"})
+viewof cReps = Inputs.range([100, 3000], {value: 1000, step: 100, label: "Number of samples"})
+viewof cGo = Inputs.button("Draw new samples")
+```
+
+```{ojs}
+//| echo: false
+cSpec = ({
+  "Right-skewed (wait times)": {draw: r => -12 * Math.log(1 - r()), mu: 12, sd: 12, xmax: 70},
+  "Uniform (0 to 100)": {draw: r => 100 * r(), mu: 50, sd: 100/Math.sqrt(12), xmax: 100},
+  "Bimodal (two customer types)": {draw: r => (r() < 0.5 ? 20 : 70) + 6 * Math.sqrt(-2*Math.log(1 - r())) * Math.cos(2*Math.PI*r()), mu: 45, sd: Math.sqrt(36 + 625), xmax: 100}
+})[cPop]
+
+cData = {
+  cGo;
+  const r = Math.random, pop = d3.range(4000).map(() => cSpec.draw(r));
+  const means = d3.range(cReps).map(() => d3.mean(d3.range(cN).map(() => cSpec.draw(r))));
+  return {pop, means};
+}
+cSE = cSpec.sd / Math.sqrt(cN)
+cNormal = d3.range(0, 201).map(i => {
+  const x = cSpec.mu - 4*cSE + i*(8*cSE/200);
+  return {x, y: Math.exp(-0.5*((x-cSpec.mu)/cSE)**2)/(cSE*Math.sqrt(2*Math.PI))};
+})
+cStyle = ({fontFamily: "Inter, sans-serif", fontSize: "12px", background: "transparent", color: "var(--bs-ink-2)"})
+cDomain = [Math.min(0, d3.min(cData.pop)), cSpec.xmax]
+```
+
+::: {.columns}
+::: {.column width="48%"}
+```{ojs}
+//| echo: false
+Plot.plot({
+  title: "Population", height: 200, marginLeft: 8, marginRight: 8, style: cStyle,
+  x: {domain: cDomain, label: null}, y: {axis: null},
+  marks: [
+    Plot.rectY(cData.pop.filter(d => d >= cDomain[0] && d <= cDomain[1]), Plot.binX({y: "count"}, {x: d => d, thresholds: 40, fill: "var(--bs-ink-3)", fillOpacity: 0.55, inset: 0.5})),
+    Plot.ruleX([cSpec.mu], {stroke: "var(--bs-ink)", strokeDasharray: "3,3"}),
+    Plot.ruleY([0], {stroke: "var(--bs-line)"})
+  ]
+})
+```
+:::
+::: {.column width="4%"}
+:::
+::: {.column width="48%"}
+```{ojs}
+//| echo: false
+Plot.plot({
+  title: `Means of ${cReps.toLocaleString()} samples of n = ${cN}`, height: 200, marginLeft: 8, marginRight: 8, style: cStyle,
+  x: {domain: cDomain, label: null}, y: {axis: null},
+  marks: [
+    Plot.rectY(cData.means, Plot.binX({y: "proportion"}, {x: d => d, thresholds: d3.range(cDomain[0], cDomain[1] + 0.5, (cDomain[1]-cDomain[0])/60), fill: "var(--bs-part)", fillOpacity: 0.55, inset: 0.5})),
+    Plot.lineY(cNormal, {x: "x", y: d => d.y * (cDomain[1]-cDomain[0])/60, stroke: "var(--bs-ink)", strokeWidth: 1.5}),
+    Plot.ruleX([cSpec.mu], {stroke: "var(--bs-ink)", strokeDasharray: "3,3"}),
+    Plot.ruleY([0], {stroke: "var(--bs-line)"})
+  ]
+})
+```
+:::
+:::
+
+```{ojs}
+//| echo: false
+html`<div class="bs-stats">
+  <div class="bs-stat"><div class="k">Population μ</div><div class="v">${cSpec.mu.toFixed(1)}</div></div>
+  <div class="bs-stat"><div class="k">Mean of x̄'s</div><div class="v">${d3.mean(cData.means).toFixed(1)}</div></div>
+  <div class="bs-stat"><div class="k">σ / √n (theory)</div><div class="v">${cSE.toFixed(2)}</div></div>
+  <div class="bs-stat hl"><div class="k">SD of x̄'s (simulated)</div><div class="v">${d3.deviation(cData.means)?.toFixed(2) ?? "–"}</div></div>
+</div>`
+```
+:::
