@@ -63,10 +63,6 @@ $$\frac{11 + 15 + 17 + 20}{4} = \frac{63}{4} = 15.75 = \mu$$
 This confirms $E[\bar{X}] = \mu$: although any single sample mean deviates from $\mu$, on average the sample mean lands on the true population mean.
 :::
 
-::: callout-note
-To explore how the sampling error changes with the sample size press [here](https://jagelves.shinyapps.io/Sampling/).
-:::
-
 ## Consistency
 
 **Consistency** states that as the sample size increases, the sample mean converges to the population mean. Larger samples produce more accurate estimates, so the probability that the sample mean deviates from $\mu$ by more than any fixed amount approaches zero as $n$ grows.
@@ -92,6 +88,16 @@ For size three (means $11, 15, 17, 20$) the average absolute error falls to $\fr
 For size four (the entire population) the error is $\bar{x} - \mu = 15.75 - 15.75 = 0$.
 
 As the sample size increases from two to four, the average error shrinks from $4.75$ to $0$.
+:::
+
+::: {.content-visible when-format="html"}
+{{< include widgets/_sampling.qmd >}}
+:::
+
+::: {.content-visible when-format="pdf"}
+::: callout-note
+To explore how the sampling error changes with the sample size, visit <https://jagelves.shinyapps.io/Sampling/>.
+:::
 :::
 
 ## Precision

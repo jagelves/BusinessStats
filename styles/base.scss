@@ -283,3 +283,7 @@ main table caption, main .table-caption {
   caption-side: bottom; text-align: center; color: var(--bs-ink-3) !important; font-size: .85rem; padding-top: .75rem;
 }
 main table thead th mjx-container, main table thead th .math { text-transform: none !important; letter-spacing: 0; }
+
+// ---------- Widget buttons sit side by side
+.bs-widget .cell-output-display:has(form > button) { display: inline-block; margin: .6rem .4rem .4rem 0; }
+.bs-widget .cell-output-display:has(form > button) form { width: auto; margin: 0; }
