@@ -165,7 +165,7 @@ end
 -- gt writes percentages like "0.0659%" unescaped in its LaTeX tables, and a
 -- bare % starts a LaTeX comment (it swallowed the rest of the row). Escape it.
 function RawBlock(el)
-  if el.format == "latex" and el.text:match("\\begin{tabular") then
+  if (el.format == "latex" or el.format == "tex") and el.text:match("\\begin{tabular") then
     el.text = el.text:gsub("(%d)%%", "%1\\%%")
     return el
   end

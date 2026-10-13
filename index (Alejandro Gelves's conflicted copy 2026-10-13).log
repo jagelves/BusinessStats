@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.12.27)  13 OCT 2026 18:07
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.12.27)  13 OCT 2026 18:17
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1421,7 +1421,7 @@ Package: subcaption 2022/01/07 v1.5 Sub-captions (AR)
 \c@subtable=\count368
 )
 Package hyperref Info: Option `colorlinks' set `true' on input line 330.
-No file index.aux.
+(./index.aux)
 \openout1 = `index.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 337.
@@ -1508,9 +1508,6 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring ON on input line 337.
-
-Package hyperref Warning: Rerun to get /PageLabels entry.
-
 File: cover.png Graphic file (type bmp)
 <cover.png>
 [1
@@ -1529,7 +1526,22 @@ LaTeX Font Info:    Font shape `TU/texgyreheros(0)/b/n' will be
 LaTeX Font Info:    Font shape `TU/texgyreheros(0)/b/n' will be
 (Font)              scaled to size 21.60864pt on input line 344.
 Package tocbasic Info: character protrusion at toc deactivated on input line 344.
-No file index.toc.
+(./index.toc
+LaTeX Font Info:    Font shape `TU/texgyreheros(0)/b/n' will be
+(Font)              scaled to size 10.42218pt on input line 8.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/n' will be
+(Font)              scaled to size 12.0pt on input line 8.
+
+Overfull \hbox (0.41168pt too wide) detected at line 179
+ [][]\TU/texgyreheros(0)/b/n/12 121
+ []
+
+
+Overfull \hbox (0.41168pt too wide) detected at line 235
+ [][]\TU/texgyreheros(0)/b/n/12 154
+ []
+
+)
 \tf@toc=\write5
 \openout5 = `index.toc'.
 
@@ -1587,8 +1599,6 @@ part I.
 Package scrkbase Info: You've told me to use the font selection of the element
 (scrkbase)             `partprefix' that is an alias of element `partnumber'
 (scrkbase)              on input line 463.
-LaTeX Font Info:    Font shape `TU/texgyreheros(0)/b/n' will be
-(Font)              scaled to size 10.42218pt on input line 463.
 [5
 
 ]
@@ -1615,19 +1625,9 @@ LaTeX Font Info:    Font shape `TU/texgyreheros(0)/b/n' will be
 ] [7] [8] [9]
 File: images/Data_Types.png Graphic file (type bmp)
 <images/Data_Types.png>
-
-LaTeX Warning: Hyper reference `answers' on page 10 undefined on input line 720.
-
 [10]
 LaTeX Font Info:    Font shape `TU/texgyreheros(0)/m/n' will be
 (Font)              scaled to size 8.05531pt on input line 750.
-LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/n' will be
-(Font)              scaled to size 9.0pt on input line 750.
-LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/b/n' will be
-(Font)              scaled to size 9.0pt on input line 750.
-
-LaTeX Warning: Reference `a-bsans1' on page 11 undefined on input line 750.
-
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
 (Font)              scaled to size 9.0pt on input line 750.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
@@ -1646,28 +1646,10 @@ LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
 (Font)              scaled to size 5.99936pt on input line 750.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
 (Font)              scaled to size 4.99947pt on input line 750.
-
-LaTeX Warning: Reference `a-bsans2' on page 11 undefined on input line 760.
-
-
-LaTeX Warning: Reference `a-bsans3' on page 11 undefined on input line 789.
-
-
-LaTeX Warning: Reference `a-bsans4' on page 11 undefined on input line 800.
-
-[11]
-
-LaTeX Warning: Reference `a-bsans5' on page 12 undefined on input line 811.
-
-
-LaTeX Warning: Reference `a-bsans6' on page 12 undefined on input line 837.
-
-[12]
+[11] [12]
 chapter 2.
 File: images/food.png Graphic file (type bmp)
 <images/food.png>
-LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/n' will be
-(Font)              scaled to size 12.0pt on input line 884.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
 (Font)              scaled to size 12.0pt on input line 885.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
@@ -1699,57 +1681,17 @@ File: images/dow.png Graphic file (type bmp)
 [16]
 LaTeX Font Info:    Font shape `TU/lmmono10-regular.otf(0)/m/n' will be
 (Font)              scaled to size 11.9154pt on input line 1041.
-
-LaTeX Warning: Reference `sec-freqdistnum' on page 17 undefined on input line 1092.
-
 [17] [18]
 File: images/Frequency_Distributions.png Graphic file (type bmp)
 <images/Frequency_Distributions.png>
-
-LaTeX Warning: Hyper reference `answers' on page 19 undefined on input line 1172.
-
 [19]
-
-LaTeX Warning: Reference `a-bsans7' on page 20 undefined on input line 1193.
-
 LaTeX Font Info:    Font shape `TU/texgyrepagella(1)/m/n' will be
 (Font)              scaled to size 9.0pt on input line 1193.
 LaTeX Font Info:    Font shape `TU/texgyrepagella(1)/m/n' will be
 (Font)              scaled to size 6.0pt on input line 1193.
 LaTeX Font Info:    Font shape `TU/texgyrepagella(1)/m/n' will be
 (Font)              scaled to size 5.0pt on input line 1193.
-
-LaTeX Warning: Reference `a-bsans8' on page 20 undefined on input line 1203.
-
-
-LaTeX Warning: Reference `a-bsans9' on page 20 undefined on input line 1215.
-
-
-LaTeX Warning: Reference `a-bsans10' on page 20 undefined on input line 1235.
-
-
-LaTeX Warning: Reference `a-bsans11' on page 20 undefined on input line 1249.
-
-
-LaTeX Warning: Reference `a-bsans12' on page 20 undefined on input line 1260.
-
-[20]
-
-LaTeX Warning: Reference `a-bsans13' on page 21 undefined on input line 1280.
-
-
-LaTeX Warning: Reference `a-bsans14' on page 21 undefined on input line 1297.
-
-
-LaTeX Warning: Reference `a-bsans15' on page 21 undefined on input line 1307.
-
-
-LaTeX Warning: Reference `a-bsans16' on page 21 undefined on input line 1318.
-
-
-LaTeX Warning: Reference `a-bsans17' on page 21 undefined on input line 1337.
-
-[21]
+[20] [21]
 chapter 3.
 [22
 
@@ -1761,52 +1703,7 @@ LaTeX Font Info:    Font shape `TU/texgyrepagella(1)/m/n' will be
 [27]
 File: images/Central_Location.png Graphic file (type bmp)
 <images/Central_Location.png>
-
-LaTeX Warning: Hyper reference `answers' on page 28 undefined on input line 1697.
-
-[28]
-
-LaTeX Warning: Reference `a-bsans18' on page 29 undefined on input line 1722.
-
-
-LaTeX Warning: Reference `a-bsans19' on page 29 undefined on input line 1740.
-
-
-LaTeX Warning: Reference `a-bsans20' on page 29 undefined on input line 1758.
-
-
-LaTeX Warning: Reference `a-bsans21' on page 29 undefined on input line 1776.
-
-
-LaTeX Warning: Reference `a-bsans22' on page 29 undefined on input line 1787.
-
-
-LaTeX Warning: Reference `a-bsans23' on page 29 undefined on input line 1799.
-
-[29]
-
-LaTeX Warning: Reference `a-bsans24' on page 30 undefined on input line 1825.
-
-
-LaTeX Warning: Reference `a-bsans25' on page 30 undefined on input line 1836.
-
-
-LaTeX Warning: Reference `a-bsans26' on page 30 undefined on input line 1859.
-
-
-LaTeX Warning: Reference `a-bsans27' on page 30 undefined on input line 1869.
-
-[30]
-
-LaTeX Warning: Reference `a-bsans28' on page 31 undefined on input line 1893.
-
-
-LaTeX Warning: Reference `a-bsans29' on page 31 undefined on input line 1912.
-
-
-LaTeX Warning: Reference `a-bsans30' on page 31 undefined on input line 1923.
-
-[31]
+[28] [29] [30] [31]
 chapter 4.
 [32
 
@@ -1824,19 +1721,303 @@ File: images/CV.png Graphic file (type bmp)
 [37]
 File: images/Sharpe.png Graphic file (type bmp)
 <images/Sharpe.png>
-[38] [39]
-! Extra alignment tab has been changed to \cr.
-<recently read> \endtemplate 
-                             
-l.2344 TSLA &
-              0.2524% & 5.0239% \\ 
-Here is how much of TeX's memory you used:
- 44079 strings out of 478757
- 939525 string characters out of 5848883
- 1866979 words of memory out of 5000000
- 63413 multiletter control sequences out of 15000+600000
- 520903 words of font info for 128 fonts, out of 8000000 for 9000
- 14 hyphenation exceptions out of 8191
- 108i,21n,123p,10600b,1033s stack positions out of 10000i,1000n,20000p,200000b,200000s
+[38] [39] [40]
+Underfull \hbox (badness 1874) in paragraph at lines 2417--2420
+[]\TU/lmmono10-regular.otf(0)/m/n/10.95 =STDEV(IF(criteria_range="condition", value_range)) \TU/texgyrepagella(0)/m/n/10.95 calculates a condi-
+ []
 
-Output written on index.pdf (39 pages).
+[41]
+File: images/Dispersion.png Graphic file (type bmp)
+<images/Dispersion.png>
+[42] [43] [44] [45]
+chapter 5.
+[46
+
+] [47] [48] [49]
+File: images/Skew.png Graphic file (type bmp)
+<images/Skew.png>
+[50]
+File: images/Kurtosis.png Graphic file (type bmp)
+<images/Kurtosis.png>
+[51] [52] [53] [54] [55] [56]
+File: images/Other.png Graphic file (type bmp)
+<images/Other.png>
+[57] [58] [59]
+part II.
+Package scrkbase Info: You've told me to use the font selection of the element
+(scrkbase)             `partprefix' that is an alias of element `partnumber'
+(scrkbase)              on input line 3369.
+[60
+
+]
+chapter 6.
+[61
+
+] [62]
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
+(Font)              scaled to size 14.4pt on input line 3503.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 3503.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 3503.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(1)/m/n' will be
+(Font)              scaled to size 14.4pt on input line 3503.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(1)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 3503.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(1)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 3503.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(2)/m/n' will be
+(Font)              scaled to size 14.4013pt on input line 3503.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.00092pt on input line 3503.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.00064pt on input line 3503.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
+(Font)              scaled to size 14.39845pt on input line 3503.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
+(Font)              scaled to size 9.99893pt on input line 3503.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.99925pt on input line 3503.
+[63] [64]
+File: images/Association.png Graphic file (type bmp)
+<images/Association.png>
+[65] [66] [67]
+chapter 7.
+[68
+
+] [69] [70] [71] [72]
+LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/n' will be
+(Font)              scaled to size 8.103pt on input line 4139.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/n' will be
+(Font)              scaled to size 6.0225pt on input line 4139.
+[73] [74] [75] [76]
+Underfull \hbox (badness 1168) in paragraph at lines 4342--4344
+[]\TU/texgyrepagella(0)/m/n/10.95 To pull a single number out of the block instead of spilling all of it, wrap the call in
+ []
+
+[77] [78] (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-TU-empty.cfg
+File: mt-TU-empty.cfg 2021/06/22 v1.1 microtype config. file: fonts with nonstandard glyph set (RS)
+) [79]
+File: images/Regression_Line.png Graphic file (type bmp)
+<images/Regression_Line.png>
+[80] [81] [82] [83]
+part III.
+Package scrkbase Info: You've told me to use the font selection of the element
+(scrkbase)             `partprefix' that is an alias of element `partnumber'
+(scrkbase)              on input line 4745.
+[84
+
+]
+chapter 8.
+[85
+
+] [86]
+File: images/venn.png Graphic file (type bmp)
+<images/venn.png>
+File: images/venn2.png Graphic file (type bmp)
+<images/venn2.png>
+[87] [88] [89] [90]
+File: images/venn3.png Graphic file (type bmp)
+<images/venn3.png>
+[91] [92] [93] [94] [95] [96] [97] [98]
+File: images/Probability_Rules.png Graphic file (type bmp)
+<images/Probability_Rules.png>
+[99] [100] [101] [102]
+chapter 9.
+[103
+
+] [104] [105] [106] [107]
+Overfull \hbox (7.84251pt too wide) in paragraph at lines 5953--5956
+[]\TU/texgyrepagella(0)/m/n/10.95 Binomial: \TU/lmmono10-regular.otf(0)/m/n/10.95 =BINOM.DIST(x, n, p, FALSE)\TU/texgyrepagella(0)/m/n/10.95 . For the basketball example, \TU/lmmono10-regular.otf(0)/m/n/10.95 =BINOM.DIST(3,
+ []
+
+
+Overfull \hbox (29.13564pt too wide) in paragraph at lines 5956--5959
+[]\TU/texgyrepagella(0)/m/n/10.95 Poisson: \TU/lmmono10-regular.otf(0)/m/n/10.95 =POISSON.DIST(x, mean, FALSE)\TU/texgyrepagella(0)/m/n/10.95 . For the drive-thru example, \TU/lmmono10-regular.otf(0)/m/n/10.95 =POISSON.DIST(5,
+ []
+
+[108]
+Underfull \hbox (badness 2529) in paragraph at lines 6016--6019
+[]\TU/lmmono10-regular.otf(0)/m/n/10.95 =HYPGEOM.DIST(sample_s, number_sample, population_s, number_pop,
+ []
+
+[109]
+File: images/Discrete_Distributions.png Graphic file (type bmp)
+<images/Discrete_Distributions.png>
+[110] [111] [112] [113]
+chapter 10.
+[114
+
+] [115] [116]
+Overfull \hbox (2.96165pt too wide) in paragraph at lines 6479--6483
+[]\TU/lmmono10-regular.otf(0)/m/n/10.95 =NORM.INV(probability, mean, standard_dev) \TU/texgyrepagella(0)/m/n/10.95 and \TU/lmmono10-regular.otf(0)/m/n/10.95 =NORM.S.INV(probability)
+ []
+
+[117]
+File: images/Continuous_Distributions.png Graphic file (type bmp)
+<images/Continuous_Distributions.png>
+[118] [119] [120]
+part IV.
+Package scrkbase Info: You've told me to use the font selection of the element
+(scrkbase)             `partprefix' that is an alias of element `partnumber'
+(scrkbase)              on input line 6618.
+[121
+
+]
+chapter 11.
+[122
+
+] [123] [124] [125] [126]
+Underfull \hbox (badness 1496) in paragraph at lines 6909--6915
+[]\TU/texgyrepagella(0)/b/n/10.95 Computing probabilities. \TU/texgyrepagella(0)/m/n/10.95 Use \TU/lmmono10-regular.otf(0)/m/n/10.95 =NORM.DIST(x, mean, standard_dev, TRUE) \TU/texgyrepagella(0)/m/n/10.95 for
+ []
+
+
+Overfull \hbox (8.04723pt too wide) in paragraph at lines 6916--6918
+[]\TU/texgyrepagella(0)/b/n/10.95 Summarizing samples. \TU/texgyrepagella(0)/m/n/10.95 Use \TU/lmmono10-regular.otf(0)/m/n/10.95 =AVERAGE(range) \TU/texgyrepagella(0)/m/n/10.95 for the mean of a sample and \TU/lmmono10-regular.otf(0)/m/n/10.95 =STDEV.S(range)
+ []
+
+[127]
+File: images/Sampling_Distributions.png Graphic file (type bmp)
+<images/Sampling_Distributions.png>
+[128] [129] [130]
+chapter 12.
+[131
+
+] [132] [133] [134]
+Underfull \hbox (badness 1226) in paragraph at lines 7332--7338
+\TU/texgyrepagella(0)/m/n/10.95 ple, \TU/lmmono10-regular.otf(0)/m/n/10.95 =NORM.S.INV(0.975) \TU/texgyrepagella(0)/m/n/10.95 returns $[][][][]$. For a $[]$ critical value use \TU/lmmono10-regular.otf(0)/m/n/10.95 =T.INV.2T(alpha,
+ []
+
+
+Underfull \hbox (badness 5161) in paragraph at lines 7332--7338
+\TU/lmmono10-regular.otf(0)/m/n/10.95 deg_freedom)\TU/texgyrepagella(0)/m/n/10.95 , which returns the positive two-tailed value directly — for example,
+ []
+
+[135]
+File: images/Confidence_Intervals.png Graphic file (type bmp)
+<images/Confidence_Intervals.png>
+[136] [137] [138]
+chapter 13.
+[139
+
+] [140] [141]
+Underfull \hbox (badness 1460) in paragraph at lines 7723--7729
+[]\TU/texgyrepagella(0)/b/n/10.95 p-values from the $[]$\TU/texgyrepagella(0)/m/n/10.95 -distribution. Use \TU/lmmono10-regular.otf(0)/m/n/10.95 =T.DIST(t, df, TRUE) \TU/texgyrepagella(0)/m/n/10.95 for a left-tailed test,
+ []
+
+[142]
+File: images/Hypothesis_Testing.png Graphic file (type bmp)
+<images/Hypothesis_Testing.png>
+[143] [144] [145]
+chapter 14.
+[146
+
+]
+Overfull \hbox (95.61205pt too wide) in paragraph at lines 7960--7971
+ [] 
+ []
+
+[147] [148] [149] [150]
+File: images/Regression_Inference.png Graphic file (type bmp)
+<images/Regression_Inference.png>
+[151] [152] [153]
+part V.
+Package scrkbase Info: You've told me to use the font selection of the element
+(scrkbase)             `partprefix' that is an alias of element `partnumber'
+(scrkbase)              on input line 8256.
+[154
+
+]
+chapter 15.
+[155
+
+]
+
+LaTeX Font Warning: Font shape `TU/lmmono10-regular.otf(0)/b/n' undefined
+(Font)              using `TU/lmmono10-regular.otf(0)/m/n' instead on input line 8358.
+
+[156] [157] [158]
+Underfull \hbox (badness 1253) in paragraph at lines 8546--8553
+[]\TU/texgyrepagella(0)/m/n/10.95 As an example, suppose cell \TU/lmmono10-regular.otf(0)/m/n/10.95 D6 \TU/texgyrepagella(0)/m/n/10.95 contains \TU/lmmono10-regular.otf(0)/m/n/10.95 Doe, John\TU/texgyrepagella(0)/m/n/10.95 . The position of the comma is
+ []
+
+[159]
+Underfull \hbox (badness 6461) in paragraph at lines 8595--8599
+[]\TU/lmmono10-regular.otf(0)/m/n/10.95 =COUNTIF(range, criteria) \TU/texgyrepagella(0)/m/n/10.95 counts the cells that satisfy a condition, and
+ []
+
+[160] [161] [162] [163]
+Overfull \hbox (130.1586pt too wide) in paragraph at lines 8830--8836
+[]\TU/lmmono10-regular.otf(0)/m/n/10.95 =VAR(IF(criteria_range="condition", value_range)) \TU/texgyrepagella(0)/m/n/10.95 and \TU/lmmono10-regular.otf(0)/m/n/10.95 =STDEV(IF(criteria_range="condition",
+ []
+
+
+Underfull \hbox (badness 3138) in paragraph at lines 8847--8853
+[]\TU/lmmono10-regular.otf(0)/m/n/10.95 =PERCENTILE.INC(array, k) \TU/texgyrepagella(0)/m/n/10.95 returns the $[]$th percentile of a range using the
+ []
+
+[164]
+Overfull \hbox (5.04688pt too wide) in paragraph at lines 8924--8930
+[]\TU/lmmono10-regular.otf(0)/m/n/10.95 =NORM.DIST(x, mean, std_dev, cumulative) \TU/texgyrepagella(0)/m/n/10.95 and \TU/lmmono10-regular.otf(0)/m/n/10.95 =NORM.S.DIST(z, cumulative)
+ []
+
+[165]
+LaTeX Font Info:    Font shape `TU/texgyreheros(0)/b/n' will be
+(Font)              scaled to size 8.68515pt on input line 8936.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/n' will be
+(Font)              scaled to size 9.0pt on input line 8936.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/it' will be
+(Font)              scaled to size 10.0pt on input line 8941.
+[166
+
+
+
+]
+
+LaTeX Font Warning: Font shape `TU/lmmono10-regular.otf(0)/m/it' undefined
+(Font)              using `TU/lmmono10-regular.otf(0)/m/n' instead on input line 9065.
+
+LaTeX Font Info:    Font shape `TU/lmmono10-regular.otf(0)/m/n' will be
+(Font)              scaled to size 10.88165pt on input line 9065.
+LaTeX Font Info:    Font shape `TU/lmmono10-regular.otf(0)/m/it' will be
+(Font)              scaled to size 10.88165pt on input line 9065.
+[167] [168] [169] [170] [171]
+Underfull \hbox (badness 3942) in paragraph at lines 9439--9441
+[]\TU/lmmono10-regular.otf(0)/m/it/10 =SUMPRODUCT({250.34,234.59,270.45},{80,120,50}) / SUM(80,120,50) \TU/texgyrepagella(0)/m/n/10 →
+ []
+
+[172] [173] [174] [175] [176] [177]
+LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/b/n' will be
+(Font)              scaled to size 10.0pt on input line 9854.
+Missing character: There is no ≈ (U+2248) in font [lmmono10-regular.otf]/OT:script=latn;language=dflt;!
+[178] [179] [180] [181] [182]
+Underfull \hbox (badness 10000) in paragraph at lines 10301--10302
+[]\TU/texgyrepagella(0)/m/it/10 You can also skip the helper column entirely — the same proportion is
+ []
+
+[183]
+Underfull \hbox (badness 10000) in paragraph at lines 10341--10343
+[]\TU/lmmono10-regular.otf(0)/m/it/10 =TREND(B2:B81, C2:C81, 1) \TU/texgyrepagella(0)/m/n/10 → $[][][][]$, the same as
+ []
+
+[184] [185] [186]
+LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/n' will be
+(Font)              scaled to size 7.0pt on input line 10571.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/n' will be
+(Font)              scaled to size 5.0pt on input line 10571.
+[187] [188] [189] [190] [191] [192] [193] [194] [195] [196] [197] [198] [199] [200] (./index.aux)
+
+LaTeX Font Warning: Some font shapes were not available, defaults substituted.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 45177 strings out of 478757
+ 961104 string characters out of 5848883
+ 1882979 words of memory out of 5000000
+ 64464 multiletter control sequences out of 15000+600000
+ 523879 words of font info for 156 fonts, out of 8000000 for 9000
+ 14 hyphenation exceptions out of 8191
+ 108i,21n,123p,10600b,1044s stack positions out of 10000i,1000n,20000p,200000b,200000s
+
+Output written on index.pdf (200 pages).
