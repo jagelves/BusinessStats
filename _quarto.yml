@@ -1,6 +1,7 @@
 project:
   type: book
   output-dir: docs
+  pre-render: Rscript scripts/make_answers.R
 
 book:
   title: "Business Statistics"
@@ -8,6 +9,8 @@ book:
   date: "09/6/2026"
   cover-image: cover.png
   google-analytics: "G-PLNY5BZ16X"
+  output-file: "Business-Statistics"
+  downloads: [pdf]
   search: true
   reader-mode: true
   page-navigation: true
@@ -46,7 +49,7 @@ book:
     - part: "Toolkit"
       chapters:
         - Excel Basics.qmd
-        - references.qmd
+        - answers.qmd
 
 bibliography: references.bib
 
@@ -71,8 +74,31 @@ format:
     fig-align: center
   pdf:
     documentclass: scrreprt
+    classoption: [oneside, open=any]
+    pdf-engine: xelatex
+    papersize: letter
+    geometry: [top=0.95in, bottom=0.85in, left=1.1in, right=1.1in, headsep=0.3in]
+    fontsize: 11pt
+    linestretch: 1.15
+    mainfont: texgyrepagella
+    mainfontoptions: [Extension=.otf, UprightFont=*-regular, BoldFont=*-bold, ItalicFont=*-italic, BoldItalicFont=*-bolditalic]
+    sansfont: texgyreheros
+    sansfontoptions: [Extension=.otf, UprightFont=*-regular, BoldFont=*-bold, ItalicFont=*-italic, BoldItalicFont=*-bolditalic, Scale=MatchLowercase]
+    monofont: lmmono10-regular.otf
+    mathfont: texgyrepagella-math.otf
+    colorlinks: true
+    linkcolor: "bsaccent"
+    urlcolor: "bsaccent"
+    toccolor: "black"
+    toc-depth: 1
+    fig-pos: "H"
+    fig-width: 6
+    fig-height: 3.6
+    include-in-header: pdf/preamble.tex
 
 filters:
   - shinylive
+  - pdf/pdf.lua
+  - scripts/answers-link.lua
 
 editor: visual

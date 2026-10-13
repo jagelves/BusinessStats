@@ -1,0 +1,99 @@
+% ---------- PDF look for Business Statistics ----------
+\usepackage{xcolor}
+\definecolor{bsink}{HTML}{0F172A}
+\definecolor{bsink2}{HTML}{475569}
+\definecolor{bsline}{HTML}{E2E8F0}
+\definecolor{bsaccent}{HTML}{4F46E5}
+\definecolor{bsaccentsoft}{HTML}{EEF2FF}
+\definecolor{bsexample}{HTML}{0F766E}
+\definecolor{bsexamplesoft}{HTML}{F0FDFA}
+\definecolor{bspaper2}{HTML}{F8FAFC}
+\definecolor{bscover}{HTML}{061220}
+
+% Headings: clean sans, coloured numbers
+\addtokomafont{disposition}{\sffamily\bfseries\color{bsink}}
+\setkomafont{chapter}{\sffamily\bfseries\Huge}
+\setkomafont{chapterprefix}{\sffamily\normalsize\color{bsaccent}}
+\renewcommand*{\chapterformat}{\textcolor{bsaccent}{\thechapter}\hspace{0.6em}}
+\renewcommand*{\sectionformat}{\textcolor{bsaccent}{\thesection}\hspace{0.6em}}
+\RedeclareSectionCommand[beforeskip=0pt,afterskip=1.6\baselineskip]{chapter}
+\RedeclareSectionCommand[beforeskip=-1.8\baselineskip,afterskip=0.7\baselineskip]{section}
+\RedeclareSectionCommand[beforeskip=-1.4\baselineskip,afterskip=0.5\baselineskip]{subsection}
+\setkomafont{part}{\sffamily\bfseries\Huge\color{bsink}}
+\setkomafont{partnumber}{\sffamily\large\color{bsaccent}}
+
+% Running head and page numbers
+\usepackage[headsepline=0.4pt]{scrlayer-scrpage}
+\pagestyle{scrheadings}
+\clearpairofpagestyles
+\ihead{\small\sffamily\color{bsink2}\leftmark}
+\ohead{\small\sffamily\color{bsink2}\pagemark}
+\automark[chapter]{chapter}
+\setkomafont{pagehead}{\normalfont}
+\setkomafont{pagenumber}{\normalfont}
+
+% ---------- Page-break hygiene ----------
+\raggedbottom
+\widowpenalty=10000
+\clubpenalty=10000
+\displaywidowpenalty=10000
+\usepackage{needspace}
+\usepackage{etoolbox}
+% never leave a heading stranded at the bottom of a page
+\pretocmd{\section}{\Needspace{8\baselineskip}}{}{}
+\pretocmd{\subsection}{\Needspace{6\baselineskip}}{}{}
+% keep figures where they are written
+\usepackage{float}
+\floatplacement{figure}{H}
+\setlength{\parskip}{0.55\baselineskip plus 2pt minus 3pt}
+\setlength{\parindent}{0pt}
+
+% ---------- Boxes ----------
+\usepackage[most]{tcolorbox}
+\tcbset{bsbase/.style={enhanced, breakable, sharp corners=downhill, arc=6pt, boxrule=0.6pt,
+  left=10pt, right=10pt, top=8pt, bottom=8pt, before skip=10pt plus 2pt minus 4pt, after skip=12pt plus 2pt minus 4pt,
+  fonttitle=\sffamily\bfseries\footnotesize, coltitle=bsink, attach title to upper={\par\smallskip}}}
+\newtcolorbox{bsformula}[1][]{bsbase, colback=bsaccentsoft, colframe=bsaccent!35,
+  title={\textcolor{bsaccent}{\MakeUppercase{#1}}}}
+\newtcolorbox{bsexample}[1][]{bsbase, colback=bsexamplesoft, colframe=bsexample!30,
+  title={\textcolor{bsexample}{\MakeUppercase{#1}}}}
+\newtcolorbox{bsanswer}[1][Answer]{bsbase, colback=bspaper2, colframe=bsline, boxrule=0.6pt,
+  title={\textcolor{bsink2}{\MakeUppercase{#1}}}, fontupper=\small}
+% "Download data" links
+\newcommand{\bsdownload}[2]{\tcbox[on line, enhanced, colback=bsink, colframe=bsink, arc=8pt,
+  boxsep=0pt, left=7pt, right=7pt, top=3pt, bottom=3pt, fontupper=\sffamily\footnotesize\color{white}]{\href{#1}{#2}}}
+
+% Tables: a little more air
+\renewcommand{\arraystretch}{1.25}
+
+% ---------- Cover instead of the plain title page ----------
+\usepackage{tikz}
+\renewcommand{\maketitle}{%
+  \begin{titlepage}\thispagestyle{empty}%
+  \begin{tikzpicture}[remember picture, overlay]
+    \fill[bscover] (current page.south west) rectangle (current page.north east);
+    \node[inner sep=0pt] at (current page.center)
+      {\includegraphics[width=\paperwidth,height=\paperheight,keepaspectratio]{cover.png}};
+  \end{tikzpicture}%
+  \end{titlepage}}
+
+% ---------- Answer key at the end of the book ----------
+% In the text: a small link to the answer
+\newcommand{\bsanswerref}[1]{%
+  \par\nopagebreak\hypertarget{q-#1}{}\label{q-#1}%
+  {\raggedleft\sffamily\footnotesize\hyperlink{a-#1}{\textcolor{bsaccent}{Answer on page \pageref{a-#1}\ $\rightarrow$}}\par}%
+  \medskip}
+% The answer key itself
+\newcommand{\bsanswerkeystart}{%
+  \cleardoublepage
+  \chapter*{Answers to Exercises}\label{answers}%
+  \addcontentsline{toc}{chapter}{Answers to Exercises}%
+  \markboth{Answers to Exercises}{Answers to Exercises}}
+\newcommand{\bsanswerchapter}[2]{%
+  \section*{\textcolor{bsaccent}{#1}\hspace{0.6em}#2}%
+  \addcontentsline{toc}{section}{#1\hspace{0.6em}#2}}
+\newenvironment{bsanswerkey}[2]{%
+  \begin{tcolorbox}[bsbase, colback=bspaper2, colframe=bsline, fontupper=\small,
+    title={\hypertarget{a-#1}{}\label{a-#1}\hyperlink{q-#1}{\textcolor{bsink2}{\MakeUppercase{#2}}}\hfill
+      \hyperlink{q-#1}{\textcolor{bsaccent}{\normalfont\footnotesize back to page \pageref{q-#1}}}}]}%
+  {\end{tcolorbox}}

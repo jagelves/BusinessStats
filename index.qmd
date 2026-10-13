@@ -13,6 +13,7 @@
   <div class="cta">
     <a class="primary" href="DescriptiveI.html">Start reading →</a>
     <a href="Excel%20Basics.html">New to Excel? Start here</a>
+    <a href="Business-Statistics.pdf" download>Download the PDF</a>
   </div>
   <div class="bs-parts">
     <a href="DescriptiveI.html" style="--c:var(--p-describe)"><div class="n">Part I</div><div class="t">Describe</div><div class="d">Data types, tables, charts, center and spread</div></a>

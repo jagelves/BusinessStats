@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.12.27)  11 JUL 2026 18:52
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.12.27)  13 OCT 2026 13:34
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -31,8 +31,19 @@ Package: tocbasic 2022/10/12 v3.38 KOMA-Script package (handling toc-files)
 Package tocbasic Info: omitting babel extension for `toc'
 (tocbasic)             because of feature `nobabel' available
 (tocbasic)             for `toc' on input line 137.
-Class scrreprt Info: File `scrsize11pt.clo' used instead of
-(scrreprt)           file `scrsize11.clo' to setup font sizes on input line 2614.
+Package scrreprt Info: You've used standard option `11pt'.
+(scrreprt)             This is correct!
+(scrreprt)             Internally I'm using `fontsize=11pt'.
+(scrreprt)             If you'd like to set the option with \KOMAoptions,
+(scrreprt)             you'd have to use `fontsize=11pt' there
+(scrreprt)             instead of `11pt', too.
+Class scrreprt Info: You've used standard option `oneside'.
+(scrreprt)           This is correct!
+(scrreprt)           Internally I'm using `twoside=false'.
+(scrreprt)           If you'd like to set the option with \KOMAoptions,
+(scrreprt)           you'd have to use `twoside=false' there
+(scrreprt)           instead of `oneside', too.
+Class scrreprt Info: File `scrsize11pt.clo' used to setup font sizes on input line 2614.
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrsize11pt.clo
 File: scrsize11pt.clo 2022/10/12 v3.38 KOMA-Script font size class option (11pt)
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/koma-script/typearea.sty
@@ -45,6 +56,12 @@ Package typearea Info: You've used standard option `letterpaper'.
 (typearea)             If you'd like to set the option with \KOMAoptions,
 (typearea)             you'd have to use `paper=letter' there
 (typearea)             instead of `letterpaper', too.
+Package typearea Info: You've used standard option `oneside'.
+(typearea)             This is correct!
+(typearea)             Internally I'm using `twoside=false'.
+(typearea)             If you'd like to set the option with \KOMAoptions,
+(typearea)             you'd have to use `twoside=false' there
+(typearea)             instead of `oneside', too.
 \ta@hblk=\skip50
 \ta@vblk=\skip51
 \ta@temp=\skip52
@@ -192,7 +209,9 @@ Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 LaTeX Font Info:    Redeclaring math symbol \hbar on input line 98.
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
-)) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
+)) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2022/12/04 v6.7b set line spacing
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/unicode-math/unicode-math.sty (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
 Package: expl3 2022-12-17 L3 programming layer (loader) 
@@ -275,7 +294,499 @@ LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
 (Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
 LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
 (Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
-) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/upquote/upquote.sty
+)
+
+Package fontspec Info: texgyrepagella-regular scale = 0.9189752914750241.
+
+
+Package fontspec Info: texgyrepagella-regular scale = 0.9189752914750241.
+
+
+Package fontspec Info: texgyrepagella-regular scale = 0.9189752914750241.
+
+
+Package fontspec Info: texgyrepagella-bold scale = 0.9189752914750241.
+
+
+Package fontspec Info: texgyrepagella-bold scale = 0.9189752914750241.
+
+
+Package fontspec Info: texgyrepagella-italic scale = 0.8162859193885522.
+
+
+Package fontspec Info: texgyrepagella-italic scale = 0.8162859193885522.
+
+
+Package fontspec Info: texgyrepagella-bolditalic scale = 0.8450955908269965.
+
+
+Package fontspec Info: texgyrepagella-bolditalic scale = 0.8450955908269965.
+
+
+Package fontspec Info: Font family 'texgyrepagella(0)' created for font
+(fontspec)             'texgyrepagella' with options
+(fontspec)             [Scale=MatchLowercase,Ligatures=TeX,Scale=1,Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[texgyrepagella-regular.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->s*[1]"[texgyrepagella-regular.otf]/OT:script=latn;language=dflt;+smcp;mapping=tex-text;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[1]"[texgyrepagella-bold.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->s*[1]"[texgyrepagella-bold.otf]/OT:script=latn;language=dflt;+smcp;mapping=tex-text;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[texgyrepagella-italic.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->s*[1]"[texgyrepagella-italic.otf]/OT:script=latn;language=dflt;+smcp;mapping=tex-text;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[1]"[texgyrepagella-bolditalic.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->s*[1]"[texgyrepagella-bolditalic.otf]/OT:script=latn;language=dflt;+smcp;mapping=tex-text;"
+
+LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/n' will be
+(Font)              scaled to size 10.95pt on input line 30.
+
+Package fontspec Info: texgyrepagella-regular scale = 0.9999970287969005.
+
+
+Package fontspec Info: texgyrepagella-regular scale = 0.9999970287969005.
+
+
+Package fontspec Info: texgyrepagella-regular scale = 0.9999970287969005.
+
+
+Package fontspec Info: texgyrepagella-bold scale = 0.9999970287969005.
+
+
+Package fontspec Info: texgyrepagella-bold scale = 0.9999970287969005.
+
+
+Package fontspec Info: texgyrepagella-italic scale = 0.888254016848595.
+
+
+Package fontspec Info: texgyrepagella-italic scale = 0.888254016848595.
+
+
+Package fontspec Info: texgyrepagella-bolditalic scale = 0.9196037017708279.
+
+
+Package fontspec Info: texgyrepagella-bolditalic scale = 0.9196037017708279.
+
+
+Package fontspec Info: Font family 'texgyrepagella(1)' created for font
+(fontspec)             'texgyrepagella' with options
+(fontspec)             [Scale=MatchLowercase,Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999970287969005]"[texgyrepagella-regular.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->s*[0.9999970287969005]"[texgyrepagella-regular.otf]/OT:script=latn;language=dflt;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999970287969005]"[texgyrepagella-bold.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->s*[0.9999970287969005]"[texgyrepagella-bold.otf]/OT:script=latn;language=dflt;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[0.888254016848595]"[texgyrepagella-italic.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->s*[0.888254016848595]"[texgyrepagella-italic.otf]/OT:script=latn;language=dflt;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[0.9196037017708279]"[texgyrepagella-bolditalic.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->s*[0.9196037017708279]"[texgyrepagella-bolditalic.otf]/OT:script=latn;language=dflt;+smcp;"
+
+LaTeX Font Info:    Overwriting math alphabet `\mathrm' in version `normal'
+(Font)                  OT1/lmr/m/n --> TU/texgyrepagella(1)/m/n on input line 30.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/lmr/m/it --> TU/texgyrepagella(1)/m/it on input line 30.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/lmr/bx/n --> TU/texgyrepagella(1)/b/n on input line 30.
+
+Package fontspec Info: texgyreheros-regular scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-regular scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-regular scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-regular scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-regular scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-regular scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-bold scale = 0.8685160574429377.
+
+
+Package fontspec Info: texgyreheros-bold scale = 0.8685160574429377.
+
+
+Package fontspec Info: texgyreheros-bold scale = 0.8685160574429377.
+
+
+Package fontspec Info: texgyreheros-bold scale = 0.8685160574429377.
+
+
+Package fontspec Info: texgyreheros-italic scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-italic scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-italic scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-italic scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-bolditalic scale = 0.8685160574429377.
+
+
+Package fontspec Info: texgyreheros-bolditalic scale = 0.8685160574429377.
+
+
+Package fontspec Info: texgyreheros-bolditalic scale = 0.8685160574429377.
+
+
+Package fontspec Info: texgyreheros-bolditalic scale = 0.8685160574429377.
+
+
+Package fontspec Info: Font family 'texgyreheros(0)' created for font
+(fontspec)             'texgyreheros' with options
+(fontspec)             [Scale=MatchLowercase,Ligatures=TeX,Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic,Scale=MatchLowercase].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[0.8950358080274871]"[texgyreheros-regular.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->s*[0.8950358080274871]"[texgyreheros-regular.otf]/OT:script=latn;language=dflt;+smcp;mapping=tex-text;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.8685160574429377]"[texgyreheros-bold.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->s*[0.8685160574429377]"[texgyreheros-bold.otf]/OT:script=latn;language=dflt;+smcp;mapping=tex-text;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[0.8950358080274871]"[texgyreheros-italic.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->s*[0.8950358080274871]"[texgyreheros-italic.otf]/OT:script=latn;language=dflt;+smcp;mapping=tex-text;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[0.8685160574429377]"[texgyreheros-bolditalic.otf]/OT:script=latn;language=dflt;mapping=tex-text;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->s*[0.8685160574429377]"[texgyreheros-bolditalic.otf]/OT:script=latn;language=dflt;+smcp;mapping=tex-text;"
+
+
+Package fontspec Info: texgyreheros-regular scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-regular scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-regular scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-regular scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-regular scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-regular scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-bold scale = 0.8685160574429377.
+
+
+Package fontspec Info: texgyreheros-bold scale = 0.8685160574429377.
+
+
+Package fontspec Info: texgyreheros-bold scale = 0.8685160574429377.
+
+
+Package fontspec Info: texgyreheros-bold scale = 0.8685160574429377.
+
+
+Package fontspec Info: texgyreheros-italic scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-italic scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-italic scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-italic scale = 0.8950358080274871.
+
+
+Package fontspec Info: texgyreheros-bolditalic scale = 0.8685160574429377.
+
+
+Package fontspec Info: texgyreheros-bolditalic scale = 0.8685160574429377.
+
+
+Package fontspec Info: texgyreheros-bolditalic scale = 0.8685160574429377.
+
+
+Package fontspec Info: texgyreheros-bolditalic scale = 0.8685160574429377.
+
+
+Package fontspec Info: Font family 'texgyreheros(1)' created for font
+(fontspec)             'texgyreheros' with options
+(fontspec)             [Scale=MatchLowercase,Extension=.otf,UprightFont=*-regular,BoldFont=*-bold,ItalicFont=*-italic,BoldItalicFont=*-bolditalic,Scale=MatchLowercase].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[0.8950358080274871]"[texgyreheros-regular.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
+(fontspec)             <->s*[0.8950358080274871]"[texgyreheros-regular.otf]/OT:script=latn;language=dflt;+smcp;"
+(fontspec)             - 'bold' (b/n) with NFSS spec.:
+(fontspec)             <->s*[0.8685160574429377]"[texgyreheros-bold.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
+(fontspec)             <->s*[0.8685160574429377]"[texgyreheros-bold.otf]/OT:script=latn;language=dflt;+smcp;"
+(fontspec)             - 'italic' (m/it) with NFSS spec.:
+(fontspec)             <->s*[0.8950358080274871]"[texgyreheros-italic.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'italic small caps'  (m/scit) with NFSS spec.:
+(fontspec)             <->s*[0.8950358080274871]"[texgyreheros-italic.otf]/OT:script=latn;language=dflt;+smcp;"
+(fontspec)             - 'bold italic' (b/it) with NFSS spec.:
+(fontspec)             <->s*[0.8685160574429377]"[texgyreheros-bolditalic.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'bold italic small caps'  (b/scit) with NFSS spec.:
+(fontspec)             <->s*[0.8685160574429377]"[texgyreheros-bolditalic.otf]/OT:script=latn;language=dflt;+smcp;"
+
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/lmss/m/n --> TU/texgyreheros(1)/m/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/lmss/bx/n --> TU/texgyreheros(1)/b/n on input line 31.
+
+Package fontspec Info: lmmono10-regular scale = 1.088161787290451.
+
+
+Package fontspec Info: lmmono10-regular scale = 1.088161787290451.
+
+
+Package fontspec Info: Font family 'lmmono10-regular.otf(0)' created for font
+(fontspec)             'lmmono10-regular.otf' with options
+(fontspec)             [Scale=MatchLowercase,WordSpace={1,0,0},HyphenChar=None,PunctuationSpace=WordSpace].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1.088161787290451]"[lmmono10-regular.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 2\font =1\fontdimen 2\font \fontdimen 3\font
+(fontspec)             =0\fontdimen 3\font \fontdimen 4\font =0\fontdimen
+(fontspec)             4\font \fontdimen 7\font =0\fontdimen 2\font
+(fontspec)             \tex_hyphenchar:D \font =-1\scan_stop: 
+
+
+Package fontspec Info: lmmono10-regular scale = 1.088161787290451.
+
+
+Package fontspec Info: lmmono10-regular scale = 1.088161787290451.
+
+
+Package fontspec Info: Font family 'lmmono10-regular.otf(1)' created for font
+(fontspec)             'lmmono10-regular.otf' with options
+(fontspec)             [Scale=MatchLowercase].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[1.088161787290451]"[lmmono10-regular.otf]/OT:script=latn;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/lmtt/m/n --> TU/lmmono10-regular.otf(1)/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/lmtt/m/n --> TU/lmmono10-regular.otf(1)/b/n on input line 32.
+
+Package fontspec Info: texgyrepagella-math scale = 0.9999970287969005.
+
+
+Package fontspec Info: texgyrepagella-math scale = 0.9999970287969005.
+
+
+Package fontspec Info: Font family 'texgyrepagella-math.otf(0)' created for
+(fontspec)             font 'texgyrepagella-math.otf' with options
+(fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <->s*[0.9999970287969005]"[texgyrepagella-math.otf]/OT:script=math;language=dflt;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(0)/m/n' will be
+(Font)              scaled to size 10.95pt on input line 33.
+
+Package fontspec Info: texgyrepagella-math scale = 0.9999970287969005.
+
+
+Package fontspec Info: texgyrepagella-math scale = 0.9999970287969005.
+
+
+Package fontspec Info: texgyrepagella-math scale = 0.9999970287969005.
+
+
+Package fontspec Info: texgyrepagella-math scale = 0.9999970287969005.
+
+
+Package fontspec Info: Font family 'texgyrepagella-math.otf(1)' created for
+(fontspec)             font 'texgyrepagella-math.otf' with options
+(fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=9.5265-},{Size=7.06275-9.5265,Font=texgyrepagella-math.otf,Style=MathScript},{Size=-7.06275,Font=texgyrepagella-math.otf,Style=MathScriptScript}}].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <9.5265->s*[0.9999970287969005]"[texgyrepagella-math.otf]/OT:script=math;language=dflt;"<7.06275-9.5265>s*[0.9999970287969005]"[texgyrepagella-math.otf]/OT:script=math;language=dflt;+ssty=0;"<-7.06275>s*[0.9999970287969005]"[texgyrepagella-math.otf]/OT:script=math;language=dflt;+ssty=1;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
+(Font)              scaled to size 10.95pt on input line 33.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `normal' on input line 33.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/lmr/m/n --> TU/texgyrepagella-math.otf(1)/m/n on input line 33.
+LaTeX Font Info:    Encoding `OT1' has changed to `TU' for symbol font
+(Font)              `operators' in the math version `bold' on input line 33.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/lmr/bx/n --> TU/texgyrepagella-math.otf(1)/b/n on input line 33.
+
+Package fontspec Info: texgyrepagella-math scale = 0.9999970287969005.
+
+
+Package fontspec Info: texgyrepagella-math scale = 1.00009702849978.
+
+
+Package fontspec Info: texgyrepagella-math scale = 0.9999970287969005.
+
+
+Package fontspec Info: texgyrepagella-math scale = 1.00009702849978.
+
+
+Package fontspec Info: texgyrepagella-math scale = 0.9999970287969005.
+
+
+Package fontspec Info: texgyrepagella-math scale = 1.00009702849978.
+
+
+Package fontspec Info: texgyrepagella-math scale = 0.9999970287969005.
+
+
+Package fontspec Info: texgyrepagella-math scale = 1.00009702849978.
+
+
+Package fontspec Info: Font family 'texgyrepagella-math.otf(2)' created for
+(fontspec)             font 'texgyrepagella-math.otf' with options
+(fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=9.5265-},{Size=7.06275-9.5265,Font=texgyrepagella-math.otf,Style=MathScript},{Size=-7.06275,Font=texgyrepagella-math.otf,Style=MathScriptScript}},ScaleAgain=1.0001,FontAdjustment={\fontdimen
+(fontspec)             8\font =7.884pt\relax \fontdimen 9\font
+(fontspec)             =5.13554pt\relax \fontdimen 10\font =5.13554pt\relax
+(fontspec)             \fontdimen 11\font =7.2927pt\relax \fontdimen 12\font
+(fontspec)             =3.40546pt\relax \fontdimen 13\font =3.8763pt\relax
+(fontspec)             \fontdimen 14\font =3.8763pt\relax \fontdimen 15\font
+(fontspec)             =3.2412pt\relax \fontdimen 16\font =2.5404pt\relax
+(fontspec)             \fontdimen 17\font =2.5404pt\relax \fontdimen 18\font
+(fontspec)             =2.5404pt\relax \fontdimen 19\font =1.2702pt\relax
+(fontspec)             \fontdimen 22\font =2.7375pt\relax \fontdimen 20\font
+(fontspec)             =0pt\relax \fontdimen 21\font =0pt\relax }].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <9.5265->s*[1.00009702849978]"[texgyrepagella-math.otf]/OT:script=math;language=dflt;"<7.06275-9.5265>s*[1.00009702849978]"[texgyrepagella-math.otf]/OT:script=math;language=dflt;+ssty=0;"<-7.06275>s*[1.00009702849978]"[texgyrepagella-math.otf]/OT:script=math;language=dflt;+ssty=1;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =7.884pt\relax \fontdimen 9\font
+(fontspec)             =5.13554pt\relax \fontdimen 10\font =5.13554pt\relax
+(fontspec)             \fontdimen 11\font =7.2927pt\relax \fontdimen 12\font
+(fontspec)             =3.40546pt\relax \fontdimen 13\font =3.8763pt\relax
+(fontspec)             \fontdimen 14\font =3.8763pt\relax \fontdimen 15\font
+(fontspec)             =3.2412pt\relax \fontdimen 16\font =2.5404pt\relax
+(fontspec)             \fontdimen 17\font =2.5404pt\relax \fontdimen 18\font
+(fontspec)             =2.5404pt\relax \fontdimen 19\font =1.2702pt\relax
+(fontspec)             \fontdimen 22\font =2.7375pt\relax \fontdimen 20\font
+(fontspec)             =0pt\relax \fontdimen 21\font =0pt\relax 
+
+LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
+(Font)              `symbols' in the math version `normal' on input line 33.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/lmsy/m/n --> TU/texgyrepagella-math.otf(2)/m/n on input line 33.
+LaTeX Font Info:    Encoding `OMS' has changed to `TU' for symbol font
+(Font)              `symbols' in the math version `bold' on input line 33.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/lmsy/b/n --> TU/texgyrepagella-math.otf(2)/b/n on input line 33.
+
+Package fontspec Info: texgyrepagella-math scale = 0.9999970287969005.
+
+
+Package fontspec Info: texgyrepagella-math scale = 0.9998970290940208.
+
+
+Package fontspec Info: texgyrepagella-math scale = 0.9999970287969005.
+
+
+Package fontspec Info: texgyrepagella-math scale = 0.9998970290940208.
+
+
+Package fontspec Info: texgyrepagella-math scale = 0.9999970287969005.
+
+
+Package fontspec Info: texgyrepagella-math scale = 0.9998970290940208.
+
+
+Package fontspec Info: texgyrepagella-math scale = 0.9999970287969005.
+
+
+Package fontspec Info: texgyrepagella-math scale = 0.9998970290940208.
+
+
+Package fontspec Info: Font family 'texgyrepagella-math.otf(3)' created for
+(fontspec)             font 'texgyrepagella-math.otf' with options
+(fontspec)             [Scale=MatchLowercase,BoldItalicFont={},ItalicFont={},SmallCapsFont={},Script=Math,SizeFeatures={{Size=9.5265-},{Size=7.06275-9.5265,Font=texgyrepagella-math.otf,Style=MathScript},{Size=-7.06275,Font=texgyrepagella-math.otf,Style=MathScriptScript}},ScaleAgain=0.9999,FontAdjustment={\fontdimen
+(fontspec)             8\font =0.657pt\relax \fontdimen 9\font =1.314pt\relax
+(fontspec)             \fontdimen 10\font =1.314pt\relax \fontdimen 11\font
+(fontspec)             =1.314pt\relax \fontdimen 12\font =5.1246pt\relax
+(fontspec)             \fontdimen 13\font =0pt\relax }].
+(fontspec)              
+(fontspec)              This font family consists of the following NFSS
+(fontspec)             series/shapes:
+(fontspec)              
+(fontspec)             - 'normal' (m/n) with NFSS spec.:
+(fontspec)             <9.5265->s*[0.9998970290940208]"[texgyrepagella-math.otf]/OT:script=math;language=dflt;"<7.06275-9.5265>s*[0.9998970290940208]"[texgyrepagella-math.otf]/OT:script=math;language=dflt;+ssty=0;"<-7.06275>s*[0.9998970290940208]"[texgyrepagella-math.otf]/OT:script=math;language=dflt;+ssty=1;"
+(fontspec)             - 'small caps'  (m/sc) with NFSS spec.: 
+(fontspec)             and font adjustment code:
+(fontspec)             \fontdimen 8\font =0.657pt\relax \fontdimen 9\font
+(fontspec)             =1.314pt\relax \fontdimen 10\font =1.314pt\relax
+(fontspec)             \fontdimen 11\font =1.314pt\relax \fontdimen 12\font
+(fontspec)             =5.1246pt\relax \fontdimen 13\font =0pt\relax 
+
+LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
+(Font)              `largesymbols' in the math version `normal' on input line 33.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/lmex/m/n --> TU/texgyrepagella-math.otf(3)/m/n on input line 33.
+LaTeX Font Info:    Encoding `OMX' has changed to `TU' for symbol font
+(Font)              `largesymbols' in the math version `bold' on input line 33.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/lmex/m/n --> TU/texgyrepagella-math.otf(3)/b/n on input line 33.
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/upquote/upquote.sty
 Package: upquote 2012/04/19 v1.3 upright-quote and grave-accent glyphs in verbatim
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/base/textcomp.sty
 Package: textcomp 2020/02/02 v2.0n Standard LaTeX package
@@ -325,85 +836,102 @@ File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 File: svgnam.def 2022/06/12 v2.14 Predefined colors according to SVG 1.1 (UK)
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/xcolor/x11nam.def
 File: x11nam.def 2022/06/12 v2.14 Predefined colors according to Unix/X11 (UK)
-)) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
+)) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/geometry/geometry.sty
+Package: geometry 2020/01/02 v5.9 Page Geometry
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
+Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
+)
+\Gm@cnth=\count290
+\Gm@cntv=\count291
+\c@Gm@tempcnt=\count292
+\Gm@bindingoffset=\dimen154
+\Gm@wd@mp=\dimen155
+\Gm@odd@mp=\dimen156
+\Gm@even@mp=\dimen157
+\Gm@layoutwidth=\dimen158
+\Gm@layoutheight=\dimen159
+\Gm@layouthoffset=\dimen160
+\Gm@layoutvoffset=\dimen161
+\Gm@dimlist=\toks23
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.sty
 Package: fancyvrb 2022/06/06 4.5 verbatim text (tvz,hv)
-\FV@CodeLineNo=\count290
+\FV@CodeLineNo=\count293
 \FV@InFile=\read2
 \FV@TabBox=\box57
-\c@FancyVerbLine=\count291
-\FV@StepNumber=\count292
+\c@FancyVerbLine=\count294
+\FV@StepNumber=\count295
 \FV@OutFile=\write3
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/framed/framed.sty
 Package: framed 2011/10/22 v 0.96: framed or shaded text with page breaks
 \OuterFrameSep=\skip68
-\fb@frw=\dimen154
-\fb@frh=\dimen155
-\FrameRule=\dimen156
-\FrameSep=\dimen157
+\fb@frw=\dimen162
+\fb@frh=\dimen163
+\FrameRule=\dimen164
+\FrameSep=\dimen165
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tools/longtable.sty
 Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
 \LTleft=\skip69
 \LTright=\skip70
 \LTpre=\skip71
 \LTpost=\skip72
-\LTchunksize=\count293
-\LTcapwidth=\dimen158
+\LTchunksize=\count296
+\LTcapwidth=\dimen166
 \LT@head=\box58
 \LT@firsthead=\box59
 \LT@foot=\box60
 \LT@lastfoot=\box61
 \LT@gbox=\box62
-\LT@cols=\count294
-\LT@rows=\count295
-\c@LT@tables=\count296
-\c@LT@chunks=\count297
-\LT@p@ftn=\toks23
+\LT@cols=\count297
+\LT@rows=\count298
+\c@LT@tables=\count299
+\c@LT@chunks=\count300
+\LT@p@ftn=\toks24
 )
-Class scrreprt Info: longtable captions redefined on input line 112.
+Class scrreprt Info: longtable captions redefined on input line 121.
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/booktabs/booktabs.sty
 Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
-\heavyrulewidth=\dimen159
-\lightrulewidth=\dimen160
-\cmidrulewidth=\dimen161
-\belowrulesep=\dimen162
-\belowbottomsep=\dimen163
-\aboverulesep=\dimen164
-\abovetopsep=\dimen165
-\cmidrulesep=\dimen166
-\cmidrulekern=\dimen167
-\defaultaddspace=\dimen168
-\@cmidla=\count298
-\@cmidlb=\count299
-\@aboverulesep=\dimen169
-\@belowrulesep=\dimen170
-\@thisruleclass=\count300
-\@lastruleclass=\count301
-\@thisrulewidth=\dimen171
+\heavyrulewidth=\dimen167
+\lightrulewidth=\dimen168
+\cmidrulewidth=\dimen169
+\belowrulesep=\dimen170
+\belowbottomsep=\dimen171
+\aboverulesep=\dimen172
+\abovetopsep=\dimen173
+\cmidrulesep=\dimen174
+\cmidrulekern=\dimen175
+\defaultaddspace=\dimen176
+\@cmidla=\count301
+\@cmidlb=\count302
+\@aboverulesep=\dimen177
+\@belowrulesep=\dimen178
+\@thisruleclass=\count303
+\@lastruleclass=\count304
+\@thisrulewidth=\dimen179
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tools/array.sty
 Package: array 2022/09/04 v2.5g Tabular extension package (FMi)
-\col@sep=\dimen172
+\col@sep=\dimen180
 \ar@mcellbox=\box63
-\extrarowheight=\dimen173
-\NC@list=\toks24
+\extrarowheight=\dimen181
+\NC@list=\toks25
 \extratabsurround=\skip73
 \backup@length=\skip74
 \ar@cellbox=\box64
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count302
-\calc@Bcount=\count303
-\calc@Adimen=\dimen174
-\calc@Bdimen=\dimen175
+\calc@Acount=\count305
+\calc@Bcount=\count306
+\calc@Adimen=\dimen182
+\calc@Bdimen=\dimen183
 \calc@Askip=\skip75
 \calc@Bskip=\skip76
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count304
+\calc@Ccount=\count307
 \calc@Cskip=\skip77
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/mdwtools/footnote.sty
 Package: footnote 1997/01/28 1.13 Save footnotes around boxes
 \fn@notes=\box65
-\fn@width=\dimen176
+\fn@width=\dimen184
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/graphics/graphics.sty
@@ -415,56 +943,38 @@ File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: xetex.def on input line 107.
 )
-\Gin@req@height=\dimen177
-\Gin@req@width=\dimen178
+\Gin@req@height=\dimen185
+\Gin@req@width=\dimen186
 )
 \pandoc@box=\box66
-\cslhangindent=\skip78
-\csllabelwidth=\skip79
-(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/caption/caption.sty
-Package: caption 2022/03/01 v3.6b Customizing captions (AR)
-(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
-Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
-\caption@tempdima=\dimen179
-\captionmargin=\dimen180
-\caption@leftmargin=\dimen181
-\caption@rightmargin=\dimen182
-\caption@width=\dimen183
-\caption@indent=\dimen184
-\caption@parindent=\dimen185
-\caption@hangindent=\dimen186
-Package caption Info: KOMA-Script document class detected.
-(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/caption/caption-koma.sto
-File: caption-koma.sto 2020/09/21 v2.0b Adaption of the caption package to the KOMA-Script document classes (AR)
-))
-\c@caption@flags=\count305
-\c@continuedfloat=\count306
-Package caption Info: longtable package is loaded.
-(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/caption/ltcaption.sty
-Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
-)) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.sty
-Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
-\everycr=\toks25
-\minrowclearance=\skip80
-\rownum=\count307
-) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/anyfontsize/anyfontsize.sty
-Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
-Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
-Package: anyfontsize 2007/11/22 anyfontsize.sty by pts
-) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
-Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
-\multirow@colwidth=\skip81
-\multirow@cntb=\count308
-\multirow@dima=\skip82
-\bigstrutjot=\dimen187
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrlayer-scrpage.sty
+Package: scrlayer-scrpage 2022/10/12 v3.38 KOMA-Script package (end user interface for scrlayer)
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/koma-script/scrlayer.sty
+Package: scrlayer 2022/10/12 v3.38 KOMA-Script package (defining layers and page styles)
+Package scrlayer Info: patching LaTeX kernel macro \pagestyle on input line 2176.
+)
+Package scrlayer-scrpage Info: Makeing stand-alone element `pagehead' from
+(scrlayer-scrpage)             alias to `pageheadfoot' on input line 1089.
+)
+1: chapter
+1: chapter
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/needspace/needspace.sty
+Package: needspace 2010/09/12 v1.3d reserve vertical space
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/float/float.sty
+Package: float 2001/11/08 v1.3d Float enhancements (AL)
+\c@float@type=\count308
+\float@exts=\toks26
+\float@box=\box67
+\@float@everytoks=\toks27
+\@floatcapt=\box68
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcolorbox.sty
 Package: tcolorbox 2022/06/24 version 5.1.1 text color boxes
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
-\pgfutil@everybye=\toks26
-\pgfutil@tempdima=\dimen188
-\pgfutil@tempdimb=\dimen189
+\pgfutil@everybye=\toks28
+\pgfutil@tempdima=\dimen187
+\pgfutil@tempdimb=\dimen188
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-common-lists.tex)) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
-\pgfutil@abb=\box67
+\pgfutil@abb=\box69
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/pgf.revision.tex)
 Package: pgfrcs 2021/05/15 v3.1.9a (3.1.9a)
 ))
@@ -472,30 +982,30 @@ Package: pgf 2021/05/15 v3.1.9a (3.1.9a)
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
 Package: pgfsys 2021/05/15 v3.1.9a (3.1.9a)
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
-\pgfkeys@pathtoks=\toks27
-\pgfkeys@temptoks=\toks28
+\pgfkeys@pathtoks=\toks29
+\pgfkeys@temptoks=\toks30
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeysfiltered.code.tex
-\pgfkeys@tmptoks=\toks29
+\pgfkeys@tmptoks=\toks31
 ))
-\pgf@x=\dimen190
-\pgf@y=\dimen191
-\pgf@xa=\dimen192
-\pgf@ya=\dimen193
-\pgf@xb=\dimen194
-\pgf@yb=\dimen195
-\pgf@xc=\dimen196
-\pgf@yc=\dimen197
-\pgf@xd=\dimen198
-\pgf@yd=\dimen199
+\pgf@x=\dimen189
+\pgf@y=\dimen190
+\pgf@xa=\dimen191
+\pgf@ya=\dimen192
+\pgf@xb=\dimen193
+\pgf@yb=\dimen194
+\pgf@xc=\dimen195
+\pgf@yc=\dimen196
+\pgf@xd=\dimen197
+\pgf@yd=\dimen198
 \w@pgf@writea=\write4
 \r@pgf@reada=\read3
 \c@pgf@counta=\count309
 \c@pgf@countb=\count310
 \c@pgf@countc=\count311
 \c@pgf@countd=\count312
-\t@pgf@toka=\toks30
-\t@pgf@tokb=\toks31
-\t@pgf@tokc=\toks32
+\t@pgf@toka=\toks32
+\t@pgf@tokb=\toks33
+\t@pgf@tokc=\toks34
 \pgf@sys@id@count=\count313
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
 File: pgf.cfg 2021/05/15 v3.1.9a (3.1.9a)
@@ -518,52 +1028,52 @@ File: pgfsysprotocol.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 )) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
 Package: pgfcore 2021/05/15 v3.1.9a (3.1.9a)
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
-\pgfmath@dimen=\dimen256
+\pgfmath@dimen=\dimen199
 \pgfmath@count=\count317
-\pgfmath@box=\box68
-\pgfmath@toks=\toks33
-\pgfmath@stack@operand=\toks34
-\pgfmath@stack@operation=\toks35
+\pgfmath@box=\box70
+\pgfmath@toks=\toks35
+\pgfmath@stack@operand=\toks36
+\pgfmath@stack@operation=\toks37
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex))) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
 \c@pgfmathroundto@lastzeros=\count318
 )) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
 File: pgfcorepoints.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@picminx=\dimen257
-\pgf@picmaxx=\dimen258
-\pgf@picminy=\dimen259
-\pgf@picmaxy=\dimen260
-\pgf@pathminx=\dimen261
-\pgf@pathmaxx=\dimen262
-\pgf@pathminy=\dimen263
-\pgf@pathmaxy=\dimen264
-\pgf@xx=\dimen265
-\pgf@xy=\dimen266
-\pgf@yx=\dimen267
-\pgf@yy=\dimen268
-\pgf@zx=\dimen269
-\pgf@zy=\dimen270
+\pgf@picminx=\dimen256
+\pgf@picmaxx=\dimen257
+\pgf@picminy=\dimen258
+\pgf@picmaxy=\dimen259
+\pgf@pathminx=\dimen260
+\pgf@pathmaxx=\dimen261
+\pgf@pathminy=\dimen262
+\pgf@pathmaxy=\dimen263
+\pgf@xx=\dimen264
+\pgf@xy=\dimen265
+\pgf@yx=\dimen266
+\pgf@yy=\dimen267
+\pgf@zx=\dimen268
+\pgf@zy=\dimen269
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
 File: pgfcorepathconstruct.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@path@lastx=\dimen271
-\pgf@path@lasty=\dimen272
+\pgf@path@lastx=\dimen270
+\pgf@path@lasty=\dimen271
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
 File: pgfcorepathusage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@shorten@end@additional=\dimen273
-\pgf@shorten@start@additional=\dimen274
+\pgf@shorten@end@additional=\dimen272
+\pgf@shorten@start@additional=\dimen273
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
 File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfpic=\box69
-\pgf@hbox=\box70
-\pgf@layerbox@main=\box71
+\pgfpic=\box71
+\pgf@hbox=\box72
+\pgf@layerbox@main=\box73
 \pgf@picture@serial@count=\count319
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
 File: pgfcoregraphicstate.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgflinewidth=\dimen275
+\pgflinewidth=\dimen274
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
 File: pgfcoretransformations.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@pt@x=\dimen276
-\pgf@pt@y=\dimen277
-\pgf@pt@temp=\dimen278
+\pgf@pt@x=\dimen275
+\pgf@pt@y=\dimen276
+\pgf@pt@temp=\dimen277
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
 File: pgfcorequick.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
@@ -572,17 +1082,17 @@ File: pgfcoreobjects.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 File: pgfcorepathprocessing.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
 File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfarrowsep=\dimen279
+\pgfarrowsep=\dimen278
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@max=\dimen280
+\pgf@max=\dimen279
 \pgf@sys@shading@range@num=\count320
 \pgf@shadingcount=\count321
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
 File: pgfcoreimage.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
 File: pgfcoreexternal.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfexternal@startupbox=\box72
+\pgfexternal@startupbox=\box74
 )) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
 File: pgfcorelayers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
@@ -593,79 +1103,85 @@ File: pgfcorepatterns.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 File: pgfcorerdf.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ))) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
 File: pgfmoduleshapes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfnodeparttextbox=\box73
+\pgfnodeparttextbox=\box75
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
 File: pgfmoduleplot.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
 Package: pgfcomp-version-0-65 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@nodesepstart=\dimen281
-\pgf@nodesepend=\dimen282
+\pgf@nodesepstart=\dimen280
+\pgf@nodesepend=\dimen281
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
 Package: pgfcomp-version-1-18 2021/05/15 v3.1.9a (3.1.9a)
 )) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tools/verbatim.sty
 Package: verbatim 2022-07-02 v1.5u LaTeX2e package for verbatim enhancements
-\every@verbatim=\toks36
-\verbatim@line=\toks37
+\every@verbatim=\toks38
+\verbatim@line=\toks39
 \verbatim@in@stream=\read4
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/environ/environ.sty
 Package: environ 2014/05/04 v0.3 A new way to define environments
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/trimspaces/trimspaces.sty
 Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 ))
-\tcb@titlebox=\box74
-\tcb@upperbox=\box75
-\tcb@lowerbox=\box76
-\tcb@phantombox=\box77
+\tcb@titlebox=\box76
+\tcb@upperbox=\box77
+\tcb@lowerbox=\box78
+\tcb@phantombox=\box79
 \c@tcbbreakpart=\count322
 \c@tcblayer=\count323
 \c@tcolorbox@number=\count324
-\tcb@temp=\box78
-\tcb@temp=\box79
 \tcb@temp=\box80
 \tcb@temp=\box81
-(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
+\tcb@temp=\box82
+\tcb@temp=\box83
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbraster.code.tex
+Library (tcolorbox): 'tcbraster.code.tex' version '5.1.1'
+\c@tcbrastercolumn=\count325
+\c@tcbrasterrow=\count326
+\c@tcbrasternum=\count327
+\c@tcbraster=\count328
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbskins.code.tex
 Library (tcolorbox): 'tcbskins.code.tex' version '5.1.1'
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
 Package: pgffor 2021/05/15 v3.1.9a (3.1.9a)
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)
-\pgffor@iter=\dimen283
-\pgffor@skip=\dimen284
-\pgffor@stack=\toks38
-\pgffor@toks=\toks39
+\pgffor@iter=\dimen282
+\pgffor@skip=\dimen283
+\pgffor@stack=\toks40
+\pgffor@toks=\toks41
 )) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
 Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@plot@mark@count=\count325
-\pgfplotmarksize=\dimen285
+\pgf@plot@mark@count=\count329
+\pgfplotmarksize=\dimen284
 )
-\tikz@lastx=\dimen286
-\tikz@lasty=\dimen287
-\tikz@lastxsaved=\dimen288
-\tikz@lastysaved=\dimen289
-\tikz@lastmovetox=\dimen290
-\tikz@lastmovetoy=\dimen291
-\tikzleveldistance=\dimen292
-\tikzsiblingdistance=\dimen293
-\tikz@figbox=\box82
-\tikz@figbox@bg=\box83
-\tikz@tempbox=\box84
-\tikz@tempbox@bg=\box85
-\tikztreelevel=\count326
-\tikznumberofchildren=\count327
-\tikznumberofcurrentchild=\count328
-\tikz@fig@count=\count329
+\tikz@lastx=\dimen285
+\tikz@lasty=\dimen286
+\tikz@lastxsaved=\dimen287
+\tikz@lastysaved=\dimen288
+\tikz@lastmovetox=\dimen289
+\tikz@lastmovetoy=\dimen290
+\tikzleveldistance=\dimen291
+\tikzsiblingdistance=\dimen292
+\tikz@figbox=\box84
+\tikz@figbox@bg=\box85
+\tikz@tempbox=\box86
+\tikz@tempbox@bg=\box87
+\tikztreelevel=\count330
+\tikznumberofchildren=\count331
+\tikznumberofcurrentchild=\count332
+\tikz@fig@count=\count333
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
 File: pgfmodulematrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfmatrixcurrentrow=\count330
-\pgfmatrixcurrentcolumn=\count331
-\pgf@matrix@numberofcolumns=\count332
+\pgfmatrixcurrentrow=\count334
+\pgfmatrixcurrentcolumn=\count335
+\pgf@matrix@numberofcolumns=\count336
 )
-\tikz@expandcount=\count333
+\tikz@expandcount=\count337
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
 File: tikzlibrarytopaths.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 )))
-\tcb@waterbox=\box86
+\tcb@waterbox=\box88
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbskinsjigsaw.code.tex
 Library (tcolorbox): 'tcbskinsjigsaw.code.tex' version '5.1.1'
 )) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbbreakable.code.tex
@@ -680,10 +1196,112 @@ Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
 Package pdfcol Info: Interface disabled because of missing PDF mode of pdfTeX.
 )
 Package pdfcol Info: pdfTeX's color stacks are not available.
-\tcb@testbox=\box87
-\tcb@totalupperbox=\box88
-\tcb@totallowerbox=\box89
-)) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/fontawesome5/fontawesome5.sty
+\tcb@testbox=\box89
+\tcb@totalupperbox=\box90
+\tcb@totallowerbox=\box91
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbhooks.code.tex
+Library (tcolorbox): 'tcbhooks.code.tex' version '5.1.1'
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbtheorems.code.tex
+Library (tcolorbox): 'tcbtheorems.code.tex' version '5.1.1'
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbfitting.code.tex
+Library (tcolorbox): 'tcbfitting.code.tex' version '5.1.1'
+\tcbfitdim=\dimen293
+\tcb@lowerfitdim=\dimen294
+\tcb@upperfitdim=\dimen295
+\tcb@cur@hbadness=\count338
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcblistingsutf8.code.tex
+Library (tcolorbox): 'tcblistingsutf8.code.tex' version '5.1.1'
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcblistings.code.tex
+Library (tcolorbox): 'tcblistings.code.tex' version '5.1.1'
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count339
+\lst@gtempboxa=\box92
+\lst@token=\toks42
+\lst@length=\count340
+\lst@currlwidth=\dimen296
+\lst@column=\count341
+\lst@pos=\count342
+\lst@lostspace=\dimen297
+\lst@width=\dimen298
+\lst@newlines=\count343
+\lst@lineno=\count344
+\lst@maxwidth=\dimen299
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2020/03/24 1.8d (Carsten Heinz)
+\c@lstnumber=\count345
+\lst@skipnumbers=\count346
+\lst@framebox=\box93
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2020/03/24 1.8d listings configuration
+))
+Package: listings 2020/03/24 1.8d (Carsten Heinz)
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcblistingscore.code.tex
+Library (tcolorbox): 'tcblistingscore.code.tex' version '5.1.1'
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbprocessing.code.tex
+Library (tcolorbox): 'tcbprocessing.code.tex' version '5.1.1'
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode not found.
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tools/shellesc.sty
+Package: shellesc 2019/11/08 v1.0c unified shell escape interface for LaTeX
+Package shellesc Info: Restricted shell escape enabled on input line 77.
+))
+\c@tcblisting=\count347
+))
+Package tcolorbox Info: Library `listingsutf8' is compatible with pdftex only. Library `listings` is loaded instead. on input line 29.
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbexternal.code.tex
+Library (tcolorbox): 'tcbexternal.code.tex' version '5.1.1'
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbmagazine.code.tex
+Library (tcolorbox): 'tcbmagazine.code.tex' version '5.1.1'
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbvignette.code.tex
+Library (tcolorbox): 'tcbvignette.code.tex' version '5.1.1'
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryfadings.code.tex
+File: tikzlibraryfadings.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pgflibraryfadings.code.tex
+File: pgflibraryfadings.code.tex 2021/05/15 v3.1.9a (3.1.9a)
+))) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/tcolorbox/tcbposter.code.tex
+Library (tcolorbox): 'tcbposter.code.tex' version '5.1.1'
+)) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/caption/caption.sty
+Package: caption 2022/03/01 v3.6b Customizing captions (AR)
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/caption/caption3.sty
+Package: caption3 2022/03/17 v2.3b caption3 kernel (AR)
+\caption@tempdima=\dimen300
+\captionmargin=\dimen301
+\caption@leftmargin=\dimen302
+\caption@rightmargin=\dimen303
+\caption@width=\dimen304
+\caption@indent=\dimen305
+\caption@parindent=\dimen306
+\caption@hangindent=\dimen307
+Package caption Info: KOMA-Script document class detected.
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/caption/caption-koma.sto
+File: caption-koma.sto 2020/09/21 v2.0b Adaption of the caption package to the KOMA-Script document classes (AR)
+))
+\c@caption@flags=\count348
+\c@continuedfloat=\count349
+Package caption Info: float package is loaded.
+Package caption Info: listings package is loaded.
+Package caption Info: longtable package is loaded.
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/caption/ltcaption.sty
+Package: ltcaption 2021/01/08 v1.4c longtable captions (AR)
+)) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/colortbl/colortbl.sty
+Package: colortbl 2022/06/20 v1.0f Color table columns (DPC)
+\everycr=\toks43
+\minrowclearance=\skip78
+\rownum=\count350
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/anyfontsize/anyfontsize.sty
+Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
+Invalid UTF-8 byte or sequence at line 3 replaced by U+FFFD.
+Package: anyfontsize 2007/11/22 anyfontsize.sty by pts
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/multirow/multirow.sty
+Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
+\multirow@colwidth=\skip79
+\multirow@cntb=\count351
+\multirow@dima=\skip80
+\bigstrutjot=\dimen308
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/fontawesome5/fontawesome5.sty
 Package: fontawesome5 2022/05/02 v5.15.4 Font Awesome 5
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/fontawesome5/fontawesome5-utex-helper.sty
 Package: fontawesome5-utex-helper 2022/05/02 v5.15.4 uTeX helper for fontawesome5
@@ -694,12 +1312,7 @@ LaTeX Font Info:    Trying to load font information for TU+fontawesomebrands on 
 Package: bookmark 2020-11-06 v1.29 PDF bookmarks (HO)
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hyperref.sty
 Package: hyperref 2022-11-13 v7.00u Hypertext links for LaTeX
-(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode not found.
-) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
@@ -720,11 +1333,11 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
 ))
-\c@section@level=\count334
+\c@section@level=\count352
 )
-\@linkdim=\dimen294
-\Hy@linkcounter=\count335
-\Hy@pagecounter=\count336
+\@linkdim=\dimen309
+\Hy@linkcounter=\count353
+\Hy@pagecounter=\count354
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.def
 File: pd1enc.def 2022-11-13 v7.00u Hyperref: PDFDocEncoding definition (HO)
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/intcalc/intcalc.sty
@@ -732,7 +1345,7 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/etexcmds/etexcmds.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count337
+\Hy@SavedSpaceFactor=\count355
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2022-11-13 v7.00u Hyperref: PDF Unicode definition (HO)
 )
@@ -744,21 +1357,21 @@ Package hyperref Info: Plain pages OFF on input line 4177.
 Package hyperref Info: Backreferencing OFF on input line 4182.
 Package hyperref Info: Implicit mode ON; LaTeX internals redefined.
 Package hyperref Info: Bookmarks ON on input line 4410.
-\c@Hy@tempcnt=\count338
+\c@Hy@tempcnt=\count356
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip18
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
 )
 LaTeX Info: Redefining \url on input line 4748.
-\XeTeXLinkMargin=\dimen295
+\XeTeXLinkMargin=\dimen310
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/bitset/bitset.sty
 Package: bitset 2019/12/09 v1.3 Handle bit-vector datatype (HO)
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/bigintcalc/bigintcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO)
 ))
-\Fld@menulength=\count339
-\Field@Width=\dimen296
-\Fld@charsize=\dimen297
+\Fld@menulength=\count357
+\Field@Width=\dimen311
+\Fld@charsize=\dimen312
 Package hyperref Info: Hyper figures OFF on input line 6027.
 Package hyperref Info: Link nesting OFF on input line 6032.
 Package hyperref Info: Hyper index ON on input line 6035.
@@ -770,9 +1383,9 @@ Package hyperref Info: PDF/A mode OFF on input line 6057.
 Package: atbegshi-ltx 2021/01/10 v1.0c Emulation of the original atbegshi
 package with kernel methods
 )
-\Hy@abspage=\count340
-\c@Item=\count341
-\c@Hfootnote=\count342
+\Hy@abspage=\count358
+\c@Item=\count359
+\c@Hfootnote=\count360
 )
 Package hyperref Info: Driver (autodetected): hxetex.
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/hyperref/hxetex.def
@@ -780,11 +1393,11 @@ File: hxetex.def 2022-11-13 v7.00u Hyperref driver for XeTeX
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/generic/stringenc/stringenc.sty
 Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO)
 )
-\pdfm@box=\box90
-\c@Hy@AnnotLevel=\count343
-\HyField@AnnotCount=\count344
-\Fld@listcount=\count345
-\c@bookmark@seq@number=\count346
+\pdfm@box=\box94
+\c@Hy@AnnotLevel=\count361
+\HyField@AnnotCount=\count362
+\Fld@listcount=\count363
+\c@bookmark@seq@number=\count364
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rerunfilecheck.sty
 Package: rerunfilecheck 2022-07-10 v1.10 Rerun checks for auxiliary files (HO)
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx.sty
@@ -795,44 +1408,280 @@ Package: uniquecounter 2019/12/15 v1.4 Provide unlimited unique counter (HO)
 )
 Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 285.
 )
-\Hy@SectionHShift=\skip83
+\Hy@SectionHShift=\skip81
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/bookmark/bkm-dvipdfm.def
 File: bkm-dvipdfm.def 2020-11-06 v1.29 bookmark driver for dvipdfm (HO)
-\BKM@id=\count347
-)) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/float/float.sty
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count348
-\float@exts=\toks40
-\float@box=\box91
-\@float@everytoks=\toks41
-\@floatcapt=\box92
-)
-\@float@every@codelisting=\toks42
-\c@codelisting=\count349
+\BKM@id=\count365
+))
+\@float@every@codelisting=\toks44
+\c@codelisting=\count366
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/caption/subcaption.sty
 Package: subcaption 2022/01/07 v1.5 Sub-captions (AR)
-\c@subfigure=\count350
-\c@subtable=\count351
+\c@subfigure=\count367
+\c@subtable=\count368
 )
+Package hyperref Info: Option `colorlinks' set `true' on input line 326.
+No file index.aux.
+\openout1 = `index.aux'.
 
-! LaTeX Error: File `fontawesome6.sty' not found.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 333.
+LaTeX Font Info:    ... okay on input line 333.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 333.
+LaTeX Font Info:    ... okay on input line 333.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 333.
+LaTeX Font Info:    ... okay on input line 333.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 333.
+LaTeX Font Info:    ... okay on input line 333.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 333.
+LaTeX Font Info:    ... okay on input line 333.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 333.
+LaTeX Font Info:    ... okay on input line 333.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 333.
+LaTeX Font Info:    ... okay on input line 333.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 333.
+LaTeX Font Info:    ... okay on input line 333.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 333.
+LaTeX Font Info:    ... okay on input line 333.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 333.
+LaTeX Font Info:    ... okay on input line 333.
+Package scrbase Info: activating english \abstractname on input line 333.
+Package scrbase Info: activating english \partname on input line 333.
+Package scrbase Info: activating english \chaptername on input line 333.
+Package scrbase Info: activating english \appendixname on input line 333.
+Package scrbase Info: activating english \figurename on input line 333.
+Package scrbase Info: activating english \tablename on input line 333.
+Package scrbase Info: activating english \contentsname on input line 333.
+Package scrbase Info: activating english \listfigurename on input line 333.
+Package scrbase Info: activating english \listtablename on input line 333.
+Package scrbase Info: activating english \bibname on input line 333.
+Package scrbase Info: activating english \indexname on input line 333.
+LaTeX Info: Redefining \microtypecontext on input line 333.
+Package microtype Info: Applying patch `item' on input line 333.
+Package microtype Info: Applying patch `toc' on input line 333.
+Package microtype Info: Applying patch `eqnum' on input line 333.
+Package microtype Info: Applying patch `footnote' on input line 333.
+Package microtype Info: Character protrusion enabled (level 2).
+Package microtype Info: Using protrusion set `basicmath'.
+Package microtype Info: No adjustment of tracking.
+Package microtype Info: No adjustment of spacing.
+Package microtype Info: No adjustment of kerning.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `texgyrepagella' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+*geometry* driver: auto-detecting
+*geometry* detected driver: xetex
+*geometry* verbose mode - [ preamble ] result:
+* driver: xetex
+* paper: letterpaper
+* layout: <same size as paper>
+* layoutoffset:(h,v)=(0.0pt,0.0pt)
+* modes: 
+* h-part:(L,W,R)=(79.49744pt, 455.30013pt, 79.49744pt)
+* v-part:(T,H,B)=(68.65627pt, 664.88379pt, 61.42993pt)
+* \paperwidth=614.295pt
+* \paperheight=794.96999pt
+* \textwidth=455.30013pt
+* \textheight=664.88379pt
+* \oddsidemargin=7.22745pt
+* \evensidemargin=7.22745pt
+* \topmargin=-42.29494pt
+* \headheight=17.0pt
+* \headsep=21.68121pt
+* \topskip=11.0pt
+* \footskip=47.6pt
+* \marginparwidth=55.84499pt
+* \marginparsep=12.8401pt
+* \columnsep=10.0pt
+* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \hoffset=0.0pt
+* \voffset=0.0pt
+* \mag=1000
+* \@twocolumnfalse
+* \@twosidefalse
+* \@mparswitchfalse
+* \@reversemarginfalse
+* (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Type X to quit or <RETURN> to proceed,
-or enter new name. (Default extension: sty)
+\c@lstlisting=\count369
+Package caption Info: Begin \AtBeginDocument code.
+Package caption Info: hyperref package is loaded.
+Package caption Info: End \AtBeginDocument code.
+Package hyperref Info: Link coloring ON on input line 333.
 
-Enter file name: 
-! Emergency stop.
-<read *> 
-         
-l.240 \makeatother
-                  ^^M 
+Package hyperref Warning: Rerun to get /PageLabels entry.
+
+File: cover.png Graphic file (type bmp)
+<cover.png>
+[1
+
+
+
+]
+LaTeX Font Info:    Font shape `TU/texgyreheros(0)/m/n' will be
+(Font)              scaled to size 9.80061pt on input line 340.
+Package microtype Info: Loading generic protrusion settings for font family
+(microtype)             `texgyreheros' (encoding: TU).
+(microtype)             For optimal results, create family-specific settings.
+(microtype)             See the microtype manual for details.
+LaTeX Font Info:    Font shape `TU/texgyreheros(0)/b/n' will be
+(Font)              scaled to size 9.51022pt on input line 340.
+LaTeX Font Info:    Font shape `TU/texgyreheros(0)/b/n' will be
+(Font)              scaled to size 21.60864pt on input line 340.
+Package tocbasic Info: character protrusion at toc deactivated on input line 340.
+No file index.toc.
+\tf@toc=\write5
+\openout5 = `index.toc'.
+
+LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/sl' in size <10.95> not available
+(Font)              Font shape `TU/texgyrepagella(0)/m/it' tried instead on input line 346.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/it' will be
+(Font)              scaled to size 10.95pt on input line 346.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
+(Font)              scaled to size 8.103pt on input line 346.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
+(Font)              scaled to size 6.0225pt on input line 346.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 346.
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.95099pt on input line 346.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(2)/m/n' will be
+(Font)              scaled to size 8.10373pt on input line 346.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(2)/m/n' will be
+(Font)              scaled to size 6.02306pt on input line 346.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
+(Font)              scaled to size 10.94882pt on input line 346.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
+(Font)              scaled to size 8.10213pt on input line 346.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.02185pt on input line 346.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 346.
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
+File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 346.
+(/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
+File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
+) [2
+
+]
+LaTeX Font Info:    Font shape `TU/texgyreheros(0)/b/n' will be
+(Font)              scaled to size 12.5066pt on input line 365.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/b/n' will be
+(Font)              scaled to size 10.95pt on input line 373.
+[3
+
+]
+LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/n' will be
+(Font)              scaled to size 10.0pt on input line 459.
+LaTeX Font Info:    Font shape `TU/texgyreheros(0)/m/n' will be
+(Font)              scaled to size 8.95035pt on input line 459.
+[4]
+part I.
+Package scrkbase Info: You've told me to use the font selection of the element
+(scrkbase)             `partprefix' that is an alias of element `partnumber'
+(scrkbase)              on input line 459.
+LaTeX Font Info:    Font shape `TU/texgyreheros(0)/b/n' will be
+(Font)              scaled to size 10.42218pt on input line 459.
+[5
+
+]
+chapter 1.
+
+Class scrreprt Warning: \float@addtolists detected!
+(scrreprt)              Implementation of \float@addtolist became
+(scrreprt)              deprecated in KOMA-Script v3.01 2008/11/14 and
+(scrreprt)              has been replaced by several more flexible
+(scrreprt)              features of package `tocbasic`.
+(scrreprt)              Since Version 3.12 support for deprecated
+(scrreprt)              \float@addtolist interface has been
+(scrreprt)              restricted to only some of the KOMA-Script
+(scrreprt)              features and been removed from others.
+(scrreprt)              Loading of package `scrhack' may help to
+(scrreprt)              avoid this warning, if you are using a
+(scrreprt)              a package that still implements the
+(scrreprt)              deprecated \float@addtolist interface.
+
+LaTeX Font Info:    Font shape `TU/texgyreheros(0)/b/n' will be
+(Font)              scaled to size 7.81664pt on input line 499.
+[6
+
+] [7] [8] [9]
+File: images/Data_Types.png Graphic file (type bmp)
+<images/Data_Types.png>
+
+LaTeX Warning: Hyper reference `answers' on page 10 undefined on input line 716.
+
+[10]
+LaTeX Font Info:    Font shape `TU/texgyreheros(0)/m/n' will be
+(Font)              scaled to size 8.05531pt on input line 746.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/n' will be
+(Font)              scaled to size 9.0pt on input line 746.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/b/n' will be
+(Font)              scaled to size 9.0pt on input line 746.
+
+LaTeX Warning: Reference `a-bsans1' on page 11 undefined on input line 746.
+
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
+(Font)              scaled to size 9.0pt on input line 746.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
+(Font)              scaled to size 6.0pt on input line 746.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.0pt on input line 746.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(2)/m/n' will be
+(Font)              scaled to size 9.00082pt on input line 746.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(2)/m/n' will be
+(Font)              scaled to size 6.00055pt on input line 746.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.00046pt on input line 746.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
+(Font)              scaled to size 8.99904pt on input line 746.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.99936pt on input line 746.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
+(Font)              scaled to size 4.99947pt on input line 746.
+
+LaTeX Warning: Reference `a-bsans2' on page 11 undefined on input line 756.
+
+
+LaTeX Warning: Reference `a-bsans3' on page 11 undefined on input line 785.
+
+
+LaTeX Warning: Reference `a-bsans4' on page 11 undefined on input line 796.
+
+[11]
+
+LaTeX Warning: Reference `a-bsans5' on page 12 undefined on input line 807.
+
+
+LaTeX Warning: Reference `a-bsans6' on page 12 undefined on input line 833.
+
+[12]
+chapter 2.
+File: images/food.png Graphic file (type bmp)
+<images/food.png>
+
+! LaTeX Error: Not in outer par mode.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.880 \fontsize
+               {12.0pt}{14.0pt}\selectfont 
 Here is how much of TeX's memory you used:
- 38021 strings out of 478757
- 780373 string characters out of 5848883
- 1844979 words of memory out of 5000000
- 57565 multiletter control sequences out of 15000+600000
- 512679 words of font info for 37 fonts, out of 8000000 for 9000
+ 43853 strings out of 478757
+ 933937 string characters out of 5848883
+ 1865979 words of memory out of 5000000
+ 63215 multiletter control sequences out of 15000+600000
+ 518894 words of font info for 105 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 108i,1n,106p,10600b,270s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,20n,123p,10600b,1033s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-No pages of output.
+Output written on index.pdf (12 pages).

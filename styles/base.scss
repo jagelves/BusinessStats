@@ -287,3 +287,18 @@ main table thead th mjx-container, main table thead th .math { text-transform: n
 // ---------- Widget buttons sit side by side
 .bs-widget .cell-output-display:has(form > button) { display: inline-block; margin: .6rem .4rem .4rem 0; }
 .bs-widget .cell-output-display:has(form > button) form { width: auto; margin: 0; }
+
+// ---------- Answers to Exercises page
+main h2 + p > a.bs-answer-back:only-child { font-size: .85rem; }
+main h3.bs-answer-head {
+  font-size: .82rem; font-weight: 600; text-transform: uppercase; letter-spacing: .08em;
+  color: var(--bs-ink-2); margin: 2rem 0 .25rem; display: block;
+}
+main h3.bs-answer-head::before { display: none; }
+a.bs-answer-back { font-size: .82rem; text-decoration: none !important; color: var(--bs-accent); }
+a.bs-answer-back::after { content: " →"; }
+p:has(> a.bs-answer-back:only-child) { margin: 0 0 .5rem; }
+div.bs-answer-body {
+  border: 1px solid var(--bs-line); border-radius: 12px; background: var(--bs-paper-2);
+  padding: .9rem 1.1rem .2rem; margin-bottom: 1rem;
+}
