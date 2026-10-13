@@ -80,6 +80,10 @@ Because a decision is made from a sample, it can be wrong in two ways.
 
 A **Type I error** is rejecting a true null hypothesis (a false positive); its probability is the significance level $\alpha$. A **Type II error** is failing to reject a false null hypothesis (a false negative); its probability is $\beta$. The **power** of a test, $1 - \beta$, is the chance of correctly detecting a real effect. Lowering $\alpha$ guards against false positives but makes false negatives more likely, so the choice of $\alpha$ balances the two risks.
 
+::: {.content-visible when-format="html"}
+{{< include widgets/_errors.qmd >}}
+:::
+
 ## Steps to Perform a Hypothesis Test
 
 1.  **State the hypotheses.** Write $H_0$ and $H_a$ using the forms above.

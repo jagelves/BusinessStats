@@ -1,0 +1,98 @@
+::: {.bs-widget}
+::: {.bs-widget-head}
+[Try it]{.bs-widget-tag} [The Type I / Type II tradeoff]{.bs-widget-title}
+:::
+[A store's average purchase has been \$50. A marketing campaign may have raised it, so we test $H_0: \mu \leq 50$ against $H_a: \mu > 50$ (with $\sigma = \$20$). The gray curve is where $\bar{x}$ lands if the campaign did nothing; the colored curve is where it lands if the true mean really moved. Slide $\alpha$ and watch $\beta$ move the other way. Then try a bigger sample.]{.bs-widget-sub}
+
+```{ojs}
+//| echo: false
+viewof eAlpha = Inputs.range([0.01, 0.30], {value: 0.05, step: 0.01, label: "Significance α"})
+viewof eMu1 = Inputs.range([50.5, 60], {value: 54, step: 0.5, label: "True mean μ ($)"})
+viewof eN = Inputs.range([5, 200], {value: 30, step: 1, label: "Sample size n"})
+```
+
+```{ojs}
+//| echo: false
+eMath = {
+  function cdf(z) {
+    const t = 1 / (1 + 0.3275911 * Math.abs(z) / Math.SQRT2);
+    const y = 1 - (((((1.061405429 * t - 1.453152027) * t) + 1.421413741) * t - 0.284496736) * t + 0.254829592) * t * Math.exp(-z * z / 2);
+    return z >= 0 ? 0.5 * (1 + y) : 0.5 * (1 - y);
+  }
+  function inv(p) { let lo = -10, hi = 10; for (let i = 0; i < 80; i++) { const m = (lo + hi) / 2; if (cdf(m) < p) lo = m; else hi = m; } return (lo + hi) / 2; }
+  return {cdf, inv};
+}
+eMu0 = 50
+eSigma = 20
+eSE = eSigma / Math.sqrt(eN)
+eCrit = eMu0 + eMath.inv(1 - eAlpha) * eSE
+eBeta = eMath.cdf((eCrit - eMu1) / eSE)
+ePower = 1 - eBeta
+eDens = (x, m) => Math.exp(-0.5 * ((x - m) / eSE) ** 2) / (eSE * Math.sqrt(2 * Math.PI))
+eLo = eMu0 - 4 * eSE
+eHi = Math.max(eMu1, eMu0) + 4 * eSE
+eGrid = d3.range(0, 401).map(i => eLo + i * (eHi - eLo) / 400)
+eH0 = eGrid.map(x => ({x, y: eDens(x, eMu0)}))
+eH1 = eGrid.map(x => ({x, y: eDens(x, eMu1)}))
+eStyle = ({fontFamily: "Inter, sans-serif", fontSize: "12px", background: "transparent", color: "var(--bs-ink-2)"})
+eYmax = 1.15 / (eSE * Math.sqrt(2 * Math.PI))
+```
+
+```{ojs}
+//| echo: false
+Plot.plot({
+  width: Math.max(300, width - 50), height: 270, marginLeft: 10, marginRight: 10, marginBottom: 38, style: eStyle,
+  x: {domain: [eLo, eHi], label: "Sample mean x̄ ($) →", labelAnchor: "right", tickFormat: d => "$" + d.toFixed(0)},
+  y: {axis: null, domain: [0, eYmax * 1.12]},
+  marks: [
+    Plot.areaY(eH1.filter(d => d.x <= eCrit), {x: "x", y: "y", fill: "var(--bs-part)", fillOpacity: 0.35}),
+    Plot.areaY(eH0.filter(d => d.x >= eCrit), {x: "x", y: "y", fill: "#F59E0B", fillOpacity: 0.55}),
+    Plot.lineY(eH0, {x: "x", y: "y", stroke: "var(--bs-ink-3)", strokeWidth: 2}),
+    Plot.lineY(eH1, {x: "x", y: "y", stroke: "var(--bs-part)", strokeWidth: 2}),
+    Plot.ruleX([eCrit], {stroke: "var(--bs-ink)", strokeWidth: 1.5, strokeDasharray: "4,3"}),
+    Plot.text([eCrit], {x: d => d, y: eYmax * 1.08, text: d => "reject H₀ if x̄ > $" + d.toFixed(2), fill: "var(--bs-ink)", fontWeight: 600, textAnchor: "start", dx: 4}),
+    Plot.text([eMu0], {x: d => d, y: eYmax * 0.93, text: () => "if H₀ is true (μ = $50)", fill: "var(--bs-ink-2)", textAnchor: "end", dx: -6}),
+    Plot.text([eMu1], {x: d => d, y: eYmax * 0.93, text: d => "if μ really is $" + d.toFixed(1), fill: "var(--bs-part)", textAnchor: "start", dx: 6}),
+    Plot.ruleY([0], {stroke: "var(--bs-line)"})
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+html`<div style="display:flex;gap:.9rem;flex-wrap:wrap;font-size:.82rem;color:var(--bs-ink-2);margin:.1rem 0 .6rem">
+  <span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#F59E0B;opacity:.7;vertical-align:-1px"></span> Type I error α: H₀ is true but x̄ lands past the cutoff</span>
+  <span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--bs-part);opacity:.5;vertical-align:-1px"></span> Type II error β: the campaign worked but x̄ falls short of the cutoff</span>
+</div>
+<div class="bs-stats">
+  <div class="bs-stat"><div class="k">Type I error α</div><div class="v">${(eAlpha * 100).toFixed(0)}%</div></div>
+  <div class="bs-stat hl"><div class="k">Type II error β</div><div class="v">${(eBeta * 100).toFixed(1)}%</div></div>
+  <div class="bs-stat"><div class="k">Power 1 − β</div><div class="v">${(ePower * 100).toFixed(1)}%</div></div>
+  <div class="bs-stat"><div class="k">Standard error σ/√n</div><div class="v">$${eSE.toFixed(2)}</div></div>
+</div>`
+```
+
+```{ojs}
+//| echo: false
+eCurve = d3.range(1, 301).map(i => { const a = i / 1000; const c = eMu0 + eMath.inv(1 - a) * eSE; return {a, b: eMath.cdf((c - eMu1) / eSE)}; })
+Plot.plot({
+  title: `The tradeoff for n = ${eN} and μ = $${eMu1.toFixed(1)}: every α has a matching β`,
+  width: Math.max(300, width - 50), height: 210, marginLeft: 44, marginBottom: 40, style: eStyle,
+  x: {domain: [0, 0.3], label: "Type I error α →", tickFormat: d => (d * 100).toFixed(0) + "%"},
+  y: {domain: [0, 1], label: "↑ Type II error β", tickFormat: d => (d * 100).toFixed(0) + "%", grid: true},
+  marks: [
+    Plot.line(eCurve, {x: "a", y: "b", stroke: "var(--bs-part)", strokeWidth: 2}),
+    Plot.dot([{a: eAlpha, b: eBeta}], {x: "a", y: "b", r: 6, fill: "var(--bs-part)", stroke: "var(--bs-paper)", strokeWidth: 2}),
+    Plot.text([{a: eAlpha, b: eBeta}], {x: "a", y: "b", text: d => `you are here (α ${(d.a * 100).toFixed(0)}%, β ${(d.b * 100).toFixed(0)}%)`, dx: 10, dy: -10, textAnchor: "start", fill: "var(--bs-ink)", fontWeight: 600})
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+html`<div class="bs-excel"><span class="lbl">Excel</span>
+  <span>cutoff =NORM.INV(${(1 - eAlpha).toFixed(2)}, 50, 20/SQRT(${eN}))</span>
+  <span>β =NORM.DIST(${eCrit.toFixed(2)}, ${eMu1.toFixed(1)}, 20/SQRT(${eN}), TRUE)</span>
+</div>`
+```
+:::
