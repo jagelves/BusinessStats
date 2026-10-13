@@ -52,7 +52,11 @@
 \usepackage[most]{tcolorbox}
 \tcbset{bsbase/.style={enhanced, breakable, sharp corners=downhill, arc=6pt, boxrule=0.6pt,
   left=10pt, right=10pt, top=8pt, bottom=8pt, before skip=10pt plus 2pt minus 4pt, after skip=12pt plus 2pt minus 4pt,
-  fonttitle=\sffamily\bfseries\footnotesize, coltitle=bsink, attach title to upper={\par\smallskip}}}
+  fonttitle=\sffamily\bfseries\footnotesize, coltitle=bsink, attach title to upper={\par\smallskip},
+  % R tables (e.g. gt) arrive as floating "table" environments, which are not
+  % allowed inside a box: turn them into ordinary centred blocks there.
+  before upper app={\renewenvironment{table}[1][]{\par\smallskip\centering}{\par\smallskip}%
+                    \renewenvironment{figure}[1][]{\par\smallskip\centering}{\par\smallskip}}}}
 \newtcolorbox{bsformula}[1][]{bsbase, colback=bsaccentsoft, colframe=bsaccent!35,
   title={\textcolor{bsaccent}{\MakeUppercase{#1}}}}
 \newtcolorbox{bsexample}[1][]{bsbase, colback=bsexamplesoft, colframe=bsexample!30,

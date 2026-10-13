@@ -162,6 +162,15 @@ function Para(el)
   end
 end
 
+-- gt writes percentages like "0.0659%" unescaped in its LaTeX tables, and a
+-- bare % starts a LaTeX comment (it swallowed the rest of the row). Escape it.
+function RawBlock(el)
+  if el.format == "latex" and el.text:match("\\begin{tabular") then
+    el.text = el.text:gsub("(%d)%%", "%1\\%%")
+    return el
+  end
+end
+
 function Header(el)
   if el.level == 2 and pandoc.utils.stringify(el):match("Cheat Sheet") then
     -- keep the heading with its (tall) cheat-sheet image
