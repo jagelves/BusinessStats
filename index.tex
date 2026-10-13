@@ -197,7 +197,11 @@
 \usepackage[most]{tcolorbox}
 \tcbset{bsbase/.style={enhanced, breakable, sharp corners=downhill, arc=6pt, boxrule=0.6pt,
   left=10pt, right=10pt, top=8pt, bottom=8pt, before skip=10pt plus 2pt minus 4pt, after skip=12pt plus 2pt minus 4pt,
-  fonttitle=\sffamily\bfseries\footnotesize, coltitle=bsink, attach title to upper={\par\smallskip}}}
+  fonttitle=\sffamily\bfseries\footnotesize, coltitle=bsink, attach title to upper={\par\smallskip},
+  % R tables (e.g. gt) arrive as floating "table" environments, which are not
+  % allowed inside a box: turn them into ordinary centred blocks there.
+  before upper app={\renewenvironment{table}[1][]{\par\smallskip\centering}{\par\smallskip}%
+                    \renewenvironment{figure}[1][]{\par\smallskip\centering}{\par\smallskip}}}}
 \newtcolorbox{bsformula}[1][]{bsbase, colback=bsaccentsoft, colframe=bsaccent!35,
   title={\textcolor{bsaccent}{\MakeUppercase{#1}}}}
 \newtcolorbox{bsexample}[1][]{bsbase, colback=bsexamplesoft, colframe=bsexample!30,
@@ -4529,7 +4533,7 @@ Below is a list of the Excel functions used in this section:
   \(SSR+SSE\).
 \end{itemize}
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, arc=.35mm, toprule=.15mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, breakable, titlerule=0mm, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomrule=.15mm, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, leftrule=.75mm, toptitle=1mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, rightrule=.15mm, bottomtitle=1mm, opacityback=0, leftrule=.75mm, bottomrule=.15mm, arc=.35mm, opacitybacktitle=0.6, colback=white, toprule=.15mm, toptitle=1mm, breakable, colframe=quarto-callout-note-color-frame, left=2mm, coltitle=black]
 
 \textbf{A note on versions.} \texttt{HSTACK} requires Microsoft 365 or
 Excel 2024. In earlier versions, place the independent variables in
@@ -6752,7 +6756,7 @@ from \(4.75\) to \(0\).
 
 \end{bsexample}
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, arc=.35mm, toprule=.15mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, breakable, titlerule=0mm, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomrule=.15mm, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, leftrule=.75mm, toptitle=1mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, rightrule=.15mm, bottomtitle=1mm, opacityback=0, leftrule=.75mm, bottomrule=.15mm, arc=.35mm, opacitybacktitle=0.6, colback=white, toprule=.15mm, toptitle=1mm, breakable, colframe=quarto-callout-note-color-frame, left=2mm, coltitle=black]
 
 To explore how the sampling error changes with the sample size, visit
 \url{https://jagelves.shinyapps.io/Sampling/}.
@@ -6864,7 +6868,7 @@ usual rule is \(np \geq 5\) and \(n(1-p) \geq 5\) (some texts use a more
 conservative threshold of \(10\)). In practice we check these conditions
 using the estimated \(\hat{p}\).
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, arc=.35mm, toprule=.15mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, breakable, titlerule=0mm, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomrule=.15mm, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, leftrule=.75mm, toptitle=1mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, rightrule=.15mm, bottomtitle=1mm, opacityback=0, leftrule=.75mm, bottomrule=.15mm, arc=.35mm, opacitybacktitle=0.6, colback=white, toprule=.15mm, toptitle=1mm, breakable, colframe=quarto-callout-note-color-frame, left=2mm, coltitle=black]
 
 To explore the Central Limit Theorem and how the sample size affects the
 sampling distribution press
@@ -7158,7 +7162,7 @@ confidence level} widens it (more certainty requires a bigger net), and
 a \textbf{larger sample} narrows it (more data gives a more precise
 estimate).
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, arc=.35mm, toprule=.15mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, breakable, titlerule=0mm, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomrule=.15mm, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, leftrule=.75mm, toptitle=1mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, rightrule=.15mm, bottomtitle=1mm, opacityback=0, leftrule=.75mm, bottomrule=.15mm, arc=.35mm, opacitybacktitle=0.6, colback=white, toprule=.15mm, toptitle=1mm, breakable, colframe=quarto-callout-note-color-frame, left=2mm, coltitle=black]
 
 A confidence interval describes the \emph{procedure}, not a single
 interval. Once computed, a specific interval either contains the
@@ -7234,7 +7238,7 @@ to estimate the spread. With fewer degrees of freedom (a small sample),
 fatter tails to compensate; with more degrees of freedom, \(s\) becomes
 reliable and the distribution tightens toward the normal.
 
-\begin{tcolorbox}[enhanced jigsaw, rightrule=.15mm, arc=.35mm, toprule=.15mm, coltitle=black, colbacktitle=quarto-callout-note-color!10!white, breakable, titlerule=0mm, bottomtitle=1mm, left=2mm, opacitybacktitle=0.6, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, bottomrule=.15mm, opacityback=0, colback=white, colframe=quarto-callout-note-color-frame, leftrule=.75mm, toptitle=1mm]
+\begin{tcolorbox}[enhanced jigsaw, titlerule=0mm, colbacktitle=quarto-callout-note-color!10!white, title=\textcolor{quarto-callout-note-color}{\faInfo}\hspace{0.5em}{Note}, rightrule=.15mm, bottomtitle=1mm, opacityback=0, leftrule=.75mm, bottomrule=.15mm, arc=.35mm, opacitybacktitle=0.6, colback=white, toprule=.15mm, toptitle=1mm, breakable, colframe=quarto-callout-note-color-frame, left=2mm, coltitle=black]
 
 Think of the degrees of freedom as a measure of how much the sample can
 be trusted to pin down the spread. A sample of \(n = 5\) (\(4\) degrees

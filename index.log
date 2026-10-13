@@ -1,4 +1,4 @@
-This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.12.27)  13 OCT 2026 13:34
+This is XeTeX, Version 3.141592653-2.6-0.999994 (TeX Live 2022) (preloaded format=xelatex 2022.12.27)  13 OCT 2026 13:52
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1420,46 +1420,46 @@ Package: subcaption 2022/01/07 v1.5 Sub-captions (AR)
 \c@subfigure=\count367
 \c@subtable=\count368
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 326.
+Package hyperref Info: Option `colorlinks' set `true' on input line 330.
 No file index.aux.
 \openout1 = `index.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 333.
-LaTeX Font Info:    ... okay on input line 333.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 333.
-LaTeX Font Info:    ... okay on input line 333.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 333.
-LaTeX Font Info:    ... okay on input line 333.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 333.
-LaTeX Font Info:    ... okay on input line 333.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 333.
-LaTeX Font Info:    ... okay on input line 333.
-LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 333.
-LaTeX Font Info:    ... okay on input line 333.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 333.
-LaTeX Font Info:    ... okay on input line 333.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 333.
-LaTeX Font Info:    ... okay on input line 333.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 333.
-LaTeX Font Info:    ... okay on input line 333.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 333.
-LaTeX Font Info:    ... okay on input line 333.
-Package scrbase Info: activating english \abstractname on input line 333.
-Package scrbase Info: activating english \partname on input line 333.
-Package scrbase Info: activating english \chaptername on input line 333.
-Package scrbase Info: activating english \appendixname on input line 333.
-Package scrbase Info: activating english \figurename on input line 333.
-Package scrbase Info: activating english \tablename on input line 333.
-Package scrbase Info: activating english \contentsname on input line 333.
-Package scrbase Info: activating english \listfigurename on input line 333.
-Package scrbase Info: activating english \listtablename on input line 333.
-Package scrbase Info: activating english \bibname on input line 333.
-Package scrbase Info: activating english \indexname on input line 333.
-LaTeX Info: Redefining \microtypecontext on input line 333.
-Package microtype Info: Applying patch `item' on input line 333.
-Package microtype Info: Applying patch `toc' on input line 333.
-Package microtype Info: Applying patch `eqnum' on input line 333.
-Package microtype Info: Applying patch `footnote' on input line 333.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 337.
+LaTeX Font Info:    ... okay on input line 337.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 337.
+LaTeX Font Info:    ... okay on input line 337.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 337.
+LaTeX Font Info:    ... okay on input line 337.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 337.
+LaTeX Font Info:    ... okay on input line 337.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 337.
+LaTeX Font Info:    ... okay on input line 337.
+LaTeX Font Info:    Checking defaults for TU/lmr/m/n on input line 337.
+LaTeX Font Info:    ... okay on input line 337.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 337.
+LaTeX Font Info:    ... okay on input line 337.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 337.
+LaTeX Font Info:    ... okay on input line 337.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 337.
+LaTeX Font Info:    ... okay on input line 337.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 337.
+LaTeX Font Info:    ... okay on input line 337.
+Package scrbase Info: activating english \abstractname on input line 337.
+Package scrbase Info: activating english \partname on input line 337.
+Package scrbase Info: activating english \chaptername on input line 337.
+Package scrbase Info: activating english \appendixname on input line 337.
+Package scrbase Info: activating english \figurename on input line 337.
+Package scrbase Info: activating english \tablename on input line 337.
+Package scrbase Info: activating english \contentsname on input line 337.
+Package scrbase Info: activating english \listfigurename on input line 337.
+Package scrbase Info: activating english \listtablename on input line 337.
+Package scrbase Info: activating english \bibname on input line 337.
+Package scrbase Info: activating english \indexname on input line 337.
+LaTeX Info: Redefining \microtypecontext on input line 337.
+Package microtype Info: Applying patch `item' on input line 337.
+Package microtype Info: Applying patch `toc' on input line 337.
+Package microtype Info: Applying patch `eqnum' on input line 337.
+Package microtype Info: Applying patch `footnote' on input line 337.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
 Package microtype Info: No adjustment of tracking.
@@ -1507,7 +1507,7 @@ Package microtype Info: Loading generic protrusion settings for font family
 Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
-Package hyperref Info: Link coloring ON on input line 333.
+Package hyperref Info: Link coloring ON on input line 337.
 
 Package hyperref Warning: Rerun to get /PageLabels entry.
 
@@ -1519,51 +1519,51 @@ File: cover.png Graphic file (type bmp)
 
 ]
 LaTeX Font Info:    Font shape `TU/texgyreheros(0)/m/n' will be
-(Font)              scaled to size 9.80061pt on input line 340.
+(Font)              scaled to size 9.80061pt on input line 344.
 Package microtype Info: Loading generic protrusion settings for font family
 (microtype)             `texgyreheros' (encoding: TU).
 (microtype)             For optimal results, create family-specific settings.
 (microtype)             See the microtype manual for details.
 LaTeX Font Info:    Font shape `TU/texgyreheros(0)/b/n' will be
-(Font)              scaled to size 9.51022pt on input line 340.
+(Font)              scaled to size 9.51022pt on input line 344.
 LaTeX Font Info:    Font shape `TU/texgyreheros(0)/b/n' will be
-(Font)              scaled to size 21.60864pt on input line 340.
-Package tocbasic Info: character protrusion at toc deactivated on input line 340.
+(Font)              scaled to size 21.60864pt on input line 344.
+Package tocbasic Info: character protrusion at toc deactivated on input line 344.
 No file index.toc.
 \tf@toc=\write5
 \openout5 = `index.toc'.
 
 LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/sl' in size <10.95> not available
-(Font)              Font shape `TU/texgyrepagella(0)/m/it' tried instead on input line 346.
+(Font)              Font shape `TU/texgyrepagella(0)/m/it' tried instead on input line 350.
 LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/it' will be
-(Font)              scaled to size 10.95pt on input line 346.
+(Font)              scaled to size 10.95pt on input line 350.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
-(Font)              scaled to size 8.103pt on input line 346.
+(Font)              scaled to size 8.103pt on input line 350.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0225pt on input line 346.
-LaTeX Font Info:    Trying to load font information for OML+lmm on input line 346.
+(Font)              scaled to size 6.0225pt on input line 350.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 350.
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.95099pt on input line 346.
+(Font)              scaled to size 10.95099pt on input line 350.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(2)/m/n' will be
-(Font)              scaled to size 8.10373pt on input line 346.
+(Font)              scaled to size 8.10373pt on input line 350.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.02306pt on input line 346.
+(Font)              scaled to size 6.02306pt on input line 350.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.94882pt on input line 346.
+(Font)              scaled to size 10.94882pt on input line 350.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.10213pt on input line 346.
+(Font)              scaled to size 8.10213pt on input line 350.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.02185pt on input line 346.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 346.
+(Font)              scaled to size 6.02185pt on input line 350.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 350.
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 346.
+LaTeX Font Info:    Trying to load font information for U+msb on input line 350.
 (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 ) (/Users/alejandro/Library/TinyTeX/texmf-dist/tex/latex/microtype/mt-msb.cfg
@@ -1572,23 +1572,23 @@ File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 
 ]
 LaTeX Font Info:    Font shape `TU/texgyreheros(0)/b/n' will be
-(Font)              scaled to size 12.5066pt on input line 365.
+(Font)              scaled to size 12.5066pt on input line 369.
 LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/b/n' will be
-(Font)              scaled to size 10.95pt on input line 373.
+(Font)              scaled to size 10.95pt on input line 377.
 [3
 
 ]
 LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/n' will be
-(Font)              scaled to size 10.0pt on input line 459.
+(Font)              scaled to size 10.0pt on input line 463.
 LaTeX Font Info:    Font shape `TU/texgyreheros(0)/m/n' will be
-(Font)              scaled to size 8.95035pt on input line 459.
+(Font)              scaled to size 8.95035pt on input line 463.
 [4]
 part I.
 Package scrkbase Info: You've told me to use the font selection of the element
 (scrkbase)             `partprefix' that is an alias of element `partnumber'
-(scrkbase)              on input line 459.
+(scrkbase)              on input line 463.
 LaTeX Font Info:    Font shape `TU/texgyreheros(0)/b/n' will be
-(Font)              scaled to size 10.42218pt on input line 459.
+(Font)              scaled to size 10.42218pt on input line 463.
 [5
 
 ]
@@ -1609,79 +1609,234 @@ Class scrreprt Warning: \float@addtolists detected!
 (scrreprt)              deprecated \float@addtolist interface.
 
 LaTeX Font Info:    Font shape `TU/texgyreheros(0)/b/n' will be
-(Font)              scaled to size 7.81664pt on input line 499.
+(Font)              scaled to size 7.81664pt on input line 503.
 [6
 
 ] [7] [8] [9]
 File: images/Data_Types.png Graphic file (type bmp)
 <images/Data_Types.png>
 
-LaTeX Warning: Hyper reference `answers' on page 10 undefined on input line 716.
+LaTeX Warning: Hyper reference `answers' on page 10 undefined on input line 720.
 
 [10]
 LaTeX Font Info:    Font shape `TU/texgyreheros(0)/m/n' will be
-(Font)              scaled to size 8.05531pt on input line 746.
+(Font)              scaled to size 8.05531pt on input line 750.
 LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/n' will be
-(Font)              scaled to size 9.0pt on input line 746.
+(Font)              scaled to size 9.0pt on input line 750.
 LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/b/n' will be
-(Font)              scaled to size 9.0pt on input line 746.
+(Font)              scaled to size 9.0pt on input line 750.
 
-LaTeX Warning: Reference `a-bsans1' on page 11 undefined on input line 746.
+LaTeX Warning: Reference `a-bsans1' on page 11 undefined on input line 750.
 
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
-(Font)              scaled to size 9.0pt on input line 746.
+(Font)              scaled to size 9.0pt on input line 750.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.0pt on input line 746.
+(Font)              scaled to size 6.0pt on input line 750.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.0pt on input line 746.
+(Font)              scaled to size 5.0pt on input line 750.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(2)/m/n' will be
-(Font)              scaled to size 9.00082pt on input line 746.
+(Font)              scaled to size 9.00082pt on input line 750.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.00055pt on input line 746.
+(Font)              scaled to size 6.00055pt on input line 750.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.00046pt on input line 746.
+(Font)              scaled to size 5.00046pt on input line 750.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
-(Font)              scaled to size 8.99904pt on input line 746.
+(Font)              scaled to size 8.99904pt on input line 750.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.99936pt on input line 746.
+(Font)              scaled to size 5.99936pt on input line 750.
 LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
-(Font)              scaled to size 4.99947pt on input line 746.
+(Font)              scaled to size 4.99947pt on input line 750.
 
-LaTeX Warning: Reference `a-bsans2' on page 11 undefined on input line 756.
-
-
-LaTeX Warning: Reference `a-bsans3' on page 11 undefined on input line 785.
+LaTeX Warning: Reference `a-bsans2' on page 11 undefined on input line 760.
 
 
-LaTeX Warning: Reference `a-bsans4' on page 11 undefined on input line 796.
+LaTeX Warning: Reference `a-bsans3' on page 11 undefined on input line 789.
+
+
+LaTeX Warning: Reference `a-bsans4' on page 11 undefined on input line 800.
 
 [11]
 
-LaTeX Warning: Reference `a-bsans5' on page 12 undefined on input line 807.
+LaTeX Warning: Reference `a-bsans5' on page 12 undefined on input line 811.
 
 
-LaTeX Warning: Reference `a-bsans6' on page 12 undefined on input line 833.
+LaTeX Warning: Reference `a-bsans6' on page 12 undefined on input line 837.
 
 [12]
 chapter 2.
 File: images/food.png Graphic file (type bmp)
 <images/food.png>
+LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/m/n' will be
+(Font)              scaled to size 12.0pt on input line 884.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
+(Font)              scaled to size 12.0pt on input line 885.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(1)/m/n' will be
+(Font)              scaled to size 8.0pt on input line 885.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(2)/m/n' will be
+(Font)              scaled to size 12.0011pt on input line 885.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(2)/m/n' will be
+(Font)              scaled to size 8.00073pt on input line 885.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
+(Font)              scaled to size 11.99872pt on input line 885.
+LaTeX Font Info:    Font shape `TU/texgyrepagella-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.99915pt on input line 885.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(0)/b/n' will be
+(Font)              scaled to size 12.0pt on input line 887.
+File: DescriptiveII_files/figure-pdf/unnamed-chunk-3-1.pdf Graphic file (type pdf)
+<use DescriptiveII_files/figure-pdf/unnamed-chunk-3-1.pdf>
+[13
 
-! LaTeX Error: Not in outer par mode.
+] [14]
+LaTeX Font Info:    Font shape `TU/texgyrepagella(1)/m/n' will be
+(Font)              scaled to size 10.95pt on input line 937.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(1)/m/n' will be
+(Font)              scaled to size 8.103pt on input line 937.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(1)/m/n' will be
+(Font)              scaled to size 6.0225pt on input line 937.
+[15]
+File: images/dow.png Graphic file (type bmp)
+<images/dow.png>
+[16]
+LaTeX Font Info:    Font shape `TU/lmmono10-regular.otf(0)/m/n' will be
+(Font)              scaled to size 11.9154pt on input line 1041.
 
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.880 \fontsize
-               {12.0pt}{14.0pt}\selectfont 
+LaTeX Warning: Reference `sec-freqdistnum' on page 17 undefined on input line 1092.
+
+[17] [18]
+File: images/Frequency_Distributions.png Graphic file (type bmp)
+<images/Frequency_Distributions.png>
+
+LaTeX Warning: Hyper reference `answers' on page 19 undefined on input line 1172.
+
+[19]
+
+LaTeX Warning: Reference `a-bsans7' on page 20 undefined on input line 1193.
+
+LaTeX Font Info:    Font shape `TU/texgyrepagella(1)/m/n' will be
+(Font)              scaled to size 9.0pt on input line 1193.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(1)/m/n' will be
+(Font)              scaled to size 6.0pt on input line 1193.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(1)/m/n' will be
+(Font)              scaled to size 5.0pt on input line 1193.
+
+LaTeX Warning: Reference `a-bsans8' on page 20 undefined on input line 1203.
+
+
+LaTeX Warning: Reference `a-bsans9' on page 20 undefined on input line 1215.
+
+
+LaTeX Warning: Reference `a-bsans10' on page 20 undefined on input line 1235.
+
+
+LaTeX Warning: Reference `a-bsans11' on page 20 undefined on input line 1249.
+
+
+LaTeX Warning: Reference `a-bsans12' on page 20 undefined on input line 1260.
+
+[20]
+
+LaTeX Warning: Reference `a-bsans13' on page 21 undefined on input line 1280.
+
+
+LaTeX Warning: Reference `a-bsans14' on page 21 undefined on input line 1297.
+
+
+LaTeX Warning: Reference `a-bsans15' on page 21 undefined on input line 1307.
+
+
+LaTeX Warning: Reference `a-bsans16' on page 21 undefined on input line 1318.
+
+
+LaTeX Warning: Reference `a-bsans17' on page 21 undefined on input line 1337.
+
+[21]
+chapter 3.
+[22
+
+] [23] [24] [25] [26]
+LaTeX Font Info:    Font shape `TU/texgyrepagella(1)/m/n' will be
+(Font)              scaled to size 12.0pt on input line 1617.
+LaTeX Font Info:    Font shape `TU/texgyrepagella(1)/m/n' will be
+(Font)              scaled to size 8.0pt on input line 1617.
+[27]
+File: images/Central_Location.png Graphic file (type bmp)
+<images/Central_Location.png>
+
+LaTeX Warning: Hyper reference `answers' on page 28 undefined on input line 1697.
+
+[28]
+
+LaTeX Warning: Reference `a-bsans18' on page 29 undefined on input line 1722.
+
+
+LaTeX Warning: Reference `a-bsans19' on page 29 undefined on input line 1740.
+
+
+LaTeX Warning: Reference `a-bsans20' on page 29 undefined on input line 1758.
+
+
+LaTeX Warning: Reference `a-bsans21' on page 29 undefined on input line 1776.
+
+
+LaTeX Warning: Reference `a-bsans22' on page 29 undefined on input line 1787.
+
+
+LaTeX Warning: Reference `a-bsans23' on page 29 undefined on input line 1799.
+
+[29]
+
+LaTeX Warning: Reference `a-bsans24' on page 30 undefined on input line 1825.
+
+
+LaTeX Warning: Reference `a-bsans25' on page 30 undefined on input line 1836.
+
+
+LaTeX Warning: Reference `a-bsans26' on page 30 undefined on input line 1859.
+
+
+LaTeX Warning: Reference `a-bsans27' on page 30 undefined on input line 1869.
+
+[30]
+
+LaTeX Warning: Reference `a-bsans28' on page 31 undefined on input line 1893.
+
+
+LaTeX Warning: Reference `a-bsans29' on page 31 undefined on input line 1912.
+
+
+LaTeX Warning: Reference `a-bsans30' on page 31 undefined on input line 1923.
+
+[31]
+chapter 4.
+[32
+
+]
+File: images/Ether.png Graphic file (type bmp)
+<images/Ether.png>
+File: images/Ether2.png Graphic file (type bmp)
+<images/Ether2.png>
+[33] [34] [35]
+File: images/Mad.png Graphic file (type bmp)
+<images/Mad.png>
+[36]
+File: images/CV.png Graphic file (type bmp)
+<images/CV.png>
+[37]
+File: images/Sharpe.png Graphic file (type bmp)
+<images/Sharpe.png>
+[38] [39]
+! Extra alignment tab has been changed to \cr.
+<recently read> \endtemplate 
+                             
+l.2344 TSLA &
+              0.2524% & 5.0239% \\ 
 Here is how much of TeX's memory you used:
- 43853 strings out of 478757
- 933937 string characters out of 5848883
- 1865979 words of memory out of 5000000
- 63215 multiletter control sequences out of 15000+600000
- 518894 words of font info for 105 fonts, out of 8000000 for 9000
+ 44079 strings out of 478757
+ 939525 string characters out of 5848883
+ 1866979 words of memory out of 5000000
+ 63413 multiletter control sequences out of 15000+600000
+ 520903 words of font info for 128 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 108i,20n,123p,10600b,1033s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 108i,21n,123p,10600b,1033s stack positions out of 10000i,1000n,20000p,200000b,200000s
 
-Output written on index.pdf (12 pages).
+Output written on index.pdf (39 pages).
