@@ -1,0 +1,115 @@
+::: {.bs-widget}
+::: {.bs-widget-head}
+[Try it]{.bs-widget-tag} [Rejection region vs. p-value]{.bs-widget-title}
+:::
+[The curve is the sampling distribution of $t$ when $H_0$ is true. The amber tails (marked by the bar under the axis) are the rejection region you choose with $\alpha$; the shaded area beyond your observed $t$ is the p-value. Change $\alpha$, the direction of $H_a$, or the test statistic and watch the decision change.]{.bs-widget-sub}
+
+```{ojs}
+//| echo: false
+viewof tAlt = Inputs.radio(["Two-tailed (≠)", "Right-tailed (>)", "Left-tailed (<)"], {value: "Two-tailed (≠)", label: "Alternative Hₐ"})
+viewof tAlpha = Inputs.range([0.01, 0.20], {value: 0.05, step: 0.01, label: "Significance α"})
+viewof tObs = Inputs.range([-4, 4], {value: 2.3, step: 0.05, label: "Observed t"})
+viewof tDf = Inputs.range([2, 120], {value: 24, step: 1, label: "Degrees of freedom"})
+```
+
+```{ojs}
+//| echo: false
+tMath = {
+  function lgamma(z) {
+    const g = 7, c = [0.99999999999980993, 676.5203681218851, -1259.1392167224028, 771.32342877765313,
+      -176.61502916214059, 12.507343278686905, -0.13857109526572012, 9.9843695780195716e-6, 1.5056327351493116e-7];
+    if (z < 0.5) return Math.log(Math.PI / Math.sin(Math.PI * z)) - lgamma(1 - z);
+    z -= 1; let x = c[0];
+    for (let i = 1; i < g + 2; i++) x += c[i] / (z + i);
+    const t = z + g + 0.5;
+    return 0.5 * Math.log(2 * Math.PI) + (z + 0.5) * Math.log(t) - t + Math.log(x);
+  }
+  function betacf(x, a, b) {
+    const qab = a + b, qap = a + 1, qam = a - 1, tiny = 1e-30;
+    let c = 1, d = 1 - qab * x / qap;
+    if (Math.abs(d) < tiny) d = tiny; d = 1 / d; let h = d;
+    for (let m = 1; m <= 200; m++) {
+      const m2 = 2 * m;
+      let aa = m * (b - m) * x / ((qam + m2) * (a + m2));
+      d = 1 + aa * d; if (Math.abs(d) < tiny) d = tiny; c = 1 + aa / c; if (Math.abs(c) < tiny) c = tiny;
+      d = 1 / d; h *= d * c;
+      aa = -(a + m) * (qab + m) * x / ((a + m2) * (qap + m2));
+      d = 1 + aa * d; if (Math.abs(d) < tiny) d = tiny; c = 1 + aa / c; if (Math.abs(c) < tiny) c = tiny;
+      d = 1 / d; const del = d * c; h *= del;
+      if (Math.abs(del - 1) < 3e-12) break;
+    }
+    return h;
+  }
+  function ibeta(x, a, b) {
+    if (x <= 0) return 0; if (x >= 1) return 1;
+    const bt = Math.exp(lgamma(a + b) - lgamma(a) - lgamma(b) + a * Math.log(x) + b * Math.log(1 - x));
+    return x < (a + 1) / (a + b + 2) ? bt * betacf(x, a, b) / a : 1 - bt * betacf(1 - x, b, a) / b;
+  }
+  function cdf(t, df) { const ib = ibeta(df / (df + t * t), df / 2, 0.5); return t >= 0 ? 1 - 0.5 * ib : 0.5 * ib; }
+  function pdf(t, df) { return Math.exp(lgamma((df + 1) / 2) - lgamma(df / 2) - 0.5 * Math.log(df * Math.PI) - ((df + 1) / 2) * Math.log(1 + t * t / df)); }
+  function inv(p, df) { let lo = -60, hi = 60; for (let i = 0; i < 100; i++) { const m = (lo + hi) / 2; if (cdf(m, df) < p) lo = m; else hi = m; } return (lo + hi) / 2; }
+  return {cdf, pdf, inv};
+}
+tCdf = tMath.cdf
+tPdf = tMath.pdf
+tInv = tMath.inv
+
+tTwo = tAlt.startsWith("Two")
+tRight = tAlt.startsWith("Right")
+tCrit = tTwo ? tInv(1 - tAlpha / 2, tDf) : tRight ? tInv(1 - tAlpha, tDf) : tInv(tAlpha, tDf)
+tP = tTwo ? 2 * (1 - tCdf(Math.abs(tObs), tDf)) : tRight ? 1 - tCdf(tObs, tDf) : tCdf(tObs, tDf)
+tReject = tP <= tAlpha
+tCurve = d3.range(0, 361).map(i => { const x = -4.5 + i * 9 / 360; return {x, y: tPdf(x, tDf)}; })
+tIn = (lo, hi) => tCurve.filter(d => d.x >= lo && d.x <= hi)
+tRejAreas = tTwo ? [tIn(-4.5, -tCrit), tIn(tCrit, 4.5)] : tRight ? [tIn(tCrit, 4.5)] : [tIn(-4.5, tCrit)]
+tPAreas = tTwo ? [tIn(-4.5, -Math.abs(tObs)), tIn(Math.abs(tObs), 4.5)] : tRight ? [tIn(tObs, 4.5)] : [tIn(-4.5, tObs)]
+tF = x => (x >= 0 ? "+" : "−") + Math.abs(x).toFixed(2)
+tPf = p => p < 0.001 ? "< 0.001" : p.toFixed(3)
+```
+
+```{ojs}
+//| echo: false
+Plot.plot({
+  width: Math.max(300, width - 50), height: 260, marginLeft: 10, marginRight: 10, marginBottom: 36,
+  style: {fontFamily: "Inter, sans-serif", fontSize: "12px", background: "transparent", color: "var(--bs-ink-2)"},
+  x: {domain: [-4.5, 4.5], label: null, ticks: [-4, -3, -2, -1, 0, 1, 2, 3, 4]},
+  y: {axis: null, domain: [-0.025, 0.46]},
+  marks: [
+    ...tRejAreas.map(a => Plot.areaY(a, {x: "x", y: "y", fill: "#F59E0B", fillOpacity: 0.45})),
+    ...tPAreas.map(a => Plot.areaY(a, {x: "x", y: "y", fill: "var(--bs-part)", fillOpacity: 0.55})),
+    Plot.lineY(tCurve, {x: "x", y: "y", stroke: "var(--bs-ink)", strokeWidth: 1.75}),
+    // amber strip under the axis: always shows where the rejection region is
+    Plot.rect(tRejAreas.map(a => ({x1: a[0].x, x2: a[a.length - 1].x})), {x1: "x1", x2: "x2", y1: -0.02, y2: -0.006, fill: "#F59E0B", fillOpacity: 0.85}),
+    Plot.ruleX(tTwo ? [-tCrit, tCrit] : [tCrit], {stroke: "#D97706", strokeWidth: 1.5, strokeDasharray: "4,3", y1: 0, y2: 0.3}),
+    Plot.text(tTwo ? [-tCrit, tCrit] : [tCrit], {x: d => d, y: 0.32, text: d => "critical " + tF(d), fill: "#D97706", fontSize: 11}),
+    Plot.ruleX([tObs], {stroke: "var(--bs-part)", strokeWidth: 2.5, y1: 0, y2: 0.4}),
+    Plot.text([tObs], {x: d => d, y: 0.43, text: d => "observed t = " + d.toFixed(2), fill: "var(--bs-part)", fontWeight: 600}),
+    Plot.ruleY([0], {stroke: "var(--bs-line)"})
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+html`<div style="display:flex;gap:.9rem;flex-wrap:wrap;font-size:.82rem;color:var(--bs-ink-2);margin:.1rem 0 .6rem">
+  <span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:#F59E0B;opacity:.6;vertical-align:-1px"></span> rejection region: total area α = ${tAlpha.toFixed(2)}${tTwo ? ` (${(tAlpha / 2).toFixed(3)} per tail)` : ""}</span>
+  <span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--bs-part);opacity:.7;vertical-align:-1px"></span> p-value: area beyond the observed t${tTwo ? " (both tails)" : ""}</span>
+</div>
+<div class="bs-stats">
+  <div class="bs-stat"><div class="k">1 · Set α</div><div class="v">${tAlpha.toFixed(2)}</div></div>
+  <div class="bs-stat"><div class="k">2 · Compute p-value</div><div class="v">${tPf(tP)}</div></div>
+  <div class="bs-stat hl" style="${tReject ? "" : "background:var(--bs-paper-3)"}"><div class="k">3 · Decide</div><div class="v" style="font-size:1.1rem;padding-top:.3rem">${tReject ? "Reject H₀" : "Fail to reject H₀"}</div></div>
+</div>
+<p style="font-size:.88rem;color:var(--bs-ink-2);margin:.2rem 0 .7rem">
+  p-value ${tPf(tP)} ${tReject ? "≤" : ">"} α = ${tAlpha.toFixed(2)}. Same answer from the critical value:
+  ${tTwo ? `|t| = ${Math.abs(tObs).toFixed(2)} ${Math.abs(tObs) >= tCrit ? "≥" : "<"} ${tCrit.toFixed(3)}`
+         : tRight ? `t = ${tObs.toFixed(2)} ${tObs >= tCrit ? "≥" : "<"} ${tCrit.toFixed(3)}`
+                  : `t = ${tObs.toFixed(2)} ${tObs <= tCrit ? "≤" : ">"} ${tCrit.toFixed(3)}`}
+  ${tReject ? "(inside the rejection region)" : "(outside the rejection region)"}.
+</p>
+<div class="bs-excel"><span class="lbl">Excel</span>
+  <span>p-value ${tTwo ? `=T.DIST.2T(${Math.abs(tObs).toFixed(2)}, ${tDf})` : tRight ? `=T.DIST.RT(${tObs.toFixed(2)}, ${tDf})` : `=T.DIST(${tObs.toFixed(2)}, ${tDf}, TRUE)`}</span>
+  <span>critical ${tTwo ? `=T.INV.2T(${tAlpha.toFixed(2)}, ${tDf})` : tRight ? `=T.INV(${(1 - tAlpha).toFixed(2)}, ${tDf})` : `=T.INV(${tAlpha.toFixed(2)}, ${tDf})`}</span>
+</div>`
+```
+:::

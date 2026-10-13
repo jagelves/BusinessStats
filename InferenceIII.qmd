@@ -65,12 +65,16 @@ There are two equivalent ways to decide whether the observed difference is too l
 
 **The p-value approach.** Compute the **p-value** — the probability, assuming the null is true, of observing a test statistic at least as extreme as the one obtained. Then apply the decision rule: reject $H_0$ if $\text{p-value} \leq \alpha$, and fail to reject it otherwise. A small p-value (say $0.003$) means the data would be very unlikely if the null were true, so it is evidence *against* $H_0$; a large p-value (say $0.42$) means the data are consistent with $H_0$.
 
+::: {.content-visible when-format="html"}
+{{< include widgets/_ttest.qmd >}}
+:::
+
 ## Type I and Type II Errors
 
 Because a decision is made from a sample, it can be wrong in two ways.
 
 |                          |      $H_0$ is true      |      $H_0$ is false      |
-|:---------------------|:------------------------:|:-----------------------:|
+|:-------------------------|:-----------------------:|:------------------------:|
 | **Reject** $H_0$         | Type I error ($\alpha$) | Correct decision (power) |
 | **Fail to reject** $H_0$ |    Correct decision     | Type II error ($\beta$)  |
 
