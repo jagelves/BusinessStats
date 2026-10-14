@@ -159,15 +159,42 @@ The Anova table helps us understand how well each variable in our regression mod
 ::: callout-example
 **Example:** For the Weight, Exercise, and Calories regression, the Anova table is:
 
-|  Source   | Sum Squares |
-|:---------:|:-----------:|
-|     x     |    17.63    |
-|     z     |    6.55     |
-| Residuals |    1.01     |
+|  Source   | df | Sum Squares | Mean Squares |   F   |
+|:---------:|:--:|:-----------:|:------------:|:-----:|
+|     x     | 1  |    17.63    |    17.63     | 34.83 |
+|     z     | 1  |    6.55     |     6.55     | 12.95 |
+| Residuals | 2  |    1.01     |    0.506     |       |
 
 Exercise explains $17.63$ of the total variation. Adding Calories reduces the remaining unexplained variation by another $6.55$, bringing the total $SSR$ to $24.18$ and the $SSE$ down to $1.01$. The $R^2$ increases from $0.70$ to:
 
 $$R^2=\frac{17.63+6.55}{25.2}=0.96$$
+:::
+
+The Mean Squares and F columns of the table are explained in the next section.
+
+### The F-Statistic {.unnumbered}
+
+$R^2$ compares what the model explains with the *total* variation. The **F-statistic** compares what the model explains with what it leaves *unexplained*. Before comparing, each sum of squares is divided by its degrees of freedom, so that we compare averages rather than totals:
+
+- The **mean square of the regression** ($MSR$) is the variation explained *per explanatory variable*.
+- The **mean square error** ($MSE$) is the variation left unexplained *per remaining observation*. It measures the typical size of the noise around the line.
+
+::: callout-formula
+**THE F-STATISTIC** $$F=\frac{MSR}{MSE}=\frac{SSR/k}{SSE/(n-k-1)}$$ where $k$ is the number of independent variables and $n$ is the sample size.
+:::
+
+Think of $MSE$ as a yardstick for noise: it is how much variation a single "piece" of the data carries just by chance. If our variables were useless, each one would explain only about as much as a piece of noise, and $F$ would be close to $1$. The further $F$ climbs above $1$, the more each variable explains compared with the noise that remains. A large $F$ tells us the model is capturing a real pattern rather than just matching random wiggles in the data.
+
+::: callout-example
+**Example:** For the Weight, Exercise, and Calories regression ($k=2$, $n=5$), the model explains $SSR=24.19$ and leaves $SSE=1.01$ unexplained:
+
+$$MSR=\frac{24.19}{2}=12.09 \qquad MSE=\frac{1.01}{5-2-1}=0.506$$
+
+$$F=\frac{12.09}{0.506}\approx23.89$$
+
+Here both sums of squares happen to be divided by $2$, so $F$ is simply $SSR/SSE$: the model explains about $24$ times more variation than it leaves behind. Compare this with Exercise alone, where $SSR=17.63$ and $SSE=7.57$ give $F=\frac{17.63/1}{7.57/3}\approx6.99$. Adding Calories shrinks the unexplained part, so $F$ rises.
+
+Each row of the Anova table applies the same idea to a single variable: its mean square divided by the $MSE$. Exercise contributes $\frac{17.63}{0.506}\approx34.83$ and Calories adds $\frac{6.55}{0.506}\approx12.95$. Both are well above $1$, so each variable explains much more than a piece of noise would.
 :::
 
 ### Adjusted $R^2$ {.unnumbered}
@@ -352,6 +379,7 @@ The remaining diagnostics come from the same block:
 
 - `=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),3,1)` → $R^2=0.96$
 - `=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),3,2)` → $s_e=0.71$
+- `=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),4,1)` → $F=23.89$
 - `=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),4,2)` → $df=n-k-1=2$
 - `=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),5,1)` → $SSR=24.19$
 - `=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),5,2)` → $SSE=1.01$

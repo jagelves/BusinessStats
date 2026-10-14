@@ -68,7 +68,7 @@ The **correlation** measures the strength of the linear relationship between two
 The correlation coefficient lies between $[-1, 1]$:
 
 |    $r = -1$     | $-1 < r < 0$ |     $r = 0$     | $0 < r < 1$ |    $r = 1$     |
-|:-------------:|:-------------:|:-------------:|:-------------:|:-------------:|
+|:---------------:|:------------:|:---------------:|:-----------:|:--------------:|
 | Perfect inverse |   Inverse    | No relationship |   Direct    | Perfect direct |
 :::
 

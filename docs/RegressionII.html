@@ -558,26 +558,58 @@ details summary {
 <thead>
 <tr class="header">
 <th style="text-align: center;">Source</th>
+<th style="text-align: center;">df</th>
 <th style="text-align: center;">Sum Squares</th>
+<th style="text-align: center;">Mean Squares</th>
+<th style="text-align: center;">F</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">x</td>
+<td style="text-align: center;">1</td>
 <td style="text-align: center;">17.63</td>
+<td style="text-align: center;">17.63</td>
+<td style="text-align: center;">34.83</td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">z</td>
+<td style="text-align: center;">1</td>
 <td style="text-align: center;">6.55</td>
+<td style="text-align: center;">6.55</td>
+<td style="text-align: center;">12.95</td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">Residuals</td>
+<td style="text-align: center;">2</td>
 <td style="text-align: center;">1.01</td>
+<td style="text-align: center;">0.506</td>
+<td style="text-align: center;"></td>
 </tr>
 </tbody>
 </table>
 <p>Exercise explains <span class="math inline">\(17.63\)</span> of the total variation. Adding Calories reduces the remaining unexplained variation by another <span class="math inline">\(6.55\)</span>, bringing the total <span class="math inline">\(SSR\)</span> to <span class="math inline">\(24.18\)</span> and the <span class="math inline">\(SSE\)</span> down to <span class="math inline">\(1.01\)</span>. The <span class="math inline">\(R^2\)</span> increases from <span class="math inline">\(0.70\)</span> to:</p>
 <p><span class="math display">\[R^2=\frac{17.63+6.55}{25.2}=0.96\]</span></p>
+</div>
+<p>The Mean Squares and F columns of the table are explained in the next section.</p>
+</section>
+<section id="the-f-statistic" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="the-f-statistic">The F-Statistic</h3>
+<p><span class="math inline">\(R^2\)</span> compares what the model explains with the <em>total</em> variation. The <strong>F-statistic</strong> compares what the model explains with what it leaves <em>unexplained</em>. Before comparing, each sum of squares is divided by its degrees of freedom, so that we compare averages rather than totals:</p>
+<ul>
+<li>The <strong>mean square of the regression</strong> (<span class="math inline">\(MSR\)</span>) is the variation explained <em>per explanatory variable</em>.</li>
+<li>The <strong>mean square error</strong> (<span class="math inline">\(MSE\)</span>) is the variation left unexplained <em>per remaining observation</em>. It measures the typical size of the noise around the line.</li>
+</ul>
+<div class="callout-formula">
+<p><strong>THE F-STATISTIC</strong> <span class="math display">\[F=\frac{MSR}{MSE}=\frac{SSR/k}{SSE/(n-k-1)}\]</span> where <span class="math inline">\(k\)</span> is the number of independent variables and <span class="math inline">\(n\)</span> is the sample size.</p>
+</div>
+<p>Think of <span class="math inline">\(MSE\)</span> as a yardstick for noise: it is how much variation a single “piece” of the data carries just by chance. If our variables were useless, each one would explain only about as much as a piece of noise, and <span class="math inline">\(F\)</span> would be close to <span class="math inline">\(1\)</span>. The further <span class="math inline">\(F\)</span> climbs above <span class="math inline">\(1\)</span>, the more each variable explains compared with the noise that remains. A large <span class="math inline">\(F\)</span> tells us the model is capturing a real pattern rather than just matching random wiggles in the data.</p>
+<div class="callout-example">
+<p><strong>Example:</strong> For the Weight, Exercise, and Calories regression (<span class="math inline">\(k=2\)</span>, <span class="math inline">\(n=5\)</span>), the model explains <span class="math inline">\(SSR=24.19\)</span> and leaves <span class="math inline">\(SSE=1.01\)</span> unexplained:</p>
+<p><span class="math display">\[MSR=\frac{24.19}{2}=12.09 \qquad MSE=\frac{1.01}{5-2-1}=0.506\]</span></p>
+<p><span class="math display">\[F=\frac{12.09}{0.506}\approx23.89\]</span></p>
+<p>Here both sums of squares happen to be divided by <span class="math inline">\(2\)</span>, so <span class="math inline">\(F\)</span> is simply <span class="math inline">\(SSR/SSE\)</span>: the model explains about <span class="math inline">\(24\)</span> times more variation than it leaves behind. Compare this with Exercise alone, where <span class="math inline">\(SSR=17.63\)</span> and <span class="math inline">\(SSE=7.57\)</span> give <span class="math inline">\(F=\frac{17.63/1}{7.57/3}\approx6.99\)</span>. Adding Calories shrinks the unexplained part, so <span class="math inline">\(F\)</span> rises.</p>
+<p>Each row of the Anova table applies the same idea to a single variable: its mean square divided by the <span class="math inline">\(MSE\)</span>. Exercise contributes <span class="math inline">\(\frac{17.63}{0.506}\approx34.83\)</span> and Calories adds <span class="math inline">\(\frac{6.55}{0.506}\approx12.95\)</span>. Both are well above <span class="math inline">\(1\)</span>, so each variable explains much more than a piece of noise would.</p>
 </div>
 </section>
 <section id="adjusted-r2" class="level3 unnumbered">
@@ -802,6 +834,7 @@ details summary {
 <ul>
 <li><code>=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),3,1)</code> → <span class="math inline">\(R^2=0.96\)</span></li>
 <li><code>=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),3,2)</code> → <span class="math inline">\(s_e=0.71\)</span></li>
+<li><code>=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),4,1)</code> → <span class="math inline">\(F=23.89\)</span></li>
 <li><code>=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),4,2)</code> → <span class="math inline">\(df=n-k-1=2\)</span></li>
 <li><code>=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),5,1)</code> → <span class="math inline">\(SSR=24.19\)</span></li>
 <li><code>=INDEX(LINEST(A2:A6,HSTACK(B2:B6,C2:C6),TRUE,TRUE),5,2)</code> → <span class="math inline">\(SSE=1.01\)</span></li>
