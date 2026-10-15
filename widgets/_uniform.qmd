@@ -1,0 +1,83 @@
+::: {.bs-widget}
+::: {.bs-widget-head}
+[Try it]{.bs-widget-tag} [Discrete uniform explorer]{.bs-widget-title}
+:::
+[Every value from $a$ to $b$ is equally likely, so every bar has the same height, $1/n$. Widen the range and watch each bar shrink while the mean stays in the middle. The defaults are a fair die.]{.bs-widget-sub}
+
+```{ojs}
+//| echo: false
+viewof duA = Inputs.range([0, 10], {value: 1, step: 1, label: "Smallest value a"})
+viewof duB = Inputs.range([duA + 1, duA + 20], {value: Math.max(duA + 1, Math.min(6, duA + 20)), step: 1, label: "Largest value b"})
+viewof duX = Inputs.range([duA, duB], {value: Math.min(duB, Math.max(duA, 3)), step: 1, label: "Value x"})
+```
+
+```{ojs}
+//| echo: false
+duComb = {
+  const lf = k => { let s = 0; for (let i = 2; i <= k; i++) s += Math.log(i); return s; };
+  const lnC = (n, k) => (k < 0 || k > n) ? -Infinity : lf(n) - lf(k) - lf(n - k);
+  return {lf, lnC, C: (n, k) => (k < 0 || k > n) ? 0 : Math.round(Math.exp(lnC(n, k)))};
+}
+duNum = v => Number.isInteger(v) ? v : +v.toFixed(4)
+duBig = v => (Number.isInteger(v) && v < 1e12) ? v.toLocaleString() : (v >= 1e-4 && v < 1e6 ? v.toPrecision(4) : v.toExponential(3).replace(/e([+-])(\d+)/, (m, sg, d) => ` × 10^${sg === '-' ? '−' : ''}${d}`))
+duxs = d3.range(duA, duB + 1)
+dun = duxs.length
+duf = x => (x >= duA && x <= duB) ? 1 / dun : 0
+duExtra = null
+duPlugF = `1/n = 1/${dun} = ${(1 / dun).toFixed(4)}`
+duPlugE = `(${dun <= 8 ? duxs.join(" + ") : duxs.slice(0, 3).join(" + ") + " + … + " + duB}) / ${dun} = ${d3.mean(duxs).toFixed(2)}`
+duPlugV = `Σ(xᵢ − ${d3.mean(duxs).toFixed(2)})² / ${dun} = ${(d3.sum(duxs, x => (x - d3.mean(duxs)) ** 2) / dun).toFixed(2)}`
+duExcelF = `f(x) =1/${dun}`
+duExcelC = `P(X ≤ ${duX}) =(${duX}-${duA}+1)/${dun}`
+```
+
+```{ojs}
+//| echo: false
+duData = duxs.map(x => ({x, p: duf(x)}))
+duCum = d3.sum(duData.filter(d => d.x <= duX), d => d.p)
+duFx = duf(duX)
+duMean = d3.sum(duData, d => d.x * d.p)
+duVar = d3.sum(duData, d => (d.x - duMean) ** 2 * d.p)
+duFmt = v => v < 0.0001 && v > 0 ? v.toExponential(2) : v.toFixed(4)
+duAllX = Array.from(new Set([...duxs, ...(duExtra ? duExtra.map(d => d.x) : [])])).sort((a, b) => a - b)
+duYmax = Math.max(d3.max(duData, d => d.p), duExtra ? d3.max(duExtra, d => d.p) : 0) * 1.22
+Plot.plot({
+  width: Math.max(300, width - 50), height: 250, marginLeft: 42, marginRight: 10, marginBottom: 38,
+  style: {fontFamily: "Inter, sans-serif", fontSize: "12px", background: "transparent", color: "var(--bs-ink-2)"},
+  x: {label: "Value x →", labelAnchor: "right", domain: [d3.min(duAllX) - 0.6, d3.max(duAllX) + 0.6],
+      ticks: duAllX.length <= 26 ? duAllX : undefined, tickFormat: d => Number.isInteger(d) ? d : ""},
+  y: {label: "↑ f(x)", domain: [0, duYmax], grid: true, tickFormat: d => d.toFixed(2)},
+  marks: [
+    Plot.rectY(duData, {x1: d => d.x - 0.4, x2: d => d.x + 0.4, y: "p", fill: "var(--bs-part)",
+      fillOpacity: d => d.x === duX ? 1 : d.x < duX ? 0.45 : 0.18}),
+    ...(duExtra ? [Plot.dot(duExtra, {x: "x", y: "p", r: 3.5, fill: "var(--bs-ink)"}),
+                    Plot.line(duExtra, {x: "x", y: "p", stroke: "var(--bs-ink)", strokeWidth: 1, strokeDasharray: "3,3"})] : []),
+    Plot.ruleX([duMean], {stroke: "var(--bs-ink)", strokeWidth: 1.5, strokeDasharray: "4,3"}),
+    Plot.text([duMean], {x: d => d, frameAnchor: "top", dy: 2, dx: 5, textAnchor: "start", text: d => "E(x) = " + d.toFixed(2), fill: "var(--bs-ink)", fontWeight: 600}),
+    Plot.text([duX], {x: d => d, y: duFx, dy: -8, text: () => duFmt(duFx), fill: "var(--bs-part)", fontWeight: 600}),
+    Plot.ruleY([0], {stroke: "var(--bs-line)"})
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+html`<div style="display:flex;gap:.9rem;flex-wrap:wrap;font-size:.82rem;color:var(--bs-ink-2);margin:.1rem 0 .6rem">
+  <span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--bs-part);vertical-align:-1px"></span> f(${duX}) = P(X = ${duX})</span>
+  <span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--bs-part);opacity:.45;vertical-align:-1px"></span> light + dark bars together: P(X ≤ ${duX})</span>
+  
+</div>
+<div class="bs-stats">
+  <div class="bs-stat hl"><div class="k">f(${duX}) = P(X = ${duX})</div><div class="v">${duFmt(duFx)}</div></div>
+  <div class="bs-stat"><div class="k">P(X ≤ ${duX})</div><div class="v">${Math.min(1, duCum).toFixed(4)}</div></div>
+  <div class="bs-stat"><div class="k">E(x)</div><div class="v">${duMean.toFixed(2)}</div></div>
+  <div class="bs-stat"><div class="k">var(x)</div><div class="v">${duVar.toFixed(2)}</div></div>
+</div>
+<div class="bs-formula-live">
+  <div><span class="lbl">f(x)</span> ${duPlugF}</div>
+  <div><span class="lbl">E(x)</span> ${duPlugE}</div>
+  <div><span class="lbl">var(x)</span> ${duPlugV}</div>
+</div>
+<div class="bs-excel"><span class="lbl">Excel</span><span>${duExcelF}</span><span>${duExcelC}</span></div>`
+```
+:::

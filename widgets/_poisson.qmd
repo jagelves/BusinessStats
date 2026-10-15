@@ -1,0 +1,81 @@
+::: {.bs-widget}
+::: {.bs-widget-head}
+[Try it]{.bs-widget-tag} [Poisson explorer]{.bs-widget-title}
+:::
+[Count events in a fixed interval when they happen at an average rate of $\mu$. A small $\mu$ piles the probability near zero; a large $\mu$ spreads it out into a bell shape centered at $\mu$. The mean and the variance are always equal. The defaults are the drive-thru with 10 cars every 15 minutes.]{.bs-widget-sub}
+
+```{ojs}
+//| echo: false
+viewof poMu = Inputs.range([0.5, 30], {value: 10, step: 0.5, label: "Average rate μ"})
+viewof poX = Inputs.range([0, Math.ceil(poMu + 5 * Math.sqrt(poMu) + 3)], {value: Math.min(5, Math.ceil(poMu + 5 * Math.sqrt(poMu) + 3)), step: 1, label: "Count x"})
+```
+
+```{ojs}
+//| echo: false
+poComb = {
+  const lf = k => { let s = 0; for (let i = 2; i <= k; i++) s += Math.log(i); return s; };
+  const lnC = (n, k) => (k < 0 || k > n) ? -Infinity : lf(n) - lf(k) - lf(n - k);
+  return {lf, lnC, C: (n, k) => (k < 0 || k > n) ? 0 : Math.round(Math.exp(lnC(n, k)))};
+}
+poNum = v => Number.isInteger(v) ? v : +v.toFixed(4)
+poBig = v => (Number.isInteger(v) && v < 1e12) ? v.toLocaleString() : (v >= 1e-4 && v < 1e6 ? v.toPrecision(4) : v.toExponential(3).replace(/e([+-])(\d+)/, (m, sg, d) => ` × 10^${sg === '-' ? '−' : ''}${d}`))
+poxs = d3.range(0, Math.ceil(poMu + 5 * Math.sqrt(poMu) + 3) + 1)
+pof = x => Math.exp(x * Math.log(poMu) - poMu - poComb.lf(x))
+poExtra = null
+poPlugF = html`μ<sup>x</sup> e<sup>−μ</sup> / x! = ${poMu}<sup>${poX}</sup> · e<sup>−${poMu}</sup> / ${poX}! = ${poBig(Math.pow(poMu, poX))} × ${poBig(Math.exp(-poMu))} / ${Math.round(Math.exp(poComb.lf(poX))).toLocaleString()} = ${pof(poX).toFixed(4)}`
+poPlugE = `μ = ${poMu}`
+poPlugV = `μ = ${poMu} (the variance equals the mean)`
+poExcelF = `=POISSON.DIST(${poX}, ${poMu}, FALSE)`
+poExcelC = `=POISSON.DIST(${poX}, ${poMu}, TRUE)`
+```
+
+```{ojs}
+//| echo: false
+poData = poxs.map(x => ({x, p: pof(x)}))
+poCum = d3.sum(poData.filter(d => d.x <= poX), d => d.p)
+poFx = pof(poX)
+poMean = d3.sum(poData, d => d.x * d.p)
+poVar = d3.sum(poData, d => (d.x - poMean) ** 2 * d.p)
+poFmt = v => v < 0.0001 && v > 0 ? v.toExponential(2) : v.toFixed(4)
+poAllX = Array.from(new Set([...poxs, ...(poExtra ? poExtra.map(d => d.x) : [])])).sort((a, b) => a - b)
+poYmax = Math.max(d3.max(poData, d => d.p), poExtra ? d3.max(poExtra, d => d.p) : 0) * 1.22
+Plot.plot({
+  width: Math.max(300, width - 50), height: 250, marginLeft: 42, marginRight: 10, marginBottom: 38,
+  style: {fontFamily: "Inter, sans-serif", fontSize: "12px", background: "transparent", color: "var(--bs-ink-2)"},
+  x: {label: "Count x →", labelAnchor: "right", domain: [d3.min(poAllX) - 0.6, d3.max(poAllX) + 0.6],
+      ticks: poAllX.length <= 26 ? poAllX : undefined, tickFormat: d => Number.isInteger(d) ? d : ""},
+  y: {label: "↑ f(x)", domain: [0, poYmax], grid: true, tickFormat: d => d.toFixed(2)},
+  marks: [
+    Plot.rectY(poData, {x1: d => d.x - 0.4, x2: d => d.x + 0.4, y: "p", fill: "var(--bs-part)",
+      fillOpacity: d => d.x === poX ? 1 : d.x < poX ? 0.45 : 0.18}),
+    ...(poExtra ? [Plot.dot(poExtra, {x: "x", y: "p", r: 3.5, fill: "var(--bs-ink)"}),
+                    Plot.line(poExtra, {x: "x", y: "p", stroke: "var(--bs-ink)", strokeWidth: 1, strokeDasharray: "3,3"})] : []),
+    Plot.ruleX([poMean], {stroke: "var(--bs-ink)", strokeWidth: 1.5, strokeDasharray: "4,3"}),
+    Plot.text([poMean], {x: d => d, frameAnchor: "top", dy: 2, dx: 5, textAnchor: "start", text: d => "E(x) = " + d.toFixed(2), fill: "var(--bs-ink)", fontWeight: 600}),
+    Plot.text([poX], {x: d => d, y: poFx, dy: -8, text: () => poFmt(poFx), fill: "var(--bs-part)", fontWeight: 600}),
+    Plot.ruleY([0], {stroke: "var(--bs-line)"})
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+html`<div style="display:flex;gap:.9rem;flex-wrap:wrap;font-size:.82rem;color:var(--bs-ink-2);margin:.1rem 0 .6rem">
+  <span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--bs-part);vertical-align:-1px"></span> f(${poX}) = P(X = ${poX})</span>
+  <span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--bs-part);opacity:.45;vertical-align:-1px"></span> light + dark bars together: P(X ≤ ${poX})</span>
+  
+</div>
+<div class="bs-stats">
+  <div class="bs-stat hl"><div class="k">f(${poX}) = P(X = ${poX})</div><div class="v">${poFmt(poFx)}</div></div>
+  <div class="bs-stat"><div class="k">P(X ≤ ${poX})</div><div class="v">${Math.min(1, poCum).toFixed(4)}</div></div>
+  <div class="bs-stat"><div class="k">E(x)</div><div class="v">${poMean.toFixed(2)}</div></div>
+  <div class="bs-stat"><div class="k">var(x)</div><div class="v">${poVar.toFixed(2)}</div></div>
+</div>
+<div class="bs-formula-live">
+  <div><span class="lbl">f(x)</span> ${poPlugF}</div>
+  <div><span class="lbl">E(x)</span> ${poPlugE}</div>
+  <div><span class="lbl">var(x)</span> ${poPlugV}</div>
+</div>
+<div class="bs-excel"><span class="lbl">Excel</span><span>${poExcelF}</span><span>${poExcelC}</span></div>`
+```
+:::

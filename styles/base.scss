@@ -302,3 +302,12 @@ div.bs-answer-body {
   border: 1px solid var(--bs-line); border-radius: 12px; background: var(--bs-paper-2);
   padding: .9rem 1.1rem .2rem; margin-bottom: 1rem;
 }
+
+// ---------- Live formula lines in distribution widgets
+.bs-formula-live {
+  font-size: .9rem; line-height: 1.6; margin: .2rem 0 .7rem; padding: .6rem .8rem;
+  border-left: 3px solid var(--bs-part); background: var(--bs-paper-2); border-radius: 0 8px 8px 0;
+  font-variant-numeric: tabular-nums; overflow-x: auto;
+}
+.bs-formula-live .lbl { display: inline-block; min-width: 3.6rem; font-weight: 600; color: var(--bs-part); }
+.bs-formula-live sup, .bs-formula-live sub { font-size: .72em; }

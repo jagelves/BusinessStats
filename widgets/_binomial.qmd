@@ -1,0 +1,82 @@
+::: {.bs-widget}
+::: {.bs-widget-head}
+[Try it]{.bs-widget-tag} [Binomial explorer]{.bs-widget-title}
+:::
+[Count the successes in $n$ independent trials, each with success probability $p$. Move $p$ toward $0.5$ and the shape turns symmetric; push it toward $0$ or $1$ and it piles up on one side. The defaults are the three free throws by a 90% shooter.]{.bs-widget-sub}
+
+```{ojs}
+//| echo: false
+viewof biN = Inputs.range([1, 40], {value: 3, step: 1, label: "Trials n"})
+viewof biP = Inputs.range([0.01, 0.99], {value: 0.9, step: 0.01, label: "Success probability p"})
+viewof biX = Inputs.range([0, biN], {value: Math.min(biN, 3), step: 1, label: "Successes x"})
+```
+
+```{ojs}
+//| echo: false
+biComb = {
+  const lf = k => { let s = 0; for (let i = 2; i <= k; i++) s += Math.log(i); return s; };
+  const lnC = (n, k) => (k < 0 || k > n) ? -Infinity : lf(n) - lf(k) - lf(n - k);
+  return {lf, lnC, C: (n, k) => (k < 0 || k > n) ? 0 : Math.round(Math.exp(lnC(n, k)))};
+}
+biNum = v => Number.isInteger(v) ? v : +v.toFixed(4)
+biBig = v => (Number.isInteger(v) && v < 1e12) ? v.toLocaleString() : (v >= 1e-4 && v < 1e6 ? v.toPrecision(4) : v.toExponential(3).replace(/e([+-])(\d+)/, (m, sg, d) => ` × 10^${sg === '-' ? '−' : ''}${d}`))
+bixs = d3.range(0, biN + 1)
+bif = x => Math.exp(biComb.lnC(biN, x) + x * Math.log(biP) + (biN - x) * Math.log(1 - biP))
+biExtra = null
+biPlugF = html`C<sup>${biN}</sup><sub style="margin-left:-.5em">${biX}</sub> · ${biP}<sup>${biX}</sup> · ${biNum(1 - biP)}<sup>${biN - biX}</sup> = ${biComb.C(biN, biX).toLocaleString()} × ${Math.pow(biP, biX).toPrecision(4)} × ${Math.pow(1 - biP, biN - biX).toPrecision(4)} = ${bif(biX).toFixed(4)}`
+biPlugE = `np = ${biN} × ${biP} = ${(biN * biP).toFixed(2)}`
+biPlugV = `np(1 − p) = ${biN} × ${biP} × ${biNum(1 - biP)} = ${(biN * biP * (1 - biP)).toFixed(2)}`
+biExcelF = `=BINOM.DIST(${biX}, ${biN}, ${biP}, FALSE)`
+biExcelC = `=BINOM.DIST(${biX}, ${biN}, ${biP}, TRUE)`
+```
+
+```{ojs}
+//| echo: false
+biData = bixs.map(x => ({x, p: bif(x)}))
+biCum = d3.sum(biData.filter(d => d.x <= biX), d => d.p)
+biFx = bif(biX)
+biMean = d3.sum(biData, d => d.x * d.p)
+biVar = d3.sum(biData, d => (d.x - biMean) ** 2 * d.p)
+biFmt = v => v < 0.0001 && v > 0 ? v.toExponential(2) : v.toFixed(4)
+biAllX = Array.from(new Set([...bixs, ...(biExtra ? biExtra.map(d => d.x) : [])])).sort((a, b) => a - b)
+biYmax = Math.max(d3.max(biData, d => d.p), biExtra ? d3.max(biExtra, d => d.p) : 0) * 1.22
+Plot.plot({
+  width: Math.max(300, width - 50), height: 250, marginLeft: 42, marginRight: 10, marginBottom: 38,
+  style: {fontFamily: "Inter, sans-serif", fontSize: "12px", background: "transparent", color: "var(--bs-ink-2)"},
+  x: {label: "Number of successes x →", labelAnchor: "right", domain: [d3.min(biAllX) - 0.6, d3.max(biAllX) + 0.6],
+      ticks: biAllX.length <= 26 ? biAllX : undefined, tickFormat: d => Number.isInteger(d) ? d : ""},
+  y: {label: "↑ f(x)", domain: [0, biYmax], grid: true, tickFormat: d => d.toFixed(2)},
+  marks: [
+    Plot.rectY(biData, {x1: d => d.x - 0.4, x2: d => d.x + 0.4, y: "p", fill: "var(--bs-part)",
+      fillOpacity: d => d.x === biX ? 1 : d.x < biX ? 0.45 : 0.18}),
+    ...(biExtra ? [Plot.dot(biExtra, {x: "x", y: "p", r: 3.5, fill: "var(--bs-ink)"}),
+                    Plot.line(biExtra, {x: "x", y: "p", stroke: "var(--bs-ink)", strokeWidth: 1, strokeDasharray: "3,3"})] : []),
+    Plot.ruleX([biMean], {stroke: "var(--bs-ink)", strokeWidth: 1.5, strokeDasharray: "4,3"}),
+    Plot.text([biMean], {x: d => d, frameAnchor: "top", dy: 2, dx: 5, textAnchor: "start", text: d => "E(x) = " + d.toFixed(2), fill: "var(--bs-ink)", fontWeight: 600}),
+    Plot.text([biX], {x: d => d, y: biFx, dy: -8, text: () => biFmt(biFx), fill: "var(--bs-part)", fontWeight: 600}),
+    Plot.ruleY([0], {stroke: "var(--bs-line)"})
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+html`<div style="display:flex;gap:.9rem;flex-wrap:wrap;font-size:.82rem;color:var(--bs-ink-2);margin:.1rem 0 .6rem">
+  <span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--bs-part);vertical-align:-1px"></span> f(${biX}) = P(X = ${biX})</span>
+  <span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--bs-part);opacity:.45;vertical-align:-1px"></span> light + dark bars together: P(X ≤ ${biX})</span>
+  
+</div>
+<div class="bs-stats">
+  <div class="bs-stat hl"><div class="k">f(${biX}) = P(X = ${biX})</div><div class="v">${biFmt(biFx)}</div></div>
+  <div class="bs-stat"><div class="k">P(X ≤ ${biX})</div><div class="v">${Math.min(1, biCum).toFixed(4)}</div></div>
+  <div class="bs-stat"><div class="k">E(x)</div><div class="v">${biMean.toFixed(2)}</div></div>
+  <div class="bs-stat"><div class="k">var(x)</div><div class="v">${biVar.toFixed(2)}</div></div>
+</div>
+<div class="bs-formula-live">
+  <div><span class="lbl">f(x)</span> ${biPlugF}</div>
+  <div><span class="lbl">E(x)</span> ${biPlugE}</div>
+  <div><span class="lbl">var(x)</span> ${biPlugV}</div>
+</div>
+<div class="bs-excel"><span class="lbl">Excel</span><span>${biExcelF}</span><span>${biExcelC}</span></div>`
+```
+:::

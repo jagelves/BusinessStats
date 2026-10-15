@@ -1,0 +1,85 @@
+::: {.bs-widget}
+::: {.bs-widget-head}
+[Try it]{.bs-widget-tag} [Hypergeometric explorer]{.bs-widget-title}
+:::
+[Draw $n$ items without replacement from a population of $N$ that contains $r$ successes. Turn on the comparison to see the binomial with the same success rate $r/N$: the two agree when the sample is a small slice of the population and drift apart as $n$ approaches $N$. The defaults are the box of 12 fuses with 5 defective.]{.bs-widget-sub}
+
+```{ojs}
+//| echo: false
+viewof hgNN = Inputs.range([2, 60], {value: 12, step: 1, label: "Population N"})
+viewof hgR = Inputs.range([0, hgNN], {value: Math.min(hgNN, 5), step: 1, label: "Successes in population r"})
+viewof hgN = Inputs.range([1, hgNN], {value: Math.min(hgNN, 3), step: 1, label: "Sample size n"})
+viewof hgX = Inputs.range([Math.max(0, hgN - (hgNN - hgR)), Math.min(hgN, hgR)], {value: Math.max(Math.max(0, hgN - (hgNN - hgR)), Math.min(1, hgN, hgR)), step: 1, label: "Successes in sample x"})
+viewof hgCmp = Inputs.toggle({label: "Compare with binomial", value: false})
+```
+
+```{ojs}
+//| echo: false
+hgComb = {
+  const lf = k => { let s = 0; for (let i = 2; i <= k; i++) s += Math.log(i); return s; };
+  const lnC = (n, k) => (k < 0 || k > n) ? -Infinity : lf(n) - lf(k) - lf(n - k);
+  return {lf, lnC, C: (n, k) => (k < 0 || k > n) ? 0 : Math.round(Math.exp(lnC(n, k)))};
+}
+hgNum = v => Number.isInteger(v) ? v : +v.toFixed(4)
+hgBig = v => (Number.isInteger(v) && v < 1e12) ? v.toLocaleString() : (v >= 1e-4 && v < 1e6 ? v.toPrecision(4) : v.toExponential(3).replace(/e([+-])(\d+)/, (m, sg, d) => ` × 10^${sg === '-' ? '−' : ''}${d}`))
+hgxs = d3.range(Math.max(0, hgN - (hgNN - hgR)), Math.min(hgN, hgR) + 1)
+hgf = x => Math.exp(hgComb.lnC(hgR, x) + hgComb.lnC(hgNN - hgR, hgN - x) - hgComb.lnC(hgNN, hgN))
+hgPb = hgR / hgNN
+hgExtra = hgCmp ? d3.range(0, hgN + 1).map(x => ({x, p: (hgPb <= 0 || hgPb >= 1) ? (x === (hgPb >= 1 ? hgN : 0) ? 1 : 0) : Math.exp(hgComb.lnC(hgN, x) + x * Math.log(hgPb) + (hgN - x) * Math.log(1 - hgPb))})) : null
+hgPlugF = html`C<sup>${hgR}</sup><sub style="margin-left:-.5em">${hgX}</sub> · C<sup>${hgNN - hgR}</sup><sub style="margin-left:-.5em">${hgN - hgX}</sub> / C<sup>${hgNN}</sup><sub style="margin-left:-.5em">${hgN}</sub> = ${hgComb.C(hgR, hgX).toLocaleString()} × ${hgComb.C(hgNN - hgR, hgN - hgX).toLocaleString()} / ${hgComb.C(hgNN, hgN).toLocaleString()} = ${hgf(hgX).toFixed(4)}`
+hgPlugE = `n·r/N = ${hgN} × ${hgR}/${hgNN} = ${(hgN * hgR / hgNN).toFixed(2)}`
+hgPlugV = `n·(r/N)·(1 − r/N)·(N − n)/(N − 1) = ${hgN} × (${hgR}/${hgNN}) × (${hgNN - hgR}/${hgNN}) × (${hgNN - hgN}/${hgNN - 1}) = ${(hgNN > 1 ? hgN * hgPb * (1 - hgPb) * (hgNN - hgN) / (hgNN - 1) : 0).toFixed(2)}`
+hgExcelF = `=HYPGEOM.DIST(${hgX}, ${hgN}, ${hgR}, ${hgNN}, FALSE)`
+hgExcelC = `=HYPGEOM.DIST(${hgX}, ${hgN}, ${hgR}, ${hgNN}, TRUE)`
+```
+
+```{ojs}
+//| echo: false
+hgData = hgxs.map(x => ({x, p: hgf(x)}))
+hgCum = d3.sum(hgData.filter(d => d.x <= hgX), d => d.p)
+hgFx = hgf(hgX)
+hgMean = d3.sum(hgData, d => d.x * d.p)
+hgVar = d3.sum(hgData, d => (d.x - hgMean) ** 2 * d.p)
+hgFmt = v => v < 0.0001 && v > 0 ? v.toExponential(2) : v.toFixed(4)
+hgAllX = Array.from(new Set([...hgxs, ...(hgExtra ? hgExtra.map(d => d.x) : [])])).sort((a, b) => a - b)
+hgYmax = Math.max(d3.max(hgData, d => d.p), hgExtra ? d3.max(hgExtra, d => d.p) : 0) * 1.22
+Plot.plot({
+  width: Math.max(300, width - 50), height: 250, marginLeft: 42, marginRight: 10, marginBottom: 38,
+  style: {fontFamily: "Inter, sans-serif", fontSize: "12px", background: "transparent", color: "var(--bs-ink-2)"},
+  x: {label: "Successes in sample x →", labelAnchor: "right", domain: [d3.min(hgAllX) - 0.6, d3.max(hgAllX) + 0.6],
+      ticks: hgAllX.length <= 26 ? hgAllX : undefined, tickFormat: d => Number.isInteger(d) ? d : ""},
+  y: {label: "↑ f(x)", domain: [0, hgYmax], grid: true, tickFormat: d => d.toFixed(2)},
+  marks: [
+    Plot.rectY(hgData, {x1: d => d.x - 0.4, x2: d => d.x + 0.4, y: "p", fill: "var(--bs-part)",
+      fillOpacity: d => d.x === hgX ? 1 : d.x < hgX ? 0.45 : 0.18}),
+    ...(hgExtra ? [Plot.dot(hgExtra, {x: "x", y: "p", r: 3.5, fill: "var(--bs-ink)"}),
+                    Plot.line(hgExtra, {x: "x", y: "p", stroke: "var(--bs-ink)", strokeWidth: 1, strokeDasharray: "3,3"})] : []),
+    Plot.ruleX([hgMean], {stroke: "var(--bs-ink)", strokeWidth: 1.5, strokeDasharray: "4,3"}),
+    Plot.text([hgMean], {x: d => d, frameAnchor: "top", dy: 2, dx: 5, textAnchor: "start", text: d => "E(x) = " + d.toFixed(2), fill: "var(--bs-ink)", fontWeight: 600}),
+    Plot.text([hgX], {x: d => d, y: hgFx, dy: -8, text: () => hgFmt(hgFx), fill: "var(--bs-part)", fontWeight: 600}),
+    Plot.ruleY([0], {stroke: "var(--bs-line)"})
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+html`<div style="display:flex;gap:.9rem;flex-wrap:wrap;font-size:.82rem;color:var(--bs-ink-2);margin:.1rem 0 .6rem">
+  <span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--bs-part);vertical-align:-1px"></span> f(${hgX}) = P(X = ${hgX})</span>
+  <span><span style="display:inline-block;width:11px;height:11px;border-radius:3px;background:var(--bs-part);opacity:.45;vertical-align:-1px"></span> light + dark bars together: P(X ≤ ${hgX})</span>
+  ${hgCmp ? html`<span><span style="display:inline-block;width:11px;height:11px;border-radius:50%;background:var(--bs-ink);vertical-align:-1px"></span> binomial with p = r/N = ${hgPb.toFixed(3)} (sampling with replacement)</span>` : ""}
+</div>
+<div class="bs-stats">
+  <div class="bs-stat hl"><div class="k">f(${hgX}) = P(X = ${hgX})</div><div class="v">${hgFmt(hgFx)}</div></div>
+  <div class="bs-stat"><div class="k">P(X ≤ ${hgX})</div><div class="v">${Math.min(1, hgCum).toFixed(4)}</div></div>
+  <div class="bs-stat"><div class="k">E(x)</div><div class="v">${hgMean.toFixed(2)}</div></div>
+  <div class="bs-stat"><div class="k">var(x)</div><div class="v">${hgVar.toFixed(2)}</div></div>
+</div>
+<div class="bs-formula-live">
+  <div><span class="lbl">f(x)</span> ${hgPlugF}</div>
+  <div><span class="lbl">E(x)</span> ${hgPlugE}</div>
+  <div><span class="lbl">var(x)</span> ${hgPlugV}</div>
+</div>
+<div class="bs-excel"><span class="lbl">Excel</span><span>${hgExcelF}</span><span>${hgExcelC}</span></div>`
+```
+:::
