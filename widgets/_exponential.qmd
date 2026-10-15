@@ -1,0 +1,73 @@
+::: {.bs-widget}
+::: {.bs-widget-head}
+[Try it]{.bs-widget-tag} [Exponential explorer]{.bs-widget-title}
+:::
+[The time until the next event when events arrive at random. The density starts at its highest point, $1/\mu$, and decays, so short waits are the most likely. Raise the mean $\mu$ and the curve stretches out. The defaults are the Dock Dash trucks, which take 15 minutes to load on average.]{.bs-widget-sub}
+
+```{ojs}
+//| echo: false
+viewof exMu = Inputs.range([1, 60], {value: 15, step: 1, label: "Mean μ"})
+viewof exFrom = Inputs.range([0, 6 * exMu], {value: 0, step: 0.5, label: "From"})
+viewof exTo = Inputs.range([0, 6 * exMu], {value: Math.min(6 * exMu, 6), step: 0.5, label: "To"})
+```
+
+```{ojs}
+//| echo: false
+exD0 = 0
+exD1 = 6 * exMu
+exf = x => x < 0 ? 0 : Math.exp(-x / exMu) / exMu
+exF = x => x <= 0 ? 0 : 1 - Math.exp(-x / exMu)
+exMean = exMu
+exVar = exMu ** 2
+exA = +Math.min(exFrom, exTo).toFixed(2)
+exB = +Math.max(exFrom, exTo).toFixed(2)
+exPlugF = html`(1/μ) e<sup>−x/μ</sup> = (1/${exMu}) e<sup>−x/${exMu}</sup>, which starts at 1/${exMu} = ${(1 / exMu).toFixed(4)}`
+exPlugP = html`e<sup>−${exA}/${exMu}</sup> − e<sup>−${exB}/${exMu}</sup> = ${Math.exp(-exA / exMu).toFixed(4)} − ${Math.exp(-exB / exMu).toFixed(4)} = ${(Math.exp(-exA / exMu) - Math.exp(-exB / exMu)).toFixed(4)}`
+exPlugE = `μ = ${exMu}`
+exPlugV = `μ² = ${exMu}² = ${exVar} (so the standard deviation equals the mean, ${exMu})`
+exExcel = exA === 0 ? `=EXPON.DIST(${exB}, 1/${exMu}, TRUE)` : `=EXPON.DIST(${exB}, 1/${exMu}, TRUE) - EXPON.DIST(${exA}, 1/${exMu}, TRUE)`
+```
+
+```{ojs}
+//| echo: false
+exLo = Math.min(exFrom, exTo)
+exHi = Math.max(exFrom, exTo)
+exProb = Math.max(0, exF(exHi) - exF(exLo))
+exGrid = d3.range(0, 401).map(i => { const x = exD0 + i * (exD1 - exD0) / 400; return {x, y: exf(x)}; })
+exYmax = d3.max(exGrid, d => d.y) * 1.25
+exFmt = v => Math.abs(v) >= 1000 ? v.toLocaleString(undefined, {maximumFractionDigits: 0}) : +v.toFixed(2)
+Plot.plot({
+  width: Math.max(300, width - 50), height: 250, marginLeft: 60, marginRight: 12, marginBottom: 38,
+  style: {fontFamily: "Inter, sans-serif", fontSize: "12px", background: "transparent", color: "var(--bs-ink-2)"},
+  x: {domain: [exD0, exD1], label: "x (e.g. minutes) →", labelAnchor: "right"},
+  y: {domain: [0, exYmax], label: "↑ f(x)", grid: true, tickFormat: d => d === 0 ? "0" : d < 0.001 ? d.toFixed(5) : d.toFixed(3)},
+  marks: [
+    Plot.areaY(exGrid.filter(d => d.x >= exLo && d.x <= exHi).concat([{x: exHi, y: exf(exHi)}]).sort((a, b) => a.x - b.x),
+      {x: "x", y: "y", fill: "var(--bs-part)", fillOpacity: 0.4, curve: "linear"}),
+    Plot.lineY(exGrid, {x: "x", y: "y", stroke: "var(--bs-ink)", strokeWidth: 2, curve: "linear"}),
+    Plot.ruleX([exLo, exHi], {stroke: "var(--bs-part)", strokeWidth: 2}),
+    Plot.ruleX([exMean], {stroke: "var(--bs-ink)", strokeWidth: 1.5, strokeDasharray: "4,3"}),
+    Plot.text([exMean], {x: d => d, frameAnchor: "top", dy: 2, dx: 5, textAnchor: "start", text: d => "E(x) = " + exFmt(d), fill: "var(--bs-ink)", fontWeight: 600}),
+    Plot.text([Math.min(exD1 - 0.1 * (exD1 - exD0), Math.max(exD0 + 0.1 * (exD1 - exD0), (exLo + exHi) / 2))], {x: d => d, y: exYmax * 0.06, text: () => "area = " + exProb.toFixed(4), fill: "var(--bs-part)", fontWeight: 700, fontSize: 13}),
+    Plot.ruleY([0], {stroke: "var(--bs-line)"})
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+html`<div class="bs-stats">
+  <div class="bs-stat hl"><div class="k">P(${exFmt(exLo)} ≤ X ≤ ${exFmt(exHi)})</div><div class="v">${exProb.toFixed(4)}</div></div>
+  <div class="bs-stat"><div class="k">P(X = ${exFmt(exLo)})</div><div class="v">0</div></div>
+  <div class="bs-stat"><div class="k">E(x)</div><div class="v">${exFmt(exMean)}</div></div>
+  <div class="bs-stat"><div class="k">var(x)</div><div class="v">${exFmt(exVar)}</div></div>
+</div>
+<div class="bs-formula-live">
+  <div><span class="lbl">f(x)</span> ${exPlugF}</div>
+  <div><span class="lbl">Area</span> ${exPlugP}</div>
+  <div><span class="lbl">E(x)</span> ${exPlugE}</div>
+  <div><span class="lbl">var(x)</span> ${exPlugV}</div>
+</div>
+<div class="bs-excel"><span class="lbl">Excel</span><span>${exExcel}</span></div>`
+```
+:::

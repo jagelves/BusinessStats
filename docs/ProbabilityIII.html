@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-ebc9bf21172222eecf4329b9f87ba86d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a9a8112abf6d22cde504e3b06bd5f6a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0aef34cf2d3591846d4f16223d929ccf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
@@ -430,35 +430,16 @@ details summary {
 <div class="callout-example">
 <p><strong>Example:</strong> Consider the travel time between NY and CHI. Typically, this trips can take anywhere from 120-140 minutes. The specific time of a particular flight is unpredictable, but assumed to be anywhere between this interval. We assume a uniform distribution with upper limit of 140 and lower limit of 120. The probability that the flight take 122 minutes is zero since the interval has an infinite amount of possible values. The probability of the flight taking 130 minutes or less is 0.5. <span class="math display">\[f(x&lt;=130)=\frac{130-120}{20}=0.5\]</span> The uniform distribution has no dedicated Excel function, but its cumulative probability follows directly from the formula. In Excel, <code>=(130-120)/(140-120)</code> returns <span class="math inline">\(0.5\)</span>.</p>
 </div>
-</section>
-<section id="normal-distribution" class="level2" data-number="10.3">
-<h2 data-number="10.3" class="anchored" data-anchor-id="normal-distribution"><span class="header-section-number">10.3</span> Normal Distribution</h2>
-<p>The <strong>normal</strong> PDF is given by</p>
-<div class="callout-formula">
-<p><strong>THE NORMAL DISTRIBUTION</strong> <span class="math display">\[f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1}{2} (\frac {x-\mu}{\sigma})^2}\]</span> where <span class="math inline">\(\mu\)</span> is the mean, <span class="math inline">\(\sigma\)</span> is the standard deviation, <span class="math inline">\(\pi \approx 3.1416\)</span>, and <span class="math inline">\(e \approx 2.7183\)</span>.</p>
-</div>
-<p>The normal distribution has the following properties:</p>
-<ul>
-<li><p>It is symmetrical about the mean <span class="math inline">\(\mu\)</span>.</p></li>
-<li><p>The mean is at the middle and divides the area of the distribution into halves.</p></li>
-<li><p>The total area under the curve is equal to 1.</p></li>
-<li><p>The distribution is completely determined by its mean and standard deviation.</p></li>
-</ul>
-<p>The <strong>standard normal</strong> has a mean of <span class="math inline">\(0\)</span> and a standard deviation of <span class="math inline">\(1\)</span>. Otherwise, it has the exact same properties as the normal distribution.</p>
-<div class="callout-example">
-<p><strong>Example:</strong> Dr Tires is planning on offering a mileage guarantee on each set of tires they sell. They are considering a 40,000 mile guarantee. Given that the mean tire mileage is 36,500 miles with a standard deviation of 5,000 miles, we can estimate that the probability that a tire lasts more than 40,000 miles is 24.2%. In Excel, use <code>=1 - NORM.DIST(40000, 36500, 5000, TRUE)</code>, which returns <span class="math inline">\(0.242\)</span>.</p>
-</div>
 <div class="bs-widget">
 <div class="bs-widget-head">
-<p><span class="bs-widget-tag">Try it</span> <span class="bs-widget-title">Normal probability explorer</span></p>
+<p><span class="bs-widget-tag">Try it</span> <span class="bs-widget-title">Continuous uniform explorer</span></p>
 </div>
-<p><span class="bs-widget-sub">Set the mean and standard deviation, pick a cutoff, and watch the shaded area — that area <em>is</em> the probability. The defaults reproduce the Dr Tires example.</span></p>
+<p><span class="bs-widget-sub">Every value between <span class="math inline">\(a\)</span> and <span class="math inline">\(b\)</span> is equally likely, so the density is a flat line at height <span class="math inline">\(1/(b-a)\)</span>. A probability is the area of a rectangle: width times height. Notice that a single value has no width, so <span class="math inline">\(P(X = x) = 0\)</span>. The defaults are the 120 to 140 minute flight.</span></p>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="1" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>viewof nMu <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">100000</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">36500</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Mean μ"</span>})</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>viewof nSd <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">500</span><span class="op">,</span> <span class="dv">20000</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">5000</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">250</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Std. dev. σ"</span>})</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>viewof nTail <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">radio</span>([<span class="st">"P(X ≤ a)"</span><span class="op">,</span> <span class="st">"P(X ≥ a)"</span><span class="op">,</span> <span class="st">"P(a ≤ X ≤ b)"</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="st">"P(X ≥ a)"</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Find"</span>})</span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>viewof nA <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([nMu <span class="op">-</span> <span class="dv">4</span><span class="op">*</span>nSd<span class="op">,</span> nMu <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>nSd]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">40000</span><span class="op">,</span> nMu <span class="op">-</span> <span class="dv">4</span><span class="op">*</span>nSd)<span class="op">,</span> nMu <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>nSd)<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"a"</span>})</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>viewof nB <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([nMu <span class="op">-</span> <span class="dv">4</span><span class="op">*</span>nSd<span class="op">,</span> nMu <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>nSd]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">45000</span><span class="op">,</span> nMu <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>nSd)<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"b"</span><span class="op">,</span> <span class="dt">disabled</span><span class="op">:</span> nTail <span class="op">!==</span> <span class="st">"P(a ≤ X ≤ b)"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb1" data-startfrom="1" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>viewof cuA <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">200</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">120</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Lower limit a"</span>})</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>viewof cuB <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([cuA <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> cuA <span class="op">+</span> <span class="dv">200</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(cuA <span class="op">+</span> <span class="dv">1</span><span class="op">,</span> <span class="dv">140</span>)<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Upper limit b"</span>})</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>viewof cuFrom <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([cuA<span class="op">,</span> cuB]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> cuA<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"From"</span>})</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>viewof cuTo <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([cuA<span class="op">,</span> cuB]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(cuB<span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(cuA<span class="op">,</span> <span class="dv">130</span>))<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"To"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-1-1" data-nodetype="declaration">
@@ -487,45 +468,20 @@ details summary {
 </div>
 </div>
 </div>
-<div class="cell-output cell-output-display">
-<div>
-<div id="ojs-cell-1-5" data-nodetype="declaration">
-
-</div>
-</div>
-</div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="1" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>normCdf <span class="op">=</span> (x<span class="op">,</span> m<span class="op">,</span> s) <span class="kw">=&gt;</span> {</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> z <span class="op">=</span> (x <span class="op">-</span> m) <span class="op">/</span> (s <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">SQRT2</span>)<span class="op">,</span> t <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> <span class="fl">0.3275911</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(z))<span class="op">;</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> y <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> (((((<span class="fl">1.061405429</span><span class="op">*</span>t <span class="op">-</span> <span class="fl">1.453152027</span>)<span class="op">*</span>t) <span class="op">+</span> <span class="fl">1.421413741</span>)<span class="op">*</span>t <span class="op">-</span> <span class="fl">0.284496736</span>)<span class="op">*</span>t <span class="op">+</span> <span class="fl">0.254829592</span>)<span class="op">*</span>t<span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span>z<span class="op">*</span>z)<span class="op">;</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fl">0.5</span> <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sign</span>(z) <span class="op">*</span> y)<span class="op">;</span></span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>nLo <span class="op">=</span> nTail <span class="op">===</span> <span class="st">"P(X ≤ a)"</span> <span class="op">?</span> nMu <span class="op">-</span> <span class="fl">4.5</span><span class="op">*</span>nSd <span class="op">:</span> (nTail <span class="op">===</span> <span class="st">"P(X ≥ a)"</span> <span class="op">?</span> nA <span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(nA<span class="op">,</span> nB))</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>nHi <span class="op">=</span> nTail <span class="op">===</span> <span class="st">"P(X ≤ a)"</span> <span class="op">?</span> nA <span class="op">:</span> (nTail <span class="op">===</span> <span class="st">"P(X ≥ a)"</span> <span class="op">?</span> nMu <span class="op">+</span> <span class="fl">4.5</span><span class="op">*</span>nSd <span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(nA<span class="op">,</span> nB))</span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>nProb <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">0</span><span class="op">,</span> <span class="fu">normCdf</span>(nHi<span class="op">,</span> nMu<span class="op">,</span> nSd) <span class="op">-</span> <span class="fu">normCdf</span>(nLo<span class="op">,</span> nMu<span class="op">,</span> nSd))</span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>nCurve <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">241</span>)<span class="op">.</span><span class="fu">map</span>(i <span class="kw">=&gt;</span> {</span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> x <span class="op">=</span> nMu <span class="op">-</span> <span class="dv">4</span><span class="op">*</span>nSd <span class="op">+</span> i <span class="op">*</span> (<span class="dv">8</span><span class="op">*</span>nSd<span class="op">/</span><span class="dv">240</span>)<span class="op">;</span></span>
-<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> {x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span><span class="fl">0.5</span><span class="op">*</span>((x<span class="op">-</span>nMu)<span class="op">/</span>nSd)<span class="op">**</span><span class="dv">2</span>) <span class="op">/</span> (nSd<span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>))}<span class="op">;</span></span>
-<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb2-13"><a href="#cb2-13" aria-hidden="true" tabindex="-1"></a>nFmt <span class="op">=</span> d3<span class="op">.</span><span class="fu">format</span>(<span class="st">",.0f"</span>)</span>
-<span id="cb2-14"><a href="#cb2-14" aria-hidden="true" tabindex="-1"></a>nExcel <span class="op">=</span> nTail <span class="op">===</span> <span class="st">"P(X ≤ a)"</span> <span class="op">?</span> <span class="vs">`=NORM.DIST(</span><span class="sc">${</span>nA<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nMu<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nSd<span class="sc">}</span><span class="vs">, TRUE)`</span></span>
-<span id="cb2-15"><a href="#cb2-15" aria-hidden="true" tabindex="-1"></a>       <span class="op">:</span> nTail <span class="op">===</span> <span class="st">"P(X ≥ a)"</span> <span class="op">?</span> <span class="vs">`=1 - NORM.DIST(</span><span class="sc">${</span>nA<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nMu<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nSd<span class="sc">}</span><span class="vs">, TRUE)`</span></span>
-<span id="cb2-16"><a href="#cb2-16" aria-hidden="true" tabindex="-1"></a>       <span class="op">:</span> <span class="vs">`=NORM.DIST(</span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(nA<span class="op">,</span>nB)<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nMu<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nSd<span class="sc">}</span><span class="vs">, TRUE) - NORM.DIST(</span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(nA<span class="op">,</span>nB)<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nMu<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nSd<span class="sc">}</span><span class="vs">, TRUE)`</span></span>
-<span id="cb2-17"><a href="#cb2-17" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-18"><a href="#cb2-18" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
-<span id="cb2-19"><a href="#cb2-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">260</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">36</span><span class="op">,</span></span>
-<span id="cb2-20"><a href="#cb2-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">style</span><span class="op">:</span> {<span class="dt">fontFamily</span><span class="op">:</span> <span class="st">"Inter, sans-serif"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="st">"12px"</span><span class="op">,</span> <span class="dt">background</span><span class="op">:</span> <span class="st">"transparent"</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">"var(--bs-ink-2)"</span>}<span class="op">,</span></span>
-<span id="cb2-21"><a href="#cb2-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">tickFormat</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="fu">nFmt</span>(d)<span class="op">,</span> <span class="dt">ticks</span><span class="op">:</span> <span class="dv">7</span>}<span class="op">,</span></span>
-<span id="cb2-22"><a href="#cb2-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span>}<span class="op">,</span></span>
-<span id="cb2-23"><a href="#cb2-23" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
-<span id="cb2-24"><a href="#cb2-24" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">areaY</span>(nCurve<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&gt;=</span> nLo <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&lt;=</span> nHi)<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"var(--bs-part)"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.22</span>})<span class="op">,</span></span>
-<span id="cb2-25"><a href="#cb2-25" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">lineY</span>(nCurve<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-ink)"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.75</span>})<span class="op">,</span></span>
-<span id="cb2-26"><a href="#cb2-26" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([nMu]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-ink-3)"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"3,3"</span>})<span class="op">,</span></span>
-<span id="cb2-27"><a href="#cb2-27" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>(nTail <span class="op">===</span> <span class="st">"P(a ≤ X ≤ b)"</span> <span class="op">?</span> [nA<span class="op">,</span> nB] <span class="op">:</span> [nA]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-part)"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
-<span id="cb2-28"><a href="#cb2-28" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-line)"</span>})</span>
-<span id="cb2-29"><a href="#cb2-29" aria-hidden="true" tabindex="-1"></a>  ]</span>
-<span id="cb2-30"><a href="#cb2-30" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb2" data-startfrom="1" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>cuW <span class="op">=</span> cuB <span class="op">-</span> cuA</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>cuD0 <span class="op">=</span> cuA <span class="op">-</span> <span class="fl">0.15</span> <span class="op">*</span> cuW</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>cuD1 <span class="op">=</span> cuB <span class="op">+</span> <span class="fl">0.15</span> <span class="op">*</span> cuW</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>cuf <span class="op">=</span> x <span class="kw">=&gt;</span> (x <span class="op">&gt;=</span> cuA <span class="op">&amp;&amp;</span> x <span class="op">&lt;=</span> cuB) <span class="op">?</span> <span class="dv">1</span> <span class="op">/</span> cuW <span class="op">:</span> <span class="dv">0</span></span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>cuF <span class="op">=</span> x <span class="kw">=&gt;</span> x <span class="op">&lt;=</span> cuA <span class="op">?</span> <span class="dv">0</span> <span class="op">:</span> x <span class="op">&gt;=</span> cuB <span class="op">?</span> <span class="dv">1</span> <span class="op">:</span> (x <span class="op">-</span> cuA) <span class="op">/</span> cuW</span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>cuMean <span class="op">=</span> (cuA <span class="op">+</span> cuB) <span class="op">/</span> <span class="dv">2</span></span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>cuVar <span class="op">=</span> cuW <span class="op">**</span> <span class="dv">2</span> <span class="op">/</span> <span class="dv">12</span></span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>cuPlugF <span class="op">=</span> <span class="vs">`1/(b − a) = 1/(</span><span class="sc">${</span>cuB<span class="sc">}</span><span class="vs"> − </span><span class="sc">${</span>cuA<span class="sc">}</span><span class="vs">) = </span><span class="sc">${</span>(<span class="dv">1</span> <span class="op">/</span> cuW)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>cuPlugP <span class="op">=</span> <span class="vs">`width × height = (</span><span class="sc">${</span><span class="op">+</span><span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(cuFrom<span class="op">,</span> cuTo)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs"> − </span><span class="sc">${</span><span class="op">+</span><span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(cuFrom<span class="op">,</span> cuTo)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">) × 1/</span><span class="sc">${</span>cuW<span class="sc">}</span><span class="vs"> = </span><span class="sc">${</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(cuTo <span class="op">-</span> cuFrom) <span class="op">/</span> cuW)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>cuPlugE <span class="op">=</span> <span class="vs">`(a + b)/2 = (</span><span class="sc">${</span>cuA<span class="sc">}</span><span class="vs"> + </span><span class="sc">${</span>cuB<span class="sc">}</span><span class="vs">)/2 = </span><span class="sc">${</span>cuMean<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb2-11"><a href="#cb2-11" aria-hidden="true" tabindex="-1"></a>cuPlugV <span class="op">=</span> <span class="vs">`(b − a)²/12 = </span><span class="sc">${</span>cuW<span class="sc">}</span><span class="vs">²/12 = </span><span class="sc">${</span>cuVar<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb2-12"><a href="#cb2-12" aria-hidden="true" tabindex="-1"></a>cuExcel <span class="op">=</span> <span class="vs">`=(</span><span class="sc">${</span><span class="op">+</span><span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(cuFrom<span class="op">,</span> cuTo)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">-</span><span class="sc">${</span><span class="op">+</span><span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(cuFrom<span class="op">,</span> cuTo)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">)/(</span><span class="sc">${</span>cuB<span class="sc">}</span><span class="vs">-</span><span class="sc">${</span>cuA<span class="sc">}</span><span class="vs">)`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
 <div>
 <div id="ojs-cell-2-1" data-nodetype="declaration">
@@ -577,21 +533,296 @@ details summary {
 </div>
 <div class="cell-output cell-output-display">
 <div>
-<div id="ojs-cell-2-8" data-nodetype="expression">
+<div id="ojs-cell-2-8" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-10" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-11" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-2-12" data-nodetype="declaration">
 
 </div>
 </div>
 </div>
 </div>
 <div class="cell">
-<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="0" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -1;"><span id="cb3-0"><a href="#cb3-0" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div class="bs-stats"&gt;</span></span>
-<span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat hl"&gt;&lt;div class="k"&gt;</span><span class="sc">${</span>nTail<span class="op">.</span><span class="fu">replace</span>(<span class="st">"a"</span><span class="op">,</span> <span class="fu">nFmt</span>(nA))<span class="op">.</span><span class="fu">replace</span>(<span class="st">"b"</span><span class="op">,</span> <span class="fu">nFmt</span>(nB))<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span>nProb<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat"&gt;&lt;div class="k"&gt;As a percent&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span>(nProb<span class="op">*</span><span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">%&lt;/div&gt;&lt;/div&gt;</span></span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat"&gt;&lt;div class="k"&gt;z-score of a&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span>((nA <span class="op">-</span> nMu)<span class="op">/</span>nSd)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;</span></span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div class="bs-excel"&gt;&lt;span class="lbl"&gt;Excel&lt;/span&gt;&lt;span&gt;</span><span class="sc">${</span>nExcel<span class="sc">}</span><span class="vs">&lt;/span&gt;&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code hidden" id="cb3" data-startfrom="1" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>cuLo <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(cuFrom<span class="op">,</span> cuTo)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>cuHi <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(cuFrom<span class="op">,</span> cuTo)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>cuProb <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">0</span><span class="op">,</span> <span class="fu">cuF</span>(cuHi) <span class="op">-</span> <span class="fu">cuF</span>(cuLo))</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>cuGrid <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">401</span>)<span class="op">.</span><span class="fu">map</span>(i <span class="kw">=&gt;</span> { <span class="kw">const</span> x <span class="op">=</span> cuD0 <span class="op">+</span> i <span class="op">*</span> (cuD1 <span class="op">-</span> cuD0) <span class="op">/</span> <span class="dv">400</span><span class="op">;</span> <span class="cf">return</span> {x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">cuf</span>(x)}<span class="op">;</span> })</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>cuYmax <span class="op">=</span> d3<span class="op">.</span><span class="fu">max</span>(cuGrid<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span>) <span class="op">*</span> <span class="fl">1.25</span></span>
+<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a>cuFmt <span class="op">=</span> v <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(v) <span class="op">&gt;=</span> <span class="dv">1000</span> <span class="op">?</span> v<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="kw">undefined</span><span class="op">,</span> {<span class="dt">maximumFractionDigits</span><span class="op">:</span> <span class="dv">0</span>}) <span class="op">:</span> <span class="op">+</span>v<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)</span>
+<span id="cb3-7"><a href="#cb3-7" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb3-8"><a href="#cb3-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">300</span><span class="op">,</span> width <span class="op">-</span> <span class="dv">50</span>)<span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">250</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span> <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">12</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">38</span><span class="op">,</span></span>
+<span id="cb3-9"><a href="#cb3-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">style</span><span class="op">:</span> {<span class="dt">fontFamily</span><span class="op">:</span> <span class="st">"Inter, sans-serif"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="st">"12px"</span><span class="op">,</span> <span class="dt">background</span><span class="op">:</span> <span class="st">"transparent"</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">"var(--bs-ink-2)"</span>}<span class="op">,</span></span>
+<span id="cb3-10"><a href="#cb3-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [cuD0<span class="op">,</span> cuD1]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"x →"</span><span class="op">,</span> <span class="dt">labelAnchor</span><span class="op">:</span> <span class="st">"right"</span>}<span class="op">,</span></span>
+<span id="cb3-11"><a href="#cb3-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> cuYmax]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ f(x)"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">tickFormat</span><span class="op">:</span> d <span class="kw">=&gt;</span> d <span class="op">===</span> <span class="dv">0</span> <span class="op">?</span> <span class="st">"0"</span> <span class="op">:</span> d <span class="op">&lt;</span> <span class="fl">0.001</span> <span class="op">?</span> d<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>) <span class="op">:</span> d<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)}<span class="op">,</span></span>
+<span id="cb3-12"><a href="#cb3-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb3-13"><a href="#cb3-13" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">areaY</span>(cuGrid<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&gt;=</span> cuLo <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&lt;=</span> cuHi)<span class="op">.</span><span class="fu">concat</span>([{<span class="dt">x</span><span class="op">:</span> cuHi<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">cuf</span>(cuHi)}])<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">x</span> <span class="op">-</span> b<span class="op">.</span><span class="at">x</span>)<span class="op">,</span></span>
+<span id="cb3-14"><a href="#cb3-14" aria-hidden="true" tabindex="-1"></a>      {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"var(--bs-part)"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.4</span><span class="op">,</span> <span class="dt">curve</span><span class="op">:</span> <span class="st">"linear"</span>})<span class="op">,</span></span>
+<span id="cb3-15"><a href="#cb3-15" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">lineY</span>(cuGrid<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-ink)"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">curve</span><span class="op">:</span> <span class="st">"linear"</span>})<span class="op">,</span></span>
+<span id="cb3-16"><a href="#cb3-16" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([cuLo<span class="op">,</span> cuHi]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-part)"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
+<span id="cb3-17"><a href="#cb3-17" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([cuMean]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-ink)"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,3"</span>})<span class="op">,</span></span>
+<span id="cb3-18"><a href="#cb3-18" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([cuMean]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">,</span> <span class="dt">frameAnchor</span><span class="op">:</span> <span class="st">"top"</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="st">"E(x) = "</span> <span class="op">+</span> <span class="fu">cuFmt</span>(d)<span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"var(--bs-ink)"</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">600</span>})<span class="op">,</span></span>
+<span id="cb3-19"><a href="#cb3-19" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([<span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(cuD1 <span class="op">-</span> <span class="fl">0.1</span> <span class="op">*</span> (cuD1 <span class="op">-</span> cuD0)<span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(cuD0 <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> (cuD1 <span class="op">-</span> cuD0)<span class="op">,</span> (cuLo <span class="op">+</span> cuHi) <span class="op">/</span> <span class="dv">2</span>))]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> cuYmax <span class="op">*</span> <span class="fl">0.06</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> () <span class="kw">=&gt;</span> <span class="st">"area = "</span> <span class="op">+</span> cuProb<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"var(--bs-part)"</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span>})<span class="op">,</span></span>
+<span id="cb3-20"><a href="#cb3-20" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-line)"</span>})</span>
+<span id="cb3-21"><a href="#cb3-21" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb3-22"><a href="#cb3-22" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-display">
-<div id="ojs-cell-3" data-nodetype="expression">
+<div>
+<div id="ojs-cell-3-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-3-7" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb4" data-startfrom="0" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -1;"><span id="cb4-0"><a href="#cb4-0" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div class="bs-stats"&gt;</span></span>
+<span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat hl"&gt;&lt;div class="k"&gt;P(</span><span class="sc">${</span><span class="fu">cuFmt</span>(cuLo)<span class="sc">}</span><span class="vs"> ≤ X ≤ </span><span class="sc">${</span><span class="fu">cuFmt</span>(cuHi)<span class="sc">}</span><span class="vs">)&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span>cuProb<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat"&gt;&lt;div class="k"&gt;P(X = </span><span class="sc">${</span><span class="fu">cuFmt</span>(cuLo)<span class="sc">}</span><span class="vs">)&lt;/div&gt;&lt;div class="v"&gt;0&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat"&gt;&lt;div class="k"&gt;E(x)&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span><span class="fu">cuFmt</span>(cuMean)<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat"&gt;&lt;div class="k"&gt;var(x)&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span><span class="fu">cuFmt</span>(cuVar)<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div class="bs-formula-live"&gt;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div&gt;&lt;span class="lbl"&gt;f(x)&lt;/span&gt; </span><span class="sc">${</span>cuPlugF<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div&gt;&lt;span class="lbl"&gt;Area&lt;/span&gt; </span><span class="sc">${</span>cuPlugP<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div&gt;&lt;span class="lbl"&gt;E(x)&lt;/span&gt; </span><span class="sc">${</span>cuPlugE<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div&gt;&lt;span class="lbl"&gt;var(x)&lt;/span&gt; </span><span class="sc">${</span>cuPlugV<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb4-11"><a href="#cb4-11" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb4-12"><a href="#cb4-12" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div class="bs-excel"&gt;&lt;span class="lbl"&gt;Excel&lt;/span&gt;&lt;span&gt;</span><span class="sc">${</span>cuExcel<span class="sc">}</span><span class="vs">&lt;/span&gt;&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-4" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+</section>
+<section id="normal-distribution" class="level2" data-number="10.3">
+<h2 data-number="10.3" class="anchored" data-anchor-id="normal-distribution"><span class="header-section-number">10.3</span> Normal Distribution</h2>
+<p>The <strong>normal</strong> PDF is given by</p>
+<div class="callout-formula">
+<p><strong>THE NORMAL DISTRIBUTION</strong> <span class="math display">\[f(x)= \frac {1}{\sigma \sqrt{2\pi}} e^{\frac {-1}{2} (\frac {x-\mu}{\sigma})^2}\]</span> where <span class="math inline">\(\mu\)</span> is the mean, <span class="math inline">\(\sigma\)</span> is the standard deviation, <span class="math inline">\(\pi \approx 3.1416\)</span>, and <span class="math inline">\(e \approx 2.7183\)</span>.</p>
+</div>
+<p>The normal distribution has the following properties:</p>
+<ul>
+<li><p>It is symmetrical about the mean <span class="math inline">\(\mu\)</span>.</p></li>
+<li><p>The mean is at the middle and divides the area of the distribution into halves.</p></li>
+<li><p>The total area under the curve is equal to 1.</p></li>
+<li><p>The distribution is completely determined by its mean and standard deviation.</p></li>
+</ul>
+<p>The <strong>standard normal</strong> has a mean of <span class="math inline">\(0\)</span> and a standard deviation of <span class="math inline">\(1\)</span>. Otherwise, it has the exact same properties as the normal distribution.</p>
+<div class="callout-example">
+<p><strong>Example:</strong> Dr Tires is planning on offering a mileage guarantee on each set of tires they sell. They are considering a 40,000 mile guarantee. Given that the mean tire mileage is 36,500 miles with a standard deviation of 5,000 miles, we can estimate that the probability that a tire lasts more than 40,000 miles is 24.2%. In Excel, use <code>=1 - NORM.DIST(40000, 36500, 5000, TRUE)</code>, which returns <span class="math inline">\(0.242\)</span>.</p>
+</div>
+<div class="bs-widget">
+<div class="bs-widget-head">
+<p><span class="bs-widget-tag">Try it</span> <span class="bs-widget-title">Normal probability explorer</span></p>
+</div>
+<p><span class="bs-widget-sub">Set the mean and standard deviation, pick a cutoff, and watch the shaded area — that area <em>is</em> the probability. The defaults reproduce the Dr Tires example.</span></p>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb5" data-startfrom="1" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>viewof nMu <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">100000</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">36500</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">500</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Mean μ"</span>})</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>viewof nSd <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">500</span><span class="op">,</span> <span class="dv">20000</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">5000</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">250</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Std. dev. σ"</span>})</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>viewof nTail <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">radio</span>([<span class="st">"P(X ≤ a)"</span><span class="op">,</span> <span class="st">"P(X ≥ a)"</span><span class="op">,</span> <span class="st">"P(a ≤ X ≤ b)"</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="st">"P(X ≥ a)"</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Find"</span>})</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>viewof nA <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([nMu <span class="op">-</span> <span class="dv">4</span><span class="op">*</span>nSd<span class="op">,</span> nMu <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>nSd]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">40000</span><span class="op">,</span> nMu <span class="op">-</span> <span class="dv">4</span><span class="op">*</span>nSd)<span class="op">,</span> nMu <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>nSd)<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"a"</span>})</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>viewof nB <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([nMu <span class="op">-</span> <span class="dv">4</span><span class="op">*</span>nSd<span class="op">,</span> nMu <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>nSd]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">45000</span><span class="op">,</span> nMu <span class="op">+</span> <span class="dv">4</span><span class="op">*</span>nSd)<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"b"</span><span class="op">,</span> <span class="dt">disabled</span><span class="op">:</span> nTail <span class="op">!==</span> <span class="st">"P(a ≤ X ≤ b)"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-5-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb6" data-startfrom="1" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>normCdf <span class="op">=</span> (x<span class="op">,</span> m<span class="op">,</span> s) <span class="kw">=&gt;</span> {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> z <span class="op">=</span> (x <span class="op">-</span> m) <span class="op">/</span> (s <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="cn">SQRT2</span>)<span class="op">,</span> t <span class="op">=</span> <span class="dv">1</span> <span class="op">/</span> (<span class="dv">1</span> <span class="op">+</span> <span class="fl">0.3275911</span> <span class="op">*</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(z))<span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> y <span class="op">=</span> <span class="dv">1</span> <span class="op">-</span> (((((<span class="fl">1.061405429</span><span class="op">*</span>t <span class="op">-</span> <span class="fl">1.453152027</span>)<span class="op">*</span>t) <span class="op">+</span> <span class="fl">1.421413741</span>)<span class="op">*</span>t <span class="op">-</span> <span class="fl">0.284496736</span>)<span class="op">*</span>t <span class="op">+</span> <span class="fl">0.254829592</span>)<span class="op">*</span>t<span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span>z<span class="op">*</span>z)<span class="op">;</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> <span class="fl">0.5</span> <span class="op">*</span> (<span class="dv">1</span> <span class="op">+</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">sign</span>(z) <span class="op">*</span> y)<span class="op">;</span></span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb6-6"><a href="#cb6-6" aria-hidden="true" tabindex="-1"></a>nLo <span class="op">=</span> nTail <span class="op">===</span> <span class="st">"P(X ≤ a)"</span> <span class="op">?</span> nMu <span class="op">-</span> <span class="fl">4.5</span><span class="op">*</span>nSd <span class="op">:</span> (nTail <span class="op">===</span> <span class="st">"P(X ≥ a)"</span> <span class="op">?</span> nA <span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(nA<span class="op">,</span> nB))</span>
+<span id="cb6-7"><a href="#cb6-7" aria-hidden="true" tabindex="-1"></a>nHi <span class="op">=</span> nTail <span class="op">===</span> <span class="st">"P(X ≤ a)"</span> <span class="op">?</span> nA <span class="op">:</span> (nTail <span class="op">===</span> <span class="st">"P(X ≥ a)"</span> <span class="op">?</span> nMu <span class="op">+</span> <span class="fl">4.5</span><span class="op">*</span>nSd <span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(nA<span class="op">,</span> nB))</span>
+<span id="cb6-8"><a href="#cb6-8" aria-hidden="true" tabindex="-1"></a>nProb <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">0</span><span class="op">,</span> <span class="fu">normCdf</span>(nHi<span class="op">,</span> nMu<span class="op">,</span> nSd) <span class="op">-</span> <span class="fu">normCdf</span>(nLo<span class="op">,</span> nMu<span class="op">,</span> nSd))</span>
+<span id="cb6-9"><a href="#cb6-9" aria-hidden="true" tabindex="-1"></a>nCurve <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">241</span>)<span class="op">.</span><span class="fu">map</span>(i <span class="kw">=&gt;</span> {</span>
+<span id="cb6-10"><a href="#cb6-10" aria-hidden="true" tabindex="-1"></a>  <span class="kw">const</span> x <span class="op">=</span> nMu <span class="op">-</span> <span class="dv">4</span><span class="op">*</span>nSd <span class="op">+</span> i <span class="op">*</span> (<span class="dv">8</span><span class="op">*</span>nSd<span class="op">/</span><span class="dv">240</span>)<span class="op">;</span></span>
+<span id="cb6-11"><a href="#cb6-11" aria-hidden="true" tabindex="-1"></a>  <span class="cf">return</span> {x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span><span class="fl">0.5</span><span class="op">*</span>((x<span class="op">-</span>nMu)<span class="op">/</span>nSd)<span class="op">**</span><span class="dv">2</span>) <span class="op">/</span> (nSd<span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="fu">sqrt</span>(<span class="dv">2</span><span class="op">*</span><span class="bu">Math</span><span class="op">.</span><span class="cn">PI</span>))}<span class="op">;</span></span>
+<span id="cb6-12"><a href="#cb6-12" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb6-13"><a href="#cb6-13" aria-hidden="true" tabindex="-1"></a>nFmt <span class="op">=</span> d3<span class="op">.</span><span class="fu">format</span>(<span class="st">",.0f"</span>)</span>
+<span id="cb6-14"><a href="#cb6-14" aria-hidden="true" tabindex="-1"></a>nExcel <span class="op">=</span> nTail <span class="op">===</span> <span class="st">"P(X ≤ a)"</span> <span class="op">?</span> <span class="vs">`=NORM.DIST(</span><span class="sc">${</span>nA<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nMu<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nSd<span class="sc">}</span><span class="vs">, TRUE)`</span></span>
+<span id="cb6-15"><a href="#cb6-15" aria-hidden="true" tabindex="-1"></a>       <span class="op">:</span> nTail <span class="op">===</span> <span class="st">"P(X ≥ a)"</span> <span class="op">?</span> <span class="vs">`=1 - NORM.DIST(</span><span class="sc">${</span>nA<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nMu<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nSd<span class="sc">}</span><span class="vs">, TRUE)`</span></span>
+<span id="cb6-16"><a href="#cb6-16" aria-hidden="true" tabindex="-1"></a>       <span class="op">:</span> <span class="vs">`=NORM.DIST(</span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(nA<span class="op">,</span>nB)<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nMu<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nSd<span class="sc">}</span><span class="vs">, TRUE) - NORM.DIST(</span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(nA<span class="op">,</span>nB)<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nMu<span class="sc">}</span><span class="vs">, </span><span class="sc">${</span>nSd<span class="sc">}</span><span class="vs">, TRUE)`</span></span>
+<span id="cb6-17"><a href="#cb6-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb6-18"><a href="#cb6-18" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb6-19"><a href="#cb6-19" aria-hidden="true" tabindex="-1"></a>  <span class="dt">height</span><span class="op">:</span> <span class="dv">260</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">10</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">36</span><span class="op">,</span></span>
+<span id="cb6-20"><a href="#cb6-20" aria-hidden="true" tabindex="-1"></a>  <span class="dt">style</span><span class="op">:</span> {<span class="dt">fontFamily</span><span class="op">:</span> <span class="st">"Inter, sans-serif"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="st">"12px"</span><span class="op">,</span> <span class="dt">background</span><span class="op">:</span> <span class="st">"transparent"</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">"var(--bs-ink-2)"</span>}<span class="op">,</span></span>
+<span id="cb6-21"><a href="#cb6-21" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">label</span><span class="op">:</span> <span class="kw">null</span><span class="op">,</span> <span class="dt">tickFormat</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="fu">nFmt</span>(d)<span class="op">,</span> <span class="dt">ticks</span><span class="op">:</span> <span class="dv">7</span>}<span class="op">,</span></span>
+<span id="cb6-22"><a href="#cb6-22" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">axis</span><span class="op">:</span> <span class="kw">null</span>}<span class="op">,</span></span>
+<span id="cb6-23"><a href="#cb6-23" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb6-24"><a href="#cb6-24" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">areaY</span>(nCurve<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&gt;=</span> nLo <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&lt;=</span> nHi)<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"var(--bs-part)"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.22</span>})<span class="op">,</span></span>
+<span id="cb6-25"><a href="#cb6-25" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">lineY</span>(nCurve<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-ink)"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.75</span>})<span class="op">,</span></span>
+<span id="cb6-26"><a href="#cb6-26" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([nMu]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-ink-3)"</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"3,3"</span>})<span class="op">,</span></span>
+<span id="cb6-27"><a href="#cb6-27" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>(nTail <span class="op">===</span> <span class="st">"P(a ≤ X ≤ b)"</span> <span class="op">?</span> [nA<span class="op">,</span> nB] <span class="op">:</span> [nA]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-part)"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
+<span id="cb6-28"><a href="#cb6-28" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-line)"</span>})</span>
+<span id="cb6-29"><a href="#cb6-29" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb6-30"><a href="#cb6-30" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-6-8" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb7" data-startfrom="0" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -1;"><span id="cb7-0"><a href="#cb7-0" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div class="bs-stats"&gt;</span></span>
+<span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat hl"&gt;&lt;div class="k"&gt;</span><span class="sc">${</span>nTail<span class="op">.</span><span class="fu">replace</span>(<span class="st">"a"</span><span class="op">,</span> <span class="fu">nFmt</span>(nA))<span class="op">.</span><span class="fu">replace</span>(<span class="st">"b"</span><span class="op">,</span> <span class="fu">nFmt</span>(nB))<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span>nProb<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat"&gt;&lt;div class="k"&gt;As a percent&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span>(nProb<span class="op">*</span><span class="dv">100</span>)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">1</span>)<span class="sc">}</span><span class="vs">%&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat"&gt;&lt;div class="k"&gt;z-score of a&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span>((nA <span class="op">-</span> nMu)<span class="op">/</span>nSd)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div class="bs-excel"&gt;&lt;span class="lbl"&gt;Excel&lt;/span&gt;&lt;span&gt;</span><span class="sc">${</span>nExcel<span class="sc">}</span><span class="vs">&lt;/span&gt;&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-7" data-nodetype="expression">
 
 </div>
 </div>
@@ -609,6 +840,237 @@ details summary {
 <p><strong>Example:</strong> Let <span class="math inline">\(x\)</span> represent the loading time for a truck at the Dock Dash loading dock. If the average loading time is 15 minutes, the probability that loading a truck will take 6 minutes or less is 32.97%. In Excel, the exponential functions use the rate <span class="math inline">\(\lambda = 1/\mu = 1/15\)</span>: <code>=EXPON.DIST(6, 1/15, TRUE)</code> returns <span class="math inline">\(0.3297\)</span>.</p>
 <p>We can also estimate that the probability that it takes between 6 and 18 minutes is 36.91%: <code>=EXPON.DIST(18, 1/15, TRUE) - EXPON.DIST(6, 1/15, TRUE)</code> returns <span class="math inline">\(0.3691\)</span>.</p>
 </div>
+<div class="bs-widget">
+<div class="bs-widget-head">
+<p><span class="bs-widget-tag">Try it</span> <span class="bs-widget-title">Exponential explorer</span></p>
+</div>
+<p><span class="bs-widget-sub">The time until the next event when events arrive at random. The density starts at its highest point, <span class="math inline">\(1/\mu\)</span>, and decays, so short waits are the most likely. Raise the mean <span class="math inline">\(\mu\)</span> and the curve stretches out. The defaults are the Dock Dash trucks, which take 15 minutes to load on average.</span></p>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb8" data-startfrom="1" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>viewof exMu <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">1</span><span class="op">,</span> <span class="dv">60</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">15</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">1</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Mean μ"</span>})</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>viewof exFrom <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">6</span> <span class="op">*</span> exMu]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">0</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"From"</span>})</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>viewof exTo <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">6</span> <span class="op">*</span> exMu]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(<span class="dv">6</span> <span class="op">*</span> exMu<span class="op">,</span> <span class="dv">6</span>)<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="fl">0.5</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"To"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-8-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb9" data-startfrom="1" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>exD0 <span class="op">=</span> <span class="dv">0</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>exD1 <span class="op">=</span> <span class="dv">6</span> <span class="op">*</span> exMu</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>exf <span class="op">=</span> x <span class="kw">=&gt;</span> x <span class="op">&lt;</span> <span class="dv">0</span> <span class="op">?</span> <span class="dv">0</span> <span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span>x <span class="op">/</span> exMu) <span class="op">/</span> exMu</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>exF <span class="op">=</span> x <span class="kw">=&gt;</span> x <span class="op">&lt;=</span> <span class="dv">0</span> <span class="op">?</span> <span class="dv">0</span> <span class="op">:</span> <span class="dv">1</span> <span class="op">-</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span>x <span class="op">/</span> exMu)</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>exMean <span class="op">=</span> exMu</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>exVar <span class="op">=</span> exMu <span class="op">**</span> <span class="dv">2</span></span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>exA <span class="op">=</span> <span class="op">+</span><span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(exFrom<span class="op">,</span> exTo)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>exB <span class="op">=</span> <span class="op">+</span><span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(exFrom<span class="op">,</span> exTo)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>exPlugF <span class="op">=</span> <span class="fu">html</span><span class="vs">`(1/μ) e&lt;sup&gt;−x/μ&lt;/sup&gt; = (1/</span><span class="sc">${</span>exMu<span class="sc">}</span><span class="vs">) e&lt;sup&gt;−x/</span><span class="sc">${</span>exMu<span class="sc">}</span><span class="vs">&lt;/sup&gt;, which starts at 1/</span><span class="sc">${</span>exMu<span class="sc">}</span><span class="vs"> = </span><span class="sc">${</span>(<span class="dv">1</span> <span class="op">/</span> exMu)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>exPlugP <span class="op">=</span> <span class="fu">html</span><span class="vs">`e&lt;sup&gt;−</span><span class="sc">${</span>exA<span class="sc">}</span><span class="vs">/</span><span class="sc">${</span>exMu<span class="sc">}</span><span class="vs">&lt;/sup&gt; − e&lt;sup&gt;−</span><span class="sc">${</span>exB<span class="sc">}</span><span class="vs">/</span><span class="sc">${</span>exMu<span class="sc">}</span><span class="vs">&lt;/sup&gt; = </span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span>exA <span class="op">/</span> exMu)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs"> − </span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span>exB <span class="op">/</span> exMu)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs"> = </span><span class="sc">${</span>(<span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span>exA <span class="op">/</span> exMu) <span class="op">-</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">exp</span>(<span class="op">-</span>exB <span class="op">/</span> exMu))<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a>exPlugE <span class="op">=</span> <span class="vs">`μ = </span><span class="sc">${</span>exMu<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a>exPlugV <span class="op">=</span> <span class="vs">`μ² = </span><span class="sc">${</span>exMu<span class="sc">}</span><span class="vs">² = </span><span class="sc">${</span>exVar<span class="sc">}</span><span class="vs"> (so the standard deviation equals the mean, </span><span class="sc">${</span>exMu<span class="sc">}</span><span class="vs">)`</span></span>
+<span id="cb9-13"><a href="#cb9-13" aria-hidden="true" tabindex="-1"></a>exExcel <span class="op">=</span> exA <span class="op">===</span> <span class="dv">0</span> <span class="op">?</span> <span class="vs">`=EXPON.DIST(</span><span class="sc">${</span>exB<span class="sc">}</span><span class="vs">, 1/</span><span class="sc">${</span>exMu<span class="sc">}</span><span class="vs">, TRUE)`</span> <span class="op">:</span> <span class="vs">`=EXPON.DIST(</span><span class="sc">${</span>exB<span class="sc">}</span><span class="vs">, 1/</span><span class="sc">${</span>exMu<span class="sc">}</span><span class="vs">, TRUE) - EXPON.DIST(</span><span class="sc">${</span>exA<span class="sc">}</span><span class="vs">, 1/</span><span class="sc">${</span>exMu<span class="sc">}</span><span class="vs">, TRUE)`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-8" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-10" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-11" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-12" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-9-13" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb10" data-startfrom="1" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>exLo <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(exFrom<span class="op">,</span> exTo)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>exHi <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(exFrom<span class="op">,</span> exTo)</span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>exProb <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">0</span><span class="op">,</span> <span class="fu">exF</span>(exHi) <span class="op">-</span> <span class="fu">exF</span>(exLo))</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>exGrid <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">401</span>)<span class="op">.</span><span class="fu">map</span>(i <span class="kw">=&gt;</span> { <span class="kw">const</span> x <span class="op">=</span> exD0 <span class="op">+</span> i <span class="op">*</span> (exD1 <span class="op">-</span> exD0) <span class="op">/</span> <span class="dv">400</span><span class="op">;</span> <span class="cf">return</span> {x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">exf</span>(x)}<span class="op">;</span> })</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>exYmax <span class="op">=</span> d3<span class="op">.</span><span class="fu">max</span>(exGrid<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span>) <span class="op">*</span> <span class="fl">1.25</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>exFmt <span class="op">=</span> v <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(v) <span class="op">&gt;=</span> <span class="dv">1000</span> <span class="op">?</span> v<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="kw">undefined</span><span class="op">,</span> {<span class="dt">maximumFractionDigits</span><span class="op">:</span> <span class="dv">0</span>}) <span class="op">:</span> <span class="op">+</span>v<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">300</span><span class="op">,</span> width <span class="op">-</span> <span class="dv">50</span>)<span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">250</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span> <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">12</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">38</span><span class="op">,</span></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">style</span><span class="op">:</span> {<span class="dt">fontFamily</span><span class="op">:</span> <span class="st">"Inter, sans-serif"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="st">"12px"</span><span class="op">,</span> <span class="dt">background</span><span class="op">:</span> <span class="st">"transparent"</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">"var(--bs-ink-2)"</span>}<span class="op">,</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [exD0<span class="op">,</span> exD1]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"x (e.g. minutes) →"</span><span class="op">,</span> <span class="dt">labelAnchor</span><span class="op">:</span> <span class="st">"right"</span>}<span class="op">,</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> exYmax]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ f(x)"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">tickFormat</span><span class="op">:</span> d <span class="kw">=&gt;</span> d <span class="op">===</span> <span class="dv">0</span> <span class="op">?</span> <span class="st">"0"</span> <span class="op">:</span> d <span class="op">&lt;</span> <span class="fl">0.001</span> <span class="op">?</span> d<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>) <span class="op">:</span> d<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)}<span class="op">,</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">areaY</span>(exGrid<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&gt;=</span> exLo <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&lt;=</span> exHi)<span class="op">.</span><span class="fu">concat</span>([{<span class="dt">x</span><span class="op">:</span> exHi<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">exf</span>(exHi)}])<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">x</span> <span class="op">-</span> b<span class="op">.</span><span class="at">x</span>)<span class="op">,</span></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a>      {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"var(--bs-part)"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.4</span><span class="op">,</span> <span class="dt">curve</span><span class="op">:</span> <span class="st">"linear"</span>})<span class="op">,</span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">lineY</span>(exGrid<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-ink)"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">curve</span><span class="op">:</span> <span class="st">"linear"</span>})<span class="op">,</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([exLo<span class="op">,</span> exHi]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-part)"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([exMean]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-ink)"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,3"</span>})<span class="op">,</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([exMean]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">,</span> <span class="dt">frameAnchor</span><span class="op">:</span> <span class="st">"top"</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="st">"E(x) = "</span> <span class="op">+</span> <span class="fu">exFmt</span>(d)<span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"var(--bs-ink)"</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">600</span>})<span class="op">,</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([<span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(exD1 <span class="op">-</span> <span class="fl">0.1</span> <span class="op">*</span> (exD1 <span class="op">-</span> exD0)<span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(exD0 <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> (exD1 <span class="op">-</span> exD0)<span class="op">,</span> (exLo <span class="op">+</span> exHi) <span class="op">/</span> <span class="dv">2</span>))]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> exYmax <span class="op">*</span> <span class="fl">0.06</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> () <span class="kw">=&gt;</span> <span class="st">"area = "</span> <span class="op">+</span> exProb<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"var(--bs-part)"</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span>})<span class="op">,</span></span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-line)"</span>})</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-10-7" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb11" data-startfrom="0" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -1;"><span id="cb11-0"><a href="#cb11-0" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div class="bs-stats"&gt;</span></span>
+<span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat hl"&gt;&lt;div class="k"&gt;P(</span><span class="sc">${</span><span class="fu">exFmt</span>(exLo)<span class="sc">}</span><span class="vs"> ≤ X ≤ </span><span class="sc">${</span><span class="fu">exFmt</span>(exHi)<span class="sc">}</span><span class="vs">)&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span>exProb<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat"&gt;&lt;div class="k"&gt;P(X = </span><span class="sc">${</span><span class="fu">exFmt</span>(exLo)<span class="sc">}</span><span class="vs">)&lt;/div&gt;&lt;div class="v"&gt;0&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat"&gt;&lt;div class="k"&gt;E(x)&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span><span class="fu">exFmt</span>(exMean)<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat"&gt;&lt;div class="k"&gt;var(x)&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span><span class="fu">exFmt</span>(exVar)<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div class="bs-formula-live"&gt;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div&gt;&lt;span class="lbl"&gt;f(x)&lt;/span&gt; </span><span class="sc">${</span>exPlugF<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div&gt;&lt;span class="lbl"&gt;Area&lt;/span&gt; </span><span class="sc">${</span>exPlugP<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div&gt;&lt;span class="lbl"&gt;E(x)&lt;/span&gt; </span><span class="sc">${</span>exPlugE<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div&gt;&lt;span class="lbl"&gt;var(x)&lt;/span&gt; </span><span class="sc">${</span>exPlugV<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div class="bs-excel"&gt;&lt;span class="lbl"&gt;Excel&lt;/span&gt;&lt;span&gt;</span><span class="sc">${</span>exExcel<span class="sc">}</span><span class="vs">&lt;/span&gt;&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-11" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
 </section>
 <section id="triangular-distribution" class="level2" data-number="10.5">
 <h2 data-number="10.5" class="anchored" data-anchor-id="triangular-distribution"><span class="header-section-number">10.5</span> Triangular Distribution</h2>
@@ -621,6 +1083,281 @@ details summary {
 <p><strong>Example:</strong> Bite Bliss is planning a new store in Williamsburg. It is estimated that the minimum weekly sales are 1000 and the maximum is 6000. They also estimate that the most likely outcome is around 3000. The probability that future sales will be between 2000 and 2500 is 12.5%. Excel has no triangular distribution function, but the cumulative probability follows from its formula. For a value <span class="math inline">\(x\)</span> in the lower part of the range (<span class="math inline">\(a \le x &lt; c\)</span>), <span class="math inline">\(F(x)=\frac{(x-a)^2}{(b-a)(c-a)}\)</span>. In Excel:</p>
 <pre class="excel"><code>=(2500-1000)^2/((6000-1000)*(3000-1000)) - (2000-1000)^2/((6000-1000)*(3000-1000))</code></pre>
 <p>This returns <span class="math inline">\(0.225 - 0.10 = 0.125\)</span>.</p>
+</div>
+<div class="bs-widget">
+<div class="bs-widget-head">
+<p><span class="bs-widget-tag">Try it</span> <span class="bs-widget-title">Triangular explorer</span></p>
+</div>
+<p><span class="bs-widget-sub">When all you know is the minimum <span class="math inline">\(a\)</span>, the maximum <span class="math inline">\(b\)</span>, and the most likely value <span class="math inline">\(c\)</span>, the density is a triangle with its peak at <span class="math inline">\(c\)</span>. Slide <span class="math inline">\(c\)</span> toward either end to skew it. The total area is always 1, so the peak height is always <span class="math inline">\(2/(b-a)\)</span>. The defaults are the Bite Bliss weekly sales.</span></p>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb13" data-startfrom="1" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>viewof trA <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([<span class="dv">0</span><span class="op">,</span> <span class="dv">5000</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="dv">1000</span><span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Minimum a"</span>})</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>viewof trB <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([trA <span class="op">+</span> <span class="dv">100</span><span class="op">,</span> trA <span class="op">+</span> <span class="dv">10000</span>]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(trA <span class="op">+</span> <span class="dv">100</span><span class="op">,</span> <span class="dv">6000</span>)<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">100</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Maximum b"</span>})</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>viewof trC <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([trA<span class="op">,</span> trB]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(trB<span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(trA<span class="op">,</span> <span class="dv">3000</span>))<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"Most likely c"</span>})</span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>viewof trFrom <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([trA<span class="op">,</span> trB]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(trB<span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(trA<span class="op">,</span> <span class="dv">2000</span>))<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"From"</span>})</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a>viewof trTo <span class="op">=</span> Inputs<span class="op">.</span><span class="fu">range</span>([trA<span class="op">,</span> trB]<span class="op">,</span> {<span class="dt">value</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(trB<span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(trA<span class="op">,</span> <span class="dv">2500</span>))<span class="op">,</span> <span class="dt">step</span><span class="op">:</span> <span class="dv">50</span><span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"To"</span>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-12-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-12-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-12-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-12-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-12-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb14" data-startfrom="1" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>trW <span class="op">=</span> trB <span class="op">-</span> trA</span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>trD0 <span class="op">=</span> trA <span class="op">-</span> <span class="fl">0.08</span> <span class="op">*</span> trW</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>trD1 <span class="op">=</span> trB <span class="op">+</span> <span class="fl">0.08</span> <span class="op">*</span> trW</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>trf <span class="op">=</span> x <span class="kw">=&gt;</span> x <span class="op">&lt;</span> trA <span class="op">||</span> x <span class="op">&gt;</span> trB <span class="op">?</span> <span class="dv">0</span> <span class="op">:</span> x <span class="op">&lt;</span> trC <span class="op">?</span> <span class="dv">2</span> <span class="op">*</span> (x <span class="op">-</span> trA) <span class="op">/</span> (trW <span class="op">*</span> (trC <span class="op">-</span> trA)) <span class="op">:</span> x <span class="op">===</span> trC <span class="op">?</span> <span class="dv">2</span> <span class="op">/</span> trW <span class="op">:</span> <span class="dv">2</span> <span class="op">*</span> (trB <span class="op">-</span> x) <span class="op">/</span> (trW <span class="op">*</span> (trB <span class="op">-</span> trC))</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>trF <span class="op">=</span> x <span class="kw">=&gt;</span> x <span class="op">&lt;=</span> trA <span class="op">?</span> <span class="dv">0</span> <span class="op">:</span> x <span class="op">&gt;=</span> trB <span class="op">?</span> <span class="dv">1</span> <span class="op">:</span> x <span class="op">&lt;</span> trC <span class="op">?</span> (x <span class="op">-</span> trA) <span class="op">**</span> <span class="dv">2</span> <span class="op">/</span> (trW <span class="op">*</span> (trC <span class="op">-</span> trA)) <span class="op">:</span> <span class="dv">1</span> <span class="op">-</span> (trB <span class="op">-</span> x) <span class="op">**</span> <span class="dv">2</span> <span class="op">/</span> (trW <span class="op">*</span> (trB <span class="op">-</span> trC))</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>trMean <span class="op">=</span> (trA <span class="op">+</span> trB <span class="op">+</span> trC) <span class="op">/</span> <span class="dv">3</span></span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>trVar <span class="op">=</span> (trA <span class="op">**</span> <span class="dv">2</span> <span class="op">+</span> trB <span class="op">**</span> <span class="dv">2</span> <span class="op">+</span> trC <span class="op">**</span> <span class="dv">2</span> <span class="op">-</span> trA <span class="op">*</span> trB <span class="op">-</span> trA <span class="op">*</span> trC <span class="op">-</span> trB <span class="op">*</span> trC) <span class="op">/</span> <span class="dv">18</span></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>trLo2 <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(trFrom<span class="op">,</span> trTo)</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>trHi2 <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(trFrom<span class="op">,</span> trTo)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>trPiece <span class="op">=</span> x <span class="kw">=&gt;</span> x <span class="op">&lt;</span> trC</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>  <span class="op">?</span> <span class="vs">`(</span><span class="sc">${</span>x<span class="sc">}</span><span class="vs"> − </span><span class="sc">${</span>trA<span class="sc">}</span><span class="vs">)²/((</span><span class="sc">${</span>trB<span class="sc">}</span><span class="vs"> − </span><span class="sc">${</span>trA<span class="sc">}</span><span class="vs">)(</span><span class="sc">${</span>trC<span class="sc">}</span><span class="vs"> − </span><span class="sc">${</span>trA<span class="sc">}</span><span class="vs">))`</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span> <span class="vs">`1 − (</span><span class="sc">${</span>trB<span class="sc">}</span><span class="vs"> − </span><span class="sc">${</span>x<span class="sc">}</span><span class="vs">)²/((</span><span class="sc">${</span>trB<span class="sc">}</span><span class="vs"> − </span><span class="sc">${</span>trA<span class="sc">}</span><span class="vs">)(</span><span class="sc">${</span>trB<span class="sc">}</span><span class="vs"> − </span><span class="sc">${</span>trC<span class="sc">}</span><span class="vs">))`</span></span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>trPiecePlain <span class="op">=</span> x <span class="kw">=&gt;</span> x <span class="op">&lt;</span> trC</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>  <span class="op">?</span> <span class="vs">`(</span><span class="sc">${</span>x<span class="sc">}</span><span class="vs">-</span><span class="sc">${</span>trA<span class="sc">}</span><span class="vs">)^2/((</span><span class="sc">${</span>trB<span class="sc">}</span><span class="vs">-</span><span class="sc">${</span>trA<span class="sc">}</span><span class="vs">)*(</span><span class="sc">${</span>trC<span class="sc">}</span><span class="vs">-</span><span class="sc">${</span>trA<span class="sc">}</span><span class="vs">))`</span></span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>  <span class="op">:</span> <span class="vs">`1-(</span><span class="sc">${</span>trB<span class="sc">}</span><span class="vs">-</span><span class="sc">${</span>x<span class="sc">}</span><span class="vs">)^2/((</span><span class="sc">${</span>trB<span class="sc">}</span><span class="vs">-</span><span class="sc">${</span>trA<span class="sc">}</span><span class="vs">)*(</span><span class="sc">${</span>trB<span class="sc">}</span><span class="vs">-</span><span class="sc">${</span>trC<span class="sc">}</span><span class="vs">))`</span></span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>trPlugF <span class="op">=</span> <span class="vs">`peak height at c: 2/(b − a) = 2/</span><span class="sc">${</span>trW<span class="sc">}</span><span class="vs"> = </span><span class="sc">${</span>(<span class="dv">2</span> <span class="op">/</span> trW)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>)<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>trPlugP <span class="op">=</span> <span class="vs">`F(</span><span class="sc">${</span>trHi2<span class="sc">}</span><span class="vs">) − F(</span><span class="sc">${</span>trLo2<span class="sc">}</span><span class="vs">) = </span><span class="sc">${</span><span class="fu">trF</span>(trHi2)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs"> − </span><span class="sc">${</span><span class="fu">trF</span>(trLo2)<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs"> = </span><span class="sc">${</span>(<span class="fu">trF</span>(trHi2) <span class="op">-</span> <span class="fu">trF</span>(trLo2))<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs">,  where F(</span><span class="sc">${</span>trHi2<span class="sc">}</span><span class="vs">) = </span><span class="sc">${</span><span class="fu">trPiece</span>(trHi2)<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>trPlugE <span class="op">=</span> <span class="vs">`(a + b + c)/3 = (</span><span class="sc">${</span>trA<span class="sc">}</span><span class="vs"> + </span><span class="sc">${</span>trB<span class="sc">}</span><span class="vs"> + </span><span class="sc">${</span>trC<span class="sc">}</span><span class="vs">)/3 = </span><span class="sc">${</span>trMean<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a>trPlugV <span class="op">=</span> <span class="vs">`(a² + b² + c² − ab − ac − bc)/18 = </span><span class="sc">${</span><span class="bu">Math</span><span class="op">.</span><span class="fu">round</span>(trVar)<span class="op">.</span><span class="fu">toLocaleString</span>()<span class="sc">}</span><span class="vs">`</span></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a>trExcel <span class="op">=</span> trLo2 <span class="op">&lt;=</span> trA <span class="op">?</span> <span class="vs">`=</span><span class="sc">${</span><span class="fu">trPiecePlain</span>(trHi2)<span class="sc">}</span><span class="vs">`</span> <span class="op">:</span> <span class="vs">`=</span><span class="sc">${</span><span class="fu">trPiecePlain</span>(trHi2)<span class="sc">}</span><span class="vs"> - (</span><span class="sc">${</span><span class="fu">trPiecePlain</span>(trLo2)<span class="sc">}</span><span class="vs">)`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-7" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-8" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-9" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-10" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-11" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-12" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-13" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-14" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-15" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-13-16" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb15" data-startfrom="1" data-source-offset="-0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>trLo <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(trFrom<span class="op">,</span> trTo)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>trHi <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(trFrom<span class="op">,</span> trTo)</span>
+<span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a>trProb <span class="op">=</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">0</span><span class="op">,</span> <span class="fu">trF</span>(trHi) <span class="op">-</span> <span class="fu">trF</span>(trLo))</span>
+<span id="cb15-4"><a href="#cb15-4" aria-hidden="true" tabindex="-1"></a>trGrid <span class="op">=</span> d3<span class="op">.</span><span class="fu">range</span>(<span class="dv">0</span><span class="op">,</span> <span class="dv">401</span>)<span class="op">.</span><span class="fu">map</span>(i <span class="kw">=&gt;</span> { <span class="kw">const</span> x <span class="op">=</span> trD0 <span class="op">+</span> i <span class="op">*</span> (trD1 <span class="op">-</span> trD0) <span class="op">/</span> <span class="dv">400</span><span class="op">;</span> <span class="cf">return</span> {x<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">trf</span>(x)}<span class="op">;</span> })</span>
+<span id="cb15-5"><a href="#cb15-5" aria-hidden="true" tabindex="-1"></a>trYmax <span class="op">=</span> d3<span class="op">.</span><span class="fu">max</span>(trGrid<span class="op">,</span> d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">y</span>) <span class="op">*</span> <span class="fl">1.25</span></span>
+<span id="cb15-6"><a href="#cb15-6" aria-hidden="true" tabindex="-1"></a>trFmt <span class="op">=</span> v <span class="kw">=&gt;</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">abs</span>(v) <span class="op">&gt;=</span> <span class="dv">1000</span> <span class="op">?</span> v<span class="op">.</span><span class="fu">toLocaleString</span>(<span class="kw">undefined</span><span class="op">,</span> {<span class="dt">maximumFractionDigits</span><span class="op">:</span> <span class="dv">0</span>}) <span class="op">:</span> <span class="op">+</span>v<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">2</span>)</span>
+<span id="cb15-7"><a href="#cb15-7" aria-hidden="true" tabindex="-1"></a>Plot<span class="op">.</span><span class="fu">plot</span>({</span>
+<span id="cb15-8"><a href="#cb15-8" aria-hidden="true" tabindex="-1"></a>  <span class="dt">width</span><span class="op">:</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(<span class="dv">300</span><span class="op">,</span> width <span class="op">-</span> <span class="dv">50</span>)<span class="op">,</span> <span class="dt">height</span><span class="op">:</span> <span class="dv">250</span><span class="op">,</span> <span class="dt">marginLeft</span><span class="op">:</span> <span class="dv">60</span><span class="op">,</span> <span class="dt">marginRight</span><span class="op">:</span> <span class="dv">12</span><span class="op">,</span> <span class="dt">marginBottom</span><span class="op">:</span> <span class="dv">38</span><span class="op">,</span></span>
+<span id="cb15-9"><a href="#cb15-9" aria-hidden="true" tabindex="-1"></a>  <span class="dt">style</span><span class="op">:</span> {<span class="dt">fontFamily</span><span class="op">:</span> <span class="st">"Inter, sans-serif"</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="st">"12px"</span><span class="op">,</span> <span class="dt">background</span><span class="op">:</span> <span class="st">"transparent"</span><span class="op">,</span> <span class="dt">color</span><span class="op">:</span> <span class="st">"var(--bs-ink-2)"</span>}<span class="op">,</span></span>
+<span id="cb15-10"><a href="#cb15-10" aria-hidden="true" tabindex="-1"></a>  <span class="dt">x</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [trD0<span class="op">,</span> trD1]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"x (weekly sales) →"</span><span class="op">,</span> <span class="dt">labelAnchor</span><span class="op">:</span> <span class="st">"right"</span>}<span class="op">,</span></span>
+<span id="cb15-11"><a href="#cb15-11" aria-hidden="true" tabindex="-1"></a>  <span class="dt">y</span><span class="op">:</span> {<span class="dt">domain</span><span class="op">:</span> [<span class="dv">0</span><span class="op">,</span> trYmax]<span class="op">,</span> <span class="dt">label</span><span class="op">:</span> <span class="st">"↑ f(x)"</span><span class="op">,</span> <span class="dt">grid</span><span class="op">:</span> <span class="kw">true</span><span class="op">,</span> <span class="dt">tickFormat</span><span class="op">:</span> d <span class="kw">=&gt;</span> d <span class="op">===</span> <span class="dv">0</span> <span class="op">?</span> <span class="st">"0"</span> <span class="op">:</span> d <span class="op">&lt;</span> <span class="fl">0.001</span> <span class="op">?</span> d<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">5</span>) <span class="op">:</span> d<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">3</span>)}<span class="op">,</span></span>
+<span id="cb15-12"><a href="#cb15-12" aria-hidden="true" tabindex="-1"></a>  <span class="dt">marks</span><span class="op">:</span> [</span>
+<span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">areaY</span>(trGrid<span class="op">.</span><span class="fu">filter</span>(d <span class="kw">=&gt;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&gt;=</span> trLo <span class="op">&amp;&amp;</span> d<span class="op">.</span><span class="at">x</span> <span class="op">&lt;=</span> trHi)<span class="op">.</span><span class="fu">concat</span>([{<span class="dt">x</span><span class="op">:</span> trHi<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="fu">trf</span>(trHi)}])<span class="op">.</span><span class="fu">sort</span>((a<span class="op">,</span> b) <span class="kw">=&gt;</span> a<span class="op">.</span><span class="at">x</span> <span class="op">-</span> b<span class="op">.</span><span class="at">x</span>)<span class="op">,</span></span>
+<span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a>      {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"var(--bs-part)"</span><span class="op">,</span> <span class="dt">fillOpacity</span><span class="op">:</span> <span class="fl">0.4</span><span class="op">,</span> <span class="dt">curve</span><span class="op">:</span> <span class="st">"linear"</span>})<span class="op">,</span></span>
+<span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">lineY</span>(trGrid<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> <span class="st">"x"</span><span class="op">,</span> <span class="dt">y</span><span class="op">:</span> <span class="st">"y"</span><span class="op">,</span> <span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-ink)"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">curve</span><span class="op">:</span> <span class="st">"linear"</span>})<span class="op">,</span></span>
+<span id="cb15-16"><a href="#cb15-16" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([trLo<span class="op">,</span> trHi]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-part)"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="dv">2</span>})<span class="op">,</span></span>
+<span id="cb15-17"><a href="#cb15-17" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleX</span>([trMean]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-ink)"</span><span class="op">,</span> <span class="dt">strokeWidth</span><span class="op">:</span> <span class="fl">1.5</span><span class="op">,</span> <span class="dt">strokeDasharray</span><span class="op">:</span> <span class="st">"4,3"</span>})<span class="op">,</span></span>
+<span id="cb15-18"><a href="#cb15-18" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([trMean]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">,</span> <span class="dt">frameAnchor</span><span class="op">:</span> <span class="st">"top"</span><span class="op">,</span> <span class="dt">dy</span><span class="op">:</span> <span class="dv">2</span><span class="op">,</span> <span class="dt">dx</span><span class="op">:</span> <span class="dv">5</span><span class="op">,</span> <span class="dt">textAnchor</span><span class="op">:</span> <span class="st">"start"</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> d <span class="kw">=&gt;</span> <span class="st">"E(x) = "</span> <span class="op">+</span> <span class="fu">trFmt</span>(d)<span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"var(--bs-ink)"</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">600</span>})<span class="op">,</span></span>
+<span id="cb15-19"><a href="#cb15-19" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">text</span>([<span class="bu">Math</span><span class="op">.</span><span class="fu">min</span>(trD1 <span class="op">-</span> <span class="fl">0.1</span> <span class="op">*</span> (trD1 <span class="op">-</span> trD0)<span class="op">,</span> <span class="bu">Math</span><span class="op">.</span><span class="fu">max</span>(trD0 <span class="op">+</span> <span class="fl">0.1</span> <span class="op">*</span> (trD1 <span class="op">-</span> trD0)<span class="op">,</span> (trLo <span class="op">+</span> trHi) <span class="op">/</span> <span class="dv">2</span>))]<span class="op">,</span> {<span class="dt">x</span><span class="op">:</span> d <span class="kw">=&gt;</span> d<span class="op">,</span> <span class="dt">y</span><span class="op">:</span> trYmax <span class="op">*</span> <span class="fl">0.06</span><span class="op">,</span> <span class="dt">text</span><span class="op">:</span> () <span class="kw">=&gt;</span> <span class="st">"area = "</span> <span class="op">+</span> trProb<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="op">,</span> <span class="dt">fill</span><span class="op">:</span> <span class="st">"var(--bs-part)"</span><span class="op">,</span> <span class="dt">fontWeight</span><span class="op">:</span> <span class="dv">700</span><span class="op">,</span> <span class="dt">fontSize</span><span class="op">:</span> <span class="dv">13</span>})<span class="op">,</span></span>
+<span id="cb15-20"><a href="#cb15-20" aria-hidden="true" tabindex="-1"></a>    Plot<span class="op">.</span><span class="fu">ruleY</span>([<span class="dv">0</span>]<span class="op">,</span> {<span class="dt">stroke</span><span class="op">:</span> <span class="st">"var(--bs-line)"</span>})</span>
+<span id="cb15-21"><a href="#cb15-21" aria-hidden="true" tabindex="-1"></a>  ]</span>
+<span id="cb15-22"><a href="#cb15-22" aria-hidden="true" tabindex="-1"></a>})</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-14-1" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-14-2" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-14-3" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-14-4" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-14-5" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-14-6" data-nodetype="declaration">
+
+</div>
+</div>
+</div>
+<div class="cell-output cell-output-display">
+<div>
+<div id="ojs-cell-14-7" data-nodetype="expression">
+
+</div>
+</div>
+</div>
+</div>
+<div class="cell">
+<div class="sourceCode cell-code hidden" id="cb16" data-startfrom="0" data-source-offset="0"><pre class="sourceCode js code-with-copy"><code class="sourceCode javascript" style="counter-reset: source-line -1;"><span id="cb16-0"><a href="#cb16-0" aria-hidden="true" tabindex="-1"></a><span class="fu">html</span><span class="vs">`&lt;div class="bs-stats"&gt;</span></span>
+<span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat hl"&gt;&lt;div class="k"&gt;P(</span><span class="sc">${</span><span class="fu">trFmt</span>(trLo)<span class="sc">}</span><span class="vs"> ≤ X ≤ </span><span class="sc">${</span><span class="fu">trFmt</span>(trHi)<span class="sc">}</span><span class="vs">)&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span>trProb<span class="op">.</span><span class="fu">toFixed</span>(<span class="dv">4</span>)<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat"&gt;&lt;div class="k"&gt;P(X = </span><span class="sc">${</span><span class="fu">trFmt</span>(trLo)<span class="sc">}</span><span class="vs">)&lt;/div&gt;&lt;div class="v"&gt;0&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat"&gt;&lt;div class="k"&gt;E(x)&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span><span class="fu">trFmt</span>(trMean)<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div class="bs-stat"&gt;&lt;div class="k"&gt;var(x)&lt;/div&gt;&lt;div class="v"&gt;</span><span class="sc">${</span><span class="fu">trFmt</span>(trVar)<span class="sc">}</span><span class="vs">&lt;/div&gt;&lt;/div&gt;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div class="bs-formula-live"&gt;</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div&gt;&lt;span class="lbl"&gt;f(x)&lt;/span&gt; </span><span class="sc">${</span>trPlugF<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div&gt;&lt;span class="lbl"&gt;Area&lt;/span&gt; </span><span class="sc">${</span>trPlugP<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb16-9"><a href="#cb16-9" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div&gt;&lt;span class="lbl"&gt;E(x)&lt;/span&gt; </span><span class="sc">${</span>trPlugE<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb16-10"><a href="#cb16-10" aria-hidden="true" tabindex="-1"></a><span class="vs">  &lt;div&gt;&lt;span class="lbl"&gt;var(x)&lt;/span&gt; </span><span class="sc">${</span>trPlugV<span class="sc">}</span><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb16-11"><a href="#cb16-11" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;/div&gt;</span></span>
+<span id="cb16-12"><a href="#cb16-12" aria-hidden="true" tabindex="-1"></a><span class="vs">&lt;div class="bs-excel"&gt;&lt;span class="lbl"&gt;Excel&lt;/span&gt;&lt;span&gt;</span><span class="sc">${</span>trExcel<span class="sc">}</span><span class="vs">&lt;/span&gt;&lt;/div&gt;`</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-display">
+<div id="ojs-cell-15" data-nodetype="expression">
+
+</div>
+</div>
+</div>
 </div>
 </section>
 <section id="continuous-distributions-in-excel" class="level2" data-number="10.6">
@@ -781,7 +1518,7 @@ Answer
 
 </main> <!-- /main -->
 <script type="ojs-module-contents">
-eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBuTXUgPSBJbnB1dHMucmFuZ2UoWzAsIDEwMDAwMF0sIHt2YWx1ZTogMzY1MDAsIHN0ZXA6IDUwMCwgbGFiZWw6IFwiTWVhbiDOvFwifSlcbnZpZXdvZiBuU2QgPSBJbnB1dHMucmFuZ2UoWzUwMCwgMjAwMDBdLCB7dmFsdWU6IDUwMDAsIHN0ZXA6IDI1MCwgbGFiZWw6IFwiU3RkLiBkZXYuIM+DXCJ9KVxudmlld29mIG5UYWlsID0gSW5wdXRzLnJhZGlvKFtcIlAoWCDiiaQgYSlcIiwgXCJQKFgg4omlIGEpXCIsIFwiUChhIOKJpCBYIOKJpCBiKVwiXSwge3ZhbHVlOiBcIlAoWCDiiaUgYSlcIiwgbGFiZWw6IFwiRmluZFwifSlcbnZpZXdvZiBuQSA9IElucHV0cy5yYW5nZShbbk11IC0gNCpuU2QsIG5NdSArIDQqblNkXSwge3ZhbHVlOiBNYXRoLm1pbihNYXRoLm1heCg0MDAwMCwgbk11IC0gNCpuU2QpLCBuTXUgKyA0Km5TZCksIHN0ZXA6IDEwMCwgbGFiZWw6IFwiYVwifSlcbnZpZXdvZiBuQiA9IElucHV0cy5yYW5nZShbbk11IC0gNCpuU2QsIG5NdSArIDQqblNkXSwge3ZhbHVlOiBNYXRoLm1pbig0NTAwMCwgbk11ICsgNCpuU2QpLCBzdGVwOiAxMDAsIGxhYmVsOiBcImJcIiwgZGlzYWJsZWQ6IG5UYWlsICE9PSBcIlAoYSDiiaQgWCDiiaQgYilcIn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJub3JtQ2RmID0gKHgsIG0sIHMpID0+IHtcbiAgY29uc3QgeiA9ICh4IC0gbSkgLyAocyAqIE1hdGguU1FSVDIpLCB0ID0gMSAvICgxICsgMC4zMjc1OTExICogTWF0aC5hYnMoeikpO1xuICBjb25zdCB5ID0gMSAtICgoKCgoMS4wNjE0MDU0MjkqdCAtIDEuNDUzMTUyMDI3KSp0KSArIDEuNDIxNDEzNzQxKSp0IC0gMC4yODQ0OTY3MzYpKnQgKyAwLjI1NDgyOTU5MikqdCpNYXRoLmV4cCgteip6KTtcbiAgcmV0dXJuIDAuNSAqICgxICsgTWF0aC5zaWduKHopICogeSk7XG59XG5uTG8gPSBuVGFpbCA9PT0gXCJQKFgg4omkIGEpXCIgPyBuTXUgLSA0LjUqblNkIDogKG5UYWlsID09PSBcIlAoWCDiiaUgYSlcIiA/IG5BIDogTWF0aC5taW4obkEsIG5CKSlcbm5IaSA9IG5UYWlsID09PSBcIlAoWCDiiaQgYSlcIiA/IG5BIDogKG5UYWlsID09PSBcIlAoWCDiiaUgYSlcIiA/IG5NdSArIDQuNSpuU2QgOiBNYXRoLm1heChuQSwgbkIpKVxublByb2IgPSBNYXRoLm1heCgwLCBub3JtQ2RmKG5IaSwgbk11LCBuU2QpIC0gbm9ybUNkZihuTG8sIG5NdSwgblNkKSlcbm5DdXJ2ZSA9IGQzLnJhbmdlKDAsIDI0MSkubWFwKGkgPT4ge1xuICBjb25zdCB4ID0gbk11IC0gNCpuU2QgKyBpICogKDgqblNkLzI0MCk7XG4gIHJldHVybiB7eCwgeTogTWF0aC5leHAoLTAuNSooKHgtbk11KS9uU2QpKioyKSAvIChuU2QqTWF0aC5zcXJ0KDIqTWF0aC5QSSkpfTtcbn0pXG5uRm10ID0gZDMuZm9ybWF0KFwiLC4wZlwiKVxubkV4Y2VsID0gblRhaWwgPT09IFwiUChYIOKJpCBhKVwiID8gYD1OT1JNLkRJU1QoJHtuQX0sICR7bk11fSwgJHtuU2R9LCBUUlVFKWBcbiAgICAgICA6IG5UYWlsID09PSBcIlAoWCDiiaUgYSlcIiA/IGA9MSAtIE5PUk0uRElTVCgke25BfSwgJHtuTXV9LCAke25TZH0sIFRSVUUpYFxuICAgICAgIDogYD1OT1JNLkRJU1QoJHtNYXRoLm1heChuQSxuQil9LCAke25NdX0sICR7blNkfSwgVFJVRSkgLSBOT1JNLkRJU1QoJHtNYXRoLm1pbihuQSxuQil9LCAke25NdX0sICR7blNkfSwgVFJVRSlgXG5cblBsb3QucGxvdCh7XG4gIGhlaWdodDogMjYwLCBtYXJnaW5MZWZ0OiAxMCwgbWFyZ2luUmlnaHQ6IDEwLCBtYXJnaW5Cb3R0b206IDM2LFxuICBzdHlsZToge2ZvbnRGYW1pbHk6IFwiSW50ZXIsIHNhbnMtc2VyaWZcIiwgZm9udFNpemU6IFwiMTJweFwiLCBiYWNrZ3JvdW5kOiBcInRyYW5zcGFyZW50XCIsIGNvbG9yOiBcInZhcigtLWJzLWluay0yKVwifSxcbiAgeDoge2xhYmVsOiBudWxsLCB0aWNrRm9ybWF0OiBkID0+IG5GbXQoZCksIHRpY2tzOiA3fSxcbiAgeToge2F4aXM6IG51bGx9LFxuICBtYXJrczogW1xuICAgIFBsb3QuYXJlYVkobkN1cnZlLmZpbHRlcihkID0+IGQueCA+PSBuTG8gJiYgZC54IDw9IG5IaSksIHt4OiBcInhcIiwgeTogXCJ5XCIsIGZpbGw6IFwidmFyKC0tYnMtcGFydClcIiwgZmlsbE9wYWNpdHk6IDAuMjJ9KSxcbiAgICBQbG90LmxpbmVZKG5DdXJ2ZSwge3g6IFwieFwiLCB5OiBcInlcIiwgc3Ryb2tlOiBcInZhcigtLWJzLWluaylcIiwgc3Ryb2tlV2lkdGg6IDEuNzV9KSxcbiAgICBQbG90LnJ1bGVYKFtuTXVdLCB7c3Ryb2tlOiBcInZhcigtLWJzLWluay0zKVwiLCBzdHJva2VEYXNoYXJyYXk6IFwiMywzXCJ9KSxcbiAgICBQbG90LnJ1bGVYKG5UYWlsID09PSBcIlAoYSDiiaQgWCDiiaQgYilcIiA/IFtuQSwgbkJdIDogW25BXSwge3N0cm9rZTogXCJ2YXIoLS1icy1wYXJ0KVwiLCBzdHJva2VXaWR0aDogMn0pLFxuICAgIFBsb3QucnVsZVkoWzBdLCB7c3Ryb2tlOiBcInZhcigtLWJzLWxpbmUpXCJ9KVxuICBdXG59KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0zIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaHRtbGA8ZGl2IGNsYXNzPVwiYnMtc3RhdHNcIj5cbiAgPGRpdiBjbGFzcz1cImJzLXN0YXQgaGxcIj48ZGl2IGNsYXNzPVwia1wiPiR7blRhaWwucmVwbGFjZShcImFcIiwgbkZtdChuQSkpLnJlcGxhY2UoXCJiXCIsIG5GbXQobkIpKX08L2Rpdj48ZGl2IGNsYXNzPVwidlwiPiR7blByb2IudG9GaXhlZCgzKX08L2Rpdj48L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImJzLXN0YXRcIj48ZGl2IGNsYXNzPVwia1wiPkFzIGEgcGVyY2VudDwvZGl2PjxkaXYgY2xhc3M9XCJ2XCI+JHsoblByb2IqMTAwKS50b0ZpeGVkKDEpfSU8L2Rpdj48L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImJzLXN0YXRcIj48ZGl2IGNsYXNzPVwia1wiPnotc2NvcmUgb2YgYTwvZGl2PjxkaXYgY2xhc3M9XCJ2XCI+JHsoKG5BIC0gbk11KS9uU2QpLnRvRml4ZWQoMil9PC9kaXY+PC9kaXY+XG48L2Rpdj5cbjxkaXYgY2xhc3M9XCJicy1leGNlbFwiPjxzcGFuIGNsYXNzPVwibGJsXCI+RXhjZWw8L3NwYW4+PHNwYW4+JHtuRXhjZWx9PC9zcGFuPjwvZGl2PmBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnbk11JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ25TZCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCduVGFpbCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCduQScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCduQicpIn1dfQ==
+eyJjb250ZW50cyI6W3sibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMSIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InZpZXdvZiBjdUEgPSBJbnB1dHMucmFuZ2UoWzAsIDIwMF0sIHt2YWx1ZTogMTIwLCBzdGVwOiAxLCBsYWJlbDogXCJMb3dlciBsaW1pdCBhXCJ9KVxudmlld29mIGN1QiA9IElucHV0cy5yYW5nZShbY3VBICsgMSwgY3VBICsgMjAwXSwge3ZhbHVlOiBNYXRoLm1heChjdUEgKyAxLCAxNDApLCBzdGVwOiAxLCBsYWJlbDogXCJVcHBlciBsaW1pdCBiXCJ9KVxudmlld29mIGN1RnJvbSA9IElucHV0cy5yYW5nZShbY3VBLCBjdUJdLCB7dmFsdWU6IGN1QSwgc3RlcDogMC41LCBsYWJlbDogXCJGcm9tXCJ9KVxudmlld29mIGN1VG8gPSBJbnB1dHMucmFuZ2UoW2N1QSwgY3VCXSwge3ZhbHVlOiBNYXRoLm1pbihjdUIsIE1hdGgubWF4KGN1QSwgMTMwKSksIHN0ZXA6IDAuNSwgbGFiZWw6IFwiVG9cIn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJjdVcgPSBjdUIgLSBjdUFcbmN1RDAgPSBjdUEgLSAwLjE1ICogY3VXXG5jdUQxID0gY3VCICsgMC4xNSAqIGN1V1xuY3VmID0geCA9PiAoeCA+PSBjdUEgJiYgeCA8PSBjdUIpID8gMSAvIGN1VyA6IDBcbmN1RiA9IHggPT4geCA8PSBjdUEgPyAwIDogeCA+PSBjdUIgPyAxIDogKHggLSBjdUEpIC8gY3VXXG5jdU1lYW4gPSAoY3VBICsgY3VCKSAvIDJcbmN1VmFyID0gY3VXICoqIDIgLyAxMlxuY3VQbHVnRiA9IGAxLyhiIOKIkiBhKSA9IDEvKCR7Y3VCfSDiiJIgJHtjdUF9KSA9ICR7KDEgLyBjdVcpLnRvRml4ZWQoNCl9YFxuY3VQbHVnUCA9IGB3aWR0aCDDlyBoZWlnaHQgPSAoJHsrTWF0aC5tYXgoY3VGcm9tLCBjdVRvKS50b0ZpeGVkKDIpfSDiiJIgJHsrTWF0aC5taW4oY3VGcm9tLCBjdVRvKS50b0ZpeGVkKDIpfSkgw5cgMS8ke2N1V30gPSAkeyhNYXRoLmFicyhjdVRvIC0gY3VGcm9tKSAvIGN1VykudG9GaXhlZCg0KX1gXG5jdVBsdWdFID0gYChhICsgYikvMiA9ICgke2N1QX0gKyAke2N1Qn0pLzIgPSAke2N1TWVhbi50b0ZpeGVkKDIpfWBcbmN1UGx1Z1YgPSBgKGIg4oiSIGEpwrIvMTIgPSAke2N1V33Csi8xMiA9ICR7Y3VWYXIudG9GaXhlZCgyKX1gXG5jdUV4Y2VsID0gYD0oJHsrTWF0aC5tYXgoY3VGcm9tLCBjdVRvKS50b0ZpeGVkKDIpfS0keytNYXRoLm1pbihjdUZyb20sIGN1VG8pLnRvRml4ZWQoMil9KS8oJHtjdUJ9LSR7Y3VBfSlgXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTMiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJjdUxvID0gTWF0aC5taW4oY3VGcm9tLCBjdVRvKVxuY3VIaSA9IE1hdGgubWF4KGN1RnJvbSwgY3VUbylcbmN1UHJvYiA9IE1hdGgubWF4KDAsIGN1RihjdUhpKSAtIGN1RihjdUxvKSlcbmN1R3JpZCA9IGQzLnJhbmdlKDAsIDQwMSkubWFwKGkgPT4geyBjb25zdCB4ID0gY3VEMCArIGkgKiAoY3VEMSAtIGN1RDApIC8gNDAwOyByZXR1cm4ge3gsIHk6IGN1Zih4KX07IH0pXG5jdVltYXggPSBkMy5tYXgoY3VHcmlkLCBkID0+IGQueSkgKiAxLjI1XG5jdUZtdCA9IHYgPT4gTWF0aC5hYnModikgPj0gMTAwMCA/IHYudG9Mb2NhbGVTdHJpbmcodW5kZWZpbmVkLCB7bWF4aW11bUZyYWN0aW9uRGlnaXRzOiAwfSkgOiArdi50b0ZpeGVkKDIpXG5QbG90LnBsb3Qoe1xuICB3aWR0aDogTWF0aC5tYXgoMzAwLCB3aWR0aCAtIDUwKSwgaGVpZ2h0OiAyNTAsIG1hcmdpbkxlZnQ6IDYwLCBtYXJnaW5SaWdodDogMTIsIG1hcmdpbkJvdHRvbTogMzgsXG4gIHN0eWxlOiB7Zm9udEZhbWlseTogXCJJbnRlciwgc2Fucy1zZXJpZlwiLCBmb250U2l6ZTogXCIxMnB4XCIsIGJhY2tncm91bmQ6IFwidHJhbnNwYXJlbnRcIiwgY29sb3I6IFwidmFyKC0tYnMtaW5rLTIpXCJ9LFxuICB4OiB7ZG9tYWluOiBbY3VEMCwgY3VEMV0sIGxhYmVsOiBcIngg4oaSXCIsIGxhYmVsQW5jaG9yOiBcInJpZ2h0XCJ9LFxuICB5OiB7ZG9tYWluOiBbMCwgY3VZbWF4XSwgbGFiZWw6IFwi4oaRIGYoeClcIiwgZ3JpZDogdHJ1ZSwgdGlja0Zvcm1hdDogZCA9PiBkID09PSAwID8gXCIwXCIgOiBkIDwgMC4wMDEgPyBkLnRvRml4ZWQoNSkgOiBkLnRvRml4ZWQoMyl9LFxuICBtYXJrczogW1xuICAgIFBsb3QuYXJlYVkoY3VHcmlkLmZpbHRlcihkID0+IGQueCA+PSBjdUxvICYmIGQueCA8PSBjdUhpKS5jb25jYXQoW3t4OiBjdUhpLCB5OiBjdWYoY3VIaSl9XSkuc29ydCgoYSwgYikgPT4gYS54IC0gYi54KSxcbiAgICAgIHt4OiBcInhcIiwgeTogXCJ5XCIsIGZpbGw6IFwidmFyKC0tYnMtcGFydClcIiwgZmlsbE9wYWNpdHk6IDAuNCwgY3VydmU6IFwibGluZWFyXCJ9KSxcbiAgICBQbG90LmxpbmVZKGN1R3JpZCwge3g6IFwieFwiLCB5OiBcInlcIiwgc3Ryb2tlOiBcInZhcigtLWJzLWluaylcIiwgc3Ryb2tlV2lkdGg6IDIsIGN1cnZlOiBcImxpbmVhclwifSksXG4gICAgUGxvdC5ydWxlWChbY3VMbywgY3VIaV0sIHtzdHJva2U6IFwidmFyKC0tYnMtcGFydClcIiwgc3Ryb2tlV2lkdGg6IDJ9KSxcbiAgICBQbG90LnJ1bGVYKFtjdU1lYW5dLCB7c3Ryb2tlOiBcInZhcigtLWJzLWluaylcIiwgc3Ryb2tlV2lkdGg6IDEuNSwgc3Ryb2tlRGFzaGFycmF5OiBcIjQsM1wifSksXG4gICAgUGxvdC50ZXh0KFtjdU1lYW5dLCB7eDogZCA9PiBkLCBmcmFtZUFuY2hvcjogXCJ0b3BcIiwgZHk6IDIsIGR4OiA1LCB0ZXh0QW5jaG9yOiBcInN0YXJ0XCIsIHRleHQ6IGQgPT4gXCJFKHgpID0gXCIgKyBjdUZtdChkKSwgZmlsbDogXCJ2YXIoLS1icy1pbmspXCIsIGZvbnRXZWlnaHQ6IDYwMH0pLFxuICAgIFBsb3QudGV4dChbTWF0aC5taW4oY3VEMSAtIDAuMSAqIChjdUQxIC0gY3VEMCksIE1hdGgubWF4KGN1RDAgKyAwLjEgKiAoY3VEMSAtIGN1RDApLCAoY3VMbyArIGN1SGkpIC8gMikpXSwge3g6IGQgPT4gZCwgeTogY3VZbWF4ICogMC4wNiwgdGV4dDogKCkgPT4gXCJhcmVhID0gXCIgKyBjdVByb2IudG9GaXhlZCg0KSwgZmlsbDogXCJ2YXIoLS1icy1wYXJ0KVwiLCBmb250V2VpZ2h0OiA3MDAsIGZvbnRTaXplOiAxM30pLFxuICAgIFBsb3QucnVsZVkoWzBdLCB7c3Ryb2tlOiBcInZhcigtLWJzLWxpbmUpXCJ9KVxuICBdXG59KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC00IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaHRtbGA8ZGl2IGNsYXNzPVwiYnMtc3RhdHNcIj5cbiAgPGRpdiBjbGFzcz1cImJzLXN0YXQgaGxcIj48ZGl2IGNsYXNzPVwia1wiPlAoJHtjdUZtdChjdUxvKX0g4omkIFgg4omkICR7Y3VGbXQoY3VIaSl9KTwvZGl2PjxkaXYgY2xhc3M9XCJ2XCI+JHtjdVByb2IudG9GaXhlZCg0KX08L2Rpdj48L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImJzLXN0YXRcIj48ZGl2IGNsYXNzPVwia1wiPlAoWCA9ICR7Y3VGbXQoY3VMbyl9KTwvZGl2PjxkaXYgY2xhc3M9XCJ2XCI+MDwvZGl2PjwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiYnMtc3RhdFwiPjxkaXYgY2xhc3M9XCJrXCI+RSh4KTwvZGl2PjxkaXYgY2xhc3M9XCJ2XCI+JHtjdUZtdChjdU1lYW4pfTwvZGl2PjwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiYnMtc3RhdFwiPjxkaXYgY2xhc3M9XCJrXCI+dmFyKHgpPC9kaXY+PGRpdiBjbGFzcz1cInZcIj4ke2N1Rm10KGN1VmFyKX08L2Rpdj48L2Rpdj5cbjwvZGl2PlxuPGRpdiBjbGFzcz1cImJzLWZvcm11bGEtbGl2ZVwiPlxuICA8ZGl2PjxzcGFuIGNsYXNzPVwibGJsXCI+Zih4KTwvc3Bhbj4gJHtjdVBsdWdGfTwvZGl2PlxuICA8ZGl2PjxzcGFuIGNsYXNzPVwibGJsXCI+QXJlYTwvc3Bhbj4gJHtjdVBsdWdQfTwvZGl2PlxuICA8ZGl2PjxzcGFuIGNsYXNzPVwibGJsXCI+RSh4KTwvc3Bhbj4gJHtjdVBsdWdFfTwvZGl2PlxuICA8ZGl2PjxzcGFuIGNsYXNzPVwibGJsXCI+dmFyKHgpPC9zcGFuPiAke2N1UGx1Z1Z9PC9kaXY+XG48L2Rpdj5cbjxkaXYgY2xhc3M9XCJicy1leGNlbFwiPjxzcGFuIGNsYXNzPVwibGJsXCI+RXhjZWw8L3NwYW4+PHNwYW4+JHtjdUV4Y2VsfTwvc3Bhbj48L2Rpdj5gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTUiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2Ygbk11ID0gSW5wdXRzLnJhbmdlKFswLCAxMDAwMDBdLCB7dmFsdWU6IDM2NTAwLCBzdGVwOiA1MDAsIGxhYmVsOiBcIk1lYW4gzrxcIn0pXG52aWV3b2YgblNkID0gSW5wdXRzLnJhbmdlKFs1MDAsIDIwMDAwXSwge3ZhbHVlOiA1MDAwLCBzdGVwOiAyNTAsIGxhYmVsOiBcIlN0ZC4gZGV2LiDPg1wifSlcbnZpZXdvZiBuVGFpbCA9IElucHV0cy5yYWRpbyhbXCJQKFgg4omkIGEpXCIsIFwiUChYIOKJpSBhKVwiLCBcIlAoYSDiiaQgWCDiiaQgYilcIl0sIHt2YWx1ZTogXCJQKFgg4omlIGEpXCIsIGxhYmVsOiBcIkZpbmRcIn0pXG52aWV3b2YgbkEgPSBJbnB1dHMucmFuZ2UoW25NdSAtIDQqblNkLCBuTXUgKyA0Km5TZF0sIHt2YWx1ZTogTWF0aC5taW4oTWF0aC5tYXgoNDAwMDAsIG5NdSAtIDQqblNkKSwgbk11ICsgNCpuU2QpLCBzdGVwOiAxMDAsIGxhYmVsOiBcImFcIn0pXG52aWV3b2YgbkIgPSBJbnB1dHMucmFuZ2UoW25NdSAtIDQqblNkLCBuTXUgKyA0Km5TZF0sIHt2YWx1ZTogTWF0aC5taW4oNDUwMDAsIG5NdSArIDQqblNkKSwgc3RlcDogMTAwLCBsYWJlbDogXCJiXCIsIGRpc2FibGVkOiBuVGFpbCAhPT0gXCJQKGEg4omkIFgg4omkIGIpXCJ9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC02IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoibm9ybUNkZiA9ICh4LCBtLCBzKSA9PiB7XG4gIGNvbnN0IHogPSAoeCAtIG0pIC8gKHMgKiBNYXRoLlNRUlQyKSwgdCA9IDEgLyAoMSArIDAuMzI3NTkxMSAqIE1hdGguYWJzKHopKTtcbiAgY29uc3QgeSA9IDEgLSAoKCgoKDEuMDYxNDA1NDI5KnQgLSAxLjQ1MzE1MjAyNykqdCkgKyAxLjQyMTQxMzc0MSkqdCAtIDAuMjg0NDk2NzM2KSp0ICsgMC4yNTQ4Mjk1OTIpKnQqTWF0aC5leHAoLXoqeik7XG4gIHJldHVybiAwLjUgKiAoMSArIE1hdGguc2lnbih6KSAqIHkpO1xufVxubkxvID0gblRhaWwgPT09IFwiUChYIOKJpCBhKVwiID8gbk11IC0gNC41Km5TZCA6IChuVGFpbCA9PT0gXCJQKFgg4omlIGEpXCIgPyBuQSA6IE1hdGgubWluKG5BLCBuQikpXG5uSGkgPSBuVGFpbCA9PT0gXCJQKFgg4omkIGEpXCIgPyBuQSA6IChuVGFpbCA9PT0gXCJQKFgg4omlIGEpXCIgPyBuTXUgKyA0LjUqblNkIDogTWF0aC5tYXgobkEsIG5CKSlcbm5Qcm9iID0gTWF0aC5tYXgoMCwgbm9ybUNkZihuSGksIG5NdSwgblNkKSAtIG5vcm1DZGYobkxvLCBuTXUsIG5TZCkpXG5uQ3VydmUgPSBkMy5yYW5nZSgwLCAyNDEpLm1hcChpID0+IHtcbiAgY29uc3QgeCA9IG5NdSAtIDQqblNkICsgaSAqICg4Km5TZC8yNDApO1xuICByZXR1cm4ge3gsIHk6IE1hdGguZXhwKC0wLjUqKCh4LW5NdSkvblNkKSoqMikgLyAoblNkKk1hdGguc3FydCgyKk1hdGguUEkpKX07XG59KVxubkZtdCA9IGQzLmZvcm1hdChcIiwuMGZcIilcbm5FeGNlbCA9IG5UYWlsID09PSBcIlAoWCDiiaQgYSlcIiA/IGA9Tk9STS5ESVNUKCR7bkF9LCAke25NdX0sICR7blNkfSwgVFJVRSlgXG4gICAgICAgOiBuVGFpbCA9PT0gXCJQKFgg4omlIGEpXCIgPyBgPTEgLSBOT1JNLkRJU1QoJHtuQX0sICR7bk11fSwgJHtuU2R9LCBUUlVFKWBcbiAgICAgICA6IGA9Tk9STS5ESVNUKCR7TWF0aC5tYXgobkEsbkIpfSwgJHtuTXV9LCAke25TZH0sIFRSVUUpIC0gTk9STS5ESVNUKCR7TWF0aC5taW4obkEsbkIpfSwgJHtuTXV9LCAke25TZH0sIFRSVUUpYFxuXG5QbG90LnBsb3Qoe1xuICBoZWlnaHQ6IDI2MCwgbWFyZ2luTGVmdDogMTAsIG1hcmdpblJpZ2h0OiAxMCwgbWFyZ2luQm90dG9tOiAzNixcbiAgc3R5bGU6IHtmb250RmFtaWx5OiBcIkludGVyLCBzYW5zLXNlcmlmXCIsIGZvbnRTaXplOiBcIjEycHhcIiwgYmFja2dyb3VuZDogXCJ0cmFuc3BhcmVudFwiLCBjb2xvcjogXCJ2YXIoLS1icy1pbmstMilcIn0sXG4gIHg6IHtsYWJlbDogbnVsbCwgdGlja0Zvcm1hdDogZCA9PiBuRm10KGQpLCB0aWNrczogN30sXG4gIHk6IHtheGlzOiBudWxsfSxcbiAgbWFya3M6IFtcbiAgICBQbG90LmFyZWFZKG5DdXJ2ZS5maWx0ZXIoZCA9PiBkLnggPj0gbkxvICYmIGQueCA8PSBuSGkpLCB7eDogXCJ4XCIsIHk6IFwieVwiLCBmaWxsOiBcInZhcigtLWJzLXBhcnQpXCIsIGZpbGxPcGFjaXR5OiAwLjIyfSksXG4gICAgUGxvdC5saW5lWShuQ3VydmUsIHt4OiBcInhcIiwgeTogXCJ5XCIsIHN0cm9rZTogXCJ2YXIoLS1icy1pbmspXCIsIHN0cm9rZVdpZHRoOiAxLjc1fSksXG4gICAgUGxvdC5ydWxlWChbbk11XSwge3N0cm9rZTogXCJ2YXIoLS1icy1pbmstMylcIiwgc3Ryb2tlRGFzaGFycmF5OiBcIjMsM1wifSksXG4gICAgUGxvdC5ydWxlWChuVGFpbCA9PT0gXCJQKGEg4omkIFgg4omkIGIpXCIgPyBbbkEsIG5CXSA6IFtuQV0sIHtzdHJva2U6IFwidmFyKC0tYnMtcGFydClcIiwgc3Ryb2tlV2lkdGg6IDJ9KSxcbiAgICBQbG90LnJ1bGVZKFswXSwge3N0cm9rZTogXCJ2YXIoLS1icy1saW5lKVwifSlcbiAgXVxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtNyIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6Imh0bWxgPGRpdiBjbGFzcz1cImJzLXN0YXRzXCI+XG4gIDxkaXYgY2xhc3M9XCJicy1zdGF0IGhsXCI+PGRpdiBjbGFzcz1cImtcIj4ke25UYWlsLnJlcGxhY2UoXCJhXCIsIG5GbXQobkEpKS5yZXBsYWNlKFwiYlwiLCBuRm10KG5CKSl9PC9kaXY+PGRpdiBjbGFzcz1cInZcIj4ke25Qcm9iLnRvRml4ZWQoMyl9PC9kaXY+PC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJicy1zdGF0XCI+PGRpdiBjbGFzcz1cImtcIj5BcyBhIHBlcmNlbnQ8L2Rpdj48ZGl2IGNsYXNzPVwidlwiPiR7KG5Qcm9iKjEwMCkudG9GaXhlZCgxKX0lPC9kaXY+PC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJicy1zdGF0XCI+PGRpdiBjbGFzcz1cImtcIj56LXNjb3JlIG9mIGE8L2Rpdj48ZGl2IGNsYXNzPVwidlwiPiR7KChuQSAtIG5NdSkvblNkKS50b0ZpeGVkKDIpfTwvZGl2PjwvZGl2PlxuPC9kaXY+XG48ZGl2IGNsYXNzPVwiYnMtZXhjZWxcIj48c3BhbiBjbGFzcz1cImxibFwiPkV4Y2VsPC9zcGFuPjxzcGFuPiR7bkV4Y2VsfTwvc3Bhbj48L2Rpdj5gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTgiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgZXhNdSA9IElucHV0cy5yYW5nZShbMSwgNjBdLCB7dmFsdWU6IDE1LCBzdGVwOiAxLCBsYWJlbDogXCJNZWFuIM68XCJ9KVxudmlld29mIGV4RnJvbSA9IElucHV0cy5yYW5nZShbMCwgNiAqIGV4TXVdLCB7dmFsdWU6IDAsIHN0ZXA6IDAuNSwgbGFiZWw6IFwiRnJvbVwifSlcbnZpZXdvZiBleFRvID0gSW5wdXRzLnJhbmdlKFswLCA2ICogZXhNdV0sIHt2YWx1ZTogTWF0aC5taW4oNiAqIGV4TXUsIDYpLCBzdGVwOiAwLjUsIGxhYmVsOiBcIlRvXCJ9KVxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC05IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZXhEMCA9IDBcbmV4RDEgPSA2ICogZXhNdVxuZXhmID0geCA9PiB4IDwgMCA/IDAgOiBNYXRoLmV4cCgteCAvIGV4TXUpIC8gZXhNdVxuZXhGID0geCA9PiB4IDw9IDAgPyAwIDogMSAtIE1hdGguZXhwKC14IC8gZXhNdSlcbmV4TWVhbiA9IGV4TXVcbmV4VmFyID0gZXhNdSAqKiAyXG5leEEgPSArTWF0aC5taW4oZXhGcm9tLCBleFRvKS50b0ZpeGVkKDIpXG5leEIgPSArTWF0aC5tYXgoZXhGcm9tLCBleFRvKS50b0ZpeGVkKDIpXG5leFBsdWdGID0gaHRtbGAoMS/OvCkgZTxzdXA+4oiSeC/OvDwvc3VwPiA9ICgxLyR7ZXhNdX0pIGU8c3VwPuKIkngvJHtleE11fTwvc3VwPiwgd2hpY2ggc3RhcnRzIGF0IDEvJHtleE11fSA9ICR7KDEgLyBleE11KS50b0ZpeGVkKDQpfWBcbmV4UGx1Z1AgPSBodG1sYGU8c3VwPuKIkiR7ZXhBfS8ke2V4TXV9PC9zdXA+IOKIkiBlPHN1cD7iiJIke2V4Qn0vJHtleE11fTwvc3VwPiA9ICR7TWF0aC5leHAoLWV4QSAvIGV4TXUpLnRvRml4ZWQoNCl9IOKIkiAke01hdGguZXhwKC1leEIgLyBleE11KS50b0ZpeGVkKDQpfSA9ICR7KE1hdGguZXhwKC1leEEgLyBleE11KSAtIE1hdGguZXhwKC1leEIgLyBleE11KSkudG9GaXhlZCg0KX1gXG5leFBsdWdFID0gYM68ID0gJHtleE11fWBcbmV4UGx1Z1YgPSBgzrzCsiA9ICR7ZXhNdX3CsiA9ICR7ZXhWYXJ9IChzbyB0aGUgc3RhbmRhcmQgZGV2aWF0aW9uIGVxdWFscyB0aGUgbWVhbiwgJHtleE11fSlgXG5leEV4Y2VsID0gZXhBID09PSAwID8gYD1FWFBPTi5ESVNUKCR7ZXhCfSwgMS8ke2V4TXV9LCBUUlVFKWAgOiBgPUVYUE9OLkRJU1QoJHtleEJ9LCAxLyR7ZXhNdX0sIFRSVUUpIC0gRVhQT04uRElTVCgke2V4QX0sIDEvJHtleE11fSwgVFJVRSlgXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTEwIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiZXhMbyA9IE1hdGgubWluKGV4RnJvbSwgZXhUbylcbmV4SGkgPSBNYXRoLm1heChleEZyb20sIGV4VG8pXG5leFByb2IgPSBNYXRoLm1heCgwLCBleEYoZXhIaSkgLSBleEYoZXhMbykpXG5leEdyaWQgPSBkMy5yYW5nZSgwLCA0MDEpLm1hcChpID0+IHsgY29uc3QgeCA9IGV4RDAgKyBpICogKGV4RDEgLSBleEQwKSAvIDQwMDsgcmV0dXJuIHt4LCB5OiBleGYoeCl9OyB9KVxuZXhZbWF4ID0gZDMubWF4KGV4R3JpZCwgZCA9PiBkLnkpICogMS4yNVxuZXhGbXQgPSB2ID0+IE1hdGguYWJzKHYpID49IDEwMDAgPyB2LnRvTG9jYWxlU3RyaW5nKHVuZGVmaW5lZCwge21heGltdW1GcmFjdGlvbkRpZ2l0czogMH0pIDogK3YudG9GaXhlZCgyKVxuUGxvdC5wbG90KHtcbiAgd2lkdGg6IE1hdGgubWF4KDMwMCwgd2lkdGggLSA1MCksIGhlaWdodDogMjUwLCBtYXJnaW5MZWZ0OiA2MCwgbWFyZ2luUmlnaHQ6IDEyLCBtYXJnaW5Cb3R0b206IDM4LFxuICBzdHlsZToge2ZvbnRGYW1pbHk6IFwiSW50ZXIsIHNhbnMtc2VyaWZcIiwgZm9udFNpemU6IFwiMTJweFwiLCBiYWNrZ3JvdW5kOiBcInRyYW5zcGFyZW50XCIsIGNvbG9yOiBcInZhcigtLWJzLWluay0yKVwifSxcbiAgeDoge2RvbWFpbjogW2V4RDAsIGV4RDFdLCBsYWJlbDogXCJ4IChlLmcuIG1pbnV0ZXMpIOKGklwiLCBsYWJlbEFuY2hvcjogXCJyaWdodFwifSxcbiAgeToge2RvbWFpbjogWzAsIGV4WW1heF0sIGxhYmVsOiBcIuKGkSBmKHgpXCIsIGdyaWQ6IHRydWUsIHRpY2tGb3JtYXQ6IGQgPT4gZCA9PT0gMCA/IFwiMFwiIDogZCA8IDAuMDAxID8gZC50b0ZpeGVkKDUpIDogZC50b0ZpeGVkKDMpfSxcbiAgbWFya3M6IFtcbiAgICBQbG90LmFyZWFZKGV4R3JpZC5maWx0ZXIoZCA9PiBkLnggPj0gZXhMbyAmJiBkLnggPD0gZXhIaSkuY29uY2F0KFt7eDogZXhIaSwgeTogZXhmKGV4SGkpfV0pLnNvcnQoKGEsIGIpID0+IGEueCAtIGIueCksXG4gICAgICB7eDogXCJ4XCIsIHk6IFwieVwiLCBmaWxsOiBcInZhcigtLWJzLXBhcnQpXCIsIGZpbGxPcGFjaXR5OiAwLjQsIGN1cnZlOiBcImxpbmVhclwifSksXG4gICAgUGxvdC5saW5lWShleEdyaWQsIHt4OiBcInhcIiwgeTogXCJ5XCIsIHN0cm9rZTogXCJ2YXIoLS1icy1pbmspXCIsIHN0cm9rZVdpZHRoOiAyLCBjdXJ2ZTogXCJsaW5lYXJcIn0pLFxuICAgIFBsb3QucnVsZVgoW2V4TG8sIGV4SGldLCB7c3Ryb2tlOiBcInZhcigtLWJzLXBhcnQpXCIsIHN0cm9rZVdpZHRoOiAyfSksXG4gICAgUGxvdC5ydWxlWChbZXhNZWFuXSwge3N0cm9rZTogXCJ2YXIoLS1icy1pbmspXCIsIHN0cm9rZVdpZHRoOiAxLjUsIHN0cm9rZURhc2hhcnJheTogXCI0LDNcIn0pLFxuICAgIFBsb3QudGV4dChbZXhNZWFuXSwge3g6IGQgPT4gZCwgZnJhbWVBbmNob3I6IFwidG9wXCIsIGR5OiAyLCBkeDogNSwgdGV4dEFuY2hvcjogXCJzdGFydFwiLCB0ZXh0OiBkID0+IFwiRSh4KSA9IFwiICsgZXhGbXQoZCksIGZpbGw6IFwidmFyKC0tYnMtaW5rKVwiLCBmb250V2VpZ2h0OiA2MDB9KSxcbiAgICBQbG90LnRleHQoW01hdGgubWluKGV4RDEgLSAwLjEgKiAoZXhEMSAtIGV4RDApLCBNYXRoLm1heChleEQwICsgMC4xICogKGV4RDEgLSBleEQwKSwgKGV4TG8gKyBleEhpKSAvIDIpKV0sIHt4OiBkID0+IGQsIHk6IGV4WW1heCAqIDAuMDYsIHRleHQ6ICgpID0+IFwiYXJlYSA9IFwiICsgZXhQcm9iLnRvRml4ZWQoNCksIGZpbGw6IFwidmFyKC0tYnMtcGFydClcIiwgZm9udFdlaWdodDogNzAwLCBmb250U2l6ZTogMTN9KSxcbiAgICBQbG90LnJ1bGVZKFswXSwge3N0cm9rZTogXCJ2YXIoLS1icy1saW5lKVwifSlcbiAgXVxufSlcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTEiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJodG1sYDxkaXYgY2xhc3M9XCJicy1zdGF0c1wiPlxuICA8ZGl2IGNsYXNzPVwiYnMtc3RhdCBobFwiPjxkaXYgY2xhc3M9XCJrXCI+UCgke2V4Rm10KGV4TG8pfSDiiaQgWCDiiaQgJHtleEZtdChleEhpKX0pPC9kaXY+PGRpdiBjbGFzcz1cInZcIj4ke2V4UHJvYi50b0ZpeGVkKDQpfTwvZGl2PjwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiYnMtc3RhdFwiPjxkaXYgY2xhc3M9XCJrXCI+UChYID0gJHtleEZtdChleExvKX0pPC9kaXY+PGRpdiBjbGFzcz1cInZcIj4wPC9kaXY+PC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJicy1zdGF0XCI+PGRpdiBjbGFzcz1cImtcIj5FKHgpPC9kaXY+PGRpdiBjbGFzcz1cInZcIj4ke2V4Rm10KGV4TWVhbil9PC9kaXY+PC9kaXY+XG4gIDxkaXYgY2xhc3M9XCJicy1zdGF0XCI+PGRpdiBjbGFzcz1cImtcIj52YXIoeCk8L2Rpdj48ZGl2IGNsYXNzPVwidlwiPiR7ZXhGbXQoZXhWYXIpfTwvZGl2PjwvZGl2PlxuPC9kaXY+XG48ZGl2IGNsYXNzPVwiYnMtZm9ybXVsYS1saXZlXCI+XG4gIDxkaXY+PHNwYW4gY2xhc3M9XCJsYmxcIj5mKHgpPC9zcGFuPiAke2V4UGx1Z0Z9PC9kaXY+XG4gIDxkaXY+PHNwYW4gY2xhc3M9XCJsYmxcIj5BcmVhPC9zcGFuPiAke2V4UGx1Z1B9PC9kaXY+XG4gIDxkaXY+PHNwYW4gY2xhc3M9XCJsYmxcIj5FKHgpPC9zcGFuPiAke2V4UGx1Z0V9PC9kaXY+XG4gIDxkaXY+PHNwYW4gY2xhc3M9XCJsYmxcIj52YXIoeCk8L3NwYW4+ICR7ZXhQbHVnVn08L2Rpdj5cbjwvZGl2PlxuPGRpdiBjbGFzcz1cImJzLWV4Y2VsXCI+PHNwYW4gY2xhc3M9XCJsYmxcIj5FeGNlbDwvc3Bhbj48c3Bhbj4ke2V4RXhjZWx9PC9zcGFuPjwvZGl2PmBcbiJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldCIsImNlbGxOYW1lIjoib2pzLWNlbGwtMTIiLCJpbmxpbmUiOmZhbHNlLCJzb3VyY2UiOiJ2aWV3b2YgdHJBID0gSW5wdXRzLnJhbmdlKFswLCA1MDAwXSwge3ZhbHVlOiAxMDAwLCBzdGVwOiAxMDAsIGxhYmVsOiBcIk1pbmltdW0gYVwifSlcbnZpZXdvZiB0ckIgPSBJbnB1dHMucmFuZ2UoW3RyQSArIDEwMCwgdHJBICsgMTAwMDBdLCB7dmFsdWU6IE1hdGgubWF4KHRyQSArIDEwMCwgNjAwMCksIHN0ZXA6IDEwMCwgbGFiZWw6IFwiTWF4aW11bSBiXCJ9KVxudmlld29mIHRyQyA9IElucHV0cy5yYW5nZShbdHJBLCB0ckJdLCB7dmFsdWU6IE1hdGgubWluKHRyQiwgTWF0aC5tYXgodHJBLCAzMDAwKSksIHN0ZXA6IDUwLCBsYWJlbDogXCJNb3N0IGxpa2VseSBjXCJ9KVxudmlld29mIHRyRnJvbSA9IElucHV0cy5yYW5nZShbdHJBLCB0ckJdLCB7dmFsdWU6IE1hdGgubWluKHRyQiwgTWF0aC5tYXgodHJBLCAyMDAwKSksIHN0ZXA6IDUwLCBsYWJlbDogXCJGcm9tXCJ9KVxudmlld29mIHRyVG8gPSBJbnB1dHMucmFuZ2UoW3RyQSwgdHJCXSwge3ZhbHVlOiBNYXRoLm1pbih0ckIsIE1hdGgubWF4KHRyQSwgMjUwMCkpLCBzdGVwOiA1MCwgbGFiZWw6IFwiVG9cIn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTEzIiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoidHJXID0gdHJCIC0gdHJBXG50ckQwID0gdHJBIC0gMC4wOCAqIHRyV1xudHJEMSA9IHRyQiArIDAuMDggKiB0cldcbnRyZiA9IHggPT4geCA8IHRyQSB8fCB4ID4gdHJCID8gMCA6IHggPCB0ckMgPyAyICogKHggLSB0ckEpIC8gKHRyVyAqICh0ckMgLSB0ckEpKSA6IHggPT09IHRyQyA/IDIgLyB0clcgOiAyICogKHRyQiAtIHgpIC8gKHRyVyAqICh0ckIgLSB0ckMpKVxudHJGID0geCA9PiB4IDw9IHRyQSA/IDAgOiB4ID49IHRyQiA/IDEgOiB4IDwgdHJDID8gKHggLSB0ckEpICoqIDIgLyAodHJXICogKHRyQyAtIHRyQSkpIDogMSAtICh0ckIgLSB4KSAqKiAyIC8gKHRyVyAqICh0ckIgLSB0ckMpKVxudHJNZWFuID0gKHRyQSArIHRyQiArIHRyQykgLyAzXG50clZhciA9ICh0ckEgKiogMiArIHRyQiAqKiAyICsgdHJDICoqIDIgLSB0ckEgKiB0ckIgLSB0ckEgKiB0ckMgLSB0ckIgKiB0ckMpIC8gMThcbnRyTG8yID0gTWF0aC5taW4odHJGcm9tLCB0clRvKVxudHJIaTIgPSBNYXRoLm1heCh0ckZyb20sIHRyVG8pXG50clBpZWNlID0geCA9PiB4IDwgdHJDXG4gID8gYCgke3h9IOKIkiAke3RyQX0pwrIvKCgke3RyQn0g4oiSICR7dHJBfSkoJHt0ckN9IOKIkiAke3RyQX0pKWBcbiAgOiBgMSDiiJIgKCR7dHJCfSDiiJIgJHt4fSnCsi8oKCR7dHJCfSDiiJIgJHt0ckF9KSgke3RyQn0g4oiSICR7dHJDfSkpYFxudHJQaWVjZVBsYWluID0geCA9PiB4IDwgdHJDXG4gID8gYCgke3h9LSR7dHJBfSleMi8oKCR7dHJCfS0ke3RyQX0pKigke3RyQ30tJHt0ckF9KSlgXG4gIDogYDEtKCR7dHJCfS0ke3h9KV4yLygoJHt0ckJ9LSR7dHJBfSkqKCR7dHJCfS0ke3RyQ30pKWBcbnRyUGx1Z0YgPSBgcGVhayBoZWlnaHQgYXQgYzogMi8oYiDiiJIgYSkgPSAyLyR7dHJXfSA9ICR7KDIgLyB0clcpLnRvRml4ZWQoNSl9YFxudHJQbHVnUCA9IGBGKCR7dHJIaTJ9KSDiiJIgRigke3RyTG8yfSkgPSAke3RyRih0ckhpMikudG9GaXhlZCg0KX0g4oiSICR7dHJGKHRyTG8yKS50b0ZpeGVkKDQpfSA9ICR7KHRyRih0ckhpMikgLSB0ckYodHJMbzIpKS50b0ZpeGVkKDQpfSwgIHdoZXJlIEYoJHt0ckhpMn0pID0gJHt0clBpZWNlKHRySGkyKX1gXG50clBsdWdFID0gYChhICsgYiArIGMpLzMgPSAoJHt0ckF9ICsgJHt0ckJ9ICsgJHt0ckN9KS8zID0gJHt0ck1lYW4udG9GaXhlZCgyKX1gXG50clBsdWdWID0gYChhwrIgKyBiwrIgKyBjwrIg4oiSIGFiIOKIkiBhYyDiiJIgYmMpLzE4ID0gJHtNYXRoLnJvdW5kKHRyVmFyKS50b0xvY2FsZVN0cmluZygpfWBcbnRyRXhjZWwgPSB0ckxvMiA8PSB0ckEgPyBgPSR7dHJQaWVjZVBsYWluKHRySGkyKX1gIDogYD0ke3RyUGllY2VQbGFpbih0ckhpMil9IC0gKCR7dHJQaWVjZVBsYWluKHRyTG8yKX0pYFxuIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0IiwiY2VsbE5hbWUiOiJvanMtY2VsbC0xNCIsImlubGluZSI6ZmFsc2UsInNvdXJjZSI6InRyTG8gPSBNYXRoLm1pbih0ckZyb20sIHRyVG8pXG50ckhpID0gTWF0aC5tYXgodHJGcm9tLCB0clRvKVxudHJQcm9iID0gTWF0aC5tYXgoMCwgdHJGKHRySGkpIC0gdHJGKHRyTG8pKVxudHJHcmlkID0gZDMucmFuZ2UoMCwgNDAxKS5tYXAoaSA9PiB7IGNvbnN0IHggPSB0ckQwICsgaSAqICh0ckQxIC0gdHJEMCkgLyA0MDA7IHJldHVybiB7eCwgeTogdHJmKHgpfTsgfSlcbnRyWW1heCA9IGQzLm1heCh0ckdyaWQsIGQgPT4gZC55KSAqIDEuMjVcbnRyRm10ID0gdiA9PiBNYXRoLmFicyh2KSA+PSAxMDAwID8gdi50b0xvY2FsZVN0cmluZyh1bmRlZmluZWQsIHttYXhpbXVtRnJhY3Rpb25EaWdpdHM6IDB9KSA6ICt2LnRvRml4ZWQoMilcblBsb3QucGxvdCh7XG4gIHdpZHRoOiBNYXRoLm1heCgzMDAsIHdpZHRoIC0gNTApLCBoZWlnaHQ6IDI1MCwgbWFyZ2luTGVmdDogNjAsIG1hcmdpblJpZ2h0OiAxMiwgbWFyZ2luQm90dG9tOiAzOCxcbiAgc3R5bGU6IHtmb250RmFtaWx5OiBcIkludGVyLCBzYW5zLXNlcmlmXCIsIGZvbnRTaXplOiBcIjEycHhcIiwgYmFja2dyb3VuZDogXCJ0cmFuc3BhcmVudFwiLCBjb2xvcjogXCJ2YXIoLS1icy1pbmstMilcIn0sXG4gIHg6IHtkb21haW46IFt0ckQwLCB0ckQxXSwgbGFiZWw6IFwieCAod2Vla2x5IHNhbGVzKSDihpJcIiwgbGFiZWxBbmNob3I6IFwicmlnaHRcIn0sXG4gIHk6IHtkb21haW46IFswLCB0clltYXhdLCBsYWJlbDogXCLihpEgZih4KVwiLCBncmlkOiB0cnVlLCB0aWNrRm9ybWF0OiBkID0+IGQgPT09IDAgPyBcIjBcIiA6IGQgPCAwLjAwMSA/IGQudG9GaXhlZCg1KSA6IGQudG9GaXhlZCgzKX0sXG4gIG1hcmtzOiBbXG4gICAgUGxvdC5hcmVhWSh0ckdyaWQuZmlsdGVyKGQgPT4gZC54ID49IHRyTG8gJiYgZC54IDw9IHRySGkpLmNvbmNhdChbe3g6IHRySGksIHk6IHRyZih0ckhpKX1dKS5zb3J0KChhLCBiKSA9PiBhLnggLSBiLngpLFxuICAgICAge3g6IFwieFwiLCB5OiBcInlcIiwgZmlsbDogXCJ2YXIoLS1icy1wYXJ0KVwiLCBmaWxsT3BhY2l0eTogMC40LCBjdXJ2ZTogXCJsaW5lYXJcIn0pLFxuICAgIFBsb3QubGluZVkodHJHcmlkLCB7eDogXCJ4XCIsIHk6IFwieVwiLCBzdHJva2U6IFwidmFyKC0tYnMtaW5rKVwiLCBzdHJva2VXaWR0aDogMiwgY3VydmU6IFwibGluZWFyXCJ9KSxcbiAgICBQbG90LnJ1bGVYKFt0ckxvLCB0ckhpXSwge3N0cm9rZTogXCJ2YXIoLS1icy1wYXJ0KVwiLCBzdHJva2VXaWR0aDogMn0pLFxuICAgIFBsb3QucnVsZVgoW3RyTWVhbl0sIHtzdHJva2U6IFwidmFyKC0tYnMtaW5rKVwiLCBzdHJva2VXaWR0aDogMS41LCBzdHJva2VEYXNoYXJyYXk6IFwiNCwzXCJ9KSxcbiAgICBQbG90LnRleHQoW3RyTWVhbl0sIHt4OiBkID0+IGQsIGZyYW1lQW5jaG9yOiBcInRvcFwiLCBkeTogMiwgZHg6IDUsIHRleHRBbmNob3I6IFwic3RhcnRcIiwgdGV4dDogZCA9PiBcIkUoeCkgPSBcIiArIHRyRm10KGQpLCBmaWxsOiBcInZhcigtLWJzLWluaylcIiwgZm9udFdlaWdodDogNjAwfSksXG4gICAgUGxvdC50ZXh0KFtNYXRoLm1pbih0ckQxIC0gMC4xICogKHRyRDEgLSB0ckQwKSwgTWF0aC5tYXgodHJEMCArIDAuMSAqICh0ckQxIC0gdHJEMCksICh0ckxvICsgdHJIaSkgLyAyKSldLCB7eDogZCA9PiBkLCB5OiB0clltYXggKiAwLjA2LCB0ZXh0OiAoKSA9PiBcImFyZWEgPSBcIiArIHRyUHJvYi50b0ZpeGVkKDQpLCBmaWxsOiBcInZhcigtLWJzLXBhcnQpXCIsIGZvbnRXZWlnaHQ6IDcwMCwgZm9udFNpemU6IDEzfSksXG4gICAgUGxvdC5ydWxlWShbMF0sIHtzdHJva2U6IFwidmFyKC0tYnMtbGluZSlcIn0pXG4gIF1cbn0pXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXQiLCJjZWxsTmFtZSI6Im9qcy1jZWxsLTE1IiwiaW5saW5lIjpmYWxzZSwic291cmNlIjoiaHRtbGA8ZGl2IGNsYXNzPVwiYnMtc3RhdHNcIj5cbiAgPGRpdiBjbGFzcz1cImJzLXN0YXQgaGxcIj48ZGl2IGNsYXNzPVwia1wiPlAoJHt0ckZtdCh0ckxvKX0g4omkIFgg4omkICR7dHJGbXQodHJIaSl9KTwvZGl2PjxkaXYgY2xhc3M9XCJ2XCI+JHt0clByb2IudG9GaXhlZCg0KX08L2Rpdj48L2Rpdj5cbiAgPGRpdiBjbGFzcz1cImJzLXN0YXRcIj48ZGl2IGNsYXNzPVwia1wiPlAoWCA9ICR7dHJGbXQodHJMbyl9KTwvZGl2PjxkaXYgY2xhc3M9XCJ2XCI+MDwvZGl2PjwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiYnMtc3RhdFwiPjxkaXYgY2xhc3M9XCJrXCI+RSh4KTwvZGl2PjxkaXYgY2xhc3M9XCJ2XCI+JHt0ckZtdCh0ck1lYW4pfTwvZGl2PjwvZGl2PlxuICA8ZGl2IGNsYXNzPVwiYnMtc3RhdFwiPjxkaXYgY2xhc3M9XCJrXCI+dmFyKHgpPC9kaXY+PGRpdiBjbGFzcz1cInZcIj4ke3RyRm10KHRyVmFyKX08L2Rpdj48L2Rpdj5cbjwvZGl2PlxuPGRpdiBjbGFzcz1cImJzLWZvcm11bGEtbGl2ZVwiPlxuICA8ZGl2PjxzcGFuIGNsYXNzPVwibGJsXCI+Zih4KTwvc3Bhbj4gJHt0clBsdWdGfTwvZGl2PlxuICA8ZGl2PjxzcGFuIGNsYXNzPVwibGJsXCI+QXJlYTwvc3Bhbj4gJHt0clBsdWdQfTwvZGl2PlxuICA8ZGl2PjxzcGFuIGNsYXNzPVwibGJsXCI+RSh4KTwvc3Bhbj4gJHt0clBsdWdFfTwvZGl2PlxuICA8ZGl2PjxzcGFuIGNsYXNzPVwibGJsXCI+dmFyKHgpPC9zcGFuPiAke3RyUGx1Z1Z9PC9kaXY+XG48L2Rpdj5cbjxkaXYgY2xhc3M9XCJicy1leGNlbFwiPjxzcGFuIGNsYXNzPVwibGJsXCI+RXhjZWw8L3NwYW4+PHNwYW4+JHt0ckV4Y2VsfTwvc3Bhbj48L2Rpdj5gXG4ifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2N1QScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdjdUInKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnY3VGcm9tJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2N1VG8nKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgnbk11JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ25TZCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCduVGFpbCcpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCduQScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCduQicpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdleE11JykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ2V4RnJvbScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCdleFRvJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3RyQScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCd0ckInKSJ9LHsibWV0aG9kTmFtZSI6ImludGVycHJldFF1aWV0Iiwic291cmNlIjoic2hpbnlJbnB1dCgndHJDJykifSx7Im1ldGhvZE5hbWUiOiJpbnRlcnByZXRRdWlldCIsInNvdXJjZSI6InNoaW55SW5wdXQoJ3RyRnJvbScpIn0seyJtZXRob2ROYW1lIjoiaW50ZXJwcmV0UXVpZXQiLCJzb3VyY2UiOiJzaGlueUlucHV0KCd0clRvJykifV19
 </script>
 <script type="module">
 if (window.location.protocol === "file:") { alert("The OJS runtime does not work with file:// URLs. Please use a web server to view this document."); }

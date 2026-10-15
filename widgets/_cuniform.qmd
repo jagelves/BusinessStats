@@ -1,0 +1,73 @@
+::: {.bs-widget}
+::: {.bs-widget-head}
+[Try it]{.bs-widget-tag} [Continuous uniform explorer]{.bs-widget-title}
+:::
+[Every value between $a$ and $b$ is equally likely, so the density is a flat line at height $1/(b-a)$. A probability is the area of a rectangle: width times height. Notice that a single value has no width, so $P(X = x) = 0$. The defaults are the 120 to 140 minute flight.]{.bs-widget-sub}
+
+```{ojs}
+//| echo: false
+viewof cuA = Inputs.range([0, 200], {value: 120, step: 1, label: "Lower limit a"})
+viewof cuB = Inputs.range([cuA + 1, cuA + 200], {value: Math.max(cuA + 1, 140), step: 1, label: "Upper limit b"})
+viewof cuFrom = Inputs.range([cuA, cuB], {value: cuA, step: 0.5, label: "From"})
+viewof cuTo = Inputs.range([cuA, cuB], {value: Math.min(cuB, Math.max(cuA, 130)), step: 0.5, label: "To"})
+```
+
+```{ojs}
+//| echo: false
+cuW = cuB - cuA
+cuD0 = cuA - 0.15 * cuW
+cuD1 = cuB + 0.15 * cuW
+cuf = x => (x >= cuA && x <= cuB) ? 1 / cuW : 0
+cuF = x => x <= cuA ? 0 : x >= cuB ? 1 : (x - cuA) / cuW
+cuMean = (cuA + cuB) / 2
+cuVar = cuW ** 2 / 12
+cuPlugF = `1/(b − a) = 1/(${cuB} − ${cuA}) = ${(1 / cuW).toFixed(4)}`
+cuPlugP = `width × height = (${+Math.max(cuFrom, cuTo).toFixed(2)} − ${+Math.min(cuFrom, cuTo).toFixed(2)}) × 1/${cuW} = ${(Math.abs(cuTo - cuFrom) / cuW).toFixed(4)}`
+cuPlugE = `(a + b)/2 = (${cuA} + ${cuB})/2 = ${cuMean.toFixed(2)}`
+cuPlugV = `(b − a)²/12 = ${cuW}²/12 = ${cuVar.toFixed(2)}`
+cuExcel = `=(${+Math.max(cuFrom, cuTo).toFixed(2)}-${+Math.min(cuFrom, cuTo).toFixed(2)})/(${cuB}-${cuA})`
+```
+
+```{ojs}
+//| echo: false
+cuLo = Math.min(cuFrom, cuTo)
+cuHi = Math.max(cuFrom, cuTo)
+cuProb = Math.max(0, cuF(cuHi) - cuF(cuLo))
+cuGrid = d3.range(0, 401).map(i => { const x = cuD0 + i * (cuD1 - cuD0) / 400; return {x, y: cuf(x)}; })
+cuYmax = d3.max(cuGrid, d => d.y) * 1.25
+cuFmt = v => Math.abs(v) >= 1000 ? v.toLocaleString(undefined, {maximumFractionDigits: 0}) : +v.toFixed(2)
+Plot.plot({
+  width: Math.max(300, width - 50), height: 250, marginLeft: 60, marginRight: 12, marginBottom: 38,
+  style: {fontFamily: "Inter, sans-serif", fontSize: "12px", background: "transparent", color: "var(--bs-ink-2)"},
+  x: {domain: [cuD0, cuD1], label: "x →", labelAnchor: "right"},
+  y: {domain: [0, cuYmax], label: "↑ f(x)", grid: true, tickFormat: d => d === 0 ? "0" : d < 0.001 ? d.toFixed(5) : d.toFixed(3)},
+  marks: [
+    Plot.areaY(cuGrid.filter(d => d.x >= cuLo && d.x <= cuHi).concat([{x: cuHi, y: cuf(cuHi)}]).sort((a, b) => a.x - b.x),
+      {x: "x", y: "y", fill: "var(--bs-part)", fillOpacity: 0.4, curve: "linear"}),
+    Plot.lineY(cuGrid, {x: "x", y: "y", stroke: "var(--bs-ink)", strokeWidth: 2, curve: "linear"}),
+    Plot.ruleX([cuLo, cuHi], {stroke: "var(--bs-part)", strokeWidth: 2}),
+    Plot.ruleX([cuMean], {stroke: "var(--bs-ink)", strokeWidth: 1.5, strokeDasharray: "4,3"}),
+    Plot.text([cuMean], {x: d => d, frameAnchor: "top", dy: 2, dx: 5, textAnchor: "start", text: d => "E(x) = " + cuFmt(d), fill: "var(--bs-ink)", fontWeight: 600}),
+    Plot.text([Math.min(cuD1 - 0.1 * (cuD1 - cuD0), Math.max(cuD0 + 0.1 * (cuD1 - cuD0), (cuLo + cuHi) / 2))], {x: d => d, y: cuYmax * 0.06, text: () => "area = " + cuProb.toFixed(4), fill: "var(--bs-part)", fontWeight: 700, fontSize: 13}),
+    Plot.ruleY([0], {stroke: "var(--bs-line)"})
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+html`<div class="bs-stats">
+  <div class="bs-stat hl"><div class="k">P(${cuFmt(cuLo)} ≤ X ≤ ${cuFmt(cuHi)})</div><div class="v">${cuProb.toFixed(4)}</div></div>
+  <div class="bs-stat"><div class="k">P(X = ${cuFmt(cuLo)})</div><div class="v">0</div></div>
+  <div class="bs-stat"><div class="k">E(x)</div><div class="v">${cuFmt(cuMean)}</div></div>
+  <div class="bs-stat"><div class="k">var(x)</div><div class="v">${cuFmt(cuVar)}</div></div>
+</div>
+<div class="bs-formula-live">
+  <div><span class="lbl">f(x)</span> ${cuPlugF}</div>
+  <div><span class="lbl">Area</span> ${cuPlugP}</div>
+  <div><span class="lbl">E(x)</span> ${cuPlugE}</div>
+  <div><span class="lbl">var(x)</span> ${cuPlugV}</div>
+</div>
+<div class="bs-excel"><span class="lbl">Excel</span><span>${cuExcel}</span></div>`
+```
+:::

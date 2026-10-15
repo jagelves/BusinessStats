@@ -36,6 +36,10 @@ The **uniform** distribution assigns equal density across an interval $[a,b]$:
 **Example:** Consider the travel time between NY and CHI. Typically, this trips can take anywhere from 120-140 minutes. The specific time of a particular flight is unpredictable, but assumed to be anywhere between this interval. We assume a uniform distribution with upper limit of 140 and lower limit of 120. The probability that the flight take 122 minutes is zero since the interval has an infinite amount of possible values. The probability of the flight taking 130 minutes or less is 0.5. $$f(x<=130)=\frac{130-120}{20}=0.5$$ The uniform distribution has no dedicated Excel function, but its cumulative probability follows directly from the formula. In Excel, `=(130-120)/(140-120)` returns $0.5$.
 :::
 
+::: {.content-visible when-format="html"}
+{{< include widgets/_cuniform.qmd >}}
+:::
+
 ## Normal Distribution
 
 The **normal** PDF is given by
@@ -80,6 +84,10 @@ The probability density function is given by:
 We can also estimate that the probability that it takes between 6 and 18 minutes is 36.91%: `=EXPON.DIST(18, 1/15, TRUE) - EXPON.DIST(6, 1/15, TRUE)` returns $0.3691$.
 :::
 
+::: {.content-visible when-format="html"}
+{{< include widgets/_exponential.qmd >}}
+:::
+
 ## Triangular Distribution
 
 The **triangular distribution** is characterized by a single mode (the peak of the distribution) and two boundaries. It is often used in situations where the lower and upper bounds of a potential outcome are known, but the exact likelihood of the outcome is uncertain.
@@ -98,6 +106,10 @@ The probability density function, expected value, and variance are:
 ```
 
 This returns $0.225 - 0.10 = 0.125$.
+:::
+
+::: {.content-visible when-format="html"}
+{{< include widgets/_triangular.qmd >}}
 :::
 
 ## Continuous Distributions in Excel

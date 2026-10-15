@@ -1,0 +1,82 @@
+::: {.bs-widget}
+::: {.bs-widget-head}
+[Try it]{.bs-widget-tag} [Triangular explorer]{.bs-widget-title}
+:::
+[When all you know is the minimum $a$, the maximum $b$, and the most likely value $c$, the density is a triangle with its peak at $c$. Slide $c$ toward either end to skew it. The total area is always 1, so the peak height is always $2/(b-a)$. The defaults are the Bite Bliss weekly sales.]{.bs-widget-sub}
+
+```{ojs}
+//| echo: false
+viewof trA = Inputs.range([0, 5000], {value: 1000, step: 100, label: "Minimum a"})
+viewof trB = Inputs.range([trA + 100, trA + 10000], {value: Math.max(trA + 100, 6000), step: 100, label: "Maximum b"})
+viewof trC = Inputs.range([trA, trB], {value: Math.min(trB, Math.max(trA, 3000)), step: 50, label: "Most likely c"})
+viewof trFrom = Inputs.range([trA, trB], {value: Math.min(trB, Math.max(trA, 2000)), step: 50, label: "From"})
+viewof trTo = Inputs.range([trA, trB], {value: Math.min(trB, Math.max(trA, 2500)), step: 50, label: "To"})
+```
+
+```{ojs}
+//| echo: false
+trW = trB - trA
+trD0 = trA - 0.08 * trW
+trD1 = trB + 0.08 * trW
+trf = x => x < trA || x > trB ? 0 : x < trC ? 2 * (x - trA) / (trW * (trC - trA)) : x === trC ? 2 / trW : 2 * (trB - x) / (trW * (trB - trC))
+trF = x => x <= trA ? 0 : x >= trB ? 1 : x < trC ? (x - trA) ** 2 / (trW * (trC - trA)) : 1 - (trB - x) ** 2 / (trW * (trB - trC))
+trMean = (trA + trB + trC) / 3
+trVar = (trA ** 2 + trB ** 2 + trC ** 2 - trA * trB - trA * trC - trB * trC) / 18
+trLo2 = Math.min(trFrom, trTo)
+trHi2 = Math.max(trFrom, trTo)
+trPiece = x => x < trC
+  ? `(${x} − ${trA})²/((${trB} − ${trA})(${trC} − ${trA}))`
+  : `1 − (${trB} − ${x})²/((${trB} − ${trA})(${trB} − ${trC}))`
+trPiecePlain = x => x < trC
+  ? `(${x}-${trA})^2/((${trB}-${trA})*(${trC}-${trA}))`
+  : `1-(${trB}-${x})^2/((${trB}-${trA})*(${trB}-${trC}))`
+trPlugF = `peak height at c: 2/(b − a) = 2/${trW} = ${(2 / trW).toFixed(5)}`
+trPlugP = `F(${trHi2}) − F(${trLo2}) = ${trF(trHi2).toFixed(4)} − ${trF(trLo2).toFixed(4)} = ${(trF(trHi2) - trF(trLo2)).toFixed(4)},  where F(${trHi2}) = ${trPiece(trHi2)}`
+trPlugE = `(a + b + c)/3 = (${trA} + ${trB} + ${trC})/3 = ${trMean.toFixed(2)}`
+trPlugV = `(a² + b² + c² − ab − ac − bc)/18 = ${Math.round(trVar).toLocaleString()}`
+trExcel = trLo2 <= trA ? `=${trPiecePlain(trHi2)}` : `=${trPiecePlain(trHi2)} - (${trPiecePlain(trLo2)})`
+```
+
+```{ojs}
+//| echo: false
+trLo = Math.min(trFrom, trTo)
+trHi = Math.max(trFrom, trTo)
+trProb = Math.max(0, trF(trHi) - trF(trLo))
+trGrid = d3.range(0, 401).map(i => { const x = trD0 + i * (trD1 - trD0) / 400; return {x, y: trf(x)}; })
+trYmax = d3.max(trGrid, d => d.y) * 1.25
+trFmt = v => Math.abs(v) >= 1000 ? v.toLocaleString(undefined, {maximumFractionDigits: 0}) : +v.toFixed(2)
+Plot.plot({
+  width: Math.max(300, width - 50), height: 250, marginLeft: 60, marginRight: 12, marginBottom: 38,
+  style: {fontFamily: "Inter, sans-serif", fontSize: "12px", background: "transparent", color: "var(--bs-ink-2)"},
+  x: {domain: [trD0, trD1], label: "x (weekly sales) →", labelAnchor: "right"},
+  y: {domain: [0, trYmax], label: "↑ f(x)", grid: true, tickFormat: d => d === 0 ? "0" : d < 0.001 ? d.toFixed(5) : d.toFixed(3)},
+  marks: [
+    Plot.areaY(trGrid.filter(d => d.x >= trLo && d.x <= trHi).concat([{x: trHi, y: trf(trHi)}]).sort((a, b) => a.x - b.x),
+      {x: "x", y: "y", fill: "var(--bs-part)", fillOpacity: 0.4, curve: "linear"}),
+    Plot.lineY(trGrid, {x: "x", y: "y", stroke: "var(--bs-ink)", strokeWidth: 2, curve: "linear"}),
+    Plot.ruleX([trLo, trHi], {stroke: "var(--bs-part)", strokeWidth: 2}),
+    Plot.ruleX([trMean], {stroke: "var(--bs-ink)", strokeWidth: 1.5, strokeDasharray: "4,3"}),
+    Plot.text([trMean], {x: d => d, frameAnchor: "top", dy: 2, dx: 5, textAnchor: "start", text: d => "E(x) = " + trFmt(d), fill: "var(--bs-ink)", fontWeight: 600}),
+    Plot.text([Math.min(trD1 - 0.1 * (trD1 - trD0), Math.max(trD0 + 0.1 * (trD1 - trD0), (trLo + trHi) / 2))], {x: d => d, y: trYmax * 0.06, text: () => "area = " + trProb.toFixed(4), fill: "var(--bs-part)", fontWeight: 700, fontSize: 13}),
+    Plot.ruleY([0], {stroke: "var(--bs-line)"})
+  ]
+})
+```
+
+```{ojs}
+//| echo: false
+html`<div class="bs-stats">
+  <div class="bs-stat hl"><div class="k">P(${trFmt(trLo)} ≤ X ≤ ${trFmt(trHi)})</div><div class="v">${trProb.toFixed(4)}</div></div>
+  <div class="bs-stat"><div class="k">P(X = ${trFmt(trLo)})</div><div class="v">0</div></div>
+  <div class="bs-stat"><div class="k">E(x)</div><div class="v">${trFmt(trMean)}</div></div>
+  <div class="bs-stat"><div class="k">var(x)</div><div class="v">${trFmt(trVar)}</div></div>
+</div>
+<div class="bs-formula-live">
+  <div><span class="lbl">f(x)</span> ${trPlugF}</div>
+  <div><span class="lbl">Area</span> ${trPlugP}</div>
+  <div><span class="lbl">E(x)</span> ${trPlugE}</div>
+  <div><span class="lbl">var(x)</span> ${trPlugV}</div>
+</div>
+<div class="bs-excel"><span class="lbl">Excel</span><span>${trExcel}</span></div>`
+```
+:::
