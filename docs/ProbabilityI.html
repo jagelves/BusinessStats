@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-ebc9bf21172222eecf4329b9f87ba86d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a9a8112abf6d22cde504e3b06bd5f6a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-0aef34cf2d3591846d4f16223d929ccf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
@@ -334,7 +334,7 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul class="collapse">
-  <li><a href="#frequentist-vs.-bayesian-statistics" id="toc-frequentist-vs.-bayesian-statistics" class="nav-link active" data-scroll-target="#frequentist-vs.-bayesian-statistics"><span class="header-section-number">8.1</span> Frequentist Vs. Bayesian Statistics</a></li>
+  <li><a href="#what-is-a-probability-frequentist-vs.-bayesian" id="toc-what-is-a-probability-frequentist-vs.-bayesian" class="nav-link active" data-scroll-target="#what-is-a-probability-frequentist-vs.-bayesian"><span class="header-section-number">8.1</span> What Is a Probability? Frequentist vs.&nbsp;Bayesian</a></li>
   <li><a href="#experiments-and-sets" id="toc-experiments-and-sets" class="nav-link" data-scroll-target="#experiments-and-sets"><span class="header-section-number">8.2</span> Experiments and Sets</a></li>
   <li><a href="#basic-probability-concepts" id="toc-basic-probability-concepts" class="nav-link" data-scroll-target="#basic-probability-concepts"><span class="header-section-number">8.3</span> Basic Probability Concepts</a></li>
   <li><a href="#venn-diagram" id="toc-venn-diagram" class="nav-link" data-scroll-target="#venn-diagram"><span class="header-section-number">8.4</span> Venn Diagram</a></li>
@@ -383,12 +383,17 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>Decision-making under uncertainty is at the core of business strategy, risk management, and forecasting. This section will study tools and concepts that will make us smarter when making data-driven decisions. Mastering probability in finance, marketing, supply chain, or operations helps professionals analyze risks, optimize strategies, and stay competitive in uncertain environments. We start with the basic concepts and ideas of probability below. Probability marks a turning point in the book. Until now we have described data we already collected; from here we build the mathematics of uncertainty — the bridge that will later let us reason from an imperfect sample back to the world that produced it.</p>
-<section id="frequentist-vs.-bayesian-statistics" class="level2" data-number="8.1">
-<h2 data-number="8.1" class="anchored" data-anchor-id="frequentist-vs.-bayesian-statistics"><span class="header-section-number">8.1</span> Frequentist Vs. Bayesian Statistics</h2>
-<p>There are two interpretations of probability. The <strong>frequentist</strong> interpretation assumes that probabilities represent proportions of specific events occurring over infinitely identical trials. In contrast, the <strong>Bayesian</strong> interpretation assumes that probabilities are subjective beliefs about the relative likelihood of events. Despite their philosophical differences, both approaches adhere to the core rules of probability —including the Addition Rule, Multiplication Rule, and Bayes’ Theorem— which provide a consistent mathematical foundation for making probabilistic inferences.</p>
+<p>Every business decision is made under uncertainty: whether a new product will sell, whether a supplier will deliver on time, whether a stock will rise. <strong>Probability</strong> is the language we use to measure that uncertainty, and it marks a turning point in the book. Until now we have described data we already collected. From here we build the mathematics of uncertainty, which will later let us reason from an imperfect sample back to the population that produced it. We start with the basic ideas.</p>
+<section id="what-is-a-probability-frequentist-vs.-bayesian" class="level2" data-number="8.1">
+<h2 data-number="8.1" class="anchored" data-anchor-id="what-is-a-probability-frequentist-vs.-bayesian"><span class="header-section-number">8.1</span> What Is a Probability? Frequentist vs.&nbsp;Bayesian</h2>
+<p>Before we calculate probabilities, it helps to agree on what a probability <em>means</em>. There are two main ways to understand it.</p>
+<ul>
+<li><p><strong>Frequentist view.</strong> A probability is the long-run proportion of times an event occurs when an experiment is repeated many times under the same conditions. Saying a product has a <span class="math inline">\(2\%\)</span> return rate means that, over many sales, about <span class="math inline">\(2\)</span> in every <span class="math inline">\(100\)</span> items come back. In this view, probabilities only make sense for events that can be repeated.</p></li>
+<li><p><strong>Bayesian view.</strong> A probability is a degree of belief about how likely an event is. It is <em>subjective</em> in the sense that it reflects a reasoned judgment based on the evidence and experience available, not a random guess, and it is updated as new data arrive. This lets us put a probability on one-time events, such as the chance that a particular product launch succeeds. A frequentist would not assign such a probability, because the launch cannot be repeated.</p></li>
+</ul>
+<p>The two views disagree about what a probability <em>is</em>, but they follow the same rules (the Addition Rule, the Multiplication Rule, and Bayes’ Theorem), so the calculations in this book work the same way under either one.</p>
 <div class="callout-example">
-<p><strong>Example:</strong> A company might use frequentist statistics to determine the average return rate of a product, but apply Bayesian methods to adjust sales forecasts based on changing consumer behavior.</p>
+<p><strong>Example:</strong> A company estimates the return rate of an existing product from the share of past sales that were returned. That is a frequentist probability. For a brand-new product with no sales history, managers instead assign a probability of success from market research and experience, and revise it as early sales come in. That is a Bayesian probability.</p>
 </div>
 </section>
 <section id="experiments-and-sets" class="level2" data-number="8.2">
@@ -403,13 +408,20 @@ details summary {
 </section>
 <section id="basic-probability-concepts" class="level2" data-number="8.3">
 <h2 data-number="8.3" class="anchored" data-anchor-id="basic-probability-concepts"><span class="header-section-number">8.3</span> Basic Probability Concepts</h2>
-<p>A <strong>probability</strong> is a numerical value that measures the likelihood that an event occurs. To calculate <strong>probabilities</strong>, we find the ratio between favorable outcomes and total outcomes. Hence, the probability of an event is given by:</p>
+<p>A <strong>probability</strong> is a numerical value that measures the likelihood that an event occurs. There are three common ways to assign one.</p>
+<p><strong>Classical method.</strong> When every outcome in the sample space is equally likely (a fair die, a well-shuffled deck of cards), the probability of an event is the share of outcomes that belong to it:</p>
 <div class="callout-formula">
-<p><strong>PROBABILITY OF AN EVENT</strong> <span class="math display">\[P(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outcomes\ in\ Sample \ Space}\]</span></p>
+<p><strong>CLASSICAL PROBABILITY</strong> <span class="math display">\[P(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outcomes\ in\ Sample \ Space}\]</span> This formula only applies when all outcomes are equally likely.</p>
 </div>
-<p>The probability of A satisfies <span class="math inline">\(0\leq P(A) \leq1\)</span>. Since A is a subset of S, the number of elements in A is at most that of the sample space S. Hence, if A=S, then P(A)=1. If A is a null event (i.e., has no elements) P(A)=0 and is impossible. We can conclude that P(A) ranges from 0 to 1, inclusive.</p>
-<p>In many cases, we analyze how multiple events interact within the sample space, particularly when they either exclude each other or collectively cover all possible outcomes.<strong>Mutually exclusive</strong> events do not share any common outcomes. The occurrence of one event precludes the occurrence of others. <strong>Exhaustive</strong> events include all outcomes in the sample space.</p>
-<p>Given these concepts if follows that the sum of the probabilities of a list of <strong>mutually exclusive</strong> and <strong>exhaustive</strong> events equals <span class="math inline">\(1\)</span>. Formally, we state: <span class="math inline">\(\sum P(x_i)=1\)</span>, where <span class="math inline">\(x_i\)</span> is outcome <span class="math inline">\(i\)</span>.</p>
+<p><strong>Relative frequency method.</strong> When outcomes are not equally likely, we estimate the probability from data: the proportion of times the event happened over many repetitions of the experiment. This is the frequentist view put into practice, and the estimate improves as the number of trials grows.</p>
+<div class="callout-formula">
+<p><strong>RELATIVE FREQUENCY PROBABILITY</strong> <span class="math display">\[P(A)\approx\frac{Number\ of\ times\ A\ occurred}{Number\ of\ trials}\]</span></p>
+</div>
+<p>For example, if <span class="math inline">\(18\)</span> of a company’s last <span class="math inline">\(600\)</span> shipments arrived late, the probability that a shipment arrives late is about <span class="math inline">\(18/600=0.03\)</span>.</p>
+<p><strong>Subjective method.</strong> When there is no repeatable experiment and little or no data, a probability is assigned by reasoned judgment: an analyst or expert weighs the available evidence and experience. A venture capitalist who puts the chance of a startup’s success at <span class="math inline">\(20\%\)</span> is using this method. Subjective probabilities match the Bayesian view; they are not frequentist probabilities, because the event cannot be repeated to check them.</p>
+<p>Whichever method we use, the probability of A satisfies <span class="math inline">\(0\leq P(A) \leq1\)</span>. Since A is a subset of S, the number of elements in A is at most that of the sample space S. Hence, if A=S, then P(A)=1. If A is a null event (i.e., has no elements) P(A)=0 and is impossible. We can conclude that P(A) ranges from 0 to 1, inclusive.</p>
+<p>In many cases, we analyze how multiple events interact within the sample space, particularly when they either exclude each other or collectively cover all possible outcomes. <strong>Mutually exclusive</strong> events do not share any common outcomes. The occurrence of one event precludes the occurrence of others. <strong>Exhaustive</strong> events include all outcomes in the sample space.</p>
+<p>Given these concepts it follows that the sum of the probabilities of a list of <strong>mutually exclusive</strong> and <strong>exhaustive</strong> events equals <span class="math inline">\(1\)</span>. Formally, we state: <span class="math inline">\(\sum P(x_i)=1\)</span>, where <span class="math inline">\(x_i\)</span> is outcome <span class="math inline">\(i\)</span>.</p>
 <div class="callout-example">
 <p><strong>Example:</strong> Let’s consider a standard deck of 52 playing cards to illustrate the key probability concepts.</p>
 <p>If we randomly draw one card from a standard deck, the sample space <span class="math inline">\(S\)</span> consists of all 52 cards. Suppose we define event <span class="math inline">\(A\)</span> as <em>drawing a red card</em>. Since there are 26 red cards, the probability is:</p>
@@ -627,7 +639,7 @@ details summary {
 <p>Counting rules are useful in probability as they allow us to determine the number of ways events can occur without listing out every possibility. Essentially, they facilitate the enumeration of possible outcomes for large sets.</p>
 <section id="the-fundamental-counting-principle" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="the-fundamental-counting-principle">The Fundamental Counting Principle</h3>
-<p>The most basic counting rule — and the one all the others build on — is the <strong>Fundamental Counting Principle</strong> (also called the Multiplication Principle). It states that if a task is completed in separate stages, the total number of ways to complete it is the product of the number of choices available at each stage.</p>
+<p>The most basic counting rule, and the one all the others build on, is the <strong>Fundamental Counting Principle</strong> (also called the Multiplication Principle). It states that if a task is completed in separate stages, the total number of ways to complete it is the product of the number of choices available at each stage.</p>
 <div class="callout-formula">
 <p><strong>THE FUNDAMENTAL COUNTING PRINCIPLE</strong> <span class="math display">\[m_1 \times m_2 \times \dots \times m_k\]</span> where <span class="math inline">\(m_i\)</span> is the number of choices at stage <span class="math inline">\(i\)</span>, for a task made up of <span class="math inline">\(k\)</span> stages.</p>
 </div>
@@ -672,7 +684,7 @@ details summary {
 </tr>
 </tbody>
 </table>
-<p>The table shows that there are six possible ways to organize a group of three people. This is really just the Fundamental Counting Principle at work: there are <span class="math inline">\(3\)</span> choices for the first spot, then <span class="math inline">\(2\)</span> remaining choices for the second, and only <span class="math inline">\(1\)</span> left for the third, giving <span class="math inline">\(3 \times 2 \times 1 = 6\)</span>. The <strong>Factorial</strong> captures exactly this pattern — it counts how many ways a group of <span class="math inline">\(N\)</span> objects can be organized. Formally, we write:</p>
+<p>The table shows that there are six possible ways to organize a group of three people. This is really just the Fundamental Counting Principle at work: there are <span class="math inline">\(3\)</span> choices for the first spot, then <span class="math inline">\(2\)</span> remaining choices for the second, and only <span class="math inline">\(1\)</span> left for the third, giving <span class="math inline">\(3 \times 2 \times 1 = 6\)</span>. The <strong>Factorial</strong> captures exactly this pattern: it counts how many ways a group of <span class="math inline">\(N\)</span> objects can be organized. Formally, we write:</p>
 <div class="callout-formula">
 <p><strong>THE FACTORIAL</strong> <span class="math display">\[Factorial=N!\]</span> where the operator <span class="math inline">\(!\)</span> means to take the product of all positive integers from <span class="math inline">\(N\)</span> down to <span class="math inline">\(1\)</span>. Note that <span class="math inline">\(0!\)</span> is equal to one.</p>
 </div>
@@ -719,7 +731,7 @@ details summary {
 <section id="probability-in-excel" class="level2" data-number="8.8">
 <h2 data-number="8.8" class="anchored" data-anchor-id="probability-in-excel"><span class="header-section-number">8.8</span> Probability in Excel</h2>
 <p>Excel has a collection of functions that make counting and probability calculations straightforward.</p>
-<p><strong>Contingency tables:</strong> Use a <strong>PivotTable</strong> (<code>Insert → PivotTable</code>) to build a contingency table from raw data — place one variable in the Rows area, the other in the Columns area, and any field in the Values area as a count. To turn the counts into a joint probability table, use <code>Value Field Settings → Show Values As → % of Grand Total</code>. You can also count a specific combination of conditions directly with <code>=COUNTIFS(range1, criteria1, range2, criteria2)</code>.</p>
+<p><strong>Contingency tables:</strong> Use a <strong>PivotTable</strong> (<code>Insert → PivotTable</code>) to build a contingency table from raw data. Place one variable in the Rows area, the other in the Columns area, and any field in the Values area as a count. To turn the counts into a joint probability table, use <code>Value Field Settings → Show Values As → % of Grand Total</code>. You can also count a specific combination of conditions directly with <code>=COUNTIFS(range1, criteria1, range2, criteria2)</code>.</p>
 <p><strong>Factorial:</strong> The <code>=FACT(number)</code> function returns the factorial of a number. For example, <code>=FACT(5)</code> returns <span class="math inline">\(120\)</span>.</p>
 <p><strong>Combinations:</strong> The <code>=COMBIN(number, number_chosen)</code> function counts the number of combinations without repetition. Use <code>=COMBINA(number, number_chosen)</code> when repetition is allowed.</p>
 <p><strong>Permutations:</strong> The <code>=PERMUT(number, number_chosen)</code> function counts the number of permutations without repetition. Use <code>=PERMUTATIONA(number, number_chosen)</code> when repetition is allowed.</p>

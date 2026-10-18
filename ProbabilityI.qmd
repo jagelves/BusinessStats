@@ -16,14 +16,20 @@ details summary {
 
 # Probability I
 
-Decision-making under uncertainty is at the core of business strategy, risk management, and forecasting. This section will study tools and concepts that will make us smarter when making data-driven decisions. Mastering probability in finance, marketing, supply chain, or operations helps professionals analyze risks, optimize strategies, and stay competitive in uncertain environments. We start with the basic concepts and ideas of probability below. Probability marks a turning point in the book. Until now we have described data we already collected; from here we build the mathematics of uncertainty — the bridge that will later let us reason from an imperfect sample back to the world that produced it.
+Every business decision is made under uncertainty: whether a new product will sell, whether a supplier will deliver on time, whether a stock will rise. **Probability** is the language we use to measure that uncertainty, and it marks a turning point in the book. Until now we have described data we already collected. From here we build the mathematics of uncertainty, which will later let us reason from an imperfect sample back to the population that produced it. We start with the basic ideas.
 
-## Frequentist Vs. Bayesian Statistics
+## What Is a Probability? Frequentist vs. Bayesian
 
-There are two interpretations of probability. The **frequentist** interpretation assumes that probabilities represent proportions of specific events occurring over infinitely identical trials. In contrast, the **Bayesian** interpretation assumes that probabilities are subjective beliefs about the relative likelihood of events. Despite their philosophical differences, both approaches adhere to the core rules of probability —including the Addition Rule, Multiplication Rule, and Bayes' Theorem— which provide a consistent mathematical foundation for making probabilistic inferences.
+Before we calculate probabilities, it helps to agree on what a probability *means*. There are two main ways to understand it.
+
+- **Frequentist view.** A probability is the long-run proportion of times an event occurs when an experiment is repeated many times under the same conditions. Saying a product has a $2\%$ return rate means that, over many sales, about $2$ in every $100$ items come back. In this view, probabilities only make sense for events that can be repeated.
+
+- **Bayesian view.** A probability is a degree of belief about how likely an event is. It is *subjective* in the sense that it reflects a reasoned judgment based on the evidence and experience available, not a random guess, and it is updated as new data arrive. This lets us put a probability on one-time events, such as the chance that a particular product launch succeeds. A frequentist would not assign such a probability, because the launch cannot be repeated.
+
+The two views disagree about what a probability *is*, but they follow the same rules (the Addition Rule, the Multiplication Rule, and Bayes' Theorem), so the calculations in this book work the same way under either one.
 
 ::: callout-example
-**Example:** A company might use frequentist statistics to determine the average return rate of a product, but apply Bayesian methods to adjust sales forecasts based on changing consumer behavior.
+**Example:** A company estimates the return rate of an existing product from the share of past sales that were returned. That is a frequentist probability. For a brand-new product with no sales history, managers instead assign a probability of success from market research and experience, and revise it as early sales come in. That is a Bayesian probability.
 :::
 
 ## Experiments and Sets
@@ -40,17 +46,29 @@ The following concepts form the foundation of probability theory. They provide a
 
 ## Basic Probability Concepts
 
-A **probability** is a numerical value that measures the likelihood that an event occurs. To calculate **probabilities**, we find the ratio between favorable outcomes and total outcomes. Hence, the probability of an event is given by:
+A **probability** is a numerical value that measures the likelihood that an event occurs. There are three common ways to assign one.
+
+**Classical method.** When every outcome in the sample space is equally likely (a fair die, a well-shuffled deck of cards), the probability of an event is the share of outcomes that belong to it:
 
 ::: callout-formula
-**PROBABILITY OF AN EVENT** $$P(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outcomes\ in\ Sample \ Space}$$
+**CLASSICAL PROBABILITY** $$P(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outcomes\ in\ Sample \ Space}$$ This formula only applies when all outcomes are equally likely.
 :::
 
-The probability of A satisfies $0\leq P(A) \leq1$. Since A is a subset of S, the number of elements in A is at most that of the sample space S. Hence, if A=S, then P(A)=1. If A is a null event (i.e., has no elements) P(A)=0 and is impossible. We can conclude that P(A) ranges from 0 to 1, inclusive.
+**Relative frequency method.** When outcomes are not equally likely, we estimate the probability from data: the proportion of times the event happened over many repetitions of the experiment. This is the frequentist view put into practice, and the estimate improves as the number of trials grows.
 
-In many cases, we analyze how multiple events interact within the sample space, particularly when they either exclude each other or collectively cover all possible outcomes.**Mutually exclusive** events do not share any common outcomes. The occurrence of one event precludes the occurrence of others. **Exhaustive** events include all outcomes in the sample space.
+::: callout-formula
+**RELATIVE FREQUENCY PROBABILITY** $$P(A)\approx\frac{Number\ of\ times\ A\ occurred}{Number\ of\ trials}$$
+:::
 
-Given these concepts if follows that the sum of the probabilities of a list of **mutually exclusive** and **exhaustive** events equals $1$. Formally, we state: $\sum P(x_i)=1$, where $x_i$ is outcome $i$.
+For example, if $18$ of a company's last $600$ shipments arrived late, the probability that a shipment arrives late is about $18/600=0.03$.
+
+**Subjective method.** When there is no repeatable experiment and little or no data, a probability is assigned by reasoned judgment: an analyst or expert weighs the available evidence and experience. A venture capitalist who puts the chance of a startup's success at $20\%$ is using this method. Subjective probabilities match the Bayesian view; they are not frequentist probabilities, because the event cannot be repeated to check them.
+
+Whichever method we use, the probability of A satisfies $0\leq P(A) \leq1$. Since A is a subset of S, the number of elements in A is at most that of the sample space S. Hence, if A=S, then P(A)=1. If A is a null event (i.e., has no elements) P(A)=0 and is impossible. We can conclude that P(A) ranges from 0 to 1, inclusive.
+
+In many cases, we analyze how multiple events interact within the sample space, particularly when they either exclude each other or collectively cover all possible outcomes. **Mutually exclusive** events do not share any common outcomes. The occurrence of one event precludes the occurrence of others. **Exhaustive** events include all outcomes in the sample space.
+
+Given these concepts it follows that the sum of the probabilities of a list of **mutually exclusive** and **exhaustive** events equals $1$. Formally, we state: $\sum P(x_i)=1$, where $x_i$ is outcome $i$.
 
 ::: callout-example
 **Example:** Let’s consider a standard deck of 52 playing cards to illustrate the key probability concepts.
@@ -252,7 +270,7 @@ Counting rules are useful in probability as they allow us to determine the numbe
 
 ### The Fundamental Counting Principle {.unnumbered}
 
-The most basic counting rule — and the one all the others build on — is the **Fundamental Counting Principle** (also called the Multiplication Principle). It states that if a task is completed in separate stages, the total number of ways to complete it is the product of the number of choices available at each stage.
+The most basic counting rule, and the one all the others build on, is the **Fundamental Counting Principle** (also called the Multiplication Principle). It states that if a task is completed in separate stages, the total number of ways to complete it is the product of the number of choices available at each stage.
 
 ::: callout-formula
 **THE FUNDAMENTAL COUNTING PRINCIPLE** $$m_1 \times m_2 \times \dots \times m_k$$ where $m_i$ is the number of choices at stage $i$, for a task made up of $k$ stages.
@@ -275,7 +293,7 @@ To illustrate the factorial, consider the number of ways that we can organize a 
 |    5     | (Charlie, Ann, Beth) |
 |    6     | (Charlie, Beth, Ann) |
 
-The table shows that there are six possible ways to organize a group of three people. This is really just the Fundamental Counting Principle at work: there are $3$ choices for the first spot, then $2$ remaining choices for the second, and only $1$ left for the third, giving $3 \times 2 \times 1 = 6$. The **Factorial** captures exactly this pattern — it counts how many ways a group of $N$ objects can be organized. Formally, we write:
+The table shows that there are six possible ways to organize a group of three people. This is really just the Fundamental Counting Principle at work: there are $3$ choices for the first spot, then $2$ remaining choices for the second, and only $1$ left for the third, giving $3 \times 2 \times 1 = 6$. The **Factorial** captures exactly this pattern: it counts how many ways a group of $N$ objects can be organized. Formally, we write:
 
 ::: callout-formula
 **THE FACTORIAL** $$Factorial=N!$$ where the operator $!$ means to take the product of all positive integers from $N$ down to $1$. Note that $0!$ is equal to one.
@@ -335,7 +353,7 @@ As with combinations, there might be situations where we wish to count when repe
 
 Excel has a collection of functions that make counting and probability calculations straightforward.
 
-**Contingency tables:** Use a **PivotTable** (`Insert → PivotTable`) to build a contingency table from raw data — place one variable in the Rows area, the other in the Columns area, and any field in the Values area as a count. To turn the counts into a joint probability table, use `Value Field Settings → Show Values As → % of Grand Total`. You can also count a specific combination of conditions directly with `=COUNTIFS(range1, criteria1, range2, criteria2)`.
+**Contingency tables:** Use a **PivotTable** (`Insert → PivotTable`) to build a contingency table from raw data. Place one variable in the Rows area, the other in the Columns area, and any field in the Values area as a count. To turn the counts into a joint probability table, use `Value Field Settings → Show Values As → % of Grand Total`. You can also count a specific combination of conditions directly with `=COUNTIFS(range1, criteria1, range2, criteria2)`.
 
 **Factorial:** The `=FACT(number)` function returns the factorial of a number. For example, `=FACT(5)` returns $120$.
 
