@@ -54,20 +54,39 @@ A **probability** is a numerical value that measures the likelihood that an even
 **CLASSICAL PROBABILITY** $$P(A)=\frac{Number\ of\ outcomes\ in\ A}{Number\ of\ outcomes\ in\ Sample \ Space}$$ This formula only applies when all outcomes are equally likely.
 :::
 
-**Relative frequency method.** When outcomes are not equally likely, we estimate the probability from data: the proportion of times the event happened over many repetitions of the experiment. This is the frequentist view put into practice, and the estimate improves as the number of trials grows.
+::: callout-example
+**Example:** Draw one card at random from a standard deck of $52$ cards. Every card is equally likely, so we can use the classical method. Let $A$ be the event of drawing a red card. There are $26$ red cards, so
+
+$$P(A) = \frac{\text{Number of red cards}}{\text{Total number of cards}} = \frac{26}{52} = 0.5$$
+:::
+
+**Relative frequency (empirical) method.** When outcomes are not equally likely, we estimate the probability from data: the proportion of times the event happened over many repetitions of the experiment. This is the frequentist view put into practice, and the estimate improves as the number of trials grows.
 
 ::: callout-formula
 **RELATIVE FREQUENCY PROBABILITY** $$P(A)\approx\frac{Number\ of\ times\ A\ occurred}{Number\ of\ trials}$$
 :::
 
-For example, if $18$ of a company's last $600$ shipments arrived late, the probability that a shipment arrives late is about $18/600=0.03$.
+::: callout-example
+**Example:** A distributor wants to know how likely it is that an order arrives late. Deliveries are not equally likely to be on time, late, or damaged, so the classical method does not apply. Instead, the distributor looks at its records for the last $600$ orders:
 
-**Subjective method.** When there is no repeatable experiment and little or no data, a probability is assigned by reasoned judgment: an analyst or expert weighs the available evidence and experience. A venture capitalist who puts the chance of a startup's success at $20\%$ is using this method. Subjective probabilities match the Bayesian view; they are not frequentist probabilities, because the event cannot be repeated to check them.
+| Delivery outcome | Number of orders | Relative frequency |
+|:----------------:|:----------------:|:------------------:|
+|     On time      |       552        |  $552/600 = 0.92$  |
+|       Late       |        18        |  $18/600 = 0.03$   |
+|     Damaged      |        30        |  $30/600 = 0.05$   |
+|      Total       |       600        |        $1$         |
+
+The estimated probability that the next order arrives late is $P(\text{late}) \approx 18/600 = 0.03$. It is an estimate: with records from $6{,}000$ orders instead of $600$, the distributor could pin it down more precisely. In Excel, with the outcomes in column A, `=COUNTIF(A2:A601, "Late")/COUNTA(A2:A601)` returns $0.03$.
+:::
+
+**Subjective method.** When there is no repeatable experiment and little or no data, a probability is assigned by reasoned judgment: an analyst or expert weighs the available evidence and experience. Subjective probabilities match the Bayesian view; they are not frequentist probabilities, because the event cannot be repeated to check them.
 
 ::: callout-example
-**Example:** Draw one card at random from a standard deck of $52$ cards. Every card is equally likely, so we can use the classical method. Let $A$ be the event of drawing a red card. There are $26$ red cards, so
+**Example:** A company is about to launch a new kind of product, so there is no sales history to count. The product manager still needs a probability that the launch succeeds. She weighs the evidence she has: a customer survey in which $40\%$ of respondents said they would buy, the fact that two similar products from competitors succeeded while one failed, and her own experience with past launches. Putting this together, she assigns
 
-$$P(A) = \frac{\text{Number of red cards}}{\text{Total number of cards}} = \frac{26}{52} = 0.5$$
+$$P(\text{success}) = 0.35 \qquad P(\text{failure}) = 0.65$$
+
+Another manager, weighing the same evidence differently, might say $0.30$ or $0.40$, and that is acceptable: subjective probabilities can differ from person to person, but they must still follow the basic requirements below (here, $0.35 + 0.65 = 1$). They should also change with new evidence. If a test launch in two cities sells better than expected, she might revise $P(\text{success})$ up to $0.55$.
 :::
 
 ## Basic Requirements for Assigning Probabilities
