@@ -311,3 +311,7 @@ div.bs-answer-body {
 }
 .bs-formula-live .lbl { display: inline-block; min-width: 3.6rem; font-weight: 600; color: var(--bs-part); }
 .bs-formula-live sup, .bs-formula-live sub { font-size: .72em; }
+
+// ---------- Probability scale (Probability I)
+figure.bs-probscale { margin: 1.25rem 0 1.75rem; overflow-x: auto; }
+figure.bs-probscale svg { display: block; width: 100%; min-width: 560px; height: auto; overflow: visible; }

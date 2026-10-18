@@ -64,26 +64,79 @@ For example, if $18$ of a company's last $600$ shipments arrived late, the proba
 
 **Subjective method.** When there is no repeatable experiment and little or no data, a probability is assigned by reasoned judgment: an analyst or expert weighs the available evidence and experience. A venture capitalist who puts the chance of a startup's success at $20\%$ is using this method. Subjective probabilities match the Bayesian view; they are not frequentist probabilities, because the event cannot be repeated to check them.
 
-Whichever method we use, the probability of A satisfies $0\leq P(A) \leq1$. Since A is a subset of S, the number of elements in A is at most that of the sample space S. Hence, if A=S, then P(A)=1. If A is a null event (i.e., has no elements) P(A)=0 and is impossible. We can conclude that P(A) ranges from 0 to 1, inclusive.
-
-In many cases, we analyze how multiple events interact within the sample space, particularly when they either exclude each other or collectively cover all possible outcomes. **Mutually exclusive** events do not share any common outcomes. The occurrence of one event precludes the occurrence of others. **Exhaustive** events include all outcomes in the sample space.
-
-Given these concepts it follows that the sum of the probabilities of a list of **mutually exclusive** and **exhaustive** events equals $1$. Formally, we state: $\sum P(x_i)=1$, where $x_i$ is outcome $i$.
-
 ::: callout-example
-**Example:** Let’s consider a standard deck of 52 playing cards to illustrate the key probability concepts.
-
-If we randomly draw one card from a standard deck, the sample space $S$ consists of all 52 cards. Suppose we define event $A$ as *drawing a red card*. Since there are 26 red cards, the probability is:
+**Example:** Draw one card at random from a standard deck of $52$ cards. Every card is equally likely, so we can use the classical method. Let $A$ be the event of drawing a red card. There are $26$ red cards, so
 
 $$P(A) = \frac{\text{Number of red cards}}{\text{Total number of cards}} = \frac{26}{52} = 0.5$$
+:::
 
-Since $( 0 \leq P(A) \leq 1)$, this follows the basic probability rule. Next let's consider mutually exclusive events. Let event $B$ be drawing a heart and event $C$ be drawing a spade. Since a single drawn card cannot be both a heart and a spade, these events are mutually exclusive.
+## Probability Requirements
 
-The four suits (*hearts, diamonds, clubs, spades*) form an exhaustive set, because every card belongs to exactly one suit. The sum of their probabilities equals 1:
+Whichever method we use to assign them, probabilities must satisfy two requirements. Any set of numbers that breaks either one is not a valid set of probabilities.
 
-$$P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \frac{13}{52} + \frac{13}{52} + \frac{13}{52} + \frac{13}{52} = 1$$
+::: callout-formula
+**THE TWO REQUIREMENTS OF PROBABILITY**
 
-Note that this also satisfies the rule $\sum P(x_i) = 1$, where $x_i$ represents each possible outcome (suit).
+1. Every probability is between $0$ and $1$: $$0 \leq P(A) \leq 1$$
+2. The probabilities of a set of mutually exclusive and exhaustive outcomes add up to $1$: $$\sum P(x_i) = 1$$ where $x_i$ is outcome $i$.
+:::
+
+### Requirement 1: From Certainty to Uncertainty {.unnumbered}
+
+The two ends of the scale represent **certainty**. A probability of $0$ means the event is impossible, and a probability of $1$ means it is certain to happen. In both cases there is nothing left to guess.
+
+Everything in between is **uncertainty**. The closer a probability is to $0.5$, the less we know: at $0.5$ the event is as likely to happen as not, like a coin flip. A probability of $0.95$ or $0.05$ still leaves some doubt, but we can act with a lot of confidence.
+
+**Information moves probabilities toward the extremes.** As we learn more, we can say with greater confidence whether something will or will not happen. This is why businesses collect data: good information reduces uncertainty.
+
+```{=html}
+<figure class="bs-probscale" aria-label="Probability scale from 0 (impossible) to 1 (certain), with the loan example: 0.02 with excellent credit history, 0.10 with no information, 0.70 after three missed payments">
+<svg viewBox="0 0 700 150" width="100%" role="img">
+  <defs><linearGradient id="bsScaleGrad" x1="0" x2="1">
+    <stop offset="0" stop-color="var(--bs-part)"/><stop offset="0.5" stop-color="var(--bs-paper-3)"/><stop offset="1" stop-color="var(--bs-part)"/>
+  </linearGradient></defs>
+  <rect x="20" y="66" width="660" height="12" rx="6" fill="url(#bsScaleGrad)"/>
+  <g font-family="Inter, sans-serif" fill="var(--bs-ink)">
+    <!-- 0.10 above -->
+    <line x1="86" y1="40" x2="86" y2="66" stroke="var(--bs-ink)" stroke-width="2"/>
+    <text x="86" y="18" font-size="13" font-weight="700" text-anchor="middle">0.10</text>
+    <text x="86" y="34" font-size="11.5" fill="var(--bs-ink-2)" text-anchor="middle">no information yet</text>
+    <!-- 0.70 above -->
+    <line x1="482" y1="40" x2="482" y2="66" stroke="var(--bs-ink)" stroke-width="2"/>
+    <text x="482" y="18" font-size="13" font-weight="700" text-anchor="middle">0.70</text>
+    <text x="482" y="34" font-size="11.5" fill="var(--bs-ink-2)" text-anchor="middle">missed three payments</text>
+    <!-- 0.02 below -->
+    <line x1="33" y1="78" x2="33" y2="100" stroke="var(--bs-ink)" stroke-width="2"/>
+    <text x="38" y="114" font-size="13" font-weight="700">0.02</text>
+    <text x="74" y="114" font-size="11.5" fill="var(--bs-ink-2)">excellent credit history</text>
+    <!-- ends -->
+    <text x="20" y="142" font-size="12" font-weight="600">0 · impossible</text>
+    <text x="350" y="142" font-size="12" font-weight="600" text-anchor="middle">0.5 · most uncertain</text>
+    <text x="680" y="142" font-size="12" font-weight="600" text-anchor="end">1 · certain</text>
+  </g>
+</svg>
+</figure>
+```
+
+::: callout-example
+**Example:** A bank is deciding whether to approve a loan. Before it knows anything about the applicant, it uses the default rate for all borrowers, so $P(\text{default}) = 0.10$. If the applicant has an excellent credit history, the estimate drops to about $0.02$, close to certain the loan will be repaid. If instead the applicant has missed three payments on other loans, it rises to about $0.70$, much closer to certain default. In each case, new information pushed the probability away from the uncertain middle and toward one of the extremes. Once the loan is fully repaid, the uncertainty is gone: $P(\text{default}) = 0$.
+:::
+
+### Requirement 2: Mutually Exclusive and Exhaustive Outcomes {.unnumbered}
+
+The second requirement is about how the probabilities of different outcomes fit together.
+
+- **Mutually exclusive** events do not share any outcomes: if one happens, the others cannot.
+- **Exhaustive** events cover every outcome in the sample space: one of them must happen.
+
+When a list of events is both mutually exclusive and exhaustive, exactly one of them will occur. Their probabilities must therefore add up to $1$: something must happen, and only one thing can.
+
+::: callout-example
+**Example:** Consider the four suits in a deck of cards (*hearts, diamonds, clubs, spades*). They are mutually exclusive, because a card cannot belong to two suits, and exhaustive, because every card belongs to one of them. Their probabilities add up to $1$:
+
+$$P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = 4 \times \frac{13}{52} = 1$$
+
+Both conditions matter. Hearts and spades alone are mutually exclusive but not exhaustive, so $P(\text{hearts}) + P(\text{spades}) = 0.5$ falls short of $1$. Hearts and red cards are not mutually exclusive, since every heart is also red, so adding $P(\text{hearts}) + P(\text{red}) = 0.25 + 0.5 = 0.75$ counts the hearts twice.
 :::
 
 ## Venn Diagram

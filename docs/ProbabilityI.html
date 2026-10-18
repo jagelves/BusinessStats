@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-ebc9bf21172222eecf4329b9f87ba86d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0aef34cf2d3591846d4f16223d929ccf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-09a59e636370c932ef613cf5222896e9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
@@ -337,14 +337,15 @@ window.Quarto = {
   <li><a href="#what-is-a-probability-frequentist-vs.-bayesian" id="toc-what-is-a-probability-frequentist-vs.-bayesian" class="nav-link active" data-scroll-target="#what-is-a-probability-frequentist-vs.-bayesian"><span class="header-section-number">8.1</span> What Is a Probability? Frequentist vs.&nbsp;Bayesian</a></li>
   <li><a href="#experiments-and-sets" id="toc-experiments-and-sets" class="nav-link" data-scroll-target="#experiments-and-sets"><span class="header-section-number">8.2</span> Experiments and Sets</a></li>
   <li><a href="#basic-probability-concepts" id="toc-basic-probability-concepts" class="nav-link" data-scroll-target="#basic-probability-concepts"><span class="header-section-number">8.3</span> Basic Probability Concepts</a></li>
-  <li><a href="#venn-diagram" id="toc-venn-diagram" class="nav-link" data-scroll-target="#venn-diagram"><span class="header-section-number">8.4</span> Venn Diagram</a></li>
-  <li><a href="#probability-rules" id="toc-probability-rules" class="nav-link" data-scroll-target="#probability-rules"><span class="header-section-number">8.5</span> Probability Rules</a></li>
-  <li><a href="#contingency-tables" id="toc-contingency-tables" class="nav-link" data-scroll-target="#contingency-tables"><span class="header-section-number">8.6</span> Contingency Tables</a></li>
-  <li><a href="#counting-rules" id="toc-counting-rules" class="nav-link" data-scroll-target="#counting-rules"><span class="header-section-number">8.7</span> Counting Rules</a></li>
-  <li><a href="#probability-in-excel" id="toc-probability-in-excel" class="nav-link" data-scroll-target="#probability-in-excel"><span class="header-section-number">8.8</span> Probability in Excel</a></li>
-  <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">8.9</span> Excel Function Summary</a></li>
-  <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">8.10</span> Chapter Summary Cheat Sheet</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.11</span> Exercises</a></li>
+  <li><a href="#probability-requirements" id="toc-probability-requirements" class="nav-link" data-scroll-target="#probability-requirements"><span class="header-section-number">8.4</span> Probability Requirements</a></li>
+  <li><a href="#venn-diagram" id="toc-venn-diagram" class="nav-link" data-scroll-target="#venn-diagram"><span class="header-section-number">8.5</span> Venn Diagram</a></li>
+  <li><a href="#probability-rules" id="toc-probability-rules" class="nav-link" data-scroll-target="#probability-rules"><span class="header-section-number">8.6</span> Probability Rules</a></li>
+  <li><a href="#contingency-tables" id="toc-contingency-tables" class="nav-link" data-scroll-target="#contingency-tables"><span class="header-section-number">8.7</span> Contingency Tables</a></li>
+  <li><a href="#counting-rules" id="toc-counting-rules" class="nav-link" data-scroll-target="#counting-rules"><span class="header-section-number">8.8</span> Counting Rules</a></li>
+  <li><a href="#probability-in-excel" id="toc-probability-in-excel" class="nav-link" data-scroll-target="#probability-in-excel"><span class="header-section-number">8.9</span> Probability in Excel</a></li>
+  <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">8.10</span> Excel Function Summary</a></li>
+  <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">8.11</span> Chapter Summary Cheat Sheet</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.12</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -419,21 +420,73 @@ details summary {
 </div>
 <p>For example, if <span class="math inline">\(18\)</span> of a company’s last <span class="math inline">\(600\)</span> shipments arrived late, the probability that a shipment arrives late is about <span class="math inline">\(18/600=0.03\)</span>.</p>
 <p><strong>Subjective method.</strong> When there is no repeatable experiment and little or no data, a probability is assigned by reasoned judgment: an analyst or expert weighs the available evidence and experience. A venture capitalist who puts the chance of a startup’s success at <span class="math inline">\(20\%\)</span> is using this method. Subjective probabilities match the Bayesian view; they are not frequentist probabilities, because the event cannot be repeated to check them.</p>
-<p>Whichever method we use, the probability of A satisfies <span class="math inline">\(0\leq P(A) \leq1\)</span>. Since A is a subset of S, the number of elements in A is at most that of the sample space S. Hence, if A=S, then P(A)=1. If A is a null event (i.e., has no elements) P(A)=0 and is impossible. We can conclude that P(A) ranges from 0 to 1, inclusive.</p>
-<p>In many cases, we analyze how multiple events interact within the sample space, particularly when they either exclude each other or collectively cover all possible outcomes. <strong>Mutually exclusive</strong> events do not share any common outcomes. The occurrence of one event precludes the occurrence of others. <strong>Exhaustive</strong> events include all outcomes in the sample space.</p>
-<p>Given these concepts it follows that the sum of the probabilities of a list of <strong>mutually exclusive</strong> and <strong>exhaustive</strong> events equals <span class="math inline">\(1\)</span>. Formally, we state: <span class="math inline">\(\sum P(x_i)=1\)</span>, where <span class="math inline">\(x_i\)</span> is outcome <span class="math inline">\(i\)</span>.</p>
 <div class="callout-example">
-<p><strong>Example:</strong> Let’s consider a standard deck of 52 playing cards to illustrate the key probability concepts.</p>
-<p>If we randomly draw one card from a standard deck, the sample space <span class="math inline">\(S\)</span> consists of all 52 cards. Suppose we define event <span class="math inline">\(A\)</span> as <em>drawing a red card</em>. Since there are 26 red cards, the probability is:</p>
+<p><strong>Example:</strong> Draw one card at random from a standard deck of <span class="math inline">\(52\)</span> cards. Every card is equally likely, so we can use the classical method. Let <span class="math inline">\(A\)</span> be the event of drawing a red card. There are <span class="math inline">\(26\)</span> red cards, so</p>
 <p><span class="math display">\[P(A) = \frac{\text{Number of red cards}}{\text{Total number of cards}} = \frac{26}{52} = 0.5\]</span></p>
-<p>Since <span class="math inline">\(( 0 \leq P(A) \leq 1)\)</span>, this follows the basic probability rule. Next let’s consider mutually exclusive events. Let event <span class="math inline">\(B\)</span> be drawing a heart and event <span class="math inline">\(C\)</span> be drawing a spade. Since a single drawn card cannot be both a heart and a spade, these events are mutually exclusive.</p>
-<p>The four suits (<em>hearts, diamonds, clubs, spades</em>) form an exhaustive set, because every card belongs to exactly one suit. The sum of their probabilities equals 1:</p>
-<p><span class="math display">\[P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = \frac{13}{52} + \frac{13}{52} + \frac{13}{52} + \frac{13}{52} = 1\]</span></p>
-<p>Note that this also satisfies the rule <span class="math inline">\(\sum P(x_i) = 1\)</span>, where <span class="math inline">\(x_i\)</span> represents each possible outcome (suit).</p>
 </div>
 </section>
-<section id="venn-diagram" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="venn-diagram"><span class="header-section-number">8.4</span> Venn Diagram</h2>
+<section id="probability-requirements" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="probability-requirements"><span class="header-section-number">8.4</span> Probability Requirements</h2>
+<p>Whichever method we use to assign them, probabilities must satisfy two requirements. Any set of numbers that breaks either one is not a valid set of probabilities.</p>
+<div class="callout-formula">
+<p><strong>THE TWO REQUIREMENTS OF PROBABILITY</strong></p>
+<ol type="1">
+<li>Every probability is between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>: <span class="math display">\[0 \leq P(A) \leq 1\]</span></li>
+<li>The probabilities of a set of mutually exclusive and exhaustive outcomes add up to <span class="math inline">\(1\)</span>: <span class="math display">\[\sum P(x_i) = 1\]</span> where <span class="math inline">\(x_i\)</span> is outcome <span class="math inline">\(i\)</span>.</li>
+</ol>
+</div>
+<section id="requirement-1-from-certainty-to-uncertainty" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="requirement-1-from-certainty-to-uncertainty">Requirement 1: From Certainty to Uncertainty</h3>
+<p>The two ends of the scale represent <strong>certainty</strong>. A probability of <span class="math inline">\(0\)</span> means the event is impossible, and a probability of <span class="math inline">\(1\)</span> means it is certain to happen. In both cases there is nothing left to guess.</p>
+<p>Everything in between is <strong>uncertainty</strong>. The closer a probability is to <span class="math inline">\(0.5\)</span>, the less we know: at <span class="math inline">\(0.5\)</span> the event is as likely to happen as not, like a coin flip. A probability of <span class="math inline">\(0.95\)</span> or <span class="math inline">\(0.05\)</span> still leaves some doubt, but we can act with a lot of confidence.</p>
+<p><strong>Information moves probabilities toward the extremes.</strong> As we learn more, we can say with greater confidence whether something will or will not happen. This is why businesses collect data: good information reduces uncertainty.</p>
+<figure class="bs-probscale figure" aria-label="Probability scale from 0 (impossible) to 1 (certain), with the loan example: 0.02 with excellent credit history, 0.10 with no information, 0.70 after three missed payments">
+<svg viewbox="0 0 700 150" width="100%" role="img">
+  <defs><lineargradient id="bsScaleGrad" x1="0" x2="1">
+    <stop offset="0" stop-color="var(--bs-part)"></stop><stop offset="0.5" stop-color="var(--bs-paper-3)"></stop><stop offset="1" stop-color="var(--bs-part)"></stop>
+  </lineargradient></defs>
+  <rect x="20" y="66" width="660" height="12" rx="6" fill="url(#bsScaleGrad)"></rect>
+  <g font-family="Inter, sans-serif" fill="var(--bs-ink)">
+    <!-- 0.10 above -->
+    <line x1="86" y1="40" x2="86" y2="66" stroke="var(--bs-ink)" stroke-width="2"></line>
+    <text x="86" y="18" font-size="13" font-weight="700" text-anchor="middle">0.10</text>
+    <text x="86" y="34" font-size="11.5" fill="var(--bs-ink-2)" text-anchor="middle">no information yet</text>
+    <!-- 0.70 above -->
+    <line x1="482" y1="40" x2="482" y2="66" stroke="var(--bs-ink)" stroke-width="2"></line>
+    <text x="482" y="18" font-size="13" font-weight="700" text-anchor="middle">0.70</text>
+    <text x="482" y="34" font-size="11.5" fill="var(--bs-ink-2)" text-anchor="middle">missed three payments</text>
+    <!-- 0.02 below -->
+    <line x1="33" y1="78" x2="33" y2="100" stroke="var(--bs-ink)" stroke-width="2"></line>
+    <text x="38" y="114" font-size="13" font-weight="700">0.02</text>
+    <text x="74" y="114" font-size="11.5" fill="var(--bs-ink-2)">excellent credit history</text>
+    <!-- ends -->
+    <text x="20" y="142" font-size="12" font-weight="600">0 · impossible</text>
+    <text x="350" y="142" font-size="12" font-weight="600" text-anchor="middle">0.5 · most uncertain</text>
+    <text x="680" y="142" font-size="12" font-weight="600" text-anchor="end">1 · certain</text>
+  </g>
+</svg>
+</figure>
+<div class="callout-example">
+<p><strong>Example:</strong> A bank is deciding whether to approve a loan. Before it knows anything about the applicant, it uses the default rate for all borrowers, so <span class="math inline">\(P(\text{default}) = 0.10\)</span>. If the applicant has an excellent credit history, the estimate drops to about <span class="math inline">\(0.02\)</span>, close to certain the loan will be repaid. If instead the applicant has missed three payments on other loans, it rises to about <span class="math inline">\(0.70\)</span>, much closer to certain default. In each case, new information pushed the probability away from the uncertain middle and toward one of the extremes. Once the loan is fully repaid, the uncertainty is gone: <span class="math inline">\(P(\text{default}) = 0\)</span>.</p>
+</div>
+</section>
+<section id="requirement-2-mutually-exclusive-and-exhaustive-outcomes" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="requirement-2-mutually-exclusive-and-exhaustive-outcomes">Requirement 2: Mutually Exclusive and Exhaustive Outcomes</h3>
+<p>The second requirement is about how the probabilities of different outcomes fit together.</p>
+<ul>
+<li><strong>Mutually exclusive</strong> events do not share any outcomes: if one happens, the others cannot.</li>
+<li><strong>Exhaustive</strong> events cover every outcome in the sample space: one of them must happen.</li>
+</ul>
+<p>When a list of events is both mutually exclusive and exhaustive, exactly one of them will occur. Their probabilities must therefore add up to <span class="math inline">\(1\)</span>: something must happen, and only one thing can.</p>
+<div class="callout-example">
+<p><strong>Example:</strong> Consider the four suits in a deck of cards (<em>hearts, diamonds, clubs, spades</em>). They are mutually exclusive, because a card cannot belong to two suits, and exhaustive, because every card belongs to one of them. Their probabilities add up to <span class="math inline">\(1\)</span>:</p>
+<p><span class="math display">\[P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = 4 \times \frac{13}{52} = 1\]</span></p>
+<p>Both conditions matter. Hearts and spades alone are mutually exclusive but not exhaustive, so <span class="math inline">\(P(\text{hearts}) + P(\text{spades}) = 0.5\)</span> falls short of <span class="math inline">\(1\)</span>. Hearts and red cards are not mutually exclusive, since every heart is also red, so adding <span class="math inline">\(P(\text{hearts}) + P(\text{red}) = 0.25 + 0.5 = 0.75\)</span> counts the hearts twice.</p>
+</div>
+</section>
+</section>
+<section id="venn-diagram" class="level2" data-number="8.5">
+<h2 data-number="8.5" class="anchored" data-anchor-id="venn-diagram"><span class="header-section-number">8.5</span> Venn Diagram</h2>
 <p>A Venn diagram is a visual representation of sets and their relationships. It consists of overlapping circles, each representing a set. Below is an example:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -456,8 +509,8 @@ details summary {
 </div>
 <p>The overlapping region of two sets contains elements that belong to both sets. This region is called the <strong>intersection</strong>. The intersection contains elements that are Hearts and Jacks (i.e., the jack of hearts). Formally, we denote the intersection by <span class="math inline">\((Hearts \cap Jacks)\)</span>.</p>
 </section>
-<section id="probability-rules" class="level2" data-number="8.5">
-<h2 data-number="8.5" class="anchored" data-anchor-id="probability-rules"><span class="header-section-number">8.5</span> Probability Rules</h2>
+<section id="probability-rules" class="level2" data-number="8.6">
+<h2 data-number="8.6" class="anchored" data-anchor-id="probability-rules"><span class="header-section-number">8.6</span> Probability Rules</h2>
 <p>Probability rules help us quantify uncertainty, avoid cognitive biases, and make rational predictions based on available data. These rules allow us to make reliable decisions. Below we introduce some useful rules.</p>
 <section id="complement-rule" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="complement-rule">Complement Rule</h3>
@@ -561,8 +614,8 @@ details summary {
 </div>
 </section>
 </section>
-<section id="contingency-tables" class="level2" data-number="8.6">
-<h2 data-number="8.6" class="anchored" data-anchor-id="contingency-tables"><span class="header-section-number">8.6</span> Contingency Tables</h2>
+<section id="contingency-tables" class="level2" data-number="8.7">
+<h2 data-number="8.7" class="anchored" data-anchor-id="contingency-tables"><span class="header-section-number">8.7</span> Contingency Tables</h2>
 <p>A <strong>contingency table</strong> (or cross-tabulation) summarizes the relationship between two or events (or variables). It is particularly helpful when analyzing frequencies of events and there relationship to other events.</p>
 <p>The contingency table below shows the frequency of event A and B occurring/not occurring.</p>
 <div class="bs-crosstab">
@@ -634,8 +687,8 @@ details summary {
 </div>
 <p>In the middle of the table we have the joint probabilities or intersections of events (i.e., <span class="math inline">\(A \cap B\)</span>, <span class="math inline">\(A \cap B^c\)</span>, etc.). The values in the totals columns or rows are the probabilities of each event happening (i.e., <span class="math inline">\(P(A)\)</span>, <span class="math inline">\(P(B^c)\)</span>, etc.). We call these probabilities <strong>marginal probabilities</strong> since they reside at the margin of the table.</p>
 </section>
-<section id="counting-rules" class="level2" data-number="8.7">
-<h2 data-number="8.7" class="anchored" data-anchor-id="counting-rules"><span class="header-section-number">8.7</span> Counting Rules</h2>
+<section id="counting-rules" class="level2" data-number="8.8">
+<h2 data-number="8.8" class="anchored" data-anchor-id="counting-rules"><span class="header-section-number">8.8</span> Counting Rules</h2>
 <p>Counting rules are useful in probability as they allow us to determine the number of ways events can occur without listing out every possibility. Essentially, they facilitate the enumeration of possible outcomes for large sets.</p>
 <section id="the-fundamental-counting-principle" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="the-fundamental-counting-principle">The Fundamental Counting Principle</h3>
@@ -728,16 +781,16 @@ details summary {
 </div>
 </section>
 </section>
-<section id="probability-in-excel" class="level2" data-number="8.8">
-<h2 data-number="8.8" class="anchored" data-anchor-id="probability-in-excel"><span class="header-section-number">8.8</span> Probability in Excel</h2>
+<section id="probability-in-excel" class="level2" data-number="8.9">
+<h2 data-number="8.9" class="anchored" data-anchor-id="probability-in-excel"><span class="header-section-number">8.9</span> Probability in Excel</h2>
 <p>Excel has a collection of functions that make counting and probability calculations straightforward.</p>
 <p><strong>Contingency tables:</strong> Use a <strong>PivotTable</strong> (<code>Insert → PivotTable</code>) to build a contingency table from raw data. Place one variable in the Rows area, the other in the Columns area, and any field in the Values area as a count. To turn the counts into a joint probability table, use <code>Value Field Settings → Show Values As → % of Grand Total</code>. You can also count a specific combination of conditions directly with <code>=COUNTIFS(range1, criteria1, range2, criteria2)</code>.</p>
 <p><strong>Factorial:</strong> The <code>=FACT(number)</code> function returns the factorial of a number. For example, <code>=FACT(5)</code> returns <span class="math inline">\(120\)</span>.</p>
 <p><strong>Combinations:</strong> The <code>=COMBIN(number, number_chosen)</code> function counts the number of combinations without repetition. Use <code>=COMBINA(number, number_chosen)</code> when repetition is allowed.</p>
 <p><strong>Permutations:</strong> The <code>=PERMUT(number, number_chosen)</code> function counts the number of permutations without repetition. Use <code>=PERMUTATIONA(number, number_chosen)</code> when repetition is allowed.</p>
 </section>
-<section id="excel-function-summary" class="level2" data-number="8.9">
-<h2 data-number="8.9" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">8.9</span> Excel Function Summary</h2>
+<section id="excel-function-summary" class="level2" data-number="8.10">
+<h2 data-number="8.10" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">8.10</span> Excel Function Summary</h2>
 <p>Below is a list of the Excel functions used in this section:</p>
 <ul>
 <li><p><code>=COUNTIFS(range1, criteria1, ...)</code> counts the observations that satisfy several conditions at once, useful for building contingency tables.</p></li>
@@ -746,8 +799,8 @@ details summary {
 <li><p><code>=PERMUT(number, number_chosen)</code> returns the number of permutations without repetition; <code>=PERMUTATIONA(number, number_chosen)</code> allows repetition.</p></li>
 </ul>
 </section>
-<section id="chapter-summary-cheat-sheet" class="level2" data-number="8.10">
-<h2 data-number="8.10" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">8.10</span> Chapter Summary Cheat Sheet</h2>
+<section id="chapter-summary-cheat-sheet" class="level2" data-number="8.11">
+<h2 data-number="8.11" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">8.11</span> Chapter Summary Cheat Sheet</h2>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -758,8 +811,8 @@ details summary {
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="8.11">
-<h2 data-number="8.11" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.11</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="8.12">
+<h2 data-number="8.12" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.12</span> Exercises</h2>
 <p>The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating simple probabilities.</p></li>
