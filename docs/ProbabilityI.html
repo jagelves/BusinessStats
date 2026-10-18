@@ -337,7 +337,7 @@ window.Quarto = {
   <li><a href="#what-is-a-probability-frequentist-vs.-bayesian" id="toc-what-is-a-probability-frequentist-vs.-bayesian" class="nav-link active" data-scroll-target="#what-is-a-probability-frequentist-vs.-bayesian"><span class="header-section-number">8.1</span> What Is a Probability? Frequentist vs.&nbsp;Bayesian</a></li>
   <li><a href="#experiments-and-sets" id="toc-experiments-and-sets" class="nav-link" data-scroll-target="#experiments-and-sets"><span class="header-section-number">8.2</span> Experiments and Sets</a></li>
   <li><a href="#basic-probability-concepts" id="toc-basic-probability-concepts" class="nav-link" data-scroll-target="#basic-probability-concepts"><span class="header-section-number">8.3</span> Basic Probability Concepts</a></li>
-  <li><a href="#probability-requirements" id="toc-probability-requirements" class="nav-link" data-scroll-target="#probability-requirements"><span class="header-section-number">8.4</span> Probability Requirements</a></li>
+  <li><a href="#basic-requirements-for-assigning-probabilities" id="toc-basic-requirements-for-assigning-probabilities" class="nav-link" data-scroll-target="#basic-requirements-for-assigning-probabilities"><span class="header-section-number">8.4</span> Basic Requirements for Assigning Probabilities</a></li>
   <li><a href="#venn-diagram" id="toc-venn-diagram" class="nav-link" data-scroll-target="#venn-diagram"><span class="header-section-number">8.5</span> Venn Diagram</a></li>
   <li><a href="#probability-rules" id="toc-probability-rules" class="nav-link" data-scroll-target="#probability-rules"><span class="header-section-number">8.6</span> Probability Rules</a></li>
   <li><a href="#contingency-tables" id="toc-contingency-tables" class="nav-link" data-scroll-target="#contingency-tables"><span class="header-section-number">8.7</span> Contingency Tables</a></li>
@@ -425,14 +425,14 @@ details summary {
 <p><span class="math display">\[P(A) = \frac{\text{Number of red cards}}{\text{Total number of cards}} = \frac{26}{52} = 0.5\]</span></p>
 </div>
 </section>
-<section id="probability-requirements" class="level2" data-number="8.4">
-<h2 data-number="8.4" class="anchored" data-anchor-id="probability-requirements"><span class="header-section-number">8.4</span> Probability Requirements</h2>
-<p>Whichever method we use to assign them, probabilities must satisfy two requirements. Any set of numbers that breaks either one is not a valid set of probabilities.</p>
+<section id="basic-requirements-for-assigning-probabilities" class="level2" data-number="8.4">
+<h2 data-number="8.4" class="anchored" data-anchor-id="basic-requirements-for-assigning-probabilities"><span class="header-section-number">8.4</span> Basic Requirements for Assigning Probabilities</h2>
+<p>Whichever method we use to assign probabilities (classical, relative frequency, or subjective), the result must satisfy two basic requirements. Any set of numbers that breaks either one is not a valid set of probabilities.</p>
 <div class="callout-formula">
-<p><strong>THE TWO REQUIREMENTS OF PROBABILITY</strong></p>
+<p><strong>BASIC REQUIREMENTS FOR ASSIGNING PROBABILITIES</strong></p>
 <ol type="1">
 <li>Every probability is between <span class="math inline">\(0\)</span> and <span class="math inline">\(1\)</span>: <span class="math display">\[0 \leq P(A) \leq 1\]</span></li>
-<li>The probabilities of a set of mutually exclusive and exhaustive outcomes add up to <span class="math inline">\(1\)</span>: <span class="math display">\[\sum P(x_i) = 1\]</span> where <span class="math inline">\(x_i\)</span> is outcome <span class="math inline">\(i\)</span>.</li>
+<li>The probabilities of all the outcomes in the sample space add up to <span class="math inline">\(1\)</span>: <span class="math display">\[\sum P(x_i) = 1\]</span> where <span class="math inline">\(x_i\)</span> is outcome <span class="math inline">\(i\)</span> of the experiment.</li>
 </ol>
 </div>
 <section id="requirement-1-from-certainty-to-uncertainty" class="level3 unnumbered">
@@ -447,19 +447,15 @@ details summary {
   </lineargradient></defs>
   <rect x="20" y="66" width="660" height="12" rx="6" fill="url(#bsScaleGrad)"></rect>
   <g font-family="Inter, sans-serif" fill="var(--bs-ink)">
-    <!-- 0.10 above -->
     <line x1="86" y1="40" x2="86" y2="66" stroke="var(--bs-ink)" stroke-width="2"></line>
     <text x="86" y="18" font-size="13" font-weight="700" text-anchor="middle">0.10</text>
     <text x="86" y="34" font-size="11.5" fill="var(--bs-ink-2)" text-anchor="middle">no information yet</text>
-    <!-- 0.70 above -->
     <line x1="482" y1="40" x2="482" y2="66" stroke="var(--bs-ink)" stroke-width="2"></line>
     <text x="482" y="18" font-size="13" font-weight="700" text-anchor="middle">0.70</text>
     <text x="482" y="34" font-size="11.5" fill="var(--bs-ink-2)" text-anchor="middle">missed three payments</text>
-    <!-- 0.02 below -->
     <line x1="33" y1="78" x2="33" y2="100" stroke="var(--bs-ink)" stroke-width="2"></line>
     <text x="38" y="114" font-size="13" font-weight="700">0.02</text>
     <text x="74" y="114" font-size="11.5" fill="var(--bs-ink-2)">excellent credit history</text>
-    <!-- ends -->
     <text x="20" y="142" font-size="12" font-weight="600">0 · impossible</text>
     <text x="350" y="142" font-size="12" font-weight="600" text-anchor="middle">0.5 · most uncertain</text>
     <text x="680" y="142" font-size="12" font-weight="600" text-anchor="end">1 · certain</text>
@@ -470,14 +466,15 @@ details summary {
 <p><strong>Example:</strong> A bank is deciding whether to approve a loan. Before it knows anything about the applicant, it uses the default rate for all borrowers, so <span class="math inline">\(P(\text{default}) = 0.10\)</span>. If the applicant has an excellent credit history, the estimate drops to about <span class="math inline">\(0.02\)</span>, close to certain the loan will be repaid. If instead the applicant has missed three payments on other loans, it rises to about <span class="math inline">\(0.70\)</span>, much closer to certain default. In each case, new information pushed the probability away from the uncertain middle and toward one of the extremes. Once the loan is fully repaid, the uncertainty is gone: <span class="math inline">\(P(\text{default}) = 0\)</span>.</p>
 </div>
 </section>
-<section id="requirement-2-mutually-exclusive-and-exhaustive-outcomes" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="requirement-2-mutually-exclusive-and-exhaustive-outcomes">Requirement 2: Mutually Exclusive and Exhaustive Outcomes</h3>
-<p>The second requirement is about how the probabilities of different outcomes fit together.</p>
+<section id="requirement-2-the-probabilities-add-up-to-1" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="requirement-2-the-probabilities-add-up-to-1">Requirement 2: The Probabilities Add Up to 1</h3>
+<p>When we run an experiment, one of its outcomes must occur. The probability that <em>something</em> in the sample space happens is therefore <span class="math inline">\(1\)</span>, and that total has to be shared among the outcomes. If the probabilities added up to less than <span class="math inline">\(1\)</span>, we would be leaving room for nothing to happen; if they added up to more, we would be counting some possibility more than once.</p>
+<p>The outcomes of an experiment have two properties that make this work:</p>
 <ul>
-<li><strong>Mutually exclusive</strong> events do not share any outcomes: if one happens, the others cannot.</li>
-<li><strong>Exhaustive</strong> events cover every outcome in the sample space: one of them must happen.</li>
+<li>They are <strong>mutually exclusive</strong>: they do not overlap, so if one happens the others cannot.</li>
+<li>They are <strong>exhaustive</strong>: together they cover every possibility in the sample space, so one of them must happen.</li>
 </ul>
-<p>When a list of events is both mutually exclusive and exhaustive, exactly one of them will occur. Their probabilities must therefore add up to <span class="math inline">\(1\)</span>: something must happen, and only one thing can.</p>
+<p>The same logic applies to any list of events, not just individual outcomes. Whenever a list of events is both mutually exclusive and exhaustive, exactly one of them will occur, so their probabilities add up to <span class="math inline">\(1\)</span>: something must happen, and only one thing can.</p>
 <div class="callout-example">
 <p><strong>Example:</strong> Consider the four suits in a deck of cards (<em>hearts, diamonds, clubs, spades</em>). They are mutually exclusive, because a card cannot belong to two suits, and exhaustive, because every card belongs to one of them. Their probabilities add up to <span class="math inline">\(1\)</span>:</p>
 <p><span class="math display">\[P(\text{hearts}) + P(\text{diamonds}) + P(\text{clubs}) + P(\text{spades}) = 4 \times \frac{13}{52} = 1\]</span></p>
