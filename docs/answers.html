@@ -1967,6 +1967,42 @@ window.Quarto = {
 <h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-3-question-1-5">Exercise 3, question 1</h3>
 <p><a href="ProbabilityI.html#exercise-3" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
+<p><em>Rearranging the addition rule,</em> <span class="math display">\[P(A \cap B)=P(A)+P(B)-P(A \cup B)=0.5+0.4-0.7=0.2\]</span> <em>Using the conditional probability formula,</em> <span class="math display">\[P(A|B)=\frac{P(A \cap B)}{P(B)}=\frac{0.2}{0.4}=0.5 \qquad P(B|A)=\frac{P(A \cap B)}{P(A)}=\frac{0.2}{0.5}=0.4\]</span> <em>The events are not mutually exclusive since</em> <span class="math inline">\(P(A \cap B)=0.2 \neq 0\)</span>. <em>They are independent since</em> <span class="math inline">\(P(A|B)=0.5=P(A)\)</span> <em>(equivalently,</em> <span class="math inline">\(P(A)P(B)=0.5 \times 0.4=0.2=P(A \cap B)\)</span><em>).</em></p>
+</div>
+</section>
+<section id="exercise-3-question-2-4" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-3-question-2-4">Exercise 3, question 2</h3>
+<p><a href="ProbabilityI.html#exercise-3" class="bs-answer-back">Back to the question</a></p>
+<div class="bs-answer-body">
+<p><em>Since the events are independent,</em> <span class="math display">\[P(A \cap B)=P(A)P(B)=0.3 \times 0.6=0.18\]</span> <em>From the addition rule,</em> <span class="math display">\[P(A \cup B)=0.3+0.6-0.18=0.72\]</span> <em>Independence also means that knowing</em> <span class="math inline">\(B\)</span> <em>happened does not change the probability of</em> <span class="math inline">\(A\)</span><em>, so</em> <span class="math inline">\(P(A|B)=P(A)=0.3\)</span><em>. Finally, by De Morgan’s law,</em> <span class="math inline">\(A^c \cap B^c=(A \cup B)^c\)</span><em>, so</em> <span class="math display">\[P(A^c \cap B^c)=1-P(A \cup B)=1-0.72=0.28\]</span> <em>As a check, the complements of independent events are also independent:</em> <span class="math inline">\(P(A^c)P(B^c)=0.7 \times 0.4=0.28\)</span><em>.</em></p>
+</div>
+</section>
+<section id="exercise-3-question-3-1" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-3-question-3-1">Exercise 3, question 3</h3>
+<p><a href="ProbabilityI.html#exercise-3" class="bs-answer-back">Back to the question</a></p>
+<div class="bs-answer-body">
+<p><em>Mutually exclusive events cannot happen together, so</em> <span class="math inline">\(P(A \cap B)=0\)</span><em>. The addition rule then simplifies to</em> <span class="math display">\[P(A \cup B)=P(A)+P(B)=0.25+0.45=0.70\]</span> <em>Since</em> <span class="math inline">\(A\)</span> <em>and</em> <span class="math inline">\(B\)</span> <em>never occur together,</em> <span class="math inline">\(P(A|B)=0/0.45=0\)</span><em>. The probability that neither occurs is the complement of the union:</em> <span class="math inline">\(1-0.70=0.30\)</span><em>.</em></p>
+<p><em>The events are <strong>not</strong> independent. If</em> <span class="math inline">\(B\)</span> <em>happens, the probability of</em> <span class="math inline">\(A\)</span> <em>drops from</em> <span class="math inline">\(0.25\)</span> <em>to</em> <span class="math inline">\(0\)</span><em>, so knowing</em> <span class="math inline">\(B\)</span> <em>changes the probability of</em> <span class="math inline">\(A\)</span><em>. Mutually exclusive events (with positive probabilities) are always dependent.</em></p>
+</div>
+</section>
+<section id="exercise-3-question-4" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-3-question-4">Exercise 3, question 4</h3>
+<p><a href="ProbabilityI.html#exercise-3" class="bs-answer-back">Back to the question</a></p>
+<div class="bs-answer-body">
+<p><em>In short,</em> <span class="math inline">\(P(M)=0.60\)</span>, <span class="math inline">\(P(P)=0.05\)</span>, <em>and</em> <span class="math inline">\(P(M \cap P)=0.02\)</span><em>. From the addition rule,</em> <span class="math display">\[P(M \cup P)=0.60+0.05-0.02=0.63\]</span> <em>The probability that a mobile visitor buys is</em> <span class="math display">\[P(P|M)=\frac{P(M \cap P)}{P(M)}=\frac{0.02}{0.60}=0.033\]</span> <em>Visitors who do not use a mobile phone make up</em> <span class="math inline">\(P(M^c)=0.40\)</span> <em>of the traffic, and they account for the remaining</em> <span class="math inline">\(0.05-0.02=0.03\)</span> <em>of purchases, so</em> <span class="math display">\[P(P|M^c)=\frac{0.03}{0.40}=0.075\]</span> <em>Purchasing is not independent of the device:</em> <span class="math inline">\(P(P|M)=0.033 \neq 0.05=P(P)\)</span><em>. Desktop visitors are more than twice as likely to buy as mobile visitors.</em></p>
+</div>
+</section>
+<section id="exercise-3-question-5" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-3-question-5">Exercise 3, question 5</h3>
+<p><a href="ProbabilityI.html#exercise-3" class="bs-answer-back">Back to the question</a></p>
+<div class="bs-answer-body">
+<p><em>Since the failures are independent,</em> <span class="math display">\[P(\text{both fail})=0.02 \times 0.02=0.0004\]</span> <em>“At least one is working” is the complement of “both fail”:</em> <span class="math display">\[P(\text{at least one works})=1-0.0004=0.9996\]</span> <em>“Exactly one fails” can happen in two mutually exclusive ways: the first fails and the second works, or the first works and the second fails. Adding them,</em> <span class="math display">\[P(\text{exactly one fails})=(0.02)(0.98)+(0.98)(0.02)=0.0392\]</span></p>
+</div>
+</section>
+<section id="exercise-4-question-1-4" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-4-question-1-4">Exercise 4, question 1</h3>
+<p><a href="ProbabilityI.html#exercise-4" class="bs-answer-back">Back to the question</a></p>
+<div class="bs-answer-body">
 <p><em>Below is the joint probability table. The</em> <span class="math inline">\(P(A)=0.26+0.34=0.6\)</span>, <span class="math inline">\(P(A \cap B)=0.26\)</span>, <span class="math inline">\(P(A|B)=0.26/0.4=0.65\)</span>, and <span class="math inline">\(P(B|A^c)=0.14/0.4=0.35\)</span>. Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are not independent since <span class="math inline">\(P(A) \neq P(A|B)\)</span>. The events are not mutually exclusive since <span class="math inline">\(P(A \cap B)=0.26 \neq 0\)</span>.</p>
 <table class="caption-top table">
 <tbody>
@@ -1998,9 +2034,9 @@ window.Quarto = {
 </table>
 </div>
 </section>
-<section id="exercise-4-question-1-4" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-4-question-1-4">Exercise 4, question 1</h3>
-<p><a href="ProbabilityI.html#exercise-4" class="bs-answer-back">Back to the question</a></p>
+<section id="exercise-5-question-1-2" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-5-question-1-2">Exercise 5, question 1</h3>
+<p><a href="ProbabilityI.html#exercise-5" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <p><em>The contingency table below shows the counts for each combination of Crash Type and Light Condition:</em></p>
 <table class="caption-top table">
@@ -2039,9 +2075,9 @@ window.Quarto = {
 </ul>
 </div>
 </section>
-<section id="exercise-4-question-2-4" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-4-question-2-4">Exercise 4, question 2</h3>
-<p><a href="ProbabilityI.html#exercise-4" class="bs-answer-back">Back to the question</a></p>
+<section id="exercise-5-question-2-1" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-5-question-2-1">Exercise 5, question 2</h3>
+<p><a href="ProbabilityI.html#exercise-5" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <p><em>a) The probability of a Head-On crash is:</em></p>
 <p><span class="math display">\[P(\text{Head-on})=\frac{166+108}{4858}=\frac{274}{4858}=0.056\]</span></p>
@@ -2052,30 +2088,30 @@ window.Quarto = {
 <p><em>In Excel these follow from the PivotTable counts. For example, part a) is <code>=COUNTIF(B:B,"Head-on") / COUNTA(B2:B4859)</code>.</em></p>
 </div>
 </section>
-<section id="exercise-4-question-3-3" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-4-question-3-3">Exercise 4, question 3</h3>
-<p><a href="ProbabilityI.html#exercise-4" class="bs-answer-back">Back to the question</a></p>
+<section id="exercise-5-question-3-1" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-5-question-3-1">Exercise 5, question 3</h3>
+<p><a href="ProbabilityI.html#exercise-5" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <p><em>The two variables are dependent since</em> <span class="math inline">\(P(\text{Head-on}\mid\text{Daylight}) \neq P(\text{Head-on})\)</span>, that is <span class="math inline">\(0.048 \neq 0.056\)</span>.</p>
-</div>
-</section>
-<section id="exercise-5-question-1-2" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-5-question-1-2">Exercise 5, question 1</h3>
-<p><a href="ProbabilityI.html#exercise-5" class="bs-answer-back">Back to the question</a></p>
-<div class="bs-answer-body">
-<p><span class="math inline">\(P(A^c)=1-P(A)=1-0.7=0.3\)</span>, <span class="math inline">\(P(A \cap B)=𝑃(𝐵|𝐴)𝑃(𝐴) = 0.55(0.70) = 0.385\)</span>, <span class="math inline">\(P(A^c \cap B)=𝑃(B|A^c)𝑃(A^c) = 0.10(0.30) = 0.03\)</span>, <span class="math inline">\(P(B)= 𝑃(A \cap B) + 𝑃(𝐴^c \cap 𝐵) = 0.385 + 0.03 = 0.415\)</span>, and <span class="math inline">\(P(A|B)= \frac{𝑃(A \cap B)}{P(B)}=0.385/0.415=0.9277\)</span>.</p>
-</div>
-</section>
-<section id="exercise-5-question-2-1" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-5-question-2-1">Exercise 5, question 2</h3>
-<p><a href="ProbabilityI.html#exercise-5" class="bs-answer-back">Back to the question</a></p>
-<div class="bs-answer-body">
-<p><em>Let the event of failing be</em> <span class="math inline">\(F\)</span>, the event of not failing be <span class="math inline">\(NF\)</span>, the event of having a tutor be <span class="math inline">\(T\)</span>, and the event of not having a tutor be <span class="math inline">\(NT\)</span>. The probability of failing the course is <span class="math inline">\(0.25\)</span>. <span class="math inline">\((𝐹) = 𝑃(𝐹 \cap 𝑇) + 𝑃(𝐹 \cap 𝑇^c) = 𝑃(𝐹|𝑇)𝑃(𝑇) + 𝑃(𝐹|𝑇^c)𝑃(𝑇^c) = 0.10(0.50) + 0.40(0.50) = 0.05 + 0.20 = 0.25\)</span> The probability of not having a tutor, given that she failed the course is <span class="math inline">\(0.2\)</span>. <span class="math inline">\(P(𝑇|𝐹) = \frac{𝑃(𝐹\cap𝑇)}{𝑃(𝐹\cap𝑇)+𝑃(𝐹 \cap𝑇^c)}= 0.05/0.25 = 0.20\)</span>.</p>
 </div>
 </section>
 <section id="exercise-6-question-1-1" class="level3 unnumbered bs-answer-head">
 <h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-6-question-1-1">Exercise 6, question 1</h3>
 <p><a href="ProbabilityI.html#exercise-6" class="bs-answer-back">Back to the question</a></p>
+<div class="bs-answer-body">
+<p><span class="math inline">\(P(A^c)=1-P(A)=1-0.7=0.3\)</span>, <span class="math inline">\(P(A \cap B)=𝑃(𝐵|𝐴)𝑃(𝐴) = 0.55(0.70) = 0.385\)</span>, <span class="math inline">\(P(A^c \cap B)=𝑃(B|A^c)𝑃(A^c) = 0.10(0.30) = 0.03\)</span>, <span class="math inline">\(P(B)= 𝑃(A \cap B) + 𝑃(𝐴^c \cap 𝐵) = 0.385 + 0.03 = 0.415\)</span>, and <span class="math inline">\(P(A|B)= \frac{𝑃(A \cap B)}{P(B)}=0.385/0.415=0.9277\)</span>.</p>
+</div>
+</section>
+<section id="exercise-6-question-2-1" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-6-question-2-1">Exercise 6, question 2</h3>
+<p><a href="ProbabilityI.html#exercise-6" class="bs-answer-back">Back to the question</a></p>
+<div class="bs-answer-body">
+<p><em>Let the event of failing be</em> <span class="math inline">\(F\)</span>, the event of not failing be <span class="math inline">\(NF\)</span>, the event of having a tutor be <span class="math inline">\(T\)</span>, and the event of not having a tutor be <span class="math inline">\(NT\)</span>. The probability of failing the course is <span class="math inline">\(0.25\)</span>. <span class="math inline">\((𝐹) = 𝑃(𝐹 \cap 𝑇) + 𝑃(𝐹 \cap 𝑇^c) = 𝑃(𝐹|𝑇)𝑃(𝑇) + 𝑃(𝐹|𝑇^c)𝑃(𝑇^c) = 0.10(0.50) + 0.40(0.50) = 0.05 + 0.20 = 0.25\)</span> The probability of not having a tutor, given that she failed the course is <span class="math inline">\(0.2\)</span>. <span class="math inline">\(P(𝑇|𝐹) = \frac{𝑃(𝐹\cap𝑇)}{𝑃(𝐹\cap𝑇)+𝑃(𝐹 \cap𝑇^c)}= 0.05/0.25 = 0.20\)</span>.</p>
+</div>
+</section>
+<section id="exercise-7-question-1" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-7-question-1">Exercise 7, question 1</h3>
+<p><a href="ProbabilityI.html#exercise-7" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <p><span class="math inline">\(3!=3 \times 2 \times 1=6\)</span>, <span class="math inline">\(4!=4 \times 3 \times 2 \times 1=24\)</span>, <span class="math inline">\(C_6^8=28\)</span>, and <span class="math inline">\(P_6^8=20{,}160\)</span>.</p>
 <p><em>In Excel:</em></p>
@@ -2087,15 +2123,28 @@ window.Quarto = {
 </ul>
 </div>
 </section>
-<section id="exercise-6-question-2-1" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-6-question-2-1">Exercise 6, question 2</h3>
-<p><a href="ProbabilityI.html#exercise-6" class="bs-answer-back">Back to the question</a></p>
+<section id="exercise-7-question-2" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-7-question-2">Exercise 7, question 2</h3>
+<p><a href="ProbabilityI.html#exercise-7" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <p><em>If order doesn’t matter, there are</em> <span class="math inline">\(252\)</span> ways. If order matters, then there are <span class="math inline">\(30{,}240\)</span> ways.</p>
 <p><em>In Excel:</em></p>
 <ul>
 <li><code>=COMBIN(10, 5)</code> → <span class="math inline">\(252\)</span></li>
 <li><code>=PERMUT(10, 5)</code> → <span class="math inline">\(30{,}240\)</span></li>
+</ul>
+</div>
+</section>
+<section id="exercise-7-question-3" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-7-question-3">Exercise 7, question 3</h3>
+<p><a href="ProbabilityI.html#exercise-7" class="bs-answer-back">Back to the question</a></p>
+<div class="bs-answer-body">
+<p><em>The order in which the two people are picked does not matter, so we count combinations. The number of possible pairs is</em> <span class="math display">\[C_2^6=\frac{6!}{2!\,4!}=15\]</span> <em>Every pair is equally likely, so we can use the classical method. The number of pairs made up of two analysts is</em> <span class="math inline">\(C_2^4=6\)</span><em>, so</em> <span class="math display">\[P(\text{both analysts})=\frac{6}{15}=0.4\]</span> <em>“At least one intern” is the complement of “both analysts”:</em> <span class="math display">\[P(\text{at least one intern})=1-0.4=0.6\]</span> <em>We can check this by counting directly: there are</em> <span class="math inline">\(C_1^4 \times C_1^2=8\)</span> <em>pairs with one analyst and one intern, and</em> <span class="math inline">\(C_2^2=1\)</span> <em>pair with both interns, so</em> <span class="math inline">\((8+1)/15=0.6\)</span><em>.</em></p>
+<p><em>In Excel:</em></p>
+<ul>
+<li><code>=COMBIN(6, 2)</code> → <span class="math inline">\(15\)</span></li>
+<li><code>=COMBIN(4, 2)/COMBIN(6, 2)</code> → <span class="math inline">\(0.4\)</span></li>
+<li><code>=1 - COMBIN(4, 2)/COMBIN(6, 2)</code> → <span class="math inline">\(0.6\)</span></li>
 </ul>
 </div>
 </section>
@@ -2168,8 +2217,8 @@ window.Quarto = {
 </ul>
 </div>
 </section>
-<section id="exercise-3-question-2-4" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-3-question-2-4">Exercise 3, question 2</h3>
+<section id="exercise-3-question-2-5" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-3-question-2-5">Exercise 3, question 2</h3>
 <p><a href="ProbabilityII.html#exercise-3" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <p><span class="math inline">\(P(W&gt;160)=0.14\)</span>, and <span class="math inline">\(P(155 \leq W \leq 165 )=0.45\)</span>. The expected value is <span class="math inline">\(np=154\)</span> and the standard deviation is <span class="math inline">\(\sqrt{np(1-p)}=5.95\)</span>.</p>
@@ -2180,8 +2229,8 @@ window.Quarto = {
 </ul>
 </div>
 </section>
-<section id="exercise-3-question-3-1" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-3-question-3-1">Exercise 3, question 3</h3>
+<section id="exercise-3-question-3-2" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-3-question-3-2">Exercise 3, question 3</h3>
 <p><a href="ProbabilityII.html#exercise-3" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <p><em>The probabilities are the same. Each event has a probability of</em> <span class="math inline">\(0.3456\)</span>. If the probability changes to <span class="math inline">\(0.5\)</span> now the event of two women and two men is more likely.</p>
@@ -2207,8 +2256,8 @@ window.Quarto = {
 </ul>
 </div>
 </section>
-<section id="exercise-4-question-2-5" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-4-question-2-5">Exercise 4, question 2</h3>
+<section id="exercise-4-question-2-4" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-4-question-2-4">Exercise 4, question 2</h3>
 <p><a href="ProbabilityII.html#exercise-4" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <p><em>The</em> <span class="math inline">\(P(T=14)=0.039\)</span> and <span class="math inline">\(P(18 \leq T \leq 23)=0.49\)</span>.</p>
@@ -2219,8 +2268,8 @@ window.Quarto = {
 </ul>
 </div>
 </section>
-<section id="exercise-4-question-3-4" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-4-question-3-4">Exercise 4, question 3</h3>
+<section id="exercise-4-question-3-3" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-4-question-3-3">Exercise 4, question 3</h3>
 <p><a href="ProbabilityII.html#exercise-4" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <p><em>The probability of administering more than</em> <span class="math inline">\(8\)</span> but less than <span class="math inline">\(12\)</span> shots is <span class="math inline">\(0.3\)</span>.</p>
@@ -2254,8 +2303,8 @@ window.Quarto = {
 </ul>
 </div>
 </section>
-<section id="exercise-5-question-3-1" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-5-question-3-1">Exercise 5, question 3</h3>
+<section id="exercise-5-question-3-2" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-5-question-3-2">Exercise 5, question 3</h3>
 <p><a href="ProbabilityII.html#exercise-5" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <p><em>The probability of matching two white balls is</em> <span class="math inline">\(5\%\)</span>. Winning the jackpot is extremely unlikely! A probability of <span class="math inline">\(0.00000000512\)</span>. It is more likely to be struck by lightning according to the CDC.</p>
@@ -2350,8 +2399,8 @@ window.Quarto = {
 </ul>
 </div>
 </section>
-<section id="exercise-3-question-2-5" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-3-question-2-5">Exercise 3, question 2</h3>
+<section id="exercise-3-question-2-6" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-3-question-2-6">Exercise 3, question 2</h3>
 <p><a href="ProbabilityIII.html#exercise-3" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <p><em>The mean time between car arrivals is</em> <span class="math inline">\(1/360=0.002778\)</span> hours. The probability that the next car will arrive within the next 10 seconds is <span class="math inline">\(0.6321\)</span>.</p>
@@ -2456,8 +2505,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="exercise-3-question-2-6" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-3-question-2-6">Exercise 3, question 2</h3>
+<section id="exercise-3-question-2-7" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-3-question-2-7">Exercise 3, question 2</h3>
 <p><a href="InferenceI.html#exercise-3" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <div style="padding-left: 1.5em;">
@@ -2485,8 +2534,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="exercise-4-question-2-6" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-4-question-2-6">Exercise 4, question 2</h3>
+<section id="exercise-4-question-2-5" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-4-question-2-5">Exercise 4, question 2</h3>
 <p><a href="InferenceI.html#exercise-4" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <div style="padding-left: 1.5em;">
@@ -2618,8 +2667,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="exercise-4-question-2-7" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-4-question-2-7">Exercise 4, question 2</h3>
+<section id="exercise-4-question-2-6" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-4-question-2-6">Exercise 4, question 2</h3>
 <p><a href="InferenceII.html#exercise-4" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <div style="padding-left: 1.5em;">
@@ -2715,8 +2764,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="exercise-3-question-2-7" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-3-question-2-7">Exercise 3, question 2</h3>
+<section id="exercise-3-question-2-8" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-3-question-2-8">Exercise 3, question 2</h3>
 <p><a href="InferenceIII.html#exercise-3" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <div style="padding-left: 1.5em;">
@@ -2729,8 +2778,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="exercise-3-question-3-2" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-3-question-3-2">Exercise 3, question 3</h3>
+<section id="exercise-3-question-3-3" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-3-question-3-3">Exercise 3, question 3</h3>
 <p><a href="InferenceIII.html#exercise-3" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <div style="padding-left: 1.5em;">
@@ -2846,8 +2895,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="exercise-4-question-2-8" class="level3 unnumbered bs-answer-head">
-<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-4-question-2-8">Exercise 4, question 2</h3>
+<section id="exercise-4-question-2-7" class="level3 unnumbered bs-answer-head">
+<h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-4-question-2-7">Exercise 4, question 2</h3>
 <p><a href="InfReg.html#exercise-4" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <div style="padding-left: 1.5em;">

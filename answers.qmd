@@ -1423,6 +1423,63 @@ $$\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}=16.6-1.09(19.8)=-4.93$$
 ::: {.bs-answer-body}
 
 
+*Rearranging the addition rule,* $$P(A \cap B)=P(A)+P(B)-P(A \cup B)=0.5+0.4-0.7=0.2$$ *Using the conditional probability formula,* $$P(A|B)=\frac{P(A \cap B)}{P(B)}=\frac{0.2}{0.4}=0.5 \qquad P(B|A)=\frac{P(A \cap B)}{P(A)}=\frac{0.2}{0.5}=0.4$$ *The events are not mutually exclusive since* $P(A \cap B)=0.2 \neq 0$. *They are independent since* $P(A|B)=0.5=P(A)$ *(equivalently,* $P(A)P(B)=0.5 \times 0.4=0.2=P(A \cap B)$*).*
+
+:::
+
+### Exercise 3, question 2 {.unnumbered .bs-answer-head}
+
+[Back to the question](ProbabilityI.html#exercise-3){.bs-answer-back}
+
+::: {.bs-answer-body}
+
+
+*Since the events are independent,* $$P(A \cap B)=P(A)P(B)=0.3 \times 0.6=0.18$$ *From the addition rule,* $$P(A \cup B)=0.3+0.6-0.18=0.72$$ *Independence also means that knowing* $B$ *happened does not change the probability of* $A$*, so* $P(A|B)=P(A)=0.3$*. Finally, by De Morgan's law,* $A^c \cap B^c=(A \cup B)^c$*, so* $$P(A^c \cap B^c)=1-P(A \cup B)=1-0.72=0.28$$ *As a check, the complements of independent events are also independent:* $P(A^c)P(B^c)=0.7 \times 0.4=0.28$*.*
+
+:::
+
+### Exercise 3, question 3 {.unnumbered .bs-answer-head}
+
+[Back to the question](ProbabilityI.html#exercise-3){.bs-answer-back}
+
+::: {.bs-answer-body}
+
+
+*Mutually exclusive events cannot happen together, so* $P(A \cap B)=0$*. The addition rule then simplifies to* $$P(A \cup B)=P(A)+P(B)=0.25+0.45=0.70$$ *Since* $A$ *and* $B$ *never occur together,* $P(A|B)=0/0.45=0$*. The probability that neither occurs is the complement of the union:* $1-0.70=0.30$*.*
+
+*The events are **not** independent. If* $B$ *happens, the probability of* $A$ *drops from* $0.25$ *to* $0$*, so knowing* $B$ *changes the probability of* $A$*. Mutually exclusive events (with positive probabilities) are always dependent.*
+
+:::
+
+### Exercise 3, question 4 {.unnumbered .bs-answer-head}
+
+[Back to the question](ProbabilityI.html#exercise-3){.bs-answer-back}
+
+::: {.bs-answer-body}
+
+
+*In short,* $P(M)=0.60$, $P(P)=0.05$, *and* $P(M \cap P)=0.02$*. From the addition rule,* $$P(M \cup P)=0.60+0.05-0.02=0.63$$ *The probability that a mobile visitor buys is* $$P(P|M)=\frac{P(M \cap P)}{P(M)}=\frac{0.02}{0.60}=0.033$$ *Visitors who do not use a mobile phone make up* $P(M^c)=0.40$ *of the traffic, and they account for the remaining* $0.05-0.02=0.03$ *of purchases, so* $$P(P|M^c)=\frac{0.03}{0.40}=0.075$$ *Purchasing is not independent of the device:* $P(P|M)=0.033 \neq 0.05=P(P)$*. Desktop visitors are more than twice as likely to buy as mobile visitors.*
+
+:::
+
+### Exercise 3, question 5 {.unnumbered .bs-answer-head}
+
+[Back to the question](ProbabilityI.html#exercise-3){.bs-answer-back}
+
+::: {.bs-answer-body}
+
+
+*Since the failures are independent,* $$P(\text{both fail})=0.02 \times 0.02=0.0004$$ *"At least one is working" is the complement of "both fail":* $$P(\text{at least one works})=1-0.0004=0.9996$$ *"Exactly one fails" can happen in two mutually exclusive ways: the first fails and the second works, or the first works and the second fails. Adding them,* $$P(\text{exactly one fails})=(0.02)(0.98)+(0.98)(0.02)=0.0392$$
+
+:::
+
+### Exercise 4, question 1 {.unnumbered .bs-answer-head}
+
+[Back to the question](ProbabilityI.html#exercise-4){.bs-answer-back}
+
+::: {.bs-answer-body}
+
+
 *Below is the joint probability table. The* $P(A)=0.26+0.34=0.6$, $P(A \cap B)=0.26$, $P(A|B)=0.26/0.4=0.65$, and $P(B|A^c)=0.14/0.4=0.35$. Events $A$ and $B$ are not independent since $P(A) \neq P(A|B)$. The events are not mutually exclusive since $P(A \cap B)=0.26 \neq 0$.
 
 |       |      |       |       |
@@ -1434,9 +1491,9 @@ $$\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}=16.6-1.09(19.8)=-4.93$$
 
 :::
 
-### Exercise 4, question 1 {.unnumbered .bs-answer-head}
+### Exercise 5, question 1 {.unnumbered .bs-answer-head}
 
-[Back to the question](ProbabilityI.html#exercise-4){.bs-answer-back}
+[Back to the question](ProbabilityI.html#exercise-5){.bs-answer-back}
 
 ::: {.bs-answer-body}
 
@@ -1455,9 +1512,9 @@ $$\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}=16.6-1.09(19.8)=-4.93$$
 
 :::
 
-### Exercise 4, question 2 {.unnumbered .bs-answer-head}
+### Exercise 5, question 2 {.unnumbered .bs-answer-head}
 
-[Back to the question](ProbabilityI.html#exercise-4){.bs-answer-back}
+[Back to the question](ProbabilityI.html#exercise-5){.bs-answer-back}
 
 ::: {.bs-answer-body}
 
@@ -1478,9 +1535,9 @@ $$P(\text{Head-on}\mid\text{Daylight})=\frac{P(\text{Head-on}\cap\text{Daylight}
 
 :::
 
-### Exercise 4, question 3 {.unnumbered .bs-answer-head}
+### Exercise 5, question 3 {.unnumbered .bs-answer-head}
 
-[Back to the question](ProbabilityI.html#exercise-4){.bs-answer-back}
+[Back to the question](ProbabilityI.html#exercise-5){.bs-answer-back}
 
 ::: {.bs-answer-body}
 
@@ -1489,9 +1546,9 @@ $$P(\text{Head-on}\mid\text{Daylight})=\frac{P(\text{Head-on}\cap\text{Daylight}
 
 :::
 
-### Exercise 5, question 1 {.unnumbered .bs-answer-head}
+### Exercise 6, question 1 {.unnumbered .bs-answer-head}
 
-[Back to the question](ProbabilityI.html#exercise-5){.bs-answer-back}
+[Back to the question](ProbabilityI.html#exercise-6){.bs-answer-back}
 
 ::: {.bs-answer-body}
 
@@ -1500,9 +1557,9 @@ $P(A^c)=1-P(A)=1-0.7=0.3$, $P(A \cap B)=𝑃(𝐵|𝐴)𝑃(𝐴) = 0.55(0.70) =
 
 :::
 
-### Exercise 5, question 2 {.unnumbered .bs-answer-head}
+### Exercise 6, question 2 {.unnumbered .bs-answer-head}
 
-[Back to the question](ProbabilityI.html#exercise-5){.bs-answer-back}
+[Back to the question](ProbabilityI.html#exercise-6){.bs-answer-back}
 
 ::: {.bs-answer-body}
 
@@ -1511,9 +1568,9 @@ $P(A^c)=1-P(A)=1-0.7=0.3$, $P(A \cap B)=𝑃(𝐵|𝐴)𝑃(𝐴) = 0.55(0.70) =
 
 :::
 
-### Exercise 6, question 1 {.unnumbered .bs-answer-head}
+### Exercise 7, question 1 {.unnumbered .bs-answer-head}
 
-[Back to the question](ProbabilityI.html#exercise-6){.bs-answer-back}
+[Back to the question](ProbabilityI.html#exercise-7){.bs-answer-back}
 
 ::: {.bs-answer-body}
 
@@ -1529,9 +1586,9 @@ $3!=3 \times 2 \times 1=6$, $4!=4 \times 3 \times 2 \times 1=24$, $C_6^8=28$, an
 
 :::
 
-### Exercise 6, question 2 {.unnumbered .bs-answer-head}
+### Exercise 7, question 2 {.unnumbered .bs-answer-head}
 
-[Back to the question](ProbabilityI.html#exercise-6){.bs-answer-back}
+[Back to the question](ProbabilityI.html#exercise-7){.bs-answer-back}
 
 ::: {.bs-answer-body}
 
@@ -1542,6 +1599,23 @@ $3!=3 \times 2 \times 1=6$, $4!=4 \times 3 \times 2 \times 1=24$, $C_6^8=28$, an
 
 - `=COMBIN(10, 5)` → $252$
 - `=PERMUT(10, 5)` → $30{,}240$
+
+:::
+
+### Exercise 7, question 3 {.unnumbered .bs-answer-head}
+
+[Back to the question](ProbabilityI.html#exercise-7){.bs-answer-back}
+
+::: {.bs-answer-body}
+
+
+*The order in which the two people are picked does not matter, so we count combinations. The number of possible pairs is* $$C_2^6=\frac{6!}{2!\,4!}=15$$ *Every pair is equally likely, so we can use the classical method. The number of pairs made up of two analysts is* $C_2^4=6$*, so* $$P(\text{both analysts})=\frac{6}{15}=0.4$$ *"At least one intern" is the complement of "both analysts":* $$P(\text{at least one intern})=1-0.4=0.6$$ *We can check this by counting directly: there are* $C_1^4 \times C_1^2=8$ *pairs with one analyst and one intern, and* $C_2^2=1$ *pair with both interns, so* $(8+1)/15=0.6$*.*
+
+*In Excel:*
+
+- `=COMBIN(6, 2)` → $15$
+- `=COMBIN(4, 2)/COMBIN(6, 2)` → $0.4$
+- `=1 - COMBIN(4, 2)/COMBIN(6, 2)` → $0.6$
 
 :::
 

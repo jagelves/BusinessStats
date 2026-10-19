@@ -540,6 +540,62 @@ For the following exercises, make your calculations by hand and verify results w
 
 ### Exercise 3 {.unnumbered}
 
+For the following exercises, make your calculations by hand and verify results with a calculator or Excel. This time, each problem gives you a different set of starting information. Decide which rule connects what you know to what you need.
+
+1.  Let $P(A)=0.5$, $P(B)=0.4$, and $P(A \cup B)=0.7$. Calculate $P(A \cap B)$, $P(A|B)$, and $P(B|A)$. Are $A$ and $B$ mutually exclusive? Are they independent?
+
+<details>
+
+<summary>Answer</summary>
+
+*Rearranging the addition rule,* $$P(A \cap B)=P(A)+P(B)-P(A \cup B)=0.5+0.4-0.7=0.2$$ *Using the conditional probability formula,* $$P(A|B)=\frac{P(A \cap B)}{P(B)}=\frac{0.2}{0.4}=0.5 \qquad P(B|A)=\frac{P(A \cap B)}{P(A)}=\frac{0.2}{0.5}=0.4$$ *The events are not mutually exclusive since* $P(A \cap B)=0.2 \neq 0$. *They are independent since* $P(A|B)=0.5=P(A)$ *(equivalently,* $P(A)P(B)=0.5 \times 0.4=0.2=P(A \cap B)$*).*
+
+</details>
+
+2.  Events $A$ and $B$ are independent, with $P(A)=0.3$ and $P(B)=0.6$. Calculate $P(A \cap B)$, $P(A \cup B)$, $P(A|B)$, and $P(A^c \cap B^c)$.
+
+<details>
+
+<summary>Answer</summary>
+
+*Since the events are independent,* $$P(A \cap B)=P(A)P(B)=0.3 \times 0.6=0.18$$ *From the addition rule,* $$P(A \cup B)=0.3+0.6-0.18=0.72$$ *Independence also means that knowing* $B$ *happened does not change the probability of* $A$*, so* $P(A|B)=P(A)=0.3$*. Finally, by De Morgan's law,* $A^c \cap B^c=(A \cup B)^c$*, so* $$P(A^c \cap B^c)=1-P(A \cup B)=1-0.72=0.28$$ *As a check, the complements of independent events are also independent:* $P(A^c)P(B^c)=0.7 \times 0.4=0.28$*.*
+
+</details>
+
+3.  Events $A$ and $B$ are mutually exclusive, with $P(A)=0.25$ and $P(B)=0.45$. Calculate $P(A \cap B)$, $P(A \cup B)$, $P(A|B)$, and the probability that neither event occurs. Are $A$ and $B$ independent?
+
+<details>
+
+<summary>Answer</summary>
+
+*Mutually exclusive events cannot happen together, so* $P(A \cap B)=0$*. The addition rule then simplifies to* $$P(A \cup B)=P(A)+P(B)=0.25+0.45=0.70$$ *Since* $A$ *and* $B$ *never occur together,* $P(A|B)=0/0.45=0$*. The probability that neither occurs is the complement of the union:* $1-0.70=0.30$*.*
+
+*The events are **not** independent. If* $B$ *happens, the probability of* $A$ *drops from* $0.25$ *to* $0$*, so knowing* $B$ *changes the probability of* $A$*. Mutually exclusive events (with positive probabilities) are always dependent.*
+
+</details>
+
+4.  An online store finds that $60\%$ of its visitors browse on a mobile phone ($M$) and $5\%$ of all visitors make a purchase ($P$). Also, $2\%$ of all visitors are mobile users who make a purchase. What is the probability that a visitor uses a mobile phone or makes a purchase? What is the probability that a mobile visitor makes a purchase? What about a visitor who does not use a mobile phone? Is purchasing independent of the device?
+
+<details>
+
+<summary>Answer</summary>
+
+*In short,* $P(M)=0.60$, $P(P)=0.05$, *and* $P(M \cap P)=0.02$*. From the addition rule,* $$P(M \cup P)=0.60+0.05-0.02=0.63$$ *The probability that a mobile visitor buys is* $$P(P|M)=\frac{P(M \cap P)}{P(M)}=\frac{0.02}{0.60}=0.033$$ *Visitors who do not use a mobile phone make up* $P(M^c)=0.40$ *of the traffic, and they account for the remaining* $0.05-0.02=0.03$ *of purchases, so* $$P(P|M^c)=\frac{0.03}{0.40}=0.075$$ *Purchasing is not independent of the device:* $P(P|M)=0.033 \neq 0.05=P(P)$*. Desktop visitors are more than twice as likely to buy as mobile visitors.*
+
+</details>
+
+5.  A firm keeps two backup servers that fail independently of each other. Each one fails on a given day with probability $0.02$. What is the probability that both servers fail? What is the probability that at least one of them is working? What is the probability that exactly one fails?
+
+<details>
+
+<summary>Answer</summary>
+
+*Since the failures are independent,* $$P(\text{both fail})=0.02 \times 0.02=0.0004$$ *"At least one is working" is the complement of "both fail":* $$P(\text{at least one works})=1-0.0004=0.9996$$ *"Exactly one fails" can happen in two mutually exclusive ways: the first fails and the second works, or the first works and the second fails. Adding them,* $$P(\text{exactly one fails})=(0.02)(0.98)+(0.98)(0.02)=0.0392$$
+
+</details>
+
+### Exercise 4 {.unnumbered}
+
 1.  Create a joint probability table from the contingency table below. Find $P(A)$, $P(A \cap B)$, $P(A|B)$, and $P(B|A^c)$. Determine whether the events are independent or mutually exclusive.
 
 |       |     |       |
@@ -563,7 +619,7 @@ For the following exercises, make your calculations by hand and verify results w
 
 </details>
 
-### Exercise 4 {.unnumbered}
+### Exercise 5 {.unnumbered}
 
 You will need the **Crash** data set to answer this question. The data shows information on several car crashes. Specifically, whether the crash was Head-On or Not Head-On and whether there was Daylight or No Daylight. You can download it here:
 
@@ -621,7 +677,7 @@ $$P(\text{Head-on}\mid\text{Daylight})=\frac{P(\text{Head-on}\cap\text{Daylight}
 
 </details>
 
-### Exercise 5 {.unnumbered}
+### Exercise 6 {.unnumbered}
 
 1.  Use Bayes' Theorem in the following question. Let $P(A)=0.7$, $P(B|A)=0.55$, and $P(B|A^c)=0.10$. Find $P(A^c)$, $P(A \cap B)$, $P(A^c \cap B)$, $P(B)$, and $P(A|B)$.
 
@@ -643,7 +699,7 @@ $P(A^c)=1-P(A)=1-0.7=0.3$, $P(A \cap B)=𝑃(𝐵|𝐴)𝑃(𝐴) = 0.55(0.70) =
 
 </details>
 
-### Exercise 6 {.unnumbered}
+### Exercise 7 {.unnumbered}
 
 1.  Calculate the following values and verify your results using Excel. a) 3!, b) 4!, c) $C_6^8$, d) $P_6^8$.
 
@@ -674,5 +730,21 @@ $3!=3 \times 2 \times 1=6$, $4!=4 \times 3 \times 2 \times 1=24$, $C_6^8=28$, an
 
 - `=COMBIN(10, 5)` → $252$
 - `=PERMUT(10, 5)` → $30{,}240$
+
+</details>
+
+3.  A manager has $6$ employees, $4$ analysts and $2$ interns, and will pick $2$ of them at random to attend a conference. How many different pairs can she pick? What is the probability that both people picked are analysts? What is the probability that at least one intern is picked?
+
+<details>
+
+<summary>Answer</summary>
+
+*The order in which the two people are picked does not matter, so we count combinations. The number of possible pairs is* $$C_2^6=\frac{6!}{2!\,4!}=15$$ *Every pair is equally likely, so we can use the classical method. The number of pairs made up of two analysts is* $C_2^4=6$*, so* $$P(\text{both analysts})=\frac{6}{15}=0.4$$ *"At least one intern" is the complement of "both analysts":* $$P(\text{at least one intern})=1-0.4=0.6$$ *We can check this by counting directly: there are* $C_1^4 \times C_1^2=8$ *pairs with one analyst and one intern, and* $C_2^2=1$ *pair with both interns, so* $(8+1)/15=0.6$*.*
+
+*In Excel:*
+
+- `=COMBIN(6, 2)` → $15$
+- `=COMBIN(4, 2)/COMBIN(6, 2)` → $0.4$
+- `=1 - COMBIN(4, 2)/COMBIN(6, 2)` → $0.6$
 
 </details>

@@ -934,6 +934,56 @@ Answer
 </section>
 <section id="exercise-3" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="exercise-3">Exercise 3</h3>
+<p>For the following exercises, make your calculations by hand and verify results with a calculator or Excel. This time, each problem gives you a different set of starting information. Decide which rule connects what you know to what you need.</p>
+<ol type="1">
+<li>Let <span class="math inline">\(P(A)=0.5\)</span>, <span class="math inline">\(P(B)=0.4\)</span>, and <span class="math inline">\(P(A \cup B)=0.7\)</span>. Calculate <span class="math inline">\(P(A \cap B)\)</span>, <span class="math inline">\(P(A|B)\)</span>, and <span class="math inline">\(P(B|A)\)</span>. Are <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> mutually exclusive? Are they independent?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>Rearranging the addition rule,</em> <span class="math display">\[P(A \cap B)=P(A)+P(B)-P(A \cup B)=0.5+0.4-0.7=0.2\]</span> <em>Using the conditional probability formula,</em> <span class="math display">\[P(A|B)=\frac{P(A \cap B)}{P(B)}=\frac{0.2}{0.4}=0.5 \qquad P(B|A)=\frac{P(A \cap B)}{P(A)}=\frac{0.2}{0.5}=0.4\]</span> <em>The events are not mutually exclusive since</em> <span class="math inline">\(P(A \cap B)=0.2 \neq 0\)</span>. <em>They are independent since</em> <span class="math inline">\(P(A|B)=0.5=P(A)\)</span> <em>(equivalently,</em> <span class="math inline">\(P(A)P(B)=0.5 \times 0.4=0.2=P(A \cap B)\)</span><em>).</em></p>
+</details>
+<ol start="2" type="1">
+<li>Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, with <span class="math inline">\(P(A)=0.3\)</span> and <span class="math inline">\(P(B)=0.6\)</span>. Calculate <span class="math inline">\(P(A \cap B)\)</span>, <span class="math inline">\(P(A \cup B)\)</span>, <span class="math inline">\(P(A|B)\)</span>, and <span class="math inline">\(P(A^c \cap B^c)\)</span>.</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>Since the events are independent,</em> <span class="math display">\[P(A \cap B)=P(A)P(B)=0.3 \times 0.6=0.18\]</span> <em>From the addition rule,</em> <span class="math display">\[P(A \cup B)=0.3+0.6-0.18=0.72\]</span> <em>Independence also means that knowing</em> <span class="math inline">\(B\)</span> <em>happened does not change the probability of</em> <span class="math inline">\(A\)</span><em>, so</em> <span class="math inline">\(P(A|B)=P(A)=0.3\)</span><em>. Finally, by De Morgan’s law,</em> <span class="math inline">\(A^c \cap B^c=(A \cup B)^c\)</span><em>, so</em> <span class="math display">\[P(A^c \cap B^c)=1-P(A \cup B)=1-0.72=0.28\]</span> <em>As a check, the complements of independent events are also independent:</em> <span class="math inline">\(P(A^c)P(B^c)=0.7 \times 0.4=0.28\)</span><em>.</em></p>
+</details>
+<ol start="3" type="1">
+<li>Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are mutually exclusive, with <span class="math inline">\(P(A)=0.25\)</span> and <span class="math inline">\(P(B)=0.45\)</span>. Calculate <span class="math inline">\(P(A \cap B)\)</span>, <span class="math inline">\(P(A \cup B)\)</span>, <span class="math inline">\(P(A|B)\)</span>, and the probability that neither event occurs. Are <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> independent?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>Mutually exclusive events cannot happen together, so</em> <span class="math inline">\(P(A \cap B)=0\)</span><em>. The addition rule then simplifies to</em> <span class="math display">\[P(A \cup B)=P(A)+P(B)=0.25+0.45=0.70\]</span> <em>Since</em> <span class="math inline">\(A\)</span> <em>and</em> <span class="math inline">\(B\)</span> <em>never occur together,</em> <span class="math inline">\(P(A|B)=0/0.45=0\)</span><em>. The probability that neither occurs is the complement of the union:</em> <span class="math inline">\(1-0.70=0.30\)</span><em>.</em></p>
+<p><em>The events are <strong>not</strong> independent. If</em> <span class="math inline">\(B\)</span> <em>happens, the probability of</em> <span class="math inline">\(A\)</span> <em>drops from</em> <span class="math inline">\(0.25\)</span> <em>to</em> <span class="math inline">\(0\)</span><em>, so knowing</em> <span class="math inline">\(B\)</span> <em>changes the probability of</em> <span class="math inline">\(A\)</span><em>. Mutually exclusive events (with positive probabilities) are always dependent.</em></p>
+</details>
+<ol start="4" type="1">
+<li>An online store finds that <span class="math inline">\(60\%\)</span> of its visitors browse on a mobile phone (<span class="math inline">\(M\)</span>) and <span class="math inline">\(5\%\)</span> of all visitors make a purchase (<span class="math inline">\(P\)</span>). Also, <span class="math inline">\(2\%\)</span> of all visitors are mobile users who make a purchase. What is the probability that a visitor uses a mobile phone or makes a purchase? What is the probability that a mobile visitor makes a purchase? What about a visitor who does not use a mobile phone? Is purchasing independent of the device?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>In short,</em> <span class="math inline">\(P(M)=0.60\)</span>, <span class="math inline">\(P(P)=0.05\)</span>, <em>and</em> <span class="math inline">\(P(M \cap P)=0.02\)</span><em>. From the addition rule,</em> <span class="math display">\[P(M \cup P)=0.60+0.05-0.02=0.63\]</span> <em>The probability that a mobile visitor buys is</em> <span class="math display">\[P(P|M)=\frac{P(M \cap P)}{P(M)}=\frac{0.02}{0.60}=0.033\]</span> <em>Visitors who do not use a mobile phone make up</em> <span class="math inline">\(P(M^c)=0.40\)</span> <em>of the traffic, and they account for the remaining</em> <span class="math inline">\(0.05-0.02=0.03\)</span> <em>of purchases, so</em> <span class="math display">\[P(P|M^c)=\frac{0.03}{0.40}=0.075\]</span> <em>Purchasing is not independent of the device:</em> <span class="math inline">\(P(P|M)=0.033 \neq 0.05=P(P)\)</span><em>. Desktop visitors are more than twice as likely to buy as mobile visitors.</em></p>
+</details>
+<ol start="5" type="1">
+<li>A firm keeps two backup servers that fail independently of each other. Each one fails on a given day with probability <span class="math inline">\(0.02\)</span>. What is the probability that both servers fail? What is the probability that at least one of them is working? What is the probability that exactly one fails?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>Since the failures are independent,</em> <span class="math display">\[P(\text{both fail})=0.02 \times 0.02=0.0004\]</span> <em>“At least one is working” is the complement of “both fail”:</em> <span class="math display">\[P(\text{at least one works})=1-0.0004=0.9996\]</span> <em>“Exactly one fails” can happen in two mutually exclusive ways: the first fails and the second works, or the first works and the second fails. Adding them,</em> <span class="math display">\[P(\text{exactly one fails})=(0.02)(0.98)+(0.98)(0.02)=0.0392\]</span></p>
+</details>
+</section>
+<section id="exercise-4" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h3>
 <ol type="1">
 <li>Create a joint probability table from the contingency table below. Find <span class="math inline">\(P(A)\)</span>, <span class="math inline">\(P(A \cap B)\)</span>, <span class="math inline">\(P(A|B)\)</span>, and <span class="math inline">\(P(B|A^c)\)</span>. Determine whether the events are independent or mutually exclusive.</li>
 </ol>
@@ -991,8 +1041,8 @@ Answer
 </table>
 </details>
 </section>
-<section id="exercise-4" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-4">Exercise 4</h3>
+<section id="exercise-5" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-5">Exercise 5</h3>
 <p>You will need the <strong>Crash</strong> data set to answer this question. The data shows information on several car crashes. Specifically, whether the crash was Head-On or Not Head-On and whether there was Daylight or No Daylight. You can download it here:</p>
 <p><a href="Crash.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <ol type="1">
@@ -1063,8 +1113,8 @@ Answer
 <p><em>The two variables are dependent since</em> <span class="math inline">\(P(\text{Head-on}\mid\text{Daylight}) \neq P(\text{Head-on})\)</span>, that is <span class="math inline">\(0.048 \neq 0.056\)</span>.</p>
 </details>
 </section>
-<section id="exercise-5" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-5">Exercise 5</h3>
+<section id="exercise-6" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-6">Exercise 6</h3>
 <ol type="1">
 <li>Use Bayes’ Theorem in the following question. Let <span class="math inline">\(P(A)=0.7\)</span>, <span class="math inline">\(P(B|A)=0.55\)</span>, and <span class="math inline">\(P(B|A^c)=0.10\)</span>. Find <span class="math inline">\(P(A^c)\)</span>, <span class="math inline">\(P(A \cap B)\)</span>, <span class="math inline">\(P(A^c \cap B)\)</span>, <span class="math inline">\(P(B)\)</span>, and <span class="math inline">\(P(A|B)\)</span>.</li>
 </ol>
@@ -1084,8 +1134,8 @@ Answer
 <p><em>Let the event of failing be</em> <span class="math inline">\(F\)</span>, the event of not failing be <span class="math inline">\(NF\)</span>, the event of having a tutor be <span class="math inline">\(T\)</span>, and the event of not having a tutor be <span class="math inline">\(NT\)</span>. The probability of failing the course is <span class="math inline">\(0.25\)</span>. <span class="math inline">\((𝐹) = 𝑃(𝐹 \cap 𝑇) + 𝑃(𝐹 \cap 𝑇^c) = 𝑃(𝐹|𝑇)𝑃(𝑇) + 𝑃(𝐹|𝑇^c)𝑃(𝑇^c) = 0.10(0.50) + 0.40(0.50) = 0.05 + 0.20 = 0.25\)</span> The probability of not having a tutor, given that she failed the course is <span class="math inline">\(0.2\)</span>. <span class="math inline">\(P(𝑇|𝐹) = \frac{𝑃(𝐹\cap𝑇)}{𝑃(𝐹\cap𝑇)+𝑃(𝐹 \cap𝑇^c)}= 0.05/0.25 = 0.20\)</span>.</p>
 </details>
 </section>
-<section id="exercise-6" class="level3 unnumbered">
-<h3 class="unnumbered anchored" data-anchor-id="exercise-6">Exercise 6</h3>
+<section id="exercise-7" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="exercise-7">Exercise 7</h3>
 <ol type="1">
 <li>Calculate the following values and verify your results using Excel. a) 3!, b) 4!, c) <span class="math inline">\(C_6^8\)</span>, d) <span class="math inline">\(P_6^8\)</span>.</li>
 </ol>
@@ -1114,6 +1164,21 @@ Answer
 <ul>
 <li><code>=COMBIN(10, 5)</code> → <span class="math inline">\(252\)</span></li>
 <li><code>=PERMUT(10, 5)</code> → <span class="math inline">\(30{,}240\)</span></li>
+</ul>
+</details>
+<ol start="3" type="1">
+<li>A manager has <span class="math inline">\(6\)</span> employees, <span class="math inline">\(4\)</span> analysts and <span class="math inline">\(2\)</span> interns, and will pick <span class="math inline">\(2\)</span> of them at random to attend a conference. How many different pairs can she pick? What is the probability that both people picked are analysts? What is the probability that at least one intern is picked?</li>
+</ol>
+<details>
+<summary>
+Answer
+</summary>
+<p><em>The order in which the two people are picked does not matter, so we count combinations. The number of possible pairs is</em> <span class="math display">\[C_2^6=\frac{6!}{2!\,4!}=15\]</span> <em>Every pair is equally likely, so we can use the classical method. The number of pairs made up of two analysts is</em> <span class="math inline">\(C_2^4=6\)</span><em>, so</em> <span class="math display">\[P(\text{both analysts})=\frac{6}{15}=0.4\]</span> <em>“At least one intern” is the complement of “both analysts”:</em> <span class="math display">\[P(\text{at least one intern})=1-0.4=0.6\]</span> <em>We can check this by counting directly: there are</em> <span class="math inline">\(C_1^4 \times C_1^2=8\)</span> <em>pairs with one analyst and one intern, and</em> <span class="math inline">\(C_2^2=1\)</span> <em>pair with both interns, so</em> <span class="math inline">\((8+1)/15=0.6\)</span><em>.</em></p>
+<p><em>In Excel:</em></p>
+<ul>
+<li><code>=COMBIN(6, 2)</code> → <span class="math inline">\(15\)</span></li>
+<li><code>=COMBIN(4, 2)/COMBIN(6, 2)</code> → <span class="math inline">\(0.4\)</span></li>
+<li><code>=1 - COMBIN(4, 2)/COMBIN(6, 2)</code> → <span class="math inline">\(0.6\)</span></li>
 </ul>
 </details>
 
