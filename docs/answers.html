@@ -491,7 +491,7 @@ window.Quarto = {
 <p><a href="DescriptiveII.html#exercise-1" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <div style="padding-left: 1.5em;">
-<p><span class="math inline">\(33\)</span> people did not survive Meningioma — the highest number of non-survivals. The survival rate of Meningioma is only <span class="math inline">\(21.43\)</span>%.</p>
+<p><span class="math inline">\(33\)</span> people did not survive Meningioma, the highest number of non-survivals. The survival rate of Meningioma is only <span class="math inline">\(21.43\)</span>%.</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -966,7 +966,7 @@ window.Quarto = {
 <h3 class="unnumbered bs-answer-head anchored" data-anchor-id="exercise-6-question-2">Exercise 6, question 2</h3>
 <p><a href="DescriptiveIII.html#exercise-6" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
-<p><em>For players with ≥1 home run: mean higher (around 600+), median still lower than mean — skewness persists, median again more representative.</em></p>
+<p><em>For players with ≥1 home run: mean higher (around 600+), median still lower than mean; skewness persists, median again more representative.</em></p>
 <p><em>To verify in Excel, assuming salaries are in column S and home runs in column C:</em></p>
 <ul>
 <li><code>=AVERAGEIF(C2:C323, "&gt;=1", S2:S323)</code> → mean salary</li>
@@ -1249,7 +1249,7 @@ window.Quarto = {
 <p><span class="math display">\[mad = \frac{\sum|x_i - \bar{x}|}{n} = \frac{10.7}{8} = 1.3375\]</span></p>
 <p><em>The Coefficient of Variation is:</em></p>
 <p><span class="math display">\[CV = \frac{s}{\bar{x}} \times 100 = \frac{1.657}{0.8625} \times 100 = 192.1\%\]</span></p>
-<p><em>The CV is about <span class="math inline">\(192\%\)</span>, which is large: the standard deviation is almost twice the mean. This indicates the returns are highly variable relative to their average — the mean is small compared with typical month-to-month fluctuations. In practice, a CV this large signals that the project’s returns are unreliable; an investor cannot count on earning close to the average return in any given month.</em></p>
+<p><em>The CV is about <span class="math inline">\(192\%\)</span>, which is large: the standard deviation is almost twice the mean. This indicates the returns are highly variable relative to their average: the mean is small compared with typical month-to-month fluctuations. In practice, a CV this large signals that the project’s returns are unreliable; an investor cannot count on earning close to the average return in any given month.</em></p>
 </div>
 </section>
 <section id="exercise-5-question-1-1" class="level3 unnumbered bs-answer-head">
@@ -1338,7 +1338,7 @@ window.Quarto = {
 <p><span class="math display">\[s = \sqrt{29{,}149} = \$170.73\]</span></p>
 <p><em>The MAD is:</em></p>
 <p><span class="math display">\[mad = \frac{86+119+166+184+61+94+276+254+141+79}{10} = \frac{1{,}460}{10} = \$146\]</span></p>
-<p><em>The bettor is profitable on average but faces large week-to-week swings — a typical week deviates from the mean by about <span class="math inline">\(\$146\)</span> to <span class="math inline">\(\$171\)</span> depending on the measure used.</em></p>
+<p><em>The bettor is profitable on average but faces large week-to-week swings. A typical week deviates from the mean by about <span class="math inline">\(\$146\)</span> to <span class="math inline">\(\$171\)</span> depending on the measure used.</em></p>
 </div>
 </section>
 <section id="exercise-5-question-2" class="level3 unnumbered bs-answer-head">
@@ -1355,7 +1355,7 @@ window.Quarto = {
 <div class="bs-answer-body">
 <p><em>With a risk-free rate of <span class="math inline">\(\$0\)</span>:</em></p>
 <p><span class="math display">\[SR = \frac{\bar{x} - R_f}{s} = \frac{34 - 0}{170.73} = 0.199\]</span></p>
-<p><em>A Sharpe ratio of <span class="math inline">\(0.199\)</span> is low. As a point of reference, a Sharpe ratio above <span class="math inline">\(1\)</span> is generally considered acceptable in finance. The bettor earns only <span class="math inline">\(\$0.20\)</span> of profit per dollar of risk taken — suggesting that while the strategy is marginally profitable, the risk taken to achieve that profit is not well compensated. A more disciplined betting strategy or better odds selection would be needed to improve the risk-adjusted return.</em></p>
+<p><em>A Sharpe ratio of <span class="math inline">\(0.199\)</span> is low. As a point of reference, a Sharpe ratio above <span class="math inline">\(1\)</span> is generally considered acceptable in finance. The bettor earns only <span class="math inline">\(\$0.20\)</span> of profit per dollar of risk taken, suggesting that while the strategy is marginally profitable, the risk taken to achieve that profit is not well compensated. A more disciplined betting strategy or better odds selection would be needed to improve the risk-adjusted return.</em></p>
 </div>
 </section>
 </section>
@@ -1379,7 +1379,7 @@ window.Quarto = {
 =QUARTILE.INC(A:A, 2)   /* Median  = 4  */
 =QUARTILE.INC(A:A, 3)   /* Q3      = 8  */
 =QUARTILE.INC(A:A, 4)   /* Maximum = 30 */</code></pre>
-<p><em>The interquartile range is needed to determine if there are any outliers.</em> The <span class="math inline">\(IQR = Q_3 - Q_1 = 6\)</span>. Since <span class="math inline">\(Q_3 + 1.5 \times IQR = 8 + 1.5(6) = 17\)</span>, everything beyond <span class="math inline">\(17\)</span> is an outlier — so <span class="math inline">\(30\)</span> is an outlier.</p>
+<p><em>The interquartile range is needed to determine if there are any outliers.</em> The <span class="math inline">\(IQR = Q_3 - Q_1 = 6\)</span>. Since <span class="math inline">\(Q_3 + 1.5 \times IQR = 8 + 1.5(6) = 17\)</span>, everything beyond <span class="math inline">\(17\)</span> is an outlier, so <span class="math inline">\(30\)</span> is an outlier.</p>
 <pre class="excel"><code>=QUARTILE.INC(A:A, 3) - QUARTILE.INC(A:A, 1)   /* IQR = 6  */
 =QUARTILE.INC(A:A, 3) + 1.5 * 6                 /* UL  = 17 */</code></pre>
 </div>

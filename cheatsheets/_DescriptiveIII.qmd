@@ -1,0 +1,33 @@
+```{=html}
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Measures of Central Location</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Most Common</div><div class="bs-cs-card-title">Arithmetic Mean</div><div class="bs-cs-formula">x̄ = Σxᵢ / n  ·  μ = Σxᵢ / N</div><p class="bs-cs-desc">Adds every value and divides by the count. Because it uses every value, outliers pull it toward them.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=AVERAGE(range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Middle Value</div><div class="bs-cs-card-title">Median</div><div class="bs-cs-formula">middle of the sorted data</div><p class="bs-cs-desc">Sort the data and take the middle value. If n is even, average the two middle values. Robust to outliers.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=MEDIAN(range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Most Frequent</div><div class="bs-cs-card-title">Mode</div><div class="bs-cs-formula">value with the highest frequency</div><p class="bs-cs-desc">Works for categorical data. A variable may have no mode, one mode, or several (bimodal).</p><div class="bs-excel"><span class="lbl">Excel</span><span>=MODE(range) · returns one mode</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Importance Weights</div><div class="bs-cs-card-title">Weighted Mean</div><div class="bs-cs-formula">x̄<sub>w</sub> = Σwᵢxᵢ / Σwᵢ</div><p class="bs-cs-desc">Gives some observations more importance than others, as in portfolios, GPAs, or surveys.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=SUMPRODUCT(w, x) / SUM(w)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Rates</div><div class="bs-cs-card-title">Geometric Mean</div><div class="bs-cs-formula">x̄<sub>g</sub> = ⁿ√[(1+r₁)⋯(1+rₙ)] − 1</div><p class="bs-cs-desc">For returns or growth rates that compound. Add 1 to each rate, take the nth root of the product, subtract 1.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=GEOMEAN(1+r₁, …, 1+rₙ) − 1</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Levels</div><div class="bs-cs-card-title">Geometric Mean</div><div class="bs-cs-formula">x̄<sub>g</sub> = ⁿ√(x₁ × ⋯ × xₙ)</div><p class="bs-cs-desc">For positive levels such as prices, proportions, or index values. No adjustment needed.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=GEOMEAN(range)</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>x̄</dt><dd>Sample mean</dd></div>
+      <div class="bs-cs-row"><dt>μ</dt><dd>Population mean</dd></div>
+      <div class="bs-cs-row"><dt>n, N</dt><dd>Sample size, population size</dd></div>
+      <div class="bs-cs-row"><dt>xᵢ</dt><dd>Observation i</dd></div>
+      <div class="bs-cs-row"><dt>wᵢ</dt><dd>Weight of observation i</dd></div>
+      <div class="bs-cs-row"><dt>rᵢ</dt><dd>Rate of change in period i</dd></div>
+      <div class="bs-cs-row"><dt>Σ</dt><dd>Sum</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Mean affected by outliers?</dt><dd>Yes</dd></div>
+      <div class="bs-cs-row"><dt>Median affected by outliers?</dt><dd>No, robust</dd></div>
+      <div class="bs-cs-row"><dt>Center of categorical data?</dt><dd>Mode</dd></div>
+      <div class="bs-cs-row"><dt>Two modes?</dt><dd>Bimodal</dd></div>
+      <div class="bs-cs-row"><dt>Average of returns?</dt><dd>Geometric mean</dd></div>
+      <div class="bs-cs-row"><dt>Arithmetic mean of returns?</dt><dd>Overstates growth</dd></div>
+      <div class="bs-cs-row"><dt>Equal weights?</dt><dd>Weighted = simple mean</dd></div>
+    </dl></div>
+  </div>
+</section>
+```

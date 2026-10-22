@@ -1,0 +1,33 @@
+```{=html}
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Frequency Distributions</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Categorical</div><div class="bs-cs-card-title">Frequency Table</div><div class="bs-cs-formula">relative frequency = fᵢ / n</div><p class="bs-cs-desc">Counts how many items fall in each category. The relative frequency divides each count by the total n.</p><div class="bs-excel"><span class="lbl">Excel</span><span>PivotTable · % of Column Total</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Visual</div><div class="bs-cs-card-title">Bar Chart</div><div class="bs-cs-formula">categories with gaps</div><p class="bs-cs-desc">Shows category frequencies as separate bars. The gaps signal that the data is categorical.</p><div class="bs-excel"><span class="lbl">Excel</span><span>Insert → PivotChart</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · How Many Classes</div><div class="bs-cs-card-title">2ᵏ Rule & Sturges</div><div class="bs-cs-formula">smallest k with 2ᵏ > n<br/>k = ⌈1 + 3.322·log₁₀ n⌉</div><p class="bs-cs-desc">Two rules of thumb for the number of classes. They can disagree; pick one and apply it consistently.</p><div class="bs-excel"><span class="lbl">Example</span><span>n = 50 → 6 (2ᵏ rule) or 7 (Sturges)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Class Width</div><div class="bs-cs-card-title">Width Formula</div><div class="bs-cs-formula">(Max − Min) / classes</div><p class="bs-cs-desc">Divide the range by the number of classes, then round up so every value fits in a class.</p><div class="bs-excel"><span class="lbl">Example</span><span>(78 − 20) / 6 ≈ 9.7 → use 10</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Numerical</div><div class="bs-cs-card-title">Frequency Table</div><div class="bs-cs-formula">assign a bin, then count</div><p class="bs-cs-desc">Give each value a class with a helper column, then count the values in each bin. Add a running total for the cumulative %.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=IFS(...) · PivotTable · % Running Total In</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Visual</div><div class="bs-cs-card-title">Histogram</div><div class="bs-cs-formula">bins with no gaps</div><p class="bs-cs-desc">A bar chart of class frequencies with the gap width set to 0. Touching bars show the data is numerical.</p><div class="bs-excel"><span class="lbl">Excel</span><span>Clustered Column · Gap Width 0%</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>fᵢ</dt><dd>Frequency of class i</dd></div>
+      <div class="bs-cs-row"><dt>n</dt><dd>Number of observations</dd></div>
+      <div class="bs-cs-row"><dt>fᵢ / n</dt><dd>Relative frequency</dd></div>
+      <div class="bs-cs-row"><dt>[a, b)</dt><dd>Class: includes a, excludes b</dd></div>
+      <div class="bs-cs-row"><dt>Max, Min</dt><dd>Largest, smallest value</dd></div>
+      <div class="bs-cs-row"><dt>k</dt><dd>Number of classes</dd></div>
+      <div class="bs-cs-row"><dt>Cumulative %</dt><dd>Running total of rel. freq.</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Bar chart bars?</dt><dd>Have gaps</dd></div>
+      <div class="bs-cs-row"><dt>Histogram bars?</dt><dd>No gaps</dd></div>
+      <div class="bs-cs-row"><dt>Relative frequency?</dt><dd>Count ÷ total</dd></div>
+      <div class="bs-cs-row"><dt>Class width?</dt><dd>Range ÷ classes</dd></div>
+      <div class="bs-cs-row"><dt>Round the width?</dt><dd>Always up</dd></div>
+      <div class="bs-cs-row"><dt>Each value belongs to?</dt><dd>Exactly one class</dd></div>
+      <div class="bs-cs-row"><dt>Cumulative % via?</dt><dd>Running total</dd></div>
+    </dl></div>
+  </div>
+</section>
+```

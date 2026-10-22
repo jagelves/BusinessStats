@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-ebc9bf21172222eecf4329b9f87ba86d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a9a8112abf6d22cde504e3b06bd5f6a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e6d6cf5d2fe5724721a99542168da79f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
@@ -343,7 +343,8 @@ window.Quarto = {
   <li><a href="#measures-of-dispersion-in-excel" id="toc-measures-of-dispersion-in-excel" class="nav-link" data-scroll-target="#measures-of-dispersion-in-excel"><span class="header-section-number">4.7</span> Measures of Dispersion in Excel</a></li>
   <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">4.8</span> Excel Function Summary</a></li>
   <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">4.9</span> Chapter Summary Cheat Sheet</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.10</span> Exercises</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">4.10</span> Check Your Understanding</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">4.11</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -405,7 +406,7 @@ details summary {
 </div>
 <section id="variance-intuition" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="variance-intuition">Variance Intuition</h3>
-<p>Let’s consider a sample of the price of Ether, the native cryptocurrency of the Ethereum blockchain. Ether is one of the largest cryptocurrencies by market capitalization and is widely used to pay for transactions and services on the Ethereum network. Unlike traditional assets such as stocks or bonds, cryptocurrencies like Ether are not backed by earnings or government guarantees, which makes their prices highly sensitive to speculation, regulatory news, and shifts in investor sentiment. As a result, Ether is known for dramatic price swings — sometimes gaining or losing double-digit percentages within a single day — making it an ideal case study for measures of dispersion. Below is a graph of the prices:</p>
+<p>Let’s consider a sample of the price of Ether, the native cryptocurrency of the Ethereum blockchain. Ether is one of the largest cryptocurrencies by market capitalization and is widely used to pay for transactions and services on the Ethereum network. Unlike traditional assets such as stocks or bonds, cryptocurrencies like Ether are not backed by earnings or government guarantees, which makes their prices highly sensitive to speculation, regulatory news, and shifts in investor sentiment. As a result, Ether is known for dramatic price swings, sometimes gaining or losing double-digit percentages within a single day, making it an ideal case study for measures of dispersion. Below is a graph of the prices:</p>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
 <div class="quarto-figure quarto-figure-center">
@@ -430,9 +431,9 @@ details summary {
 <section id="variance-step-by-step-calculation" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="variance-step-by-step-calculation">Variance Step By Step Calculation</h3>
 <p>Consider the data <span class="math inline">\(x=\{480, 1050, 1400, 2500, 3200\}\)</span>. Treating this as a sample, let’s calculate the variance step by step.</p>
-<p><strong>Step 1 — Calculate the sample mean:</strong></p>
+<p><strong>Step 1: Calculate the sample mean:</strong></p>
 <p><span class="math display">\[\bar{x} = \frac{480 + 1050 + 1400 + 2500 + 3200}{5} = \frac{8630}{5} = 1726\]</span></p>
-<p><strong>Step 2 — Calculate the deviation of each observation from the mean:</strong></p>
+<p><strong>Step 2: Calculate the deviation of each observation from the mean:</strong></p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -463,7 +464,7 @@ details summary {
 </tr>
 </tbody>
 </table>
-<p><strong>Step 3 — Square each deviation:</strong></p>
+<p><strong>Step 3: Square each deviation:</strong></p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -500,9 +501,9 @@ details summary {
 </tr>
 </tbody>
 </table>
-<p><strong>Step 4 — Sum the squared deviations:</strong></p>
+<p><strong>Step 4: Sum the squared deviations:</strong></p>
 <p><span class="math display">\[\sum(x_i-\bar{x})^2 = 1{,}552{,}516 + 456{,}976 + 106{,}276 + 599{,}076 + 2{,}172{,}676 = 4{,}887{,}520\]</span></p>
-<p><strong>Step 5 — Divide by <span class="math inline">\(n-1\)</span>:</strong></p>
+<p><strong>Step 5: Divide by <span class="math inline">\(n-1\)</span>:</strong></p>
 <p><span class="math display">\[s^2 = \frac{4{,}887{,}520}{5-1} = \frac{4{,}887{,}520}{4} = 1{,}221{,}880\]</span></p>
 <p>The sample variance is <span class="math inline">\(s^2=1{,}221{,}880\)</span>. Note that the variance is expressed in squared units of the original data, which makes it difficult to interpret directly. This motivates the use of the standard deviation, which brings the measure back to the original units.</p>
 </section>
@@ -528,7 +529,7 @@ details summary {
 <div class="callout-formula">
 <p><strong>THE MEAN ABSOLUTE DEVIATION (POPULATION)</strong> <span class="math display">\[MAD=\frac{\sum |x_i-\mu|}{N}\]</span> where the | | operator indicates absolute value.</p>
 </div>
-<p>You can estimates the mad for a sample with:</p>
+<p>You can estimate the mad for a sample with:</p>
 <div class="callout-formula">
 <p><strong>THE MEAN ABSOLUTE DEVIATION (SAMPLE)</strong> <span class="math display">\[mad=\frac{\sum |x_i-\bar{x}|}{n}\]</span></p>
 </div>
@@ -542,7 +543,7 @@ details summary {
 </div>
 </div>
 </div>
-<p>For the MAD, focus on the fourth column which lists the absolute deviations from the mean. Averaging these gives us the Mean Absolute Deviation (MAD), which equals <span class="math inline">\(mad=899.2\)</span>. This result states that, on average, each data point is roughly <span class="math inline">\(900\)</span> dollars away from the mean. Note that the standard deviation is higher (<span class="math inline">\(988.73\)</span>) since the squaring of deviations disproportionately amplifies larger ones, pushing the standard deviation above the MAD.</p>
+<p>For the MAD, focus on the fourth column which lists the absolute deviations from the mean. Averaging these gives us the Mean Absolute Deviation (MAD), which equals <span class="math inline">\(mad=899.2\)</span>. This result states that, on average, each data point is roughly <span class="math inline">\(900\)</span> dollars away from the mean. Note that the standard deviation computed with the same denominator <span class="math inline">\(n\)</span> is higher (<span class="math inline">\(\sqrt{4{,}887{,}520/5}=988.69\)</span>) since the squaring of deviations disproportionately amplifies larger ones, pushing the standard deviation above the MAD.</p>
 </section>
 <section id="coefficient-of-variation" class="level2" data-number="4.5">
 <h2 data-number="4.5" class="anchored" data-anchor-id="coefficient-of-variation"><span class="header-section-number">4.5</span> Coefficient of Variation</h2>
@@ -587,30 +588,30 @@ details summary {
 </section>
 <section id="measures-of-dispersion-in-excel" class="level2" data-number="4.7">
 <h2 data-number="4.7" class="anchored" data-anchor-id="measures-of-dispersion-in-excel"><span class="header-section-number">4.7</span> Measures of Dispersion in Excel</h2>
-<p>Excel has a collection of functions that calculate measures of dispersion. Let’s use daily stock return data for three assets — Apple (AAPL), the S&amp;P 500 ETF (SPY), and Tesla (TSLA) — to explore these functions. The data contains daily returns for each stock from January 2020 to July 2021.</p>
+<p>Excel has a collection of functions that calculate measures of dispersion. Let’s use daily stock return data for three assets, Apple (AAPL), the S&amp;P 500 ETF (SPY), and Tesla (TSLA), to explore these functions. The data contains daily returns for each stock from January 2020 to July 2021.</p>
 <p><a href="returns.xlsx" class="btn btn-success"><i class="fa-solid fa-file-excel" aria-label="file-excel"></i> Download Data</a></p>
 <p><strong>Count:</strong> We begin by finding the number of observations for each stock using <code>=COUNTIF()</code>. Assuming the stock names are in column B and returns in column C, the number of observations for AAPL is:</p>
 <pre class="excel"><code>=COUNTIF(B:B, "AAPL")</code></pre>
 <p>The number of daily return observations for each stock is:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="dptwxkflxd" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#dptwxkflxd table {
+<div id="aokkytxuhc" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#aokkytxuhc table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#dptwxkflxd thead, #dptwxkflxd tbody, #dptwxkflxd tfoot, #dptwxkflxd tr, #dptwxkflxd td, #dptwxkflxd th {
+#aokkytxuhc thead, #aokkytxuhc tbody, #aokkytxuhc tfoot, #aokkytxuhc tr, #aokkytxuhc td, #aokkytxuhc th {
   border-style: none;
 }
 
-#dptwxkflxd p {
+#aokkytxuhc p {
   margin: 0;
   padding: 0;
 }
 
-#dptwxkflxd .gt_table {
+#aokkytxuhc .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -636,12 +637,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#dptwxkflxd .gt_caption {
+#aokkytxuhc .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#dptwxkflxd .gt_title {
+#aokkytxuhc .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -653,7 +654,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#dptwxkflxd .gt_subtitle {
+#aokkytxuhc .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -665,7 +666,7 @@ details summary {
   border-top-width: 0;
 }
 
-#dptwxkflxd .gt_heading {
+#aokkytxuhc .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -677,13 +678,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#dptwxkflxd .gt_bottom_border {
+#aokkytxuhc .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#dptwxkflxd .gt_col_headings {
+#aokkytxuhc .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -698,7 +699,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#dptwxkflxd .gt_col_heading {
+#aokkytxuhc .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -718,7 +719,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#dptwxkflxd .gt_column_spanner_outer {
+#aokkytxuhc .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -730,15 +731,15 @@ details summary {
   padding-right: 4px;
 }
 
-#dptwxkflxd .gt_column_spanner_outer:first-child {
+#aokkytxuhc .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#dptwxkflxd .gt_column_spanner_outer:last-child {
+#aokkytxuhc .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#dptwxkflxd .gt_column_spanner {
+#aokkytxuhc .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -750,11 +751,11 @@ details summary {
   width: 100%;
 }
 
-#dptwxkflxd .gt_spanner_row {
+#aokkytxuhc .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#dptwxkflxd .gt_group_heading {
+#aokkytxuhc .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -780,7 +781,7 @@ details summary {
   text-align: left;
 }
 
-#dptwxkflxd .gt_empty_group_heading {
+#aokkytxuhc .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -795,15 +796,15 @@ details summary {
   vertical-align: middle;
 }
 
-#dptwxkflxd .gt_from_md > :first-child {
+#aokkytxuhc .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#dptwxkflxd .gt_from_md > :last-child {
+#aokkytxuhc .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#dptwxkflxd .gt_row {
+#aokkytxuhc .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -822,7 +823,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#dptwxkflxd .gt_stub {
+#aokkytxuhc .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -835,7 +836,7 @@ details summary {
   padding-right: 5px;
 }
 
-#dptwxkflxd .gt_stub_row_group {
+#aokkytxuhc .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -849,15 +850,15 @@ details summary {
   vertical-align: top;
 }
 
-#dptwxkflxd .gt_row_group_first td {
+#aokkytxuhc .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#dptwxkflxd .gt_row_group_first th {
+#aokkytxuhc .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#dptwxkflxd .gt_summary_row {
+#aokkytxuhc .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -867,16 +868,16 @@ details summary {
   padding-right: 5px;
 }
 
-#dptwxkflxd .gt_first_summary_row {
+#aokkytxuhc .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#dptwxkflxd .gt_first_summary_row.thick {
+#aokkytxuhc .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#dptwxkflxd .gt_last_summary_row {
+#aokkytxuhc .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -886,7 +887,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#dptwxkflxd .gt_grand_summary_row {
+#aokkytxuhc .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -896,7 +897,7 @@ details summary {
   padding-right: 5px;
 }
 
-#dptwxkflxd .gt_first_grand_summary_row {
+#aokkytxuhc .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -906,7 +907,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#dptwxkflxd .gt_last_grand_summary_row_top {
+#aokkytxuhc .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -916,11 +917,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#dptwxkflxd .gt_striped {
+#aokkytxuhc .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#dptwxkflxd .gt_table_body {
+#aokkytxuhc .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -929,7 +930,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#dptwxkflxd .gt_footnotes {
+#aokkytxuhc .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -943,7 +944,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#dptwxkflxd .gt_footnote {
+#aokkytxuhc .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -952,7 +953,7 @@ details summary {
   padding-right: 5px;
 }
 
-#dptwxkflxd .gt_sourcenotes {
+#aokkytxuhc .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -966,7 +967,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#dptwxkflxd .gt_sourcenote {
+#aokkytxuhc .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -974,72 +975,72 @@ details summary {
   padding-right: 5px;
 }
 
-#dptwxkflxd .gt_left {
+#aokkytxuhc .gt_left {
   text-align: left;
 }
 
-#dptwxkflxd .gt_center {
+#aokkytxuhc .gt_center {
   text-align: center;
 }
 
-#dptwxkflxd .gt_right {
+#aokkytxuhc .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#dptwxkflxd .gt_font_normal {
+#aokkytxuhc .gt_font_normal {
   font-weight: normal;
 }
 
-#dptwxkflxd .gt_font_bold {
+#aokkytxuhc .gt_font_bold {
   font-weight: bold;
 }
 
-#dptwxkflxd .gt_font_italic {
+#aokkytxuhc .gt_font_italic {
   font-style: italic;
 }
 
-#dptwxkflxd .gt_super {
+#aokkytxuhc .gt_super {
   font-size: 65%;
 }
 
-#dptwxkflxd .gt_footnote_marks {
+#aokkytxuhc .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#dptwxkflxd .gt_asterisk {
+#aokkytxuhc .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#dptwxkflxd .gt_indent_1 {
+#aokkytxuhc .gt_indent_1 {
   text-indent: 5px;
 }
 
-#dptwxkflxd .gt_indent_2 {
+#aokkytxuhc .gt_indent_2 {
   text-indent: 10px;
 }
 
-#dptwxkflxd .gt_indent_3 {
+#aokkytxuhc .gt_indent_3 {
   text-indent: 15px;
 }
 
-#dptwxkflxd .gt_indent_4 {
+#aokkytxuhc .gt_indent_4 {
   text-indent: 20px;
 }
 
-#dptwxkflxd .gt_indent_5 {
+#aokkytxuhc .gt_indent_5 {
   text-indent: 25px;
 }
 
-#dptwxkflxd .katex-display {
+#aokkytxuhc .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#dptwxkflxd div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#aokkytxuhc div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1075,23 +1076,23 @@ details summary {
 <p>The average daily return for each stock is:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="qpzowcckwb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#qpzowcckwb table {
+<div id="mnhbakbytl" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#mnhbakbytl table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#qpzowcckwb thead, #qpzowcckwb tbody, #qpzowcckwb tfoot, #qpzowcckwb tr, #qpzowcckwb td, #qpzowcckwb th {
+#mnhbakbytl thead, #mnhbakbytl tbody, #mnhbakbytl tfoot, #mnhbakbytl tr, #mnhbakbytl td, #mnhbakbytl th {
   border-style: none;
 }
 
-#qpzowcckwb p {
+#mnhbakbytl p {
   margin: 0;
   padding: 0;
 }
 
-#qpzowcckwb .gt_table {
+#mnhbakbytl .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1117,12 +1118,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#qpzowcckwb .gt_caption {
+#mnhbakbytl .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#qpzowcckwb .gt_title {
+#mnhbakbytl .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1134,7 +1135,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#qpzowcckwb .gt_subtitle {
+#mnhbakbytl .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1146,7 +1147,7 @@ details summary {
   border-top-width: 0;
 }
 
-#qpzowcckwb .gt_heading {
+#mnhbakbytl .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1158,13 +1159,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#qpzowcckwb .gt_bottom_border {
+#mnhbakbytl .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#qpzowcckwb .gt_col_headings {
+#mnhbakbytl .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1179,7 +1180,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#qpzowcckwb .gt_col_heading {
+#mnhbakbytl .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1199,7 +1200,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#qpzowcckwb .gt_column_spanner_outer {
+#mnhbakbytl .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1211,15 +1212,15 @@ details summary {
   padding-right: 4px;
 }
 
-#qpzowcckwb .gt_column_spanner_outer:first-child {
+#mnhbakbytl .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#qpzowcckwb .gt_column_spanner_outer:last-child {
+#mnhbakbytl .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#qpzowcckwb .gt_column_spanner {
+#mnhbakbytl .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1231,11 +1232,11 @@ details summary {
   width: 100%;
 }
 
-#qpzowcckwb .gt_spanner_row {
+#mnhbakbytl .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#qpzowcckwb .gt_group_heading {
+#mnhbakbytl .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1261,7 +1262,7 @@ details summary {
   text-align: left;
 }
 
-#qpzowcckwb .gt_empty_group_heading {
+#mnhbakbytl .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1276,15 +1277,15 @@ details summary {
   vertical-align: middle;
 }
 
-#qpzowcckwb .gt_from_md > :first-child {
+#mnhbakbytl .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#qpzowcckwb .gt_from_md > :last-child {
+#mnhbakbytl .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#qpzowcckwb .gt_row {
+#mnhbakbytl .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1303,7 +1304,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#qpzowcckwb .gt_stub {
+#mnhbakbytl .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1316,7 +1317,7 @@ details summary {
   padding-right: 5px;
 }
 
-#qpzowcckwb .gt_stub_row_group {
+#mnhbakbytl .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1330,15 +1331,15 @@ details summary {
   vertical-align: top;
 }
 
-#qpzowcckwb .gt_row_group_first td {
+#mnhbakbytl .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#qpzowcckwb .gt_row_group_first th {
+#mnhbakbytl .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#qpzowcckwb .gt_summary_row {
+#mnhbakbytl .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1348,16 +1349,16 @@ details summary {
   padding-right: 5px;
 }
 
-#qpzowcckwb .gt_first_summary_row {
+#mnhbakbytl .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#qpzowcckwb .gt_first_summary_row.thick {
+#mnhbakbytl .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#qpzowcckwb .gt_last_summary_row {
+#mnhbakbytl .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1367,7 +1368,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#qpzowcckwb .gt_grand_summary_row {
+#mnhbakbytl .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1377,7 +1378,7 @@ details summary {
   padding-right: 5px;
 }
 
-#qpzowcckwb .gt_first_grand_summary_row {
+#mnhbakbytl .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1387,7 +1388,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#qpzowcckwb .gt_last_grand_summary_row_top {
+#mnhbakbytl .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1397,11 +1398,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#qpzowcckwb .gt_striped {
+#mnhbakbytl .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#qpzowcckwb .gt_table_body {
+#mnhbakbytl .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1410,7 +1411,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#qpzowcckwb .gt_footnotes {
+#mnhbakbytl .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1424,7 +1425,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#qpzowcckwb .gt_footnote {
+#mnhbakbytl .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1433,7 +1434,7 @@ details summary {
   padding-right: 5px;
 }
 
-#qpzowcckwb .gt_sourcenotes {
+#mnhbakbytl .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1447,7 +1448,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#qpzowcckwb .gt_sourcenote {
+#mnhbakbytl .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1455,72 +1456,72 @@ details summary {
   padding-right: 5px;
 }
 
-#qpzowcckwb .gt_left {
+#mnhbakbytl .gt_left {
   text-align: left;
 }
 
-#qpzowcckwb .gt_center {
+#mnhbakbytl .gt_center {
   text-align: center;
 }
 
-#qpzowcckwb .gt_right {
+#mnhbakbytl .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#qpzowcckwb .gt_font_normal {
+#mnhbakbytl .gt_font_normal {
   font-weight: normal;
 }
 
-#qpzowcckwb .gt_font_bold {
+#mnhbakbytl .gt_font_bold {
   font-weight: bold;
 }
 
-#qpzowcckwb .gt_font_italic {
+#mnhbakbytl .gt_font_italic {
   font-style: italic;
 }
 
-#qpzowcckwb .gt_super {
+#mnhbakbytl .gt_super {
   font-size: 65%;
 }
 
-#qpzowcckwb .gt_footnote_marks {
+#mnhbakbytl .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#qpzowcckwb .gt_asterisk {
+#mnhbakbytl .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#qpzowcckwb .gt_indent_1 {
+#mnhbakbytl .gt_indent_1 {
   text-indent: 5px;
 }
 
-#qpzowcckwb .gt_indent_2 {
+#mnhbakbytl .gt_indent_2 {
   text-indent: 10px;
 }
 
-#qpzowcckwb .gt_indent_3 {
+#mnhbakbytl .gt_indent_3 {
   text-indent: 15px;
 }
 
-#qpzowcckwb .gt_indent_4 {
+#mnhbakbytl .gt_indent_4 {
   text-indent: 20px;
 }
 
-#qpzowcckwb .gt_indent_5 {
+#mnhbakbytl .gt_indent_5 {
   text-indent: 25px;
 }
 
-#qpzowcckwb .katex-display {
+#mnhbakbytl .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#qpzowcckwb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#mnhbakbytl div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1557,23 +1558,23 @@ details summary {
 <p>The minimum and maximum daily returns for each stock are:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="xagpnlnsmw" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#xagpnlnsmw table {
+<div id="vmuivlvreb" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#vmuivlvreb table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#xagpnlnsmw thead, #xagpnlnsmw tbody, #xagpnlnsmw tfoot, #xagpnlnsmw tr, #xagpnlnsmw td, #xagpnlnsmw th {
+#vmuivlvreb thead, #vmuivlvreb tbody, #vmuivlvreb tfoot, #vmuivlvreb tr, #vmuivlvreb td, #vmuivlvreb th {
   border-style: none;
 }
 
-#xagpnlnsmw p {
+#vmuivlvreb p {
   margin: 0;
   padding: 0;
 }
 
-#xagpnlnsmw .gt_table {
+#vmuivlvreb .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1599,12 +1600,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#xagpnlnsmw .gt_caption {
+#vmuivlvreb .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#xagpnlnsmw .gt_title {
+#vmuivlvreb .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1616,7 +1617,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#xagpnlnsmw .gt_subtitle {
+#vmuivlvreb .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1628,7 +1629,7 @@ details summary {
   border-top-width: 0;
 }
 
-#xagpnlnsmw .gt_heading {
+#vmuivlvreb .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1640,13 +1641,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#xagpnlnsmw .gt_bottom_border {
+#vmuivlvreb .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#xagpnlnsmw .gt_col_headings {
+#vmuivlvreb .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1661,7 +1662,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#xagpnlnsmw .gt_col_heading {
+#vmuivlvreb .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1681,7 +1682,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#xagpnlnsmw .gt_column_spanner_outer {
+#vmuivlvreb .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1693,15 +1694,15 @@ details summary {
   padding-right: 4px;
 }
 
-#xagpnlnsmw .gt_column_spanner_outer:first-child {
+#vmuivlvreb .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#xagpnlnsmw .gt_column_spanner_outer:last-child {
+#vmuivlvreb .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#xagpnlnsmw .gt_column_spanner {
+#vmuivlvreb .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1713,11 +1714,11 @@ details summary {
   width: 100%;
 }
 
-#xagpnlnsmw .gt_spanner_row {
+#vmuivlvreb .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#xagpnlnsmw .gt_group_heading {
+#vmuivlvreb .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1743,7 +1744,7 @@ details summary {
   text-align: left;
 }
 
-#xagpnlnsmw .gt_empty_group_heading {
+#vmuivlvreb .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1758,15 +1759,15 @@ details summary {
   vertical-align: middle;
 }
 
-#xagpnlnsmw .gt_from_md > :first-child {
+#vmuivlvreb .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#xagpnlnsmw .gt_from_md > :last-child {
+#vmuivlvreb .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#xagpnlnsmw .gt_row {
+#vmuivlvreb .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1785,7 +1786,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#xagpnlnsmw .gt_stub {
+#vmuivlvreb .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1798,7 +1799,7 @@ details summary {
   padding-right: 5px;
 }
 
-#xagpnlnsmw .gt_stub_row_group {
+#vmuivlvreb .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1812,15 +1813,15 @@ details summary {
   vertical-align: top;
 }
 
-#xagpnlnsmw .gt_row_group_first td {
+#vmuivlvreb .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#xagpnlnsmw .gt_row_group_first th {
+#vmuivlvreb .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#xagpnlnsmw .gt_summary_row {
+#vmuivlvreb .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1830,16 +1831,16 @@ details summary {
   padding-right: 5px;
 }
 
-#xagpnlnsmw .gt_first_summary_row {
+#vmuivlvreb .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#xagpnlnsmw .gt_first_summary_row.thick {
+#vmuivlvreb .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#xagpnlnsmw .gt_last_summary_row {
+#vmuivlvreb .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1849,7 +1850,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#xagpnlnsmw .gt_grand_summary_row {
+#vmuivlvreb .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1859,7 +1860,7 @@ details summary {
   padding-right: 5px;
 }
 
-#xagpnlnsmw .gt_first_grand_summary_row {
+#vmuivlvreb .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1869,7 +1870,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#xagpnlnsmw .gt_last_grand_summary_row_top {
+#vmuivlvreb .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1879,11 +1880,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#xagpnlnsmw .gt_striped {
+#vmuivlvreb .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#xagpnlnsmw .gt_table_body {
+#vmuivlvreb .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1892,7 +1893,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#xagpnlnsmw .gt_footnotes {
+#vmuivlvreb .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1906,7 +1907,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#xagpnlnsmw .gt_footnote {
+#vmuivlvreb .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1915,7 +1916,7 @@ details summary {
   padding-right: 5px;
 }
 
-#xagpnlnsmw .gt_sourcenotes {
+#vmuivlvreb .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1929,7 +1930,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#xagpnlnsmw .gt_sourcenote {
+#vmuivlvreb .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1937,72 +1938,72 @@ details summary {
   padding-right: 5px;
 }
 
-#xagpnlnsmw .gt_left {
+#vmuivlvreb .gt_left {
   text-align: left;
 }
 
-#xagpnlnsmw .gt_center {
+#vmuivlvreb .gt_center {
   text-align: center;
 }
 
-#xagpnlnsmw .gt_right {
+#vmuivlvreb .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#xagpnlnsmw .gt_font_normal {
+#vmuivlvreb .gt_font_normal {
   font-weight: normal;
 }
 
-#xagpnlnsmw .gt_font_bold {
+#vmuivlvreb .gt_font_bold {
   font-weight: bold;
 }
 
-#xagpnlnsmw .gt_font_italic {
+#vmuivlvreb .gt_font_italic {
   font-style: italic;
 }
 
-#xagpnlnsmw .gt_super {
+#vmuivlvreb .gt_super {
   font-size: 65%;
 }
 
-#xagpnlnsmw .gt_footnote_marks {
+#vmuivlvreb .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#xagpnlnsmw .gt_asterisk {
+#vmuivlvreb .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#xagpnlnsmw .gt_indent_1 {
+#vmuivlvreb .gt_indent_1 {
   text-indent: 5px;
 }
 
-#xagpnlnsmw .gt_indent_2 {
+#vmuivlvreb .gt_indent_2 {
   text-indent: 10px;
 }
 
-#xagpnlnsmw .gt_indent_3 {
+#vmuivlvreb .gt_indent_3 {
   text-indent: 15px;
 }
 
-#xagpnlnsmw .gt_indent_4 {
+#vmuivlvreb .gt_indent_4 {
   text-indent: 20px;
 }
 
-#xagpnlnsmw .gt_indent_5 {
+#vmuivlvreb .gt_indent_5 {
   text-indent: 25px;
 }
 
-#xagpnlnsmw .katex-display {
+#vmuivlvreb .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#xagpnlnsmw div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#vmuivlvreb div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2038,29 +2039,29 @@ details summary {
 </div>
 </div>
 <p>Note that TSLA shows the widest range, with a minimum daily return of around <span class="math inline">\(-23\%\)</span> and a maximum of around <span class="math inline">\(+18\%\)</span>, reflecting its high volatility relative to AAPL and SPY.</p>
-<p><strong>Variance and Standard Deviation:</strong> To calculate the variance and standard deviation use <code>=VARPA()</code> and <code>=STDEV.S()</code>. Note that Excel does not have a <code>=STDEVIF()</code> function. To calculate a conditional standard deviation use an array formula:</p>
+<p><strong>Variance and Standard Deviation:</strong> To calculate the variance and standard deviation use <code>=VAR.S()</code> and <code>=STDEV.S()</code>. Note that Excel does not have a <code>=STDEVIF()</code> function. To calculate a conditional standard deviation use an array formula:</p>
 <pre class="excel"><code>=VAR(IF(B2:B1189="AAPL", C2:C1189))
 =STDEV(IF(B2:B1189="AAPL", C2:C1189))</code></pre>
 <p>The variance and standard deviation for each stock are:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="wpcykmyuly" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#wpcykmyuly table {
+<div id="anssniegnt" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#anssniegnt table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#wpcykmyuly thead, #wpcykmyuly tbody, #wpcykmyuly tfoot, #wpcykmyuly tr, #wpcykmyuly td, #wpcykmyuly th {
+#anssniegnt thead, #anssniegnt tbody, #anssniegnt tfoot, #anssniegnt tr, #anssniegnt td, #anssniegnt th {
   border-style: none;
 }
 
-#wpcykmyuly p {
+#anssniegnt p {
   margin: 0;
   padding: 0;
 }
 
-#wpcykmyuly .gt_table {
+#anssniegnt .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2086,12 +2087,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#wpcykmyuly .gt_caption {
+#anssniegnt .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#wpcykmyuly .gt_title {
+#anssniegnt .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2103,7 +2104,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#wpcykmyuly .gt_subtitle {
+#anssniegnt .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2115,7 +2116,7 @@ details summary {
   border-top-width: 0;
 }
 
-#wpcykmyuly .gt_heading {
+#anssniegnt .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2127,13 +2128,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#wpcykmyuly .gt_bottom_border {
+#anssniegnt .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#wpcykmyuly .gt_col_headings {
+#anssniegnt .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2148,7 +2149,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#wpcykmyuly .gt_col_heading {
+#anssniegnt .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2168,7 +2169,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#wpcykmyuly .gt_column_spanner_outer {
+#anssniegnt .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2180,15 +2181,15 @@ details summary {
   padding-right: 4px;
 }
 
-#wpcykmyuly .gt_column_spanner_outer:first-child {
+#anssniegnt .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#wpcykmyuly .gt_column_spanner_outer:last-child {
+#anssniegnt .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#wpcykmyuly .gt_column_spanner {
+#anssniegnt .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2200,11 +2201,11 @@ details summary {
   width: 100%;
 }
 
-#wpcykmyuly .gt_spanner_row {
+#anssniegnt .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#wpcykmyuly .gt_group_heading {
+#anssniegnt .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2230,7 +2231,7 @@ details summary {
   text-align: left;
 }
 
-#wpcykmyuly .gt_empty_group_heading {
+#anssniegnt .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2245,15 +2246,15 @@ details summary {
   vertical-align: middle;
 }
 
-#wpcykmyuly .gt_from_md > :first-child {
+#anssniegnt .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#wpcykmyuly .gt_from_md > :last-child {
+#anssniegnt .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#wpcykmyuly .gt_row {
+#anssniegnt .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2272,7 +2273,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#wpcykmyuly .gt_stub {
+#anssniegnt .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2285,7 +2286,7 @@ details summary {
   padding-right: 5px;
 }
 
-#wpcykmyuly .gt_stub_row_group {
+#anssniegnt .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2299,15 +2300,15 @@ details summary {
   vertical-align: top;
 }
 
-#wpcykmyuly .gt_row_group_first td {
+#anssniegnt .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#wpcykmyuly .gt_row_group_first th {
+#anssniegnt .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#wpcykmyuly .gt_summary_row {
+#anssniegnt .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2317,16 +2318,16 @@ details summary {
   padding-right: 5px;
 }
 
-#wpcykmyuly .gt_first_summary_row {
+#anssniegnt .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#wpcykmyuly .gt_first_summary_row.thick {
+#anssniegnt .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#wpcykmyuly .gt_last_summary_row {
+#anssniegnt .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2336,7 +2337,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#wpcykmyuly .gt_grand_summary_row {
+#anssniegnt .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2346,7 +2347,7 @@ details summary {
   padding-right: 5px;
 }
 
-#wpcykmyuly .gt_first_grand_summary_row {
+#anssniegnt .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2356,7 +2357,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#wpcykmyuly .gt_last_grand_summary_row_top {
+#anssniegnt .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2366,11 +2367,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#wpcykmyuly .gt_striped {
+#anssniegnt .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#wpcykmyuly .gt_table_body {
+#anssniegnt .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2379,7 +2380,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#wpcykmyuly .gt_footnotes {
+#anssniegnt .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2393,7 +2394,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#wpcykmyuly .gt_footnote {
+#anssniegnt .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2402,7 +2403,7 @@ details summary {
   padding-right: 5px;
 }
 
-#wpcykmyuly .gt_sourcenotes {
+#anssniegnt .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2416,7 +2417,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#wpcykmyuly .gt_sourcenote {
+#anssniegnt .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2424,72 +2425,72 @@ details summary {
   padding-right: 5px;
 }
 
-#wpcykmyuly .gt_left {
+#anssniegnt .gt_left {
   text-align: left;
 }
 
-#wpcykmyuly .gt_center {
+#anssniegnt .gt_center {
   text-align: center;
 }
 
-#wpcykmyuly .gt_right {
+#anssniegnt .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#wpcykmyuly .gt_font_normal {
+#anssniegnt .gt_font_normal {
   font-weight: normal;
 }
 
-#wpcykmyuly .gt_font_bold {
+#anssniegnt .gt_font_bold {
   font-weight: bold;
 }
 
-#wpcykmyuly .gt_font_italic {
+#anssniegnt .gt_font_italic {
   font-style: italic;
 }
 
-#wpcykmyuly .gt_super {
+#anssniegnt .gt_super {
   font-size: 65%;
 }
 
-#wpcykmyuly .gt_footnote_marks {
+#anssniegnt .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#wpcykmyuly .gt_asterisk {
+#anssniegnt .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#wpcykmyuly .gt_indent_1 {
+#anssniegnt .gt_indent_1 {
   text-indent: 5px;
 }
 
-#wpcykmyuly .gt_indent_2 {
+#anssniegnt .gt_indent_2 {
   text-indent: 10px;
 }
 
-#wpcykmyuly .gt_indent_3 {
+#anssniegnt .gt_indent_3 {
   text-indent: 15px;
 }
 
-#wpcykmyuly .gt_indent_4 {
+#anssniegnt .gt_indent_4 {
   text-indent: 20px;
 }
 
-#wpcykmyuly .gt_indent_5 {
+#anssniegnt .gt_indent_5 {
   text-indent: 25px;
 }
 
-#wpcykmyuly .katex-display {
+#anssniegnt .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#wpcykmyuly div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#anssniegnt div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2532,23 +2533,23 @@ details summary {
 <p>The CV and Sharpe ratio for each stock are:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="hyyxacmith" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#hyyxacmith table {
+<div id="adgxaipmnf" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#adgxaipmnf table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#hyyxacmith thead, #hyyxacmith tbody, #hyyxacmith tfoot, #hyyxacmith tr, #hyyxacmith td, #hyyxacmith th {
+#adgxaipmnf thead, #adgxaipmnf tbody, #adgxaipmnf tfoot, #adgxaipmnf tr, #adgxaipmnf td, #adgxaipmnf th {
   border-style: none;
 }
 
-#hyyxacmith p {
+#adgxaipmnf p {
   margin: 0;
   padding: 0;
 }
 
-#hyyxacmith .gt_table {
+#adgxaipmnf .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2574,12 +2575,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#hyyxacmith .gt_caption {
+#adgxaipmnf .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#hyyxacmith .gt_title {
+#adgxaipmnf .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2591,7 +2592,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#hyyxacmith .gt_subtitle {
+#adgxaipmnf .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2603,7 +2604,7 @@ details summary {
   border-top-width: 0;
 }
 
-#hyyxacmith .gt_heading {
+#adgxaipmnf .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2615,13 +2616,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#hyyxacmith .gt_bottom_border {
+#adgxaipmnf .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#hyyxacmith .gt_col_headings {
+#adgxaipmnf .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2636,7 +2637,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#hyyxacmith .gt_col_heading {
+#adgxaipmnf .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2656,7 +2657,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#hyyxacmith .gt_column_spanner_outer {
+#adgxaipmnf .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2668,15 +2669,15 @@ details summary {
   padding-right: 4px;
 }
 
-#hyyxacmith .gt_column_spanner_outer:first-child {
+#adgxaipmnf .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#hyyxacmith .gt_column_spanner_outer:last-child {
+#adgxaipmnf .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#hyyxacmith .gt_column_spanner {
+#adgxaipmnf .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2688,11 +2689,11 @@ details summary {
   width: 100%;
 }
 
-#hyyxacmith .gt_spanner_row {
+#adgxaipmnf .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#hyyxacmith .gt_group_heading {
+#adgxaipmnf .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2718,7 +2719,7 @@ details summary {
   text-align: left;
 }
 
-#hyyxacmith .gt_empty_group_heading {
+#adgxaipmnf .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2733,15 +2734,15 @@ details summary {
   vertical-align: middle;
 }
 
-#hyyxacmith .gt_from_md > :first-child {
+#adgxaipmnf .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#hyyxacmith .gt_from_md > :last-child {
+#adgxaipmnf .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#hyyxacmith .gt_row {
+#adgxaipmnf .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2760,7 +2761,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#hyyxacmith .gt_stub {
+#adgxaipmnf .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2773,7 +2774,7 @@ details summary {
   padding-right: 5px;
 }
 
-#hyyxacmith .gt_stub_row_group {
+#adgxaipmnf .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2787,15 +2788,15 @@ details summary {
   vertical-align: top;
 }
 
-#hyyxacmith .gt_row_group_first td {
+#adgxaipmnf .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#hyyxacmith .gt_row_group_first th {
+#adgxaipmnf .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#hyyxacmith .gt_summary_row {
+#adgxaipmnf .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2805,16 +2806,16 @@ details summary {
   padding-right: 5px;
 }
 
-#hyyxacmith .gt_first_summary_row {
+#adgxaipmnf .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#hyyxacmith .gt_first_summary_row.thick {
+#adgxaipmnf .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#hyyxacmith .gt_last_summary_row {
+#adgxaipmnf .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2824,7 +2825,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#hyyxacmith .gt_grand_summary_row {
+#adgxaipmnf .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2834,7 +2835,7 @@ details summary {
   padding-right: 5px;
 }
 
-#hyyxacmith .gt_first_grand_summary_row {
+#adgxaipmnf .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2844,7 +2845,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#hyyxacmith .gt_last_grand_summary_row_top {
+#adgxaipmnf .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2854,11 +2855,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#hyyxacmith .gt_striped {
+#adgxaipmnf .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#hyyxacmith .gt_table_body {
+#adgxaipmnf .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2867,7 +2868,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#hyyxacmith .gt_footnotes {
+#adgxaipmnf .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2881,7 +2882,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#hyyxacmith .gt_footnote {
+#adgxaipmnf .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2890,7 +2891,7 @@ details summary {
   padding-right: 5px;
 }
 
-#hyyxacmith .gt_sourcenotes {
+#adgxaipmnf .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2904,7 +2905,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#hyyxacmith .gt_sourcenote {
+#adgxaipmnf .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2912,72 +2913,72 @@ details summary {
   padding-right: 5px;
 }
 
-#hyyxacmith .gt_left {
+#adgxaipmnf .gt_left {
   text-align: left;
 }
 
-#hyyxacmith .gt_center {
+#adgxaipmnf .gt_center {
   text-align: center;
 }
 
-#hyyxacmith .gt_right {
+#adgxaipmnf .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#hyyxacmith .gt_font_normal {
+#adgxaipmnf .gt_font_normal {
   font-weight: normal;
 }
 
-#hyyxacmith .gt_font_bold {
+#adgxaipmnf .gt_font_bold {
   font-weight: bold;
 }
 
-#hyyxacmith .gt_font_italic {
+#adgxaipmnf .gt_font_italic {
   font-style: italic;
 }
 
-#hyyxacmith .gt_super {
+#adgxaipmnf .gt_super {
   font-size: 65%;
 }
 
-#hyyxacmith .gt_footnote_marks {
+#adgxaipmnf .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#hyyxacmith .gt_asterisk {
+#adgxaipmnf .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#hyyxacmith .gt_indent_1 {
+#adgxaipmnf .gt_indent_1 {
   text-indent: 5px;
 }
 
-#hyyxacmith .gt_indent_2 {
+#adgxaipmnf .gt_indent_2 {
   text-indent: 10px;
 }
 
-#hyyxacmith .gt_indent_3 {
+#adgxaipmnf .gt_indent_3 {
   text-indent: 15px;
 }
 
-#hyyxacmith .gt_indent_4 {
+#adgxaipmnf .gt_indent_4 {
   text-indent: 20px;
 }
 
-#hyyxacmith .gt_indent_5 {
+#adgxaipmnf .gt_indent_5 {
   text-indent: 25px;
 }
 
-#hyyxacmith .katex-display {
+#adgxaipmnf .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#hyyxacmith div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#adgxaipmnf div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -3012,7 +3013,7 @@ details summary {
 </div>
 </div>
 </div>
-<p>A higher Sharpe ratio indicates better risk-adjusted performance. SPY offers the most consistent return per unit of risk, while TSLA has the highest volatility and the most variable Sharpe ratio — consistent with its reputation as a high-risk, high-reward asset.</p>
+<p>A higher Sharpe ratio indicates better risk-adjusted performance. SPY offers the most consistent return per unit of risk, while TSLA has the highest volatility and the most variable Sharpe ratio, consistent with its reputation as a high-risk, high-reward asset.</p>
 </section>
 <section id="excel-function-summary" class="level2" data-number="4.8">
 <h2 data-number="4.8" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">4.8</span> Excel Function Summary</h2>
@@ -3029,18 +3030,140 @@ details summary {
 </section>
 <section id="chapter-summary-cheat-sheet" class="level2" data-number="4.9">
 <h2 data-number="4.9" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">4.9</span> Chapter Summary Cheat Sheet</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Dispersion.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Measures of Dispersion</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Simplest</div><div class="bs-cs-card-title">Range</div><div class="bs-cs-formula">Range = Max − Min</div><p class="bs-cs-desc">Easy to compute, but it only uses the two most extreme values.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=MAX(range) − MIN(range) · MAXIFS / MINIFS</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Squared Deviations</div><div class="bs-cs-card-title">Variance</div><div class="bs-cs-formula">σ² = Σ(xᵢ − μ)² / N<br>s² = Σ(xᵢ − x̄)² / (n − 1)</div><p class="bs-cs-desc">Average squared distance from the mean. Squaring removes negative signs, so the units are squared.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=VAR.P(range) · =VAR.S(range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Original Units</div><div class="bs-cs-card-title">Standard Deviation</div><div class="bs-cs-formula">σ = √σ² &nbsp;·&nbsp; s = √s²</div><p class="bs-cs-desc">The square root of the variance. Brings dispersion back to the units of the data.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=STDEV.P(range) · =STDEV.S(range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Absolute Deviations</div><div class="bs-cs-card-title">Mean Absolute Deviation</div><div class="bs-cs-formula">mad = Σ|xᵢ − x̄| / n</div><p class="bs-cs-desc">Average absolute distance from the mean. Less sensitive to large deviations than the standard deviation.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=AVEDEV(range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Relative Spread</div><div class="bs-cs-card-title">Coefficient of Variation</div><div class="bs-cs-formula">CV = (s / x̄) × 100</div><p class="bs-cs-desc">Spread as a percentage of the mean. Use it to compare variables with different units or scales.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=STDEV.S(range) / AVERAGE(range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Risk Adjusted</div><div class="bs-cs-card-title">Sharpe Ratio</div><div class="bs-cs-formula">(R̄<sub>p</sub> − R<sub>f</sub>) / s</div><p class="bs-cs-desc">Excess return over the risk-free rate per unit of risk. A higher ratio is better.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=(AVERAGE(range) − Rf) / STDEV.S(range)</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>σ², s²</dt><dd>Population, sample variance</dd></div>
+      <div class="bs-cs-row"><dt>σ, s</dt><dd>Population, sample std. dev.</dd></div>
+      <div class="bs-cs-row"><dt>μ, x̄</dt><dd>Population, sample mean</dd></div>
+      <div class="bs-cs-row"><dt>N, n</dt><dd>Population, sample size</dd></div>
+      <div class="bs-cs-row"><dt>|·|</dt><dd>Absolute value</dd></div>
+      <div class="bs-cs-row"><dt>R̄<sub>p</sub></dt><dd>Mean portfolio return</dd></div>
+      <div class="bs-cs-row"><dt>R<sub>f</sub></dt><dd>Risk-free return</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Variance units?</dt><dd>Squared</dd></div>
+      <div class="bs-cs-row"><dt>Std. dev. units?</dt><dd>Same as the data</dd></div>
+      <div class="bs-cs-row"><dt>Sample variance divides by?</dt><dd>n − 1</dd></div>
+      <div class="bs-cs-row"><dt>Compare different scales?</dt><dd>Use the CV</dd></div>
+      <div class="bs-cs-row"><dt>Higher Sharpe ratio?</dt><dd>Better reward for risk</dd></div>
+      <div class="bs-cs-row"><dt>Daily risk-free rate?</dt><dd>Annual rate ÷ 252</dd></div>
+      <div class="bs-cs-row"><dt>Conditional std. dev.?</dt><dd>=STDEV(IF(...))</dd></div>
+    </dl></div>
+  </div>
+</section>
+</section>
+<section id="check-your-understanding" class="level2" data-number="4.10">
+<h2 data-number="4.10" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">4.10</span> Check Your Understanding</h2>
+<p>Test the main ideas of the chapter before moving on to the exercises. <span>Pick an answer to see whether you are right and why.</span></p>
+<div class="bs-quiz">
+<p>What is the range of <span class="math inline">\(x=\{12, 7, 25, 3, 18\}\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(25\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(22\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(13\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(15\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>Range <span class="math inline">\(=\)</span> Maximum <span class="math inline">\(-\)</span> Minimum <span class="math inline">\(=25-3=22\)</span>. It uses only the two extreme values.</p>
 </div>
+</div>
+<div class="bs-quiz">
+<p>Why does the variance square the deviations from the mean?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">To express dispersion in the original units</label></li>
+<li><label><input type="checkbox">To make the measure resistant to outliers</label></li>
+<li><label><input type="checkbox" checked="">Because the raw deviations always add up to zero</label></li>
+<li><label><input type="checkbox">To give every observation the same deviation</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>Positive and negative deviations cancel exactly around the mean. Squaring makes every deviation positive. The cost is that the variance is in squared units and is sensitive to large deviations.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Treating <span class="math inline">\(x=\{2, 4, 6\}\)</span> as a sample, what is the sample variance <span class="math inline">\(s^2\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked=""><span class="math inline">\(4\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(2.67\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(8\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(2\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The mean is <span class="math inline">\(4\)</span>, the squared deviations are <span class="math inline">\(4\)</span>, <span class="math inline">\(0\)</span>, and <span class="math inline">\(4\)</span>, and their sum is <span class="math inline">\(8\)</span>. Dividing by <span class="math inline">\(n-1=2\)</span> gives <span class="math inline">\(s^2=4\)</span>. Dividing by <span class="math inline">\(n=3\)</span> would give the population formula, <span class="math inline">\(2.67\)</span>.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>The variance of a product’s price is <span class="math inline">\(2{,}500\)</span> dollars squared. What is the standard deviation?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">$2,500</label></li>
+<li><label><input type="checkbox">$1,250</label></li>
+<li><label><input type="checkbox">$25</label></li>
+<li><label><input type="checkbox" checked="">$50</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The standard deviation is the square root of the variance, <span class="math inline">\(\sqrt{2{,}500}=50\)</span>, which brings the measure back to dollars.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>What is the mean absolute deviation of <span class="math inline">\(x=\{2, 4, 6\}\)</span> (using <span class="math inline">\(n\)</span> in the denominator)?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(2\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(4\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(1.33\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The absolute deviations from the mean of <span class="math inline">\(4\)</span> are <span class="math inline">\(2\)</span>, <span class="math inline">\(0\)</span>, and <span class="math inline">\(2\)</span>. Their average is <span class="math inline">\(4/3\approx1.33\)</span>. The sample standard deviation, <span class="math inline">\(2\)</span>, is larger because squaring amplifies large deviations.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Stock A has a mean price of $10 and a standard deviation of $2. Stock B has a mean price of $200 and a standard deviation of $20. Which stock is more variable relative to its price?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Stock A, with a CV of <span class="math inline">\(20\%\)</span> versus <span class="math inline">\(10\%\)</span></label></li>
+<li><label><input type="checkbox">Stock B, because its standard deviation is larger</label></li>
+<li><label><input type="checkbox">They vary the same, since both CVs are equal</label></li>
+<li><label><input type="checkbox">They cannot be compared because the means differ</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(CV_A=(2/10)\times100=20\%\)</span> and <span class="math inline">\(CV_B=(20/200)\times100=10\%\)</span>. The CV removes the effect of scale, so we can compare the two.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Fund X has a mean return of <span class="math inline">\(9\%\)</span> and a standard deviation of <span class="math inline">\(12\%\)</span>. Fund Y has a mean return of <span class="math inline">\(6\%\)</span> and a standard deviation of <span class="math inline">\(4\%\)</span>. The risk-free rate is <span class="math inline">\(2\%\)</span>. Which fund has the better risk-adjusted performance?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Fund X, because its mean return is higher</label></li>
+<li><label><input type="checkbox">Fund X, with a Sharpe ratio of <span class="math inline">\(0.75\)</span></label></li>
+<li><label><input type="checkbox">They are equal</label></li>
+<li><label><input type="checkbox" checked="">Fund Y, with a Sharpe ratio of <span class="math inline">\(1.00\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>Fund X: <span class="math inline">\((9-2)/12\approx0.58\)</span>. Fund Y: <span class="math inline">\((6-2)/4=1.00\)</span>. Fund Y earns more excess return per unit of risk.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Stock names are in column B and returns in column C. Which formula returns the standard deviation of AAPL returns only?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><code>=STDEVIF(C:C, B:B, "AAPL")</code></label></li>
+<li><label><input type="checkbox" checked=""><code>=STDEV(IF(B2:B1189="AAPL", C2:C1189))</code></label></li>
+<li><label><input type="checkbox"><code>=STDEV.S(B:B, "AAPL")</code></label></li>
+<li><label><input type="checkbox"><code>=VAR.S(IF(B2:B1189="AAPL", C2:C1189))</code></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>Excel has no <code>STDEVIF</code> function, so we combine <code>STDEV</code> with <code>IF</code> in an array formula. The <code>VAR.S(IF(...))</code> formula returns the variance, not the standard deviation.</p>
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="4.10">
-<h2 data-number="4.10" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.10</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="4.11">
+<h2 data-number="4.11" class="anchored" data-anchor-id="exercises"><span class="header-section-number">4.11</span> Exercises</h2>
 <p>The following exercises will help you practice the measures of dispersion. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating the range, MAD, variance, and the standard deviation.</p></li>
@@ -3389,7 +3512,7 @@ Answer
 <p><span class="math display">\[mad = \frac{\sum|x_i - \bar{x}|}{n} = \frac{10.7}{8} = 1.3375\]</span></p>
 <p><em>The Coefficient of Variation is:</em></p>
 <p><span class="math display">\[CV = \frac{s}{\bar{x}} \times 100 = \frac{1.657}{0.8625} \times 100 = 192.1\%\]</span></p>
-<em>The CV is about <span class="math inline">\(192\%\)</span>, which is large: the standard deviation is almost twice the mean. This indicates the returns are highly variable relative to their average — the mean is small compared with typical month-to-month fluctuations. In practice, a CV this large signals that the project’s returns are unreliable; an investor cannot count on earning close to the average return in any given month.</em>
+<em>The CV is about <span class="math inline">\(192\%\)</span>, which is large: the standard deviation is almost twice the mean. This indicates the returns are highly variable relative to their average: the mean is small compared with typical month-to-month fluctuations. In practice, a CV this large signals that the project’s returns are unreliable; an investor cannot count on earning close to the average return in any given month.</em>
 </details>
 </section>
 <section id="exercise-5" class="level3 unnumbered">
@@ -3485,7 +3608,7 @@ Answer
 <p><span class="math display">\[s = \sqrt{29{,}149} = \$170.73\]</span></p>
 <p><em>The MAD is:</em></p>
 <p><span class="math display">\[mad = \frac{86+119+166+184+61+94+276+254+141+79}{10} = \frac{1{,}460}{10} = \$146\]</span></p>
-<p><em>The bettor is profitable on average but faces large week-to-week swings — a typical week deviates from the mean by about <span class="math inline">\(\$146\)</span> to <span class="math inline">\(\$171\)</span> depending on the measure used.</em></p>
+<p><em>The bettor is profitable on average but faces large week-to-week swings. A typical week deviates from the mean by about <span class="math inline">\(\$146\)</span> to <span class="math inline">\(\$171\)</span> depending on the measure used.</em></p>
 </details>
 <ol start="2" type="1">
 <li>Compute the Coefficient of Variation (CV). What does it tell you about the reliability of the bettor’s weekly results?</li>
@@ -3506,7 +3629,7 @@ Answer
 </summary>
 <p><em>With a risk-free rate of <span class="math inline">\(\$0\)</span>:</em></p>
 <p><span class="math display">\[SR = \frac{\bar{x} - R_f}{s} = \frac{34 - 0}{170.73} = 0.199\]</span></p>
-<p><em>A Sharpe ratio of <span class="math inline">\(0.199\)</span> is low. As a point of reference, a Sharpe ratio above <span class="math inline">\(1\)</span> is generally considered acceptable in finance. The bettor earns only <span class="math inline">\(\$0.20\)</span> of profit per dollar of risk taken — suggesting that while the strategy is marginally profitable, the risk taken to achieve that profit is not well compensated. A more disciplined betting strategy or better odds selection would be needed to improve the risk-adjusted return.</em></p>
+<p><em>A Sharpe ratio of <span class="math inline">\(0.199\)</span> is low. As a point of reference, a Sharpe ratio above <span class="math inline">\(1\)</span> is generally considered acceptable in finance. The bettor earns only <span class="math inline">\(\$0.20\)</span> of profit per dollar of risk taken, suggesting that while the strategy is marginally profitable, the risk taken to achieve that profit is not well compensated. A more disciplined betting strategy or better odds selection would be needed to improve the risk-adjusted return.</em></p>
 </details>
 
 
@@ -4105,6 +4228,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </footer>
 <script src="assets/book.js"></script>
+<script src="assets/quiz.js"></script>
 
 
 

@@ -16,7 +16,7 @@ details summary {
 
 # Descriptive Statistics III
 
-Understanding where the "center" of a dataset lies is a fundamental step when interpreting and analyzing data. Measures of central location provide different ways to identify the "typical" value in a dataset, each with its unique strengths and limitations. Below I survey some of the most popular measures of central location. These summaries continue the work of describing our data: having seen its overall shape, we now pin down its center — a single representative value that will later anchor the estimates we carry into inference.
+Understanding where the "center" of a dataset lies is a fundamental step when interpreting and analyzing data. Measures of central location provide different ways to identify the "typical" value in a dataset, each with its unique strengths and limitations. Below I survey some of the most popular measures of central location. These summaries continue the work of describing our data: having seen its overall shape, we now pin down its center: a single representative value that will later anchor the estimates we carry into inference.
 
 ## Sample Vs. Population Statistics
 
@@ -73,7 +73,7 @@ The **mode** is the value with highest frequency from a set of observations. Thi
 :::
 
 ::: callout-example
-**Example 2:** Consider the following numbers $x=\{1,4,2,1,4\}$. Now $4$ is also repeated twice. The variable has two modes $x_{mode}=\{1,2\}$. $x$ is said to be bimodal.
+**Example 2:** Consider the following numbers $x=\{1,4,2,1,4\}$. Now $4$ is also repeated twice. The variable has two modes $x_{mode}=\{1,4\}$. $x$ is said to be bimodal.
 :::
 
 ## The Weighted Mean
@@ -127,7 +127,7 @@ When working with levels, the values already reflect standalone quantities rathe
 To illustrate the distinction, we work through two examples below.
 
 ::: callout-example
-**Example 1:** A company tracks its market share across four regions: $x=\{0.20, 0.30, 0.10, 0.10\}$. Since market share is a proportion of the whole — a level, not a rate of change — we apply the levels formula directly:
+**Example 1:** A company tracks its market share across four regions: $x=\{0.20, 0.30, 0.10, 0.10\}$. Since market share is a proportion of the whole (a level, not a rate of change), we apply the levels formula directly:
 
 $$\bar{x}_g=\sqrt[4]{0.20 \times 0.30 \times 0.10 \times 0.10}$$ $$=\sqrt[4]{0.0006}=0.156$$
 
@@ -146,9 +146,9 @@ The geometric mean market share across the four regions is $15.6\%$.
 
 Since these are rates of return, we add 1 to each value to obtain the growth factor before applying the formula. The geometric mean is:
 
-$$\bar{x}_g = \sqrt[4]{1.10 \times 1.25 \times 0.92 \times 1.15}-1$$ $$= \sqrt[4]{1.4539}-1 = 0.0977$$
+$$\bar{x}_g = \sqrt[4]{1.10 \times 1.25 \times 0.92 \times 1.15}-1$$ $$= \sqrt[4]{1.4548}-1 = 0.0982$$
 
-The average annual return is $9.77\%$. Note that the arithmetic mean gives $(10 + 25 - 8 + 15)/4 = 10.5\%$, which overstates the true average. The geometric mean is the appropriate measure here because it accounts for the compounding effect of returns over time.
+The average annual return is $9.82\%$. Note that the arithmetic mean gives $(10 + 25 - 8 + 15)/4 = 10.5\%$, which overstates the true average. The geometric mean is the appropriate measure here because it accounts for the compounding effect of returns over time.
 :::
 
 ## Measures of Central Location in Excel
@@ -221,9 +221,124 @@ You can also download the data here:
 
 ## Chapter Summary Cheat Sheet
 
+::: {.content-visible when-format="html"}
+{{< include cheatsheets/_DescriptiveIII.qmd >}}
+:::
+
+::: {.content-visible when-format="pdf"}
 ```{r echo=FALSE, out.width="100%", fig.align='center'}
 knitr::include_graphics("images/Central_Location.png")
 ```
+:::
+
+## Check Your Understanding
+
+Test the main ideas of the chapter before moving on to the exercises. [Pick an answer to see whether you are right and why.]{.content-visible when-format="html"}[Each answer, with an explanation, is in the answer key at the end of the book.]{.content-visible when-format="pdf"}
+
+:::: bs-quiz
+Five employees earn $40$, $45$, $50$, $55$, and $500$ thousand dollars. Which measure best describes the typical salary?
+
+- [ ] The mean, because it uses every value
+- [ ] The mode, because salaries are numerical
+- [ ] The geometric mean, because salaries are rates
+- [x] The median, because the $500$ does not pull it
+
+::: bs-quiz-why
+The mean is $690/5=138$ thousand, far above what four of the five employees earn. The median, $50$ thousand, is resistant to the outlier.
+:::
+::::
+
+:::: bs-quiz
+What is the median of $x=\{2, 9, 4, 12\}$?
+
+- [ ] $6.75$
+- [x] $6.5$
+- [ ] $9$
+- [ ] $4$
+
+::: bs-quiz-why
+Sort the data: $\{2,4,9,12\}$. With $n=4$ (even), the median is the average of the two middle values, $(4+9)/2=6.5$. The value $6.75$ is the mean.
+:::
+::::
+
+:::: bs-quiz
+A dealership records the brand of each car sold this month. Which measure of central location can it use?
+
+- [x] The mode
+- [ ] The mean
+- [ ] The median
+- [ ] The geometric mean
+
+::: bs-quiz-why
+Brand is a categorical variable with no numerical values or natural order, so the only meaningful center is the most frequent brand.
+:::
+::::
+
+:::: bs-quiz
+What is the mode of $x=\{2, 5, 5, 8, 8, 10\}$?
+
+- [ ] Only $8$
+- [ ] Only $5$
+- [x] $5$ and $8$; the data are bimodal
+- [ ] There is no mode
+
+::: bs-quiz-why
+Both $5$ and $8$ appear twice, more than any other value, so the data have two modes. Note that Excel's `=MODE()` would return only one of them.
+:::
+::::
+
+:::: bs-quiz
+A portfolio puts $60\%$ of its money in a fund that returned $5\%$ and $40\%$ in a fund that returned $10\%$. What is the portfolio's weighted mean return?
+
+- [ ] $7.5\%$
+- [x] $7\%$
+- [ ] $15\%$
+- [ ] $6\%$
+
+::: bs-quiz-why
+$\bar{x}_w=\frac{0.6(5)+0.4(10)}{0.6+0.4}=3+4=7\%$. The simple average, $7.5\%$, ignores that more money sits in the lower-return fund.
+:::
+::::
+
+:::: bs-quiz
+An investment gains $50\%$ in year one and loses $50\%$ in year two. What is its average annual return?
+
+- [ ] $0\%$
+- [ ] $25\%$
+- [ ] $-50\%$
+- [x] About $-13.4\%$
+
+::: bs-quiz-why
+Use the geometric mean for rates: $\sqrt{1.5 \times 0.5}-1=\sqrt{0.75}-1\approx-0.134$. A \$100 investment grows to \$150 and then falls to \$75, so it clearly lost money. The arithmetic mean of $0\%$ overstates the result.
+:::
+::::
+
+:::: bs-quiz
+Weights are in `B2:B5` and values in `C2:C5`. Which Excel formula returns the weighted mean?
+
+- [x] `=SUMPRODUCT(B2:B5, C2:C5)/SUM(B2:B5)`
+- [ ] `=AVERAGE(C2:C5)`
+- [ ] `=SUMPRODUCT(B2:B5, C2:C5)/4`
+- [ ] `=GEOMEAN(B2:B5, C2:C5)`
+
+::: bs-quiz-why
+`SUMPRODUCT` multiplies each value by its weight and adds the products. Dividing by the sum of the weights completes the formula $\sum w_i x_i / \sum w_i$.
+:::
+::::
+
+:::: bs-quiz
+When should you use the population mean formula $\mu=\sum x_i/N$?
+
+- [ ] When the data are a subset drawn from a larger group
+- [ ] Whenever the data set has more than $30$ observations
+- [x] When the data include every member of the group you care about
+- [ ] Only when the data are categorical
+
+::: bs-quiz-why
+Population formulas apply when you observe the entire group. When the data are a sample from a larger population, you compute the sample statistic $\bar{x}$.
+:::
+::::
+
 
 ## Exercises
 
@@ -485,7 +600,7 @@ You will need the **Hitters** dataset containing data on Major League Baseball p
 
 <summary>Answer</summary>
 
-*For players with ≥1 home run: mean higher (around 600+), median still lower than mean — skewness persists, median again more representative.*
+*For players with ≥1 home run: mean higher (around 600+), median still lower than mean; skewness persists, median again more representative.*
 
 *To verify in Excel, assuming salaries are in column S and home runs in column C:*
 

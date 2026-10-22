@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-ebc9bf21172222eecf4329b9f87ba86d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a9a8112abf6d22cde504e3b06bd5f6a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e6d6cf5d2fe5724721a99542168da79f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
@@ -343,7 +343,8 @@ window.Quarto = {
   <li><a href="#calculating-measures-in-excel" id="toc-calculating-measures-in-excel" class="nav-link" data-scroll-target="#calculating-measures-in-excel"><span class="header-section-number">5.9</span> Calculating Measures in Excel</a></li>
   <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">5.10</span> Excel Function Summary</a></li>
   <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">5.11</span> Chapter Summary Cheat Sheet</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.12</span> Exercises</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">5.12</span> Check Your Understanding</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">5.13</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -382,12 +383,12 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>There are statistical measures that describe the shape and distribution of the data beyond measures of central location or dispersion. They provide a view of how data is spread out, where it concentrates, and how it deviates from what might be expected. The tools shown below will help you describe the data’s shape, symmetry, and anomalies. With shape, center, and spread all in hand, our description of the data is complete — the foundation on which the coming chapters build models of uncertainty and draw conclusions about the world.</p>
+<p>There are statistical measures that describe the shape and distribution of the data beyond measures of central location or dispersion. They provide a view of how data is spread out, where it concentrates, and how it deviates from what might be expected. The tools shown below will help you describe the data’s shape, symmetry, and anomalies. With shape, center, and spread all in hand, our description of the data is complete. It is the foundation on which the coming chapters build models of uncertainty and draw conclusions about the world.</p>
 <section id=".quartiles" class="level2" data-number="5.1">
 <h2 data-number="5.1" class="anchored" data-anchor-id=".quartiles"><span class="header-section-number">5.1</span> Quantiles and Percentiles</h2>
 <p>A <strong>quantile</strong> is a location within a set of ranked numbers (or distribution), below which a certain proportion, <span class="math inline">\(q\)</span>, of that set lie. If we instead express quantiles as a percentage, they are referred to as <strong>percentiles</strong>.</p>
 <div class="callout-example">
-<p><strong>Example:</strong> Imagine all your data points lined up from smallest to largest. If you say you’re looking at the 25th percentile, it means you’re finding the value below which 25% of your data falls. If you had 100 test scores, the 25th percentile would be the score where 25 students scored lower than that, and 75 scored higher or equal. It’s a way to see where a value stands in relation to the rest of the data in terms of percentage.*</p>
+<p><strong>Example:</strong> Imagine all your data points lined up from smallest to largest. If you say you’re looking at the 25th percentile, it means you’re finding the value below which 25% of your data falls. If you had 100 test scores, the 25th percentile would be the score where 25 students scored lower than that, and 75 scored higher or equal. It’s a way to see where a value stands in relation to the rest of the data in terms of percentage.</p>
 </div>
 <p>To calculate a percentile we follow the steps below:</p>
 <ol type="1">
@@ -395,7 +396,7 @@ details summary {
 <li><p>Compute the location of the percentile desired using:</p></li>
 </ol>
 <div class="callout-formula">
-<p><strong>Location of the pth percentile</strong> <span class="math display">\[L_{p}=1+k(n-1)\]</span> where <span class="math inline">\(L_{p}\)</span>$ is the location (in the sorted data) of the <span class="math inline">\(P_{th}\)</span> percentile, and <span class="math inline">\(P\)</span> is the percentile desired.</p>
+<p><strong>Location of the pth percentile</strong> <span class="math display">\[L_{p}=1+k(n-1)\]</span> where <span class="math inline">\(L_{p}\)</span> is the location (in the sorted data) of the <span class="math inline">\(p\)</span>th percentile, <span class="math inline">\(k\)</span> is the desired percentile written as a decimal (for example, <span class="math inline">\(k=0.25\)</span> for the 25th percentile), and <span class="math inline">\(n\)</span> is the number of observations.</p>
 </div>
 <ol start="3" type="1">
 <li>The data point at location <span class="math inline">\(L_p\)</span>, is the the <span class="math inline">\(P_{th}\)</span> percentile.</li>
@@ -407,7 +408,7 @@ details summary {
 </ol>
 <p><span class="math display">\[IQ_{sorted}=\{75,80,90,100,110,130\}\]</span></p>
 <ol start="2" type="1">
-<li><p>Find the location of the 25th percentile: <span class="math display">\[L_{25}=1+0.25(6+1)=2.25\]</span> The 25th percentile is in the position 2.25 of the sorted data.</p></li>
+<li><p>Find the location of the 25th percentile: <span class="math display">\[L_{25}=1+0.25(6-1)=2.25\]</span> The 25th percentile is in the position 2.25 of the sorted data.</p></li>
 <li><p>Retrieve the 25th percentile: Since position 2 is 80 and position 3 is 90, the 25th percentile lies <span class="math inline">\(0.25\)</span> of the way between positions 2 and 3. Hence, the 25th percentile is:</p></li>
 </ol>
 <p><span class="math display">\[P_{25} = 80 + 0.25(90 - 80) = 82.5\]</span>.</p>
@@ -415,7 +416,7 @@ details summary {
 </section>
 <section id="chebyshevs-theorem" class="level2" data-number="5.2">
 <h2 data-number="5.2" class="anchored" data-anchor-id="chebyshevs-theorem"><span class="header-section-number">5.2</span> Chebyshev’s Theorem</h2>
-<p>Chebyshev’s Theorem is an important theorem, as it helps you form an expectation of the proportion of data that must lie between a given standard deviation from the mean. This offers a baseline to understanding the range and distribution of your data, and aids in detecting outliers. Formally, <strong>Chebyshev’s Theorem</strong> states that regardless of the shape of the distribution, at least (<span class="math inline">\(1-1/z^2\)</span>)% of the data lies between <span class="math inline">\(z\)</span> standard deviations from the mean.</p>
+<p>Chebyshev’s Theorem is an important theorem, as it helps you form an expectation of the proportion of data that must lie between a given standard deviation from the mean. This offers a baseline to understanding the range and distribution of your data, and aids in detecting outliers. Formally, <strong>Chebyshev’s Theorem</strong> states that regardless of the shape of the distribution, at least <span class="math inline">\(1-1/k^2\)</span> of the data lies within <span class="math inline">\(k\)</span> standard deviations from the mean.</p>
 <div class="callout-formula">
 <p><strong>CHEBYSHEV’S THEOREM</strong> <span class="math display">\[1 - \frac{1}{k^2}\]</span> where <span class="math inline">\(k\)</span> is the number of standard deviations from the mean and <span class="math inline">\(k &gt; 1\)</span>.</p>
 </div>
@@ -430,7 +431,7 @@ details summary {
 <h2 data-number="5.3" class="anchored" data-anchor-id="the-empirical-rule"><span class="header-section-number">5.3</span> The Empirical Rule</h2>
 <p>Whereas Chebyshev’s theorem holds for any data distribution, the empirical rule is a bit more precise when looking at “bell shaped” data. Formally, the <strong>Empirical Rule</strong> or (<span class="math inline">\(68\)</span>,<span class="math inline">\(95\)</span>,<span class="math inline">\(99.7\)</span> rule) states that <span class="math inline">\(68\)</span>%, <span class="math inline">\(95\)</span>%, and <span class="math inline">\(99.7\)</span>% of the data lies between <span class="math inline">\(1\)</span>, <span class="math inline">\(2\)</span>, and <span class="math inline">\(3\)</span> standard deviations from the mean respectively. The rule requires that the data be bell shape (normally) distributed.</p>
 <div class="callout-example">
-<p><strong>Example:</strong> A company reports that customer satisfaction scores are are in good standing as they have a mean of <span class="math inline">\(\mu=78\)</span> and a standard deviation of <span class="math inline">\(\sigma=6\)</span>. They claim that <span class="math inline">\(95\%\)</span> of customers have satisfaction scores between <span class="math inline">\(66\)</span> and <span class="math inline">\(90\)</span>. Note that this conclusion is only valid if the data is truly bell-shaped — a histogram of the scores should be inspected to verify this assumption before accepting the claim.</p>
+<p><strong>Example:</strong> A company reports that customer satisfaction scores are in good standing as they have a mean of <span class="math inline">\(\mu=78\)</span> and a standard deviation of <span class="math inline">\(\sigma=6\)</span>. They claim that <span class="math inline">\(95\%\)</span> of customers have satisfaction scores between <span class="math inline">\(66\)</span> and <span class="math inline">\(90\)</span>. Note that this conclusion is only valid if the data is truly bell-shaped. A histogram of the scores should be inspected to verify this assumption before accepting the claim.</p>
 </div>
 </section>
 <section id="outliers-z-scores" class="level2" data-number="5.4">
@@ -441,12 +442,12 @@ details summary {
 <p><strong>THE Z-SCORE</strong> <span class="math display">\[z_{i}=\frac{x_i-\bar{x}}{s_x}\]</span> where <span class="math inline">\(x_i\)</span> is the data point, <span class="math inline">\(\bar{x}\)</span> is the sample mean, and <span class="math inline">\(s_x\)</span> is the sample standard deviation.</p>
 </div>
 <div class="callout-example">
-<p><strong>Example:</strong> On Jan 22, 2006 Kobe Bryant scored 81 points against the Toronto Raptors. He had averaged 30 point per game with a standard deviation of 4 points. If we calculate the z-score we get:* <span class="math inline">\(z_{81}=\frac{81-30}{4}=12.5\)</span>. This mean that 81 is 12.5 standard deviations away from the mean, making this value extremely rare.</p>
+<p><strong>Example:</strong> On Jan 22, 2006 Kobe Bryant scored 81 points against the Toronto Raptors. He had averaged 30 point per game with a standard deviation of 4 points. If we calculate the z-score we get: <span class="math inline">\(z_{81}=\frac{81-30}{4}=12.5\)</span>. This mean that 81 is 12.5 standard deviations away from the mean, making this value extremely rare.</p>
 </div>
 <div class="callout-example">
-<p><strong>Example:</strong> On March 10, 2026, Bam Adebayo of the Miami Heat scored <span class="math inline">\(83\)</span> points against the Washington Wizards — the second highest single-game scoring performance in NBA history, surpassing Kobe Bryant’s iconic <span class="math inline">\(81\)</span>-point game. Prior to this game, Adebayo had averaged approximately <span class="math inline">\(20\)</span> points per game with a standard deviation of <span class="math inline">\(5\)</span> points. Calculating the z-score:</p>
+<p><strong>Example:</strong> On March 10, 2026, Bam Adebayo of the Miami Heat scored <span class="math inline">\(83\)</span> points against the Washington Wizards, the second highest single-game scoring performance in NBA history, surpassing Kobe Bryant’s iconic <span class="math inline">\(81\)</span>-point game. Prior to this game, Adebayo had averaged approximately <span class="math inline">\(20\)</span> points per game with a standard deviation of <span class="math inline">\(5\)</span> points. Calculating the z-score:</p>
 <p><span class="math display">\[z_{83}=\frac{83-20}{5}=12.6\]</span></p>
-<p>This means that Adebayo’s <span class="math inline">\(83\)</span>-point performance was <span class="math inline">\(12.6\)</span> standard deviations above his mean comparable in statistical terms to Kobe Bryant’s <span class="math inline">\(81\)</span>-point game in 2006, which produced a z-score of <span class="math inline">\(12.5\)</span>. Both performances illustrate how z-scores allow us to compare exceptional events across different players and eras on a common scale.</p>
+<p>This means that Adebayo’s <span class="math inline">\(83\)</span>-point performance was <span class="math inline">\(12.6\)</span> standard deviations above his mean, comparable in statistical terms to Kobe Bryant’s <span class="math inline">\(81\)</span>-point game in 2006, which produced a z-score of <span class="math inline">\(12.5\)</span>. Both performances illustrate how z-scores allow us to compare exceptional events across different players and eras on a common scale.</p>
 </div>
 </section>
 <section id="skew" class="level2" data-number="5.5">
@@ -531,12 +532,12 @@ details summary {
 </tbody>
 </table>
 <p><span class="math display">\[Sk = \frac{6}{(5)(4)}\times(2.242) = \frac{6}{20}\times 2.242 = 0.673\]</span></p>
-<p>Since <span class="math inline">\(Sk &gt; 0\)</span> the distribution is right-skewed, which makes intuitive sense — most IQ scores cluster below the mean while the score of <span class="math inline">\(130\)</span> pulls the tail to the right.</p>
+<p>Since <span class="math inline">\(Sk &gt; 0\)</span> the distribution is right-skewed, which makes intuitive sense: most IQ scores cluster below the mean while the score of <span class="math inline">\(130\)</span> pulls the tail to the right.</p>
 </div>
 </section>
 <section id="kurtosis" class="level2" data-number="5.6">
 <h2 data-number="5.6" class="anchored" data-anchor-id="kurtosis"><span class="header-section-number">5.6</span> Kurtosis</h2>
-<p>Kurtosis measures the “tailedness” of a distribution — that is, how much of the data is concentrated in the tails relative to a normal distribution. A distribution with heavy tails has more extreme values than expected, while a distribution with light tails has fewer. To measure kurtosis, we use the <strong>Excess Kurtosis</strong> formula, which centers the measure around zero by subtracting 3.</p>
+<p>Kurtosis measures the “tailedness” of a distribution, that is, how much of the data is concentrated in the tails relative to a normal distribution. A distribution with heavy tails has more extreme values than expected, while a distribution with light tails has fewer. To measure kurtosis, we use the <strong>Excess Kurtosis</strong> formula, which centers the measure around zero by subtracting 3.</p>
 <div class="callout-formula">
 <p><strong>EXCESS KURTOSIS</strong> <span class="math display">\[K = \frac{n(n+1)}{(n-1)(n-2)(n-3)}\sum\left(\frac{x_i-\bar{x}}{s}\right)^4 - \frac{3(n-1)^2}{(n-2)(n-3)}\]</span> where <span class="math inline">\(n\)</span> is the sample size, <span class="math inline">\(\bar{x}\)</span> is the sample mean, and <span class="math inline">\(s\)</span> is the sample standard deviation.</p>
 <table class="caption-top table">
@@ -616,11 +617,11 @@ details summary {
 </table>
 <p>Applying Excel’s bias-corrected formula with <span class="math inline">\(n=6\)</span>:</p>
 <p><span class="math display">\[K = \frac{6(7)}{(5)(4)(3)}(8.567) - \frac{3(5)^2}{(4)(3)} = 5.997 - 6.25 = -0.253\]</span></p>
-<p>Since <span class="math inline">\(K &lt; 0\)</span> the distribution is platykurtic — the tails are lighter than a normal distribution.</p>
+<p>Since <span class="math inline">\(K &lt; 0\)</span> the distribution is platykurtic: the tails are lighter than a normal distribution.</p>
 </div>
-<p>A distribution is <strong>leptokurtic</strong> (<span class="math inline">\(K&gt;0\)</span>) when it has heavier tails and a sharper peak than a normal distribution — extreme values are more common. A distribution is <strong>platykurtic</strong> (<span class="math inline">\(K&lt;0\)</span>) when it has lighter tails and a flatter peak — extreme values are rare. When <span class="math inline">\(K=0\)</span> the distribution has the same tail behavior as a normal distribution and is called <strong>mesokurtic</strong>.</p>
+<p>A distribution is <strong>leptokurtic</strong> (<span class="math inline">\(K&gt;0\)</span>) when it has heavier tails and a sharper peak than a normal distribution, so extreme values are more common. A distribution is <strong>platykurtic</strong> (<span class="math inline">\(K&lt;0\)</span>) when it has lighter tails and a flatter peak, so extreme values are rare. When <span class="math inline">\(K=0\)</span> the distribution has the same tail behavior as a normal distribution and is called <strong>mesokurtic</strong>.</p>
 <div class="callout-example">
-<p><strong>Example:</strong> A risk analyst examines the daily returns of two assets. Asset A has an excess kurtosis of <span class="math inline">\(K=3.2\)</span> and Asset B has an excess kurtosis of <span class="math inline">\(K=-0.8\)</span>. Since <span class="math inline">\(K&gt;0\)</span>, Asset A is leptokurtic — its returns have heavier tails than a normal distribution, meaning extreme gains or losses occur more frequently than expected. Since <span class="math inline">\(K&lt;0\)</span>, Asset B is platykurtic — extreme returns are rare and the distribution is flatter. An investor concerned about tail risk would prefer Asset B, as large unexpected losses are less likely.</p>
+<p><strong>Example:</strong> A risk analyst examines the daily returns of two assets. Asset A has an excess kurtosis of <span class="math inline">\(K=3.2\)</span> and Asset B has an excess kurtosis of <span class="math inline">\(K=-0.8\)</span>. Since <span class="math inline">\(K&gt;0\)</span>, Asset A is leptokurtic: its returns have heavier tails than a normal distribution, meaning extreme gains or losses occur more frequently than expected. Since <span class="math inline">\(K&lt;0\)</span>, Asset B is platykurtic: extreme returns are rare and the distribution is flatter. An investor concerned about tail risk would prefer Asset B, as large unexpected losses are less likely.</p>
 </div>
 </section>
 <section id="five-point-summary" class="level2" data-number="5.7">
@@ -630,7 +631,7 @@ details summary {
 <p><strong>THE INTERQUARTILE RANGE (IQR)</strong> <span class="math display">\[IQR = Q_3 - Q_1\]</span> where <span class="math inline">\(Q_1\)</span> is the first quartile (25th percentile) and <span class="math inline">\(Q_3\)</span> is the third quartile (75th percentile). The IQR measures the spread of the middle <span class="math inline">\(50\%\)</span> of the data.</p>
 </div>
 <div class="callout-example">
-<p><strong>Example:</strong> Let’s use the IQ scores for a group of students once more. Recall that the data is given by <span class="math inline">\(IQ=\{80,100,110,75,130,90\}\)</span>. The minimum and the maximum are easily identified as <span class="math inline">\(Max=130\)</span> and <span class="math inline">\(Min=75\)</span>. The first quartile (<span class="math inline">\(P_{25}\)</span>) was calculated in <a href="#.quartiles">1.1</a> as 78.75. Using the same steps the third quartile (<span class="math inline">\(P_{75}\)</span>) is 115. The median is the average between the third and fourth numbers <span class="math inline">\(Median=190/2=95\)</span>. The five point summary is given in the table below:</p>
+<p><strong>Example:</strong> Let’s use the IQ scores for a group of students once more. Recall that the data is given by <span class="math inline">\(IQ=\{80,100,110,75,130,90\}\)</span>. The minimum and the maximum are easily identified as <span class="math inline">\(Max=130\)</span> and <span class="math inline">\(Min=75\)</span>. The first quartile (<span class="math inline">\(P_{25}\)</span>) was calculated in the percentiles section as 82.5. Using the same steps, <span class="math inline">\(L_{75}=1+0.75(6-1)=4.75\)</span>, so the third quartile (<span class="math inline">\(P_{75}\)</span>) is <span class="math inline">\(100+0.75(110-100)=107.5\)</span>. The median is the average between the third and fourth numbers <span class="math inline">\(Median=190/2=95\)</span>. The five point summary is given in the table below:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -644,14 +645,14 @@ details summary {
 <tbody>
 <tr class="odd">
 <td style="text-align: center;">75</td>
-<td style="text-align: center;">78.75</td>
+<td style="text-align: center;">82.5</td>
 <td style="text-align: center;">95</td>
-<td style="text-align: center;">115</td>
+<td style="text-align: center;">107.5</td>
 <td style="text-align: center;">130</td>
 </tr>
 </tbody>
 </table>
-<p>To calculate the interquartile range we find the difference between the 75th and 25th percentiles. <span class="math inline">\(IQR=115-78.75=36.25\)</span> which means that the middle 50% of the data has a range of 36.25.</p>
+<p>To calculate the interquartile range we find the difference between the 75th and 25th percentiles. <span class="math inline">\(IQR=107.5-82.5=25\)</span> which means that the middle 50% of the data has a range of 25.</p>
 </div>
 </section>
 <section id="outliers-iqr" class="level2" data-number="5.8">
@@ -662,7 +663,7 @@ details summary {
 </div>
 <p>If an observation <span class="math inline">\(x_i\)</span> falls below the lower limit or above the upper limit, it is considered an outlier.</p>
 <div class="callout-example">
-<p><strong>Example:</strong> Consider once more the IQ data. <span class="math display">\[IQ=\{80,100,110,75,130,90\}\]</span> The lower limit for on outlier is given by: <span class="math display">\[LL=Q_1-1.5(IQR)=78.75-1.5(36.25)=24.375\]</span> The upper limit is given by <span class="math display">\[UL=Q_3+1.5(IQR)=115+1.5(36.25)=169.375\]</span> Any data point outside the range [24.375,169.375] is considered an outlier. In other words, 200 and 20 would be outliers, but 100 would not.</p>
+<p><strong>Example:</strong> Consider once more the IQ data. <span class="math display">\[IQ=\{80,100,110,75,130,90\}\]</span> The lower limit for on outlier is given by: <span class="math display">\[LL=Q_1-1.5(IQR)=82.5-1.5(25)=45\]</span> The upper limit is given by <span class="math display">\[UL=Q_3+1.5(IQR)=107.5+1.5(25)=145\]</span> Any data point outside the range [45,145] is considered an outlier. In other words, 200 and 20 would be outliers, but 100 would not.</p>
 </div>
 </section>
 <section id="calculating-measures-in-excel" class="level2" data-number="5.9">
@@ -670,23 +671,23 @@ details summary {
 <p>Excel provides functions to calculate all the shape and distribution measures covered in this chapter. We will use the same <code>faithful</code> dataset from R, which contains data on eruptions of the Old Faithful geyser in Yellowstone National Park. The variable <code>eruptions</code> measures the duration of each eruption in minutes.</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="iakafutvkn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#iakafutvkn table {
+<div id="nnyhfgofpg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#nnyhfgofpg table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#iakafutvkn thead, #iakafutvkn tbody, #iakafutvkn tfoot, #iakafutvkn tr, #iakafutvkn td, #iakafutvkn th {
+#nnyhfgofpg thead, #nnyhfgofpg tbody, #nnyhfgofpg tfoot, #nnyhfgofpg tr, #nnyhfgofpg td, #nnyhfgofpg th {
   border-style: none;
 }
 
-#iakafutvkn p {
+#nnyhfgofpg p {
   margin: 0;
   padding: 0;
 }
 
-#iakafutvkn .gt_table {
+#nnyhfgofpg .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -712,12 +713,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#iakafutvkn .gt_caption {
+#nnyhfgofpg .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#iakafutvkn .gt_title {
+#nnyhfgofpg .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -729,7 +730,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#iakafutvkn .gt_subtitle {
+#nnyhfgofpg .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -741,7 +742,7 @@ details summary {
   border-top-width: 0;
 }
 
-#iakafutvkn .gt_heading {
+#nnyhfgofpg .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -753,13 +754,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#iakafutvkn .gt_bottom_border {
+#nnyhfgofpg .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#iakafutvkn .gt_col_headings {
+#nnyhfgofpg .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -774,7 +775,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#iakafutvkn .gt_col_heading {
+#nnyhfgofpg .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -794,7 +795,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#iakafutvkn .gt_column_spanner_outer {
+#nnyhfgofpg .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -806,15 +807,15 @@ details summary {
   padding-right: 4px;
 }
 
-#iakafutvkn .gt_column_spanner_outer:first-child {
+#nnyhfgofpg .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#iakafutvkn .gt_column_spanner_outer:last-child {
+#nnyhfgofpg .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#iakafutvkn .gt_column_spanner {
+#nnyhfgofpg .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -826,11 +827,11 @@ details summary {
   width: 100%;
 }
 
-#iakafutvkn .gt_spanner_row {
+#nnyhfgofpg .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#iakafutvkn .gt_group_heading {
+#nnyhfgofpg .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -856,7 +857,7 @@ details summary {
   text-align: left;
 }
 
-#iakafutvkn .gt_empty_group_heading {
+#nnyhfgofpg .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -871,15 +872,15 @@ details summary {
   vertical-align: middle;
 }
 
-#iakafutvkn .gt_from_md > :first-child {
+#nnyhfgofpg .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#iakafutvkn .gt_from_md > :last-child {
+#nnyhfgofpg .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#iakafutvkn .gt_row {
+#nnyhfgofpg .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -898,7 +899,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#iakafutvkn .gt_stub {
+#nnyhfgofpg .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -911,7 +912,7 @@ details summary {
   padding-right: 5px;
 }
 
-#iakafutvkn .gt_stub_row_group {
+#nnyhfgofpg .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -925,15 +926,15 @@ details summary {
   vertical-align: top;
 }
 
-#iakafutvkn .gt_row_group_first td {
+#nnyhfgofpg .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#iakafutvkn .gt_row_group_first th {
+#nnyhfgofpg .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#iakafutvkn .gt_summary_row {
+#nnyhfgofpg .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -943,16 +944,16 @@ details summary {
   padding-right: 5px;
 }
 
-#iakafutvkn .gt_first_summary_row {
+#nnyhfgofpg .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#iakafutvkn .gt_first_summary_row.thick {
+#nnyhfgofpg .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#iakafutvkn .gt_last_summary_row {
+#nnyhfgofpg .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -962,7 +963,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#iakafutvkn .gt_grand_summary_row {
+#nnyhfgofpg .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -972,7 +973,7 @@ details summary {
   padding-right: 5px;
 }
 
-#iakafutvkn .gt_first_grand_summary_row {
+#nnyhfgofpg .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -982,7 +983,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#iakafutvkn .gt_last_grand_summary_row_top {
+#nnyhfgofpg .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -992,11 +993,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#iakafutvkn .gt_striped {
+#nnyhfgofpg .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#iakafutvkn .gt_table_body {
+#nnyhfgofpg .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1005,7 +1006,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#iakafutvkn .gt_footnotes {
+#nnyhfgofpg .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1019,7 +1020,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#iakafutvkn .gt_footnote {
+#nnyhfgofpg .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1028,7 +1029,7 @@ details summary {
   padding-right: 5px;
 }
 
-#iakafutvkn .gt_sourcenotes {
+#nnyhfgofpg .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1042,7 +1043,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#iakafutvkn .gt_sourcenote {
+#nnyhfgofpg .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1050,72 +1051,72 @@ details summary {
   padding-right: 5px;
 }
 
-#iakafutvkn .gt_left {
+#nnyhfgofpg .gt_left {
   text-align: left;
 }
 
-#iakafutvkn .gt_center {
+#nnyhfgofpg .gt_center {
   text-align: center;
 }
 
-#iakafutvkn .gt_right {
+#nnyhfgofpg .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#iakafutvkn .gt_font_normal {
+#nnyhfgofpg .gt_font_normal {
   font-weight: normal;
 }
 
-#iakafutvkn .gt_font_bold {
+#nnyhfgofpg .gt_font_bold {
   font-weight: bold;
 }
 
-#iakafutvkn .gt_font_italic {
+#nnyhfgofpg .gt_font_italic {
   font-style: italic;
 }
 
-#iakafutvkn .gt_super {
+#nnyhfgofpg .gt_super {
   font-size: 65%;
 }
 
-#iakafutvkn .gt_footnote_marks {
+#nnyhfgofpg .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#iakafutvkn .gt_asterisk {
+#nnyhfgofpg .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#iakafutvkn .gt_indent_1 {
+#nnyhfgofpg .gt_indent_1 {
   text-indent: 5px;
 }
 
-#iakafutvkn .gt_indent_2 {
+#nnyhfgofpg .gt_indent_2 {
   text-indent: 10px;
 }
 
-#iakafutvkn .gt_indent_3 {
+#nnyhfgofpg .gt_indent_3 {
   text-indent: 15px;
 }
 
-#iakafutvkn .gt_indent_4 {
+#nnyhfgofpg .gt_indent_4 {
   text-indent: 20px;
 }
 
-#iakafutvkn .gt_indent_5 {
+#nnyhfgofpg .gt_indent_5 {
   text-indent: 25px;
 }
 
-#iakafutvkn .katex-display {
+#nnyhfgofpg .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#iakafutvkn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#nnyhfgofpg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1164,23 +1165,23 @@ details summary {
 <p>The z-scores for the first five observations of the <code>faithful</code> dataset are:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="ucvilsiean" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#ucvilsiean table {
+<div id="jelkpdfiyr" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#jelkpdfiyr table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#ucvilsiean thead, #ucvilsiean tbody, #ucvilsiean tfoot, #ucvilsiean tr, #ucvilsiean td, #ucvilsiean th {
+#jelkpdfiyr thead, #jelkpdfiyr tbody, #jelkpdfiyr tfoot, #jelkpdfiyr tr, #jelkpdfiyr td, #jelkpdfiyr th {
   border-style: none;
 }
 
-#ucvilsiean p {
+#jelkpdfiyr p {
   margin: 0;
   padding: 0;
 }
 
-#ucvilsiean .gt_table {
+#jelkpdfiyr .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1206,12 +1207,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#ucvilsiean .gt_caption {
+#jelkpdfiyr .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#ucvilsiean .gt_title {
+#jelkpdfiyr .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1223,7 +1224,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#ucvilsiean .gt_subtitle {
+#jelkpdfiyr .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1235,7 +1236,7 @@ details summary {
   border-top-width: 0;
 }
 
-#ucvilsiean .gt_heading {
+#jelkpdfiyr .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1247,13 +1248,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#ucvilsiean .gt_bottom_border {
+#jelkpdfiyr .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#ucvilsiean .gt_col_headings {
+#jelkpdfiyr .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1268,7 +1269,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#ucvilsiean .gt_col_heading {
+#jelkpdfiyr .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1288,7 +1289,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#ucvilsiean .gt_column_spanner_outer {
+#jelkpdfiyr .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1300,15 +1301,15 @@ details summary {
   padding-right: 4px;
 }
 
-#ucvilsiean .gt_column_spanner_outer:first-child {
+#jelkpdfiyr .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#ucvilsiean .gt_column_spanner_outer:last-child {
+#jelkpdfiyr .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#ucvilsiean .gt_column_spanner {
+#jelkpdfiyr .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1320,11 +1321,11 @@ details summary {
   width: 100%;
 }
 
-#ucvilsiean .gt_spanner_row {
+#jelkpdfiyr .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#ucvilsiean .gt_group_heading {
+#jelkpdfiyr .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1350,7 +1351,7 @@ details summary {
   text-align: left;
 }
 
-#ucvilsiean .gt_empty_group_heading {
+#jelkpdfiyr .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1365,15 +1366,15 @@ details summary {
   vertical-align: middle;
 }
 
-#ucvilsiean .gt_from_md > :first-child {
+#jelkpdfiyr .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#ucvilsiean .gt_from_md > :last-child {
+#jelkpdfiyr .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#ucvilsiean .gt_row {
+#jelkpdfiyr .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1392,7 +1393,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#ucvilsiean .gt_stub {
+#jelkpdfiyr .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1405,7 +1406,7 @@ details summary {
   padding-right: 5px;
 }
 
-#ucvilsiean .gt_stub_row_group {
+#jelkpdfiyr .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1419,15 +1420,15 @@ details summary {
   vertical-align: top;
 }
 
-#ucvilsiean .gt_row_group_first td {
+#jelkpdfiyr .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#ucvilsiean .gt_row_group_first th {
+#jelkpdfiyr .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#ucvilsiean .gt_summary_row {
+#jelkpdfiyr .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1437,16 +1438,16 @@ details summary {
   padding-right: 5px;
 }
 
-#ucvilsiean .gt_first_summary_row {
+#jelkpdfiyr .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#ucvilsiean .gt_first_summary_row.thick {
+#jelkpdfiyr .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#ucvilsiean .gt_last_summary_row {
+#jelkpdfiyr .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1456,7 +1457,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#ucvilsiean .gt_grand_summary_row {
+#jelkpdfiyr .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1466,7 +1467,7 @@ details summary {
   padding-right: 5px;
 }
 
-#ucvilsiean .gt_first_grand_summary_row {
+#jelkpdfiyr .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1476,7 +1477,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#ucvilsiean .gt_last_grand_summary_row_top {
+#jelkpdfiyr .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1486,11 +1487,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#ucvilsiean .gt_striped {
+#jelkpdfiyr .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#ucvilsiean .gt_table_body {
+#jelkpdfiyr .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1499,7 +1500,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#ucvilsiean .gt_footnotes {
+#jelkpdfiyr .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1513,7 +1514,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#ucvilsiean .gt_footnote {
+#jelkpdfiyr .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -1522,7 +1523,7 @@ details summary {
   padding-right: 5px;
 }
 
-#ucvilsiean .gt_sourcenotes {
+#jelkpdfiyr .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -1536,7 +1537,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#ucvilsiean .gt_sourcenote {
+#jelkpdfiyr .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -1544,72 +1545,72 @@ details summary {
   padding-right: 5px;
 }
 
-#ucvilsiean .gt_left {
+#jelkpdfiyr .gt_left {
   text-align: left;
 }
 
-#ucvilsiean .gt_center {
+#jelkpdfiyr .gt_center {
   text-align: center;
 }
 
-#ucvilsiean .gt_right {
+#jelkpdfiyr .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#ucvilsiean .gt_font_normal {
+#jelkpdfiyr .gt_font_normal {
   font-weight: normal;
 }
 
-#ucvilsiean .gt_font_bold {
+#jelkpdfiyr .gt_font_bold {
   font-weight: bold;
 }
 
-#ucvilsiean .gt_font_italic {
+#jelkpdfiyr .gt_font_italic {
   font-style: italic;
 }
 
-#ucvilsiean .gt_super {
+#jelkpdfiyr .gt_super {
   font-size: 65%;
 }
 
-#ucvilsiean .gt_footnote_marks {
+#jelkpdfiyr .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#ucvilsiean .gt_asterisk {
+#jelkpdfiyr .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#ucvilsiean .gt_indent_1 {
+#jelkpdfiyr .gt_indent_1 {
   text-indent: 5px;
 }
 
-#ucvilsiean .gt_indent_2 {
+#jelkpdfiyr .gt_indent_2 {
   text-indent: 10px;
 }
 
-#ucvilsiean .gt_indent_3 {
+#jelkpdfiyr .gt_indent_3 {
   text-indent: 15px;
 }
 
-#ucvilsiean .gt_indent_4 {
+#jelkpdfiyr .gt_indent_4 {
   text-indent: 20px;
 }
 
-#ucvilsiean .gt_indent_5 {
+#jelkpdfiyr .gt_indent_5 {
   text-indent: 25px;
 }
 
-#ucvilsiean .katex-display {
+#jelkpdfiyr .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#ucvilsiean div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#jelkpdfiyr div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -1669,23 +1670,23 @@ details summary {
 <p>The five point summary for the <code>eruptions</code> variable is:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="gkdzhbyzei" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#gkdzhbyzei table {
+<div id="sfvuchynuo" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#sfvuchynuo table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#gkdzhbyzei thead, #gkdzhbyzei tbody, #gkdzhbyzei tfoot, #gkdzhbyzei tr, #gkdzhbyzei td, #gkdzhbyzei th {
+#sfvuchynuo thead, #sfvuchynuo tbody, #sfvuchynuo tfoot, #sfvuchynuo tr, #sfvuchynuo td, #sfvuchynuo th {
   border-style: none;
 }
 
-#gkdzhbyzei p {
+#sfvuchynuo p {
   margin: 0;
   padding: 0;
 }
 
-#gkdzhbyzei .gt_table {
+#sfvuchynuo .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -1711,12 +1712,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#gkdzhbyzei .gt_caption {
+#sfvuchynuo .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#gkdzhbyzei .gt_title {
+#sfvuchynuo .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -1728,7 +1729,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#gkdzhbyzei .gt_subtitle {
+#sfvuchynuo .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -1740,7 +1741,7 @@ details summary {
   border-top-width: 0;
 }
 
-#gkdzhbyzei .gt_heading {
+#sfvuchynuo .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -1752,13 +1753,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#gkdzhbyzei .gt_bottom_border {
+#sfvuchynuo .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#gkdzhbyzei .gt_col_headings {
+#sfvuchynuo .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -1773,7 +1774,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#gkdzhbyzei .gt_col_heading {
+#sfvuchynuo .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1793,7 +1794,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#gkdzhbyzei .gt_column_spanner_outer {
+#sfvuchynuo .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1805,15 +1806,15 @@ details summary {
   padding-right: 4px;
 }
 
-#gkdzhbyzei .gt_column_spanner_outer:first-child {
+#sfvuchynuo .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#gkdzhbyzei .gt_column_spanner_outer:last-child {
+#sfvuchynuo .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#gkdzhbyzei .gt_column_spanner {
+#sfvuchynuo .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -1825,11 +1826,11 @@ details summary {
   width: 100%;
 }
 
-#gkdzhbyzei .gt_spanner_row {
+#sfvuchynuo .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#gkdzhbyzei .gt_group_heading {
+#sfvuchynuo .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1855,7 +1856,7 @@ details summary {
   text-align: left;
 }
 
-#gkdzhbyzei .gt_empty_group_heading {
+#sfvuchynuo .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -1870,15 +1871,15 @@ details summary {
   vertical-align: middle;
 }
 
-#gkdzhbyzei .gt_from_md > :first-child {
+#sfvuchynuo .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#gkdzhbyzei .gt_from_md > :last-child {
+#sfvuchynuo .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#gkdzhbyzei .gt_row {
+#sfvuchynuo .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1897,7 +1898,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#gkdzhbyzei .gt_stub {
+#sfvuchynuo .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1910,7 +1911,7 @@ details summary {
   padding-right: 5px;
 }
 
-#gkdzhbyzei .gt_stub_row_group {
+#sfvuchynuo .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -1924,15 +1925,15 @@ details summary {
   vertical-align: top;
 }
 
-#gkdzhbyzei .gt_row_group_first td {
+#sfvuchynuo .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#gkdzhbyzei .gt_row_group_first th {
+#sfvuchynuo .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#gkdzhbyzei .gt_summary_row {
+#sfvuchynuo .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1942,16 +1943,16 @@ details summary {
   padding-right: 5px;
 }
 
-#gkdzhbyzei .gt_first_summary_row {
+#sfvuchynuo .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#gkdzhbyzei .gt_first_summary_row.thick {
+#sfvuchynuo .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#gkdzhbyzei .gt_last_summary_row {
+#sfvuchynuo .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1961,7 +1962,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#gkdzhbyzei .gt_grand_summary_row {
+#sfvuchynuo .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -1971,7 +1972,7 @@ details summary {
   padding-right: 5px;
 }
 
-#gkdzhbyzei .gt_first_grand_summary_row {
+#sfvuchynuo .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1981,7 +1982,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#gkdzhbyzei .gt_last_grand_summary_row_top {
+#sfvuchynuo .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -1991,11 +1992,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#gkdzhbyzei .gt_striped {
+#sfvuchynuo .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#gkdzhbyzei .gt_table_body {
+#sfvuchynuo .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2004,7 +2005,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#gkdzhbyzei .gt_footnotes {
+#sfvuchynuo .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2018,7 +2019,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#gkdzhbyzei .gt_footnote {
+#sfvuchynuo .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2027,7 +2028,7 @@ details summary {
   padding-right: 5px;
 }
 
-#gkdzhbyzei .gt_sourcenotes {
+#sfvuchynuo .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2041,7 +2042,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#gkdzhbyzei .gt_sourcenote {
+#sfvuchynuo .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2049,72 +2050,72 @@ details summary {
   padding-right: 5px;
 }
 
-#gkdzhbyzei .gt_left {
+#sfvuchynuo .gt_left {
   text-align: left;
 }
 
-#gkdzhbyzei .gt_center {
+#sfvuchynuo .gt_center {
   text-align: center;
 }
 
-#gkdzhbyzei .gt_right {
+#sfvuchynuo .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#gkdzhbyzei .gt_font_normal {
+#sfvuchynuo .gt_font_normal {
   font-weight: normal;
 }
 
-#gkdzhbyzei .gt_font_bold {
+#sfvuchynuo .gt_font_bold {
   font-weight: bold;
 }
 
-#gkdzhbyzei .gt_font_italic {
+#sfvuchynuo .gt_font_italic {
   font-style: italic;
 }
 
-#gkdzhbyzei .gt_super {
+#sfvuchynuo .gt_super {
   font-size: 65%;
 }
 
-#gkdzhbyzei .gt_footnote_marks {
+#sfvuchynuo .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#gkdzhbyzei .gt_asterisk {
+#sfvuchynuo .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#gkdzhbyzei .gt_indent_1 {
+#sfvuchynuo .gt_indent_1 {
   text-indent: 5px;
 }
 
-#gkdzhbyzei .gt_indent_2 {
+#sfvuchynuo .gt_indent_2 {
   text-indent: 10px;
 }
 
-#gkdzhbyzei .gt_indent_3 {
+#sfvuchynuo .gt_indent_3 {
   text-indent: 15px;
 }
 
-#gkdzhbyzei .gt_indent_4 {
+#sfvuchynuo .gt_indent_4 {
   text-indent: 20px;
 }
 
-#gkdzhbyzei .gt_indent_5 {
+#sfvuchynuo .gt_indent_5 {
   text-indent: 25px;
 }
 
-#gkdzhbyzei .katex-display {
+#sfvuchynuo .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#gkdzhbyzei div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#sfvuchynuo div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2154,23 +2155,23 @@ details summary {
 <p>The skewness and kurtosis for the <code>eruptions</code> variable are:</p>
 <div class="cell">
 <div class="cell-output-display">
-<div id="siolbyettp" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
-<style>#siolbyettp table {
+<div id="wrqvvbxrhn" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#wrqvvbxrhn table {
   font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-#siolbyettp thead, #siolbyettp tbody, #siolbyettp tfoot, #siolbyettp tr, #siolbyettp td, #siolbyettp th {
+#wrqvvbxrhn thead, #wrqvvbxrhn tbody, #wrqvvbxrhn tfoot, #wrqvvbxrhn tr, #wrqvvbxrhn td, #wrqvvbxrhn th {
   border-style: none;
 }
 
-#siolbyettp p {
+#wrqvvbxrhn p {
   margin: 0;
   padding: 0;
 }
 
-#siolbyettp .gt_table {
+#wrqvvbxrhn .gt_table {
   display: table;
   border-collapse: collapse;
   line-height: normal;
@@ -2196,12 +2197,12 @@ details summary {
   border-left-color: #D3D3D3;
 }
 
-#siolbyettp .gt_caption {
+#wrqvvbxrhn .gt_caption {
   padding-top: 4px;
   padding-bottom: 4px;
 }
 
-#siolbyettp .gt_title {
+#wrqvvbxrhn .gt_title {
   color: #333333;
   font-size: 125%;
   font-weight: initial;
@@ -2213,7 +2214,7 @@ details summary {
   border-bottom-width: 0;
 }
 
-#siolbyettp .gt_subtitle {
+#wrqvvbxrhn .gt_subtitle {
   color: #333333;
   font-size: 85%;
   font-weight: initial;
@@ -2225,7 +2226,7 @@ details summary {
   border-top-width: 0;
 }
 
-#siolbyettp .gt_heading {
+#wrqvvbxrhn .gt_heading {
   background-color: #FFFFFF;
   text-align: center;
   border-bottom-color: #FFFFFF;
@@ -2237,13 +2238,13 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#siolbyettp .gt_bottom_border {
+#wrqvvbxrhn .gt_bottom_border {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
 }
 
-#siolbyettp .gt_col_headings {
+#wrqvvbxrhn .gt_col_headings {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2258,7 +2259,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#siolbyettp .gt_col_heading {
+#wrqvvbxrhn .gt_col_heading {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2278,7 +2279,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#siolbyettp .gt_column_spanner_outer {
+#wrqvvbxrhn .gt_column_spanner_outer {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2290,15 +2291,15 @@ details summary {
   padding-right: 4px;
 }
 
-#siolbyettp .gt_column_spanner_outer:first-child {
+#wrqvvbxrhn .gt_column_spanner_outer:first-child {
   padding-left: 0;
 }
 
-#siolbyettp .gt_column_spanner_outer:last-child {
+#wrqvvbxrhn .gt_column_spanner_outer:last-child {
   padding-right: 0;
 }
 
-#siolbyettp .gt_column_spanner {
+#wrqvvbxrhn .gt_column_spanner {
   border-bottom-style: solid;
   border-bottom-width: 2px;
   border-bottom-color: #D3D3D3;
@@ -2310,11 +2311,11 @@ details summary {
   width: 100%;
 }
 
-#siolbyettp .gt_spanner_row {
+#wrqvvbxrhn .gt_spanner_row {
   border-bottom-style: hidden;
 }
 
-#siolbyettp .gt_group_heading {
+#wrqvvbxrhn .gt_group_heading {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2340,7 +2341,7 @@ details summary {
   text-align: left;
 }
 
-#siolbyettp .gt_empty_group_heading {
+#wrqvvbxrhn .gt_empty_group_heading {
   padding: 0.5px;
   color: #333333;
   background-color: #FFFFFF;
@@ -2355,15 +2356,15 @@ details summary {
   vertical-align: middle;
 }
 
-#siolbyettp .gt_from_md > :first-child {
+#wrqvvbxrhn .gt_from_md > :first-child {
   margin-top: 0;
 }
 
-#siolbyettp .gt_from_md > :last-child {
+#wrqvvbxrhn .gt_from_md > :last-child {
   margin-bottom: 0;
 }
 
-#siolbyettp .gt_row {
+#wrqvvbxrhn .gt_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2382,7 +2383,7 @@ details summary {
   overflow-x: hidden;
 }
 
-#siolbyettp .gt_stub {
+#wrqvvbxrhn .gt_stub {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2395,7 +2396,7 @@ details summary {
   padding-right: 5px;
 }
 
-#siolbyettp .gt_stub_row_group {
+#wrqvvbxrhn .gt_stub_row_group {
   color: #333333;
   background-color: #FFFFFF;
   font-size: 100%;
@@ -2409,15 +2410,15 @@ details summary {
   vertical-align: top;
 }
 
-#siolbyettp .gt_row_group_first td {
+#wrqvvbxrhn .gt_row_group_first td {
   border-top-width: 2px;
 }
 
-#siolbyettp .gt_row_group_first th {
+#wrqvvbxrhn .gt_row_group_first th {
   border-top-width: 2px;
 }
 
-#siolbyettp .gt_summary_row {
+#wrqvvbxrhn .gt_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2427,16 +2428,16 @@ details summary {
   padding-right: 5px;
 }
 
-#siolbyettp .gt_first_summary_row {
+#wrqvvbxrhn .gt_first_summary_row {
   border-top-style: solid;
   border-top-color: #D3D3D3;
 }
 
-#siolbyettp .gt_first_summary_row.thick {
+#wrqvvbxrhn .gt_first_summary_row.thick {
   border-top-width: 2px;
 }
 
-#siolbyettp .gt_last_summary_row {
+#wrqvvbxrhn .gt_last_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2446,7 +2447,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#siolbyettp .gt_grand_summary_row {
+#wrqvvbxrhn .gt_grand_summary_row {
   color: #333333;
   background-color: #FFFFFF;
   text-transform: inherit;
@@ -2456,7 +2457,7 @@ details summary {
   padding-right: 5px;
 }
 
-#siolbyettp .gt_first_grand_summary_row {
+#wrqvvbxrhn .gt_first_grand_summary_row {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2466,7 +2467,7 @@ details summary {
   border-top-color: #D3D3D3;
 }
 
-#siolbyettp .gt_last_grand_summary_row_top {
+#wrqvvbxrhn .gt_last_grand_summary_row_top {
   padding-top: 8px;
   padding-bottom: 8px;
   padding-left: 5px;
@@ -2476,11 +2477,11 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#siolbyettp .gt_striped {
+#wrqvvbxrhn .gt_striped {
   background-color: rgba(128, 128, 128, 0.05);
 }
 
-#siolbyettp .gt_table_body {
+#wrqvvbxrhn .gt_table_body {
   border-top-style: solid;
   border-top-width: 2px;
   border-top-color: #D3D3D3;
@@ -2489,7 +2490,7 @@ details summary {
   border-bottom-color: #D3D3D3;
 }
 
-#siolbyettp .gt_footnotes {
+#wrqvvbxrhn .gt_footnotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2503,7 +2504,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#siolbyettp .gt_footnote {
+#wrqvvbxrhn .gt_footnote {
   margin: 0px;
   font-size: 90%;
   padding-top: 4px;
@@ -2512,7 +2513,7 @@ details summary {
   padding-right: 5px;
 }
 
-#siolbyettp .gt_sourcenotes {
+#wrqvvbxrhn .gt_sourcenotes {
   color: #333333;
   background-color: #FFFFFF;
   border-bottom-style: none;
@@ -2526,7 +2527,7 @@ details summary {
   border-right-color: #D3D3D3;
 }
 
-#siolbyettp .gt_sourcenote {
+#wrqvvbxrhn .gt_sourcenote {
   font-size: 90%;
   padding-top: 4px;
   padding-bottom: 4px;
@@ -2534,72 +2535,72 @@ details summary {
   padding-right: 5px;
 }
 
-#siolbyettp .gt_left {
+#wrqvvbxrhn .gt_left {
   text-align: left;
 }
 
-#siolbyettp .gt_center {
+#wrqvvbxrhn .gt_center {
   text-align: center;
 }
 
-#siolbyettp .gt_right {
+#wrqvvbxrhn .gt_right {
   text-align: right;
   font-variant-numeric: tabular-nums;
 }
 
-#siolbyettp .gt_font_normal {
+#wrqvvbxrhn .gt_font_normal {
   font-weight: normal;
 }
 
-#siolbyettp .gt_font_bold {
+#wrqvvbxrhn .gt_font_bold {
   font-weight: bold;
 }
 
-#siolbyettp .gt_font_italic {
+#wrqvvbxrhn .gt_font_italic {
   font-style: italic;
 }
 
-#siolbyettp .gt_super {
+#wrqvvbxrhn .gt_super {
   font-size: 65%;
 }
 
-#siolbyettp .gt_footnote_marks {
+#wrqvvbxrhn .gt_footnote_marks {
   font-size: 75%;
   vertical-align: 0.4em;
   position: initial;
 }
 
-#siolbyettp .gt_asterisk {
+#wrqvvbxrhn .gt_asterisk {
   font-size: 100%;
   vertical-align: 0;
 }
 
-#siolbyettp .gt_indent_1 {
+#wrqvvbxrhn .gt_indent_1 {
   text-indent: 5px;
 }
 
-#siolbyettp .gt_indent_2 {
+#wrqvvbxrhn .gt_indent_2 {
   text-indent: 10px;
 }
 
-#siolbyettp .gt_indent_3 {
+#wrqvvbxrhn .gt_indent_3 {
   text-indent: 15px;
 }
 
-#siolbyettp .gt_indent_4 {
+#wrqvvbxrhn .gt_indent_4 {
   text-indent: 20px;
 }
 
-#siolbyettp .gt_indent_5 {
+#wrqvvbxrhn .gt_indent_5 {
   text-indent: 25px;
 }
 
-#siolbyettp .katex-display {
+#wrqvvbxrhn .katex-display {
   display: inline-flex !important;
   margin-bottom: 0.75em !important;
 }
 
-#siolbyettp div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+#wrqvvbxrhn div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
   height: 0px !important;
 }
 </style>
@@ -2633,24 +2634,149 @@ details summary {
 <li><p><code>=PERCENTILE.EXC(array, k)</code> returns the <span class="math inline">\(k\)</span>th percentile using the formula <span class="math inline">\(L_p = k(n+1)\)</span>.</p></li>
 <li><p><code>=QUARTILE.INC(array, quart)</code> returns the five point summary. The argument <code>quart</code> takes values 0 (minimum), 1 (<span class="math inline">\(Q_1\)</span>), 2 (median), 3 (<span class="math inline">\(Q_3\)</span>), and 4 (maximum).</p></li>
 <li><p><code>=STANDARDIZE(x, mean, std_dev)</code> calculates the z-score for a value <code>x</code> given the mean and standard deviation. Alternatively, compute it manually as <code>=(A1 - AVERAGE(A:A)) / STDEV.S(A:A)</code>.</p></li>
-<li><p><code>=SKEW(range)</code> calculates the skewness of a range using the Fisher-Pearson standardized moment coefficient. Note that Excel does not have a direct equivalent to Pearson’s Coefficient of Skew <span class="math inline">\(Sk=3(\bar{x}-Median)/s_x\)</span> — this must be calculated manually as <code>=3*(AVERAGE(range) - MEDIAN(range)) / STDEV.S(range)</code>.</p></li>
+<li><p><code>=SKEW(range)</code> calculates the skewness of a range using the Fisher-Pearson standardized moment coefficient. Note that Excel does not have a direct equivalent to Pearson’s Coefficient of Skew <span class="math inline">\(Sk=3(\bar{x}-Median)/s_x\)</span>, so this must be calculated manually as <code>=3*(AVERAGE(range) - MEDIAN(range)) / STDEV.S(range)</code>.</p></li>
 <li><p><code>=KURT(range)</code> calculates the excess kurtosis of a range. A positive value indicates leptokurtic (heavy tails) and a negative value indicates platykurtic (light tails).</p></li>
 </ul>
 </section>
 <section id="chapter-summary-cheat-sheet" class="level2" data-number="5.11">
 <h2 data-number="5.11" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">5.11</span> Chapter Summary Cheat Sheet</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Other.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Shape &amp; Distribution</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Position</div><div class="bs-cs-card-title">Percentiles</div><div class="bs-cs-formula">L<sub>p</sub> = 1 + k(n − 1)</div><p class="bs-cs-desc">Sort the data, find the location L<sub>p</sub>, and interpolate between neighbors. k is the percentile as a decimal.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=PERCENTILE.INC(range, k)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Any Distribution</div><div class="bs-cs-card-title">Chebyshev's Theorem</div><div class="bs-cs-formula">at least 1 − 1/k²</div><p class="bs-cs-desc">Share of the data within k standard deviations of the mean, for any shape (k &gt; 1).</p><div class="bs-excel"><span class="lbl">Example</span><span>k = 2 → 75% · k = 3 → 88.9%</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Bell Shaped</div><div class="bs-cs-card-title">Empirical Rule</div><div class="bs-cs-formula">68% · 95% · 99.7%</div><p class="bs-cs-desc">Share of the data within 1, 2, and 3 standard deviations of the mean. Only for bell-shaped data.</p><div class="bs-excel"><span class="lbl">Example</span><span>μ = 78, σ = 6 → 95% in [66, 90]</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Distance</div><div class="bs-cs-card-title">Z-Score</div><div class="bs-cs-formula">zᵢ = (xᵢ − x̄) / s</div><p class="bs-cs-desc">Distance from the mean in standard deviations. A |z| above 3 flags a suspected outlier.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=STANDARDIZE(x, mean, sd)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Asymmetry</div><div class="bs-cs-card-title">Skewness</div><div class="bs-cs-formula">Sk = n / [(n−1)(n−2)] · Σzᵢ³</div><p class="bs-cs-desc">Sk &lt; 0 left-skewed, Sk = 0 symmetric, Sk &gt; 0 right-skewed. Cubing keeps the sign of the deviations.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=SKEW(range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Tails</div><div class="bs-cs-card-title">Excess Kurtosis</div><div class="bs-cs-formula">K = n(n+1) / [(n−1)(n−2)(n−3)] · Σzᵢ⁴<br>− 3(n−1)² / [(n−2)(n−3)]</div><p class="bs-cs-desc">K &lt; 0 light tails (platykurtic), K = 0 like the normal (mesokurtic), K &gt; 0 heavy tails (leptokurtic).</p><div class="bs-excel"><span class="lbl">Excel</span><span>=KURT(range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">07 · Summary</div><div class="bs-cs-card-title">Five Point Summary</div><div class="bs-cs-formula">Min · Q₁ · Median · Q₃ · Max</div><p class="bs-cs-desc">A quick picture of where the data sits and how it spreads.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=QUARTILE.INC(range, 0 … 4)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">08 · Middle 50%</div><div class="bs-cs-card-title">Interquartile Range</div><div class="bs-cs-formula">IQR = Q₃ − Q₁</div><p class="bs-cs-desc">The range of the middle half of the data. Extreme values do not affect it.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=QUARTILE.INC(range,3) − QUARTILE.INC(range,1)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">09 · Outliers</div><div class="bs-cs-card-title">IQR Method</div><div class="bs-cs-formula">LL = Q₁ − 1.5·IQR<br>UL = Q₃ + 1.5·IQR</div><p class="bs-cs-desc">Values below LL or above UL are outliers. This method and the z-score method can disagree.</p><div class="bs-excel"><span class="lbl">Example</span><span>IQ data → limits [45, 145]</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>L<sub>p</sub></dt><dd>Location of a percentile</dd></div>
+      <div class="bs-cs-row"><dt>k (percentile)</dt><dd>Percentile as a decimal</dd></div>
+      <div class="bs-cs-row"><dt>k (Chebyshev)</dt><dd>Number of std. devs.</dd></div>
+      <div class="bs-cs-row"><dt>zᵢ</dt><dd>Z-score of observation i</dd></div>
+      <div class="bs-cs-row"><dt>Q₁, Q₃</dt><dd>25th, 75th percentiles</dd></div>
+      <div class="bs-cs-row"><dt>Sk</dt><dd>Skewness</dd></div>
+      <div class="bs-cs-row"><dt>K</dt><dd>Excess kurtosis</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Chebyshev applies to?</dt><dd>Any distribution</dd></div>
+      <div class="bs-cs-row"><dt>Empirical rule applies to?</dt><dd>Bell-shaped data</dd></div>
+      <div class="bs-cs-row"><dt>Z-score outlier?</dt><dd>|z| &gt; 3</dd></div>
+      <div class="bs-cs-row"><dt>IQR outlier?</dt><dd>Outside [LL, UL]</dd></div>
+      <div class="bs-cs-row"><dt>Long right tail?</dt><dd>Sk &gt; 0</dd></div>
+      <div class="bs-cs-row"><dt>Heavy tails?</dt><dd>K &gt; 0</dd></div>
+      <div class="bs-cs-row"><dt>Median is?</dt><dd>Q₂, the 50th percentile</dd></div>
+    </dl></div>
+  </div>
+</section>
+</section>
+<section id="check-your-understanding" class="level2" data-number="5.12">
+<h2 data-number="5.12" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">5.12</span> Check Your Understanding</h2>
+<p>Test the main ideas of the chapter before moving on to the exercises. <span>Pick an answer to see whether you are right and why.</span></p>
+<div class="bs-quiz">
+<p>By Chebyshev’s theorem, what share of any data set lies within <span class="math inline">\(4\)</span> standard deviations of the mean?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Exactly <span class="math inline">\(93.75\%\)</span></label></li>
+<li><label><input type="checkbox">At least <span class="math inline">\(75\%\)</span></label></li>
+<li><label><input type="checkbox" checked="">At least <span class="math inline">\(93.75\%\)</span></label></li>
+<li><label><input type="checkbox">About <span class="math inline">\(99.7\%\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(1-1/4^2=1-1/16=0.9375\)</span>. Chebyshev gives a minimum share that holds for any distribution, not an exact value.</p>
 </div>
+</div>
+<div class="bs-quiz">
+<p>Exam scores are bell shaped with a mean of <span class="math inline">\(50\)</span> and a standard deviation of <span class="math inline">\(5\)</span>. According to the empirical rule, about what share of scores fall between <span class="math inline">\(40\)</span> and <span class="math inline">\(60\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">About <span class="math inline">\(68\%\)</span></label></li>
+<li><label><input type="checkbox">About <span class="math inline">\(99.7\%\)</span></label></li>
+<li><label><input type="checkbox">At least <span class="math inline">\(75\%\)</span></label></li>
+<li><label><input type="checkbox" checked="">About <span class="math inline">\(95\%\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(40\)</span> and <span class="math inline">\(60\)</span> are two standard deviations from the mean, so the empirical rule gives about <span class="math inline">\(95\%\)</span>. Chebyshev’s guarantee of at least <span class="math inline">\(75\%\)</span> is also true but much less precise for bell-shaped data.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Exam scores have a mean of <span class="math inline">\(70\)</span> and a standard deviation of <span class="math inline">\(8\)</span>. What is the z-score of a score of <span class="math inline">\(90\)</span>, and is it a suspected outlier?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(z=2.5\)</span>; a suspected outlier</label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(z=2.5\)</span>; not a suspected outlier</label></li>
+<li><label><input type="checkbox"><span class="math inline">\(z=20\)</span>; a suspected outlier</label></li>
+<li><label><input type="checkbox"><span class="math inline">\(z=-2.5\)</span>; not a suspected outlier</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(z=(90-70)/8=2.5\)</span>. The score is <span class="math inline">\(2.5\)</span> standard deviations above the mean, which is unusual but within the <span class="math inline">\(|z| \le 3\)</span> cutoff.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A sorted data set has <span class="math inline">\(n=11\)</span> values. Using <span class="math inline">\(L_p=1+k(n-1)\)</span>, where is the <span class="math inline">\(30\)</span>th percentile located?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">At position <span class="math inline">\(4\)</span></label></li>
+<li><label><input type="checkbox">At position <span class="math inline">\(3.3\)</span></label></li>
+<li><label><input type="checkbox">At position <span class="math inline">\(3.6\)</span></label></li>
+<li><label><input type="checkbox">At position <span class="math inline">\(30\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(L_{30}=1+0.30(11-1)=4\)</span>, so the <span class="math inline">\(30\)</span>th percentile is the fourth value in the sorted data. This is the method used by <code>PERCENTILE.INC</code>.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A data set has <span class="math inline">\(Q_1=20\)</span> and <span class="math inline">\(Q_3=30\)</span>. Using the IQR method, which of these values is an outlier?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(44\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(6\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(30\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(48\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(IQR=30-20=10\)</span>. The limits are <span class="math inline">\(20-1.5(10)=5\)</span> and <span class="math inline">\(30+1.5(10)=45\)</span>. Only <span class="math inline">\(48\)</span> falls outside <span class="math inline">\([5,45]\)</span>.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Household incomes in a city are mostly moderate, with a few very high incomes. What skewness would you expect?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Negative (left-skewed)</label></li>
+<li><label><input type="checkbox" checked="">Positive (right-skewed)</label></li>
+<li><label><input type="checkbox">Zero (symmetric)</label></li>
+<li><label><input type="checkbox">It cannot be positive for incomes</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>A few very large values create a long right tail. Their large positive cubed z-scores dominate the sum, so <span class="math inline">\(Sk&gt;0\)</span>.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>The daily returns of an asset have an excess kurtosis of <span class="math inline">\(K=2.5\)</span>. What does this tell you?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">The returns are leptokurtic: extreme returns are more common than under a normal distribution</label></li>
+<li><label><input type="checkbox">The returns are platykurtic: extreme returns are rare</label></li>
+<li><label><input type="checkbox">The returns are mesokurtic</label></li>
+<li><label><input type="checkbox">The returns are skewed to the left</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(K&gt;0\)</span> means heavier tails than the normal distribution. Kurtosis describes the tails, not the direction of asymmetry, which is measured by skewness.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Which Excel formula returns the third quartile, <span class="math inline">\(Q_3\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><code>=QUARTILE.INC(A:A, 0.75)</code></label></li>
+<li><label><input type="checkbox"><code>=PERCENTILE.INC(A:A, 75)</code></label></li>
+<li><label><input type="checkbox" checked=""><code>=QUARTILE.INC(A:A, 3)</code></label></li>
+<li><label><input type="checkbox"><code>=QUARTILE.INC(A:A, 4)</code></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The <code>quart</code> argument takes the values <span class="math inline">\(0\)</span> through <span class="math inline">\(4\)</span>, and <span class="math inline">\(3\)</span> returns <span class="math inline">\(Q_3\)</span>. <code>PERCENTILE.INC(A:A, 0.75)</code> also works, since its <code>k</code> is a decimal. The argument <span class="math inline">\(4\)</span> returns the maximum.</p>
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="5.12">
-<h2 data-number="5.12" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.12</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="5.13">
+<h2 data-number="5.13" class="anchored" data-anchor-id="exercises"><span class="header-section-number">5.13</span> Exercises</h2>
 <p>The following exercises will help you practice other statistical measures. In particular, the exercises work on:</p>
 <ul>
 <li><p>Constructing a five point summary and a boxplot.</p></li>
@@ -2695,7 +2821,7 @@ Answer
 =QUARTILE.INC(A:A, 2)   /* Median  = 4  */
 =QUARTILE.INC(A:A, 3)   /* Q3      = 8  */
 =QUARTILE.INC(A:A, 4)   /* Maximum = 30 */</code></pre>
-<p><em>The interquartile range is needed to determine if there are any outliers.</em> The <span class="math inline">\(IQR = Q_3 - Q_1 = 6\)</span>. Since <span class="math inline">\(Q_3 + 1.5 \times IQR = 8 + 1.5(6) = 17\)</span>, everything beyond <span class="math inline">\(17\)</span> is an outlier — so <span class="math inline">\(30\)</span> is an outlier.</p>
+<p><em>The interquartile range is needed to determine if there are any outliers.</em> The <span class="math inline">\(IQR = Q_3 - Q_1 = 6\)</span>. Since <span class="math inline">\(Q_3 + 1.5 \times IQR = 8 + 1.5(6) = 17\)</span>, everything beyond <span class="math inline">\(17\)</span> is an outlier, so <span class="math inline">\(30\)</span> is an outlier.</p>
 <pre class="excel"><code>=QUARTILE.INC(A:A, 3) - QUARTILE.INC(A:A, 1)   /* IQR = 6  */
 =QUARTILE.INC(A:A, 3) + 1.5 * 6                 /* UL  = 17 */</code></pre>
 </details>
@@ -3438,6 +3564,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </footer>
 <script src="assets/book.js"></script>
+<script src="assets/quiz.js"></script>
 
 
 

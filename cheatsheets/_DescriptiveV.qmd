@@ -1,0 +1,36 @@
+```{=html}
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Shape & Distribution</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Position</div><div class="bs-cs-card-title">Percentiles</div><div class="bs-cs-formula">L<sub>p</sub> = 1 + k(n − 1)</div><p class="bs-cs-desc">Sort the data, find the location L<sub>p</sub>, and interpolate between neighbors. k is the percentile as a decimal.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=PERCENTILE.INC(range, k)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Any Distribution</div><div class="bs-cs-card-title">Chebyshev's Theorem</div><div class="bs-cs-formula">at least 1 − 1/k²</div><p class="bs-cs-desc">Share of the data within k standard deviations of the mean, for any shape (k > 1).</p><div class="bs-excel"><span class="lbl">Example</span><span>k = 2 → 75% · k = 3 → 88.9%</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Bell Shaped</div><div class="bs-cs-card-title">Empirical Rule</div><div class="bs-cs-formula">68% · 95% · 99.7%</div><p class="bs-cs-desc">Share of the data within 1, 2, and 3 standard deviations of the mean. Only for bell-shaped data.</p><div class="bs-excel"><span class="lbl">Example</span><span>μ = 78, σ = 6 → 95% in [66, 90]</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Distance</div><div class="bs-cs-card-title">Z-Score</div><div class="bs-cs-formula">zᵢ = (xᵢ − x̄) / s</div><p class="bs-cs-desc">Distance from the mean in standard deviations. A |z| above 3 flags a suspected outlier.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=STANDARDIZE(x, mean, sd)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Asymmetry</div><div class="bs-cs-card-title">Skewness</div><div class="bs-cs-formula">Sk = n / [(n−1)(n−2)] · Σzᵢ³</div><p class="bs-cs-desc">Sk < 0 left-skewed, Sk = 0 symmetric, Sk > 0 right-skewed. Cubing keeps the sign of the deviations.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=SKEW(range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Tails</div><div class="bs-cs-card-title">Excess Kurtosis</div><div class="bs-cs-formula">K = n(n+1) / [(n−1)(n−2)(n−3)] · Σzᵢ⁴<br/>− 3(n−1)² / [(n−2)(n−3)]</div><p class="bs-cs-desc">K < 0 light tails (platykurtic), K = 0 like the normal (mesokurtic), K > 0 heavy tails (leptokurtic).</p><div class="bs-excel"><span class="lbl">Excel</span><span>=KURT(range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">07 · Summary</div><div class="bs-cs-card-title">Five Point Summary</div><div class="bs-cs-formula">Min · Q₁ · Median · Q₃ · Max</div><p class="bs-cs-desc">A quick picture of where the data sits and how it spreads.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=QUARTILE.INC(range, 0 … 4)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">08 · Middle 50%</div><div class="bs-cs-card-title">Interquartile Range</div><div class="bs-cs-formula">IQR = Q₃ − Q₁</div><p class="bs-cs-desc">The range of the middle half of the data. Extreme values do not affect it.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=QUARTILE.INC(range,3) − QUARTILE.INC(range,1)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">09 · Outliers</div><div class="bs-cs-card-title">IQR Method</div><div class="bs-cs-formula">LL = Q₁ − 1.5·IQR<br/>UL = Q₃ + 1.5·IQR</div><p class="bs-cs-desc">Values below LL or above UL are outliers. This method and the z-score method can disagree.</p><div class="bs-excel"><span class="lbl">Example</span><span>IQ data → limits [45, 145]</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>L<sub>p</sub></dt><dd>Location of a percentile</dd></div>
+      <div class="bs-cs-row"><dt>k (percentile)</dt><dd>Percentile as a decimal</dd></div>
+      <div class="bs-cs-row"><dt>k (Chebyshev)</dt><dd>Number of std. devs.</dd></div>
+      <div class="bs-cs-row"><dt>zᵢ</dt><dd>Z-score of observation i</dd></div>
+      <div class="bs-cs-row"><dt>Q₁, Q₃</dt><dd>25th, 75th percentiles</dd></div>
+      <div class="bs-cs-row"><dt>Sk</dt><dd>Skewness</dd></div>
+      <div class="bs-cs-row"><dt>K</dt><dd>Excess kurtosis</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Chebyshev applies to?</dt><dd>Any distribution</dd></div>
+      <div class="bs-cs-row"><dt>Empirical rule applies to?</dt><dd>Bell-shaped data</dd></div>
+      <div class="bs-cs-row"><dt>Z-score outlier?</dt><dd>|z| > 3</dd></div>
+      <div class="bs-cs-row"><dt>IQR outlier?</dt><dd>Outside [LL, UL]</dd></div>
+      <div class="bs-cs-row"><dt>Long right tail?</dt><dd>Sk > 0</dd></div>
+      <div class="bs-cs-row"><dt>Heavy tails?</dt><dd>K > 0</dd></div>
+      <div class="bs-cs-row"><dt>Median is?</dt><dd>Q₂, the 50th percentile</dd></div>
+    </dl></div>
+  </div>
+</section>
+```

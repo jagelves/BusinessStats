@@ -52,7 +52,7 @@ where $\bar{x}$ is the sample mean and $n$ is the sample size.
 
 
 ### Variance Intuition {.unnumbered}
-Let's consider a sample of the price of Ether, the native cryptocurrency of the Ethereum blockchain. Ether is one of the largest cryptocurrencies by market capitalization and is widely used to pay for transactions and services on the Ethereum network. Unlike traditional assets such as stocks or bonds, cryptocurrencies like Ether are not backed by earnings or government guarantees, which makes their prices highly sensitive to speculation, regulatory news, and shifts in investor sentiment. As a result, Ether is known for dramatic price swings — sometimes gaining or losing double-digit percentages within a single day — making it an ideal case study for measures of dispersion. Below is a graph of the prices:
+Let's consider a sample of the price of Ether, the native cryptocurrency of the Ethereum blockchain. Ether is one of the largest cryptocurrencies by market capitalization and is widely used to pay for transactions and services on the Ethereum network. Unlike traditional assets such as stocks or bonds, cryptocurrencies like Ether are not backed by earnings or government guarantees, which makes their prices highly sensitive to speculation, regulatory news, and shifts in investor sentiment. As a result, Ether is known for dramatic price swings, sometimes gaining or losing double-digit percentages within a single day, making it an ideal case study for measures of dispersion. Below is a graph of the prices:
 
 ```{r echo=FALSE, out.width="75%", fig.align='center'}
 knitr::include_graphics("images/Ether.png")
@@ -70,11 +70,11 @@ Ideally, our measure of dispersion would simply average the distances from each 
 Consider the data $x=\{480, 1050, 1400, 2500, 3200\}$. 
 Treating this as a sample, let's calculate the variance step by step.
 
-**Step 1 — Calculate the sample mean:**
+**Step 1: Calculate the sample mean:**
 
 $$\bar{x} = \frac{480 + 1050 + 1400 + 2500 + 3200}{5} = \frac{8630}{5} = 1726$$
 
-**Step 2 — Calculate the deviation of each observation from the mean:**
+**Step 2: Calculate the deviation of each observation from the mean:**
 
 | $x_i$ | $x_i - \bar{x}$   |
 |:-----:|:-----------------:|
@@ -84,7 +84,7 @@ $$\bar{x} = \frac{480 + 1050 + 1400 + 2500 + 3200}{5} = \frac{8630}{5} = 1726$$
 | 2500  | $2500-1726=774$   |
 | 3200  | $3200-1726=1474$  |
 
-**Step 3 — Square each deviation:**
+**Step 3: Square each deviation:**
 
 | $x_i$ | $x_i - \bar{x}$ | $(x_i - \bar{x})^2$ |
 |:-----:|:---------------:|:-------------------:|
@@ -94,11 +94,11 @@ $$\bar{x} = \frac{480 + 1050 + 1400 + 2500 + 3200}{5} = \frac{8630}{5} = 1726$$
 | 2500  | $774$           | $599,076$           |
 | 3200  | $1474$          | $2,172,676$         |
 
-**Step 4 — Sum the squared deviations:**
+**Step 4: Sum the squared deviations:**
 
 $$\sum(x_i-\bar{x})^2 = 1{,}552{,}516 + 456{,}976 + 106{,}276 + 599{,}076 + 2{,}172{,}676 = 4{,}887{,}520$$
 
-**Step 5 — Divide by $n-1$:**
+**Step 5: Divide by $n-1$:**
 
 $$s^2 = \frac{4{,}887{,}520}{5-1} = \frac{4{,}887{,}520}{4} = 1{,}221{,}880$$
 
@@ -138,7 +138,7 @@ $$MAD=\frac{\sum |x_i-\mu|}{N}$$
 where the \| \| operator indicates absolute value. 
 :::
 
-You can estimates the mad for a sample with:
+You can estimate the mad for a sample with:
 
 ::: {.callout-formula}
 **THE MEAN ABSOLUTE DEVIATION (SAMPLE)**
@@ -151,7 +151,7 @@ $$mad=\frac{\sum |x_i-\bar{x}|}{n}$$
 knitr::include_graphics("images/Mad.png")
 ```
 
-For the MAD, focus on the fourth column which lists the absolute deviations from the mean. Averaging these gives us the Mean Absolute Deviation (MAD), which equals $mad=899.2$. This result states that, on average, each data point is roughly $900$ dollars away from the mean. Note that the standard deviation is higher ($988.73$) since the squaring of deviations disproportionately amplifies larger ones, pushing the standard deviation above the MAD.
+For the MAD, focus on the fourth column which lists the absolute deviations from the mean. Averaging these gives us the Mean Absolute Deviation (MAD), which equals $mad=899.2$. This result states that, on average, each data point is roughly $900$ dollars away from the mean. Note that the standard deviation computed with the same denominator $n$ is higher ($\sqrt{4{,}887{,}520/5}=988.69$) since the squaring of deviations disproportionately amplifies larger ones, pushing the standard deviation above the MAD.
 
 ## Coefficient of Variation
 
@@ -197,7 +197,7 @@ The table shows four investments (Apple, Bitcoin, Shiba, and S&P). Just looking 
 
 ## Measures of Dispersion in Excel
 
-Excel has a collection of functions that calculate measures of dispersion. Let's use daily stock return data for three assets — Apple (AAPL), the S&P 500 ETF (SPY), and Tesla (TSLA) — to explore these functions. The data contains daily returns for each stock from January 2020 to July 2021.
+Excel has a collection of functions that calculate measures of dispersion. Let's use daily stock return data for three assets, Apple (AAPL), the S&P 500 ETF (SPY), and Tesla (TSLA), to explore these functions. The data contains daily returns for each stock from January 2020 to July 2021.
 
 [{{< fa file-excel >}} Download Data](returns.xlsx){.btn .btn-success}
 
@@ -263,7 +263,7 @@ Note that TSLA shows the widest range, with a minimum daily return of around $-2
 volatility relative to AAPL and SPY.
 
 **Variance and Standard Deviation:** To calculate the variance and 
-standard deviation use `=VARPA()` and `=STDEV.S()`. Note that Excel 
+standard deviation use `=VAR.S()` and `=STDEV.S()`. Note that Excel 
 does not have a `=STDEVIF()` function. To calculate a conditional 
 standard deviation use an array formula:
 
@@ -315,7 +315,7 @@ returns %>% group_by(Stock) %>%
                  gt::cell_text(weight="bold")))
 ```
 
-A higher Sharpe ratio indicates better risk-adjusted performance. SPY offers the most consistent return per unit of risk, while TSLA has the highest volatility and the most variable Sharpe ratio — consistent with its reputation as a high-risk, high-reward asset.
+A higher Sharpe ratio indicates better risk-adjusted performance. SPY offers the most consistent return per unit of risk, while TSLA has the highest volatility and the most variable Sharpe ratio, consistent with its reputation as a high-risk, high-reward asset.
 
 ## Excel Function Summary
 
@@ -345,10 +345,125 @@ Below is a list of the Excel functions used in this section:
   
 ## Chapter Summary Cheat Sheet
 
+::: {.content-visible when-format="html"}
+{{< include cheatsheets/_DescriptiveIV.qmd >}}
+:::
+
+::: {.content-visible when-format="pdf"}
 ```{r echo=FALSE, out.width="100%", fig.align='center'}
 knitr::include_graphics("images/Dispersion.png")
 ```
-  
+:::
+
+## Check Your Understanding
+
+Test the main ideas of the chapter before moving on to the exercises. [Pick an answer to see whether you are right and why.]{.content-visible when-format="html"}[Each answer, with an explanation, is in the answer key at the end of the book.]{.content-visible when-format="pdf"}
+
+:::: bs-quiz
+What is the range of $x=\{12, 7, 25, 3, 18\}$?
+
+- [ ] $25$
+- [x] $22$
+- [ ] $13$
+- [ ] $15$
+
+::: bs-quiz-why
+Range $=$ Maximum $-$ Minimum $=25-3=22$. It uses only the two extreme values.
+:::
+::::
+
+:::: bs-quiz
+Why does the variance square the deviations from the mean?
+
+- [ ] To express dispersion in the original units
+- [ ] To make the measure resistant to outliers
+- [x] Because the raw deviations always add up to zero
+- [ ] To give every observation the same deviation
+
+::: bs-quiz-why
+Positive and negative deviations cancel exactly around the mean. Squaring makes every deviation positive. The cost is that the variance is in squared units and is sensitive to large deviations.
+:::
+::::
+
+:::: bs-quiz
+Treating $x=\{2, 4, 6\}$ as a sample, what is the sample variance $s^2$?
+
+- [x] $4$
+- [ ] $2.67$
+- [ ] $8$
+- [ ] $2$
+
+::: bs-quiz-why
+The mean is $4$, the squared deviations are $4$, $0$, and $4$, and their sum is $8$. Dividing by $n-1=2$ gives $s^2=4$. Dividing by $n=3$ would give the population formula, $2.67$.
+:::
+::::
+
+:::: bs-quiz
+The variance of a product's price is $2{,}500$ dollars squared. What is the standard deviation?
+
+- [ ] \$2,500
+- [ ] \$1,250
+- [ ] \$25
+- [x] \$50
+
+::: bs-quiz-why
+The standard deviation is the square root of the variance, $\sqrt{2{,}500}=50$, which brings the measure back to dollars.
+:::
+::::
+
+:::: bs-quiz
+What is the mean absolute deviation of $x=\{2, 4, 6\}$ (using $n$ in the denominator)?
+
+- [ ] $2$
+- [ ] $4$
+- [x] $1.33$
+- [ ] $0$
+
+::: bs-quiz-why
+The absolute deviations from the mean of $4$ are $2$, $0$, and $2$. Their average is $4/3\approx1.33$. The sample standard deviation, $2$, is larger because squaring amplifies large deviations.
+:::
+::::
+
+:::: bs-quiz
+Stock A has a mean price of \$10 and a standard deviation of \$2. Stock B has a mean price of \$200 and a standard deviation of \$20. Which stock is more variable relative to its price?
+
+- [x] Stock A, with a CV of $20\%$ versus $10\%$
+- [ ] Stock B, because its standard deviation is larger
+- [ ] They vary the same, since both CVs are equal
+- [ ] They cannot be compared because the means differ
+
+::: bs-quiz-why
+$CV_A=(2/10)\times100=20\%$ and $CV_B=(20/200)\times100=10\%$. The CV removes the effect of scale, so we can compare the two.
+:::
+::::
+
+:::: bs-quiz
+Fund X has a mean return of $9\%$ and a standard deviation of $12\%$. Fund Y has a mean return of $6\%$ and a standard deviation of $4\%$. The risk-free rate is $2\%$. Which fund has the better risk-adjusted performance?
+
+- [ ] Fund X, because its mean return is higher
+- [ ] Fund X, with a Sharpe ratio of $0.75$
+- [ ] They are equal
+- [x] Fund Y, with a Sharpe ratio of $1.00$
+
+::: bs-quiz-why
+Fund X: $(9-2)/12\approx0.58$. Fund Y: $(6-2)/4=1.00$. Fund Y earns more excess return per unit of risk.
+:::
+::::
+
+:::: bs-quiz
+Stock names are in column B and returns in column C. Which formula returns the standard deviation of AAPL returns only?
+
+- [ ] `=STDEVIF(C:C, B:B, "AAPL")`
+- [x] `=STDEV(IF(B2:B1189="AAPL", C2:C1189))`
+- [ ] `=STDEV.S(B:B, "AAPL")`
+- [ ] `=VAR.S(IF(B2:B1189="AAPL", C2:C1189))`
+
+::: bs-quiz-why
+Excel has no `STDEVIF` function, so we combine `STDEV` with `IF` in an array formula. The `VAR.S(IF(...))` formula returns the variance, not the standard deviation.
+:::
+::::
+
+
 ## Exercises
 
 The following exercises will help you practice the measures of dispersion. In particular, the exercises work on:
@@ -556,7 +671,7 @@ $$mad = \frac{\sum|x_i - \bar{x}|}{n} = \frac{10.7}{8} = 1.3375$$
 
 $$CV = \frac{s}{\bar{x}} \times 100 = \frac{1.657}{0.8625} \times 100 = 192.1\%$$
 
-*The CV is about $192\%$, which is large: the standard deviation is almost twice the mean. This indicates the returns are highly variable relative to their average — the mean is small compared with typical month-to-month fluctuations. In practice, a CV this large signals that the project's returns are unreliable; an investor cannot count on earning close to the average return in any given month.*
+*The CV is about $192\%$, which is large: the standard deviation is almost twice the mean. This indicates the returns are highly variable relative to their average: the mean is small compared with typical month-to-month fluctuations. In practice, a CV this large signals that the project's returns are unreliable; an investor cannot count on earning close to the average return in any given month.*
 </details>
 
 ### Exercise 5 {.unnumbered}
@@ -605,7 +720,7 @@ $$s = \sqrt{29{,}149} = \$170.73$$
 
 $$mad = \frac{86+119+166+184+61+94+276+254+141+79}{10} = \frac{1{,}460}{10} = \$146$$
 
-*The bettor is profitable on average but faces large week-to-week swings — a typical week deviates from the mean by about $\$146$ to $\$171$ depending on the measure used.*
+*The bettor is profitable on average but faces large week-to-week swings. A typical week deviates from the mean by about $\$146$ to $\$171$ depending on the measure used.*
 
 </details>
 
@@ -631,6 +746,6 @@ $$CV = \frac{170.73}{34} \times 100 = 502\%$$
 
 $$SR = \frac{\bar{x} - R_f}{s} = \frac{34 - 0}{170.73} = 0.199$$
 
-*A Sharpe ratio of $0.199$ is low. As a point of reference, a Sharpe ratio above $1$ is generally considered acceptable in finance. The bettor earns only $\$0.20$ of profit per dollar of risk taken — suggesting that while the strategy is marginally profitable, the risk taken to achieve that profit is not well compensated. A more disciplined betting strategy or better odds selection would be needed to improve the risk-adjusted return.*
+*A Sharpe ratio of $0.199$ is low. As a point of reference, a Sharpe ratio above $1$ is generally considered acceptable in finance. The bettor earns only $\$0.20$ of profit per dollar of risk taken, suggesting that while the strategy is marginally profitable, the risk taken to achieve that profit is not well compensated. A more disciplined betting strategy or better odds selection would be needed to improve the risk-adjusted return.*
 
 </details>

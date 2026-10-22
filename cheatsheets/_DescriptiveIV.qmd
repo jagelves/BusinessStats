@@ -1,0 +1,33 @@
+```{=html}
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Measures of Dispersion</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Simplest</div><div class="bs-cs-card-title">Range</div><div class="bs-cs-formula">Range = Max − Min</div><p class="bs-cs-desc">Easy to compute, but it only uses the two most extreme values.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=MAX(range) − MIN(range) · MAXIFS / MINIFS</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Squared Deviations</div><div class="bs-cs-card-title">Variance</div><div class="bs-cs-formula">σ² = Σ(xᵢ − μ)² / N<br/>s² = Σ(xᵢ − x̄)² / (n − 1)</div><p class="bs-cs-desc">Average squared distance from the mean. Squaring removes negative signs, so the units are squared.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=VAR.P(range) · =VAR.S(range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Original Units</div><div class="bs-cs-card-title">Standard Deviation</div><div class="bs-cs-formula">σ = √σ²  ·  s = √s²</div><p class="bs-cs-desc">The square root of the variance. Brings dispersion back to the units of the data.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=STDEV.P(range) · =STDEV.S(range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Absolute Deviations</div><div class="bs-cs-card-title">Mean Absolute Deviation</div><div class="bs-cs-formula">mad = Σ|xᵢ − x̄| / n</div><p class="bs-cs-desc">Average absolute distance from the mean. Less sensitive to large deviations than the standard deviation.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=AVEDEV(range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Relative Spread</div><div class="bs-cs-card-title">Coefficient of Variation</div><div class="bs-cs-formula">CV = (s / x̄) × 100</div><p class="bs-cs-desc">Spread as a percentage of the mean. Use it to compare variables with different units or scales.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=STDEV.S(range) / AVERAGE(range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Risk Adjusted</div><div class="bs-cs-card-title">Sharpe Ratio</div><div class="bs-cs-formula">(R̄<sub>p</sub> − R<sub>f</sub>) / s</div><p class="bs-cs-desc">Excess return over the risk-free rate per unit of risk. A higher ratio is better.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=(AVERAGE(range) − Rf) / STDEV.S(range)</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>σ², s²</dt><dd>Population, sample variance</dd></div>
+      <div class="bs-cs-row"><dt>σ, s</dt><dd>Population, sample std. dev.</dd></div>
+      <div class="bs-cs-row"><dt>μ, x̄</dt><dd>Population, sample mean</dd></div>
+      <div class="bs-cs-row"><dt>N, n</dt><dd>Population, sample size</dd></div>
+      <div class="bs-cs-row"><dt>|·|</dt><dd>Absolute value</dd></div>
+      <div class="bs-cs-row"><dt>R̄<sub>p</sub></dt><dd>Mean portfolio return</dd></div>
+      <div class="bs-cs-row"><dt>R<sub>f</sub></dt><dd>Risk-free return</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Variance units?</dt><dd>Squared</dd></div>
+      <div class="bs-cs-row"><dt>Std. dev. units?</dt><dd>Same as the data</dd></div>
+      <div class="bs-cs-row"><dt>Sample variance divides by?</dt><dd>n − 1</dd></div>
+      <div class="bs-cs-row"><dt>Compare different scales?</dt><dd>Use the CV</dd></div>
+      <div class="bs-cs-row"><dt>Higher Sharpe ratio?</dt><dd>Better reward for risk</dd></div>
+      <div class="bs-cs-row"><dt>Daily risk-free rate?</dt><dd>Annual rate ÷ 252</dd></div>
+      <div class="bs-cs-row"><dt>Conditional std. dev.?</dt><dd>=STDEV(IF(...))</dd></div>
+    </dl></div>
+  </div>
+</section>
+```

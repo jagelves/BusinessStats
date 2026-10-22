@@ -27,7 +27,7 @@
       <div class="bs-cs-row"><dt>Mode works on?</dt><dd>Any scale</dd></div>
       <div class="bs-cs-row"><dt>Mean works on?</dt><dd>Interval and ratio</dd></div>
       <div class="bs-cs-row"><dt>Temperature is?</dt><dd>Interval</dd></div>
-      <div class="bs-cs-row"><dt>Price is?</dt><dd>Ratio</dd></div>
+      <div class="bs-cs-row"><dt>No row-column format?</dt><dd>Unstructured data</dd></div>
     </dl></div>
   </div>
 </section>

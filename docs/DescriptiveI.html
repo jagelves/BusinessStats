@@ -376,7 +376,7 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>Understanding the nature and classification of data is crucial for effective analysis and decision-making. Data are the building blocks of insights, providing a foundation for businesses, researchers, and policymakers to make informed choices. How we collect and categorize data significantly impacts how it is analyzed and interpreted. Below I highlight key types of data and their unique characteristics to help you get started with data analysis. In the arc of this book, this is where learning from data begins: before we can summarize what we have observed or infer what it means for the world, we first have to understand the raw material itself — what kind of data we have collected and how it is organized.</p>
+<p>Understanding the nature and classification of data is crucial for effective analysis and decision-making. Data are the building blocks of insights, providing a foundation for businesses, researchers, and policymakers to make informed choices. How we collect and categorize data significantly impacts how it is analyzed and interpreted. Below I highlight key types of data and their unique characteristics to help you get started with data analysis. In the arc of this book, this is where learning from data begins: before we can summarize what we have observed or infer what it means for the world, we first have to understand the raw material itself: what kind of data we have collected and how it is organized.</p>
 <section id="data-and-types-of-data" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="data-and-types-of-data"><span class="header-section-number">1.1</span> Data and Types of Data</h2>
 <p>Let’s start by defining data and the types of data structures that you might encounter when conducting analysis. <strong>Data</strong> are facts and figures collected, analyzed and summarized for presentation and interpretation. Data can be classified as:</p>
@@ -641,7 +641,7 @@ details summary {
       <div class="bs-cs-row"><dt>Mode works on?</dt><dd>Any scale</dd></div>
       <div class="bs-cs-row"><dt>Mean works on?</dt><dd>Interval and ratio</dd></div>
       <div class="bs-cs-row"><dt>Temperature is?</dt><dd>Interval</dd></div>
-      <div class="bs-cs-row"><dt>Price is?</dt><dd>Ratio</dd></div>
+      <div class="bs-cs-row"><dt>No row-column format?</dt><dd>Unstructured data</dd></div>
     </dl></div>
   </div>
 </section>
@@ -652,8 +652,8 @@ details summary {
 <div class="bs-quiz">
 <p>A retailer records the total revenue of each of its <span class="math inline">\(50\)</span> stores on Black Friday 2025. What kind of data is this?</p>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="">Cross-sectional data</label></li>
 <li><label><input type="checkbox">Time series data</label></li>
+<li><label><input type="checkbox" checked="">Cross-sectional data</label></li>
 <li><label><input type="checkbox">Unstructured data</label></li>
 <li><label><input type="checkbox">Ordinal data</label></li>
 </ul>
@@ -666,8 +666,8 @@ details summary {
 <ul class="task-list">
 <li><label><input type="checkbox">Structured data, because it can be counted</label></li>
 <li><label><input type="checkbox">Time series data, because reviews have dates</label></li>
-<li><label><input type="checkbox" checked="">Unstructured data</label></li>
 <li><label><input type="checkbox">Cross-sectional numerical data</label></li>
+<li><label><input type="checkbox" checked="">Unstructured data</label></li>
 </ul>
 <div class="bs-quiz-why">
 <p>Free text does not fit a predefined row-and-column format, so it is unstructured. It must be processed (for example, turned into ratings or word counts) before it can be analyzed like a spreadsheet.</p>
@@ -676,8 +676,8 @@ details summary {
 <div class="bs-quiz">
 <p>In the electric vehicle data set, each row is a car model and one of the columns is <code>Range_km</code>. What is <code>Range_km</code>?</p>
 <ul class="task-list">
-<li><label><input type="checkbox">An element</label></li>
 <li><label><input type="checkbox" checked="">A variable</label></li>
+<li><label><input type="checkbox">An element</label></li>
 <li><label><input type="checkbox">An observation</label></li>
 <li><label><input type="checkbox">A data set</label></li>
 </ul>
@@ -689,8 +689,8 @@ details summary {
 <p>Customers rate their satisfaction from 1 (very poor) to 5 (excellent). Which scale of measurement is this?</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Nominal</label></li>
-<li><label><input type="checkbox" checked="">Ordinal</label></li>
 <li><label><input type="checkbox">Interval</label></li>
+<li><label><input type="checkbox" checked="">Ordinal</label></li>
 <li><label><input type="checkbox">Ratio</label></li>
 </ul>
 <div class="bs-quiz-why">
@@ -700,10 +700,10 @@ details summary {
 <div class="bs-quiz">
 <p>The players on a soccer team wear jersey numbers. Which scale of measurement are the jersey numbers?</p>
 <ul class="task-list">
-<li><label><input type="checkbox" checked="">Nominal</label></li>
 <li><label><input type="checkbox">Ordinal</label></li>
 <li><label><input type="checkbox">Interval</label></li>
 <li><label><input type="checkbox">Ratio</label></li>
+<li><label><input type="checkbox" checked="">Nominal</label></li>
 </ul>
 <div class="bs-quiz-why">
 <p>The numbers are only labels that identify each player. Number 10 is not “more” than number 5, and averaging jersey numbers would be meaningless.</p>
@@ -713,8 +713,8 @@ details summary {
 <p>Why is temperature in degrees Fahrenheit measured on an interval scale and not a ratio scale?</p>
 <ul class="task-list">
 <li><label><input type="checkbox">Because temperatures can include decimals</label></li>
-<li><label><input type="checkbox">Because the order of temperatures does not matter</label></li>
 <li><label><input type="checkbox" checked="">Because <span class="math inline">\(0^\circ\)</span>F does not mean “no heat”</label></li>
+<li><label><input type="checkbox">Because the order of temperatures does not matter</label></li>
 <li><label><input type="checkbox">Because the differences between temperatures are not meaningful</label></li>
 </ul>
 <div class="bs-quiz-why">
@@ -736,10 +736,10 @@ details summary {
 <div class="bs-quiz">
 <p>Which statement can only be made about data measured on a ratio scale?</p>
 <ul class="task-list">
+<li><label><input type="checkbox" checked="">One value is twice as large as another</label></li>
 <li><label><input type="checkbox">One value is larger than another</label></li>
 <li><label><input type="checkbox">The difference between two values is 20 units</label></li>
 <li><label><input type="checkbox">The values fall into distinct categories</label></li>
-<li><label><input type="checkbox" checked="">One value is twice as large as another</label></li>
 </ul>
 <div class="bs-quiz-why">
 <p>Ratios need a true zero. A price of $20 is twice a price of $10, but the year 2020 is not twice the year 1010. Ordering works from the ordinal scale up, and differences work from the interval scale up.</p>

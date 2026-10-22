@@ -147,7 +147,7 @@ library(e1071)
 
 
 ::: {style="padding-left: 1.5em;"}
-$33$ people did not survive Meningioma — the highest number of non-survivals. The survival rate of Meningioma is only $21.43$%.
+$33$ people did not survive Meningioma, the highest number of non-survivals. The survival rate of Meningioma is only $21.43$%.
 
 | Status | Meningioma | LG glioma | HG glioma | Other |
 |:------:|:----------:|:---------:|:---------:|:-----:|
@@ -519,7 +519,7 @@ You can use the command `GEOMEAN(1.3,1.2308,1.125,1.1667)-1` in Excel to verify 
 ::: {.bs-answer-body}
 
 
-*For players with ≥1 home run: mean higher (around 600+), median still lower than mean — skewness persists, median again more representative.*
+*For players with ≥1 home run: mean higher (around 600+), median still lower than mean; skewness persists, median again more representative.*
 
 *To verify in Excel, assuming salaries are in column S and home runs in column C:*
 
@@ -701,7 +701,7 @@ $$mad = \frac{\sum|x_i - \bar{x}|}{n} = \frac{10.7}{8} = 1.3375$$
 
 $$CV = \frac{s}{\bar{x}} \times 100 = \frac{1.657}{0.8625} \times 100 = 192.1\%$$
 
-*The CV is about $192\%$, which is large: the standard deviation is almost twice the mean. This indicates the returns are highly variable relative to their average — the mean is small compared with typical month-to-month fluctuations. In practice, a CV this large signals that the project's returns are unreliable; an investor cannot count on earning close to the average return in any given month.*
+*The CV is about $192\%$, which is large: the standard deviation is almost twice the mean. This indicates the returns are highly variable relative to their average: the mean is small compared with typical month-to-month fluctuations. In practice, a CV this large signals that the project's returns are unreliable; an investor cannot count on earning close to the average return in any given month.*
 :::
 
 ### Exercise 5, question 1 {.unnumbered .bs-answer-head}
@@ -743,7 +743,7 @@ $$s = \sqrt{29{,}149} = \$170.73$$
 
 $$mad = \frac{86+119+166+184+61+94+276+254+141+79}{10} = \frac{1{,}460}{10} = \$146$$
 
-*The bettor is profitable on average but faces large week-to-week swings — a typical week deviates from the mean by about $\$146$ to $\$171$ depending on the measure used.*
+*The bettor is profitable on average but faces large week-to-week swings. A typical week deviates from the mean by about $\$146$ to $\$171$ depending on the measure used.*
 
 :::
 
@@ -769,7 +769,7 @@ $$CV = \frac{170.73}{34} \times 100 = 502\%$$
 
 $$SR = \frac{\bar{x} - R_f}{s} = \frac{34 - 0}{170.73} = 0.199$$
 
-*A Sharpe ratio of $0.199$ is low. As a point of reference, a Sharpe ratio above $1$ is generally considered acceptable in finance. The bettor earns only $\$0.20$ of profit per dollar of risk taken — suggesting that while the strategy is marginally profitable, the risk taken to achieve that profit is not well compensated. A more disciplined betting strategy or better odds selection would be needed to improve the risk-adjusted return.*
+*A Sharpe ratio of $0.199$ is low. As a point of reference, a Sharpe ratio above $1$ is generally considered acceptable in finance. The bettor earns only $\$0.20$ of profit per dollar of risk taken, suggesting that while the strategy is marginally profitable, the risk taken to achieve that profit is not well compensated. A more disciplined betting strategy or better odds selection would be needed to improve the risk-adjusted return.*
 
 :::
 
@@ -802,7 +802,7 @@ $$SR = \frac{\bar{x} - R_f}{s} = \frac{34 - 0}{170.73} = 0.199$$
 =QUARTILE.INC(A:A, 4)   /* Maximum = 30 */
 ```
 
-*The interquartile range is needed to determine if there are any outliers.* The $IQR = Q_3 - Q_1 = 6$. Since $Q_3 + 1.5 \times IQR = 8 + 1.5(6) = 17$, everything beyond $17$ is an outlier — so $30$ is an outlier.
+*The interquartile range is needed to determine if there are any outliers.* The $IQR = Q_3 - Q_1 = 6$. Since $Q_3 + 1.5 \times IQR = 8 + 1.5(6) = 17$, everything beyond $17$ is an outlier, so $30$ is an outlier.
 
 ``` excel
 =QUARTILE.INC(A:A, 3) - QUARTILE.INC(A:A, 1)   /* IQR = 6  */
