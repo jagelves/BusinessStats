@@ -62,7 +62,48 @@ function Table(tbl)
   if nrows <= 20 and not has_caption then return table_to_tabular(tbl) end
 end
 
+-- Multiple-choice quiz: question, lettered options, answer moved to the key
+local function quiz_to_latex(el)
+  local question, options, why = pandoc.List(), nil, pandoc.List()
+  for _, b in ipairs(el.content) do
+    if b.t == "BulletList" and not options then options = b
+    elseif b.t == "Div" and b.classes:includes("bs-quiz-why") then why:extend(b.content)
+    else question:insert(b) end
+  end
+  if not options then return nil end
+  local items, correct = pandoc.List(), nil
+  for k, item in ipairs(options.content) do
+    local first = item[1]
+    if first and (first.t == "Plain" or first.t == "Para") then
+      local c = first.content
+      local mark = c[1] and c[1].t == "Str" and c[1].text or ""
+      if mark == "\u{2612}" or mark == "\u{2610}" then
+        if mark == "\u{2612}" then correct = k end
+        c:remove(1)
+        if c[1] and c[1].t == "Space" then c:remove(1) end
+      end
+    end
+    items:insert(item)
+  end
+  local out = pandoc.List()
+  out:insert(latex("\\begin{bsquiz}"))
+  out:extend(question)
+  out:insert(pandoc.OrderedList(items, pandoc.ListAttributes(1, "UpperAlpha", "Period")))
+  out:insert(latex("\\end{bsquiz}"))
+  local letter = correct and string.char(64 + correct) or "?"
+  out:insert(latex("\\begin{bsanswer}[Answer]"))
+  local first_why = pandoc.List({ pandoc.Strong({ pandoc.Str("Correct answer: " .. letter .. ".") }), pandoc.Space() })
+  if why[1] and (why[1].t == "Para" or why[1].t == "Plain") then
+    first_why:extend(why[1].content); why:remove(1)
+  end
+  out:insert(pandoc.Para(first_why))
+  out:extend(why)
+  out:insert(latex("\\end{bsanswer}"))
+  return out
+end
+
 function Div(el)
+  if el.classes:includes("bs-quiz") then return quiz_to_latex(el) end
   local env, fallback
   if el.classes:includes("callout-formula") then env, fallback = "bsformula", "Formula"
   elseif el.classes:includes("callout-example") then env, fallback = "bsexample", "Example" end
@@ -223,7 +264,13 @@ function Pandoc(doc)
         ctx.exercise, ctx.q = nil, nil
         out:insert(b)
       elseif b.t == "Header" and pandoc.utils.stringify(b.content):match("^Exercise") then
-        ctx.exercise, ctx.q = pandoc.utils.stringify(b.content), nil
+        ctx.exercise, ctx.q, ctx.quiz = pandoc.utils.stringify(b.content), nil, nil
+        out:insert(b)
+      elseif b.t == "Header" and pandoc.utils.stringify(b.content):match("^Check Your Understanding") then
+        ctx.exercise, ctx.q, ctx.quiz = "Check your understanding", nil, 0
+        out:insert(b)
+      elseif b.t == "Header" and b.level <= 2 then
+        ctx.exercise, ctx.q, ctx.quiz = nil, nil, nil
         out:insert(b)
       elseif b.t == "OrderedList" then
         local start = b.listAttributes.start or 1
@@ -239,6 +286,7 @@ function Pandoc(doc)
         i = j
         count = count + 1
         local id = "bsans" .. count
+        if ctx.quiz then ctx.quiz = ctx.quiz + 1; ctx.q = ctx.quiz end
         local label = ctx.exercise or "Exercise"
         if ctx.q then label = label .. ", question " .. ctx.q end
         table.insert(answers, { chapter = ctx.chapter, chapnum = ctx.chapnum, label = label, id = id, blocks = body })

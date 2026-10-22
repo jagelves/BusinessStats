@@ -63,8 +63,10 @@ format:
     include-after-body:
       text: |
         <script src="assets/book.js"></script>
+        <script src="assets/quiz.js"></script>
     resources:
       - assets/book.js
+      - assets/quiz.js
     toc: true
     toc-depth: 2
     toc-title: "On this page"

@@ -122,9 +122,123 @@ The variables can be classified as follows:
 
 ## Chapter Summary Cheat Sheet
 
+::: {.content-visible when-format="html"}
+{{< include cheatsheets/_DescriptiveI.qmd >}}
+:::
+
+::: {.content-visible when-format="pdf"}
 ```{r echo=FALSE, out.width="100%", fig.align='center'}
 knitr::include_graphics("images/Data_Types.png")
 ```
+:::
+
+## Check Your Understanding
+
+Test the main ideas of the chapter before moving on to the exercises. [Pick an answer to see whether you are right and why.]{.content-visible when-format="html"}[Each answer, with an explanation, is in the answer key at the end of the book.]{.content-visible when-format="pdf"}
+
+::: {.bs-quiz}
+A retailer records the total revenue of each of its $50$ stores on Black Friday 2025. What kind of data is this?
+
+- [x] Cross-sectional data
+- [ ] Time series data
+- [ ] Unstructured data
+- [ ] Ordinal data
+
+::: {.bs-quiz-why}
+The data cover many stores at a single point in time. If the retailer tracked one store's revenue week after week, it would be time series data.
+:::
+:::
+
+::: {.bs-quiz}
+A company collects thousands of customer reviews written on social media. How would you classify this data?
+
+- [ ] Structured data, because it can be counted
+- [ ] Time series data, because reviews have dates
+- [x] Unstructured data
+- [ ] Cross-sectional numerical data
+
+::: {.bs-quiz-why}
+Free text does not fit a predefined row-and-column format, so it is unstructured. It must be processed (for example, turned into ratings or word counts) before it can be analyzed like a spreadsheet.
+:::
+:::
+
+::: {.bs-quiz}
+In the electric vehicle data set, each row is a car model and one of the columns is `Range_km`. What is `Range_km`?
+
+- [ ] An element
+- [x] A variable
+- [ ] An observation
+- [ ] A data set
+
+::: {.bs-quiz-why}
+Variables are the characteristics measured for every element, and they appear as columns. The elements are the car models (the rows), and an observation is one car's full set of values.
+:::
+:::
+
+::: {.bs-quiz}
+Customers rate their satisfaction from 1 (very poor) to 5 (excellent). Which scale of measurement is this?
+
+- [ ] Nominal
+- [x] Ordinal
+- [ ] Interval
+- [ ] Ratio
+
+::: {.bs-quiz-why}
+The order is meaningful (a 4 is better than a 3), but the gaps between ratings are not guaranteed to be equal, so the data are ordinal even though they are written as numbers.
+:::
+:::
+
+::: {.bs-quiz}
+The players on a soccer team wear jersey numbers. Which scale of measurement are the jersey numbers?
+
+- [x] Nominal
+- [ ] Ordinal
+- [ ] Interval
+- [ ] Ratio
+
+::: {.bs-quiz-why}
+The numbers are only labels that identify each player. Number 10 is not "more" than number 5, and averaging jersey numbers would be meaningless.
+:::
+:::
+
+::: {.bs-quiz}
+Why is temperature in degrees Fahrenheit measured on an interval scale and not a ratio scale?
+
+- [ ] Because temperatures can include decimals
+- [ ] Because the order of temperatures does not matter
+- [x] Because $0^\circ$F does not mean "no heat"
+- [ ] Because the differences between temperatures are not meaningful
+
+::: {.bs-quiz-why}
+On an interval scale the zero is arbitrary. Since $0^\circ$F is not the absence of heat, $80^\circ$F is not "twice as hot" as $40^\circ$F, even though the $40$-degree difference is meaningful.
+:::
+:::
+
+::: {.bs-quiz}
+Which summary statistic makes sense for a nominal variable such as car `Brand`?
+
+- [ ] The mean
+- [ ] The median
+- [x] The mode
+- [ ] The standard deviation
+
+::: {.bs-quiz-why}
+With nominal data we can only count how often each category appears, so the most common category (the mode) is the natural summary. The median needs an order and the mean needs numbers with equal gaps.
+:::
+:::
+
+::: {.bs-quiz}
+Which statement can only be made about data measured on a ratio scale?
+
+- [ ] One value is larger than another
+- [ ] The difference between two values is 20 units
+- [ ] The values fall into distinct categories
+- [x] One value is twice as large as another
+
+::: {.bs-quiz-why}
+Ratios need a true zero. A price of \$20 is twice a price of \$10, but the year 2020 is not twice the year 1010. Ordering works from the ordinal scale up, and differences work from the interval scale up.
+:::
+:::
 
 ## Exercises
 

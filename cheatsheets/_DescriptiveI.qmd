@@ -1,0 +1,34 @@
+```{=html}
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Types of Data</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Categorical</div><div class="bs-cs-card-title">Nominal</div><div class="bs-cs-formula">labels with no order</div><p class="bs-cs-desc">Names or categories with no ranking. Summarized by counts and the mode.  Ex: brand, gender, division.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=COUNTIF  ·  PivotTable</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Categorical</div><div class="bs-cs-card-title">Ordinal</div><div class="bs-cs-formula">ranked, unequal gaps</div><p class="bs-cs-desc">Ordered categories, but the gaps between ranks are not equal. Use the median and percentiles.  Ex: satisfaction 1–5.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=MEDIAN  ·  =QUARTILE.INC</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Numerical</div><div class="bs-cs-card-title">Interval</div><div class="bs-cs-formula">equal gaps, no true zero</div><p class="bs-cs-desc">Differences are meaningful but ratios are not (zero is arbitrary). Use the mean and standard deviation.  Ex: temperature, year.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=AVERAGE  ·  =STDEV.S</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Numerical</div><div class="bs-cs-card-title">Ratio</div><div class="bs-cs-formula">true zero, ratios valid</div><p class="bs-cs-desc">The strongest scale: a meaningful zero makes ratios valid, so every statistic applies.  Ex: price, weight, sales.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=GEOMEAN  ·  all functions</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Structure</div><div class="bs-cs-card-title">Cross-Section vs Time Series</div><div class="bs-cs-formula">when it is collected</div><p class="bs-cs-desc">Cross-sectional data is captured at one point in time; time-series data is tracked over many periods.</p><div class="bs-excel"><span class="lbl">Example</span><span>2015 GDP  vs  2000–2010 inflation</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Anatomy</div><div class="bs-cs-card-title">Elements, Variables, Observations</div><div class="bs-cs-formula">how a data set is built</div><p class="bs-cs-desc">Elements are the entities (rows); variables are the characteristics collected (columns); an observation is one element's values.</p><div class="bs-excel"><span class="lbl">Example</span><span>1 row = 1 element</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Terms</div><dl>
+      <div class="bs-cs-row"><dt>Categorical</dt><dd>Labels / qualitative</dd></div>
+      <div class="bs-cs-row"><dt>Numerical</dt><dd>Quantities / quantitative</dd></div>
+      <div class="bs-cs-row"><dt>Nominal</dt><dd>Unordered labels</dd></div>
+      <div class="bs-cs-row"><dt>Ordinal</dt><dd>Ordered ranks</dd></div>
+      <div class="bs-cs-row"><dt>Interval</dt><dd>Equal gaps, arbitrary 0</dd></div>
+      <div class="bs-cs-row"><dt>Ratio</dt><dd>True zero, ratios valid</dd></div>
+      <div class="bs-cs-row"><dt>Element</dt><dd>An entity (row)</dd></div>
+      <div class="bs-cs-row"><dt>Variable</dt><dd>A characteristic (column)</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Order matters?</dt><dd>Ordinal, interval, ratio</dd></div>
+      <div class="bs-cs-row"><dt>Meaningful zero?</dt><dd>Ratio only</dd></div>
+      <div class="bs-cs-row"><dt>Ratios valid?</dt><dd>Ratio only</dd></div>
+      <div class="bs-cs-row"><dt>Mode works on?</dt><dd>Any scale</dd></div>
+      <div class="bs-cs-row"><dt>Mean works on?</dt><dd>Interval and ratio</dd></div>
+      <div class="bs-cs-row"><dt>Temperature is?</dt><dd>Interval</dd></div>
+      <div class="bs-cs-row"><dt>Price is?</dt><dd>Ratio</dd></div>
+    </dl></div>
+  </div>
+</section>
+```
