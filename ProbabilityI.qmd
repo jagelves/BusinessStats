@@ -233,7 +233,7 @@ The **Multiplication Rule** states:
 Note that this formula focuses on cases where Event B has already occurred. We can then find the fraction of the cases where Event A also happens.
 
 ::: callout-example
-**Example:** Suppose we randomly draw two cards from a standard deck of 52 cards, without replacement. The probability that both cards are aces is given by: $$P(Ace \cap Ace)=P(Ace|Ace) \times P(Ace)= \frac {4}{52} \times \frac{3}{51}$$
+**Example:** Suppose we randomly draw two cards from a standard deck of 52 cards, without replacement. The probability that both cards are aces is given by: $$P(Ace_1 \cap Ace_2)=P(Ace_1) \times P(Ace_2|Ace_1)= \frac {4}{52} \times \frac{3}{51}$$
 :::
 
 Lastly, if events $A$ and $B$ are independent, we can simplify the multiplication rule to:
@@ -299,14 +299,14 @@ We can use the Law of Total Probability and Bayes' theorem to answer this questi
 
 $$P(C|+)= \frac{P(+|C)P(C)}{P(+)}$$ Since the problem does not provide the $P(+)$ we must estimate it with the Law of Total Probability, mainly:
 
-$$P(+)=P(+|C)P(C)+P(+|NC)P(NC)=(0.95 \times 0.01+(0.1 \times 0.99)=0.1085$$ We can now use this probability to find our new belief that we have cancer:
+$$P(+)=P(+|C)P(C)+P(+|NC)P(NC)=(0.95 \times 0.01)+(0.1 \times 0.99)=0.1085$$ We can now use this probability to find our new belief that we have cancer:
 
-$$P(C|+)= \frac{(0.95 \times 0.01) }{0.1085}=0.0875$$ In conclusion, if we before thought we had a $1\%$ chance of having the rare form of cancer, once we were told that we tested positive, we should update our belief to about $8.75\%$.
+$$P(C|+)= \frac{(0.95 \times 0.01) }{0.1085}=0.0876$$ In conclusion, if we before thought we had a $1\%$ chance of having the rare form of cancer, once we were told that we tested positive, we should update our belief to about $8.76\%$.
 :::
 
 ## Contingency Tables
 
-A **contingency table** (or cross-tabulation) summarizes the relationship between two or events (or variables). It is particularly helpful when analyzing frequencies of events and there relationship to other events.
+A **contingency table** (or cross-tabulation) summarizes the relationship between two or more events (or variables). It is particularly helpful when analyzing frequencies of events and their relationship to other events.
 
 The contingency table below shows the frequency of event A and B occurring/not occurring.
 
@@ -320,7 +320,7 @@ The contingency table below shows the frequency of event A and B occurring/not o
 : Contingency table: frequencies of A and B (n = 100)
 :::
 
-We can see that event A occurs 60 times and that event B occurs 40 times. Most importantly, we can also see how the two events are not mutually exclusive, since A and B occur 26 times. The table can be easily translated to probabilities, by divinding each entry by the total amount of outcomes (i.e., 100). We call the table that includes probabilities the **joint probability table**.
+We can see that event A occurs 60 times and that event B occurs 40 times. Most importantly, we can also see how the two events are not mutually exclusive, since A and B occur 26 times. The table can be easily translated to probabilities, by dividing each entry by the total amount of outcomes (i.e., 100). We call the table that includes probabilities the **joint probability table**.
 
 ::: bs-crosstab
 |       | $B$  | $B^c$ | Total |
@@ -399,7 +399,7 @@ There are situations when we wish to count all possible combinations inclusive o
 
 ### Permutations {.unnumbered}
 
-The **Permutation** function also counts the number of ways to choose $x$ objects from a total of $n$ objects. However, the order in which the $x$ objects are listed does matter. Note that since order matters, the permutation will always have a higher number of possible outcomes relative to the combination. When repetition is not allowed, permutations can be counted by:
+The **Permutation** function also counts the number of ways to choose $x$ objects from a total of $n$ objects. However, the order in which the $x$ objects are listed does matter. Note that since order matters, the permutation will always count at least as many outcomes as the combination. When repetition is not allowed, permutations can be counted by:
 
 ::: callout-formula
 **PERMUTATIONS (No Repetition)** $$P(n,x)= \frac{n!}{(n-x)!}$$
@@ -416,7 +416,7 @@ As with combinations, there might be situations where we wish to count when repe
 :::
 
 ::: callout-example
-**Example:** You are trying to guess the combination of a lock that has three possible numbers. Since there are 10 numbers to choose from, there are $10^3=1000$ possible permutations.
+**Example:** You are trying to guess the code of a lock with three dials. Since each dial has 10 numbers to choose from, there are $10^3=1000$ possible permutations.
 :::
 
 ## Probability in Excel
@@ -445,9 +445,123 @@ Below is a list of the Excel functions used in this section:
 
 ## Chapter Summary Cheat Sheet
 
+::: {.content-visible when-format="html"}
+{{< include cheatsheets/_ProbabilityI.qmd >}}
+:::
+
+::: {.content-visible when-format="pdf"}
 ```{r echo=FALSE, out.width="100%", fig.align='center'}
 knitr::include_graphics("images/Probability_Rules.png")
 ```
+:::
+
+## Check Your Understanding
+
+Test the main ideas of the chapter before moving on to the exercises. [Pick an answer to see whether you are right and why.]{.content-visible when-format="html"}[Each answer, with an explanation, is in the answer key at the end of the book.]{.content-visible when-format="pdf"}
+
+:::: bs-quiz
+A distributor reviews its last $600$ orders and finds that $18$ arrived late. It uses $18/600=0.03$ as the probability that the next order is late. Which method is this?
+
+- [x] Relative frequency (empirical)
+- [ ] Classical
+- [ ] Subjective
+- [ ] Bayes' theorem
+
+::: bs-quiz-why
+The probability is estimated from how often the event happened in past trials. The classical method needs equally likely outcomes, which deliveries are not.
+:::
+::::
+
+:::: bs-quiz
+An experiment has three outcomes. Which of these is **not** a valid assignment of probabilities?
+
+- [ ] $0.2$, $0.3$, $0.5$
+- [ ] $0.6$, $0.4$, $0$
+- [x] $0.5$, $0.4$, $0.2$
+- [ ] $1/3$, $1/3$, $1/3$
+
+::: bs-quiz-why
+The probabilities of all outcomes must add up to $1$, and $0.5+0.4+0.2=1.1$. A probability of $0$ is allowed; it means the outcome is impossible.
+:::
+::::
+
+:::: bs-quiz
+$P(A)=0.3$, $P(B)=0.5$, and $P(A \cap B)=0.1$. What is $P(A \cup B)$?
+
+- [ ] $0.8$
+- [x] $0.7$
+- [ ] $0.9$
+- [ ] $0.15$
+
+::: bs-quiz-why
+By the addition rule, $P(A \cup B)=0.3+0.5-0.1=0.7$. Subtracting the overlap keeps it from being counted twice.
+:::
+::::
+
+:::: bs-quiz
+Events $A$ and $B$ are independent, with $P(A)=0.4$ and $P(B)=0.5$. What is $P(A \cap B)$?
+
+- [ ] $0.90$
+- [ ] $0.10$
+- [ ] $0$
+- [x] $0.20$
+
+::: bs-quiz-why
+For independent events, $P(A \cap B)=P(A)P(B)=0.4 \times 0.5=0.20$. A value of $0$ would describe mutually exclusive events, which cannot both happen.
+:::
+::::
+
+:::: bs-quiz
+Events $A$ and $B$ are mutually exclusive, with $P(A)=0.3$ and $P(B)=0.4$. What is $P(A \cap B)$?
+
+- [ ] $0.12$
+- [ ] $0.70$
+- [x] $0$
+- [ ] $0.10$
+
+::: bs-quiz-why
+Mutually exclusive events cannot happen together, so their intersection has probability $0$. The value $0.12$ would apply only if they were independent.
+:::
+::::
+
+:::: bs-quiz
+Use the chapter's joint probability table: $P(A \cap B)=0.26$ and $P(B)=0.40$. What is $P(A|B)$?
+
+- [x] $0.65$
+- [ ] $0.26$
+- [ ] $0.43$
+- [ ] $0.60$
+
+::: bs-quiz-why
+$P(A|B)=\frac{P(A \cap B)}{P(B)}=\frac{0.26}{0.40}=0.65$. Knowing that $B$ occurred restricts us to the $B$ column of the table.
+:::
+::::
+
+:::: bs-quiz
+Of a store's transactions, $2\%$ are fraudulent. A screening system flags $90\%$ of fraudulent transactions and $5\%$ of legitimate ones. If a transaction is flagged, about how likely is it to be fraudulent?
+
+- [ ] About $0.90$
+- [ ] About $0.02$
+- [ ] About $0.07$
+- [x] About $0.27$
+
+::: bs-quiz-why
+$P(\text{flag})=0.90(0.02)+0.05(0.98)=0.067$, by the law of total probability. Then $P(\text{fraud}|\text{flag})=\frac{0.90(0.02)}{0.067}\approx0.27$. Most flags are false alarms because fraud is rare.
+:::
+::::
+
+:::: bs-quiz
+A manager picks $3$ of her $8$ employees to form a committee. The order of selection does not matter. How many different committees are possible?
+
+- [ ] $336$
+- [x] $56$
+- [ ] $24$
+- [ ] $512$
+
+::: bs-quiz-why
+Order does not matter, so use combinations: $C(8,3)=\frac{8!}{5!\,3!}=56$. The value $336$ is $P(8,3)$, which counts ordered selections.
+:::
+::::
 
 ## Exercises
 

@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-ebc9bf21172222eecf4329b9f87ba86d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-09a59e636370c932ef613cf5222896e9.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e6d6cf5d2fe5724721a99542168da79f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
@@ -345,7 +345,8 @@ window.Quarto = {
   <li><a href="#probability-in-excel" id="toc-probability-in-excel" class="nav-link" data-scroll-target="#probability-in-excel"><span class="header-section-number">8.9</span> Probability in Excel</a></li>
   <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">8.10</span> Excel Function Summary</a></li>
   <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">8.11</span> Chapter Summary Cheat Sheet</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.12</span> Exercises</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">8.12</span> Check Your Understanding</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">8.13</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -592,7 +593,7 @@ details summary {
 </div>
 <p>Note that this formula focuses on cases where Event B has already occurred. We can then find the fraction of the cases where Event A also happens.</p>
 <div class="callout-example">
-<p><strong>Example:</strong> Suppose we randomly draw two cards from a standard deck of 52 cards, without replacement. The probability that both cards are aces is given by: <span class="math display">\[P(Ace \cap Ace)=P(Ace|Ace) \times P(Ace)= \frac {4}{52} \times \frac{3}{51}\]</span></p>
+<p><strong>Example:</strong> Suppose we randomly draw two cards from a standard deck of 52 cards, without replacement. The probability that both cards are aces is given by: <span class="math display">\[P(Ace_1 \cap Ace_2)=P(Ace_1) \times P(Ace_2|Ace_1)= \frac {4}{52} \times \frac{3}{51}\]</span></p>
 </div>
 <p>Lastly, if events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, we can simplify the multiplication rule to:</p>
 <div class="callout-formula">
@@ -645,14 +646,14 @@ details summary {
 <p><strong>Example:</strong> Assume that a rare form of cancer affects 1% of the population. That is, 1 out of 100 people will likely be affected by it. There is a test for the cancer, but it is imperfect. In particular, if you don’t have cancer, the test says that you do 10% of the time (false positive rate). Also, if you do have cancer, it will tell you that you don’t have it 5% of the time. Let’s say you get tested, and your doctor calls you and says you have tested positive. How likely is it that you have this type of cancer?</p>
 <p>We can use the Law of Total Probability and Bayes’ theorem to answer this question. Let’s first identify what we want to estimate. Since we need to figure out the likelihood of having cancer, given that we tested positive, we are looking for <span class="math inline">\(P(C|+)\)</span>. Now, we can set up Bayes’ rule to see what additional information we need to find our desired value. Bayes’ rule states:</p>
 <p><span class="math display">\[P(C|+)= \frac{P(+|C)P(C)}{P(+)}\]</span> Since the problem does not provide the <span class="math inline">\(P(+)\)</span> we must estimate it with the Law of Total Probability, mainly:</p>
-<p><span class="math display">\[P(+)=P(+|C)P(C)+P(+|NC)P(NC)=(0.95 \times 0.01+(0.1 \times 0.99)=0.1085\]</span> We can now use this probability to find our new belief that we have cancer:</p>
-<p><span class="math display">\[P(C|+)= \frac{(0.95 \times 0.01) }{0.1085}=0.0875\]</span> In conclusion, if we before thought we had a <span class="math inline">\(1\%\)</span> chance of having the rare form of cancer, once we were told that we tested positive, we should update our belief to about <span class="math inline">\(8.75\%\)</span>.</p>
+<p><span class="math display">\[P(+)=P(+|C)P(C)+P(+|NC)P(NC)=(0.95 \times 0.01)+(0.1 \times 0.99)=0.1085\]</span> We can now use this probability to find our new belief that we have cancer:</p>
+<p><span class="math display">\[P(C|+)= \frac{(0.95 \times 0.01) }{0.1085}=0.0876\]</span> In conclusion, if we before thought we had a <span class="math inline">\(1\%\)</span> chance of having the rare form of cancer, once we were told that we tested positive, we should update our belief to about <span class="math inline">\(8.76\%\)</span>.</p>
 </div>
 </section>
 </section>
 <section id="contingency-tables" class="level2" data-number="8.7">
 <h2 data-number="8.7" class="anchored" data-anchor-id="contingency-tables"><span class="header-section-number">8.7</span> Contingency Tables</h2>
-<p>A <strong>contingency table</strong> (or cross-tabulation) summarizes the relationship between two or events (or variables). It is particularly helpful when analyzing frequencies of events and there relationship to other events.</p>
+<p>A <strong>contingency table</strong> (or cross-tabulation) summarizes the relationship between two or more events (or variables). It is particularly helpful when analyzing frequencies of events and their relationship to other events.</p>
 <p>The contingency table below shows the frequency of event A and B occurring/not occurring.</p>
 <div class="bs-crosstab">
 <table class="caption-top table">
@@ -687,7 +688,7 @@ details summary {
 </tbody>
 </table>
 </div>
-<p>We can see that event A occurs 60 times and that event B occurs 40 times. Most importantly, we can also see how the two events are not mutually exclusive, since A and B occur 26 times. The table can be easily translated to probabilities, by divinding each entry by the total amount of outcomes (i.e., 100). We call the table that includes probabilities the <strong>joint probability table</strong>.</p>
+<p>We can see that event A occurs 60 times and that event B occurs 40 times. Most importantly, we can also see how the two events are not mutually exclusive, since A and B occur 26 times. The table can be easily translated to probabilities, by dividing each entry by the total amount of outcomes (i.e., 100). We call the table that includes probabilities the <strong>joint probability table</strong>.</p>
 <div class="bs-crosstab">
 <table class="caption-top table">
 <caption>Joint probability table: joint probabilities inside, marginal probabilities in the Total row and column</caption>
@@ -801,7 +802,7 @@ details summary {
 </section>
 <section id="permutations" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="permutations">Permutations</h3>
-<p>The <strong>Permutation</strong> function also counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. However, the order in which the <span class="math inline">\(x\)</span> objects are listed does matter. Note that since order matters, the permutation will always have a higher number of possible outcomes relative to the combination. When repetition is not allowed, permutations can be counted by:</p>
+<p>The <strong>Permutation</strong> function also counts the number of ways to choose <span class="math inline">\(x\)</span> objects from a total of <span class="math inline">\(n\)</span> objects. However, the order in which the <span class="math inline">\(x\)</span> objects are listed does matter. Note that since order matters, the permutation will always count at least as many outcomes as the combination. When repetition is not allowed, permutations can be counted by:</p>
 <div class="callout-formula">
 <p><strong>PERMUTATIONS (No Repetition)</strong> <span class="math display">\[P(n,x)= \frac{n!}{(n-x)!}\]</span></p>
 </div>
@@ -813,7 +814,7 @@ details summary {
 <p><strong>PERMUTATIONS (With Repetition)</strong> <span class="math display">\[P(n,x)=n^x\]</span></p>
 </div>
 <div class="callout-example">
-<p><strong>Example:</strong> You are trying to guess the combination of a lock that has three possible numbers. Since there are 10 numbers to choose from, there are <span class="math inline">\(10^3=1000\)</span> possible permutations.</p>
+<p><strong>Example:</strong> You are trying to guess the code of a lock with three dials. Since each dial has 10 numbers to choose from, there are <span class="math inline">\(10^3=1000\)</span> possible permutations.</p>
 </div>
 </section>
 </section>
@@ -837,18 +838,144 @@ details summary {
 </section>
 <section id="chapter-summary-cheat-sheet" class="level2" data-number="8.11">
 <h2 data-number="8.11" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">8.11</span> Chapter Summary Cheat Sheet</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Probability_Rules.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Probability Rules</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Equally Likely</div><div class="bs-cs-card-title">Classical Method</div><div class="bs-cs-formula">P(A) = outcomes in A / outcomes in S</div><p class="bs-cs-desc">Use only when every outcome in the sample space is equally likely.</p><div class="bs-excel"><span class="lbl">Example</span><span>P(red card) = 26/52 = 0.5</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · From Data</div><div class="bs-cs-card-title">Relative Frequency</div><div class="bs-cs-formula">P(A) ≈ times A occurred / trials</div><p class="bs-cs-desc">Estimates the probability from past data. The estimate improves as the number of trials grows.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=COUNTIF(rng, "Late") / COUNTA(rng)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Any Method</div><div class="bs-cs-card-title">Basic Requirements</div><div class="bs-cs-formula">0 ≤ P(A) ≤ 1 &nbsp;·&nbsp; ΣP(xᵢ) = 1</div><p class="bs-cs-desc">Every assignment must satisfy both, including subjective ones. 0 and 1 mean certainty; values in between mean uncertainty.</p><div class="bs-excel"><span class="lbl">Example</span><span>P(success) = 0.35, P(failure) = 0.65</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Not A</div><div class="bs-cs-card-title">Complement Rule</div><div class="bs-cs-formula">P(Aᶜ) = 1 − P(A)</div><p class="bs-cs-desc">The chance an event does not occur. Often easier to compute than the event itself.</p><div class="bs-excel"><span class="lbl">Example</span><span>P(not heart) = 1 − 13/52 = 39/52</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · A or B</div><div class="bs-cs-card-title">Addition Rule</div><div class="bs-cs-formula">P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</div><p class="bs-cs-desc">Subtract the overlap so it is not counted twice. If A and B are mutually exclusive, P(A ∩ B) = 0.</p><div class="bs-excel"><span class="lbl">Example</span><span>heart or face: 13/52 + 12/52 − 3/52 = 22/52</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · A and B</div><div class="bs-cs-card-title">Multiplication Rule</div><div class="bs-cs-formula">P(A ∩ B) = P(A | B) · P(B)<br>P(A | B) = P(A ∩ B) / P(B)</div><p class="bs-cs-desc">The chance both occur. If A and B are independent, P(A ∩ B) = P(A) · P(B).</p><div class="bs-excel"><span class="lbl">Example</span><span>two aces: (4/52)(3/51)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">07 · Scenarios</div><div class="bs-cs-card-title">Total Probability</div><div class="bs-cs-formula">P(A) = Σ P(A | Bᵢ) · P(Bᵢ)</div><p class="bs-cs-desc">Adds the chance of A across scenarios Bᵢ that are mutually exclusive and exhaustive.</p><div class="bs-excel"><span class="lbl">Example</span><span>(0.5)(0.02) + (0.3)(0.03) + (0.2)(0.05) = 0.029</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">08 · Updating</div><div class="bs-cs-card-title">Bayes' Theorem</div><div class="bs-cs-formula">P(A | B) = P(B | A) · P(A) / P(B)</div><p class="bs-cs-desc">Turns a prior P(A) into a posterior after observing evidence B. Find P(B) with the law of total probability.</p><div class="bs-excel"><span class="lbl">Example</span><span>positive test: 0.01 → 0.0876</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">09 · Counting</div><div class="bs-cs-card-title">Counting Rules</div><div class="bs-cs-formula">n! &nbsp;·&nbsp; C(n, x) = n! / [(n − x)! x!]<br>P(n, x) = n! / (n − x)!</div><p class="bs-cs-desc">Count outcomes without listing them. Combinations ignore order; permutations respect it.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=FACT(n) · =COMBIN(n, x) · =PERMUT(n, x)</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>P(A)</dt><dd>Probability of A</dd></div>
+      <div class="bs-cs-row"><dt>Aᶜ</dt><dd>Complement of A</dd></div>
+      <div class="bs-cs-row"><dt>A ∩ B</dt><dd>A and B (intersection)</dd></div>
+      <div class="bs-cs-row"><dt>A ∪ B</dt><dd>A or B (union)</dd></div>
+      <div class="bs-cs-row"><dt>P(A | B)</dt><dd>Probability of A given B</dd></div>
+      <div class="bs-cs-row"><dt>n!</dt><dd>Factorial</dd></div>
+      <div class="bs-cs-row"><dt>C(n, x)</dt><dd>Combinations</dd></div>
+      <div class="bs-cs-row"><dt>P(n, x)</dt><dd>Permutations</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Probability range?</dt><dd>0 to 1</dd></div>
+      <div class="bs-cs-row"><dt>Mutually exclusive?</dt><dd>P(A ∩ B) = 0</dd></div>
+      <div class="bs-cs-row"><dt>Independent?</dt><dd>P(A ∩ B) = P(A) · P(B)</dd></div>
+      <div class="bs-cs-row"><dt>Exclusive and exhaustive events sum to?</dt><dd>1</dd></div>
+      <div class="bs-cs-row"><dt>Subjective probability fits?</dt><dd>The Bayesian view</dd></div>
+      <div class="bs-cs-row"><dt>Order matters?</dt><dd>Permutations</dd></div>
+      <div class="bs-cs-row"><dt>With repetition in Excel?</dt><dd>=COMBINA · =PERMUTATIONA</dd></div>
+    </dl></div>
+  </div>
+</section>
+</section>
+<section id="check-your-understanding" class="level2" data-number="8.12">
+<h2 data-number="8.12" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">8.12</span> Check Your Understanding</h2>
+<p>Test the main ideas of the chapter before moving on to the exercises. <span>Pick an answer to see whether you are right and why.</span></p>
+<div class="bs-quiz">
+<p>A distributor reviews its last <span class="math inline">\(600\)</span> orders and finds that <span class="math inline">\(18\)</span> arrived late. It uses <span class="math inline">\(18/600=0.03\)</span> as the probability that the next order is late. Which method is this?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Relative frequency (empirical)</label></li>
+<li><label><input type="checkbox">Classical</label></li>
+<li><label><input type="checkbox">Subjective</label></li>
+<li><label><input type="checkbox">Bayes’ theorem</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The probability is estimated from how often the event happened in past trials. The classical method needs equally likely outcomes, which deliveries are not.</p>
 </div>
+</div>
+<div class="bs-quiz">
+<p>An experiment has three outcomes. Which of these is <strong>not</strong> a valid assignment of probabilities?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(0.2\)</span>, <span class="math inline">\(0.3\)</span>, <span class="math inline">\(0.5\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.6\)</span>, <span class="math inline">\(0.4\)</span>, <span class="math inline">\(0\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(0.5\)</span>, <span class="math inline">\(0.4\)</span>, <span class="math inline">\(0.2\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(1/3\)</span>, <span class="math inline">\(1/3\)</span>, <span class="math inline">\(1/3\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The probabilities of all outcomes must add up to <span class="math inline">\(1\)</span>, and <span class="math inline">\(0.5+0.4+0.2=1.1\)</span>. A probability of <span class="math inline">\(0\)</span> is allowed; it means the outcome is impossible.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p><span class="math inline">\(P(A)=0.3\)</span>, <span class="math inline">\(P(B)=0.5\)</span>, and <span class="math inline">\(P(A \cap B)=0.1\)</span>. What is <span class="math inline">\(P(A \cup B)\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(0.8\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(0.7\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.9\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.15\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>By the addition rule, <span class="math inline">\(P(A \cup B)=0.3+0.5-0.1=0.7\)</span>. Subtracting the overlap keeps it from being counted twice.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are independent, with <span class="math inline">\(P(A)=0.4\)</span> and <span class="math inline">\(P(B)=0.5\)</span>. What is <span class="math inline">\(P(A \cap B)\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(0.90\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.10\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(0.20\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>For independent events, <span class="math inline">\(P(A \cap B)=P(A)P(B)=0.4 \times 0.5=0.20\)</span>. A value of <span class="math inline">\(0\)</span> would describe mutually exclusive events, which cannot both happen.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Events <span class="math inline">\(A\)</span> and <span class="math inline">\(B\)</span> are mutually exclusive, with <span class="math inline">\(P(A)=0.3\)</span> and <span class="math inline">\(P(B)=0.4\)</span>. What is <span class="math inline">\(P(A \cap B)\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(0.12\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.70\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(0\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.10\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>Mutually exclusive events cannot happen together, so their intersection has probability <span class="math inline">\(0\)</span>. The value <span class="math inline">\(0.12\)</span> would apply only if they were independent.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Use the chapter’s joint probability table: <span class="math inline">\(P(A \cap B)=0.26\)</span> and <span class="math inline">\(P(B)=0.40\)</span>. What is <span class="math inline">\(P(A|B)\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked=""><span class="math inline">\(0.65\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.26\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.43\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.60\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(P(A|B)=\frac{P(A \cap B)}{P(B)}=\frac{0.26}{0.40}=0.65\)</span>. Knowing that <span class="math inline">\(B\)</span> occurred restricts us to the <span class="math inline">\(B\)</span> column of the table.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Of a store’s transactions, <span class="math inline">\(2\%\)</span> are fraudulent. A screening system flags <span class="math inline">\(90\%\)</span> of fraudulent transactions and <span class="math inline">\(5\%\)</span> of legitimate ones. If a transaction is flagged, about how likely is it to be fraudulent?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">About <span class="math inline">\(0.90\)</span></label></li>
+<li><label><input type="checkbox">About <span class="math inline">\(0.02\)</span></label></li>
+<li><label><input type="checkbox">About <span class="math inline">\(0.07\)</span></label></li>
+<li><label><input type="checkbox" checked="">About <span class="math inline">\(0.27\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(P(\text{flag})=0.90(0.02)+0.05(0.98)=0.067\)</span>, by the law of total probability. Then <span class="math inline">\(P(\text{fraud}|\text{flag})=\frac{0.90(0.02)}{0.067}\approx0.27\)</span>. Most flags are false alarms because fraud is rare.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A manager picks <span class="math inline">\(3\)</span> of her <span class="math inline">\(8\)</span> employees to form a committee. The order of selection does not matter. How many different committees are possible?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(336\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(56\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(24\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(512\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>Order does not matter, so use combinations: <span class="math inline">\(C(8,3)=\frac{8!}{5!\,3!}=56\)</span>. The value <span class="math inline">\(336\)</span> is <span class="math inline">\(P(8,3)\)</span>, which counts ordered selections.</p>
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="8.12">
-<h2 data-number="8.12" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.12</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="8.13">
+<h2 data-number="8.13" class="anchored" data-anchor-id="exercises"><span class="header-section-number">8.13</span> Exercises</h2>
 <p>The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating simple probabilities.</p></li>
@@ -1778,6 +1905,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </footer>
 <script src="assets/book.js"></script>
+<script src="assets/quiz.js"></script>
 
 
 

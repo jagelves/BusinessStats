@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-ebc9bf21172222eecf4329b9f87ba86d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-0aef34cf2d3591846d4f16223d929ccf.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e6d6cf5d2fe5724721a99542168da79f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
@@ -377,7 +377,8 @@ window.Quarto = {
   <li><a href="#discrete-distributions-in-excel" id="toc-discrete-distributions-in-excel" class="nav-link" data-scroll-target="#discrete-distributions-in-excel"><span class="header-section-number">9.7</span> Discrete Distributions in Excel</a></li>
   <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">9.8</span> Excel Function Summary</a></li>
   <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">9.9</span> Chapter Summary Cheat Sheet</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">9.10</span> Exercises</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">9.10</span> Check Your Understanding</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">9.11</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -416,7 +417,7 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>Studying discrete probability distributions is essential for understanding and predicting outcomes in uncertain scenarios, particularly in business, finance, and data science. These distributions model events with distinct, countable outcomes, such as customer purchases, defect counts, or market trends, enabling decision-makers to quantify risks and optimize strategies. Below, we introduce some popular distributions and their business application. Each distribution is a model of how an uncertain outcome behaves — the kind of model that, in the inference chapters, will let us judge how far a sample statistic might stray from the truth.</p>
+<p>Studying discrete probability distributions is essential for understanding and predicting outcomes in uncertain scenarios, particularly in business, finance, and data science. These distributions model events with distinct, countable outcomes, such as customer purchases, defect counts, or market trends, enabling decision-makers to quantify risks and optimize strategies. Below, we introduce some popular distributions and their business application. Each distribution is a model of how an uncertain outcome behaves, the kind of model that, in the inference chapters, will let us judge how far a sample statistic might stray from the truth.</p>
 <section id="random-variables" class="level2" data-number="9.1">
 <h2 data-number="9.1" class="anchored" data-anchor-id="random-variables"><span class="header-section-number">9.1</span> Random Variables</h2>
 <p>The study of probability distributions begins with a random variable. A <strong>random variable</strong> assigns a numerical value to each possible experimental outcome. The table below presents a collection of experiments along with their corresponding random variables.</p>
@@ -1030,8 +1031,8 @@ details summary {
 <div class="callout-example">
 <p><strong>Example:</strong> Picture a box of 12 electric fuses from the manufacturer Ontario Electric. Five fuses are known to be defective. An inspector randomly picks 3 fuses to test. What is the probability that exactly one of the three chosen is defective?</p>
 <p>We can use the hypergeometric probability mass function to solve this problem. From the problem we know that <span class="math inline">\(N=12\)</span>, <span class="math inline">\(n=3\)</span>, <span class="math inline">\(r=5\)</span>, and <span class="math inline">\(x=1\)</span>. Substituting these values into the PMF yields:</p>
-<p><span class="math display">\[f(1)=\frac {C_1^5 C_{4}^{7}}{C_3^{12}}=0.4772\]</span></p>
-<p>There is a 47.72% chance that the inspector finds a defective fuse in his sample of three.</p>
+<p><span class="math display">\[f(1)=\frac {C_1^5 C_{2}^{7}}{C_3^{12}}=\frac{5 \times 21}{220}=0.4773\]</span></p>
+<p>There is a 47.73% chance that the inspector finds exactly one defective fuse in his sample of three.</p>
 </div>
 <div class="bs-widget">
 <div class="bs-widget-head">
@@ -1555,7 +1556,7 @@ details summary {
 <ul>
 <li>Binomial: <code>=BINOM.DIST(x, n, p, FALSE)</code>. For the basketball example, <code>=BINOM.DIST(3, 3, 0.9, FALSE)</code> → <span class="math inline">\(0.729\)</span>.</li>
 <li>Poisson: <code>=POISSON.DIST(x, mean, FALSE)</code>. For the drive-thru example, <code>=POISSON.DIST(5, 10, FALSE)</code> → <span class="math inline">\(0.0378\)</span>.</li>
-<li>Hypergeometric: <code>=HYPGEOM.DIST(x, n, r, N, FALSE)</code>, where <code>x</code> is the number of successes in the sample, <code>n</code> is the sample size, <code>r</code> is the number of successes in the population, and <code>N</code> is the population size. For the fuse example, <code>=HYPGEOM.DIST(1, 3, 5, 12, FALSE)</code> → <span class="math inline">\(0.4772\)</span>.</li>
+<li>Hypergeometric: <code>=HYPGEOM.DIST(x, n, r, N, FALSE)</code>, where <code>x</code> is the number of successes in the sample, <code>n</code> is the sample size, <code>r</code> is the number of successes in the population, and <code>N</code> is the population size. For the fuse example, <code>=HYPGEOM.DIST(1, 3, 5, 12, FALSE)</code> → <span class="math inline">\(0.4773\)</span>.</li>
 <li>Discrete uniform: the probability of any single value is <code>=1/n</code>. For the die, <code>=1/6</code> → <span class="math inline">\(0.167\)</span>.</li>
 </ul>
 <p><strong>Cumulative probabilities.</strong> Set the last argument to <code>TRUE</code> to get <span class="math inline">\(P(X \le x)\)</span>.</p>
@@ -1580,18 +1581,141 @@ details summary {
 </section>
 <section id="chapter-summary-cheat-sheet" class="level2" data-number="9.9">
 <h2 data-number="9.9" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">9.9</span> Chapter Summary Cheat Sheet</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Discrete_Distributions.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Discrete Distributions</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Center</div><div class="bs-cs-card-title">Expected Value</div><div class="bs-cs-formula">E(x) = μ = Σ x f(x)</div><p class="bs-cs-desc">The long-run average of a random variable, weighting each value by its probability.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=SUMPRODUCT(x_range, p_range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Spread</div><div class="bs-cs-card-title">Variance</div><div class="bs-cs-formula">var(x) = E(x²) − [E(x)]²</div><p class="bs-cs-desc">The average squared deviation from the mean. Its square root is the standard deviation.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=SUMPRODUCT((x_range − μ)^2, p_range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Equally Likely</div><div class="bs-cs-card-title">Discrete Uniform</div><div class="bs-cs-formula">f(x) = 1 / n</div><p class="bs-cs-desc">Each of the n possible values is equally likely, like the faces of a fair die.</p><div class="bs-excel"><span class="lbl">Example</span><span>P(die shows 6) = 1/6</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Successes in n Trials</div><div class="bs-cs-card-title">Binomial</div><div class="bs-cs-formula">f(x) = C(n, x) pˣ (1 − p)<sup>n − x</sup></div><p class="bs-cs-desc">Successes in n independent trials with the same probability p. E(x) = np, var(x) = np(1 − p).</p><div class="bs-excel"><span class="lbl">Excel</span><span>=BINOM.DIST(x, n, p, FALSE)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Without Replacement</div><div class="bs-cs-card-title">Hypergeometric</div><div class="bs-cs-formula">f(x) = C(r, x) C(N − r, n − x) / C(N, n)</div><p class="bs-cs-desc">Successes in a sample of n drawn without replacement from N items, r of which are successes.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=HYPGEOM.DIST(x, n, r, N, FALSE)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Counts in an Interval</div><div class="bs-cs-card-title">Poisson</div><div class="bs-cs-formula">f(x) = μˣ e<sup>−μ</sup> / x!</div><p class="bs-cs-desc">Number of occurrences in an interval of time or space. Mean and variance both equal μ.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=POISSON.DIST(x, μ, FALSE)</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>E(x), μ</dt><dd>Expected value</dd></div>
+      <div class="bs-cs-row"><dt>var(x)</dt><dd>Variance</dd></div>
+      <div class="bs-cs-row"><dt>f(x)</dt><dd>Probability mass function</dd></div>
+      <div class="bs-cs-row"><dt>n</dt><dd>Trials or sample size</dd></div>
+      <div class="bs-cs-row"><dt>p</dt><dd>Probability of success</dd></div>
+      <div class="bs-cs-row"><dt>N, r</dt><dd>Population size, its successes</dd></div>
+      <div class="bs-cs-row"><dt>C(n, x)</dt><dd>Combinations, also written Cₓⁿ</dd></div>
+      <div class="bs-cs-row"><dt>μ (Poisson)</dt><dd>Mean per interval</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Binomial mean?</dt><dd>np</dd></div>
+      <div class="bs-cs-row"><dt>Binomial variance?</dt><dd>np(1 − p)</dd></div>
+      <div class="bs-cs-row"><dt>Poisson mean vs variance?</dt><dd>Both equal μ</dd></div>
+      <div class="bs-cs-row"><dt>Hypergeometric draws?</dt><dd>Without replacement</dd></div>
+      <div class="bs-cs-row"><dt>FALSE vs TRUE in Excel?</dt><dd>P(X = x) vs P(X ≤ x)</dd></div>
+      <div class="bs-cs-row"><dt>P(X ≥ x)?</dt><dd>1 − P(X ≤ x − 1)</dd></div>
+      <div class="bs-cs-row"><dt>Probabilities of all values sum to?</dt><dd>1</dd></div>
+    </dl></div>
+  </div>
+</section>
+</section>
+<section id="check-your-understanding" class="level2" data-number="9.10">
+<h2 data-number="9.10" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">9.10</span> Check Your Understanding</h2>
+<p>Test the main ideas of the chapter before moving on to the exercises. <span>Pick an answer to see whether you are right and why.</span></p>
+<div class="bs-quiz">
+<p>Which of these is a discrete random variable?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">The time it takes to answer a call</label></li>
+<li><label><input type="checkbox">The weight of a package</label></li>
+<li><label><input type="checkbox">The temperature in a warehouse</label></li>
+<li><label><input type="checkbox" checked="">The number of customers who call a help line in an hour</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>A count takes separate integer values (<span class="math inline">\(0, 1, 2, \dots\)</span>), so it is discrete. Times, weights, and temperatures can take any value in an interval, so they are continuous.</p>
 </div>
+</div>
+<div class="bs-quiz">
+<p>A random variable takes the values <span class="math inline">\(0\)</span>, <span class="math inline">\(1\)</span>, and <span class="math inline">\(2\)</span> with probabilities <span class="math inline">\(0.2\)</span>, <span class="math inline">\(0.5\)</span>, and <span class="math inline">\(0.3\)</span>. What is <span class="math inline">\(E(x)\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(1\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(1.1\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(1.5\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.33\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(E(x)=\sum x f(x)=0(0.2)+1(0.5)+2(0.3)=1.1\)</span>. Each value is weighted by its probability.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A salesperson closes <span class="math inline">\(20\%\)</span> of calls, independently. Over <span class="math inline">\(10\)</span> calls, what are the expected number of sales and the variance?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(E(x)=2\)</span> and <span class="math inline">\(var(x)=0.16\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(E(x)=0.2\)</span> and <span class="math inline">\(var(x)=1.6\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(E(x)=2\)</span> and <span class="math inline">\(var(x)=1.6\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(E(x)=10\)</span> and <span class="math inline">\(var(x)=2\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>For a binomial, <span class="math inline">\(E(x)=np=10(0.2)=2\)</span> and <span class="math inline">\(var(x)=np(1-p)=10(0.2)(0.8)=1.6\)</span>.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A fair coin is tossed <span class="math inline">\(4\)</span> times. What is the probability of exactly <span class="math inline">\(2\)</span> heads?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked=""><span class="math inline">\(0.375\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.25\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.5\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.0625\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(f(2)=C_2^4(0.5^2)(0.5^2)=6 \times 0.0625=0.375\)</span>. There are <span class="math inline">\(6\)</span> orderings of two heads and two tails, each with probability <span class="math inline">\(0.0625\)</span>.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Which situation calls for the hypergeometric distribution?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Counting the calls a store receives per hour</label></li>
+<li><label><input type="checkbox" checked="">Testing <span class="math inline">\(5\)</span> of <span class="math inline">\(20\)</span> laptops, <span class="math inline">\(3\)</span> of which are defective, without putting any back</label></li>
+<li><label><input type="checkbox">Tossing a coin <span class="math inline">\(5\)</span> times and counting heads</label></li>
+<li><label><input type="checkbox">Rolling a die once</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The hypergeometric applies when we sample without replacement from a small, finite population, so the probability of success changes after each draw.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A store receives an average of <span class="math inline">\(3\)</span> complaints per day. Using the Poisson distribution, what is the probability of no complaints tomorrow?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(0\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.3333\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.9502\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(0.0498\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(f(0)=\frac{3^0 e^{-3}}{0!}=e^{-3}\approx0.0498\)</span>. The value <span class="math inline">\(0.9502\)</span> is the probability of at least one complaint.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Calls arrive at a help desk at an average of <span class="math inline">\(4\)</span> per hour, following a Poisson distribution. What is the variance of the number of calls per hour?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked=""><span class="math inline">\(4\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(2\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(16\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.25\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>In a Poisson distribution the mean and the variance are both equal to <span class="math inline">\(\mu\)</span>, here <span class="math inline">\(4\)</span>. The standard deviation is <span class="math inline">\(\sqrt{4}=2\)</span>.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Each of <span class="math inline">\(10\)</span> customers buys with probability <span class="math inline">\(0.3\)</span>, independently. Which Excel formula returns the probability that <strong>at most</strong> <span class="math inline">\(2\)</span> customers buy?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><code>=BINOM.DIST(2, 10, 0.3, FALSE)</code></label></li>
+<li><label><input type="checkbox"><code>=1 - BINOM.DIST(2, 10, 0.3, TRUE)</code></label></li>
+<li><label><input type="checkbox" checked=""><code>=BINOM.DIST(2, 10, 0.3, TRUE)</code></label></li>
+<li><label><input type="checkbox"><code>=BINOM.DIST(10, 2, 0.3, TRUE)</code></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><code>TRUE</code> returns the cumulative probability <span class="math inline">\(P(X \le 2)\)</span>. <code>FALSE</code> gives <span class="math inline">\(P(X=2)\)</span> only, and subtracting from <span class="math inline">\(1\)</span> gives <span class="math inline">\(P(X&gt;2)\)</span>.</p>
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="9.10">
-<h2 data-number="9.10" class="anchored" data-anchor-id="exercises"><span class="header-section-number">9.10</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="9.11">
+<h2 data-number="9.11" class="anchored" data-anchor-id="exercises"><span class="header-section-number">9.11</span> Exercises</h2>
 <p>The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating probabilities for discrete random variables.</p></li>
@@ -1709,7 +1833,7 @@ Answer
 <li><code>=SQRT(SUMPRODUCT((B2:B4-6)^2, A2:A4))</code> → <span class="math inline">\(11.14\)</span> (Fund 1 std. dev.)</li>
 <li><code>=SQRT(SUMPRODUCT((C2:C4-6)^2, A2:A4))</code> → <span class="math inline">\(31.05\)</span> (Fund 2 std. dev.)</li>
 </ul>
-<p><em>Since both funds have the same expected return, choose Fund 1 — it achieves that return with much less risk.</em></p>
+<p><em>Since both funds have the same expected return, choose Fund 1: it achieves that return with much less risk.</em></p>
 </details>
 </section>
 <section id="exercise-2" class="level3 unnumbered">
@@ -2497,6 +2621,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </footer>
 <script src="assets/book.js"></script>
+<script src="assets/quiz.js"></script>
 
 
 

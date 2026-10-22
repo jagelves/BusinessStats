@@ -376,7 +376,8 @@ window.Quarto = {
   <li><a href="#continuous-distributions-in-excel" id="toc-continuous-distributions-in-excel" class="nav-link" data-scroll-target="#continuous-distributions-in-excel"><span class="header-section-number">10.6</span> Continuous Distributions in Excel</a></li>
   <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">10.7</span> Excel Function Summary</a></li>
   <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">10.8</span> Chapter Summary Cheat Sheet</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.9</span> Exercises</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">10.9</span> Check Your Understanding</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">10.10</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -428,7 +429,7 @@ details summary {
 <p><strong>THE UNIFORM DISTRIBUTION</strong> <span class="math display">\[f(x)= \frac {1}{b-a} \quad (a \leq x \leq b)\]</span> <span class="math display">\[E(x)= \frac {a+b}{2} \qquad var(x)= \frac {(b-a)^2}{12}\]</span> where <span class="math inline">\(a\)</span> is the lower limit and <span class="math inline">\(b\)</span> is the upper limit; <span class="math inline">\(f(x)=0\)</span> outside <span class="math inline">\([a,b]\)</span>.</p>
 </div>
 <div class="callout-example">
-<p><strong>Example:</strong> Consider the travel time between NY and CHI. Typically, this trips can take anywhere from 120-140 minutes. The specific time of a particular flight is unpredictable, but assumed to be anywhere between this interval. We assume a uniform distribution with upper limit of 140 and lower limit of 120. The probability that the flight take 122 minutes is zero since the interval has an infinite amount of possible values. The probability of the flight taking 130 minutes or less is 0.5. <span class="math display">\[f(x&lt;=130)=\frac{130-120}{20}=0.5\]</span> The uniform distribution has no dedicated Excel function, but its cumulative probability follows directly from the formula. In Excel, <code>=(130-120)/(140-120)</code> returns <span class="math inline">\(0.5\)</span>.</p>
+<p><strong>Example:</strong> Consider the travel time between NY and CHI. Typically, this trip can take anywhere from 120-140 minutes. The specific time of a particular flight is unpredictable, but assumed to be anywhere between this interval. We assume a uniform distribution with upper limit of 140 and lower limit of 120. The probability that the flight takes exactly 122 minutes is zero since the interval has an infinite amount of possible values. The probability of the flight taking 130 minutes or less is 0.5. <span class="math display">\[P(X \le 130)=\frac{130-120}{20}=0.5\]</span> The uniform distribution has no dedicated Excel function, but its cumulative probability follows directly from the formula. In Excel, <code>=(130-120)/(140-120)</code> returns <span class="math inline">\(0.5\)</span>.</p>
 </div>
 <div class="bs-widget">
 <div class="bs-widget-head">
@@ -1364,7 +1365,7 @@ details summary {
 <h2 data-number="10.6" class="anchored" data-anchor-id="continuous-distributions-in-excel"><span class="header-section-number">10.6</span> Continuous Distributions in Excel</h2>
 <p>Excel provides functions for the normal and exponential distributions. The uniform and triangular distributions do not have dedicated functions, but their probabilities follow directly from their formulas.</p>
 <p><strong>Uniform.</strong> The density is <span class="math inline">\(f(x)=1/(b-a)\)</span> and the cumulative probability is <span class="math inline">\(P(X \le x)=(x-a)/(b-a)\)</span>. Both are computed with ordinary arithmetic.</p>
-<p><strong>Normal.</strong> Use <code>=NORM.DIST(x, mean, standard_dev, cumulative)</code> — set <code>cumulative</code> to <code>TRUE</code> for <span class="math inline">\(P(X \le x)\)</span> and <code>FALSE</code> for the density. For the standard normal (<span class="math inline">\(\mu=0\)</span>, <span class="math inline">\(\sigma=1\)</span>) use <code>=NORM.S.DIST(z, cumulative)</code>. To find a value given a probability (a quantile), use <code>=NORM.INV(probability, mean, standard_dev)</code> or <code>=NORM.S.INV(probability)</code>.</p>
+<p><strong>Normal.</strong> Use <code>=NORM.DIST(x, mean, standard_dev, cumulative)</code> and set <code>cumulative</code> to <code>TRUE</code> for <span class="math inline">\(P(X \le x)\)</span> and <code>FALSE</code> for the density. For the standard normal (<span class="math inline">\(\mu=0\)</span>, <span class="math inline">\(\sigma=1\)</span>) use <code>=NORM.S.DIST(z, cumulative)</code>. To find a value given a probability (a quantile), use <code>=NORM.INV(probability, mean, standard_dev)</code> or <code>=NORM.S.INV(probability)</code>.</p>
 <p><strong>Exponential.</strong> Use <code>=EXPON.DIST(x, lambda, cumulative)</code>, where <code>lambda</code> is the rate <span class="math inline">\(\lambda = 1/\mu\)</span>. Set <code>cumulative</code> to <code>TRUE</code> for <span class="math inline">\(P(X \le x)\)</span> and <code>FALSE</code> for the density.</p>
 <p><strong>Triangular.</strong> Compute the cumulative probability from its formula: <span class="math inline">\(F(x)=\frac{(x-a)^2}{(b-a)(c-a)}\)</span> for <span class="math inline">\(a \le x &lt; c\)</span>, and <span class="math inline">\(F(x)=1-\frac{(b-x)^2}{(b-a)(b-c)}\)</span> for <span class="math inline">\(c \le x \le b\)</span>.</p>
 </section>
@@ -1381,18 +1382,140 @@ details summary {
 </section>
 <section id="chapter-summary-cheat-sheet" class="level2" data-number="10.8">
 <h2 data-number="10.8" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">10.8</span> Chapter Summary Cheat Sheet</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Continuous_Distributions.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Continuous Distributions</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Constant Density</div><div class="bs-cs-card-title">Uniform</div><div class="bs-cs-formula">f(x) = 1 / (b − a)</div><p class="bs-cs-desc">Equal density on [a, b]. P(X ≤ x) = (x − a)/(b − a) and E(x) = (a + b)/2.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=(x - a) / (b - a)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Bell Curve</div><div class="bs-cs-card-title">Normal</div><div class="bs-cs-formula">f(x) = 1/(σ√2π) · e<sup>−½((x − μ)/σ)²</sup></div><p class="bs-cs-desc">Symmetric about μ and fully described by μ and σ. The total area under the curve is 1.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=NORM.DIST(x, μ, σ, TRUE)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Standardized</div><div class="bs-cs-card-title">Standard Normal</div><div class="bs-cs-formula">z = (x − μ) / σ</div><p class="bs-cs-desc">The normal distribution with mean 0 and standard deviation 1.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=NORM.S.DIST(z, TRUE)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Waiting Time</div><div class="bs-cs-card-title">Exponential</div><div class="bs-cs-formula">f(x) = λe<sup>−λx</sup>, &nbsp;λ = 1/μ</div><p class="bs-cs-desc">Time between events in a Poisson process. P(X ≤ x) = 1 − e<sup>−λx</sup>.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=EXPON.DIST(x, 1/μ, TRUE)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Three Points</div><div class="bs-cs-card-title">Triangular</div><div class="bs-cs-formula">E(x) = (a + b + c) / 3<br>F(x) = (x − a)² / [(b − a)(c − a)], a ≤ x &lt; c</div><p class="bs-cs-desc">Used when only the minimum a, the mode c, and the maximum b are known.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=(x-a)^2/((b-a)*(c-a))</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Quantiles</div><div class="bs-cs-card-title">Inverse Normal</div><div class="bs-cs-formula">value ← probability</div><p class="bs-cs-desc">Goes from a cumulative probability back to a value, such as a percentile or a cutoff.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=NORM.INV(p, μ, σ) · =NORM.S.INV(p)</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>f(x)</dt><dd>Probability density</dd></div>
+      <div class="bs-cs-row"><dt>F(x)</dt><dd>Cumulative probability P(X ≤ x)</dd></div>
+      <div class="bs-cs-row"><dt>μ, σ</dt><dd>Mean, standard deviation</dd></div>
+      <div class="bs-cs-row"><dt>a, b</dt><dd>Minimum, maximum</dd></div>
+      <div class="bs-cs-row"><dt>c</dt><dd>Mode (triangular)</dd></div>
+      <div class="bs-cs-row"><dt>λ</dt><dd>Rate (exponential)</dd></div>
+      <div class="bs-cs-row"><dt>z</dt><dd>Standard normal value</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>P(single value)?</dt><dd>Zero</dd></div>
+      <div class="bs-cs-row"><dt>Probabilities are?</dt><dd>Areas under the curve</dd></div>
+      <div class="bs-cs-row"><dt>Standard normal?</dt><dd>μ = 0, σ = 1</dd></div>
+      <div class="bs-cs-row"><dt>Exponential rate λ?</dt><dd>1/μ</dd></div>
+      <div class="bs-cs-row"><dt>TRUE argument gives?</dt><dd>P(X ≤ x)</dd></div>
+      <div class="bs-cs-row"><dt>P(X &gt; x)?</dt><dd>1 − P(X ≤ x)</dd></div>
+      <div class="bs-cs-row"><dt>NORM.INV returns?</dt><dd>A value from a probability</dd></div>
+    </dl></div>
+  </div>
+</section>
+</section>
+<section id="check-your-understanding" class="level2" data-number="10.9">
+<h2 data-number="10.9" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">10.9</span> Check Your Understanding</h2>
+<p>Test the main ideas of the chapter before moving on to the exercises. <span>Pick an answer to see whether you are right and why.</span></p>
+<div class="bs-quiz">
+<p>A delivery time is a continuous random variable. What is the probability that it equals exactly <span class="math inline">\(30\)</span> minutes?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(f(30)\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(0\)</span></label></li>
+<li><label><input type="checkbox">It depends on the distribution</label></li>
+<li><label><input type="checkbox"><span class="math inline">\(1/30\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>For a continuous variable, probabilities are areas under the density curve, and a single point has no width. Only intervals, such as <span class="math inline">\(29.5 \le X \le 30.5\)</span>, have positive probability.</p>
 </div>
+</div>
+<div class="bs-quiz">
+<p>A wait time is uniformly distributed between <span class="math inline">\(10\)</span> and <span class="math inline">\(30\)</span> minutes. What is <span class="math inline">\(P(X \le 16)\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(0.05\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.80\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.53\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(0.30\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(P(X \le 16)=\frac{16-10}{30-10}=\frac{6}{20}=0.30\)</span>. The value <span class="math inline">\(0.05\)</span> is the density <span class="math inline">\(1/(b-a)\)</span>, not a probability.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>For the same uniform distribution on <span class="math inline">\([10,30]\)</span>, what are the mean and the variance?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Mean <span class="math inline">\(20\)</span>, variance <span class="math inline">\(33.33\)</span></label></li>
+<li><label><input type="checkbox">Mean <span class="math inline">\(20\)</span>, variance <span class="math inline">\(400\)</span></label></li>
+<li><label><input type="checkbox">Mean <span class="math inline">\(15\)</span>, variance <span class="math inline">\(33.33\)</span></label></li>
+<li><label><input type="checkbox">Mean <span class="math inline">\(20\)</span>, variance <span class="math inline">\(5.77\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(E(x)=\frac{10+30}{2}=20\)</span> and <span class="math inline">\(var(x)=\frac{(30-10)^2}{12}=\frac{400}{12}\approx33.33\)</span>. The value <span class="math inline">\(5.77\)</span> is the standard deviation.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Test scores are normal with <span class="math inline">\(\mu=100\)</span> and <span class="math inline">\(\sigma=15\)</span>. What is the z-value of a score of <span class="math inline">\(130\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(30\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.5\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(2\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(-2\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(z=\frac{130-100}{15}=2\)</span>. The score is two standard deviations above the mean.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>For any normal distribution, what is <span class="math inline">\(P(X&gt;\mu)\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(0\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(1\)</span></label></li>
+<li><label><input type="checkbox">It depends on <span class="math inline">\(\sigma\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(0.5\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The normal distribution is symmetric about its mean, so the mean splits the area in half whatever the value of <span class="math inline">\(\sigma\)</span>.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>The time between customer arrivals is exponential with a mean of <span class="math inline">\(10\)</span> minutes. What is the probability that the next customer arrives within <span class="math inline">\(10\)</span> minutes?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">About <span class="math inline">\(0.632\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.5\)</span></label></li>
+<li><label><input type="checkbox">About <span class="math inline">\(0.368\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.1\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(P(X \le 10)=1-e^{-10/10}=1-e^{-1}\approx0.632\)</span>. Because the exponential is skewed to the right, more than half of the waits are shorter than the mean.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Loading times are exponential with a mean of <span class="math inline">\(15\)</span> minutes. Which Excel formula returns <span class="math inline">\(P(X \le 6)\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><code>=EXPON.DIST(6, 15, TRUE)</code></label></li>
+<li><label><input type="checkbox"><code>=EXPON.DIST(15, 6, TRUE)</code></label></li>
+<li><label><input type="checkbox" checked=""><code>=EXPON.DIST(6, 1/15, TRUE)</code></label></li>
+<li><label><input type="checkbox"><code>=EXPON.DIST(6, 1/15, FALSE)</code></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><code>EXPON.DIST</code> takes the rate <span class="math inline">\(\lambda=1/\mu\)</span>, not the mean. <code>TRUE</code> returns the cumulative probability; <code>FALSE</code> would return the density.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A project’s cost has a triangular distribution with minimum <span class="math inline">\(a=2\)</span>, most likely value <span class="math inline">\(c=5\)</span>, and maximum <span class="math inline">\(b=11\)</span> (in $1,000). What is the expected cost?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">$5,000</label></li>
+<li><label><input type="checkbox" checked="">$6,000</label></li>
+<li><label><input type="checkbox">$6,500</label></li>
+<li><label><input type="checkbox">$9,000</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(E(x)=\frac{a+b+c}{3}=\frac{2+11+5}{3}=6\)</span>. The long right tail pulls the mean above the mode of <span class="math inline">\(5\)</span>.</p>
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="10.9">
-<h2 data-number="10.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">10.9</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="10.10">
+<h2 data-number="10.10" class="anchored" data-anchor-id="exercises"><span class="header-section-number">10.10</span> Exercises</h2>
 <p>The following exercises will help you practice some probability concepts and formulas. In particular, the exercises work on:</p>
 <ul>
 <li><p>Calculating probabilities for continuous random variables.</p></li>

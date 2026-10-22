@@ -1,0 +1,37 @@
+```{=html}
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Probability Rules</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Equally Likely</div><div class="bs-cs-card-title">Classical Method</div><div class="bs-cs-formula">P(A) = outcomes in A / outcomes in S</div><p class="bs-cs-desc">Use only when every outcome in the sample space is equally likely.</p><div class="bs-excel"><span class="lbl">Example</span><span>P(red card) = 26/52 = 0.5</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · From Data</div><div class="bs-cs-card-title">Relative Frequency</div><div class="bs-cs-formula">P(A) ≈ times A occurred / trials</div><p class="bs-cs-desc">Estimates the probability from past data. The estimate improves as the number of trials grows.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=COUNTIF(rng, "Late") / COUNTA(rng)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Any Method</div><div class="bs-cs-card-title">Basic Requirements</div><div class="bs-cs-formula">0 ≤ P(A) ≤ 1  ·  ΣP(xᵢ) = 1</div><p class="bs-cs-desc">Every assignment must satisfy both, including subjective ones. 0 and 1 mean certainty; values in between mean uncertainty.</p><div class="bs-excel"><span class="lbl">Example</span><span>P(success) = 0.35, P(failure) = 0.65</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Not A</div><div class="bs-cs-card-title">Complement Rule</div><div class="bs-cs-formula">P(Aᶜ) = 1 − P(A)</div><p class="bs-cs-desc">The chance an event does not occur. Often easier to compute than the event itself.</p><div class="bs-excel"><span class="lbl">Example</span><span>P(not heart) = 1 − 13/52 = 39/52</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · A or B</div><div class="bs-cs-card-title">Addition Rule</div><div class="bs-cs-formula">P(A ∪ B) = P(A) + P(B) − P(A ∩ B)</div><p class="bs-cs-desc">Subtract the overlap so it is not counted twice. If A and B are mutually exclusive, P(A ∩ B) = 0.</p><div class="bs-excel"><span class="lbl">Example</span><span>heart or face: 13/52 + 12/52 − 3/52 = 22/52</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · A and B</div><div class="bs-cs-card-title">Multiplication Rule</div><div class="bs-cs-formula">P(A ∩ B) = P(A | B) · P(B)<br/>P(A | B) = P(A ∩ B) / P(B)</div><p class="bs-cs-desc">The chance both occur. If A and B are independent, P(A ∩ B) = P(A) · P(B).</p><div class="bs-excel"><span class="lbl">Example</span><span>two aces: (4/52)(3/51)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">07 · Scenarios</div><div class="bs-cs-card-title">Total Probability</div><div class="bs-cs-formula">P(A) = Σ P(A | Bᵢ) · P(Bᵢ)</div><p class="bs-cs-desc">Adds the chance of A across scenarios Bᵢ that are mutually exclusive and exhaustive.</p><div class="bs-excel"><span class="lbl">Example</span><span>(0.5)(0.02) + (0.3)(0.03) + (0.2)(0.05) = 0.029</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">08 · Updating</div><div class="bs-cs-card-title">Bayes' Theorem</div><div class="bs-cs-formula">P(A | B) = P(B | A) · P(A) / P(B)</div><p class="bs-cs-desc">Turns a prior P(A) into a posterior after observing evidence B. Find P(B) with the law of total probability.</p><div class="bs-excel"><span class="lbl">Example</span><span>positive test: 0.01 → 0.0876</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">09 · Counting</div><div class="bs-cs-card-title">Counting Rules</div><div class="bs-cs-formula">n!  ·  C(n, x) = n! / [(n − x)! x!]<br/>P(n, x) = n! / (n − x)!</div><p class="bs-cs-desc">Count outcomes without listing them. Combinations ignore order; permutations respect it.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=FACT(n) · =COMBIN(n, x) · =PERMUT(n, x)</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>P(A)</dt><dd>Probability of A</dd></div>
+      <div class="bs-cs-row"><dt>Aᶜ</dt><dd>Complement of A</dd></div>
+      <div class="bs-cs-row"><dt>A ∩ B</dt><dd>A and B (intersection)</dd></div>
+      <div class="bs-cs-row"><dt>A ∪ B</dt><dd>A or B (union)</dd></div>
+      <div class="bs-cs-row"><dt>P(A | B)</dt><dd>Probability of A given B</dd></div>
+      <div class="bs-cs-row"><dt>n!</dt><dd>Factorial</dd></div>
+      <div class="bs-cs-row"><dt>C(n, x)</dt><dd>Combinations</dd></div>
+      <div class="bs-cs-row"><dt>P(n, x)</dt><dd>Permutations</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Probability range?</dt><dd>0 to 1</dd></div>
+      <div class="bs-cs-row"><dt>Mutually exclusive?</dt><dd>P(A ∩ B) = 0</dd></div>
+      <div class="bs-cs-row"><dt>Independent?</dt><dd>P(A ∩ B) = P(A) · P(B)</dd></div>
+      <div class="bs-cs-row"><dt>Exclusive and exhaustive events sum to?</dt><dd>1</dd></div>
+      <div class="bs-cs-row"><dt>Subjective probability fits?</dt><dd>The Bayesian view</dd></div>
+      <div class="bs-cs-row"><dt>Order matters?</dt><dd>Permutations</dd></div>
+      <div class="bs-cs-row"><dt>With repetition in Excel?</dt><dd>=COMBINA · =PERMUTATIONA</dd></div>
+    </dl></div>
+  </div>
+</section>
+```

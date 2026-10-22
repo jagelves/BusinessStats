@@ -1,0 +1,33 @@
+```{=html}
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Continuous Distributions</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Constant Density</div><div class="bs-cs-card-title">Uniform</div><div class="bs-cs-formula">f(x) = 1 / (b − a)</div><p class="bs-cs-desc">Equal density on [a, b]. P(X ≤ x) = (x − a)/(b − a) and E(x) = (a + b)/2.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=(x - a) / (b - a)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Bell Curve</div><div class="bs-cs-card-title">Normal</div><div class="bs-cs-formula">f(x) = 1/(σ√2π) · e<sup>−½((x − μ)/σ)²</sup></div><p class="bs-cs-desc">Symmetric about μ and fully described by μ and σ. The total area under the curve is 1.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=NORM.DIST(x, μ, σ, TRUE)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Standardized</div><div class="bs-cs-card-title">Standard Normal</div><div class="bs-cs-formula">z = (x − μ) / σ</div><p class="bs-cs-desc">The normal distribution with mean 0 and standard deviation 1.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=NORM.S.DIST(z, TRUE)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Waiting Time</div><div class="bs-cs-card-title">Exponential</div><div class="bs-cs-formula">f(x) = λe<sup>−λx</sup>,  λ = 1/μ</div><p class="bs-cs-desc">Time between events in a Poisson process. P(X ≤ x) = 1 − e<sup>−λx</sup>.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=EXPON.DIST(x, 1/μ, TRUE)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Three Points</div><div class="bs-cs-card-title">Triangular</div><div class="bs-cs-formula">E(x) = (a + b + c) / 3<br/>F(x) = (x − a)² / [(b − a)(c − a)], a ≤ x < c</div><p class="bs-cs-desc">Used when only the minimum a, the mode c, and the maximum b are known.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=(x-a)^2/((b-a)*(c-a))</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Quantiles</div><div class="bs-cs-card-title">Inverse Normal</div><div class="bs-cs-formula">value ← probability</div><p class="bs-cs-desc">Goes from a cumulative probability back to a value, such as a percentile or a cutoff.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=NORM.INV(p, μ, σ) · =NORM.S.INV(p)</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>f(x)</dt><dd>Probability density</dd></div>
+      <div class="bs-cs-row"><dt>F(x)</dt><dd>Cumulative probability P(X ≤ x)</dd></div>
+      <div class="bs-cs-row"><dt>μ, σ</dt><dd>Mean, standard deviation</dd></div>
+      <div class="bs-cs-row"><dt>a, b</dt><dd>Minimum, maximum</dd></div>
+      <div class="bs-cs-row"><dt>c</dt><dd>Mode (triangular)</dd></div>
+      <div class="bs-cs-row"><dt>λ</dt><dd>Rate (exponential)</dd></div>
+      <div class="bs-cs-row"><dt>z</dt><dd>Standard normal value</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>P(single value)?</dt><dd>Zero</dd></div>
+      <div class="bs-cs-row"><dt>Probabilities are?</dt><dd>Areas under the curve</dd></div>
+      <div class="bs-cs-row"><dt>Standard normal?</dt><dd>μ = 0, σ = 1</dd></div>
+      <div class="bs-cs-row"><dt>Exponential rate λ?</dt><dd>1/μ</dd></div>
+      <div class="bs-cs-row"><dt>TRUE argument gives?</dt><dd>P(X ≤ x)</dd></div>
+      <div class="bs-cs-row"><dt>P(X > x)?</dt><dd>1 − P(X ≤ x)</dd></div>
+      <div class="bs-cs-row"><dt>NORM.INV returns?</dt><dd>A value from a probability</dd></div>
+    </dl></div>
+  </div>
+</section>
+```

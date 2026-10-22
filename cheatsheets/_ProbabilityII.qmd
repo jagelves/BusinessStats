@@ -1,0 +1,34 @@
+```{=html}
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Discrete Distributions</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Center</div><div class="bs-cs-card-title">Expected Value</div><div class="bs-cs-formula">E(x) = μ = Σ x f(x)</div><p class="bs-cs-desc">The long-run average of a random variable, weighting each value by its probability.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=SUMPRODUCT(x_range, p_range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Spread</div><div class="bs-cs-card-title">Variance</div><div class="bs-cs-formula">var(x) = E(x²) − [E(x)]²</div><p class="bs-cs-desc">The average squared deviation from the mean. Its square root is the standard deviation.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=SUMPRODUCT((x_range − μ)^2, p_range)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Equally Likely</div><div class="bs-cs-card-title">Discrete Uniform</div><div class="bs-cs-formula">f(x) = 1 / n</div><p class="bs-cs-desc">Each of the n possible values is equally likely, like the faces of a fair die.</p><div class="bs-excel"><span class="lbl">Example</span><span>P(die shows 6) = 1/6</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Successes in n Trials</div><div class="bs-cs-card-title">Binomial</div><div class="bs-cs-formula">f(x) = C(n, x) pˣ (1 − p)<sup>n − x</sup></div><p class="bs-cs-desc">Successes in n independent trials with the same probability p. E(x) = np, var(x) = np(1 − p).</p><div class="bs-excel"><span class="lbl">Excel</span><span>=BINOM.DIST(x, n, p, FALSE)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Without Replacement</div><div class="bs-cs-card-title">Hypergeometric</div><div class="bs-cs-formula">f(x) = C(r, x) C(N − r, n − x) / C(N, n)</div><p class="bs-cs-desc">Successes in a sample of n drawn without replacement from N items, r of which are successes.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=HYPGEOM.DIST(x, n, r, N, FALSE)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Counts in an Interval</div><div class="bs-cs-card-title">Poisson</div><div class="bs-cs-formula">f(x) = μˣ e<sup>−μ</sup> / x!</div><p class="bs-cs-desc">Number of occurrences in an interval of time or space. Mean and variance both equal μ.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=POISSON.DIST(x, μ, FALSE)</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>E(x), μ</dt><dd>Expected value</dd></div>
+      <div class="bs-cs-row"><dt>var(x)</dt><dd>Variance</dd></div>
+      <div class="bs-cs-row"><dt>f(x)</dt><dd>Probability mass function</dd></div>
+      <div class="bs-cs-row"><dt>n</dt><dd>Trials or sample size</dd></div>
+      <div class="bs-cs-row"><dt>p</dt><dd>Probability of success</dd></div>
+      <div class="bs-cs-row"><dt>N, r</dt><dd>Population size, its successes</dd></div>
+      <div class="bs-cs-row"><dt>C(n, x)</dt><dd>Combinations, also written Cₓⁿ</dd></div>
+      <div class="bs-cs-row"><dt>μ (Poisson)</dt><dd>Mean per interval</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Binomial mean?</dt><dd>np</dd></div>
+      <div class="bs-cs-row"><dt>Binomial variance?</dt><dd>np(1 − p)</dd></div>
+      <div class="bs-cs-row"><dt>Poisson mean vs variance?</dt><dd>Both equal μ</dd></div>
+      <div class="bs-cs-row"><dt>Hypergeometric draws?</dt><dd>Without replacement</dd></div>
+      <div class="bs-cs-row"><dt>FALSE vs TRUE in Excel?</dt><dd>P(X = x) vs P(X ≤ x)</dd></div>
+      <div class="bs-cs-row"><dt>P(X ≥ x)?</dt><dd>1 − P(X ≤ x − 1)</dd></div>
+      <div class="bs-cs-row"><dt>Probabilities of all values sum to?</dt><dd>1</dd></div>
+    </dl></div>
+  </div>
+</section>
+```

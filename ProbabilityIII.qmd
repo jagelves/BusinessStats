@@ -33,7 +33,7 @@ The **uniform** distribution assigns equal density across an interval $[a,b]$:
 :::
 
 ::: callout-example
-**Example:** Consider the travel time between NY and CHI. Typically, this trips can take anywhere from 120-140 minutes. The specific time of a particular flight is unpredictable, but assumed to be anywhere between this interval. We assume a uniform distribution with upper limit of 140 and lower limit of 120. The probability that the flight take 122 minutes is zero since the interval has an infinite amount of possible values. The probability of the flight taking 130 minutes or less is 0.5. $$f(x<=130)=\frac{130-120}{20}=0.5$$ The uniform distribution has no dedicated Excel function, but its cumulative probability follows directly from the formula. In Excel, `=(130-120)/(140-120)` returns $0.5$.
+**Example:** Consider the travel time between NY and CHI. Typically, this trip can take anywhere from 120-140 minutes. The specific time of a particular flight is unpredictable, but assumed to be anywhere between this interval. We assume a uniform distribution with upper limit of 140 and lower limit of 120. The probability that the flight takes exactly 122 minutes is zero since the interval has an infinite amount of possible values. The probability of the flight taking 130 minutes or less is 0.5. $$P(X \le 130)=\frac{130-120}{20}=0.5$$ The uniform distribution has no dedicated Excel function, but its cumulative probability follows directly from the formula. In Excel, `=(130-120)/(140-120)` returns $0.5$.
 :::
 
 ::: {.content-visible when-format="html"}
@@ -118,7 +118,7 @@ Excel provides functions for the normal and exponential distributions. The unifo
 
 **Uniform.** The density is $f(x)=1/(b-a)$ and the cumulative probability is $P(X \le x)=(x-a)/(b-a)$. Both are computed with ordinary arithmetic.
 
-**Normal.** Use `=NORM.DIST(x, mean, standard_dev, cumulative)` — set `cumulative` to `TRUE` for $P(X \le x)$ and `FALSE` for the density. For the standard normal ($\mu=0$, $\sigma=1$) use `=NORM.S.DIST(z, cumulative)`. To find a value given a probability (a quantile), use `=NORM.INV(probability, mean, standard_dev)` or `=NORM.S.INV(probability)`.
+**Normal.** Use `=NORM.DIST(x, mean, standard_dev, cumulative)` and set `cumulative` to `TRUE` for $P(X \le x)$ and `FALSE` for the density. For the standard normal ($\mu=0$, $\sigma=1$) use `=NORM.S.DIST(z, cumulative)`. To find a value given a probability (a quantile), use `=NORM.INV(probability, mean, standard_dev)` or `=NORM.S.INV(probability)`.
 
 **Exponential.** Use `=EXPON.DIST(x, lambda, cumulative)`, where `lambda` is the rate $\lambda = 1/\mu$. Set `cumulative` to `TRUE` for $P(X \le x)$ and `FALSE` for the density.
 
@@ -140,9 +140,124 @@ Below is a list of the Excel functions used in this section:
 
 ## Chapter Summary Cheat Sheet
 
+::: {.content-visible when-format="html"}
+{{< include cheatsheets/_ProbabilityIII.qmd >}}
+:::
+
+::: {.content-visible when-format="pdf"}
 ```{r echo=FALSE, out.width="100%", fig.align='center'}
 knitr::include_graphics("images/Continuous_Distributions.png")
 ```
+:::
+
+## Check Your Understanding
+
+Test the main ideas of the chapter before moving on to the exercises. [Pick an answer to see whether you are right and why.]{.content-visible when-format="html"}[Each answer, with an explanation, is in the answer key at the end of the book.]{.content-visible when-format="pdf"}
+
+:::: bs-quiz
+A delivery time is a continuous random variable. What is the probability that it equals exactly $30$ minutes?
+
+- [ ] $f(30)$
+- [x] $0$
+- [ ] It depends on the distribution
+- [ ] $1/30$
+
+::: bs-quiz-why
+For a continuous variable, probabilities are areas under the density curve, and a single point has no width. Only intervals, such as $29.5 \le X \le 30.5$, have positive probability.
+:::
+::::
+
+:::: bs-quiz
+A wait time is uniformly distributed between $10$ and $30$ minutes. What is $P(X \le 16)$?
+
+- [ ] $0.05$
+- [ ] $0.80$
+- [ ] $0.53$
+- [x] $0.30$
+
+::: bs-quiz-why
+$P(X \le 16)=\frac{16-10}{30-10}=\frac{6}{20}=0.30$. The value $0.05$ is the density $1/(b-a)$, not a probability.
+:::
+::::
+
+:::: bs-quiz
+For the same uniform distribution on $[10,30]$, what are the mean and the variance?
+
+- [x] Mean $20$, variance $33.33$
+- [ ] Mean $20$, variance $400$
+- [ ] Mean $15$, variance $33.33$
+- [ ] Mean $20$, variance $5.77$
+
+::: bs-quiz-why
+$E(x)=\frac{10+30}{2}=20$ and $var(x)=\frac{(30-10)^2}{12}=\frac{400}{12}\approx33.33$. The value $5.77$ is the standard deviation.
+:::
+::::
+
+:::: bs-quiz
+Test scores are normal with $\mu=100$ and $\sigma=15$. What is the z-value of a score of $130$?
+
+- [ ] $30$
+- [ ] $0.5$
+- [x] $2$
+- [ ] $-2$
+
+::: bs-quiz-why
+$z=\frac{130-100}{15}=2$. The score is two standard deviations above the mean.
+:::
+::::
+
+:::: bs-quiz
+For any normal distribution, what is $P(X>\mu)$?
+
+- [ ] $0$
+- [ ] $1$
+- [ ] It depends on $\sigma$
+- [x] $0.5$
+
+::: bs-quiz-why
+The normal distribution is symmetric about its mean, so the mean splits the area in half whatever the value of $\sigma$.
+:::
+::::
+
+:::: bs-quiz
+The time between customer arrivals is exponential with a mean of $10$ minutes. What is the probability that the next customer arrives within $10$ minutes?
+
+- [x] About $0.632$
+- [ ] $0.5$
+- [ ] About $0.368$
+- [ ] $0.1$
+
+::: bs-quiz-why
+$P(X \le 10)=1-e^{-10/10}=1-e^{-1}\approx0.632$. Because the exponential is skewed to the right, more than half of the waits are shorter than the mean.
+:::
+::::
+
+:::: bs-quiz
+Loading times are exponential with a mean of $15$ minutes. Which Excel formula returns $P(X \le 6)$?
+
+- [ ] `=EXPON.DIST(6, 15, TRUE)`
+- [ ] `=EXPON.DIST(15, 6, TRUE)`
+- [x] `=EXPON.DIST(6, 1/15, TRUE)`
+- [ ] `=EXPON.DIST(6, 1/15, FALSE)`
+
+::: bs-quiz-why
+`EXPON.DIST` takes the rate $\lambda=1/\mu$, not the mean. `TRUE` returns the cumulative probability; `FALSE` would return the density.
+:::
+::::
+
+:::: bs-quiz
+A project's cost has a triangular distribution with minimum $a=2$, most likely value $c=5$, and maximum $b=11$ (in \$1,000). What is the expected cost?
+
+- [ ] \$5,000
+- [x] \$6,000
+- [ ] \$6,500
+- [ ] \$9,000
+
+::: bs-quiz-why
+$E(x)=\frac{a+b+c}{3}=\frac{2+11+5}{3}=6$. The long right tail pulls the mean above the mode of $5$.
+:::
+::::
+
 
 ## Exercises
 

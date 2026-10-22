@@ -1673,7 +1673,7 @@ $3!=3 \times 2 \times 1=6$, $4!=4 \times 3 \times 2 \times 1=24$, $C_6^8=28$, an
 - `=SQRT(SUMPRODUCT((B2:B4-6)^2, A2:A4))` → $11.14$ (Fund 1 std. dev.)
 - `=SQRT(SUMPRODUCT((C2:C4-6)^2, A2:A4))` → $31.05$ (Fund 2 std. dev.)
 
-*Since both funds have the same expected return, choose Fund 1 — it achieves that return with much less risk.*
+*Since both funds have the same expected return, choose Fund 1: it achieves that return with much less risk.*
 
 :::
 
