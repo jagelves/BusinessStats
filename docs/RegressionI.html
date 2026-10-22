@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-ebc9bf21172222eecf4329b9f87ba86d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a9a8112abf6d22cde504e3b06bd5f6a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e6d6cf5d2fe5724721a99542168da79f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
@@ -376,7 +376,8 @@ window.Quarto = {
   <li><a href="#measures-of-association-in-excel" id="toc-measures-of-association-in-excel" class="nav-link" data-scroll-target="#measures-of-association-in-excel"><span class="header-section-number">6.4</span> Measures of Association in Excel</a></li>
   <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">6.5</span> Excel Function Summary</a></li>
   <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">6.6</span> Chapter Summary Cheat Sheet</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.7</span> Exercises</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">6.7</span> Check Your Understanding</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">6.8</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -414,7 +415,7 @@ details summary {
   cursor: pointer;
 }
 </style>
-<p>Measures of association are essential tools in business statistics for analyzing relationships between variables. They help determine whether changes in one variable are linked to changes in another, providing valuable insights into patterns and dependencies. Understanding these relationships is critical for making informed decisions. By quantifying the strength and direction of associations, businesses can better interpret data, optimize strategies, and drive meaningful outcomes. Below we study important measures of association. Association still belongs to the <em>describe</em> stage of learning from data — here we characterize how two variables move together — but it also points ahead to inference, where we will ask whether a relationship seen in a sample is real or merely a product of chance.</p>
+<p>Measures of association are essential tools in business statistics for analyzing relationships between variables. They help determine whether changes in one variable are linked to changes in another, providing valuable insights into patterns and dependencies. Understanding these relationships is critical for making informed decisions. By quantifying the strength and direction of associations, businesses can better interpret data, optimize strategies, and drive meaningful outcomes. Below we study important measures of association. Association still belongs to the <em>describe</em> stage of learning from data: here we characterize how two variables move together. But it also points ahead to inference, where we will ask whether a relationship seen in a sample is real or merely a product of chance.</p>
 <section id="the-covariance" class="level2" data-number="6.1">
 <h2 data-number="6.1" class="anchored" data-anchor-id="the-covariance"><span class="header-section-number">6.1</span> The Covariance</h2>
 <p>The <strong>covariance</strong> is a measure that determines the direction of the relationship between two variables. It is calculated by:</p>
@@ -477,6 +478,14 @@ details summary {
 </table>
 <p>The idea behind calculating a covariance is to determine whether there is a relationship between the two variables. We start by finding the deviations from the mean for both SPY and BND:</p>
 <table class="caption-top table">
+<colgroup>
+<col style="width: 12%">
+<col style="width: 7%">
+<col style="width: 7%">
+<col style="width: 28%">
+<col style="width: 28%">
+<col style="width: 15%">
+</colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: center;">Period</th>
@@ -493,31 +502,31 @@ details summary {
 <td style="text-align: center;">87</td>
 <td style="text-align: center;">316</td>
 <td style="text-align: center;"><span class="math inline">\(2\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(-80\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(-160\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-80.4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-160.8\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">2</td>
 <td style="text-align: center;">86</td>
 <td style="text-align: center;">380</td>
 <td style="text-align: center;"><span class="math inline">\(1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(-16\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(-16\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-16.4\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-16.4\)</span></td>
 </tr>
 <tr class="odd">
 <td style="text-align: center;">3</td>
 <td style="text-align: center;">84</td>
 <td style="text-align: center;">416</td>
 <td style="text-align: center;"><span class="math inline">\(-1\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(20\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(-20\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(19.6\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-19.6\)</span></td>
 </tr>
 <tr class="even">
 <td style="text-align: center;">4</td>
 <td style="text-align: center;">85</td>
 <td style="text-align: center;">430</td>
 <td style="text-align: center;"><span class="math inline">\(0\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(34\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(33.6\)</span></td>
 <td style="text-align: center;"><span class="math inline">\(0\)</span></td>
 </tr>
 <tr class="odd">
@@ -525,15 +534,15 @@ details summary {
 <td style="text-align: center;">83</td>
 <td style="text-align: center;">440</td>
 <td style="text-align: center;"><span class="math inline">\(-2\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(44\)</span></td>
-<td style="text-align: center;"><span class="math inline">\(-88\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(43.6\)</span></td>
+<td style="text-align: center;"><span class="math inline">\(-87.2\)</span></td>
 </tr>
 </tbody>
 </table>
 <p>The covariance is the average of the products column using <span class="math inline">\(n-1\)</span>:</p>
-<p><span class="math display">\[s_{xy} = \frac{-160 + (-16) + (-20) + 0 + (-88)}{5-1} =
+<p><span class="math display">\[s_{xy} = \frac{-160.8 + (-16.4) + (-19.6) + 0 + (-87.2)}{5-1} =
 \frac{-284}{4} = -71\]</span></p>
-<p>Since <span class="math inline">\(s_{xy} &lt; 0\)</span> there is an inverse relationship between SPY and BND. Intuitively, the covariance checks whether on average the products of the deviations from the mean is positive or negative. Whenever <span class="math inline">\(x\)</span> lies below its mean and <span class="math inline">\(y\)</span> lies above its mean, the product is negative — and vice versa — reflecting the inverse relationship between the two variables.</p>
+<p>Since <span class="math inline">\(s_{xy} &lt; 0\)</span> there is an inverse relationship between SPY and BND. Intuitively, the covariance checks whether on average the products of the deviations from the mean is positive or negative. Whenever <span class="math inline">\(x\)</span> lies below its mean and <span class="math inline">\(y\)</span> lies above its mean, the product is negative (and vice versa), reflecting the inverse relationship between the two variables.</p>
 </div>
 </section>
 <section id="the-correlation" class="level2" data-number="6.2">
@@ -744,18 +753,140 @@ details summary {
 </section>
 <section id="chapter-summary-cheat-sheet" class="level2" data-number="6.6">
 <h2 data-number="6.6" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">6.6</span> Chapter Summary Cheat Sheet</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Association.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Measures of Association</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Direction</div><div class="bs-cs-card-title">The Covariance</div><div class="bs-cs-formula">s<sub>xy</sub> = Σ(x<sub>i</sub> − x̄)(y<sub>i</sub> − ȳ) / (n − 1)</div><p class="bs-cs-desc">Measures the <b>direction</b> of the linear relationship. Its magnitude depends on the units of the data, so it is not comparable across data sets.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=COVARIANCE.S(A1:A10,B1:B10)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Strength &amp; Direction</div><div class="bs-cs-card-title">The Correlation</div><div class="bs-cs-formula">r = s<sub>xy</sub> / (s<sub>x</sub> · s<sub>y</sub>)</div><p class="bs-cs-desc">Standardizes the covariance to the range [−1, 1]. It is <b>unit-free</b> and captures both the strength and direction of the linear relationship.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=CORREL(A1:A10,B1:B10)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Explained Variation</div><div class="bs-cs-card-title">Coefficient of Det.</div><div class="bs-cs-formula">R<sup>2</sup> = r<sup>2</sup></div><p class="bs-cs-desc">The percent of the variation in <i>y</i> explained by <i>x</i>. Ranges from 0 (no relationship) to 1 (a perfect linear fit).</p><div class="bs-excel"><span class="lbl">Excel</span><span>=CORREL(A1:A10,B1:B10)^2</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Visualize</div><div class="bs-cs-card-title">Scatter Diagram</div><div class="bs-cs-formula">plot the (x, y) pairs<br>as points</div><p class="bs-cs-desc">Shows the shape, direction, and strength of a relationship at a glance. Add a linear trend line to summarize the pattern.</p><div class="bs-excel"><span class="lbl">Excel</span><span>Insert → Charts → Scatter</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Building Block</div><div class="bs-cs-card-title">Standard Deviation</div><div class="bs-cs-formula">s<sub>x</sub> = √[ Σ(x<sub>i</sub> − x̄)² / (n − 1) ]</div><p class="bs-cs-desc">Correlation divides the covariance by the product of the two standard deviations, s<sub>x</sub> and s<sub>y</sub>.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=STDEV.S(A1:A10)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Sample vs Population</div><div class="bs-cs-card-title">Covariance Variants</div><div class="bs-cs-formula">sample: ÷ (n − 1)<br>population: ÷ N</div><p class="bs-cs-desc">Use the <b>.S</b> version when your data is a sample and the <b>.P</b> version when it is the entire population.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=COVARIANCE.P(A1:A10,B1:B10)</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>s<sub>xy</sub></dt><dd>Sample covariance</dd></div>
+      <div class="bs-cs-row"><dt>r</dt><dd>Correlation coefficient</dd></div>
+      <div class="bs-cs-row"><dt>R<sup>2</sup></dt><dd>Coefficient of determination</dd></div>
+      <div class="bs-cs-row"><dt>s<sub>x</sub> , s<sub>y</sub></dt><dd>Standard deviations of x, y</dd></div>
+      <div class="bs-cs-row"><dt>x̄ , ȳ</dt><dd>Sample means</dd></div>
+      <div class="bs-cs-row"><dt>n , N</dt><dd>Sample / population size</dd></div>
+      <div class="bs-cs-row"><dt>Σ</dt><dd>Summation</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Positive covariance means?</dt><dd>Direct relationship</dd></div>
+      <div class="bs-cs-row"><dt>Negative covariance means?</dt><dd>Inverse relationship</dd></div>
+      <div class="bs-cs-row"><dt>Range of the correlation?</dt><dd>−1 to +1</dd></div>
+      <div class="bs-cs-row"><dt>r = 0 means?</dt><dd>No linear relationship</dd></div>
+      <div class="bs-cs-row"><dt>Strong relationship?</dt><dd>|r| close to 1</dd></div>
+      <div class="bs-cs-row"><dt>Is correlation unit-free?</dt><dd>Yes</dd></div>
+      <div class="bs-cs-row"><dt>R² of 0.79 means?</dt><dd>79% of variation in y explained</dd></div>
+    </dl></div>
+  </div>
+</section>
+</section>
+<section id="check-your-understanding" class="level2" data-number="6.7">
+<h2 data-number="6.7" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">6.7</span> Check Your Understanding</h2>
+<p>Test the main ideas of the chapter before moving on to the exercises. <span>Pick an answer to see whether you are right and why.</span></p>
+<div class="bs-quiz">
+<p>Monthly advertising spending and monthly sales have a positive covariance. What can you conclude?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">The relationship is strong</label></li>
+<li><label><input type="checkbox">Advertising causes sales to rise</label></li>
+<li><label><input type="checkbox" checked="">The two variables tend to move in the same direction</label></li>
+<li><label><input type="checkbox">The two variables move in opposite directions</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>A positive covariance only tells us the direction: when one variable is above its mean, the other tends to be above its mean too. It says nothing about strength, because its size depends on the units, and nothing about cause and effect.</p>
 </div>
+</div>
+<div class="bs-quiz">
+<p>Why do we use the correlation rather than the covariance to judge the strength of a relationship?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">The correlation is unit-free and always lies between <span class="math inline">\(-1\)</span> and <span class="math inline">\(1\)</span></label></li>
+<li><label><input type="checkbox">The covariance cannot be negative</label></li>
+<li><label><input type="checkbox">The correlation is always larger than the covariance</label></li>
+<li><label><input type="checkbox">The covariance only works with categorical data</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>Dividing the covariance by <span class="math inline">\(s_x \cdot s_y\)</span> removes the units, so the correlation can be compared across data sets. The covariance changes if you measure in dollars instead of thousands of dollars.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Two variables have a covariance of <span class="math inline">\(s_{xy}=12\)</span> and standard deviations <span class="math inline">\(s_x=3\)</span> and <span class="math inline">\(s_y=5\)</span>. What is the correlation?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(4\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.64\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(180\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(0.80\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(r=\frac{s_{xy}}{s_x \cdot s_y}=\frac{12}{3 \times 5}=0.80\)</span>, a strong direct relationship. The value <span class="math inline">\(0.64\)</span> is <span class="math inline">\(r^2\)</span>.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Which correlation shows the strongest linear relationship?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(r=0.80\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(r=-0.92\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(r=0.45\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(r=0\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>Strength depends on the absolute value of <span class="math inline">\(r\)</span>. Since <span class="math inline">\(|-0.92|\)</span> is the closest to <span class="math inline">\(1\)</span>, it is the strongest. The negative sign only says the relationship is inverse.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>The correlation between two variables is <span class="math inline">\(r=-0.6\)</span>. What is the coefficient of determination?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(-0.36\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.60\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(-0.60\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(0.36\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(R^2=r^2=(-0.6)^2=0.36\)</span>. Because it is a square, <span class="math inline">\(R^2\)</span> is never negative.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>The coefficient of determination between hours studied and exam score is <span class="math inline">\(R^2=0.64\)</span>. How do you interpret it?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked=""><span class="math inline">\(64\%\)</span> of the variation in exam scores is explained by hours studied</label></li>
+<li><label><input type="checkbox"><span class="math inline">\(64\%\)</span> of the points fall exactly on the trend line</label></li>
+<li><label><input type="checkbox">Each extra hour raises the score by <span class="math inline">\(0.64\)</span> points</label></li>
+<li><label><input type="checkbox">The correlation is <span class="math inline">\(0.64\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(R^2\)</span> is the share of the variation in <span class="math inline">\(y\)</span> explained by variation in <span class="math inline">\(x\)</span>. The correlation here would be <span class="math inline">\(\sqrt{0.64}=0.8\)</span> (or <span class="math inline">\(-0.8\)</span>).</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A scatter plot shows a clear U-shaped pattern, yet the correlation is close to <span class="math inline">\(0\)</span>. How can this be?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">A correlation of <span class="math inline">\(0\)</span> means the variables are unrelated in every way</label></li>
+<li><label><input type="checkbox">The covariance must have been computed incorrectly</label></li>
+<li><label><input type="checkbox" checked="">The correlation only measures linear relationships</label></li>
+<li><label><input type="checkbox">U-shaped patterns always give <span class="math inline">\(r=1\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The covariance and correlation summarize how well the points line up along a straight line. A curved relationship can be strong and still produce <span class="math inline">\(r\)</span> near <span class="math inline">\(0\)</span>, which is why it pays to plot the data.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>SPY prices are in <code>A2:A21</code> and BND prices in <code>B2:B21</code>. Which formula returns their correlation?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><code>=COVARIANCE.S(A2:A21, B2:B21)</code></label></li>
+<li><label><input type="checkbox" checked=""><code>=CORREL(A2:A21, B2:B21)</code></label></li>
+<li><label><input type="checkbox"><code>=CORREL(A2:A21, B2:B21)^2</code></label></li>
+<li><label><input type="checkbox"><code>=STDEV.S(A2:A21, B2:B21)</code></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><code>CORREL</code> returns <span class="math inline">\(r\)</span>. <code>COVARIANCE.S</code> returns the sample covariance, and squaring <code>CORREL</code> gives <span class="math inline">\(R^2\)</span>.</p>
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="6.7">
-<h2 data-number="6.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.7</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="6.8">
+<h2 data-number="6.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">6.8</span> Exercises</h2>
 <p>The following exercises will help you understand statistical measures that establish the relationship between two variables. In particular, the exercises work on:</p>
 <ul>
 <li>Calculating covariance and correlation.</li>
@@ -1630,6 +1761,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </footer>
 <script src="assets/book.js"></script>
+<script src="assets/quiz.js"></script>
 
 
 

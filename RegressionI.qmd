@@ -15,7 +15,7 @@ details summary {
 
 # Regression I
 
-Measures of association are essential tools in business statistics for analyzing relationships between variables. They help determine whether changes in one variable are linked to changes in another, providing valuable insights into patterns and dependencies. Understanding these relationships is critical for making informed decisions. By quantifying the strength and direction of associations, businesses can better interpret data, optimize strategies, and drive meaningful outcomes. Below we study important measures of association. Association still belongs to the *describe* stage of learning from data — here we characterize how two variables move together — but it also points ahead to inference, where we will ask whether a relationship seen in a sample is real or merely a product of chance.
+Measures of association are essential tools in business statistics for analyzing relationships between variables. They help determine whether changes in one variable are linked to changes in another, providing valuable insights into patterns and dependencies. Understanding these relationships is critical for making informed decisions. By quantifying the strength and direction of associations, businesses can better interpret data, optimize strategies, and drive meaningful outcomes. Below we study important measures of association. Association still belongs to the *describe* stage of learning from data: here we characterize how two variables move together. But it also points ahead to inference, where we will ask whether a relationship seen in a sample is real or merely a product of chance.
 
 ## The Covariance
 
@@ -42,20 +42,20 @@ The **covariance** is a measure that determines the direction of the relationshi
 
 The idea behind calculating a covariance is to determine whether there is a relationship between the two variables. We start by finding the deviations from the mean for both SPY and BND:
 
-| Period | SPY | BND | $SPY - \bar{SPY}$ | $BND - \bar{BND}$ | Product |
-|:------:|:---:|:---:|:-----------------:|:-----------------:|:-------:|
-|   1    | 87  | 316 |        $2$        |       $-80$       | $-160$  |
-|   2    | 86  | 380 |        $1$        |       $-16$       |  $-16$  |
-|   3    | 84  | 416 |       $-1$        |       $20$        |  $-20$  |
-|   4    | 85  | 430 |        $0$        |       $34$        |   $0$   |
-|   5    | 83  | 440 |       $-2$        |       $44$        |  $-88$  |
+| Period | SPY | BND | $SPY - \bar{SPY}$ | $BND - \bar{BND}$ | Product  |
+|:------:|:---:|:---:|:-----------------:|:-----------------:|:--------:|
+|   1    | 87  | 316 |        $2$        |      $-80.4$      | $-160.8$ |
+|   2    | 86  | 380 |        $1$        |      $-16.4$      | $-16.4$  |
+|   3    | 84  | 416 |       $-1$        |      $19.6$       | $-19.6$  |
+|   4    | 85  | 430 |        $0$        |      $33.6$       |   $0$    |
+|   5    | 83  | 440 |       $-2$        |      $43.6$       | $-87.2$  |
 
 The covariance is the average of the products column using $n-1$:
 
-$$s_{xy} = \frac{-160 + (-16) + (-20) + 0 + (-88)}{5-1} =
+$$s_{xy} = \frac{-160.8 + (-16.4) + (-19.6) + 0 + (-87.2)}{5-1} =
 \frac{-284}{4} = -71$$
 
-Since $s_{xy} < 0$ there is an inverse relationship between SPY and BND. Intuitively, the covariance checks whether on average the products of the deviations from the mean is positive or negative. Whenever $x$ lies below its mean and $y$ lies above its mean, the product is negative — and vice versa — reflecting the inverse relationship between the two variables.
+Since $s_{xy} < 0$ there is an inverse relationship between SPY and BND. Intuitively, the covariance checks whether on average the products of the deviations from the mean is positive or negative. Whenever $x$ lies below its mean and $y$ lies above its mean, the product is negative (and vice versa), reflecting the inverse relationship between the two variables.
 :::
 
 ## The Correlation
@@ -146,9 +146,123 @@ Below is a list of the Excel functions used in this section:
 
 ## Chapter Summary Cheat Sheet
 
+::: {.content-visible when-format="html"}
+{{< include cheatsheets/_RegressionI.qmd >}}
+:::
+
+::: {.content-visible when-format="pdf"}
 ```{r echo=FALSE, out.width="100%", fig.align='center'}
 knitr::include_graphics("images/Association.png")
 ```
+:::
+
+## Check Your Understanding
+
+Test the main ideas of the chapter before moving on to the exercises. [Pick an answer to see whether you are right and why.]{.content-visible when-format="html"}[Each answer, with an explanation, is in the answer key at the end of the book.]{.content-visible when-format="pdf"}
+
+:::: bs-quiz
+Monthly advertising spending and monthly sales have a positive covariance. What can you conclude?
+
+- [ ] The relationship is strong
+- [ ] Advertising causes sales to rise
+- [x] The two variables tend to move in the same direction
+- [ ] The two variables move in opposite directions
+
+::: bs-quiz-why
+A positive covariance only tells us the direction: when one variable is above its mean, the other tends to be above its mean too. It says nothing about strength, because its size depends on the units, and nothing about cause and effect.
+:::
+::::
+
+:::: bs-quiz
+Why do we use the correlation rather than the covariance to judge the strength of a relationship?
+
+- [x] The correlation is unit-free and always lies between $-1$ and $1$
+- [ ] The covariance cannot be negative
+- [ ] The correlation is always larger than the covariance
+- [ ] The covariance only works with categorical data
+
+::: bs-quiz-why
+Dividing the covariance by $s_x \cdot s_y$ removes the units, so the correlation can be compared across data sets. The covariance changes if you measure in dollars instead of thousands of dollars.
+:::
+::::
+
+:::: bs-quiz
+Two variables have a covariance of $s_{xy}=12$ and standard deviations $s_x=3$ and $s_y=5$. What is the correlation?
+
+- [ ] $4$
+- [ ] $0.64$
+- [ ] $180$
+- [x] $0.80$
+
+::: bs-quiz-why
+$r=\frac{s_{xy}}{s_x \cdot s_y}=\frac{12}{3 \times 5}=0.80$, a strong direct relationship. The value $0.64$ is $r^2$.
+:::
+::::
+
+:::: bs-quiz
+Which correlation shows the strongest linear relationship?
+
+- [ ] $r=0.80$
+- [x] $r=-0.92$
+- [ ] $r=0.45$
+- [ ] $r=0$
+
+::: bs-quiz-why
+Strength depends on the absolute value of $r$. Since $|-0.92|$ is the closest to $1$, it is the strongest. The negative sign only says the relationship is inverse.
+:::
+::::
+
+:::: bs-quiz
+The correlation between two variables is $r=-0.6$. What is the coefficient of determination?
+
+- [ ] $-0.36$
+- [ ] $0.60$
+- [ ] $-0.60$
+- [x] $0.36$
+
+::: bs-quiz-why
+$R^2=r^2=(-0.6)^2=0.36$. Because it is a square, $R^2$ is never negative.
+:::
+::::
+
+:::: bs-quiz
+The coefficient of determination between hours studied and exam score is $R^2=0.64$. How do you interpret it?
+
+- [x] $64\%$ of the variation in exam scores is explained by hours studied
+- [ ] $64\%$ of the points fall exactly on the trend line
+- [ ] Each extra hour raises the score by $0.64$ points
+- [ ] The correlation is $0.64$
+
+::: bs-quiz-why
+$R^2$ is the share of the variation in $y$ explained by variation in $x$. The correlation here would be $\sqrt{0.64}=0.8$ (or $-0.8$).
+:::
+::::
+
+:::: bs-quiz
+A scatter plot shows a clear U-shaped pattern, yet the correlation is close to $0$. How can this be?
+
+- [ ] A correlation of $0$ means the variables are unrelated in every way
+- [ ] The covariance must have been computed incorrectly
+- [x] The correlation only measures linear relationships
+- [ ] U-shaped patterns always give $r=1$
+
+::: bs-quiz-why
+The covariance and correlation summarize how well the points line up along a straight line. A curved relationship can be strong and still produce $r$ near $0$, which is why it pays to plot the data.
+:::
+::::
+
+:::: bs-quiz
+SPY prices are in `A2:A21` and BND prices in `B2:B21`. Which formula returns their correlation?
+
+- [ ] `=COVARIANCE.S(A2:A21, B2:B21)`
+- [x] `=CORREL(A2:A21, B2:B21)`
+- [ ] `=CORREL(A2:A21, B2:B21)^2`
+- [ ] `=STDEV.S(A2:A21, B2:B21)`
+
+::: bs-quiz-why
+`CORREL` returns $r$. `COVARIANCE.S` returns the sample covariance, and squaring `CORREL` gives $R^2$.
+:::
+::::
 
 ## Exercises
 

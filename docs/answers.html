@@ -1828,7 +1828,7 @@ window.Quarto = {
 <ul>
 <li><code>=AVERAGE(C2:C81)</code> → <span class="math inline">\(0.3625\)</span></li>
 </ul>
-<p><em>You can also skip the helper column entirely — the same proportion is</em> <code>=AVERAGE(IF(A2:A81="Yes",1,0))</code>.</p>
+<p><em>You can also skip the helper column entirely; the same proportion is</em> <code>=AVERAGE(IF(A2:A81="Yes",1,0))</code>.</p>
 </div>
 </div>
 </section>
@@ -1837,7 +1837,7 @@ window.Quarto = {
 <p><a href="RegressionII.html#exercise-3" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <div style="padding-left: 1.5em;">
-<p><em>The intercept (</em><span class="math inline">\(\approx 6473\)</span>) is the average food expenditure of individuals without homes. The slope (<span class="math inline">\(\approx -3418\)</span>) is the difference in food expenditure between individuals who own a home and those who do not — home owners spend about <span class="math inline">\(\$3,418\)</span> less on food than non-owners.</p>
+<p><em>The intercept (</em><span class="math inline">\(\approx 6473\)</span>) is the average food expenditure of individuals without homes. The slope (<span class="math inline">\(\approx -3418\)</span>) is the difference in food expenditure between individuals who own a home and those who do not: home owners spend about <span class="math inline">\(\$3,418\)</span> less on food than non-owners.</p>
 <p><em>In Excel, with <code>Food</code> in column B and the dummy in column C:</em></p>
 <pre class="excel"><code>=LINEST(B2:B81, C2:C81, TRUE, TRUE)</code></pre>
 <ul>
@@ -1857,7 +1857,7 @@ window.Quarto = {
 <p><a href="RegressionII.html#exercise-3" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <div style="padding-left: 1.5em;">
-<p><em>The regression line is</em> <span class="math inline">\(\widehat{dummy}=1.432-0.000204\,Food\)</span>. This is a linear probability model: it predicts the likelihood of owning a home from food expenditure. The slope tells us how that likelihood changes as food expenditure increases by one dollar — in general, the likelihood of owning a home decreases as food expenditure increases. The scatter plot shows that most home owners have food expenditures below <span class="math inline">\(\$6,000\)</span>, while non-owners are mostly above it.</p>
+<p><em>The regression line is</em> <span class="math inline">\(\widehat{dummy}=1.432-0.000204\,Food\)</span>. This is a linear probability model: it predicts the likelihood of owning a home from food expenditure. The slope tells us how that likelihood changes as food expenditure increases by one dollar. In general, the likelihood of owning a home decreases as food expenditure increases. The scatter plot shows that most home owners have food expenditures below <span class="math inline">\(\$6,000\)</span>, while non-owners are mostly above it.</p>
 <p><em>In Excel, with the dummy in column C and <code>Food</code> in column B:</em></p>
 <ul>
 <li><code>=INDEX(LINEST(C2:C81,B2:B81,TRUE,TRUE),1,2)</code> → intercept <span class="math inline">\(= 1.432\)</span></li>
@@ -1898,7 +1898,7 @@ window.Quarto = {
 <p><a href="RegressionII.html#exercise-4" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <div style="padding-left: 1.5em;">
-<p><em>After looking at the scatter plot, it seems unlikely that the population in Japan will hit</em> <span class="math inline">\(140\)</span> million. In the most recent years the population has been decreasing, so the straight-line trend overstates the future population — the prediction should be treated with caution.</p>
+<p><em>After looking at the scatter plot, it seems unlikely that the population in Japan will hit</em> <span class="math inline">\(140\)</span> million. In the most recent years the population has been decreasing, so the straight-line trend overstates the future population, so the prediction should be treated with caution.</p>
 <p><em>In Excel, select the <code>Year</code> and <code>Population</code> columns for Japan, go to <code>Insert → Charts → Scatter</code>, and add a linear trend line by right-clicking a point and choosing <code>Add Trendline → Linear</code>.</em></p>
 </div>
 </div>

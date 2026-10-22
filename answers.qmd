@@ -1236,7 +1236,7 @@ $$\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}=16.6-1.09(19.8)=-4.93$$
 
 - `=AVERAGE(C2:C81)` → $0.3625$
 
-*You can also skip the helper column entirely — the same proportion is* `=AVERAGE(IF(A2:A81="Yes",1,0))`.
+*You can also skip the helper column entirely; the same proportion is* `=AVERAGE(IF(A2:A81="Yes",1,0))`.
 :::
 
 :::
@@ -1249,7 +1249,7 @@ $$\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}=16.6-1.09(19.8)=-4.93$$
 
 
 ::: {style="padding-left: 1.5em;"}
-*The intercept (*$\approx 6473$) is the average food expenditure of individuals without homes. The slope ($\approx -3418$) is the difference in food expenditure between individuals who own a home and those who do not — home owners spend about $\$3,418$ less on food than non-owners.
+*The intercept (*$\approx 6473$) is the average food expenditure of individuals without homes. The slope ($\approx -3418$) is the difference in food expenditure between individuals who own a home and those who do not: home owners spend about $\$3,418$ less on food than non-owners.
 
 *In Excel, with `Food` in column B and the dummy in column C:*
 
@@ -1276,7 +1276,7 @@ $$\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}=16.6-1.09(19.8)=-4.93$$
 
 
 ::: {style="padding-left: 1.5em;"}
-*The regression line is* $\widehat{dummy}=1.432-0.000204\,Food$. This is a linear probability model: it predicts the likelihood of owning a home from food expenditure. The slope tells us how that likelihood changes as food expenditure increases by one dollar — in general, the likelihood of owning a home decreases as food expenditure increases. The scatter plot shows that most home owners have food expenditures below $\$6,000$, while non-owners are mostly above it.
+*The regression line is* $\widehat{dummy}=1.432-0.000204\,Food$. This is a linear probability model: it predicts the likelihood of owning a home from food expenditure. The slope tells us how that likelihood changes as food expenditure increases by one dollar. In general, the likelihood of owning a home decreases as food expenditure increases. The scatter plot shows that most home owners have food expenditures below $\$6,000$, while non-owners are mostly above it.
 
 *In Excel, with the dummy in column C and `Food` in column B:*
 
@@ -1330,7 +1330,7 @@ $$\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}=16.6-1.09(19.8)=-4.93$$
 
 
 ::: {style="padding-left: 1.5em;"}
-*After looking at the scatter plot, it seems unlikely that the population in Japan will hit* $140$ million. In the most recent years the population has been decreasing, so the straight-line trend overstates the future population — the prediction should be treated with caution.
+*After looking at the scatter plot, it seems unlikely that the population in Japan will hit* $140$ million. In the most recent years the population has been decreasing, so the straight-line trend overstates the future population, so the prediction should be treated with caution.
 
 *In Excel, select the `Year` and `Population` columns for Japan, go to `Insert → Charts → Scatter`, and add a linear trend line by right-clicking a point and choosing `Add Trendline → Linear`.*
 :::

@@ -68,7 +68,7 @@
     <div class="card">
       <div class="label">01 &middot; Direction</div>
       <h3>The Covariance</h3>
-      <div class="formula">s<span class="sub">xy</span> = Σ(x<span class="sub">i</span> − x̄)(y<span class="sub">i</span> − ȳ) / (n − 1)</div>
+      <div class="formula">s<sub>xy</sub> = Σ(x<sub>i</sub> − x̄)(y<sub>i</sub> − ȳ) / (n − 1)</div>
       <div class="desc">Measures the <b>direction</b> of the linear relationship. Its magnitude depends on the units of the data, so it is not comparable across data sets.</div>
       <div class="excel-label">EXCEL</div>
       <div class="excel">=COVARIANCE.S(A1:A10,B1:B10)</div>
@@ -77,7 +77,7 @@
     <div class="card">
       <div class="label">02 &middot; Strength &amp; Direction</div>
       <h3>The Correlation</h3>
-      <div class="formula">r = s<span class="sub">xy</span> / (s<span class="sub">x</span> · s<span class="sub">y</span>)</div>
+      <div class="formula">r = s<sub>xy</sub> / (s<sub>x</sub> · s<sub>y</sub>)</div>
       <div class="desc">Standardizes the covariance to the range [−1, 1]. It is <b>unit-free</b> and captures both the strength and direction of the linear relationship.</div>
       <div class="excel-label">EXCEL</div>
       <div class="excel">=CORREL(A1:A10,B1:B10)</div>
@@ -104,8 +104,8 @@
     <div class="card">
       <div class="label">05 &middot; Building Block</div>
       <h3>Standard Deviation</h3>
-      <div class="formula">s<span class="sub">x</span> = √[ Σ(x<span class="sub">i</span> − x̄)² / (n − 1) ]</div>
-      <div class="desc">Correlation divides the covariance by the product of the two standard deviations, s<span class="sub">x</span> and s<span class="sub">y</span>.</div>
+      <div class="formula">s<sub>x</sub> = √[ Σ(x<sub>i</sub> − x̄)² / (n − 1) ]</div>
+      <div class="desc">Correlation divides the covariance by the product of the two standard deviations, s<sub>x</sub> and s<sub>y</sub>.</div>
       <div class="excel-label">EXCEL</div>
       <div class="excel">=STDEV.S(A1:A10)</div>
     </div>
@@ -125,10 +125,10 @@
 
     <div class="panel notation">
       <div class="ptitle">Notation Guide</div>
-      <div class="row"><span class="sym">s<span class="sub">xy</span></span><span class="def">Sample covariance</span></div>
+      <div class="row"><span class="sym">s<sub>xy</sub></span><span class="def">Sample covariance</span></div>
       <div class="row"><span class="sym">r</span><span class="def">Correlation coefficient</span></div>
       <div class="row"><span class="sym">R<sup>2</sup></span><span class="def">Coefficient of determination</span></div>
-      <div class="row"><span class="sym">s<span class="sub">x</span> , s<span class="sub">y</span></span><span class="def">Standard deviations of x, y</span></div>
+      <div class="row"><span class="sym">s<sub>x</sub> , s<sub>y</sub></span><span class="def">Standard deviations of x, y</span></div>
       <div class="row"><span class="sym">x̄ , ȳ</span><span class="def">Sample means</span></div>
       <div class="row"><span class="sym">n , N</span><span class="def">Sample / population size</span></div>
       <div class="row"><span class="sym">Σ</span><span class="def">Summation</span></div>
@@ -142,7 +142,7 @@
       <div class="row"><span class="q">r = 0 means?</span><span class="a">No linear relationship</span></div>
       <div class="row"><span class="q">Strong relationship?</span><span class="a">|r| close to 1</span></div>
       <div class="row"><span class="q">Is correlation unit-free?</span><span class="a">Yes</span></div>
-      <div class="row"><span class="q">R² of 0.79 means?</span><span class="a">79% of y explained</span></div>
+      <div class="row"><span class="q">R² of 0.79 means?</span><span class="a">79% of variation in y explained</span></div>
     </div>
 
   </div>

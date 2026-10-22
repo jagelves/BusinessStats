@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-ebc9bf21172222eecf4329b9f87ba86d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a9a8112abf6d22cde504e3b06bd5f6a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e6d6cf5d2fe5724721a99542168da79f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
@@ -341,7 +341,8 @@ window.Quarto = {
   <li><a href="#regression-in-excel" id="toc-regression-in-excel" class="nav-link" data-scroll-target="#regression-in-excel"><span class="header-section-number">7.5</span> Regression in Excel</a></li>
   <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">7.6</span> Excel Function Summary</a></li>
   <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">7.7</span> Chapter Summary Cheat Sheet</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.8</span> Exercises</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">7.8</span> Check Your Understanding</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">7.9</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -379,10 +380,10 @@ details summary {
   cursor: pointer;
 }
 </style>
-<p>Quantifying relationships between variables is an important skill in business analytics. The regression line, representing the best linear fit between two variables, enables businesses to make predictions, identify trends, and optimize strategies using data-driven insights. Understanding how to calculate and interpret a regression line provides the foundation for analyzing business relationships, such as the effect of advertising on sales or customer satisfaction on revenue. Below, we delve into generating and analyzing a regression line. Fitting a line is a descriptive act — a compact summary of how the data behave — but it is also the model whose reliability we will later test in the inference chapters, once we ask how much a different sample might have shifted it.</p>
+<p>Quantifying relationships between variables is an important skill in business analytics. The regression line, representing the best linear fit between two variables, enables businesses to make predictions, identify trends, and optimize strategies using data-driven insights. Understanding how to calculate and interpret a regression line provides the foundation for analyzing business relationships, such as the effect of advertising on sales or customer satisfaction on revenue. Below, we delve into generating and analyzing a regression line. Fitting a line is a descriptive act, a compact summary of how the data behave, but it is also the model whose reliability we will later test in the inference chapters, once we ask how much a different sample might have shifted it.</p>
 <section id="the-regression-line" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="the-regression-line"><span class="header-section-number">7.1</span> The Regression Line</h2>
-<p>The regression line is calculated to minimize the average distance (or errors) between the line and the observed data points. It is defined by two key components: a <strong>slope</strong> (<span class="math inline">\(\hat{\beta}\)</span>) and an <strong>intercept</strong> (<span class="math inline">\(\hat{\alpha}\)</span>). Mathematically, the regression line is expressed as:</p>
+<p>The regression line is calculated to minimize the sum of the squared distances (or errors) between the line and the observed data points. It is defined by two key components: a <strong>slope</strong> (<span class="math inline">\(\hat{\beta}\)</span>) and an <strong>intercept</strong> (<span class="math inline">\(\hat{\alpha}\)</span>). Mathematically, the regression line is expressed as:</p>
 <div class="callout-formula">
 <p><strong>THE REGRESSION LINE</strong> <span class="math display">\[\hat{y_i}=\hat{\alpha}+\hat{\beta}x_i\]</span> where <span class="math inline">\(\hat{y_i}\)</span> are the predicted values of <span class="math inline">\(y\)</span> given <span class="math inline">\(x_i\)</span>, <span class="math inline">\(\hat{\alpha}\)</span> is the intercept, and <span class="math inline">\(\hat{\beta}\)</span> is the slope.</p>
 </div>
@@ -390,7 +391,7 @@ details summary {
 <div class="callout-formula">
 <p><strong>THE SLOPE</strong> <span class="math display">\[\hat{\beta}= \frac{s_{xy}}{s_{x}^2}\]</span> where <span class="math inline">\(s_{xy}\)</span> is the sample covariance between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span>, and <span class="math inline">\(s_x^2\)</span> is the sample variance of <span class="math inline">\(x\)</span>.</p>
 </div>
-<p>The <strong>intercept</strong> determines where the line crosses the <span class="math inline">\(y\)</span> axis — the predicted value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x\)</span> is zero. Once the slope is estimated, the intercept is calculated by:</p>
+<p>The <strong>intercept</strong> determines where the line crosses the <span class="math inline">\(y\)</span> axis: the predicted value of <span class="math inline">\(y\)</span> when <span class="math inline">\(x\)</span> is zero. Once the slope is estimated, the intercept is calculated by:</p>
 <div class="callout-formula">
 <p><strong>THE INTERCEPT</strong> <span class="math display">\[\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}\]</span> where <span class="math inline">\(\bar{y}\)</span> is the mean of <span class="math inline">\(y\)</span> and <span class="math inline">\(\bar{x}\)</span> is the mean of <span class="math inline">\(x\)</span>.</p>
 </div>
@@ -427,15 +428,15 @@ details summary {
 <li><strong>Effectiveness:</strong> How much can we increase the price for every additional dollar spent on advertisement?</li>
 <li><strong>Prediction:</strong> What is the predicted price if we have a budget of <span class="math inline">\(6\)</span> for advertisement?</li>
 </ol>
-<p><strong>Step 1 — Calculate the slope:</strong> Given that the covariance is <span class="math inline">\(s_{xy}=3.67\)</span> and the variance of <span class="math inline">\(x\)</span> is <span class="math inline">\(s_x^2=1.67\)</span>:</p>
+<p><strong>Step 1: Calculate the slope:</strong> Given that the covariance is <span class="math inline">\(s_{xy}=3.67\)</span> and the variance of <span class="math inline">\(x\)</span> is <span class="math inline">\(s_x^2=1.67\)</span>:</p>
 <p><span class="math display">\[\hat{\beta}= \frac{3.67}{1.67}=2.2\]</span></p>
 <p>For every additional dollar spent on advertisement, price increases by <span class="math inline">\(2.2\)</span> on average.</p>
-<p><strong>Step 2 — Calculate the intercept:</strong> Since <span class="math inline">\(\bar{x}=2.5\)</span> and <span class="math inline">\(\bar{y}=7\)</span>:</p>
+<p><strong>Step 2: Calculate the intercept:</strong> Since <span class="math inline">\(\bar{x}=2.5\)</span> and <span class="math inline">\(\bar{y}=7\)</span>:</p>
 <p><span class="math display">\[\hat{\alpha}=7-2.2(2.5)=1.5\]</span></p>
 <p>If we do not advertise, the predicted price is <span class="math inline">\(1.5\)</span>.</p>
-<p><strong>Step 3 — Write the regression line:</strong></p>
+<p><strong>Step 3: Write the regression line:</strong></p>
 <p><span class="math display">\[\hat{y_i}=1.5+2.2x_i\]</span></p>
-<p><strong>Step 4 — Make a prediction:</strong> With an advertisement budget of <span class="math inline">\(6\)</span>:</p>
+<p><strong>Step 4: Make a prediction:</strong> With an advertisement budget of <span class="math inline">\(6\)</span>:</p>
 <p><span class="math display">\[\hat{y_i}=1.5+2.2(6)=14.7\]</span></p>
 <p>In conclusion, for every dollar spent on advertisement the price increases by <span class="math inline">\(2.2\)</span>, and with a budget of <span class="math inline">\(6\)</span> the predicted price is <span class="math inline">\(14.7\)</span>.</p>
 </div>
@@ -450,9 +451,9 @@ details summary {
 <p><strong>THE COEFFICIENT OF DETERMINATION</strong> <span class="math display">\[R^2=\frac{SSR}{SST}\]</span></p>
 <p>where:</p>
 <ul>
-<li><span class="math inline">\(SST = \sum(y_i-\bar{y})^2\)</span> — total variation in <span class="math inline">\(y\)</span></li>
-<li><span class="math inline">\(SSR = \sum(\hat{y_i}-\bar{y})^2\)</span> — variation explained by the model</li>
-<li><span class="math inline">\(SSE = \sum(y_i-\hat{y_i})^2\)</span> — variation unexplained by the model</li>
+<li><span class="math inline">\(SST = \sum(y_i-\bar{y})^2\)</span>: total variation in <span class="math inline">\(y\)</span></li>
+<li><span class="math inline">\(SSR = \sum(\hat{y_i}-\bar{y})^2\)</span>: variation explained by the model</li>
+<li><span class="math inline">\(SSE = \sum(y_i-\hat{y_i})^2\)</span>: variation unexplained by the model</li>
 <li><span class="math inline">\(SST = SSR + SSE\)</span></li>
 </ul>
 <p><span class="math inline">\(R^2\)</span> is always between <span class="math inline">\([0,1]\)</span>.</p>
@@ -547,7 +548,7 @@ details summary {
 </table>
 <p>The multiple regression line estimated by computer software is:</p>
 <p><span class="math display">\[\hat{y_i}=83.96-0.025x+0.069z\]</span></p>
-<p>Two conclusions follow from this result. First, as exercise increases weight tends to go down, while more calories increases weight. Second, reducing calorie consumption by <span class="math inline">\(1\)</span> unit decreases weight by <span class="math inline">\(0.069\)</span> pounds, whereas one additional minute of exercise only reduces weight by <span class="math inline">\(0.025\)</span> pounds — making calorie reduction more effective per unit.</p>
+<p>Two conclusions follow from this result. First, as exercise increases weight tends to go down, while more calories increases weight. Second, reducing calorie consumption by <span class="math inline">\(1\)</span> unit decreases weight by <span class="math inline">\(0.069\)</span> pounds, whereas one additional minute of exercise only reduces weight by <span class="math inline">\(0.025\)</span> pounds, making calorie reduction more effective per unit.</p>
 </div>
 <section id="anova" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="anova">Anova</h3>
@@ -640,7 +641,7 @@ details summary {
 </section>
 <section id="regression-with-dummy-variables" class="level2" data-number="7.4">
 <h2 data-number="7.4" class="anchored" data-anchor-id="regression-with-dummy-variables"><span class="header-section-number">7.4</span> Regression with Dummy Variables</h2>
-<p>So far every predictor has been numerical. But many of the variables we care about in business are <strong>categorical</strong> — the brand of a product, whether a customer churned, the gender of a respondent, or the instructor teaching a class. Regression can use these variables too, once we encode them as numbers. The tool for doing so is the <strong>dummy variable</strong>.</p>
+<p>So far every predictor has been numerical. But many of the variables we care about in business are <strong>categorical</strong>: the brand of a product, whether a customer churned, the gender of a respondent, or the instructor teaching a class. Regression can use these variables too, once we encode them as numbers. The tool for doing so is the <strong>dummy variable</strong>.</p>
 <div class="callout-formula">
 <p><strong>THE DUMMY VARIABLE</strong> <span class="math display">\[d_i = \begin{cases} 1 &amp; \text{if observation } i \text{ is in the category} \\ 0 &amp; \text{otherwise} \end{cases}\]</span> A dummy (or <em>indicator</em>) variable equals <span class="math inline">\(1\)</span> when an observation belongs to a particular category and <span class="math inline">\(0\)</span> when it does not.</p>
 </div>
@@ -648,10 +649,10 @@ details summary {
 <div class="callout-formula">
 <p><strong>A DUMMY AND THE GROUP MEANS</strong> <span class="math display">\[\hat{\beta_0}=\bar{y}_{0} \qquad \hat{\beta_1}=\bar{y}_{1}-\bar{y}_{0}\]</span> The intercept is the mean of the <strong>baseline</strong> group (the one coded <span class="math inline">\(0\)</span>), and the slope is the <em>difference</em> between the two group means.</p>
 </div>
-<p>In other words, regressing a variable on a single dummy is just another way of computing a difference of means — the slope <em>is</em> that difference.</p>
-<p><strong>More than two categories.</strong> When a categorical variable has <span class="math inline">\(k\)</span> categories, we create <span class="math inline">\(k-1\)</span> dummies and leave one category out to act as the <strong>baseline</strong> (or reference). Each remaining dummy’s coefficient measures the gap between its category’s mean and the baseline mean. We never include a dummy for <em>every</em> category alongside an intercept — doing so makes the columns perfectly collinear (the <strong>dummy variable trap</strong>), and the regression cannot be estimated.</p>
+<p>In other words, regressing a variable on a single dummy is just another way of computing a difference of means. The slope <em>is</em> that difference.</p>
+<p><strong>More than two categories.</strong> When a categorical variable has <span class="math inline">\(k\)</span> categories, we create <span class="math inline">\(k-1\)</span> dummies and leave one category out to act as the <strong>baseline</strong> (or reference). Each remaining dummy’s coefficient measures the gap between its category’s mean and the baseline mean. We never include a dummy for <em>every</em> category alongside an intercept. Doing so makes the columns perfectly collinear (the <strong>dummy variable trap</strong>), and the regression cannot be estimated.</p>
 <div class="callout-example">
-<p><strong>Example:</strong> The <strong>Spin</strong> data set records <span class="math inline">\(90\)</span> spin classes taught by three instructors — Olivia, Sam, and Ben — along with <code>Total_kj</code>, the total energy (in kilojoules) burned during each class. We want each instructor’s average energy output.</p>
+<p><strong>Example:</strong> The <strong>Spin</strong> data set records <span class="math inline">\(90\)</span> spin classes taught by three instructors (Olivia, Sam, and Ben) along with <code>Total_kj</code>, the total energy (in kilojoules) burned during each class. We want each instructor’s average energy output.</p>
 <p>Because there are three instructors, we build two dummies and let <strong>Olivia</strong> be the baseline:</p>
 <ul>
 <li><span class="math inline">\(Sam = 1\)</span> if the class was taught by Sam, <span class="math inline">\(0\)</span> otherwise.</li>
@@ -701,7 +702,7 @@ details summary {
 </tr>
 </tbody>
 </table>
-<p>The predictions land exactly on the three group averages. The intercept is Olivia’s mean; the coefficient on <span class="math inline">\(Sam\)</span> (<span class="math inline">\(-75.67\)</span>) says Sam’s classes burn about <span class="math inline">\(75.67\)</span> kJ <em>less</em> than Olivia’s on average, and the coefficient on <span class="math inline">\(Ben\)</span> (<span class="math inline">\(+27.90\)</span>) says Ben’s burn about <span class="math inline">\(27.90\)</span> kJ <em>more</em>. Regression with dummy variables has reproduced the group means — and, as a bonus, reported how far each group sits from the baseline.</p>
+<p>The predictions land exactly on the three group averages. The intercept is Olivia’s mean; the coefficient on <span class="math inline">\(Sam\)</span> (<span class="math inline">\(-75.67\)</span>) says Sam’s classes burn about <span class="math inline">\(75.67\)</span> kJ <em>less</em> than Olivia’s on average, and the coefficient on <span class="math inline">\(Ben\)</span> (<span class="math inline">\(+27.90\)</span>) says Ben’s burn about <span class="math inline">\(27.90\)</span> kJ <em>more</em>. Regression with dummy variables has reproduced the group means and, as a bonus, reported how far each group sits from the baseline.</p>
 </div>
 <section id="dummy-variables-in-excel" class="level3 unnumbered">
 <h3 class="unnumbered anchored" data-anchor-id="dummy-variables-in-excel">Dummy Variables in Excel</h3>
@@ -735,7 +736,7 @@ details summary {
 </tr>
 </tbody>
 </table>
-<p>If you prefer helper columns, put the two <code>IF</code> formulas in columns D and E and pass <code>D2:E91</code> as the <span class="math inline">\(x\)</span> range — the result is identical.</p>
+<p>If you prefer helper columns, put the two <code>IF</code> formulas in columns D and E and pass <code>D2:E91</code> as the <span class="math inline">\(x\)</span> range. The result is identical.</p>
 <p>To predict each instructor’s average directly, use <code>TREND</code> with a new <span class="math inline">\(x\)</span> row for each combination:</p>
 <pre class="excel"><code>=TREND(C2:C91, HSTACK(IF(A2:A91="Sam",1,0), IF(A2:A91="Ben",1,0)), {0,0})  → 197.03
 =TREND(C2:C91, HSTACK(IF(A2:A91="Sam",1,0), IF(A2:A91="Ben",1,0)), {1,0})  → 121.37
@@ -754,7 +755,7 @@ details summary {
 <h3 class="unnumbered anchored" data-anchor-id="reading-the-linest-output">Reading the LINEST Output</h3>
 <p><code>LINEST</code> is an <strong>array function</strong>. Written with both optional arguments set to <code>TRUE</code>, it returns a block of <span class="math inline">\(5\)</span> rows by <span class="math inline">\(k+1\)</span> columns:</p>
 <pre class="excel"><code>=LINEST(y_range, x_range, TRUE, TRUE)</code></pre>
-<p>The third argument asks Excel to estimate an intercept; the fourth asks for the full diagnostics. In current versions of Excel the result <em>spills</em> automatically — type the formula in one cell and press <code>Enter</code>. The block is laid out as follows, for a model with <span class="math inline">\(k\)</span> independent variables:</p>
+<p>The third argument asks Excel to estimate an intercept; the fourth asks for the full diagnostics. In current versions of Excel the result <em>spills</em> automatically: type the formula in one cell and press <code>Enter</code>. The block is laid out as follows, for a model with <span class="math inline">\(k\)</span> independent variables:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 9%">
@@ -804,7 +805,7 @@ details summary {
 </tbody>
 </table>
 <p>Two details matter enormously in practice.</p>
-<p><strong>Row 1 runs backwards.</strong> The coefficients appear in reverse order of your <span class="math inline">\(x\)</span> columns — the <em>last</em> variable first and the intercept <em>last</em>. With one predictor the row is simply <span class="math inline">\(\{\hat{\beta}, \hat{\alpha}\}\)</span>; with two it is <span class="math inline">\(\{\hat{\beta_2}, \hat{\beta_1}, \hat{\beta_0}\}\)</span>. Misreading this is the most common <code>LINEST</code> error.</p>
+<p><strong>Row 1 runs backwards.</strong> The coefficients appear in reverse order of your <span class="math inline">\(x\)</span> columns: the <em>last</em> variable first and the intercept <em>last</em>. With one predictor the row is simply <span class="math inline">\(\{\hat{\beta}, \hat{\alpha}\}\)</span>; with two it is <span class="math inline">\(\{\hat{\beta_2}, \hat{\beta_1}, \hat{\beta_0}\}\)</span>. Misreading this is the most common <code>LINEST</code> error.</p>
 <p><strong>The <span class="math inline">\(x\)</span> range must be one contiguous block.</strong> <code>LINEST</code> will not accept scattered columns. When your independent variables are not side by side, <code>HSTACK</code> joins them into a single array:</p>
 <pre class="excel"><code>=LINEST(B2:B6, HSTACK(C2:C6, F2:F6), TRUE, TRUE)</code></pre>
 <p>To pull a single number out of the block instead of spilling all of it, wrap the call in <code>INDEX(array, row, column)</code>.</p>
@@ -828,7 +829,7 @@ details summary {
 <h3 class="unnumbered anchored" data-anchor-id="multiple-regression-weight-exercise-and-calories">Multiple Regression (Weight, Exercise, and Calories)</h3>
 <p>With <code>Calories</code> in column C, the two independent variables are adjacent, so <code>B2:C6</code> works directly. Using <code>HSTACK</code> makes the intent explicit and keeps the formula correct even if the columns are later moved apart:</p>
 <pre class="excel"><code>=LINEST(A2:A6, HSTACK(B2:B6, C2:C6), TRUE, TRUE)</code></pre>
-<p>The first row of the output is <span class="math inline">\(\{0.069,\ -0.025,\ 83.96\}\)</span> — reading <strong>right to left</strong>, that is an intercept of <span class="math inline">\(83.96\)</span>, a coefficient of <span class="math inline">\(-0.025\)</span> on Exercise, and <span class="math inline">\(0.069\)</span> on Calories, giving</p>
+<p>The first row of the output is <span class="math inline">\(\{0.069,\ -0.025,\ 83.96\}\)</span>. Reading <strong>right to left</strong>, that is an intercept of <span class="math inline">\(83.96\)</span>, a coefficient of <span class="math inline">\(-0.025\)</span> on Exercise, and <span class="math inline">\(0.069\)</span> on Calories, giving</p>
 <p><span class="math display">\[\hat{y_i}=83.96-0.025x+0.069z\]</span></p>
 <p>The remaining diagnostics come from the same block:</p>
 <ul>
@@ -874,7 +875,7 @@ details summary {
 <li><p><code>=HSTACK(range1, range2, ...)</code> joins ranges side by side into a single array, so that non-adjacent independent variables can be passed to <code>LINEST</code> or <code>TREND</code>. It also lets dummy variables be built inline without helper columns.</p></li>
 <li><p><code>=TREND(y_range, x_range, new_x_range, TRUE)</code> returns predicted values of <span class="math inline">\(y\)</span>. Handles simple and multiple regression; <code>new_x_range</code> must match the column layout of <code>x_range</code>.</p></li>
 <li><p><code>=IF(cell="Category", 1, 0)</code> builds a dummy variable, coding each row <span class="math inline">\(1\)</span> when it belongs to a category and <span class="math inline">\(0\)</span> otherwise.</p></li>
-<li><p><code>=AVERAGEIF(range, criteria, average_range)</code> returns the mean of a numerical column for the rows matching a category — a quick way to verify the group means produced by a dummy-variable regression.</p></li>
+<li><p><code>=AVERAGEIF(range, criteria, average_range)</code> returns the mean of a numerical column for the rows matching a category, a quick way to verify the group means produced by a dummy-variable regression.</p></li>
 <li><p><code>=DEVSQ(y_range)</code> returns <span class="math inline">\(SST\)</span> directly, as a check on <span class="math inline">\(SSR+SSE\)</span>.</p></li>
 </ul>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -887,24 +888,150 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>A note on versions.</strong> <code>HSTACK</code> requires Microsoft 365 or Excel 2024. In earlier versions, place the independent variables in adjacent columns and pass the block directly to <code>LINEST</code> and <code>TREND</code> — every other formula in this chapter is unchanged. <code>LINEST</code> and <code>TREND</code> are array formulas: in versions before dynamic arrays, select the full output range first and confirm with <code>Ctrl+Shift+Enter</code>.</p>
+<p><strong>A note on versions.</strong> <code>HSTACK</code> requires Microsoft 365 or Excel 2024. In earlier versions, place the independent variables in adjacent columns and pass the block directly to <code>LINEST</code> and <code>TREND</code>. Every other formula in this chapter is unchanged. <code>LINEST</code> and <code>TREND</code> are array formulas: in versions before dynamic arrays, select the full output range first and confirm with <code>Ctrl+Shift+Enter</code>.</p>
 </div>
 </div>
 </section>
 <section id="chapter-summary-cheat-sheet" class="level2" data-number="7.7">
 <h2 data-number="7.7" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">7.7</span> Chapter Summary Cheat Sheet</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Regression_Line.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">The Regression Line</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · The Line</div><div class="bs-cs-card-title">Regression Line</div><div class="bs-cs-formula">ŷ = <math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">α</mi><mo>^</mo></mover></math> + <math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">β</mi><mo>^</mo></mover></math>x</div><p class="bs-cs-desc">The line that minimizes the sum of squared errors between the observed and predicted values of y.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=LINEST(y, x, TRUE, TRUE)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Steepness</div><div class="bs-cs-card-title">The Slope</div><div class="bs-cs-formula"><math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">β</mi><mo>^</mo></mover></math> = s<sub>xy</sub> / s<sub>x</sub>²</div><p class="bs-cs-desc">Average change in y for a one-unit increase in x.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=INDEX(LINEST(y, x, TRUE, TRUE), 1, 1)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Starting Point</div><div class="bs-cs-card-title">The Intercept</div><div class="bs-cs-formula"><math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">α</mi><mo>^</mo></mover></math> = ȳ − <math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">β</mi><mo>^</mo></mover></math>x̄</div><p class="bs-cs-desc">The predicted value of y when x equals zero.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=INDEX(LINEST(y, x, TRUE, TRUE), 1, 2)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Goodness of Fit</div><div class="bs-cs-card-title">Coefficient of Det.</div><div class="bs-cs-formula">R² = SSR / SST</div><p class="bs-cs-desc">Share of the variation in y explained by the model. SST = SSR + SSE, so R² is between 0 and 1.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=INDEX(LINEST(...), 3, 1)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Many Predictors</div><div class="bs-cs-card-title">Multiple Regression</div><div class="bs-cs-formula">ŷ = <math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">β</mi><mo>^</mo></mover></math>₀ + <math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">β</mi><mo>^</mo></mover></math>₁x₁ + ⋯ + <math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">β</mi><mo>^</mo></mover></math><sub>k</sub>x<sub>k</sub></div><p class="bs-cs-desc">Predicts y with k independent variables. Each coefficient is the change in y for a one-unit change in its variable.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=LINEST(y, HSTACK(x1, x2), TRUE, TRUE)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Explained vs Noise</div><div class="bs-cs-card-title">F-Statistic</div><div class="bs-cs-formula">F = MSR / MSE<br>= (SSR / k) / (SSE / (n − k − 1))</div><p class="bs-cs-desc">Explained variation per variable compared with the noise left over. Values far above 1 point to a real pattern.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=INDEX(LINEST(...), 4, 1)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">07 · Penalized Fit</div><div class="bs-cs-card-title">Adjusted R²</div><div class="bs-cs-formula">R̄² = 1 − (1 − R²)(n − 1) / (n − k − 1)</div><p class="bs-cs-desc">Adjusts R² for the number of variables, so adding weak predictors is not rewarded.</p><div class="bs-excel"><span class="lbl">Example</span><span>R² = 0.96, n = 5, k = 2 → R̄² = 0.92</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">08 · Typical Error</div><div class="bs-cs-card-title">Residual Std. Error</div><div class="bs-cs-formula">s<sub>e</sub> = √[ SSE / (n − k − 1) ]</div><p class="bs-cs-desc">Typical distance of the data points from the regression line, in the units of y.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=INDEX(LINEST(...), 3, 2)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">09 · Categories</div><div class="bs-cs-card-title">Dummy Variables</div><div class="bs-cs-formula">d = 1 if in the category, 0 otherwise</div><p class="bs-cs-desc">With m categories use m − 1 dummies. The intercept is the baseline mean; each coefficient is a gap from it.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=IF(A2="Sam", 1, 0)</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>ŷ</dt><dd>Predicted value of y</dd></div>
+      <div class="bs-cs-row"><dt><math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">α</mi><mo>^</mo></mover></math>, <math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">β</mi><mo>^</mo></mover></math></dt><dd>Intercept, slope</dd></div>
+      <div class="bs-cs-row"><dt>SST</dt><dd>Total variation in y</dd></div>
+      <div class="bs-cs-row"><dt>SSR, SSE</dt><dd>Explained, unexplained variation</dd></div>
+      <div class="bs-cs-row"><dt>MSR, MSE</dt><dd>SSR / k, SSE / (n − k − 1)</dd></div>
+      <div class="bs-cs-row"><dt>n, k</dt><dd>Sample size, # of variables</dd></div>
+      <div class="bs-cs-row"><dt>R̄²</dt><dd>Adjusted R²</dd></div>
+      <div class="bs-cs-row"><dt>d</dt><dd>Dummy variable</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>SST equals?</dt><dd>SSR + SSE</dd></div>
+      <div class="bs-cs-row"><dt>LINEST row 1 order?</dt><dd>Reversed, intercept last</dd></div>
+      <div class="bs-cs-row"><dt>Non-adjacent x columns?</dt><dd>=HSTACK(...)</dd></div>
+      <div class="bs-cs-row"><dt>Predict in Excel?</dt><dd>=TREND(y, x, new_x)</dd></div>
+      <div class="bs-cs-row"><dt>F close to 1?</dt><dd>Explains no more than noise</dd></div>
+      <div class="bs-cs-row"><dt>Adjusted R² does what?</dt><dd>Penalizes extra variables</dd></div>
+      <div class="bs-cs-row"><dt>Dummy regression intercept?</dt><dd>Baseline group mean</dd></div>
+    </dl></div>
+  </div>
+</section>
+</section>
+<section id="check-your-understanding" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">7.8</span> Check Your Understanding</h2>
+<p>Test the main ideas of the chapter before moving on to the exercises. <span>Pick an answer to see whether you are right and why.</span></p>
+<div class="bs-quiz">
+<p>A regression of weekly sales (in units) on the number of sales reps gives <span class="math inline">\(\hat{y}=20+3x\)</span>. How do you interpret the <span class="math inline">\(3\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">With no sales reps, the store sells <span class="math inline">\(3\)</span> units</label></li>
+<li><label><input type="checkbox" checked="">Each additional sales rep is associated with <span class="math inline">\(3\)</span> more units sold per week, on average</label></li>
+<li><label><input type="checkbox">The model explains <span class="math inline">\(3\%\)</span> of the variation in sales</label></li>
+<li><label><input type="checkbox">Sales are always <span class="math inline">\(3\)</span> units higher than the number of reps</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The slope is the average change in <span class="math inline">\(y\)</span> for a one-unit increase in <span class="math inline">\(x\)</span>. The intercept, <span class="math inline">\(20\)</span>, is the predicted sales when <span class="math inline">\(x=0\)</span>.</p>
 </div>
+</div>
+<div class="bs-quiz">
+<p>Using the regression line <span class="math inline">\(\hat{y}=1.5+2.2x\)</span> from the advertisement example, what is the predicted price when the advertisement budget is <span class="math inline">\(5\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(11\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(13.7\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(3.7\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(12.5\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(\hat{y}=1.5+2.2(5)=1.5+11=12.5\)</span>.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A data set has <span class="math inline">\(s_{xy}=6\)</span>, <span class="math inline">\(s_x^2=2\)</span>, <span class="math inline">\(\bar{x}=4\)</span>, and <span class="math inline">\(\bar{y}=15\)</span>. What is the intercept of the regression line?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked=""><span class="math inline">\(3\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(15\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(12\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(-3\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>First the slope: <span class="math inline">\(\hat{\beta}=6/2=3\)</span>. Then <span class="math inline">\(\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}=15-3(4)=3\)</span>.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A regression has <span class="math inline">\(SST=50\)</span> and <span class="math inline">\(SSE=10\)</span>. What is <span class="math inline">\(R^2\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(0.20\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.25\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(0.80\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(40\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>Since <span class="math inline">\(SST=SSR+SSE\)</span>, <span class="math inline">\(SSR=50-10=40\)</span>. Then <span class="math inline">\(R^2=SSR/SST=40/50=0.80\)</span>.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A model with <span class="math inline">\(k=2\)</span> variables and <span class="math inline">\(n=13\)</span> observations has <span class="math inline">\(SSR=60\)</span> and <span class="math inline">\(SSE=20\)</span>. What is the F-statistic?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked=""><span class="math inline">\(15\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(3\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(1.5\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(30\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(MSR=60/2=30\)</span> and <span class="math inline">\(MSE=20/(13-2-1)=2\)</span>, so <span class="math inline">\(F=30/2=15\)</span>. The variables explain far more than the noise left over.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A regression produces an F-statistic close to <span class="math inline">\(1\)</span>. What does that suggest?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">The model fits the data perfectly</label></li>
+<li><label><input type="checkbox"><span class="math inline">\(R^2\)</span> must equal <span class="math inline">\(1\)</span></label></li>
+<li><label><input type="checkbox">The intercept is equal to <span class="math inline">\(1\)</span></label></li>
+<li><label><input type="checkbox" checked="">The variables explain about as much as random noise would</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(F\)</span> compares the variation explained per variable (<span class="math inline">\(MSR\)</span>) with the noise per remaining observation (<span class="math inline">\(MSE\)</span>). A value near <span class="math inline">\(1\)</span> means the variables add little beyond noise. The further <span class="math inline">\(F\)</span> is above <span class="math inline">\(1\)</span>, the stronger the pattern.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Why do we report the adjusted <span class="math inline">\(R^2\)</span> for a multiple regression?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">It is always larger than <span class="math inline">\(R^2\)</span></label></li>
+<li><label><input type="checkbox" checked="">It penalizes the model for adding variables that explain little</label></li>
+<li><label><input type="checkbox">It measures the typical distance of the points from the line</label></li>
+<li><label><input type="checkbox">It equals the squared correlation between <span class="math inline">\(x\)</span> and <span class="math inline">\(y\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>Adding a variable never lowers <span class="math inline">\(R^2\)</span>, even if the variable is useless. The adjusted <span class="math inline">\(R^2\)</span> scales the unexplained part by <span class="math inline">\((n-1)/(n-k-1)\)</span>, so weak variables can make it fall.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A coffee shop regresses daily sales on a dummy <span class="math inline">\(d\)</span> that equals <span class="math inline">\(1\)</span> on weekends and <span class="math inline">\(0\)</span> on weekdays: <span class="math inline">\(\hat{y}=50+8d\)</span>. What are the average daily sales?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(8\)</span> on weekends and <span class="math inline">\(50\)</span> on weekdays</label></li>
+<li><label><input type="checkbox"><span class="math inline">\(58\)</span> on weekdays and <span class="math inline">\(50\)</span> on weekends</label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(50\)</span> on weekdays and <span class="math inline">\(58\)</span> on weekends</label></li>
+<li><label><input type="checkbox"><span class="math inline">\(50\)</span> on both, since <span class="math inline">\(8\)</span> is the error</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The intercept is the mean of the baseline group (weekdays, <span class="math inline">\(d=0\)</span>). The slope is the difference between the groups, so weekends average <span class="math inline">\(50+8=58\)</span>.</p>
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="7.8">
-<h2 data-number="7.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.8</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">7.9</span> Exercises</h2>
 <p>The following exercises will help you get practice on Regression Line estimation and interpretation. In particular, the exercises work on:</p>
 <ul>
 <li>Estimating the slope and intercept.</li>
@@ -1113,7 +1240,7 @@ Answer
 <ul>
 <li><code>=AVERAGE(C2:C81)</code> → <span class="math inline">\(0.3625\)</span></li>
 </ul>
-<p><em>You can also skip the helper column entirely — the same proportion is</em> <code>=AVERAGE(IF(A2:A81="Yes",1,0))</code>.</p>
+<p><em>You can also skip the helper column entirely; the same proportion is</em> <code>=AVERAGE(IF(A2:A81="Yes",1,0))</code>.</p>
 </div>
 </details>
 <ol start="2" type="1">
@@ -1124,7 +1251,7 @@ Answer
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>The intercept (</em><span class="math inline">\(\approx 6473\)</span>) is the average food expenditure of individuals without homes. The slope (<span class="math inline">\(\approx -3418\)</span>) is the difference in food expenditure between individuals who own a home and those who do not — home owners spend about <span class="math inline">\(\$3,418\)</span> less on food than non-owners.</p>
+<p><em>The intercept (</em><span class="math inline">\(\approx 6473\)</span>) is the average food expenditure of individuals without homes. The slope (<span class="math inline">\(\approx -3418\)</span>) is the difference in food expenditure between individuals who own a home and those who do not: home owners spend about <span class="math inline">\(\$3,418\)</span> less on food than non-owners.</p>
 <p><em>In Excel, with <code>Food</code> in column B and the dummy in column C:</em></p>
 <pre class="excel"><code>=LINEST(B2:B81, C2:C81, TRUE, TRUE)</code></pre>
 <ul>
@@ -1146,7 +1273,7 @@ Answer
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>The regression line is</em> <span class="math inline">\(\widehat{dummy}=1.432-0.000204\,Food\)</span>. This is a linear probability model: it predicts the likelihood of owning a home from food expenditure. The slope tells us how that likelihood changes as food expenditure increases by one dollar — in general, the likelihood of owning a home decreases as food expenditure increases. The scatter plot shows that most home owners have food expenditures below <span class="math inline">\(\$6,000\)</span>, while non-owners are mostly above it.</p>
+<p><em>The regression line is</em> <span class="math inline">\(\widehat{dummy}=1.432-0.000204\,Food\)</span>. This is a linear probability model: it predicts the likelihood of owning a home from food expenditure. The slope tells us how that likelihood changes as food expenditure increases by one dollar. In general, the likelihood of owning a home decreases as food expenditure increases. The scatter plot shows that most home owners have food expenditures below <span class="math inline">\(\$6,000\)</span>, while non-owners are mostly above it.</p>
 <p><em>In Excel, with the dummy in column C and <code>Food</code> in column B:</em></p>
 <ul>
 <li><code>=INDEX(LINEST(C2:C81,B2:B81,TRUE,TRUE),1,2)</code> → intercept <span class="math inline">\(= 1.432\)</span></li>
@@ -1198,7 +1325,7 @@ Answer
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>After looking at the scatter plot, it seems unlikely that the population in Japan will hit</em> <span class="math inline">\(140\)</span> million. In the most recent years the population has been decreasing, so the straight-line trend overstates the future population — the prediction should be treated with caution.</p>
+<p><em>After looking at the scatter plot, it seems unlikely that the population in Japan will hit</em> <span class="math inline">\(140\)</span> million. In the most recent years the population has been decreasing, so the straight-line trend overstates the future population, so the prediction should be treated with caution.</p>
 <p><em>In Excel, select the <code>Year</code> and <code>Population</code> columns for Japan, go to <code>Insert → Charts → Scatter</code>, and add a linear trend line by right-clicking a point and choosing <code>Add Trendline → Linear</code>.</em></p>
 </div>
 </details>
@@ -1799,6 +1926,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </footer>
 <script src="assets/book.js"></script>
+<script src="assets/quiz.js"></script>
 
 
 

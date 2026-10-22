@@ -1,0 +1,37 @@
+```{=html}
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">The Regression Line</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · The Line</div><div class="bs-cs-card-title">Regression Line</div><div class="bs-cs-formula">ŷ = <math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">α</mi><mo>^</mo></mover></math> + <math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">β</mi><mo>^</mo></mover></math>x</div><p class="bs-cs-desc">The line that minimizes the sum of squared errors between the observed and predicted values of y.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=LINEST(y, x, TRUE, TRUE)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Steepness</div><div class="bs-cs-card-title">The Slope</div><div class="bs-cs-formula"><math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">β</mi><mo>^</mo></mover></math> = s<sub>xy</sub> / s<sub>x</sub>²</div><p class="bs-cs-desc">Average change in y for a one-unit increase in x.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=INDEX(LINEST(y, x, TRUE, TRUE), 1, 1)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Starting Point</div><div class="bs-cs-card-title">The Intercept</div><div class="bs-cs-formula"><math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">α</mi><mo>^</mo></mover></math> = ȳ − <math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">β</mi><mo>^</mo></mover></math>x̄</div><p class="bs-cs-desc">The predicted value of y when x equals zero.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=INDEX(LINEST(y, x, TRUE, TRUE), 1, 2)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Goodness of Fit</div><div class="bs-cs-card-title">Coefficient of Det.</div><div class="bs-cs-formula">R² = SSR / SST</div><p class="bs-cs-desc">Share of the variation in y explained by the model. SST = SSR + SSE, so R² is between 0 and 1.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=INDEX(LINEST(...), 3, 1)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Many Predictors</div><div class="bs-cs-card-title">Multiple Regression</div><div class="bs-cs-formula">ŷ = <math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">β</mi><mo>^</mo></mover></math>₀ + <math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">β</mi><mo>^</mo></mover></math>₁x₁ + ⋯ + <math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">β</mi><mo>^</mo></mover></math><sub>k</sub>x<sub>k</sub></div><p class="bs-cs-desc">Predicts y with k independent variables. Each coefficient is the change in y for a one-unit change in its variable.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=LINEST(y, HSTACK(x1, x2), TRUE, TRUE)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Explained vs Noise</div><div class="bs-cs-card-title">F-Statistic</div><div class="bs-cs-formula">F = MSR / MSE<br/>= (SSR / k) / (SSE / (n − k − 1))</div><p class="bs-cs-desc">Explained variation per variable compared with the noise left over. Values far above 1 point to a real pattern.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=INDEX(LINEST(...), 4, 1)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">07 · Penalized Fit</div><div class="bs-cs-card-title">Adjusted R²</div><div class="bs-cs-formula">R̄² = 1 − (1 − R²)(n − 1) / (n − k − 1)</div><p class="bs-cs-desc">Adjusts R² for the number of variables, so adding weak predictors is not rewarded.</p><div class="bs-excel"><span class="lbl">Example</span><span>R² = 0.96, n = 5, k = 2 → R̄² = 0.92</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">08 · Typical Error</div><div class="bs-cs-card-title">Residual Std. Error</div><div class="bs-cs-formula">s<sub>e</sub> = √[ SSE / (n − k − 1) ]</div><p class="bs-cs-desc">Typical distance of the data points from the regression line, in the units of y.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=INDEX(LINEST(...), 3, 2)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">09 · Categories</div><div class="bs-cs-card-title">Dummy Variables</div><div class="bs-cs-formula">d = 1 if in the category, 0 otherwise</div><p class="bs-cs-desc">With m categories use m − 1 dummies. The intercept is the baseline mean; each coefficient is a gap from it.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=IF(A2="Sam", 1, 0)</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>ŷ</dt><dd>Predicted value of y</dd></div>
+      <div class="bs-cs-row"><dt><math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">α</mi><mo>^</mo></mover></math>, <math style="font-family:inherit"><mover accent="true"><mi mathvariant="normal">β</mi><mo>^</mo></mover></math></dt><dd>Intercept, slope</dd></div>
+      <div class="bs-cs-row"><dt>SST</dt><dd>Total variation in y</dd></div>
+      <div class="bs-cs-row"><dt>SSR, SSE</dt><dd>Explained, unexplained variation</dd></div>
+      <div class="bs-cs-row"><dt>MSR, MSE</dt><dd>SSR / k, SSE / (n − k − 1)</dd></div>
+      <div class="bs-cs-row"><dt>n, k</dt><dd>Sample size, # of variables</dd></div>
+      <div class="bs-cs-row"><dt>R̄²</dt><dd>Adjusted R²</dd></div>
+      <div class="bs-cs-row"><dt>d</dt><dd>Dummy variable</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>SST equals?</dt><dd>SSR + SSE</dd></div>
+      <div class="bs-cs-row"><dt>LINEST row 1 order?</dt><dd>Reversed, intercept last</dd></div>
+      <div class="bs-cs-row"><dt>Non-adjacent x columns?</dt><dd>=HSTACK(...)</dd></div>
+      <div class="bs-cs-row"><dt>Predict in Excel?</dt><dd>=TREND(y, x, new_x)</dd></div>
+      <div class="bs-cs-row"><dt>F close to 1?</dt><dd>Explains no more than noise</dd></div>
+      <div class="bs-cs-row"><dt>Adjusted R² does what?</dt><dd>Penalizes extra variables</dd></div>
+      <div class="bs-cs-row"><dt>Dummy regression intercept?</dt><dd>Baseline group mean</dd></div>
+    </dl></div>
+  </div>
+</section>
+```

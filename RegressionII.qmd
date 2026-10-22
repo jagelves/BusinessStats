@@ -15,11 +15,11 @@ details summary {
 
 # Regression II
 
-Quantifying relationships between variables is an important skill in business analytics. The regression line, representing the best linear fit between two variables, enables businesses to make predictions, identify trends, and optimize strategies using data-driven insights. Understanding how to calculate and interpret a regression line provides the foundation for analyzing business relationships, such as the effect of advertising on sales or customer satisfaction on revenue. Below, we delve into generating and analyzing a regression line. Fitting a line is a descriptive act — a compact summary of how the data behave — but it is also the model whose reliability we will later test in the inference chapters, once we ask how much a different sample might have shifted it.
+Quantifying relationships between variables is an important skill in business analytics. The regression line, representing the best linear fit between two variables, enables businesses to make predictions, identify trends, and optimize strategies using data-driven insights. Understanding how to calculate and interpret a regression line provides the foundation for analyzing business relationships, such as the effect of advertising on sales or customer satisfaction on revenue. Below, we delve into generating and analyzing a regression line. Fitting a line is a descriptive act, a compact summary of how the data behave, but it is also the model whose reliability we will later test in the inference chapters, once we ask how much a different sample might have shifted it.
 
 ## The Regression Line
 
-The regression line is calculated to minimize the average distance (or errors) between the line and the observed data points. It is defined by two key components: a **slope** ($\hat{\beta}$) and an **intercept** ($\hat{\alpha}$). Mathematically, the regression line is expressed as:
+The regression line is calculated to minimize the sum of the squared distances (or errors) between the line and the observed data points. It is defined by two key components: a **slope** ($\hat{\beta}$) and an **intercept** ($\hat{\alpha}$). Mathematically, the regression line is expressed as:
 
 ::: callout-formula
 **THE REGRESSION LINE** $$\hat{y_i}=\hat{\alpha}+\hat{\beta}x_i$$ where $\hat{y_i}$ are the predicted values of $y$ given $x_i$, $\hat{\alpha}$ is the intercept, and $\hat{\beta}$ is the slope.
@@ -31,7 +31,7 @@ The **slope** determines the steepness of the line and quantifies how much a uni
 **THE SLOPE** $$\hat{\beta}= \frac{s_{xy}}{s_{x}^2}$$ where $s_{xy}$ is the sample covariance between $x$ and $y$, and $s_x^2$ is the sample variance of $x$.
 :::
 
-The **intercept** determines where the line crosses the $y$ axis — the predicted value of $y$ when $x$ is zero. Once the slope is estimated, the intercept is calculated by:
+The **intercept** determines where the line crosses the $y$ axis: the predicted value of $y$ when $x$ is zero. Once the slope is estimated, the intercept is calculated by:
 
 ::: callout-formula
 **THE INTERCEPT** $$\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}$$ where $\bar{y}$ is the mean of $y$ and $\bar{x}$ is the mean of $x$.
@@ -52,23 +52,23 @@ The data shows a clear direct relationship between advertisement and price. Regr
 1.  **Effectiveness:** How much can we increase the price for every additional dollar spent on advertisement?
 2.  **Prediction:** What is the predicted price if we have a budget of $6$ for advertisement?
 
-**Step 1 — Calculate the slope:** Given that the covariance is $s_{xy}=3.67$ and the variance of $x$ is $s_x^2=1.67$:
+**Step 1: Calculate the slope:** Given that the covariance is $s_{xy}=3.67$ and the variance of $x$ is $s_x^2=1.67$:
 
 $$\hat{\beta}= \frac{3.67}{1.67}=2.2$$
 
 For every additional dollar spent on advertisement, price increases by $2.2$ on average.
 
-**Step 2 — Calculate the intercept:** Since $\bar{x}=2.5$ and $\bar{y}=7$:
+**Step 2: Calculate the intercept:** Since $\bar{x}=2.5$ and $\bar{y}=7$:
 
 $$\hat{\alpha}=7-2.2(2.5)=1.5$$
 
 If we do not advertise, the predicted price is $1.5$.
 
-**Step 3 — Write the regression line:**
+**Step 3: Write the regression line:**
 
 $$\hat{y_i}=1.5+2.2x_i$$
 
-**Step 4 — Make a prediction:** With an advertisement budget of $6$:
+**Step 4: Make a prediction:** With an advertisement budget of $6$:
 
 $$\hat{y_i}=1.5+2.2(6)=14.7$$
 
@@ -88,9 +88,9 @@ The **coefficient of determination** or $R^2$ is the percent of the variation in
 
 where:
 
-- $SST = \sum(y_i-\bar{y})^2$ — total variation in $y$
-- $SSR = \sum(\hat{y_i}-\bar{y})^2$ — variation explained by the model
-- $SSE = \sum(y_i-\hat{y_i})^2$ — variation unexplained by the model
+- $SST = \sum(y_i-\bar{y})^2$: total variation in $y$
+- $SSR = \sum(\hat{y_i}-\bar{y})^2$: variation explained by the model
+- $SSE = \sum(y_i-\hat{y_i})^2$: variation unexplained by the model
 - $SST = SSR + SSE$
 
 $R^2$ is always between $[0,1]$.
@@ -149,7 +149,7 @@ The multiple regression line estimated by computer software is:
 
 $$\hat{y_i}=83.96-0.025x+0.069z$$
 
-Two conclusions follow from this result. First, as exercise increases weight tends to go down, while more calories increases weight. Second, reducing calorie consumption by $1$ unit decreases weight by $0.069$ pounds, whereas one additional minute of exercise only reduces weight by $0.025$ pounds — making calorie reduction more effective per unit.
+Two conclusions follow from this result. First, as exercise increases weight tends to go down, while more calories increases weight. Second, reducing calorie consumption by $1$ unit decreases weight by $0.069$ pounds, whereas one additional minute of exercise only reduces weight by $0.025$ pounds, making calorie reduction more effective per unit.
 :::
 
 ### Anova {.unnumbered}
@@ -233,7 +233,7 @@ The smaller residual standard error confirms that adding Calories improves the m
 
 ## Regression with Dummy Variables
 
-So far every predictor has been numerical. But many of the variables we care about in business are **categorical** — the brand of a product, whether a customer churned, the gender of a respondent, or the instructor teaching a class. Regression can use these variables too, once we encode them as numbers. The tool for doing so is the **dummy variable**.
+So far every predictor has been numerical. But many of the variables we care about in business are **categorical**: the brand of a product, whether a customer churned, the gender of a respondent, or the instructor teaching a class. Regression can use these variables too, once we encode them as numbers. The tool for doing so is the **dummy variable**.
 
 ::: callout-formula
 **THE DUMMY VARIABLE** $$d_i = \begin{cases} 1 & \text{if observation } i \text{ is in the category} \\ 0 & \text{otherwise} \end{cases}$$ A dummy (or *indicator*) variable equals $1$ when an observation belongs to a particular category and $0$ when it does not.
@@ -245,12 +245,12 @@ So far every predictor has been numerical. But many of the variables we care abo
 **A DUMMY AND THE GROUP MEANS** $$\hat{\beta_0}=\bar{y}_{0} \qquad \hat{\beta_1}=\bar{y}_{1}-\bar{y}_{0}$$ The intercept is the mean of the **baseline** group (the one coded $0$), and the slope is the *difference* between the two group means.
 :::
 
-In other words, regressing a variable on a single dummy is just another way of computing a difference of means — the slope *is* that difference.
+In other words, regressing a variable on a single dummy is just another way of computing a difference of means. The slope *is* that difference.
 
-**More than two categories.** When a categorical variable has $k$ categories, we create $k-1$ dummies and leave one category out to act as the **baseline** (or reference). Each remaining dummy's coefficient measures the gap between its category's mean and the baseline mean. We never include a dummy for *every* category alongside an intercept — doing so makes the columns perfectly collinear (the **dummy variable trap**), and the regression cannot be estimated.
+**More than two categories.** When a categorical variable has $k$ categories, we create $k-1$ dummies and leave one category out to act as the **baseline** (or reference). Each remaining dummy's coefficient measures the gap between its category's mean and the baseline mean. We never include a dummy for *every* category alongside an intercept. Doing so makes the columns perfectly collinear (the **dummy variable trap**), and the regression cannot be estimated.
 
 ::: callout-example
-**Example:** The **Spin** data set records $90$ spin classes taught by three instructors — Olivia, Sam, and Ben — along with `Total_kj`, the total energy (in kilojoules) burned during each class. We want each instructor's average energy output.
+**Example:** The **Spin** data set records $90$ spin classes taught by three instructors (Olivia, Sam, and Ben) along with `Total_kj`, the total energy (in kilojoules) burned during each class. We want each instructor's average energy output.
 
 Because there are three instructors, we build two dummies and let **Olivia** be the baseline:
 
@@ -269,7 +269,7 @@ Reading off each instructor's predicted (average) energy:
 |        Sam        |  $1$  |  $0$  | $197.03-75.67=121.37$ |    $121.37$     |
 |        Ben        |  $0$  |  $1$  | $197.03+27.90=224.93$ |    $224.93$     |
 
-The predictions land exactly on the three group averages. The intercept is Olivia's mean; the coefficient on $Sam$ ($-75.67$) says Sam's classes burn about $75.67$ kJ *less* than Olivia's on average, and the coefficient on $Ben$ ($+27.90$) says Ben's burn about $27.90$ kJ *more*. Regression with dummy variables has reproduced the group means — and, as a bonus, reported how far each group sits from the baseline.
+The predictions land exactly on the three group averages. The intercept is Olivia's mean; the coefficient on $Sam$ ($-75.67$) says Sam's classes burn about $75.67$ kJ *less* than Olivia's on average, and the coefficient on $Ben$ ($+27.90$) says Ben's burn about $27.90$ kJ *more*. Regression with dummy variables has reproduced the group means and, as a bonus, reported how far each group sits from the baseline.
 :::
 
 ### Dummy Variables in Excel {.unnumbered}
@@ -290,7 +290,7 @@ Remember that `LINEST` returns the coefficients **in reverse order**. Because we
 |  Col 2   |  $-75.67$   | coefficient on $Sam$  |
 |  Col 3   |  $197.03$   | intercept (Olivia)    |
 
-If you prefer helper columns, put the two `IF` formulas in columns D and E and pass `D2:E91` as the $x$ range — the result is identical.
+If you prefer helper columns, put the two `IF` formulas in columns D and E and pass `D2:E91` as the $x$ range. The result is identical.
 
 To predict each instructor's average directly, use `TREND` with a new $x$ row for each combination:
 
@@ -322,7 +322,7 @@ Excel estimates regressions through three worksheet functions. `LINEST` fits the
 =LINEST(y_range, x_range, TRUE, TRUE)
 ```
 
-The third argument asks Excel to estimate an intercept; the fourth asks for the full diagnostics. In current versions of Excel the result *spills* automatically — type the formula in one cell and press `Enter`. The block is laid out as follows, for a model with $k$ independent variables:
+The third argument asks Excel to estimate an intercept; the fourth asks for the full diagnostics. In current versions of Excel the result *spills* automatically: type the formula in one cell and press `Enter`. The block is laid out as follows, for a model with $k$ independent variables:
 
 |  Row  |        Column 1         |       Column 2        | Remaining columns |
 |:-----:|:-----------------------:|:---------------------:|:-----------------:|
@@ -334,7 +334,7 @@ The third argument asks Excel to estimate an intercept; the fourth asks for the 
 
 Two details matter enormously in practice.
 
-**Row 1 runs backwards.** The coefficients appear in reverse order of your $x$ columns — the *last* variable first and the intercept *last*. With one predictor the row is simply $\{\hat{\beta}, \hat{\alpha}\}$; with two it is $\{\hat{\beta_2}, \hat{\beta_1}, \hat{\beta_0}\}$. Misreading this is the most common `LINEST` error.
+**Row 1 runs backwards.** The coefficients appear in reverse order of your $x$ columns: the *last* variable first and the intercept *last*. With one predictor the row is simply $\{\hat{\beta}, \hat{\alpha}\}$; with two it is $\{\hat{\beta_2}, \hat{\beta_1}, \hat{\beta_0}\}$. Misreading this is the most common `LINEST` error.
 
 **The $x$ range must be one contiguous block.** `LINEST` will not accept scattered columns. When your independent variables are not side by side, `HSTACK` joins them into a single array:
 
@@ -371,7 +371,7 @@ With `Calories` in column C, the two independent variables are adjacent, so `B2:
 =LINEST(A2:A6, HSTACK(B2:B6, C2:C6), TRUE, TRUE)
 ```
 
-The first row of the output is $\{0.069,\ -0.025,\ 83.96\}$ — reading **right to left**, that is an intercept of $83.96$, a coefficient of $-0.025$ on Exercise, and $0.069$ on Calories, giving
+The first row of the output is $\{0.069,\ -0.025,\ 83.96\}$. Reading **right to left**, that is an intercept of $83.96$, a coefficient of $-0.025$ on Exercise, and $0.069$ on Calories, giving
 
 $$\hat{y_i}=83.96-0.025x+0.069z$$
 
@@ -442,19 +442,134 @@ Below is a list of the Excel functions used in this section:
 
 - `=IF(cell="Category", 1, 0)` builds a dummy variable, coding each row $1$ when it belongs to a category and $0$ otherwise.
 
-- `=AVERAGEIF(range, criteria, average_range)` returns the mean of a numerical column for the rows matching a category — a quick way to verify the group means produced by a dummy-variable regression.
+- `=AVERAGEIF(range, criteria, average_range)` returns the mean of a numerical column for the rows matching a category, a quick way to verify the group means produced by a dummy-variable regression.
 
 - `=DEVSQ(y_range)` returns $SST$ directly, as a check on $SSR+SSE$.
 
 ::: callout-note
-**A note on versions.** `HSTACK` requires Microsoft 365 or Excel 2024. In earlier versions, place the independent variables in adjacent columns and pass the block directly to `LINEST` and `TREND` — every other formula in this chapter is unchanged. `LINEST` and `TREND` are array formulas: in versions before dynamic arrays, select the full output range first and confirm with `Ctrl+Shift+Enter`.
+**A note on versions.** `HSTACK` requires Microsoft 365 or Excel 2024. In earlier versions, place the independent variables in adjacent columns and pass the block directly to `LINEST` and `TREND`. Every other formula in this chapter is unchanged. `LINEST` and `TREND` are array formulas: in versions before dynamic arrays, select the full output range first and confirm with `Ctrl+Shift+Enter`.
 :::
 
 ## Chapter Summary Cheat Sheet
 
+::: {.content-visible when-format="html"}
+{{< include cheatsheets/_RegressionII.qmd >}}
+:::
+
+::: {.content-visible when-format="pdf"}
 ```{r echo=FALSE, out.width="100%", fig.align='center'}
 knitr::include_graphics("images/Regression_Line.png")
 ```
+:::
+
+## Check Your Understanding
+
+Test the main ideas of the chapter before moving on to the exercises. [Pick an answer to see whether you are right and why.]{.content-visible when-format="html"}[Each answer, with an explanation, is in the answer key at the end of the book.]{.content-visible when-format="pdf"}
+
+:::: bs-quiz
+A regression of weekly sales (in units) on the number of sales reps gives $\hat{y}=20+3x$. How do you interpret the $3$?
+
+- [ ] With no sales reps, the store sells $3$ units
+- [x] Each additional sales rep is associated with $3$ more units sold per week, on average
+- [ ] The model explains $3\%$ of the variation in sales
+- [ ] Sales are always $3$ units higher than the number of reps
+
+::: bs-quiz-why
+The slope is the average change in $y$ for a one-unit increase in $x$. The intercept, $20$, is the predicted sales when $x=0$.
+:::
+::::
+
+:::: bs-quiz
+Using the regression line $\hat{y}=1.5+2.2x$ from the advertisement example, what is the predicted price when the advertisement budget is $5$?
+
+- [ ] $11$
+- [ ] $13.7$
+- [ ] $3.7$
+- [x] $12.5$
+
+::: bs-quiz-why
+$\hat{y}=1.5+2.2(5)=1.5+11=12.5$.
+:::
+::::
+
+:::: bs-quiz
+A data set has $s_{xy}=6$, $s_x^2=2$, $\bar{x}=4$, and $\bar{y}=15$. What is the intercept of the regression line?
+
+- [x] $3$
+- [ ] $15$
+- [ ] $12$
+- [ ] $-3$
+
+::: bs-quiz-why
+First the slope: $\hat{\beta}=6/2=3$. Then $\hat{\alpha}=\bar{y}-\hat{\beta}\bar{x}=15-3(4)=3$.
+:::
+::::
+
+:::: bs-quiz
+A regression has $SST=50$ and $SSE=10$. What is $R^2$?
+
+- [ ] $0.20$
+- [ ] $0.25$
+- [x] $0.80$
+- [ ] $40$
+
+::: bs-quiz-why
+Since $SST=SSR+SSE$, $SSR=50-10=40$. Then $R^2=SSR/SST=40/50=0.80$.
+:::
+::::
+
+:::: bs-quiz
+A model with $k=2$ variables and $n=13$ observations has $SSR=60$ and $SSE=20$. What is the F-statistic?
+
+- [x] $15$
+- [ ] $3$
+- [ ] $1.5$
+- [ ] $30$
+
+::: bs-quiz-why
+$MSR=60/2=30$ and $MSE=20/(13-2-1)=2$, so $F=30/2=15$. The variables explain far more than the noise left over.
+:::
+::::
+
+:::: bs-quiz
+A regression produces an F-statistic close to $1$. What does that suggest?
+
+- [ ] The model fits the data perfectly
+- [ ] $R^2$ must equal $1$
+- [ ] The intercept is equal to $1$
+- [x] The variables explain about as much as random noise would
+
+::: bs-quiz-why
+$F$ compares the variation explained per variable ($MSR$) with the noise per remaining observation ($MSE$). A value near $1$ means the variables add little beyond noise. The further $F$ is above $1$, the stronger the pattern.
+:::
+::::
+
+:::: bs-quiz
+Why do we report the adjusted $R^2$ for a multiple regression?
+
+- [ ] It is always larger than $R^2$
+- [x] It penalizes the model for adding variables that explain little
+- [ ] It measures the typical distance of the points from the line
+- [ ] It equals the squared correlation between $x$ and $y$
+
+::: bs-quiz-why
+Adding a variable never lowers $R^2$, even if the variable is useless. The adjusted $R^2$ scales the unexplained part by $(n-1)/(n-k-1)$, so weak variables can make it fall.
+:::
+::::
+
+:::: bs-quiz
+A coffee shop regresses daily sales on a dummy $d$ that equals $1$ on weekends and $0$ on weekdays: $\hat{y}=50+8d$. What are the average daily sales?
+
+- [ ] $8$ on weekends and $50$ on weekdays
+- [ ] $58$ on weekdays and $50$ on weekends
+- [x] $50$ on weekdays and $58$ on weekends
+- [ ] $50$ on both, since $8$ is the error
+
+::: bs-quiz-why
+The intercept is the mean of the baseline group (weekdays, $d=0$). The slope is the difference between the groups, so weekends average $50+8=58$.
+:::
+::::
+
 
 ## Exercises
 
@@ -618,7 +733,7 @@ You will need the **FoodSpend** data set to answer this question. You can downlo
 
 - `=AVERAGE(C2:C81)` → $0.3625$
 
-*You can also skip the helper column entirely — the same proportion is* `=AVERAGE(IF(A2:A81="Yes",1,0))`.
+*You can also skip the helper column entirely; the same proportion is* `=AVERAGE(IF(A2:A81="Yes",1,0))`.
 :::
 
 </details>
@@ -630,7 +745,7 @@ You will need the **FoodSpend** data set to answer this question. You can downlo
 <summary>Answer</summary>
 
 ::: {style="padding-left: 1.5em;"}
-*The intercept (*$\approx 6473$) is the average food expenditure of individuals without homes. The slope ($\approx -3418$) is the difference in food expenditure between individuals who own a home and those who do not — home owners spend about $\$3,418$ less on food than non-owners.
+*The intercept (*$\approx 6473$) is the average food expenditure of individuals without homes. The slope ($\approx -3418$) is the difference in food expenditure between individuals who own a home and those who do not: home owners spend about $\$3,418$ less on food than non-owners.
 
 *In Excel, with `Food` in column B and the dummy in column C:*
 
@@ -656,7 +771,7 @@ You will need the **FoodSpend** data set to answer this question. You can downlo
 <summary>Answer</summary>
 
 ::: {style="padding-left: 1.5em;"}
-*The regression line is* $\widehat{dummy}=1.432-0.000204\,Food$. This is a linear probability model: it predicts the likelihood of owning a home from food expenditure. The slope tells us how that likelihood changes as food expenditure increases by one dollar — in general, the likelihood of owning a home decreases as food expenditure increases. The scatter plot shows that most home owners have food expenditures below $\$6,000$, while non-owners are mostly above it.
+*The regression line is* $\widehat{dummy}=1.432-0.000204\,Food$. This is a linear probability model: it predicts the likelihood of owning a home from food expenditure. The slope tells us how that likelihood changes as food expenditure increases by one dollar. In general, the likelihood of owning a home decreases as food expenditure increases. The scatter plot shows that most home owners have food expenditures below $\$6,000$, while non-owners are mostly above it.
 
 *In Excel, with the dummy in column C and `Food` in column B:*
 
@@ -713,7 +828,7 @@ You will need the **Population** data set to answer this question. You can downl
 <summary>Answer</summary>
 
 ::: {style="padding-left: 1.5em;"}
-*After looking at the scatter plot, it seems unlikely that the population in Japan will hit* $140$ million. In the most recent years the population has been decreasing, so the straight-line trend overstates the future population — the prediction should be treated with caution.
+*After looking at the scatter plot, it seems unlikely that the population in Japan will hit* $140$ million. In the most recent years the population has been decreasing, so the straight-line trend overstates the future population, so the prediction should be treated with caution.
 
 *In Excel, select the `Year` and `Population` columns for Japan, go to `Insert → Charts → Scatter`, and add a linear trend line by right-clicking a point and choosing `Add Trendline → Linear`.*
 :::
