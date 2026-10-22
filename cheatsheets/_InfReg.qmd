@@ -1,0 +1,33 @@
+```{=html}
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Regression and Inference</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Is r Real?</div><div class="bs-cs-card-title">Correlation Test</div><div class="bs-cs-formula">t = r√(n − 2) / √(1 − r²)</div><p class="bs-cs-desc">Tests whether the population correlation ρ differs from zero, with df = n − 2.</p><div class="bs-excel"><span class="lbl">Example</span><span>r = 0.5, n = 30 → t = 3.06, p ≈ 0.005</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Two Groups</div><div class="bs-cs-card-title">Difference of Means</div><div class="bs-cs-formula">t = [(x̄₁ − x̄₂) − d₀] / SE</div><p class="bs-cs-desc">Compares two population means. SE depends on the design: unequal variances, equal (pooled) variances, or paired.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=T.TEST(arr1, arr2, tails, type)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Same Subjects</div><div class="bs-cs-card-title">Paired Test</div><div class="bs-cs-formula">t = (d̄ − d₀) / (s / √n)</div><p class="bs-cs-desc">Use when each observation is matched, such as before and after. df = number of pairs − 1. Removes person-to-person noise.</p><div class="bs-excel"><span class="lbl">Excel</span><span>type: 1 paired · 2 equal · 3 unequal</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · One Coefficient</div><div class="bs-cs-card-title">Coefficient t-Test</div><div class="bs-cs-formula">t = b<sub>j</sub> / se(b<sub>j</sub>)</div><p class="bs-cs-desc">Tests H₀: β<sub>j</sub> = 0, whether one predictor matters holding the others fixed. df = n − k − 1.</p><div class="bs-excel"><span class="lbl">Excel</span><span>Data → Data Analysis → Regression</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Whole Model</div><div class="bs-cs-card-title">Joint F-Test</div><div class="bs-cs-formula">F = (SSR / k) / (SSE / (n − k − 1))</div><p class="bs-cs-desc">Tests whether all slopes are zero at once. A small Significance F rejects that null.</p><div class="bs-excel"><span class="lbl">Excel</span><span>Regression output → Significance F</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Organize</div><div class="bs-cs-card-title">ANOVA Table</div><div class="bs-cs-formula">MS = SS / df  ·  F = MSR / MSE</div><p class="bs-cs-desc">Regression has k df, residual n − k − 1, and total n − 1. SST = SSR + SSE.</p><div class="bs-excel"><span class="lbl">Excel</span><span>Regression output → ANOVA</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>r, ρ</dt><dd>Sample, population correlation</dd></div>
+      <div class="bs-cs-row"><dt>x̄₁, x̄₂</dt><dd>Two sample means</dd></div>
+      <div class="bs-cs-row"><dt>d̄, d₀</dt><dd>Mean difference, hypothesized difference</dd></div>
+      <div class="bs-cs-row"><dt>s<sub>p</sub>²</dt><dd>Pooled variance</dd></div>
+      <div class="bs-cs-row"><dt>b<sub>j</sub>, se(b<sub>j</sub>)</dt><dd>Coefficient, its standard error</dd></div>
+      <div class="bs-cs-row"><dt>k</dt><dd>Number of predictors</dd></div>
+      <div class="bs-cs-row"><dt>MSR, MSE</dt><dd>Mean squares</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Correlation df?</dt><dd>n − 2</dd></div>
+      <div class="bs-cs-row"><dt>Equal-variance df?</dt><dd>n₁ + n₂ − 2</dd></div>
+      <div class="bs-cs-row"><dt>Paired df?</dt><dd>Pairs − 1</dd></div>
+      <div class="bs-cs-row"><dt>Coefficient test df?</dt><dd>n − k − 1</dd></div>
+      <div class="bs-cs-row"><dt>Paired test when?</dt><dd>Same subjects twice</dd></div>
+      <div class="bs-cs-row"><dt>T.TEST returns?</dt><dd>The p-value</dd></div>
+      <div class="bs-cs-row"><dt>ToolPak Regression gives?</dt><dd>t, p, F, R², ANOVA</dd></div>
+    </dl></div>
+  </div>
+</section>
+```

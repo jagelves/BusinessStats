@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-ebc9bf21172222eecf4329b9f87ba86d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a9a8112abf6d22cde504e3b06bd5f6a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e6d6cf5d2fe5724721a99542168da79f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <script id="quarto-search-options" type="application/json">{
   "location": "sidebar",
@@ -377,7 +377,8 @@ window.Quarto = {
   <li><a href="#sampling-in-excel" id="toc-sampling-in-excel" class="nav-link" data-scroll-target="#sampling-in-excel"><span class="header-section-number">11.7</span> Sampling in Excel</a></li>
   <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">11.8</span> Excel Function Summary</a></li>
   <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">11.9</span> Chapter Summary Cheat Sheet</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.10</span> Exercises</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">11.10</span> Check Your Understanding</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">11.11</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -419,7 +420,7 @@ details summary {
 <p>Statistical inference is a cornerstone of modern business decision-making. It enables companies to extract meaningful insights from data amid uncertainty and complexity. Businesses can predict customer behavior, optimize marketing strategies, and assess risks by drawing reliable conclusions from sample data. In this chapter, we explore how we can draw insights about a population using sample data. This is the stage the whole book has been building toward: moving from describing a sample to reasoning about the population behind it, using probability to keep our uncertainty honest.</p>
 <section id="statistical-inference" class="level2" data-number="11.1">
 <h2 data-number="11.1" class="anchored" data-anchor-id="statistical-inference"><span class="header-section-number">11.1</span> Statistical Inference</h2>
-<p>The power of statistical inference lies in allowing us to learn about a population by studying a sample. We estimate a <strong>sample statistic</strong>, such as the sample mean <span class="math inline">\(\bar{x}\)</span>, and use it as a guess for the corresponding <strong>population parameter</strong>, such as the population mean <span class="math inline">\(\mu\)</span> — as long as the sample is drawn randomly. Certain properties of the sample mean make this a sound guess. Below we study three of them: unbiasedness, consistency, and precision, and then the shape of the sampling distribution through the Central Limit Theorem.</p>
+<p>The power of statistical inference lies in allowing us to learn about a population by studying a sample. We estimate a <strong>sample statistic</strong>, such as the sample mean <span class="math inline">\(\bar{x}\)</span>, and use it as a guess for the corresponding <strong>population parameter</strong>, such as the population mean <span class="math inline">\(\mu\)</span>, as long as the sample is drawn randomly. Certain properties of the sample mean make this a sound guess. Below we study three of them: unbiasedness, consistency, and precision, and then the shape of the sampling distribution through the Central Limit Theorem.</p>
 </section>
 <section id="unbiasedness" class="level2" data-number="11.2">
 <h2 data-number="11.2" class="anchored" data-anchor-id="unbiasedness"><span class="header-section-number">11.2</span> Unbiasedness</h2>
@@ -431,7 +432,7 @@ details summary {
 <div class="callout-formula">
 <p><strong>SAMPLING ERROR</strong> <span class="math display">\[\text{Sampling Error} = \bar{x} - \mu\]</span></p>
 </div>
-<p>Sampling error is not a mistake — it is the natural consequence of sampling variability. It would be zero if the sample included the entire population, and it tends to shrink as the sample size grows.</p>
+<p>Sampling error is not a mistake: it is the natural consequence of sampling variability. It would be zero if the sample included the entire population, and it tends to shrink as the sample size grows.</p>
 <div class="callout-example">
 <p><strong>Example:</strong> Consider the four numbers below as the entire population:</p>
 <table class="caption-top table">
@@ -485,7 +486,7 @@ details summary {
 </tr>
 </tbody>
 </table>
-<p>None of the individual sample means equals <span class="math inline">\(\mu = 15.75\)</span> — each carries some sampling error. Yet the <strong>mean of the sample means</strong> is exactly the population mean:</p>
+<p>None of the individual sample means equals <span class="math inline">\(\mu = 15.75\)</span>; each carries some sampling error. Yet the <strong>mean of the sample means</strong> is exactly the population mean:</p>
 <p><span class="math display">\[\frac{11 + 15 + 17 + 20}{4} = \frac{63}{4} = 15.75 = \mu\]</span></p>
 <p>This confirms <span class="math inline">\(E[\bar{X}] = \mu\)</span>: although any single sample mean deviates from <span class="math inline">\(\mu\)</span>, on average the sample mean lands on the true population mean.</p>
 </div>
@@ -852,16 +853,16 @@ details summary {
 </section>
 <section id="precision" class="level2" data-number="11.4">
 <h2 data-number="11.4" class="anchored" data-anchor-id="precision"><span class="header-section-number">11.4</span> Precision</h2>
-<p><strong>Precision</strong> means that as the sample size grows, the sample mean becomes a more tightly clustered estimate of <span class="math inline">\(\mu\)</span>. This is because the standard deviation of the sample mean — the <strong>standard error</strong> — is smaller than the population standard deviation.</p>
+<p><strong>Precision</strong> means that as the sample size grows, the sample mean becomes a more tightly clustered estimate of <span class="math inline">\(\mu\)</span>. This is because the standard deviation of the sample mean, the <strong>standard error</strong>, is smaller than the population standard deviation.</p>
 <div class="callout-formula">
 <p><strong>THE STANDARD ERROR OF THE MEAN</strong> <span class="math display">\[\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}\]</span> where <span class="math inline">\(\sigma\)</span> is the population standard deviation and <span class="math inline">\(n\)</span> is the sample size. The sample size <span class="math inline">\(n\)</span> inversely affects the spread: larger samples give smaller standard errors.</p>
 </div>
-<p>When the population is small relative to the sample, a <strong>finite population correction</strong> is applied: <span class="math inline">\(\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}\sqrt{\frac{N-n}{N-1}}\)</span>, where <span class="math inline">\(N\)</span> is the population size. Most populations are large enough that this correction can be ignored.</p>
+<p>When the sample is a large share of the population (a common rule is more than <span class="math inline">\(5\%\)</span>), a <strong>finite population correction</strong> is applied: <span class="math inline">\(\sigma_{\bar{x}} = \frac{\sigma}{\sqrt{n}}\sqrt{\frac{N-n}{N-1}}\)</span>, where <span class="math inline">\(N\)</span> is the population size. Most populations are large enough that this correction can be ignored.</p>
 <div class="callout-example">
 <p><strong>Example:</strong> For the population {3, 12, 18, 30}, the population variance is <span class="math display">\[\sigma^2 = \frac{(3-15.75)^2 + (12-15.75)^2 + (18-15.75)^2 + (30-15.75)^2}{4} = 96.1875\]</span></p>
 <p>For a sample of size <span class="math inline">\(n=3\)</span> from this finite population of size <span class="math inline">\(N=4\)</span>, the variance of the sample mean is <span class="math display">\[\frac{\sigma^2}{n}\cdot\frac{N-n}{N-1} = \frac{96.1875}{3}\cdot\frac{4-3}{4-1} = 10.6875\]</span></p>
 <p>We can verify this directly from the four sample means (<span class="math inline">\(11, 15, 17, 20\)</span>): <span class="math display">\[Var(\bar{x}) = \frac{(11-15.75)^2 + (15-15.75)^2 + (17-15.75)^2 + (20-15.75)^2}{4} = 10.6875\]</span></p>
-<p>The variance of the sample mean (<span class="math inline">\(10.6875\)</span>) is far smaller than the population variance (<span class="math inline">\(96.1875\)</span>) — and it shrinks further as <span class="math inline">\(n\)</span> grows.</p>
+<p>The variance of the sample mean (<span class="math inline">\(10.6875\)</span>) is far smaller than the population variance (<span class="math inline">\(96.1875\)</span>), and it shrinks further as <span class="math inline">\(n\)</span> grows.</p>
 </div>
 </section>
 <section id="asymptotic-normality-and-the-central-limit-theorem" class="level2" data-number="11.5">
@@ -1034,7 +1035,7 @@ details summary {
 </section>
 <section id="inference-for-proportions" class="level2" data-number="11.6">
 <h2 data-number="11.6" class="anchored" data-anchor-id="inference-for-proportions"><span class="header-section-number">11.6</span> Inference for Proportions</h2>
-<p>Inference also applies to <strong>proportions</strong> — for example, the proportion of left-handed people or of customers who churn. A proportion is the outcome of a binomial process: the number of successes <span class="math inline">\(x\)</span> in <span class="math inline">\(n\)</span> trials, where <span class="math inline">\(x/n\)</span> is the proportion of successes. To estimate the population proportion <span class="math inline">\(p\)</span>, we use the <strong>sample proportion</strong> <span class="math inline">\(\hat{p} = x/n\)</span>, which is unbiased (<span class="math inline">\(E[\hat{p}] = p\)</span>). Its standard error is:</p>
+<p>Inference also applies to <strong>proportions</strong>, for example the proportion of left-handed people or of customers who churn. A proportion is the outcome of a binomial process: the number of successes <span class="math inline">\(x\)</span> in <span class="math inline">\(n\)</span> trials, where <span class="math inline">\(x/n\)</span> is the proportion of successes. To estimate the population proportion <span class="math inline">\(p\)</span>, we use the <strong>sample proportion</strong> <span class="math inline">\(\hat{p} = x/n\)</span>, which is unbiased (<span class="math inline">\(E[\hat{p}] = p\)</span>). Its standard error is:</p>
 <div class="callout-formula">
 <p><strong>THE STANDARD ERROR OF THE PROPORTION</strong> <span class="math display">\[se(\hat{p}) = \sqrt{\frac{p(1-p)}{n}}\]</span> where <span class="math inline">\(p\)</span> is the proportion and <span class="math inline">\(n\)</span> is the sample size.</p>
 </div>
@@ -1042,7 +1043,7 @@ details summary {
 <div class="callout-formula">
 <p><strong>CENTRAL LIMIT THEOREM (PROPORTION)</strong> <span class="math display">\[\frac{\hat{p} - p}{\sqrt{p(1-p)/n}} \approx N(0, 1)\]</span></p>
 </div>
-<p>Because the underlying population is binary, the normal approximation is only good when there are enough expected successes and failures — the usual rule is <span class="math inline">\(np \geq 5\)</span> and <span class="math inline">\(n(1-p) \geq 5\)</span> (some texts use a more conservative threshold of <span class="math inline">\(10\)</span>). In practice we check these conditions using the estimated <span class="math inline">\(\hat{p}\)</span>.</p>
+<p>Because the underlying population is binary, the normal approximation is only good when there are enough expected successes and failures. The usual rule is <span class="math inline">\(np \geq 5\)</span> and <span class="math inline">\(n(1-p) \geq 5\)</span> (some texts use a more conservative threshold of <span class="math inline">\(10\)</span>). In practice we check these conditions using the estimated <span class="math inline">\(\hat{p}\)</span>.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -1059,8 +1060,8 @@ Note
 </section>
 <section id="sampling-in-excel" class="level2" data-number="11.7">
 <h2 data-number="11.7" class="anchored" data-anchor-id="sampling-in-excel"><span class="header-section-number">11.7</span> Sampling in Excel</h2>
-<p>Excel can both generate random samples and compute the normal probabilities used in inference. There is no need for a programming loop — you fill a block of cells with formulas, and each column can serve as a separate sample.</p>
-<p><strong>Generating random numbers.</strong> <code>=RAND()</code> returns a random decimal between 0 and 1, and <code>=RANDBETWEEN(min, max)</code> returns a random integer. To draw from a continuous uniform distribution on <span class="math inline">\([a, b]\)</span>, use <code>=a + (b - a)*RAND()</code>. To draw from a normal distribution, invert a random probability with <code>=NORM.INV(RAND(), mean, standard_dev)</code>. In modern Excel, <code>=RANDARRAY(rows, cols, min, max, FALSE)</code> fills an entire block at once — for example, a block with one column per sample.</p>
+<p>Excel can both generate random samples and compute the normal probabilities used in inference. There is no need for a programming loop: you fill a block of cells with formulas, and each column can serve as a separate sample.</p>
+<p><strong>Generating random numbers.</strong> <code>=RAND()</code> returns a random decimal between 0 and 1, and <code>=RANDBETWEEN(min, max)</code> returns a random integer. To draw from a continuous uniform distribution on <span class="math inline">\([a, b]\)</span>, use <code>=a + (b - a)*RAND()</code>. To draw from a normal distribution, invert a random probability with <code>=NORM.INV(RAND(), mean, standard_dev)</code>. In modern Excel, <code>=RANDARRAY(rows, cols, min, max, FALSE)</code> fills an entire block at once, for example a block with one column per sample.</p>
 <pre class="excel"><code>=RANDARRAY(10, 1000, 100, 200, FALSE)</code></pre>
 <p>This single formula creates 1000 samples of size 10, each drawn from a uniform distribution on <span class="math inline">\([100, 200]\)</span>.</p>
 <p><strong>Freezing a sample.</strong> <code>RAND</code>, <code>RANDBETWEEN</code>, and <code>RANDARRAY</code> recalculate every time the sheet changes (or when you press <code>F9</code>). To lock a sample in place, copy the block and use <code>Paste Special → Values</code>.</p>
@@ -1073,7 +1074,7 @@ Note
 <ul>
 <li><p><code>=RAND()</code> returns a random decimal between 0 and 1.</p></li>
 <li><p><code>=RANDBETWEEN(bottom, top)</code> returns a random integer in a range.</p></li>
-<li><p><code>=RANDARRAY(rows, cols, min, max, integer)</code> fills a block with random numbers — ideal for generating many samples at once.</p></li>
+<li><p><code>=RANDARRAY(rows, cols, min, max, integer)</code> fills a block with random numbers, ideal for generating many samples at once.</p></li>
 <li><p><code>=NORM.INV(probability, mean, standard_dev)</code> returns a value from a probability; paired with <code>RAND()</code> it generates normal random numbers.</p></li>
 <li><p><code>=NORM.DIST(x, mean, standard_dev, cumulative)</code> returns a normal probability (<code>TRUE</code> for the cumulative distribution).</p></li>
 <li><p><code>=AVERAGE(range)</code> and <code>=STDEV.S(range)</code> return the mean and standard deviation of a sample.</p></li>
@@ -1081,18 +1082,140 @@ Note
 </section>
 <section id="chapter-summary-cheat-sheet" class="level2" data-number="11.9">
 <h2 data-number="11.9" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">11.9</span> Chapter Summary Cheat Sheet</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Sampling_Distributions.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Sampling Distributions</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Centered</div><div class="bs-cs-card-title">Unbiasedness</div><div class="bs-cs-formula">E[X̄] = μ</div><p class="bs-cs-desc">On average, the sample mean equals the population mean, even though single samples miss it.</p><div class="bs-excel"><span class="lbl">Example</span><span>means 11, 15, 17, 20 → average 15.75 = μ</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Off the Mark</div><div class="bs-cs-card-title">Sampling Error</div><div class="bs-cs-formula">x̄ − μ</div><p class="bs-cs-desc">The gap between a sample statistic and the parameter. A natural result of sampling, not a mistake. It shrinks as n grows.</p><div class="bs-excel"><span class="lbl">Example</span><span>avg |error|: n = 2 → 4.75, n = 3 → 2.75</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Spread</div><div class="bs-cs-card-title">Standard Error (Mean)</div><div class="bs-cs-formula">σ<sub>x̄</sub> = σ / √n</div><p class="bs-cs-desc">The standard deviation of the sample mean. Larger samples give a smaller standard error.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=σ / SQRT(n)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Shape</div><div class="bs-cs-card-title">Central Limit Theorem</div><div class="bs-cs-formula">(X̄ − μ) / (σ / √n) ≈ N(0, 1)</div><p class="bs-cs-desc">For large n (n &gt; 30), the sample mean is approximately normal, whatever the shape of the population.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=NORM.DIST(x, μ, σ/SQRT(n), TRUE)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Proportions</div><div class="bs-cs-card-title">Sample Proportion</div><div class="bs-cs-formula">p̂ = x / n, &nbsp;se = √(p(1 − p) / n)</div><p class="bs-cs-desc">Unbiased for p, and approximately normal when np ≥ 5 and n(1 − p) ≥ 5.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=SQRT(p*(1-p)/n)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Simulate</div><div class="bs-cs-card-title">Random Samples</div><div class="bs-cs-formula">one column = one sample</div><p class="bs-cs-desc">Fill a block with random numbers, then average each column to build a sampling distribution.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=RANDARRAY(rows, cols, min, max, FALSE)</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>X̄, x̄</dt><dd>Sample mean</dd></div>
+      <div class="bs-cs-row"><dt>μ</dt><dd>Population mean</dd></div>
+      <div class="bs-cs-row"><dt>σ</dt><dd>Population standard deviation</dd></div>
+      <div class="bs-cs-row"><dt>σ<sub>x̄</sub></dt><dd>Standard error of the mean</dd></div>
+      <div class="bs-cs-row"><dt>n, N</dt><dd>Sample size, population size</dd></div>
+      <div class="bs-cs-row"><dt>p̂</dt><dd>Sample proportion</dd></div>
+      <div class="bs-cs-row"><dt>p</dt><dd>Population proportion</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Is X̄ unbiased?</dt><dd>Yes: E[X̄] = μ</dd></div>
+      <div class="bs-cs-row"><dt>Larger n does what?</dt><dd>Shrinks the standard error</dd></div>
+      <div class="bs-cs-row"><dt>CLT for non-normal data?</dt><dd>Approximately normal if n &gt; 30</dd></div>
+      <div class="bs-cs-row"><dt>Normal population?</dt><dd>X̄ normal for any n</dd></div>
+      <div class="bs-cs-row"><dt>Proportion condition?</dt><dd>np ≥ 5 and n(1 − p) ≥ 5</dd></div>
+      <div class="bs-cs-row"><dt>Finite population fix?</dt><dd>× √((N − n) / (N − 1))</dd></div>
+      <div class="bs-cs-row"><dt>Freeze RAND values?</dt><dd>Paste Special → Values</dd></div>
+    </dl></div>
+  </div>
+</section>
+</section>
+<section id="check-your-understanding" class="level2" data-number="11.10">
+<h2 data-number="11.10" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">11.10</span> Check Your Understanding</h2>
+<p>Test the main ideas of the chapter before moving on to the exercises. <span>Pick an answer to see whether you are right and why.</span></p>
+<div class="bs-quiz">
+<p>What does it mean that the sample mean is unbiased, <span class="math inline">\(E[\bar{X}]=\mu\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Every sample mean equals <span class="math inline">\(\mu\)</span></label></li>
+<li><label><input type="checkbox">The sampling error of a random sample is zero</label></li>
+<li><label><input type="checkbox" checked="">Averaged over all possible samples, the sample mean equals <span class="math inline">\(\mu\)</span></label></li>
+<li><label><input type="checkbox">The sample mean always follows a normal distribution</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>Individual sample means miss <span class="math inline">\(\mu\)</span>, as in the chapter where no sample of three equals <span class="math inline">\(15.75\)</span>. Their average across all samples, however, is exactly <span class="math inline">\(\mu\)</span>.</p>
 </div>
+</div>
+<div class="bs-quiz">
+<p>A population has <span class="math inline">\(\sigma=20\)</span>. What is the standard error of the mean for a sample of <span class="math inline">\(n=100\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked=""><span class="math inline">\(2\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.2\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(20\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(200\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(\sigma_{\bar{x}}=\sigma/\sqrt{n}=20/\sqrt{100}=20/10=2\)</span>.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>You want to cut the standard error of the mean in half. How must the sample size change?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">It must be doubled</label></li>
+<li><label><input type="checkbox">It must be cut in half</label></li>
+<li><label><input type="checkbox">It must increase by <span class="math inline">\(50\%\)</span></label></li>
+<li><label><input type="checkbox" checked="">It must be multiplied by <span class="math inline">\(4\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The standard error is <span class="math inline">\(\sigma/\sqrt{n}\)</span>, so halving it requires <span class="math inline">\(\sqrt{n}\)</span> to double, which means <span class="math inline">\(n\)</span> must be four times as large.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Daily sales at a store are strongly skewed to the right. A manager averages a random sample of <span class="math inline">\(64\)</span> days. What does the sampling distribution of <span class="math inline">\(\bar{X}\)</span> look like?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Skewed to the right, like the population</label></li>
+<li><label><input type="checkbox" checked="">Approximately normal, by the Central Limit Theorem</label></li>
+<li><label><input type="checkbox">Exactly normal</label></li>
+<li><label><input type="checkbox">Uniform</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>With <span class="math inline">\(n=64&gt;30\)</span>, the Central Limit Theorem says <span class="math inline">\(\bar{X}\)</span> is approximately normal even though the population is skewed. It would be exactly normal only if the population were normal.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Scores have <span class="math inline">\(\mu=80\)</span> and <span class="math inline">\(\sigma=14\)</span>. Which Excel formula gives the probability that the mean of a sample of <span class="math inline">\(100\)</span> scores is at most <span class="math inline">\(85\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked=""><code>=NORM.DIST(85, 80, 14/SQRT(100), TRUE)</code></label></li>
+<li><label><input type="checkbox"><code>=NORM.DIST(85, 80, 14, TRUE)</code></label></li>
+<li><label><input type="checkbox"><code>=NORM.DIST(85, 80, 14/100, TRUE)</code></label></li>
+<li><label><input type="checkbox"><code>=NORM.INV(85, 80, 14/SQRT(100))</code></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The sample mean has standard deviation <span class="math inline">\(\sigma/\sqrt{n}=1.4\)</span>, so the standard error goes in the <code>standard_dev</code> argument. Using <span class="math inline">\(14\)</span> would describe a single score, not a mean.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Of all customers, <span class="math inline">\(30\%\)</span> churn. What is the standard error of the sample proportion for a sample of <span class="math inline">\(400\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(0.21\)</span></label></li>
+<li><label><input type="checkbox">About <span class="math inline">\(0.0005\)</span></label></li>
+<li><label><input type="checkbox" checked="">About <span class="math inline">\(0.023\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.30\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(se(\hat{p})=\sqrt{\frac{0.3(0.7)}{400}}=\sqrt{0.000525}\approx0.023\)</span>. The value <span class="math inline">\(0.0005\)</span> is the variance, before taking the square root.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>For which sample is the normal approximation for <span class="math inline">\(\hat{p}\)</span> appropriate, using <span class="math inline">\(np \ge 5\)</span> and <span class="math inline">\(n(1-p) \ge 5\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(p=0.02\)</span>, <span class="math inline">\(n=100\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(p=0.98\)</span>, <span class="math inline">\(n=200\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(p=0.50\)</span>, <span class="math inline">\(n=8\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(p=0.10\)</span>, <span class="math inline">\(n=100\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>Only <span class="math inline">\(p=0.10\)</span>, <span class="math inline">\(n=100\)</span> meets both conditions: <span class="math inline">\(np=10\)</span> and <span class="math inline">\(n(1-p)=90\)</span>. The others give <span class="math inline">\(np=2\)</span>, <span class="math inline">\(n(1-p)=4\)</span>, and <span class="math inline">\(np=4\)</span>.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Which statement about sampling error is true?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">It is caused by mistakes in recording the data</label></li>
+<li><label><input type="checkbox" checked="">It arises naturally from sampling and tends to shrink as <span class="math inline">\(n\)</span> grows</label></li>
+<li><label><input type="checkbox">It is zero for any random sample</label></li>
+<li><label><input type="checkbox">It grows as the sample size grows</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>Sampling error is the gap <span class="math inline">\(\bar{x}-\mu\)</span> that comes from observing only part of the population. In the chapter, the average absolute error falls from <span class="math inline">\(4.75\)</span> to <span class="math inline">\(2.75\)</span> to <span class="math inline">\(0\)</span> as <span class="math inline">\(n\)</span> goes from <span class="math inline">\(2\)</span> to <span class="math inline">\(4\)</span>.</p>
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="11.10">
-<h2 data-number="11.10" class="anchored" data-anchor-id="exercises"><span class="header-section-number">11.10</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="11.11">
+<h2 data-number="11.11" class="anchored" data-anchor-id="exercises"><span class="header-section-number">11.11</span> Exercises</h2>
 <p>The following exercises will help you test your knowledge of inference. In particular, the exercises work on:</p>
 <ul>
 <li><p>The Central Limit Theorem.</p></li>
@@ -1147,7 +1270,7 @@ Answer
 Answer
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>Select the</em> <span class="math inline">\(1000\)</span> sample means and go to <code>Insert → Charts → Histogram</code> (or use the bins-and-PivotTable method from Descriptive Statistics II). Although the population is uniform, the distribution of the sample means is bell-shaped — this is the Central Limit Theorem in action.</p>
+<p><em>Select the</em> <span class="math inline">\(1000\)</span> sample means and go to <code>Insert → Charts → Histogram</code> (or use the bins-and-PivotTable method from Descriptive Statistics II). Although the population is uniform, the distribution of the sample means is bell-shaped. This is the Central Limit Theorem in action.</p>
 <p><em>Using a normal distribution with mean</em> <span class="math inline">\(150\)</span> and standard error <span class="math inline">\(9.13\)</span>:</p>
 <ul>
 <li><code>=NORM.DIST(160, 150, 9.13, TRUE) - NORM.DIST(140, 150, 9.13, TRUE)</code> → about <span class="math inline">\(0.73\)</span></li>
@@ -1936,6 +2059,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </footer>
 <script src="assets/book.js"></script>
+<script src="assets/quiz.js"></script>
 
 
 

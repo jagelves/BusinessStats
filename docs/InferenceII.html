@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-ebc9bf21172222eecf4329b9f87ba86d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a9a8112abf6d22cde504e3b06bd5f6a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e6d6cf5d2fe5724721a99542168da79f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
@@ -342,7 +342,8 @@ window.Quarto = {
   <li><a href="#confidence-intervals-in-excel" id="toc-confidence-intervals-in-excel" class="nav-link" data-scroll-target="#confidence-intervals-in-excel"><span class="header-section-number">12.6</span> Confidence Intervals in Excel</a></li>
   <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">12.7</span> Excel Function Summary</a></li>
   <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">12.8</span> Chapter Summary Cheat Sheet</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">12.9</span> Exercises</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">12.9</span> Check Your Understanding</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">12.10</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -381,11 +382,11 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>A single number is rarely the whole story. When a business estimates average customer spending or the proportion of defective units from a sample, the estimate is almost never exactly right — it carries sampling error. Reporting a lone <strong>point estimate</strong> hides this uncertainty. Instead, we surround the estimate with a range of plausible values and attach a level of confidence to it. This chapter shows how to build these <strong>confidence intervals</strong> for means and proportions, how the sample size and confidence level affect their width, and how to construct them in Excel. A confidence interval is the natural next step in learning from data: having accepted that a single sample gives only an imperfect view of the world, we report a range of plausible values for the population instead of pretending our estimate is exact.</p>
+<p>A single number is rarely the whole story. When a business estimates average customer spending or the proportion of defective units from a sample, the estimate is almost never exactly right: it carries sampling error. Reporting a lone <strong>point estimate</strong> hides this uncertainty. Instead, we surround the estimate with a range of plausible values and attach a level of confidence to it. This chapter shows how to build these <strong>confidence intervals</strong> for means and proportions, how the sample size and confidence level affect their width, and how to construct them in Excel. A confidence interval is the natural next step in learning from data: having accepted that a single sample gives only an imperfect view of the world, we report a range of plausible values for the population instead of pretending our estimate is exact.</p>
 <section id="confidence-intervals" class="level2" data-number="12.1">
 <h2 data-number="12.1" class="anchored" data-anchor-id="confidence-intervals"><span class="header-section-number">12.1</span> Confidence Intervals</h2>
 <p>A <strong>confidence interval (CI)</strong> is a range of plausible values for a population parameter, together with a <strong>confidence level</strong> that states how often the procedure captures the true parameter. A 95% confidence interval means that if we repeated the sampling process many times, about 95% of the intervals produced would contain the true population parameter.</p>
-<p>The confidence level and the <strong>significance level</strong> <span class="math inline">\(\alpha\)</span> are two sides of the same coin: a 95% confidence level corresponds to <span class="math inline">\(\alpha = 0.05\)</span>, the risk that the interval misses the parameter. Every confidence interval has the same shape — a point estimate plus or minus a <strong>margin of error</strong>:</p>
+<p>The confidence level and the <strong>significance level</strong> <span class="math inline">\(\alpha\)</span> are two sides of the same coin: a 95% confidence level corresponds to <span class="math inline">\(\alpha = 0.05\)</span>, the risk that the interval misses the parameter. Every confidence interval has the same shape: a point estimate plus or minus a <strong>margin of error</strong>:</p>
 <div class="callout-formula">
 <p><strong>THE CONFIDENCE INTERVAL</strong> <span class="math display">\[\text{point estimate} \pm \text{margin of error}\]</span> The margin of error is a <strong>critical value</strong> (from the normal or <span class="math inline">\(t\)</span> distribution) multiplied by the <strong>standard error</strong> of the estimate.</p>
 </div>
@@ -400,7 +401,7 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>A confidence interval describes the <em>procedure</em>, not a single interval. Once computed, a specific interval either contains the parameter or it does not — the 95% refers to how often the method succeeds over many samples.</p>
+<p>A confidence interval describes the <em>procedure</em>, not a single interval. Once computed, a specific interval either contains the parameter or it does not. The 95% refers to how often the method succeeds over many samples.</p>
 </div>
 </div>
 </section>
@@ -417,7 +418,7 @@ Note
 <section id="the-t-distribution" class="level2" data-number="12.3">
 <h2 data-number="12.3" class="anchored" data-anchor-id="the-t-distribution"><span class="header-section-number">12.3</span> The t-Distribution</h2>
 <p>In practice we almost never know the population standard deviation <span class="math inline">\(\sigma\)</span>. When we estimate it with the sample standard deviation <span class="math inline">\(s\)</span>, we add a second source of uncertainty: not only is <span class="math inline">\(\bar{x}\)</span> a noisy estimate of the mean, but <span class="math inline">\(s\)</span> is a noisy estimate of the spread. Pretending <span class="math inline">\(s\)</span> equals the true <span class="math inline">\(\sigma\)</span> would make our intervals too narrow and overstate our confidence. The <span class="math inline">\(t\)</span>-distribution corrects for this by accounting for the extra variability that comes from estimating <span class="math inline">\(\sigma\)</span> from the same small sample.</p>
-<p><strong>Properties of the</strong> <span class="math inline">\(t\)</span><strong>-distribution.</strong> The <span class="math inline">\(t\)</span>-distribution is bell-shaped and symmetric around zero, just like the standard normal, but it differs in three important ways. It is <em>flatter in the middle and heavier in the tails</em>, which means extreme values are more likely and, in turn, the critical values are larger — this is what makes a <span class="math inline">\(t\)</span>-based interval wider than a <span class="math inline">\(z\)</span>-based one. It is a <em>family</em> of curves rather than a single fixed shape: each is indexed by its degrees of freedom. And it is <em>asymptotically normal</em> — as the degrees of freedom increase, the tails thin out and the curve becomes almost indistinguishable from the standard normal. In practice, by about <span class="math inline">\(n = 30\)</span> the two are close enough that the choice rarely matters.</p>
+<p><strong>Properties of the</strong> <span class="math inline">\(t\)</span><strong>-distribution.</strong> The <span class="math inline">\(t\)</span>-distribution is bell-shaped and symmetric around zero, just like the standard normal, but it differs in three important ways. It is <em>flatter in the middle and heavier in the tails</em>, which means extreme values are more likely and, in turn, the critical values are larger. This is what makes a <span class="math inline">\(t\)</span>-based interval wider than a <span class="math inline">\(z\)</span>-based one. It is a <em>family</em> of curves rather than a single fixed shape: each is indexed by its degrees of freedom. And it is <em>asymptotically normal</em>: as the degrees of freedom increase, the tails thin out and the curve becomes almost indistinguishable from the standard normal. In practice, by about <span class="math inline">\(n = 30\)</span> the two are close enough that the choice rarely matters.</p>
 <p><strong>Why degrees of freedom?</strong> The degrees of freedom count the number of independent pieces of information available to estimate variability. To compute the sample standard deviation <span class="math inline">\(s\)</span>, we first need the sample mean <span class="math inline">\(\bar{x}\)</span>. Once <span class="math inline">\(\bar{x}\)</span> is fixed, the deviations from it must sum to zero, so the last deviation is completely determined by the other <span class="math inline">\(n - 1\)</span>: only <span class="math inline">\(n - 1\)</span> of them are free to vary. We therefore “spend” one degree of freedom estimating the mean, leaving <span class="math inline">\(n - 1\)</span> to estimate the spread. With fewer degrees of freedom (a small sample), <span class="math inline">\(s\)</span> is a shakier estimate of <span class="math inline">\(\sigma\)</span>, so the <span class="math inline">\(t\)</span>-distribution has fatter tails to compensate; with more degrees of freedom, <span class="math inline">\(s\)</span> becomes reliable and the distribution tightens toward the normal.</p>
 <div class="callout callout-style-default callout-note callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -462,7 +463,7 @@ Note
 <section id="confidence-intervals-in-excel" class="level2" data-number="12.6">
 <h2 data-number="12.6" class="anchored" data-anchor-id="confidence-intervals-in-excel"><span class="header-section-number">12.6</span> Confidence Intervals in Excel</h2>
 <p>Excel can produce the margin of error directly, so a confidence interval is just the sample mean plus or minus that margin.</p>
-<p><strong>Critical values.</strong> For a <span class="math inline">\(z\)</span> critical value use <code>=NORM.S.INV(1 - alpha/2)</code> — for example, <code>=NORM.S.INV(0.975)</code> returns <span class="math inline">\(1.96\)</span>. For a <span class="math inline">\(t\)</span> critical value use <code>=T.INV.2T(alpha, deg_freedom)</code>, which returns the positive two-tailed value directly — for example, <code>=T.INV.2T(0.05, 19)</code> returns <span class="math inline">\(2.093\)</span>.</p>
+<p><strong>Critical values.</strong> For a <span class="math inline">\(z\)</span> critical value use <code>=NORM.S.INV(1 - alpha/2)</code>. For example, <code>=NORM.S.INV(0.975)</code> returns <span class="math inline">\(1.96\)</span>. For a <span class="math inline">\(t\)</span> critical value use <code>=T.INV.2T(alpha, deg_freedom)</code>, which returns the positive two-tailed value directly. For example, <code>=T.INV.2T(0.05, 19)</code> returns <span class="math inline">\(2.093\)</span>.</p>
 <p><strong>Margin of error for a mean.</strong> Excel has two dedicated functions that return the margin of error in one step. Use <code>=CONFIDENCE.NORM(alpha, standard_dev, size)</code> when <span class="math inline">\(\sigma\)</span> is known, and <code>=CONFIDENCE.T(alpha, standard_dev, size)</code> when it is estimated by <span class="math inline">\(s\)</span>. The <code>alpha</code> argument is the significance level (<code>0.05</code> for 95%).</p>
 <pre class="excel"><code>=CONFIDENCE.T(0.05, 2.1, 20)</code></pre>
 <p>This returns <span class="math inline">\(0.98\)</span>, the margin of error for the wait-time example. The interval is then <code>=8.4 - 0.98</code> and <code>=8.4 + 0.98</code>.</p>
@@ -482,18 +483,140 @@ Note
 </section>
 <section id="chapter-summary-cheat-sheet" class="level2" data-number="12.8">
 <h2 data-number="12.8" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">12.8</span> Chapter Summary Cheat Sheet</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Confidence_Intervals.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Confidence Intervals</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · The Shape</div><div class="bs-cs-card-title">Confidence Interval</div><div class="bs-cs-formula">estimate ± margin of error</div><p class="bs-cs-desc">The margin of error is a critical value times the standard error. 95% confidence means α = 0.05.</p><div class="bs-excel"><span class="lbl">Example</span><span>90% CI: 78.1 ± 1.05 = [77.05, 79.15]</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Mean, σ Known</div><div class="bs-cs-card-title">Z-Interval</div><div class="bs-cs-formula">x̄ ± z<sub>α/2</sub> · σ / √n</div><p class="bs-cs-desc">Use the normal critical value when the population standard deviation σ is known.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=CONFIDENCE.NORM(α, σ, n)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Mean, σ Unknown</div><div class="bs-cs-card-title">t-Interval</div><div class="bs-cs-formula">x̄ ± t<sub>α/2</sub> · s / √n</div><p class="bs-cs-desc">When σ is estimated by s, use the t-distribution with n − 1 degrees of freedom. Its heavier tails give a wider interval.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=CONFIDENCE.T(α, s, n)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Proportion</div><div class="bs-cs-card-title">Proportion Interval</div><div class="bs-cs-formula">p̂ ± z<sub>α/2</sub> · √(p̂(1 − p̂) / n)</div><p class="bs-cs-desc">The sample proportion is approximately normal, so a z critical value is used.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=NORM.S.INV(1-α/2)*SQRT(p̂*(1-p̂)/n)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Critical Values</div><div class="bs-cs-card-title">z and t</div><div class="bs-cs-formula">z: 1.645 (90%) · 1.96 (95%)</div><p class="bs-cs-desc">The multiplier that sets the confidence level. The t value is larger for small samples and close to z for large ones.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=NORM.S.INV(1-α/2) · =T.INV.2T(α, df)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Planning</div><div class="bs-cs-card-title">Required Sample Size</div><div class="bs-cs-formula">n = (z<sub>α/2</sub> σ / E)²<br>n = p̂(1 − p̂)(z<sub>α/2</sub> / E)²</div><p class="bs-cs-desc">Solve the margin of error E for n. Always round up, and use p̂ = 0.5 when the proportion is unknown.</p><div class="bs-excel"><span class="lbl">Example</span><span>E = 2, σ = 10, 95% → 96.04 → 97</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>x̄, p̂</dt><dd>Sample mean, proportion</dd></div>
+      <div class="bs-cs-row"><dt>σ, s</dt><dd>Population, sample std. dev.</dd></div>
+      <div class="bs-cs-row"><dt>n</dt><dd>Sample size</dd></div>
+      <div class="bs-cs-row"><dt>α</dt><dd>Significance level</dd></div>
+      <div class="bs-cs-row"><dt>z<sub>α/2</sub>, t<sub>α/2</sub></dt><dd>Critical values</dd></div>
+      <div class="bs-cs-row"><dt>df</dt><dd>Degrees of freedom, n − 1</dd></div>
+      <div class="bs-cs-row"><dt>E</dt><dd>Margin of error</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>95% critical z?</dt><dd>1.96</dd></div>
+      <div class="bs-cs-row"><dt>90% critical z?</dt><dd>1.645</dd></div>
+      <div class="bs-cs-row"><dt>Higher confidence?</dt><dd>Wider interval</dd></div>
+      <div class="bs-cs-row"><dt>Larger sample?</dt><dd>Narrower interval</dd></div>
+      <div class="bs-cs-row"><dt>σ unknown?</dt><dd>Use the t-distribution</dd></div>
+      <div class="bs-cs-row"><dt>CONFIDENCE.T returns?</dt><dd>The margin of error</dd></div>
+      <div class="bs-cs-row"><dt>What does 95% describe?</dt><dd>How often the method succeeds</dd></div>
+    </dl></div>
+  </div>
+</section>
+</section>
+<section id="check-your-understanding" class="level2" data-number="12.9">
+<h2 data-number="12.9" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">12.9</span> Check Your Understanding</h2>
+<p>Test the main ideas of the chapter before moving on to the exercises. <span>Pick an answer to see whether you are right and why.</span></p>
+<div class="bs-quiz">
+<p>How should you interpret a <span class="math inline">\(95\%\)</span> confidence level?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(95\%\)</span> of the data fall inside the interval</label></li>
+<li><label><input type="checkbox" checked="">If we repeated the sampling many times, about <span class="math inline">\(95\%\)</span> of the intervals would contain the true parameter</label></li>
+<li><label><input type="checkbox">There is a <span class="math inline">\(95\%\)</span> chance that this sample mean is correct</label></li>
+<li><label><input type="checkbox">The parameter changes and falls in the interval <span class="math inline">\(95\%\)</span> of the time</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The confidence level describes the procedure. A specific interval either contains the fixed parameter or it does not.</p>
 </div>
+</div>
+<div class="bs-quiz">
+<p>A manager raises the confidence level of an interval from <span class="math inline">\(95\%\)</span> to <span class="math inline">\(99\%\)</span>, keeping the same sample. What happens to the interval?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">It becomes narrower</label></li>
+<li><label><input type="checkbox">It stays the same</label></li>
+<li><label><input type="checkbox">It shifts to the right</label></li>
+<li><label><input type="checkbox" checked="">It becomes wider</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>More confidence requires a larger critical value (<span class="math inline">\(z\)</span> rises from <span class="math inline">\(1.96\)</span> to about <span class="math inline">\(2.58\)</span>), so the margin of error grows. A larger sample is the way to narrow it.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A sample of <span class="math inline">\(n=64\)</span> has <span class="math inline">\(\bar{x}=50\)</span>, and <span class="math inline">\(\sigma=8\)</span> is known. What is the <span class="math inline">\(95\%\)</span> confidence interval for the mean?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked=""><span class="math inline">\([48.04,\ 51.96]\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\([34.32,\ 65.68]\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\([49.02,\ 50.98]\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\([46.08,\ 53.92]\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The standard error is <span class="math inline">\(8/\sqrt{64}=1\)</span>, so the margin of error is <span class="math inline">\(1.96 \times 1=1.96\)</span> and the interval is <span class="math inline">\(50 \pm 1.96\)</span>. The option <span class="math inline">\([34.32, 65.68]\)</span> forgets to divide by <span class="math inline">\(\sqrt{n}\)</span>.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A sample of <span class="math inline">\(15\)</span> invoices is used to estimate the mean invoice amount, and <span class="math inline">\(\sigma\)</span> is unknown. Which critical value should the interval use?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(z\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(t\)</span> with <span class="math inline">\(15\)</span> degrees of freedom</label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(t\)</span> with <span class="math inline">\(14\)</span> degrees of freedom</label></li>
+<li><label><input type="checkbox"><span class="math inline">\(t\)</span> with <span class="math inline">\(13\)</span> degrees of freedom</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>When <span class="math inline">\(\sigma\)</span> is estimated by <span class="math inline">\(s\)</span>, use the <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(n-1=14\)</span> degrees of freedom. One degree of freedom is spent estimating the mean.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A poll of <span class="math inline">\(100\)</span> voters finds <span class="math inline">\(\hat{p}=0.5\)</span>. What is the margin of error of a <span class="math inline">\(95\%\)</span> confidence interval?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(0.05\)</span></label></li>
+<li><label><input type="checkbox" checked="">About <span class="math inline">\(0.098\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.0025\)</span></label></li>
+<li><label><input type="checkbox">About <span class="math inline">\(0.196\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The standard error is <span class="math inline">\(\sqrt{0.5(0.5)/100}=0.05\)</span>, and the margin of error is <span class="math inline">\(1.96 \times 0.05=0.098\)</span>. The value <span class="math inline">\(0.05\)</span> is the standard error alone.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>You want to estimate a mean within <span class="math inline">\(E=2\)</span> at <span class="math inline">\(95\%\)</span> confidence, and <span class="math inline">\(\sigma=12\)</span>. How large a sample do you need?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked=""><span class="math inline">\(139\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(138\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(12\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(118\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(n=\left(\frac{1.96 \times 12}{2}\right)^2=(11.76)^2=138.3\)</span>. Always round up, so <span class="math inline">\(n=139\)</span>.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>When planning the sample size for a proportion with no prior estimate, which value of <span class="math inline">\(\hat{p}\)</span> should you use?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(0\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(1\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.05\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(0.5\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(\hat{p}(1-\hat{p})\)</span> is largest at <span class="math inline">\(\hat{p}=0.5\)</span>, so it gives the most conservative (largest) sample size. At <span class="math inline">\(0\)</span> or <span class="math inline">\(1\)</span> the formula would suggest a sample of zero.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>What does <code>=CONFIDENCE.T(0.05, s, n)</code> return?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">The lower limit of the interval</label></li>
+<li><label><input type="checkbox">The <span class="math inline">\(t\)</span> critical value</label></li>
+<li><label><input type="checkbox" checked="">The margin of error of a <span class="math inline">\(95\%\)</span> interval</label></li>
+<li><label><input type="checkbox">A p-value</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>It returns <span class="math inline">\(t_{\alpha/2} \cdot s/\sqrt{n}\)</span>. The interval is the sample mean minus and plus that value.</p>
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="12.9">
-<h2 data-number="12.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">12.9</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="12.10">
+<h2 data-number="12.10" class="anchored" data-anchor-id="exercises"><span class="header-section-number">12.10</span> Exercises</h2>
 <p>The following exercises will help you test your knowledge of confidence intervals. In particular, the exercises work on:</p>
 <ul>
 <li>Simulating confidence intervals.</li>
@@ -515,7 +638,7 @@ Note
 <ul>
 <li><code>=-LN(RAND())/0.02</code></li>
 </ul>
-<p><em>Fill a block of</em> <span class="math inline">\(10{,}000\)</span> rows and <span class="math inline">\(50\)</span> columns with this formula; each row is a sample of size <span class="math inline">\(50\)</span>. (The values recalculate on every edit — copy the block and use <code>Paste Special → Values</code> to freeze them.)</p>
+<p><em>Fill a block of</em> <span class="math inline">\(10{,}000\)</span> rows and <span class="math inline">\(50\)</span> columns with this formula; each row is a sample of size <span class="math inline">\(50\)</span>. (The values recalculate on every edit, so copy the block and use <code>Paste Special → Values</code> to freeze them.)</p>
 </div>
 </details></li>
 <li><p>Compute the mean of each sample (each row). What are the mean and standard deviation of the <span class="math inline">\(10{,}000\)</span> sample means?</p>
@@ -559,7 +682,7 @@ Note
 <ul>
 <li><code>=IF(ABS(SampleMean - 50) &lt;= NORM.S.INV(0.95)*SE, 1, 0)</code></li>
 </ul>
-<p><em>Copy it down and sum it with <code>=SUM(...)</code>. About</em> <span class="math inline">\(9{,}000\)</span> of the <span class="math inline">\(10{,}000\)</span> intervals contain the population mean — that is exactly what a <span class="math inline">\(90\%\)</span> confidence level means.</p>
+<p><em>Copy it down and sum it with <code>=SUM(...)</code>. About</em> <span class="math inline">\(9{,}000\)</span> of the <span class="math inline">\(10{,}000\)</span> intervals contain the population mean, which is exactly what a <span class="math inline">\(90\%\)</span> confidence level means.</p>
 </div>
 </details></li>
 </ol>
@@ -1250,6 +1373,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </footer>
 <script src="assets/book.js"></script>
+<script src="assets/quiz.js"></script>
 
 
 

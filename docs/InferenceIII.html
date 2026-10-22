@@ -75,7 +75,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-ebc9bf21172222eecf4329b9f87ba86d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a9a8112abf6d22cde504e3b06bd5f6a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e6d6cf5d2fe5724721a99542168da79f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
@@ -378,7 +378,8 @@ window.Quarto = {
   <li><a href="#hypothesis-testing-in-excel" id="toc-hypothesis-testing-in-excel" class="nav-link" data-scroll-target="#hypothesis-testing-in-excel"><span class="header-section-number">13.6</span> Hypothesis Testing in Excel</a></li>
   <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">13.7</span> Excel Function Summary</a></li>
   <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">13.8</span> Chapter Summary Cheat Sheet</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">13.9</span> Exercises</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">13.9</span> Check Your Understanding</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">13.10</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -417,16 +418,16 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>Business decisions are often framed as claims to be tested: a new supplier promises fewer defects, a marketing team believes a campaign lifted sales, an analyst suspects average spending has changed. <strong>Hypothesis testing</strong> is the formal procedure for deciding whether the evidence in a sample is strong enough to support such a claim, or whether the difference we see could just be sampling error. In this chapter you will learn to state null and alternative hypotheses, compute a test statistic, weigh it against a chosen level of risk, and reach a defensible conclusion — all in Excel. This is where the cycle closes: we began by wanting to learn something about the world, and hypothesis testing is the formal step of asking whether the data we collected actually support the idea we started with.</p>
+<p>Business decisions are often framed as claims to be tested: a new supplier promises fewer defects, a marketing team believes a campaign lifted sales, an analyst suspects average spending has changed. <strong>Hypothesis testing</strong> is the formal procedure for deciding whether the evidence in a sample is strong enough to support such a claim, or whether the difference we see could just be sampling error. In this chapter you will learn to state null and alternative hypotheses, compute a test statistic, weigh it against a chosen level of risk, and reach a defensible conclusion, all in Excel. This is where the cycle closes: we began by wanting to learn something about the world, and hypothesis testing is the formal step of asking whether the data we collected actually support the idea we started with.</p>
 <section id="hypothesis-testing-intuition" class="level2" data-number="13.1">
 <h2 data-number="13.1" class="anchored" data-anchor-id="hypothesis-testing-intuition"><span class="header-section-number">13.1</span> Hypothesis Testing Intuition</h2>
-<p>The <strong>null hypothesis</strong> (<span class="math inline">\(H_0\)</span>) is a statement about a population parameter — usually the status quo, or “no effect.” It always contains some form of the equality sign (<span class="math inline">\(=\)</span>, <span class="math inline">\(\geq\)</span>, or <span class="math inline">\(\leq\)</span>). The <strong>alternative hypothesis</strong> (<span class="math inline">\(H_a\)</span>) directly contradicts the null and states the effect we are looking for, using a strict inequality (<span class="math inline">\(\ne\)</span>, <span class="math inline">\(&gt;\)</span>, or <span class="math inline">\(&lt;\)</span>).</p>
+<p>The <strong>null hypothesis</strong> (<span class="math inline">\(H_0\)</span>) is a statement about a population parameter, usually the status quo, or “no effect.” It always contains some form of the equality sign (<span class="math inline">\(=\)</span>, <span class="math inline">\(\geq\)</span>, or <span class="math inline">\(\leq\)</span>). The <strong>alternative hypothesis</strong> (<span class="math inline">\(H_a\)</span>) directly contradicts the null and states the effect we are looking for, using a strict inequality (<span class="math inline">\(\ne\)</span>, <span class="math inline">\(&gt;\)</span>, or <span class="math inline">\(&lt;\)</span>).</p>
 <p>Suppose we hypothesize that the average annual income in the U.S. is $50,000. When we take a large sample, the sample mean behaves like a normal random variable (by the Central Limit Theorem) centered at the hypothesized value. Our job is to decide whether the observed sample mean is “close enough” to $50,000 to have plausibly come from that distribution, or “far enough” that we should doubt the null and favor the alternative.</p>
 <div class="callout-example">
 <p><strong>Example:</strong> We test whether the average income is $50,000. A sample of <span class="math inline">\(100\)</span> people has a mean of $48,000. Is $48,000 close to $50,000, or far? It depends entirely on the <strong>standard error</strong> of the sampling distribution:</p>
 <ul>
-<li>If the standard error were small (say $1,000), then $48,000 is two standard errors below $50,000 — strong evidence <em>against</em> the null.</li>
-<li>If the standard error were large (say $15,000), then $48,000 is only a fraction of a standard error away — perfectly <em>consistent</em> with the null.</li>
+<li>If the standard error were small (say $1,000), then $48,000 is two standard errors below $50,000: strong evidence <em>against</em> the null.</li>
+<li>If the standard error were large (say $15,000), then $48,000 is only a fraction of a standard error away, perfectly <em>consistent</em> with the null.</li>
 </ul>
 <p>Distance alone tells us nothing; distance measured in standard errors is what matters.</p>
 </div>
@@ -441,22 +442,22 @@ details summary {
 <p>Every test starts by writing the two competing hypotheses. The direction of the alternative determines whether the test is one-tailed or two-tailed.</p>
 <p><strong>For a mean:</strong></p>
 <ul>
-<li><span class="math inline">\(H_0: \mu \leq \mu_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu &gt; \mu_0\)</span> — right-tailed test</li>
-<li><span class="math inline">\(H_0: \mu \geq \mu_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu &lt; \mu_0\)</span> — left-tailed test</li>
-<li><span class="math inline">\(H_0: \mu = \mu_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu \ne \mu_0\)</span> — two-tailed test</li>
+<li><span class="math inline">\(H_0: \mu \leq \mu_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu &gt; \mu_0\)</span>: right-tailed test</li>
+<li><span class="math inline">\(H_0: \mu \geq \mu_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu &lt; \mu_0\)</span>: left-tailed test</li>
+<li><span class="math inline">\(H_0: \mu = \mu_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu \ne \mu_0\)</span>: two-tailed test</li>
 </ul>
 <p><strong>For a proportion:</strong></p>
 <ul>
-<li><span class="math inline">\(H_0: p \leq p_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: p &gt; p_0\)</span> — right-tailed test</li>
-<li><span class="math inline">\(H_0: p \geq p_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: p &lt; p_0\)</span> — left-tailed test</li>
-<li><span class="math inline">\(H_0: p = p_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: p \ne p_0\)</span> — two-tailed test</li>
+<li><span class="math inline">\(H_0: p \leq p_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: p &gt; p_0\)</span>: right-tailed test</li>
+<li><span class="math inline">\(H_0: p \geq p_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: p &lt; p_0\)</span>: left-tailed test</li>
+<li><span class="math inline">\(H_0: p = p_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: p \ne p_0\)</span>: two-tailed test</li>
 </ul>
 </section>
 <section id="two-approaches-to-a-decision" class="level2" data-number="13.3">
 <h2 data-number="13.3" class="anchored" data-anchor-id="two-approaches-to-a-decision"><span class="header-section-number">13.3</span> Two Approaches to a Decision</h2>
 <p>There are two equivalent ways to decide whether the observed difference is too large to be explained by sampling error. Both always reach the same conclusion at the same significance level <span class="math inline">\(\alpha\)</span>.</p>
 <p><strong>The critical value (rejection region) approach.</strong> Choose a significance level <span class="math inline">\(\alpha\)</span>, look up the <strong>critical value</strong> from the <span class="math inline">\(t\)</span> or <span class="math inline">\(z\)</span> distribution for that <span class="math inline">\(\alpha\)</span> and the direction of the test, and reject <span class="math inline">\(H_0\)</span> if the test statistic falls beyond it. For a two-tailed test at <span class="math inline">\(\alpha = 0.05\)</span> with <span class="math inline">\(df = 99\)</span>, the critical values are approximately <span class="math inline">\(\pm 1.984\)</span>; a test statistic more extreme than these lands in the outer <span class="math inline">\(5\%\)</span> of the distribution.</p>
-<p><strong>The p-value approach.</strong> Compute the <strong>p-value</strong> — the probability, assuming the null is true, of observing a test statistic at least as extreme as the one obtained. Then apply the decision rule: reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\text{p-value} \leq \alpha\)</span>, and fail to reject it otherwise. A small p-value (say <span class="math inline">\(0.003\)</span>) means the data would be very unlikely if the null were true, so it is evidence <em>against</em> <span class="math inline">\(H_0\)</span>; a large p-value (say <span class="math inline">\(0.42\)</span>) means the data are consistent with <span class="math inline">\(H_0\)</span>.</p>
+<p><strong>The p-value approach.</strong> Compute the <strong>p-value</strong>: the probability, assuming the null is true, of observing a test statistic at least as extreme as the one obtained. Then apply the decision rule: reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\text{p-value} \leq \alpha\)</span>, and fail to reject it otherwise. A small p-value (say <span class="math inline">\(0.003\)</span>) means the data would be very unlikely if the null were true, so it is evidence <em>against</em> <span class="math inline">\(H_0\)</span>; a large p-value (say <span class="math inline">\(0.42\)</span>) means the data are consistent with <span class="math inline">\(H_0\)</span>.</p>
 <div class="bs-widget">
 <div class="bs-widget-head">
 <p><span class="bs-widget-tag">Try it</span> <span class="bs-widget-title">Rejection region vs.&nbsp;p-value</span></p>
@@ -995,7 +996,7 @@ details summary {
 <li>Left-tailed test: <span class="math inline">\(\text{p-value} = P(T \leq t)\)</span></li>
 <li>Two-tailed test: <span class="math inline">\(\text{p-value} = 2 \times P(T \geq |t|)\)</span></li>
 </ul></li>
-<li><p><strong>Decide.</strong> Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\text{p-value} &lt; \alpha\)</span>; otherwise fail to reject it. Remember that failing to reject <span class="math inline">\(H_0\)</span> is <em>not</em> proof that <span class="math inline">\(H_0\)</span> is true — it only means the sample did not provide enough evidence against it.</p></li>
+<li><p><strong>Decide.</strong> Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\text{p-value} \leq \alpha\)</span>; otherwise fail to reject it. Remember that failing to reject <span class="math inline">\(H_0\)</span> is <em>not</em> proof that <span class="math inline">\(H_0\)</span> is true. It only means the sample did not provide enough evidence against it.</p></li>
 </ol>
 </section>
 <section id="hypothesis-testing-in-excel" class="level2" data-number="13.6">
@@ -1003,7 +1004,7 @@ details summary {
 <p>Excel does not have a one-click one-sample test, but every piece is a single formula. First build the test statistic from the sample, then convert it to a p-value.</p>
 <p><strong>The test statistic.</strong> With the data in a range, the <span class="math inline">\(t\)</span> statistic for a mean is:</p>
 <pre class="excel"><code>=(AVERAGE(A2:A21) - 100) / (STDEV.S(A2:A21) / SQRT(COUNT(A2:A21)))</code></pre>
-<p><strong>p-values from the</strong> <span class="math inline">\(t\)</span>-distribution. Use <code>=T.DIST(t, df, TRUE)</code> for a left-tailed test, <code>=T.DIST.RT(t, df)</code> for a right-tailed test, and <code>=T.DIST.2T(ABS(t), df)</code> for a two-tailed test. For the critical value use <code>=T.INV.2T(alpha, df)</code> (two-tailed) or <code>=T.INV(alpha, df)</code> (one-tailed).</p>
+<p><strong>p-values from the</strong> <span class="math inline">\(t\)</span>-distribution. Use <code>=T.DIST(t, df, TRUE)</code> for a left-tailed test, <code>=T.DIST.RT(t, df)</code> for a right-tailed test, and <code>=T.DIST.2T(ABS(t), df)</code> for a two-tailed test. For the critical value use <code>=T.INV.2T(alpha, df)</code> (two-tailed) or <code>=T.INV(alpha, df)</code> (left-tailed; use <code>=T.INV(1 - alpha, df)</code> for a right-tailed test).</p>
 <p><strong>p-values for a proportion.</strong> The proportion test statistic is a <span class="math inline">\(z\)</span> value, so use the standard normal: <code>=NORM.S.DIST(z, TRUE)</code> for a left-tailed test, <code>=1 - NORM.S.DIST(z, TRUE)</code> for a right-tailed test, and <code>=2*(1 - NORM.S.DIST(ABS(z), TRUE))</code> for a two-tailed test.</p>
 </section>
 <section id="excel-function-summary" class="level2" data-number="13.7">
@@ -1019,18 +1020,141 @@ details summary {
 </section>
 <section id="chapter-summary-cheat-sheet" class="level2" data-number="13.8">
 <h2 data-number="13.8" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">13.8</span> Chapter Summary Cheat Sheet</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Hypothesis_Testing.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Hypothesis Testing</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · The Claim</div><div class="bs-cs-card-title">Null &amp; Alternative</div><div class="bs-cs-formula">H₀: =, ≥, ≤ &nbsp;vs.&nbsp; Hₐ: ≠, &lt;, &gt;</div><p class="bs-cs-desc">The null is the status quo and holds the equality. The alternative is the effect we look for; its direction sets the tail.</p><div class="bs-excel"><span class="lbl">Example</span><span>H₀: μ ≤ μ₀ vs. Hₐ: μ &gt; μ₀ → right-tailed</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Test Stat, Mean</div><div class="bs-cs-card-title">t Statistic</div><div class="bs-cs-formula">t = (x̄ − μ₀) / (s / √n)</div><p class="bs-cs-desc">How many standard errors the sample mean sits from the hypothesized value, with df = n − 1.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=(AVERAGE(rng)-μ₀)/(STDEV.S(rng)/SQRT(COUNT(rng)))</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Test Stat, Proportion</div><div class="bs-cs-card-title">z Statistic</div><div class="bs-cs-formula">z = (p̂ − p₀) / √(p₀(1 − p₀) / n)</div><p class="bs-cs-desc">The proportion version. The hypothesized p₀ is used in the standard error.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=(p̂-p₀)/SQRT(p₀*(1-p₀)/n)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · The Evidence</div><div class="bs-cs-card-title">p-value</div><div class="bs-cs-formula">P(result at least as extreme | H₀ true)</div><p class="bs-cs-desc">A small p-value means the data would be unlikely if the null were true, which is evidence against H₀.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=T.DIST.RT(t, df) · =T.DIST(t, df, TRUE) · =T.DIST.2T(ABS(t), df)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · The Rule</div><div class="bs-cs-card-title">Decision</div><div class="bs-cs-formula">p-value ≤ α → reject H₀</div><p class="bs-cs-desc">Otherwise, fail to reject. The critical value approach (|t| beyond the cutoff) always gives the same answer.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=T.INV.2T(α, df)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Being Wrong</div><div class="bs-cs-card-title">Type I &amp; II Errors</div><div class="bs-cs-formula">α = P(Type I) &nbsp;·&nbsp; β = P(Type II)</div><p class="bs-cs-desc">Type I rejects a true null (false positive). Type II keeps a false null (false negative). Power = 1 − β.</p><div class="bs-excel"><span class="lbl">Example</span><span>lower α → fewer false positives, more false negatives</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>H₀, Hₐ</dt><dd>Null, alternative hypothesis</dd></div>
+      <div class="bs-cs-row"><dt>μ₀, p₀</dt><dd>Hypothesized mean, proportion</dd></div>
+      <div class="bs-cs-row"><dt>x̄, p̂</dt><dd>Sample mean, proportion</dd></div>
+      <div class="bs-cs-row"><dt>s</dt><dd>Sample standard deviation</dd></div>
+      <div class="bs-cs-row"><dt>df</dt><dd>Degrees of freedom, n − 1</dd></div>
+      <div class="bs-cs-row"><dt>α</dt><dd>Significance level</dd></div>
+      <div class="bs-cs-row"><dt>β</dt><dd>P(Type II error)</dd></div>
+      <div class="bs-cs-row"><dt>1 − β</dt><dd>Power</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Null always has?</dt><dd>An equality sign</dd></div>
+      <div class="bs-cs-row"><dt>Two-tailed p-value?</dt><dd>2 × one-tail area</dd></div>
+      <div class="bs-cs-row"><dt>Reject when?</dt><dd>p-value ≤ α</dd></div>
+      <div class="bs-cs-row"><dt>Mean test uses?</dt><dd>t-distribution</dd></div>
+      <div class="bs-cs-row"><dt>Proportion test uses?</dt><dd>z-distribution</dd></div>
+      <div class="bs-cs-row"><dt>Type I error rate?</dt><dd>α</dd></div>
+      <div class="bs-cs-row"><dt>Fail to reject means?</dt><dd>Not enough evidence, not proof</dd></div>
+    </dl></div>
+  </div>
+</section>
+</section>
+<section id="check-your-understanding" class="level2" data-number="13.9">
+<h2 data-number="13.9" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">13.9</span> Check Your Understanding</h2>
+<p>Test the main ideas of the chapter before moving on to the exercises. <span>Pick an answer to see whether you are right and why.</span></p>
+<div class="bs-quiz">
+<p>A new supplier claims its defect rate is below <span class="math inline">\(4\%\)</span>. Which hypotheses test this claim?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(H_0: p &lt; 0.04\)</span> vs.&nbsp;<span class="math inline">\(H_a: p \geq 0.04\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(H_0: p = 0.04\)</span> vs.&nbsp;<span class="math inline">\(H_a: p &gt; 0.04\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(H_0: p \leq 0.04\)</span> vs.&nbsp;<span class="math inline">\(H_a: p &gt; 0.04\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(H_0: p \geq 0.04\)</span> vs.&nbsp;<span class="math inline">\(H_a: p &lt; 0.04\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The claim we look for evidence of goes in the alternative with a strict inequality. The null keeps the equality, so this is a left-tailed test.</p>
 </div>
+</div>
+<div class="bs-quiz">
+<p>A sample of <span class="math inline">\(n=25\)</span> has <span class="math inline">\(\bar{x}=52\)</span> and <span class="math inline">\(s=10\)</span>. What is the test statistic for <span class="math inline">\(H_0: \mu = 50\)</span>?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(0.2\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(1\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(5\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(2\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(t=\frac{52-50}{10/\sqrt{25}}=\frac{2}{2}=1\)</span>. The sample mean is only one standard error above the hypothesized value.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A test gives a p-value of <span class="math inline">\(0.03\)</span> at <span class="math inline">\(\alpha = 0.05\)</span>. What is the decision?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">Reject <span class="math inline">\(H_0\)</span></label></li>
+<li><label><input type="checkbox">Fail to reject <span class="math inline">\(H_0\)</span></label></li>
+<li><label><input type="checkbox">Accept <span class="math inline">\(H_0\)</span> as proven</label></li>
+<li><label><input type="checkbox">The test is inconclusive</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>Since <span class="math inline">\(0.03 \leq 0.05\)</span>, the data would be unlikely if <span class="math inline">\(H_0\)</span> were true, so we reject it.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A test gives a p-value of <span class="math inline">\(0.12\)</span> at <span class="math inline">\(\alpha = 0.05\)</span>. Which conclusion is correct?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(H_0\)</span> has been proven true</label></li>
+<li><label><input type="checkbox"><span class="math inline">\(H_a\)</span> has been proven true</label></li>
+<li><label><input type="checkbox" checked="">The sample does not provide enough evidence against <span class="math inline">\(H_0\)</span></label></li>
+<li><label><input type="checkbox">The probability that <span class="math inline">\(H_0\)</span> is true is <span class="math inline">\(0.12\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>Since <span class="math inline">\(0.12 &gt; 0.05\)</span>, we fail to reject <span class="math inline">\(H_0\)</span>. That is not proof that <span class="math inline">\(H_0\)</span> is true, only a lack of evidence against it.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>What is a Type I error?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Failing to reject a null hypothesis that is false</label></li>
+<li><label><input type="checkbox">Correctly rejecting a false null hypothesis</label></li>
+<li><label><input type="checkbox" checked="">Rejecting a null hypothesis that is true</label></li>
+<li><label><input type="checkbox">Using the wrong test statistic</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>A Type I error is a false positive, and its probability is <span class="math inline">\(\alpha\)</span>. Failing to reject a false null is a Type II error.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>An analyst lowers <span class="math inline">\(\alpha\)</span> from <span class="math inline">\(0.05\)</span> to <span class="math inline">\(0.01\)</span>. What happens to the error risks?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Both errors become less likely</label></li>
+<li><label><input type="checkbox" checked="">Type I errors become less likely and Type II errors more likely</label></li>
+<li><label><input type="checkbox">Both errors become more likely</label></li>
+<li><label><input type="checkbox">Only Type I errors change</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>A stricter <span class="math inline">\(\alpha\)</span> makes it harder to reject <span class="math inline">\(H_0\)</span>. That protects against false positives but makes it easier to miss a real effect, so <span class="math inline">\(\beta\)</span> rises.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A company tests <span class="math inline">\(H_0: p = 0.5\)</span>. A sample of <span class="math inline">\(100\)</span> customers gives <span class="math inline">\(\hat{p}=0.56\)</span>. What is the <span class="math inline">\(z\)</span> statistic?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(0.06\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.6\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(12\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(1.2\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(z=\frac{0.56-0.5}{\sqrt{0.5(0.5)/100}}=\frac{0.06}{0.05}=1.2\)</span>. Note that <span class="math inline">\(p_0\)</span>, not <span class="math inline">\(\hat{p}\)</span>, goes in the standard error.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A two-tailed test of a mean gives <span class="math inline">\(t=2.1\)</span> with <span class="math inline">\(df=24\)</span>. Which Excel formula returns the p-value?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked=""><code>=T.DIST.2T(2.1, 24)</code></label></li>
+<li><label><input type="checkbox"><code>=T.DIST.RT(2.1, 24)</code></label></li>
+<li><label><input type="checkbox"><code>=T.DIST(2.1, 24, TRUE)</code></label></li>
+<li><label><input type="checkbox"><code>=T.INV.2T(2.1, 24)</code></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><code>T.DIST.2T</code> returns the area in both tails beyond <span class="math inline">\(|t|\)</span>. <code>T.DIST.RT</code> gives only the right tail, and <code>T.INV.2T</code> returns a critical value, not a probability.</p>
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="13.9">
-<h2 data-number="13.9" class="anchored" data-anchor-id="exercises"><span class="header-section-number">13.9</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="13.10">
+<h2 data-number="13.10" class="anchored" data-anchor-id="exercises"><span class="header-section-number">13.10</span> Exercises</h2>
 <p>The following exercises will help you test your knowledge of hypothesis testing. In particular, the exercises work on:</p>
 <ul>
 <li>Stating null and alternative hypotheses.</li>
@@ -1827,6 +1951,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </footer>
 <script src="assets/book.js"></script>
+<script src="assets/quiz.js"></script>
 
 
 

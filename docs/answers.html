@@ -2451,7 +2451,7 @@ window.Quarto = {
 <p><a href="InferenceI.html#exercise-1" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <div style="padding-left: 1.5em;">
-<p><em>Select the</em> <span class="math inline">\(1000\)</span> sample means and go to <code>Insert → Charts → Histogram</code> (or use the bins-and-PivotTable method from Descriptive Statistics II). Although the population is uniform, the distribution of the sample means is bell-shaped — this is the Central Limit Theorem in action.</p>
+<p><em>Select the</em> <span class="math inline">\(1000\)</span> sample means and go to <code>Insert → Charts → Histogram</code> (or use the bins-and-PivotTable method from Descriptive Statistics II). Although the population is uniform, the distribution of the sample means is bell-shaped. This is the Central Limit Theorem in action.</p>
 <p><em>Using a normal distribution with mean</em> <span class="math inline">\(150\)</span> and standard error <span class="math inline">\(9.13\)</span>:</p>
 <ul>
 <li><code>=NORM.DIST(160, 150, 9.13, TRUE) - NORM.DIST(140, 150, 9.13, TRUE)</code> → about <span class="math inline">\(0.73\)</span></li>
@@ -2562,7 +2562,7 @@ window.Quarto = {
 <ul>
 <li><code>=-LN(RAND())/0.02</code></li>
 </ul>
-<p><em>Fill a block of</em> <span class="math inline">\(10{,}000\)</span> rows and <span class="math inline">\(50\)</span> columns with this formula; each row is a sample of size <span class="math inline">\(50\)</span>. (The values recalculate on every edit — copy the block and use <code>Paste Special → Values</code> to freeze them.)</p>
+<p><em>Fill a block of</em> <span class="math inline">\(10{,}000\)</span> rows and <span class="math inline">\(50\)</span> columns with this formula; each row is a sample of size <span class="math inline">\(50\)</span>. (The values recalculate on every edit, so copy the block and use <code>Paste Special → Values</code> to freeze them.)</p>
 </div>
 </div>
 </section>
@@ -2606,7 +2606,7 @@ window.Quarto = {
 <ul>
 <li><code>=IF(ABS(SampleMean - 50) &lt;= NORM.S.INV(0.95)*SE, 1, 0)</code></li>
 </ul>
-<p><em>Copy it down and sum it with <code>=SUM(...)</code>. About</em> <span class="math inline">\(9{,}000\)</span> of the <span class="math inline">\(10{,}000\)</span> intervals contain the population mean — that is exactly what a <span class="math inline">\(90\%\)</span> confidence level means.</p>
+<p><em>Copy it down and sum it with <code>=SUM(...)</code>. About</em> <span class="math inline">\(9{,}000\)</span> of the <span class="math inline">\(10{,}000\)</span> intervals contain the population mean, which is exactly what a <span class="math inline">\(90\%\)</span> confidence level means.</p>
 </div>
 </div>
 </section>
@@ -2832,7 +2832,7 @@ window.Quarto = {
 <p><a href="InfReg.html#exercise-1" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <div style="padding-left: 1.5em;">
-<p><em>The correlation is</em> <span class="math inline">\(0.44\)</span> and the test statistic is <span class="math inline">\(7.89\)</span>. The p-value is approximately <span class="math inline">\(0\)</span>, so we reject the null hypothesis — the correlation between Hits and Salary is highly significant.</p>
+<p><em>The correlation is</em> <span class="math inline">\(0.44\)</span> and the test statistic is <span class="math inline">\(7.89\)</span>. The p-value is approximately <span class="math inline">\(0\)</span>, so we reject the null hypothesis: the correlation between Hits and Salary is highly significant.</p>
 <p><em>In Excel (there are</em> <span class="math inline">\(263\)</span> players with a recorded salary):</p>
 <ul>
 <li><code>=CORREL(Hits_range, Salary_range)</code> → <span class="math inline">\(0.44\)</span></li>
@@ -2847,7 +2847,7 @@ window.Quarto = {
 <p><a href="InfReg.html#exercise-2" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <div style="padding-left: 1.5em;">
-<p><em>There is no strong reason to believe the variances differ — players are recruited from a common pool. At the</em> <span class="math inline">\(5\%\)</span> level the difference in mean Hits is not significant, so we cannot reject the null.</p>
+<p><em>There is no strong reason to believe the variances differ, since players are recruited from a common pool. At the</em> <span class="math inline">\(5\%\)</span> level the difference in mean Hits is not significant, so we cannot reject the null.</p>
 <p><em>Copy the Hits for <code>NewLeague = "A"</code> into one column and the Hits for <code>NewLeague = "N"</code> into another (or filter the data). This is an unpaired, two-tailed test assuming equal variances:</em></p>
 <ul>
 <li><code>=T.TEST(A_range, N_range, 2, 2)</code> → <span class="math inline">\(0.28\)</span> (p-value)</li>
@@ -2861,8 +2861,8 @@ window.Quarto = {
 <p><a href="InfReg.html#exercise-2" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <div style="padding-left: 1.5em;">
-<p><em>There may be reason to believe the variances differ, so we use an unequal-variance test. At the</em> <span class="math inline">\(5\%\)</span> level we cannot reject <span class="math inline">\(H_{0}: \mu_{male} - \mu_{female} \leq 0\)</span> — there is no evidence that males survive longer.</p>
-<p><em>Run <code>Data → Data Analysis → t-Test: Two-Sample Assuming Unequal Variances</code> on the male and female survival times. The male mean (</em><span class="math inline">\(26.78\)</span>) is actually <strong>below</strong> the female mean (<span class="math inline">\(28.10\)</span>), giving a test statistic of <span class="math inline">\(-0.31\)</span>. Because the difference points opposite to the alternative, the one-tailed p-value is about <span class="math inline">\(0.62\)</span> — far above <span class="math inline">\(0.05\)</span> — so we fail to reject the null.</p>
+<p><em>There may be reason to believe the variances differ, so we use an unequal-variance test. At the</em> <span class="math inline">\(5\%\)</span> level we cannot reject <span class="math inline">\(H_{0}: \mu_{male} - \mu_{female} \leq 0\)</span>: there is no evidence that males survive longer.</p>
+<p><em>Run <code>Data → Data Analysis → t-Test: Two-Sample Assuming Unequal Variances</code> on the male and female survival times. The male mean (</em><span class="math inline">\(26.78\)</span>) is actually <strong>below</strong> the female mean (<span class="math inline">\(28.10\)</span>), giving a test statistic of <span class="math inline">\(-0.31\)</span>. Because the difference points opposite to the alternative, the one-tailed p-value is about <span class="math inline">\(0.62\)</span>, far above <span class="math inline">\(0.05\)</span>, so we fail to reject the null.</p>
 </div>
 </div>
 </section>
@@ -2885,7 +2885,7 @@ window.Quarto = {
 <p><a href="InfReg.html#exercise-4" class="bs-answer-back">Back to the question</a></p>
 <div class="bs-answer-body">
 <div style="padding-left: 1.5em;">
-<p><em>RBI and Years are statistically significant (p-values near</em> <span class="math inline">\(0\)</span>): salary rises with experience and with RBIs. Home runs are <strong>not</strong> significant (p-value about <span class="math inline">\(0.14\)</span>). The <span class="math inline">\(F\)</span>-statistic is highly significant, so the predictors are jointly significant. However, the <span class="math inline">\(R^2\)</span> and adjusted <span class="math inline">\(R^2\)</span> are only about <span class="math inline">\(0.32\)</span>, so the model explains just <span class="math inline">\(32\%\)</span> of the variation in salary — more variables would be needed for a better fit.</p>
+<p><em>RBI and Years are statistically significant (p-values near</em> <span class="math inline">\(0\)</span>): salary rises with experience and with RBIs. Home runs are <strong>not</strong> significant (p-value about <span class="math inline">\(0.14\)</span>). The <span class="math inline">\(F\)</span>-statistic is highly significant, so the predictors are jointly significant. However, the <span class="math inline">\(R^2\)</span> and adjusted <span class="math inline">\(R^2\)</span> are only about <span class="math inline">\(0.32\)</span>, so the model explains just <span class="math inline">\(32\%\)</span> of the variation in salary, so more variables would be needed for a better fit.</p>
 <p><em>Copy <code>HmRun</code>, <code>RBI</code>, and <code>Years</code> into three adjacent columns (the ToolPak needs a contiguous X range), then run <code>Data → Data Analysis → Regression</code> with <code>Salary</code> as the Input Y Range and those three columns as the Input X Range. The output gives:</em></p>
 <ul>
 <li>each coefficient’s <strong>p-value</strong> (the individual tests): RBI and Years significant, HmRun not</li>
@@ -2905,7 +2905,7 @@ window.Quarto = {
 <ul>
 <li><code>=-90.09 + (-7.35)*28 + 9.16*57 + 32.82*12</code> → <span class="math inline">\(619.93\)</span></li>
 </ul>
-<p><em>The prediction interval widens the estimate by</em> <span class="math inline">\(t \times s_e\)</span>, where <span class="math inline">\(t =\)</span> <code>T.INV.2T(0.05, 259)</code> <span class="math inline">\(\approx 1.97\)</span> and <span class="math inline">\(s_e\)</span> is the regression’s standard error (<span class="math inline">\(\approx 381\)</span> for a new observation). This gives <span class="math inline">\(619.93 \pm 749.8 = [-129.89,\ 1369.7]\)</span>. The interval is very wide — and even includes negative salaries — because the model explains only about a third of the variation in salary.</p>
+<p><em>The prediction interval widens the estimate by</em> <span class="math inline">\(t \times s_e\)</span>, where <span class="math inline">\(t =\)</span> <code>T.INV.2T(0.05, 259)</code> <span class="math inline">\(\approx 1.97\)</span> and <span class="math inline">\(s_e\)</span> is the regression’s standard error (<span class="math inline">\(\approx 381\)</span> for a new observation). This gives <span class="math inline">\(619.93 \pm 749.8 = [-129.89,\ 1369.7]\)</span>. The interval is very wide, and even includes negative salaries, because the model explains only about a third of the variation in salary.</p>
 </div>
 </div>
 

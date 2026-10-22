@@ -16,15 +16,15 @@ details summary {
 
 # Regression and Inference
 
-This final chapter brings hypothesis testing and regression together. You will learn to judge whether a correlation is real or just noise, whether two groups truly differ, and whether a regression coefficient carries any explanatory weight. These are the tools that turn a descriptive relationship into a defensible conclusion — letting you evaluate market trends, compare performance across groups, and decide which predictors actually matter in a model. It is a fitting close to the book: it unites the descriptive tool of regression with the inferential habit of asking whether a pattern is real, turning a fitted line into a tested claim about the world.
+This final chapter brings hypothesis testing and regression together. You will learn to judge whether a correlation is real or just noise, whether two groups truly differ, and whether a regression coefficient carries any explanatory weight. These are the tools that turn a descriptive relationship into a defensible conclusion, letting you evaluate market trends, compare performance across groups, and decide which predictors actually matter in a model. It is a fitting close to the book: it unites the descriptive tool of regression with the inferential habit of asking whether a pattern is real, turning a fitted line into a tested claim about the world.
 
 ## Correlation Significance
 
 A sample correlation coefficient is almost never exactly zero, even when the two variables are unrelated. To decide whether an observed correlation reflects a real relationship in the population, we test the population correlation $\rho$:
 
-- $H_0: \rho \geq 0$ vs. $H_a: \rho < 0$ — left-tailed
-- $H_0: \rho \leq 0$ vs. $H_a: \rho > 0$ — right-tailed
-- $H_0: \rho = 0$ vs. $H_a: \rho \ne 0$ — two-tailed
+- $H_0: \rho \geq 0$ vs. $H_a: \rho < 0$: left-tailed
+- $H_0: \rho \leq 0$ vs. $H_a: \rho > 0$: right-tailed
+- $H_0: \rho = 0$ vs. $H_a: \rho \ne 0$: two-tailed
 
 ::: callout-formula
 **CORRELATION TEST STATISTIC** $$t = \frac{r_{xy}\sqrt{n-2}}{\sqrt{1-r_{xy}^2}}$$ with degrees of freedom $df = n - 2$, where $r_{xy}$ is the sample correlation coefficient and $n$ is the sample size.
@@ -36,7 +36,7 @@ A sample correlation coefficient is almost never exactly zero, even when the two
 
 ## Difference of Means Tests
 
-We often want to know whether two populations have different means — for example, whether two divisions post different sales, or whether a treatment changes an outcome. The test statistic depends on how the two samples relate.
+We often want to know whether two populations have different means, for example whether two divisions post different sales, or whether a treatment changes an outcome. The test statistic depends on how the two samples relate.
 
 ::: callout-formula
 **DIFFERENCE OF MEANS TEST STATISTICS** $$\text{Unpaired, unequal variances:} \quad t = \frac{(\bar{x}_1 - \bar{x}_2) - d_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}$$ $$\text{Unpaired, equal variances:} \quad t = \frac{(\bar{x}_1 - \bar{x}_2) - d_0}{\sqrt{s_p^2\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}$$ $$\text{Paired:} \quad t = \frac{\bar{d} - d_0}{s / \sqrt{n}}$$ where $d_0$ is the hypothesized difference, $s_p^2$ is the pooled variance, and $\bar{d}$ and $s$ are the mean and standard deviation of the paired differences.
@@ -50,10 +50,10 @@ The degrees of freedom differ across the three tests:
 | Paired | $df = n - 1$, where $n$ is the number of **pairs**, not the number of observations |
 :::
 
-A **paired** test is used when the two samples are naturally linked — the same subjects measured twice (before and after), for instance. An **unpaired** (independent) test is used when the two samples come from separate groups.
+A **paired** test is used when the two samples are naturally linked, such as the same subjects measured twice (before and after), for instance. An **unpaired** (independent) test is used when the two samples come from separate groups.
 
 ::: callout-example
-**Example (unpaired).** A company evaluates a training program. Six employees who took the program score a mean of $\bar{x}_1 = 33.17$ on a productivity assessment (with $s_1 = 7.55$), while six *different* employees who did not take it score a mean of $\bar{x}_2 = 30.00$ (with $s_2 = 7.18$). Testing $H_0: \mu_1 - \mu_2 = 0$ against $H_a: \mu_1 - \mu_2 \ne 0$ with unequal variances: $$t = \frac{(33.17 - 30.00) - 0}{\sqrt{\frac{7.55^2}{6} + \frac{7.18^2}{6}}} = \frac{3.17}{4.25} = 0.74$$ The Welch formula gives about $10$ degrees of freedom, and the two-tailed p-value is roughly $0.47$. Because $0.47 > 0.05$, we fail to reject the null: the $3.17$-point gap is swamped by the large variation *between* employees, so we cannot conclude the program helped.
+**Example (unpaired).** A company evaluates a training program. Six employees who took the program score a mean of $\bar{x}_1 = 33.17$ on a productivity assessment (with $s_1 = 7.55$), while six *different* employees who did not take it score a mean of $\bar{x}_2 = 30.00$ (with $s_2 = 7.18$). Testing $H_0: \mu_1 - \mu_2 = 0$ against $H_a: \mu_1 - \mu_2 \ne 0$ with unequal variances: $$t = \frac{(33.17 - 30.00) - 0}{\sqrt{\frac{7.55^2}{6} + \frac{7.18^2}{6}}} = \frac{3.17}{4.25} = 0.74$$ The Welch formula gives $df \approx 9.98$, which we round down to $9$, and the two-tailed p-value is roughly $0.48$. Because $0.48 > 0.05$, we fail to reject the null: the $3.17$-point gap is swamped by the large variation *between* employees, so we cannot conclude the program helped.
 :::
 
 ::: callout-example
@@ -71,19 +71,19 @@ A **paired** test is used when the two samples are naturally linked — the same
 The group means are identical to the unpaired case ($30.00$ before, $33.17$ after), but now we work with each person's change. The individual gains are remarkably consistent: $\bar{d} = 3.17$ with $s = 0.75$. Testing $H_0: \mu_d = 0$ against $H_a: \mu_d \ne 0$: $$t = \frac{\bar{d} - 0}{s / \sqrt{n}} = \frac{3.17}{0.75 / \sqrt{6}} = 10.30$$ With $df = n - 1 = 6 - 1 = 5$ (six *pairs*, not twelve observations) the two-tailed p-value is about $0.0001$. Because $0.0001 < 0.05$, we strongly reject the null: the program clearly raised productivity.
 :::
 
-The two examples use the **same numbers** yet reach opposite conclusions, and the reason is the design. The unpaired test must carry the large variation *between* employees — scores range from $20$ to $40$ — and that noise hides the modest improvement. The paired test cancels that person-to-person variation by looking only at each individual's change, leaving a small, consistent difference that stands out sharply ($s$ drops from about $7.5$ to $0.75$). Whenever the data are naturally matched, pairing is the more powerful choice.
+The two examples use the **same numbers** yet reach opposite conclusions, and the reason is the design. The unpaired test must carry the large variation *between* employees (scores range from $20$ to $40$), and that noise hides the modest improvement. The paired test cancels that person-to-person variation by looking only at each individual's change, leaving a small, consistent difference that stands out sharply ($s$ drops from about $7.5$ to $0.75$). Whenever the data are naturally matched, pairing is the more powerful choice.
 
 ## Regression Inference
 
 After fitting a regression, two kinds of tests tell us whether the model has explanatory power.
 
-**Testing a single coefficient.** Each coefficient is tested against zero — is this predictor related to $y$, holding the others fixed?
+**Testing a single coefficient.** Each coefficient is tested against zero: is this predictor related to $y$, holding the others fixed?
 
 ::: callout-formula
 **TEST FOR A SINGLE COEFFICIENT** $$H_0: \beta_j = 0 \quad\text{vs.}\quad H_a: \beta_j \ne 0, \qquad t = \frac{b_j}{se(b_j)}$$ where $b_j$ is the estimated coefficient and $se(b_j)$ is its standard error, with $df = n - k - 1$.
 :::
 
-**Testing joint significance.** The $F$-test asks whether *all* the slope coefficients are zero at once — is the model, as a whole, better than no predictors?
+**Testing joint significance.** The $F$-test asks whether *all* the slope coefficients are zero at once: is the model, as a whole, better than no predictors?
 
 ::: callout-formula
 **JOINT SIGNIFICANCE (F-TEST)** $$H_0: \beta_1 = \beta_2 = \dots = \beta_k = 0, \qquad F = \frac{SSR/k}{SSE/(n-k-1)} = \frac{MSR}{MSE}$$ where $k$ is the number of predictors and $n$ is the sample size.
@@ -107,9 +107,9 @@ The ANOVA table organizes these pieces:
 
 followed by `=T.DIST.2T(ABS(t), n-2)` for a two-tailed test (or `=T.DIST` / `=T.DIST.RT` for one tail).
 
-**Difference of means.** The `=T.TEST(array1, array2, tails, type)` function returns the p-value directly. The `tails` argument is `1` (one-tailed) or `2` (two-tailed); the `type` argument is `1` (paired), `2` (two-sample, equal variances), or `3` (two-sample, unequal variances). For full output — the test statistic, critical values, and both one- and two-tailed p-values — use the **Data Analysis ToolPak**, which offers `t-Test: Paired Two Sample for Means`, `t-Test: Two-Sample Assuming Equal Variances`, and `t-Test: Two-Sample Assuming Unequal Variances`.
+**Difference of means.** The `=T.TEST(array1, array2, tails, type)` function returns the p-value directly. The `tails` argument is `1` (one-tailed) or `2` (two-tailed); the `type` argument is `1` (paired), `2` (two-sample, equal variances), or `3` (two-sample, unequal variances). For full output (the test statistic, critical values, and both one- and two-tailed p-values), use the **Data Analysis ToolPak**, which offers `t-Test: Paired Two Sample for Means`, `t-Test: Two-Sample Assuming Equal Variances`, and `t-Test: Two-Sample Assuming Unequal Variances`.
 
-**Regression inference.** Run `Data → Data Analysis → Regression`. The output reports each coefficient with its standard error, $t$-statistic, and p-value (the individual coefficient tests), the $F$-statistic with its **Significance F** (the joint test), and the ANOVA table — everything in this chapter in a single step.
+**Regression inference.** Run `Data → Data Analysis → Regression`. The output reports each coefficient with its standard error, $t$-statistic, and p-value (the individual coefficient tests), the $F$-statistic with its **Significance F** (the joint test), and the ANOVA table: everything in this chapter in a single step.
 
 ## Excel Function Summary
 
@@ -127,9 +127,124 @@ Below is a list of the Excel functions and tools used in this section:
 
 ## Chapter Summary Cheat Sheet
 
+::: {.content-visible when-format="html"}
+{{< include cheatsheets/_InfReg.qmd >}}
+:::
+
+::: {.content-visible when-format="pdf"}
 ```{r echo=FALSE, out.width="100%", fig.align='center'}
 knitr::include_graphics("images/Regression_Inference.png")
 ```
+:::
+
+## Check Your Understanding
+
+Test the main ideas of the chapter before moving on to the exercises. [Pick an answer to see whether you are right and why.]{.content-visible when-format="html"}[Each answer, with an explanation, is in the answer key at the end of the book.]{.content-visible when-format="pdf"}
+
+:::: bs-quiz
+A sample of $n=50$ gives a correlation of $r=0.3$. What is the test statistic for $H_0: \rho = 0$, and its degrees of freedom?
+
+- [x] $t \approx 2.18$ with $48$ df
+- [ ] $t \approx 2.18$ with $49$ df
+- [ ] $t = 0.3$ with $48$ df
+- [ ] $t \approx 2.08$ with $50$ df
+
+::: bs-quiz-why
+$t=\frac{0.3\sqrt{48}}{\sqrt{1-0.09}}=\frac{2.078}{0.954}\approx2.18$, with $df=n-2=48$.
+:::
+::::
+
+:::: bs-quiz
+In which situation should you use a paired test?
+
+- [ ] Sales of $20$ stores in Ohio are compared with $20$ different stores in Texas
+- [ ] Male and female customers' spending is compared
+- [x] The same $20$ stores' sales are measured before and after a promotion
+- [ ] Two independent random samples of employees are compared
+
+::: bs-quiz-why
+A paired test applies when each observation in one sample is matched to one in the other, such as the same store measured twice.
+:::
+::::
+
+:::: bs-quiz
+In the chapter, the same training data gave $p \approx 0.48$ with an unpaired test and $p \approx 0.0001$ with a paired test. Why?
+
+- [ ] The paired test uses more observations
+- [ ] The paired test assumes equal variances
+- [ ] The paired test uses the $z$-distribution
+- [x] Pairing removes the large person-to-person variation
+
+::: bs-quiz-why
+The paired test works with each employee's change, so the variation between employees (scores from $20$ to $40$) drops out. The standard deviation falls from about $7.5$ to $0.75$.
+:::
+::::
+
+:::: bs-quiz
+A paired test compares the before and after sales of $12$ salespeople. How many degrees of freedom does it have?
+
+- [ ] $22$
+- [x] $11$
+- [ ] $23$
+- [ ] $12$
+
+::: bs-quiz-why
+For a paired test $df=n-1$, where $n$ is the number of pairs: $12-1=11$. There are $24$ measurements, but only $12$ differences.
+:::
+::::
+
+:::: bs-quiz
+A regression coefficient is $b_j=4.2$ with a standard error of $1.4$. What is its $t$ statistic?
+
+- [ ] $5.88$
+- [ ] $0.33$
+- [ ] $2.8$
+- [x] $3$
+
+::: bs-quiz-why
+$t=b_j/se(b_j)=4.2/1.4=3$. A value this far from zero suggests the predictor matters.
+:::
+::::
+
+:::: bs-quiz
+What is the null hypothesis of the joint $F$-test in a regression?
+
+- [x] All slope coefficients are zero
+- [ ] The intercept is zero
+- [ ] $R^2$ equals $1$
+- [ ] At least one slope coefficient is zero
+
+::: bs-quiz-why
+$H_0: \beta_1 = \beta_2 = \dots = \beta_k = 0$, meaning no predictor helps. A small Significance F rejects it.
+:::
+::::
+
+:::: bs-quiz
+Which `type` argument of `=T.TEST()` compares two independent groups with unequal variances?
+
+- [ ] $1$
+- [ ] $2$
+- [x] $3$
+- [ ] $4$
+
+::: bs-quiz-why
+`type` is $1$ for paired, $2$ for two samples with equal variances, and $3$ for two samples with unequal variances.
+:::
+::::
+
+:::: bs-quiz
+A regression with $k=3$ predictors is fit to $n=40$ observations. How many residual degrees of freedom does it have?
+
+- [ ] $37$
+- [x] $36$
+- [ ] $39$
+- [ ] $3$
+
+::: bs-quiz-why
+Residual $df=n-k-1=40-3-1=36$. The total is $n-1=39$, and the regression row has $k=3$.
+:::
+::::
+
 
 ## Exercises
 
@@ -170,7 +285,7 @@ Try not to peek at the answers until you have formulated your own answer and dou
     <summary>Answer</summary>
 
     ::: {style="padding-left: 1.5em;"}
-    *The correlation is* $0.44$ and the test statistic is $7.89$. The p-value is approximately $0$, so we reject the null hypothesis — the correlation between Hits and Salary is highly significant.
+    *The correlation is* $0.44$ and the test statistic is $7.89$. The p-value is approximately $0$, so we reject the null hypothesis: the correlation between Hits and Salary is highly significant.
 
     *In Excel (there are* $263$ players with a recorded salary):
 
@@ -192,7 +307,7 @@ Try not to peek at the answers until you have formulated your own answer and dou
     <summary>Answer</summary>
 
     ::: {style="padding-left: 1.5em;"}
-    *There is no strong reason to believe the variances differ — players are recruited from a common pool. At the* $5\%$ level the difference in mean Hits is not significant, so we cannot reject the null.
+    *There is no strong reason to believe the variances differ, since players are recruited from a common pool. At the* $5\%$ level the difference in mean Hits is not significant, so we cannot reject the null.
 
     *Copy the Hits for `NewLeague = "A"` into one column and the Hits for `NewLeague = "N"` into another (or filter the data). This is an unpaired, two-tailed test assuming equal variances:*
 
@@ -212,9 +327,9 @@ Try not to peek at the answers until you have formulated your own answer and dou
     <summary>Answer</summary>
 
     ::: {style="padding-left: 1.5em;"}
-    *There may be reason to believe the variances differ, so we use an unequal-variance test. At the* $5\%$ level we cannot reject $H_{0}: \mu_{male} - \mu_{female} \leq 0$ — there is no evidence that males survive longer.
+    *There may be reason to believe the variances differ, so we use an unequal-variance test. At the* $5\%$ level we cannot reject $H_{0}: \mu_{male} - \mu_{female} \leq 0$: there is no evidence that males survive longer.
 
-    *Run `Data → Data Analysis → t-Test: Two-Sample Assuming Unequal Variances` on the male and female survival times. The male mean (*$26.78$) is actually **below** the female mean ($28.10$), giving a test statistic of $-0.31$. Because the difference points opposite to the alternative, the one-tailed p-value is about $0.62$ — far above $0.05$ — so we fail to reject the null.
+    *Run `Data → Data Analysis → t-Test: Two-Sample Assuming Unequal Variances` on the male and female survival times. The male mean (*$26.78$) is actually **below** the female mean ($28.10$), giving a test statistic of $-0.31$. Because the difference points opposite to the alternative, the one-tailed p-value is about $0.62$, far above $0.05$, so we fail to reject the null.
     :::
 
     </details>
@@ -252,7 +367,7 @@ Use the **sleep** data set. At the $1\%$ significance level, is there an effect 
     <summary>Answer</summary>
 
     ::: {style="padding-left: 1.5em;"}
-    *RBI and Years are statistically significant (p-values near* $0$): salary rises with experience and with RBIs. Home runs are **not** significant (p-value about $0.14$). The $F$-statistic is highly significant, so the predictors are jointly significant. However, the $R^2$ and adjusted $R^2$ are only about $0.32$, so the model explains just $32\%$ of the variation in salary — more variables would be needed for a better fit.
+    *RBI and Years are statistically significant (p-values near* $0$): salary rises with experience and with RBIs. Home runs are **not** significant (p-value about $0.14$). The $F$-statistic is highly significant, so the predictors are jointly significant. However, the $R^2$ and adjusted $R^2$ are only about $0.32$, so the model explains just $32\%$ of the variation in salary, so more variables would be needed for a better fit.
 
     *Copy `HmRun`, `RBI`, and `Years` into three adjacent columns (the ToolPak needs a contiguous X range), then run `Data → Data Analysis → Regression` with `Salary` as the Input Y Range and those three columns as the Input X Range. The output gives:*
 
@@ -276,7 +391,7 @@ Use the **sleep** data set. At the $1\%$ significance level, is there an effect 
 
     - `=-90.09 + (-7.35)*28 + 9.16*57 + 32.82*12` → $619.93$
 
-    *The prediction interval widens the estimate by* $t \times s_e$, where $t =$ `T.INV.2T(0.05, 259)` $\approx 1.97$ and $s_e$ is the regression's standard error ($\approx 381$ for a new observation). This gives $619.93 \pm 749.8 = [-129.89,\ 1369.7]$. The interval is very wide — and even includes negative salaries — because the model explains only about a third of the variation in salary.
+    *The prediction interval widens the estimate by* $t \times s_e$, where $t =$ `T.INV.2T(0.05, 259)` $\approx 1.97$ and $s_e$ is the regression's standard error ($\approx 381$ for a new observation). This gives $619.93 \pm 749.8 = [-129.89,\ 1369.7]$. The interval is very wide, and even includes negative salaries, because the model explains only about a third of the variation in salary.
     :::
 
     </details>

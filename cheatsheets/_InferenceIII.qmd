@@ -1,0 +1,34 @@
+```{=html}
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Hypothesis Testing</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · The Claim</div><div class="bs-cs-card-title">Null & Alternative</div><div class="bs-cs-formula">H₀: =, ≥, ≤  vs.  Hₐ: ≠, <, ></div><p class="bs-cs-desc">The null is the status quo and holds the equality. The alternative is the effect we look for; its direction sets the tail.</p><div class="bs-excel"><span class="lbl">Example</span><span>H₀: μ ≤ μ₀ vs. Hₐ: μ > μ₀ → right-tailed</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Test Stat, Mean</div><div class="bs-cs-card-title">t Statistic</div><div class="bs-cs-formula">t = (x̄ − μ₀) / (s / √n)</div><p class="bs-cs-desc">How many standard errors the sample mean sits from the hypothesized value, with df = n − 1.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=(AVERAGE(rng)-μ₀)/(STDEV.S(rng)/SQRT(COUNT(rng)))</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Test Stat, Proportion</div><div class="bs-cs-card-title">z Statistic</div><div class="bs-cs-formula">z = (p̂ − p₀) / √(p₀(1 − p₀) / n)</div><p class="bs-cs-desc">The proportion version. The hypothesized p₀ is used in the standard error.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=(p̂-p₀)/SQRT(p₀*(1-p₀)/n)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · The Evidence</div><div class="bs-cs-card-title">p-value</div><div class="bs-cs-formula">P(result at least as extreme | H₀ true)</div><p class="bs-cs-desc">A small p-value means the data would be unlikely if the null were true, which is evidence against H₀.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=T.DIST.RT(t, df) · =T.DIST(t, df, TRUE) · =T.DIST.2T(ABS(t), df)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · The Rule</div><div class="bs-cs-card-title">Decision</div><div class="bs-cs-formula">p-value ≤ α → reject H₀</div><p class="bs-cs-desc">Otherwise, fail to reject. The critical value approach (|t| beyond the cutoff) always gives the same answer.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=T.INV.2T(α, df)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Being Wrong</div><div class="bs-cs-card-title">Type I & II Errors</div><div class="bs-cs-formula">α = P(Type I)  ·  β = P(Type II)</div><p class="bs-cs-desc">Type I rejects a true null (false positive). Type II keeps a false null (false negative). Power = 1 − β.</p><div class="bs-excel"><span class="lbl">Example</span><span>lower α → fewer false positives, more false negatives</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>H₀, Hₐ</dt><dd>Null, alternative hypothesis</dd></div>
+      <div class="bs-cs-row"><dt>μ₀, p₀</dt><dd>Hypothesized mean, proportion</dd></div>
+      <div class="bs-cs-row"><dt>x̄, p̂</dt><dd>Sample mean, proportion</dd></div>
+      <div class="bs-cs-row"><dt>s</dt><dd>Sample standard deviation</dd></div>
+      <div class="bs-cs-row"><dt>df</dt><dd>Degrees of freedom, n − 1</dd></div>
+      <div class="bs-cs-row"><dt>α</dt><dd>Significance level</dd></div>
+      <div class="bs-cs-row"><dt>β</dt><dd>P(Type II error)</dd></div>
+      <div class="bs-cs-row"><dt>1 − β</dt><dd>Power</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Null always has?</dt><dd>An equality sign</dd></div>
+      <div class="bs-cs-row"><dt>Two-tailed p-value?</dt><dd>2 × one-tail area</dd></div>
+      <div class="bs-cs-row"><dt>Reject when?</dt><dd>p-value ≤ α</dd></div>
+      <div class="bs-cs-row"><dt>Mean test uses?</dt><dd>t-distribution</dd></div>
+      <div class="bs-cs-row"><dt>Proportion test uses?</dt><dd>z-distribution</dd></div>
+      <div class="bs-cs-row"><dt>Type I error rate?</dt><dd>α</dd></div>
+      <div class="bs-cs-row"><dt>Fail to reject means?</dt><dd>Not enough evidence, not proof</dd></div>
+    </dl></div>
+  </div>
+</section>
+```

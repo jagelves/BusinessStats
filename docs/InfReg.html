@@ -41,7 +41,7 @@ ul.task-list li input[type="checkbox"] {
 <link href="site_libs/quarto-html/quarto-syntax-highlighting-dark-ebc9bf21172222eecf4329b9f87ba86d.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-text-highlighting-styles">
 <script src="site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="site_libs/bootstrap/bootstrap-a9a8112abf6d22cde504e3b06bd5f6a1.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
+<link href="site_libs/bootstrap/bootstrap-e6d6cf5d2fe5724721a99542168da79f.min.css" rel="stylesheet" append-hash="true" class="quarto-color-scheme" id="quarto-bootstrap" data-mode="light">
 <link href="site_libs/bootstrap/bootstrap-dark.min.css" rel="prefetch" class="quarto-color-scheme quarto-color-alternate" id="quarto-bootstrap" data-mode="dark">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/all.min.css" rel="stylesheet">
 <link href="site_libs/quarto-contrib/fontawesome6-6.7.2/latex-fontsize.css" rel="stylesheet">
@@ -340,7 +340,8 @@ window.Quarto = {
   <li><a href="#regression-and-inference-in-excel" id="toc-regression-and-inference-in-excel" class="nav-link" data-scroll-target="#regression-and-inference-in-excel"><span class="header-section-number">14.4</span> Regression and Inference in Excel</a></li>
   <li><a href="#excel-function-summary" id="toc-excel-function-summary" class="nav-link" data-scroll-target="#excel-function-summary"><span class="header-section-number">14.5</span> Excel Function Summary</a></li>
   <li><a href="#chapter-summary-cheat-sheet" id="toc-chapter-summary-cheat-sheet" class="nav-link" data-scroll-target="#chapter-summary-cheat-sheet"><span class="header-section-number">14.6</span> Chapter Summary Cheat Sheet</a></li>
-  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">14.7</span> Exercises</a></li>
+  <li><a href="#check-your-understanding" id="toc-check-your-understanding" class="nav-link" data-scroll-target="#check-your-understanding"><span class="header-section-number">14.7</span> Check Your Understanding</a></li>
+  <li><a href="#exercises" id="toc-exercises" class="nav-link" data-scroll-target="#exercises"><span class="header-section-number">14.8</span> Exercises</a></li>
   </ul>
 </nav>
     </div>
@@ -379,14 +380,14 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>This final chapter brings hypothesis testing and regression together. You will learn to judge whether a correlation is real or just noise, whether two groups truly differ, and whether a regression coefficient carries any explanatory weight. These are the tools that turn a descriptive relationship into a defensible conclusion — letting you evaluate market trends, compare performance across groups, and decide which predictors actually matter in a model. It is a fitting close to the book: it unites the descriptive tool of regression with the inferential habit of asking whether a pattern is real, turning a fitted line into a tested claim about the world.</p>
+<p>This final chapter brings hypothesis testing and regression together. You will learn to judge whether a correlation is real or just noise, whether two groups truly differ, and whether a regression coefficient carries any explanatory weight. These are the tools that turn a descriptive relationship into a defensible conclusion, letting you evaluate market trends, compare performance across groups, and decide which predictors actually matter in a model. It is a fitting close to the book: it unites the descriptive tool of regression with the inferential habit of asking whether a pattern is real, turning a fitted line into a tested claim about the world.</p>
 <section id="correlation-significance" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="correlation-significance"><span class="header-section-number">14.1</span> Correlation Significance</h2>
 <p>A sample correlation coefficient is almost never exactly zero, even when the two variables are unrelated. To decide whether an observed correlation reflects a real relationship in the population, we test the population correlation <span class="math inline">\(\rho\)</span>:</p>
 <ul>
-<li><span class="math inline">\(H_0: \rho \geq 0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \rho &lt; 0\)</span> — left-tailed</li>
-<li><span class="math inline">\(H_0: \rho \leq 0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \rho &gt; 0\)</span> — right-tailed</li>
-<li><span class="math inline">\(H_0: \rho = 0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \rho \ne 0\)</span> — two-tailed</li>
+<li><span class="math inline">\(H_0: \rho \geq 0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \rho &lt; 0\)</span>: left-tailed</li>
+<li><span class="math inline">\(H_0: \rho \leq 0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \rho &gt; 0\)</span>: right-tailed</li>
+<li><span class="math inline">\(H_0: \rho = 0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \rho \ne 0\)</span>: two-tailed</li>
 </ul>
 <div class="callout-formula">
 <p><strong>CORRELATION TEST STATISTIC</strong> <span class="math display">\[t = \frac{r_{xy}\sqrt{n-2}}{\sqrt{1-r_{xy}^2}}\]</span> with degrees of freedom <span class="math inline">\(df = n - 2\)</span>, where <span class="math inline">\(r_{xy}\)</span> is the sample correlation coefficient and <span class="math inline">\(n\)</span> is the sample size.</p>
@@ -397,7 +398,7 @@ details summary {
 </section>
 <section id="difference-of-means-tests" class="level2" data-number="14.2">
 <h2 data-number="14.2" class="anchored" data-anchor-id="difference-of-means-tests"><span class="header-section-number">14.2</span> Difference of Means Tests</h2>
-<p>We often want to know whether two populations have different means — for example, whether two divisions post different sales, or whether a treatment changes an outcome. The test statistic depends on how the two samples relate.</p>
+<p>We often want to know whether two populations have different means, for example whether two divisions post different sales, or whether a treatment changes an outcome. The test statistic depends on how the two samples relate.</p>
 <div class="callout-formula">
 <p><strong>DIFFERENCE OF MEANS TEST STATISTICS</strong> <span class="math display">\[\text{Unpaired, unequal variances:} \quad t = \frac{(\bar{x}_1 - \bar{x}_2) - d_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\]</span> <span class="math display">\[\text{Unpaired, equal variances:} \quad t = \frac{(\bar{x}_1 - \bar{x}_2) - d_0}{\sqrt{s_p^2\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}\]</span> <span class="math display">\[\text{Paired:} \quad t = \frac{\bar{d} - d_0}{s / \sqrt{n}}\]</span> where <span class="math inline">\(d_0\)</span> is the hypothesized difference, <span class="math inline">\(s_p^2\)</span> is the pooled variance, and <span class="math inline">\(\bar{d}\)</span> and <span class="math inline">\(s\)</span> are the mean and standard deviation of the paired differences.</p>
 <p>The degrees of freedom differ across the three tests:</p>
@@ -428,9 +429,9 @@ details summary {
 </tbody>
 </table>
 </div>
-<p>A <strong>paired</strong> test is used when the two samples are naturally linked — the same subjects measured twice (before and after), for instance. An <strong>unpaired</strong> (independent) test is used when the two samples come from separate groups.</p>
+<p>A <strong>paired</strong> test is used when the two samples are naturally linked, such as the same subjects measured twice (before and after), for instance. An <strong>unpaired</strong> (independent) test is used when the two samples come from separate groups.</p>
 <div class="callout-example">
-<p><strong>Example (unpaired).</strong> A company evaluates a training program. Six employees who took the program score a mean of <span class="math inline">\(\bar{x}_1 = 33.17\)</span> on a productivity assessment (with <span class="math inline">\(s_1 = 7.55\)</span>), while six <em>different</em> employees who did not take it score a mean of <span class="math inline">\(\bar{x}_2 = 30.00\)</span> (with <span class="math inline">\(s_2 = 7.18\)</span>). Testing <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span> against <span class="math inline">\(H_a: \mu_1 - \mu_2 \ne 0\)</span> with unequal variances: <span class="math display">\[t = \frac{(33.17 - 30.00) - 0}{\sqrt{\frac{7.55^2}{6} + \frac{7.18^2}{6}}} = \frac{3.17}{4.25} = 0.74\]</span> The Welch formula gives about <span class="math inline">\(10\)</span> degrees of freedom, and the two-tailed p-value is roughly <span class="math inline">\(0.47\)</span>. Because <span class="math inline">\(0.47 &gt; 0.05\)</span>, we fail to reject the null: the <span class="math inline">\(3.17\)</span>-point gap is swamped by the large variation <em>between</em> employees, so we cannot conclude the program helped.</p>
+<p><strong>Example (unpaired).</strong> A company evaluates a training program. Six employees who took the program score a mean of <span class="math inline">\(\bar{x}_1 = 33.17\)</span> on a productivity assessment (with <span class="math inline">\(s_1 = 7.55\)</span>), while six <em>different</em> employees who did not take it score a mean of <span class="math inline">\(\bar{x}_2 = 30.00\)</span> (with <span class="math inline">\(s_2 = 7.18\)</span>). Testing <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span> against <span class="math inline">\(H_a: \mu_1 - \mu_2 \ne 0\)</span> with unequal variances: <span class="math display">\[t = \frac{(33.17 - 30.00) - 0}{\sqrt{\frac{7.55^2}{6} + \frac{7.18^2}{6}}} = \frac{3.17}{4.25} = 0.74\]</span> The Welch formula gives <span class="math inline">\(df \approx 9.98\)</span>, which we round down to <span class="math inline">\(9\)</span>, and the two-tailed p-value is roughly <span class="math inline">\(0.48\)</span>. Because <span class="math inline">\(0.48 &gt; 0.05\)</span>, we fail to reject the null: the <span class="math inline">\(3.17\)</span>-point gap is swamped by the large variation <em>between</em> employees, so we cannot conclude the program helped.</p>
 </div>
 <div class="callout-example">
 <p><strong>Example (paired).</strong> Now suppose those same six employees were each measured <em>before and after</em> the program, so every “after” score is matched to that person’s own “before” score:</p>
@@ -484,16 +485,16 @@ details summary {
 </table>
 <p>The group means are identical to the unpaired case (<span class="math inline">\(30.00\)</span> before, <span class="math inline">\(33.17\)</span> after), but now we work with each person’s change. The individual gains are remarkably consistent: <span class="math inline">\(\bar{d} = 3.17\)</span> with <span class="math inline">\(s = 0.75\)</span>. Testing <span class="math inline">\(H_0: \mu_d = 0\)</span> against <span class="math inline">\(H_a: \mu_d \ne 0\)</span>: <span class="math display">\[t = \frac{\bar{d} - 0}{s / \sqrt{n}} = \frac{3.17}{0.75 / \sqrt{6}} = 10.30\]</span> With <span class="math inline">\(df = n - 1 = 6 - 1 = 5\)</span> (six <em>pairs</em>, not twelve observations) the two-tailed p-value is about <span class="math inline">\(0.0001\)</span>. Because <span class="math inline">\(0.0001 &lt; 0.05\)</span>, we strongly reject the null: the program clearly raised productivity.</p>
 </div>
-<p>The two examples use the <strong>same numbers</strong> yet reach opposite conclusions, and the reason is the design. The unpaired test must carry the large variation <em>between</em> employees — scores range from <span class="math inline">\(20\)</span> to <span class="math inline">\(40\)</span> — and that noise hides the modest improvement. The paired test cancels that person-to-person variation by looking only at each individual’s change, leaving a small, consistent difference that stands out sharply (<span class="math inline">\(s\)</span> drops from about <span class="math inline">\(7.5\)</span> to <span class="math inline">\(0.75\)</span>). Whenever the data are naturally matched, pairing is the more powerful choice.</p>
+<p>The two examples use the <strong>same numbers</strong> yet reach opposite conclusions, and the reason is the design. The unpaired test must carry the large variation <em>between</em> employees (scores range from <span class="math inline">\(20\)</span> to <span class="math inline">\(40\)</span>), and that noise hides the modest improvement. The paired test cancels that person-to-person variation by looking only at each individual’s change, leaving a small, consistent difference that stands out sharply (<span class="math inline">\(s\)</span> drops from about <span class="math inline">\(7.5\)</span> to <span class="math inline">\(0.75\)</span>). Whenever the data are naturally matched, pairing is the more powerful choice.</p>
 </section>
 <section id="regression-inference" class="level2" data-number="14.3">
 <h2 data-number="14.3" class="anchored" data-anchor-id="regression-inference"><span class="header-section-number">14.3</span> Regression Inference</h2>
 <p>After fitting a regression, two kinds of tests tell us whether the model has explanatory power.</p>
-<p><strong>Testing a single coefficient.</strong> Each coefficient is tested against zero — is this predictor related to <span class="math inline">\(y\)</span>, holding the others fixed?</p>
+<p><strong>Testing a single coefficient.</strong> Each coefficient is tested against zero: is this predictor related to <span class="math inline">\(y\)</span>, holding the others fixed?</p>
 <div class="callout-formula">
 <p><strong>TEST FOR A SINGLE COEFFICIENT</strong> <span class="math display">\[H_0: \beta_j = 0 \quad\text{vs.}\quad H_a: \beta_j \ne 0, \qquad t = \frac{b_j}{se(b_j)}\]</span> where <span class="math inline">\(b_j\)</span> is the estimated coefficient and <span class="math inline">\(se(b_j)\)</span> is its standard error, with <span class="math inline">\(df = n - k - 1\)</span>.</p>
 </div>
-<p><strong>Testing joint significance.</strong> The <span class="math inline">\(F\)</span>-test asks whether <em>all</em> the slope coefficients are zero at once — is the model, as a whole, better than no predictors?</p>
+<p><strong>Testing joint significance.</strong> The <span class="math inline">\(F\)</span>-test asks whether <em>all</em> the slope coefficients are zero at once: is the model, as a whole, better than no predictors?</p>
 <div class="callout-formula">
 <p><strong>JOINT SIGNIFICANCE (F-TEST)</strong> <span class="math display">\[H_0: \beta_1 = \beta_2 = \dots = \beta_k = 0, \qquad F = \frac{SSR/k}{SSE/(n-k-1)} = \frac{MSR}{MSE}\]</span> where <span class="math inline">\(k\)</span> is the number of predictors and <span class="math inline">\(n\)</span> is the sample size.</p>
 </div>
@@ -545,8 +546,8 @@ details summary {
 <p><strong>Correlation significance.</strong> Compute the correlation with <code>=CORREL(x_range, y_range)</code>, then turn it into a test statistic and p-value:</p>
 <pre class="excel"><code>=(r*SQRT(n-2)) / SQRT(1 - r^2)</code></pre>
 <p>followed by <code>=T.DIST.2T(ABS(t), n-2)</code> for a two-tailed test (or <code>=T.DIST</code> / <code>=T.DIST.RT</code> for one tail).</p>
-<p><strong>Difference of means.</strong> The <code>=T.TEST(array1, array2, tails, type)</code> function returns the p-value directly. The <code>tails</code> argument is <code>1</code> (one-tailed) or <code>2</code> (two-tailed); the <code>type</code> argument is <code>1</code> (paired), <code>2</code> (two-sample, equal variances), or <code>3</code> (two-sample, unequal variances). For full output — the test statistic, critical values, and both one- and two-tailed p-values — use the <strong>Data Analysis ToolPak</strong>, which offers <code>t-Test: Paired Two Sample for Means</code>, <code>t-Test: Two-Sample Assuming Equal Variances</code>, and <code>t-Test: Two-Sample Assuming Unequal Variances</code>.</p>
-<p><strong>Regression inference.</strong> Run <code>Data → Data Analysis → Regression</code>. The output reports each coefficient with its standard error, <span class="math inline">\(t\)</span>-statistic, and p-value (the individual coefficient tests), the <span class="math inline">\(F\)</span>-statistic with its <strong>Significance F</strong> (the joint test), and the ANOVA table — everything in this chapter in a single step.</p>
+<p><strong>Difference of means.</strong> The <code>=T.TEST(array1, array2, tails, type)</code> function returns the p-value directly. The <code>tails</code> argument is <code>1</code> (one-tailed) or <code>2</code> (two-tailed); the <code>type</code> argument is <code>1</code> (paired), <code>2</code> (two-sample, equal variances), or <code>3</code> (two-sample, unequal variances). For full output (the test statistic, critical values, and both one- and two-tailed p-values), use the <strong>Data Analysis ToolPak</strong>, which offers <code>t-Test: Paired Two Sample for Means</code>, <code>t-Test: Two-Sample Assuming Equal Variances</code>, and <code>t-Test: Two-Sample Assuming Unequal Variances</code>.</p>
+<p><strong>Regression inference.</strong> Run <code>Data → Data Analysis → Regression</code>. The output reports each coefficient with its standard error, <span class="math inline">\(t\)</span>-statistic, and p-value (the individual coefficient tests), the <span class="math inline">\(F\)</span>-statistic with its <strong>Significance F</strong> (the joint test), and the ANOVA table: everything in this chapter in a single step.</p>
 </section>
 <section id="excel-function-summary" class="level2" data-number="14.5">
 <h2 data-number="14.5" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">14.5</span> Excel Function Summary</h2>
@@ -561,18 +562,140 @@ details summary {
 </section>
 <section id="chapter-summary-cheat-sheet" class="level2" data-number="14.6">
 <h2 data-number="14.6" class="anchored" data-anchor-id="chapter-summary-cheat-sheet"><span class="header-section-number">14.6</span> Chapter Summary Cheat Sheet</h2>
-<div class="cell" data-layout-align="center">
-<div class="cell-output-display">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="images/Regression_Inference.png" class="img-fluid quarto-figure quarto-figure-center figure-img" style="width:100.0%"></p>
-</figure>
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Regression and Inference</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Is r Real?</div><div class="bs-cs-card-title">Correlation Test</div><div class="bs-cs-formula">t = r√(n − 2) / √(1 − r²)</div><p class="bs-cs-desc">Tests whether the population correlation ρ differs from zero, with df = n − 2.</p><div class="bs-excel"><span class="lbl">Example</span><span>r = 0.5, n = 30 → t = 3.06, p ≈ 0.005</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Two Groups</div><div class="bs-cs-card-title">Difference of Means</div><div class="bs-cs-formula">t = [(x̄₁ − x̄₂) − d₀] / SE</div><p class="bs-cs-desc">Compares two population means. SE depends on the design: unequal variances, equal (pooled) variances, or paired.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=T.TEST(arr1, arr2, tails, type)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Same Subjects</div><div class="bs-cs-card-title">Paired Test</div><div class="bs-cs-formula">t = (d̄ − d₀) / (s / √n)</div><p class="bs-cs-desc">Use when each observation is matched, such as before and after. df = number of pairs − 1. Removes person-to-person noise.</p><div class="bs-excel"><span class="lbl">Excel</span><span>type: 1 paired · 2 equal · 3 unequal</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · One Coefficient</div><div class="bs-cs-card-title">Coefficient t-Test</div><div class="bs-cs-formula">t = b<sub>j</sub> / se(b<sub>j</sub>)</div><p class="bs-cs-desc">Tests H₀: β<sub>j</sub> = 0, whether one predictor matters holding the others fixed. df = n − k − 1.</p><div class="bs-excel"><span class="lbl">Excel</span><span>Data → Data Analysis → Regression</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Whole Model</div><div class="bs-cs-card-title">Joint F-Test</div><div class="bs-cs-formula">F = (SSR / k) / (SSE / (n − k − 1))</div><p class="bs-cs-desc">Tests whether all slopes are zero at once. A small Significance F rejects that null.</p><div class="bs-excel"><span class="lbl">Excel</span><span>Regression output → Significance F</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Organize</div><div class="bs-cs-card-title">ANOVA Table</div><div class="bs-cs-formula">MS = SS / df &nbsp;·&nbsp; F = MSR / MSE</div><p class="bs-cs-desc">Regression has k df, residual n − k − 1, and total n − 1. SST = SSR + SSE.</p><div class="bs-excel"><span class="lbl">Excel</span><span>Regression output → ANOVA</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>r, ρ</dt><dd>Sample, population correlation</dd></div>
+      <div class="bs-cs-row"><dt>x̄₁, x̄₂</dt><dd>Two sample means</dd></div>
+      <div class="bs-cs-row"><dt>d̄, d₀</dt><dd>Mean difference, hypothesized difference</dd></div>
+      <div class="bs-cs-row"><dt>s<sub>p</sub>²</dt><dd>Pooled variance</dd></div>
+      <div class="bs-cs-row"><dt>b<sub>j</sub>, se(b<sub>j</sub>)</dt><dd>Coefficient, its standard error</dd></div>
+      <div class="bs-cs-row"><dt>k</dt><dd>Number of predictors</dd></div>
+      <div class="bs-cs-row"><dt>MSR, MSE</dt><dd>Mean squares</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Correlation df?</dt><dd>n − 2</dd></div>
+      <div class="bs-cs-row"><dt>Equal-variance df?</dt><dd>n₁ + n₂ − 2</dd></div>
+      <div class="bs-cs-row"><dt>Paired df?</dt><dd>Pairs − 1</dd></div>
+      <div class="bs-cs-row"><dt>Coefficient test df?</dt><dd>n − k − 1</dd></div>
+      <div class="bs-cs-row"><dt>Paired test when?</dt><dd>Same subjects twice</dd></div>
+      <div class="bs-cs-row"><dt>T.TEST returns?</dt><dd>The p-value</dd></div>
+      <div class="bs-cs-row"><dt>ToolPak Regression gives?</dt><dd>t, p, F, R², ANOVA</dd></div>
+    </dl></div>
+  </div>
+</section>
+</section>
+<section id="check-your-understanding" class="level2" data-number="14.7">
+<h2 data-number="14.7" class="anchored" data-anchor-id="check-your-understanding"><span class="header-section-number">14.7</span> Check Your Understanding</h2>
+<p>Test the main ideas of the chapter before moving on to the exercises. <span>Pick an answer to see whether you are right and why.</span></p>
+<div class="bs-quiz">
+<p>A sample of <span class="math inline">\(n=50\)</span> gives a correlation of <span class="math inline">\(r=0.3\)</span>. What is the test statistic for <span class="math inline">\(H_0: \rho = 0\)</span>, and its degrees of freedom?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked=""><span class="math inline">\(t \approx 2.18\)</span> with <span class="math inline">\(48\)</span> df</label></li>
+<li><label><input type="checkbox"><span class="math inline">\(t \approx 2.18\)</span> with <span class="math inline">\(49\)</span> df</label></li>
+<li><label><input type="checkbox"><span class="math inline">\(t = 0.3\)</span> with <span class="math inline">\(48\)</span> df</label></li>
+<li><label><input type="checkbox"><span class="math inline">\(t \approx 2.08\)</span> with <span class="math inline">\(50\)</span> df</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(t=\frac{0.3\sqrt{48}}{\sqrt{1-0.09}}=\frac{2.078}{0.954}\approx2.18\)</span>, with <span class="math inline">\(df=n-2=48\)</span>.</p>
 </div>
+</div>
+<div class="bs-quiz">
+<p>In which situation should you use a paired test?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">Sales of <span class="math inline">\(20\)</span> stores in Ohio are compared with <span class="math inline">\(20\)</span> different stores in Texas</label></li>
+<li><label><input type="checkbox">Male and female customers’ spending is compared</label></li>
+<li><label><input type="checkbox" checked="">The same <span class="math inline">\(20\)</span> stores’ sales are measured before and after a promotion</label></li>
+<li><label><input type="checkbox">Two independent random samples of employees are compared</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>A paired test applies when each observation in one sample is matched to one in the other, such as the same store measured twice.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>In the chapter, the same training data gave <span class="math inline">\(p \approx 0.48\)</span> with an unpaired test and <span class="math inline">\(p \approx 0.0001\)</span> with a paired test. Why?</p>
+<ul class="task-list">
+<li><label><input type="checkbox">The paired test uses more observations</label></li>
+<li><label><input type="checkbox">The paired test assumes equal variances</label></li>
+<li><label><input type="checkbox">The paired test uses the <span class="math inline">\(z\)</span>-distribution</label></li>
+<li><label><input type="checkbox" checked="">Pairing removes the large person-to-person variation</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>The paired test works with each employee’s change, so the variation between employees (scores from <span class="math inline">\(20\)</span> to <span class="math inline">\(40\)</span>) drops out. The standard deviation falls from about <span class="math inline">\(7.5\)</span> to <span class="math inline">\(0.75\)</span>.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A paired test compares the before and after sales of <span class="math inline">\(12\)</span> salespeople. How many degrees of freedom does it have?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(22\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(11\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(23\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(12\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>For a paired test <span class="math inline">\(df=n-1\)</span>, where <span class="math inline">\(n\)</span> is the number of pairs: <span class="math inline">\(12-1=11\)</span>. There are <span class="math inline">\(24\)</span> measurements, but only <span class="math inline">\(12\)</span> differences.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A regression coefficient is <span class="math inline">\(b_j=4.2\)</span> with a standard error of <span class="math inline">\(1.4\)</span>. What is its <span class="math inline">\(t\)</span> statistic?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(5.88\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(0.33\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(2.8\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(3\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(t=b_j/se(b_j)=4.2/1.4=3\)</span>. A value this far from zero suggests the predictor matters.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>What is the null hypothesis of the joint <span class="math inline">\(F\)</span>-test in a regression?</p>
+<ul class="task-list">
+<li><label><input type="checkbox" checked="">All slope coefficients are zero</label></li>
+<li><label><input type="checkbox">The intercept is zero</label></li>
+<li><label><input type="checkbox"><span class="math inline">\(R^2\)</span> equals <span class="math inline">\(1\)</span></label></li>
+<li><label><input type="checkbox">At least one slope coefficient is zero</label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><span class="math inline">\(H_0: \beta_1 = \beta_2 = \dots = \beta_k = 0\)</span>, meaning no predictor helps. A small Significance F rejects it.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>Which <code>type</code> argument of <code>=T.TEST()</code> compares two independent groups with unequal variances?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(1\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(2\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(3\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(4\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p><code>type</code> is <span class="math inline">\(1\)</span> for paired, <span class="math inline">\(2\)</span> for two samples with equal variances, and <span class="math inline">\(3\)</span> for two samples with unequal variances.</p>
+</div>
+</div>
+<div class="bs-quiz">
+<p>A regression with <span class="math inline">\(k=3\)</span> predictors is fit to <span class="math inline">\(n=40\)</span> observations. How many residual degrees of freedom does it have?</p>
+<ul class="task-list">
+<li><label><input type="checkbox"><span class="math inline">\(37\)</span></label></li>
+<li><label><input type="checkbox" checked=""><span class="math inline">\(36\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(39\)</span></label></li>
+<li><label><input type="checkbox"><span class="math inline">\(3\)</span></label></li>
+</ul>
+<div class="bs-quiz-why">
+<p>Residual <span class="math inline">\(df=n-k-1=40-3-1=36\)</span>. The total is <span class="math inline">\(n-1=39\)</span>, and the regression row has <span class="math inline">\(k=3\)</span>.</p>
 </div>
 </div>
 </section>
-<section id="exercises" class="level2" data-number="14.7">
-<h2 data-number="14.7" class="anchored" data-anchor-id="exercises"><span class="header-section-number">14.7</span> Exercises</h2>
+<section id="exercises" class="level2" data-number="14.8">
+<h2 data-number="14.8" class="anchored" data-anchor-id="exercises"><span class="header-section-number">14.8</span> Exercises</h2>
 <p>The following exercises will help you test your knowledge of regression and inference. In particular, the exercises work on:</p>
 <ul>
 <li>Determining the significance of a correlation.</li>
@@ -605,7 +728,7 @@ details summary {
 <p>Answer</p>
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>The correlation is</em> <span class="math inline">\(0.44\)</span> and the test statistic is <span class="math inline">\(7.89\)</span>. The p-value is approximately <span class="math inline">\(0\)</span>, so we reject the null hypothesis — the correlation between Hits and Salary is highly significant.</p>
+<p><em>The correlation is</em> <span class="math inline">\(0.44\)</span> and the test statistic is <span class="math inline">\(7.89\)</span>. The p-value is approximately <span class="math inline">\(0\)</span>, so we reject the null hypothesis: the correlation between Hits and Salary is highly significant.</p>
 <p><em>In Excel (there are</em> <span class="math inline">\(263\)</span> players with a recorded salary):</p>
 <ul>
 <li><code>=CORREL(Hits_range, Salary_range)</code> → <span class="math inline">\(0.44\)</span></li>
@@ -626,7 +749,7 @@ details summary {
 <p>Answer</p>
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>There is no strong reason to believe the variances differ — players are recruited from a common pool. At the</em> <span class="math inline">\(5\%\)</span> level the difference in mean Hits is not significant, so we cannot reject the null.</p>
+<p><em>There is no strong reason to believe the variances differ, since players are recruited from a common pool. At the</em> <span class="math inline">\(5\%\)</span> level the difference in mean Hits is not significant, so we cannot reject the null.</p>
 <p><em>Copy the Hits for <code>NewLeague = "A"</code> into one column and the Hits for <code>NewLeague = "N"</code> into another (or filter the data). This is an unpaired, two-tailed test assuming equal variances:</em></p>
 <ul>
 <li><code>=T.TEST(A_range, N_range, 2, 2)</code> → <span class="math inline">\(0.28\)</span> (p-value)</li>
@@ -641,8 +764,8 @@ details summary {
 <p>Answer</p>
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>There may be reason to believe the variances differ, so we use an unequal-variance test. At the</em> <span class="math inline">\(5\%\)</span> level we cannot reject <span class="math inline">\(H_{0}: \mu_{male} - \mu_{female} \leq 0\)</span> — there is no evidence that males survive longer.</p>
-<p><em>Run <code>Data → Data Analysis → t-Test: Two-Sample Assuming Unequal Variances</code> on the male and female survival times. The male mean (</em><span class="math inline">\(26.78\)</span>) is actually <strong>below</strong> the female mean (<span class="math inline">\(28.10\)</span>), giving a test statistic of <span class="math inline">\(-0.31\)</span>. Because the difference points opposite to the alternative, the one-tailed p-value is about <span class="math inline">\(0.62\)</span> — far above <span class="math inline">\(0.05\)</span> — so we fail to reject the null.</p>
+<p><em>There may be reason to believe the variances differ, so we use an unequal-variance test. At the</em> <span class="math inline">\(5\%\)</span> level we cannot reject <span class="math inline">\(H_{0}: \mu_{male} - \mu_{female} \leq 0\)</span>: there is no evidence that males survive longer.</p>
+<p><em>Run <code>Data → Data Analysis → t-Test: Two-Sample Assuming Unequal Variances</code> on the male and female survival times. The male mean (</em><span class="math inline">\(26.78\)</span>) is actually <strong>below</strong> the female mean (<span class="math inline">\(28.10\)</span>), giving a test statistic of <span class="math inline">\(-0.31\)</span>. Because the difference points opposite to the alternative, the one-tailed p-value is about <span class="math inline">\(0.62\)</span>, far above <span class="math inline">\(0.05\)</span>, so we fail to reject the null.</p>
 </div>
 </details></li>
 </ol>
@@ -675,7 +798,7 @@ Answer
 <p>Answer</p>
 </summary>
 <div style="padding-left: 1.5em;">
-<p><em>RBI and Years are statistically significant (p-values near</em> <span class="math inline">\(0\)</span>): salary rises with experience and with RBIs. Home runs are <strong>not</strong> significant (p-value about <span class="math inline">\(0.14\)</span>). The <span class="math inline">\(F\)</span>-statistic is highly significant, so the predictors are jointly significant. However, the <span class="math inline">\(R^2\)</span> and adjusted <span class="math inline">\(R^2\)</span> are only about <span class="math inline">\(0.32\)</span>, so the model explains just <span class="math inline">\(32\%\)</span> of the variation in salary — more variables would be needed for a better fit.</p>
+<p><em>RBI and Years are statistically significant (p-values near</em> <span class="math inline">\(0\)</span>): salary rises with experience and with RBIs. Home runs are <strong>not</strong> significant (p-value about <span class="math inline">\(0.14\)</span>). The <span class="math inline">\(F\)</span>-statistic is highly significant, so the predictors are jointly significant. However, the <span class="math inline">\(R^2\)</span> and adjusted <span class="math inline">\(R^2\)</span> are only about <span class="math inline">\(0.32\)</span>, so the model explains just <span class="math inline">\(32\%\)</span> of the variation in salary, so more variables would be needed for a better fit.</p>
 <p><em>Copy <code>HmRun</code>, <code>RBI</code>, and <code>Years</code> into three adjacent columns (the ToolPak needs a contiguous X range), then run <code>Data → Data Analysis → Regression</code> with <code>Salary</code> as the Input Y Range and those three columns as the Input X Range. The output gives:</em></p>
 <ul>
 <li>each coefficient’s <strong>p-value</strong> (the individual tests): RBI and Years significant, HmRun not</li>
@@ -695,7 +818,7 @@ Answer
 <ul>
 <li><code>=-90.09 + (-7.35)*28 + 9.16*57 + 32.82*12</code> → <span class="math inline">\(619.93\)</span></li>
 </ul>
-<p><em>The prediction interval widens the estimate by</em> <span class="math inline">\(t \times s_e\)</span>, where <span class="math inline">\(t =\)</span> <code>T.INV.2T(0.05, 259)</code> <span class="math inline">\(\approx 1.97\)</span> and <span class="math inline">\(s_e\)</span> is the regression’s standard error (<span class="math inline">\(\approx 381\)</span> for a new observation). This gives <span class="math inline">\(619.93 \pm 749.8 = [-129.89,\ 1369.7]\)</span>. The interval is very wide — and even includes negative salaries — because the model explains only about a third of the variation in salary.</p>
+<p><em>The prediction interval widens the estimate by</em> <span class="math inline">\(t \times s_e\)</span>, where <span class="math inline">\(t =\)</span> <code>T.INV.2T(0.05, 259)</code> <span class="math inline">\(\approx 1.97\)</span> and <span class="math inline">\(s_e\)</span> is the regression’s standard error (<span class="math inline">\(\approx 381\)</span> for a new observation). This gives <span class="math inline">\(619.93 \pm 749.8 = [-129.89,\ 1369.7]\)</span>. The interval is very wide, and even includes negative salaries, because the model explains only about a third of the variation in salary.</p>
 </div>
 </details></li>
 </ol>
@@ -1296,6 +1419,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
   </div>
 </footer>
 <script src="assets/book.js"></script>
+<script src="assets/quiz.js"></script>
 
 
 

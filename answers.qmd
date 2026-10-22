@@ -2016,7 +2016,7 @@ $P(Y>7.6)=0.005386$, $P(7.4 \leq Y \leq 10.6)=0.0071$, a $y$ such that $P(Y>y)=0
 
 
 ::: {style="padding-left: 1.5em;"}
-*Select the* $1000$ sample means and go to `Insert → Charts → Histogram` (or use the bins-and-PivotTable method from Descriptive Statistics II). Although the population is uniform, the distribution of the sample means is bell-shaped — this is the Central Limit Theorem in action.
+*Select the* $1000$ sample means and go to `Insert → Charts → Histogram` (or use the bins-and-PivotTable method from Descriptive Statistics II). Although the population is uniform, the distribution of the sample means is bell-shaped. This is the Central Limit Theorem in action.
 
 *Using a normal distribution with mean* $150$ and standard error $9.13$:
 
@@ -2158,7 +2158,7 @@ $P(Y>7.6)=0.005386$, $P(7.4 \leq Y \leq 10.6)=0.0071$, a $y$ such that $P(Y>y)=0
 
 - `=-LN(RAND())/0.02`
 
-*Fill a block of* $10{,}000$ rows and $50$ columns with this formula; each row is a sample of size $50$. (The values recalculate on every edit — copy the block and use `Paste Special → Values` to freeze them.)
+*Fill a block of* $10{,}000$ rows and $50$ columns with this formula; each row is a sample of size $50$. (The values recalculate on every edit, so copy the block and use `Paste Special → Values` to freeze them.)
 :::
 
 :::
@@ -2213,7 +2213,7 @@ $P(Y>7.6)=0.005386$, $P(7.4 \leq Y \leq 10.6)=0.0071$, a $y$ such that $P(Y>y)=0
 
 - `=IF(ABS(SampleMean - 50) <= NORM.S.INV(0.95)*SE, 1, 0)`
 
-*Copy it down and sum it with `=SUM(...)`. About* $9{,}000$ of the $10{,}000$ intervals contain the population mean — that is exactly what a $90\%$ confidence level means.
+*Copy it down and sum it with `=SUM(...)`. About* $9{,}000$ of the $10{,}000$ intervals contain the population mean, which is exactly what a $90\%$ confidence level means.
 :::
 
 :::
@@ -2503,7 +2503,7 @@ $P(Y>7.6)=0.005386$, $P(7.4 \leq Y \leq 10.6)=0.0071$, a $y$ such that $P(Y>y)=0
 
 
 ::: {style="padding-left: 1.5em;"}
-*The correlation is* $0.44$ and the test statistic is $7.89$. The p-value is approximately $0$, so we reject the null hypothesis — the correlation between Hits and Salary is highly significant.
+*The correlation is* $0.44$ and the test statistic is $7.89$. The p-value is approximately $0$, so we reject the null hypothesis: the correlation between Hits and Salary is highly significant.
 
 *In Excel (there are* $263$ players with a recorded salary):
 
@@ -2522,7 +2522,7 @@ $P(Y>7.6)=0.005386$, $P(7.4 \leq Y \leq 10.6)=0.0071$, a $y$ such that $P(Y>y)=0
 
 
 ::: {style="padding-left: 1.5em;"}
-*There is no strong reason to believe the variances differ — players are recruited from a common pool. At the* $5\%$ level the difference in mean Hits is not significant, so we cannot reject the null.
+*There is no strong reason to believe the variances differ, since players are recruited from a common pool. At the* $5\%$ level the difference in mean Hits is not significant, so we cannot reject the null.
 
 *Copy the Hits for `NewLeague = "A"` into one column and the Hits for `NewLeague = "N"` into another (or filter the data). This is an unpaired, two-tailed test assuming equal variances:*
 
@@ -2541,9 +2541,9 @@ $P(Y>7.6)=0.005386$, $P(7.4 \leq Y \leq 10.6)=0.0071$, a $y$ such that $P(Y>y)=0
 
 
 ::: {style="padding-left: 1.5em;"}
-*There may be reason to believe the variances differ, so we use an unequal-variance test. At the* $5\%$ level we cannot reject $H_{0}: \mu_{male} - \mu_{female} \leq 0$ — there is no evidence that males survive longer.
+*There may be reason to believe the variances differ, so we use an unequal-variance test. At the* $5\%$ level we cannot reject $H_{0}: \mu_{male} - \mu_{female} \leq 0$: there is no evidence that males survive longer.
 
-*Run `Data → Data Analysis → t-Test: Two-Sample Assuming Unequal Variances` on the male and female survival times. The male mean (*$26.78$) is actually **below** the female mean ($28.10$), giving a test statistic of $-0.31$. Because the difference points opposite to the alternative, the one-tailed p-value is about $0.62$ — far above $0.05$ — so we fail to reject the null.
+*Run `Data → Data Analysis → t-Test: Two-Sample Assuming Unequal Variances` on the male and female survival times. The male mean (*$26.78$) is actually **below** the female mean ($28.10$), giving a test statistic of $-0.31$. Because the difference points opposite to the alternative, the one-tailed p-value is about $0.62$, far above $0.05$, so we fail to reject the null.
 :::
 
 :::
@@ -2575,7 +2575,7 @@ $P(Y>7.6)=0.005386$, $P(7.4 \leq Y \leq 10.6)=0.0071$, a $y$ such that $P(Y>y)=0
 
 
 ::: {style="padding-left: 1.5em;"}
-*RBI and Years are statistically significant (p-values near* $0$): salary rises with experience and with RBIs. Home runs are **not** significant (p-value about $0.14$). The $F$-statistic is highly significant, so the predictors are jointly significant. However, the $R^2$ and adjusted $R^2$ are only about $0.32$, so the model explains just $32\%$ of the variation in salary — more variables would be needed for a better fit.
+*RBI and Years are statistically significant (p-values near* $0$): salary rises with experience and with RBIs. Home runs are **not** significant (p-value about $0.14$). The $F$-statistic is highly significant, so the predictors are jointly significant. However, the $R^2$ and adjusted $R^2$ are only about $0.32$, so the model explains just $32\%$ of the variation in salary, so more variables would be needed for a better fit.
 
 *Copy `HmRun`, `RBI`, and `Years` into three adjacent columns (the ToolPak needs a contiguous X range), then run `Data → Data Analysis → Regression` with `Salary` as the Input Y Range and those three columns as the Input X Range. The output gives:*
 
@@ -2600,7 +2600,7 @@ $P(Y>7.6)=0.005386$, $P(7.4 \leq Y \leq 10.6)=0.0071$, a $y$ such that $P(Y>y)=0
 
 - `=-90.09 + (-7.35)*28 + 9.16*57 + 32.82*12` → $619.93$
 
-*The prediction interval widens the estimate by* $t \times s_e$, where $t =$ `T.INV.2T(0.05, 259)` $\approx 1.97$ and $s_e$ is the regression's standard error ($\approx 381$ for a new observation). This gives $619.93 \pm 749.8 = [-129.89,\ 1369.7]$. The interval is very wide — and even includes negative salaries — because the model explains only about a third of the variation in salary.
+*The prediction interval widens the estimate by* $t \times s_e$, where $t =$ `T.INV.2T(0.05, 259)` $\approx 1.97$ and $s_e$ is the regression's standard error ($\approx 381$ for a new observation). This gives $619.93 \pm 749.8 = [-129.89,\ 1369.7]$. The interval is very wide, and even includes negative salaries, because the model explains only about a third of the variation in salary.
 :::
 
 :::

@@ -16,19 +16,19 @@ details summary {
 
 # Inference III
 
-Business decisions are often framed as claims to be tested: a new supplier promises fewer defects, a marketing team believes a campaign lifted sales, an analyst suspects average spending has changed. **Hypothesis testing** is the formal procedure for deciding whether the evidence in a sample is strong enough to support such a claim, or whether the difference we see could just be sampling error. In this chapter you will learn to state null and alternative hypotheses, compute a test statistic, weigh it against a chosen level of risk, and reach a defensible conclusion — all in Excel. This is where the cycle closes: we began by wanting to learn something about the world, and hypothesis testing is the formal step of asking whether the data we collected actually support the idea we started with.
+Business decisions are often framed as claims to be tested: a new supplier promises fewer defects, a marketing team believes a campaign lifted sales, an analyst suspects average spending has changed. **Hypothesis testing** is the formal procedure for deciding whether the evidence in a sample is strong enough to support such a claim, or whether the difference we see could just be sampling error. In this chapter you will learn to state null and alternative hypotheses, compute a test statistic, weigh it against a chosen level of risk, and reach a defensible conclusion, all in Excel. This is where the cycle closes: we began by wanting to learn something about the world, and hypothesis testing is the formal step of asking whether the data we collected actually support the idea we started with.
 
 ## Hypothesis Testing Intuition
 
-The **null hypothesis** ($H_0$) is a statement about a population parameter — usually the status quo, or "no effect." It always contains some form of the equality sign ($=$, $\geq$, or $\leq$). The **alternative hypothesis** ($H_a$) directly contradicts the null and states the effect we are looking for, using a strict inequality ($\ne$, $>$, or $<$).
+The **null hypothesis** ($H_0$) is a statement about a population parameter, usually the status quo, or "no effect." It always contains some form of the equality sign ($=$, $\geq$, or $\leq$). The **alternative hypothesis** ($H_a$) directly contradicts the null and states the effect we are looking for, using a strict inequality ($\ne$, $>$, or $<$).
 
 Suppose we hypothesize that the average annual income in the U.S. is \$50,000. When we take a large sample, the sample mean behaves like a normal random variable (by the Central Limit Theorem) centered at the hypothesized value. Our job is to decide whether the observed sample mean is "close enough" to \$50,000 to have plausibly come from that distribution, or "far enough" that we should doubt the null and favor the alternative.
 
 ::: callout-example
 **Example:** We test whether the average income is \$50,000. A sample of $100$ people has a mean of \$48,000. Is \$48,000 close to \$50,000, or far? It depends entirely on the **standard error** of the sampling distribution:
 
-- If the standard error were small (say \$1,000), then \$48,000 is two standard errors below \$50,000 — strong evidence *against* the null.
-- If the standard error were large (say \$15,000), then \$48,000 is only a fraction of a standard error away — perfectly *consistent* with the null.
+- If the standard error were small (say \$1,000), then \$48,000 is two standard errors below \$50,000: strong evidence *against* the null.
+- If the standard error were large (say \$15,000), then \$48,000 is only a fraction of a standard error away, perfectly *consistent* with the null.
 
 Distance alone tells us nothing; distance measured in standard errors is what matters.
 :::
@@ -47,15 +47,15 @@ Every test starts by writing the two competing hypotheses. The direction of the 
 
 **For a mean:**
 
-- $H_0: \mu \leq \mu_0$ vs. $H_a: \mu > \mu_0$ — right-tailed test
-- $H_0: \mu \geq \mu_0$ vs. $H_a: \mu < \mu_0$ — left-tailed test
-- $H_0: \mu = \mu_0$ vs. $H_a: \mu \ne \mu_0$ — two-tailed test
+- $H_0: \mu \leq \mu_0$ vs. $H_a: \mu > \mu_0$: right-tailed test
+- $H_0: \mu \geq \mu_0$ vs. $H_a: \mu < \mu_0$: left-tailed test
+- $H_0: \mu = \mu_0$ vs. $H_a: \mu \ne \mu_0$: two-tailed test
 
 **For a proportion:**
 
-- $H_0: p \leq p_0$ vs. $H_a: p > p_0$ — right-tailed test
-- $H_0: p \geq p_0$ vs. $H_a: p < p_0$ — left-tailed test
-- $H_0: p = p_0$ vs. $H_a: p \ne p_0$ — two-tailed test
+- $H_0: p \leq p_0$ vs. $H_a: p > p_0$: right-tailed test
+- $H_0: p \geq p_0$ vs. $H_a: p < p_0$: left-tailed test
+- $H_0: p = p_0$ vs. $H_a: p \ne p_0$: two-tailed test
 
 ## Two Approaches to a Decision
 
@@ -63,7 +63,7 @@ There are two equivalent ways to decide whether the observed difference is too l
 
 **The critical value (rejection region) approach.** Choose a significance level $\alpha$, look up the **critical value** from the $t$ or $z$ distribution for that $\alpha$ and the direction of the test, and reject $H_0$ if the test statistic falls beyond it. For a two-tailed test at $\alpha = 0.05$ with $df = 99$, the critical values are approximately $\pm 1.984$; a test statistic more extreme than these lands in the outer $5\%$ of the distribution.
 
-**The p-value approach.** Compute the **p-value** — the probability, assuming the null is true, of observing a test statistic at least as extreme as the one obtained. Then apply the decision rule: reject $H_0$ if $\text{p-value} \leq \alpha$, and fail to reject it otherwise. A small p-value (say $0.003$) means the data would be very unlikely if the null were true, so it is evidence *against* $H_0$; a large p-value (say $0.42$) means the data are consistent with $H_0$.
+**The p-value approach.** Compute the **p-value**: the probability, assuming the null is true, of observing a test statistic at least as extreme as the one obtained. Then apply the decision rule: reject $H_0$ if $\text{p-value} \leq \alpha$, and fail to reject it otherwise. A small p-value (say $0.003$) means the data would be very unlikely if the null were true, so it is evidence *against* $H_0$; a large p-value (say $0.42$) means the data are consistent with $H_0$.
 
 ::: {.content-visible when-format="html"}
 {{< include widgets/_ttest.qmd >}}
@@ -102,7 +102,7 @@ A **Type I error** is rejecting a true null hypothesis (a false positive); its p
     - Left-tailed test: $\text{p-value} = P(T \leq t)$
     - Two-tailed test: $\text{p-value} = 2 \times P(T \geq |t|)$
 
-5.  **Decide.** Reject $H_0$ if $\text{p-value} < \alpha$; otherwise fail to reject it. Remember that failing to reject $H_0$ is *not* proof that $H_0$ is true — it only means the sample did not provide enough evidence against it.
+5.  **Decide.** Reject $H_0$ if $\text{p-value} \leq \alpha$; otherwise fail to reject it. Remember that failing to reject $H_0$ is *not* proof that $H_0$ is true. It only means the sample did not provide enough evidence against it.
 
 ## Hypothesis Testing in Excel
 
@@ -114,7 +114,7 @@ Excel does not have a one-click one-sample test, but every piece is a single for
 =(AVERAGE(A2:A21) - 100) / (STDEV.S(A2:A21) / SQRT(COUNT(A2:A21)))
 ```
 
-**p-values from the** $t$-distribution. Use `=T.DIST(t, df, TRUE)` for a left-tailed test, `=T.DIST.RT(t, df)` for a right-tailed test, and `=T.DIST.2T(ABS(t), df)` for a two-tailed test. For the critical value use `=T.INV.2T(alpha, df)` (two-tailed) or `=T.INV(alpha, df)` (one-tailed).
+**p-values from the** $t$-distribution. Use `=T.DIST(t, df, TRUE)` for a left-tailed test, `=T.DIST.RT(t, df)` for a right-tailed test, and `=T.DIST.2T(ABS(t), df)` for a two-tailed test. For the critical value use `=T.INV.2T(alpha, df)` (two-tailed) or `=T.INV(alpha, df)` (left-tailed; use `=T.INV(1 - alpha, df)` for a right-tailed test).
 
 **p-values for a proportion.** The proportion test statistic is a $z$ value, so use the standard normal: `=NORM.S.DIST(z, TRUE)` for a left-tailed test, `=1 - NORM.S.DIST(z, TRUE)` for a right-tailed test, and `=2*(1 - NORM.S.DIST(ABS(z), TRUE))` for a two-tailed test.
 
@@ -134,9 +134,124 @@ Below is a list of the Excel functions used in this section:
 
 ## Chapter Summary Cheat Sheet
 
+::: {.content-visible when-format="html"}
+{{< include cheatsheets/_InferenceIII.qmd >}}
+:::
+
+::: {.content-visible when-format="pdf"}
 ```{r echo=FALSE, out.width="100%", fig.align='center'}
 knitr::include_graphics("images/Hypothesis_Testing.png")
 ```
+:::
+
+## Check Your Understanding
+
+Test the main ideas of the chapter before moving on to the exercises. [Pick an answer to see whether you are right and why.]{.content-visible when-format="html"}[Each answer, with an explanation, is in the answer key at the end of the book.]{.content-visible when-format="pdf"}
+
+:::: bs-quiz
+A new supplier claims its defect rate is below $4\%$. Which hypotheses test this claim?
+
+- [ ] $H_0: p < 0.04$ vs. $H_a: p \geq 0.04$
+- [ ] $H_0: p = 0.04$ vs. $H_a: p > 0.04$
+- [ ] $H_0: p \leq 0.04$ vs. $H_a: p > 0.04$
+- [x] $H_0: p \geq 0.04$ vs. $H_a: p < 0.04$
+
+::: bs-quiz-why
+The claim we look for evidence of goes in the alternative with a strict inequality. The null keeps the equality, so this is a left-tailed test.
+:::
+::::
+
+:::: bs-quiz
+A sample of $n=25$ has $\bar{x}=52$ and $s=10$. What is the test statistic for $H_0: \mu = 50$?
+
+- [ ] $0.2$
+- [x] $1$
+- [ ] $5$
+- [ ] $2$
+
+::: bs-quiz-why
+$t=\frac{52-50}{10/\sqrt{25}}=\frac{2}{2}=1$. The sample mean is only one standard error above the hypothesized value.
+:::
+::::
+
+:::: bs-quiz
+A test gives a p-value of $0.03$ at $\alpha = 0.05$. What is the decision?
+
+- [x] Reject $H_0$
+- [ ] Fail to reject $H_0$
+- [ ] Accept $H_0$ as proven
+- [ ] The test is inconclusive
+
+::: bs-quiz-why
+Since $0.03 \leq 0.05$, the data would be unlikely if $H_0$ were true, so we reject it.
+:::
+::::
+
+:::: bs-quiz
+A test gives a p-value of $0.12$ at $\alpha = 0.05$. Which conclusion is correct?
+
+- [ ] $H_0$ has been proven true
+- [ ] $H_a$ has been proven true
+- [x] The sample does not provide enough evidence against $H_0$
+- [ ] The probability that $H_0$ is true is $0.12$
+
+::: bs-quiz-why
+Since $0.12 > 0.05$, we fail to reject $H_0$. That is not proof that $H_0$ is true, only a lack of evidence against it.
+:::
+::::
+
+:::: bs-quiz
+What is a Type I error?
+
+- [ ] Failing to reject a null hypothesis that is false
+- [ ] Correctly rejecting a false null hypothesis
+- [x] Rejecting a null hypothesis that is true
+- [ ] Using the wrong test statistic
+
+::: bs-quiz-why
+A Type I error is a false positive, and its probability is $\alpha$. Failing to reject a false null is a Type II error.
+:::
+::::
+
+:::: bs-quiz
+An analyst lowers $\alpha$ from $0.05$ to $0.01$. What happens to the error risks?
+
+- [ ] Both errors become less likely
+- [x] Type I errors become less likely and Type II errors more likely
+- [ ] Both errors become more likely
+- [ ] Only Type I errors change
+
+::: bs-quiz-why
+A stricter $\alpha$ makes it harder to reject $H_0$. That protects against false positives but makes it easier to miss a real effect, so $\beta$ rises.
+:::
+::::
+
+:::: bs-quiz
+A company tests $H_0: p = 0.5$. A sample of $100$ customers gives $\hat{p}=0.56$. What is the $z$ statistic?
+
+- [ ] $0.06$
+- [ ] $0.6$
+- [ ] $12$
+- [x] $1.2$
+
+::: bs-quiz-why
+$z=\frac{0.56-0.5}{\sqrt{0.5(0.5)/100}}=\frac{0.06}{0.05}=1.2$. Note that $p_0$, not $\hat{p}$, goes in the standard error.
+:::
+::::
+
+:::: bs-quiz
+A two-tailed test of a mean gives $t=2.1$ with $df=24$. Which Excel formula returns the p-value?
+
+- [x] `=T.DIST.2T(2.1, 24)`
+- [ ] `=T.DIST.RT(2.1, 24)`
+- [ ] `=T.DIST(2.1, 24, TRUE)`
+- [ ] `=T.INV.2T(2.1, 24)`
+
+::: bs-quiz-why
+`T.DIST.2T` returns the area in both tails beyond $|t|$. `T.DIST.RT` gives only the right tail, and `T.INV.2T` returns a critical value, not a probability.
+:::
+::::
+
 
 ## Exercises
 

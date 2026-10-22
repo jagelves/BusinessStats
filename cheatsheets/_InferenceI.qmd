@@ -1,0 +1,33 @@
+```{=html}
+<section class="bs-cheatsheet" aria-label="Chapter summary cheat sheet">
+  <header class="bs-cs-head"><div><div class="bs-cs-eyebrow">Quick reference</div><div class="bs-cs-title">Sampling Distributions</div></div></header>
+  <div class="bs-cs-grid">
+    <article class="bs-cs-card"><div class="bs-cs-label">01 · Centered</div><div class="bs-cs-card-title">Unbiasedness</div><div class="bs-cs-formula">E[X̄] = μ</div><p class="bs-cs-desc">On average, the sample mean equals the population mean, even though single samples miss it.</p><div class="bs-excel"><span class="lbl">Example</span><span>means 11, 15, 17, 20 → average 15.75 = μ</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">02 · Off the Mark</div><div class="bs-cs-card-title">Sampling Error</div><div class="bs-cs-formula">x̄ − μ</div><p class="bs-cs-desc">The gap between a sample statistic and the parameter. A natural result of sampling, not a mistake. It shrinks as n grows.</p><div class="bs-excel"><span class="lbl">Example</span><span>avg |error|: n = 2 → 4.75, n = 3 → 2.75</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">03 · Spread</div><div class="bs-cs-card-title">Standard Error (Mean)</div><div class="bs-cs-formula">σ<sub>x̄</sub> = σ / √n</div><p class="bs-cs-desc">The standard deviation of the sample mean. Larger samples give a smaller standard error.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=σ / SQRT(n)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">04 · Shape</div><div class="bs-cs-card-title">Central Limit Theorem</div><div class="bs-cs-formula">(X̄ − μ) / (σ / √n) ≈ N(0, 1)</div><p class="bs-cs-desc">For large n (n > 30), the sample mean is approximately normal, whatever the shape of the population.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=NORM.DIST(x, μ, σ/SQRT(n), TRUE)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Proportions</div><div class="bs-cs-card-title">Sample Proportion</div><div class="bs-cs-formula">p̂ = x / n,  se = √(p(1 − p) / n)</div><p class="bs-cs-desc">Unbiased for p, and approximately normal when np ≥ 5 and n(1 − p) ≥ 5.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=SQRT(p*(1-p)/n)</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">06 · Simulate</div><div class="bs-cs-card-title">Random Samples</div><div class="bs-cs-formula">one column = one sample</div><p class="bs-cs-desc">Fill a block with random numbers, then average each column to build a sampling distribution.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=RANDARRAY(rows, cols, min, max, FALSE)</span></div></article>
+  </div>
+  <div class="bs-cs-panels">
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Notation Guide</div><dl>
+      <div class="bs-cs-row"><dt>X̄, x̄</dt><dd>Sample mean</dd></div>
+      <div class="bs-cs-row"><dt>μ</dt><dd>Population mean</dd></div>
+      <div class="bs-cs-row"><dt>σ</dt><dd>Population standard deviation</dd></div>
+      <div class="bs-cs-row"><dt>σ<sub>x̄</sub></dt><dd>Standard error of the mean</dd></div>
+      <div class="bs-cs-row"><dt>n, N</dt><dd>Sample size, population size</dd></div>
+      <div class="bs-cs-row"><dt>p̂</dt><dd>Sample proportion</dd></div>
+      <div class="bs-cs-row"><dt>p</dt><dd>Population proportion</dd></div>
+    </dl></div>
+    <div class="bs-cs-panel"><div class="bs-cs-panel-title">Key Facts</div><dl>
+      <div class="bs-cs-row"><dt>Is X̄ unbiased?</dt><dd>Yes: E[X̄] = μ</dd></div>
+      <div class="bs-cs-row"><dt>Larger n does what?</dt><dd>Shrinks the standard error</dd></div>
+      <div class="bs-cs-row"><dt>CLT for non-normal data?</dt><dd>Approximately normal if n > 30</dd></div>
+      <div class="bs-cs-row"><dt>Normal population?</dt><dd>X̄ normal for any n</dd></div>
+      <div class="bs-cs-row"><dt>Proportion condition?</dt><dd>np ≥ 5 and n(1 − p) ≥ 5</dd></div>
+      <div class="bs-cs-row"><dt>Finite population fix?</dt><dd>× √((N − n) / (N − 1))</dd></div>
+      <div class="bs-cs-row"><dt>Freeze RAND values?</dt><dd>Paste Special → Values</dd></div>
+    </dl></div>
+  </div>
+</section>
+```
