@@ -11,6 +11,7 @@ library(tidyverse)
 library(gt)
 library(ISLR2)
 library(e1071)
+library(ggplot2)
 ```
 
 ## 1 Descriptive Stats I {.unnumbered}

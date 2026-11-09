@@ -380,61 +380,123 @@ details summary {
   cursor: pointer; /* Pointer cursor for interactivity */
 }
 </style>
-<p>This final chapter brings hypothesis testing and regression together. You will learn to judge whether a correlation is real or just noise, whether two groups truly differ, and whether a regression coefficient carries any explanatory weight. These are the tools that turn a descriptive relationship into a defensible conclusion, letting you evaluate market trends, compare performance across groups, and decide which predictors actually matter in a model. It is a fitting close to the book: it unites the descriptive tool of regression with the inferential habit of asking whether a pattern is real, turning a fitted line into a tested claim about the world.</p>
+<p>In Regression I and II we described how variables move together. We measured the strength of a relationship with the correlation coefficient, and we summarized it with a regression line. In Inference I through III we learned that any statistic calculated from a sample carries sampling error, and that a hypothesis test helps us decide whether a pattern in a sample is strong enough to tell us something about the population. This final chapter brings the two ideas together. We ask whether the relationships we find in a sample are real, or whether they could simply be the result of sampling error.</p>
+<p>Specifically, we will test whether:</p>
+<ul>
+<li>a correlation is different from zero,</li>
+<li>the means of two groups are different (using unpaired and paired samples),</li>
+<li>a regression coefficient is different from zero, and</li>
+<li>a regression model, as a whole, helps explain the dependent variable.</li>
+</ul>
+<p>The first three tests follow the logic you already know from Inference III. We compare what we observe in the sample with what we would expect if there were no relationship, and we measure that distance in standard errors:</p>
+<div class="callout-formula">
+<p><strong>THE GENERAL TEST STATISTIC</strong> <span class="math display">\[t=\frac{\text{estimate}-\text{hypothesized value}}{\text{standard error of the estimate}}\]</span></p>
+</div>
+<p>The estimate changes from section to section (a correlation, a difference of means, a regression slope), and so does its standard error. The idea stays the same. A test statistic close to zero means the sample is consistent with the null hypothesis. A test statistic far from zero means the sample would be unusual if the null were true. Keep this formula in mind as you read the chapter. The last test, the <span class="math inline">\(F\)</span>-test, works with a ratio instead, and we explain it at the end of the chapter.</p>
 <section id="correlation-significance" class="level2" data-number="14.1">
 <h2 data-number="14.1" class="anchored" data-anchor-id="correlation-significance"><span class="header-section-number">14.1</span> Correlation Significance</h2>
-<p>A sample correlation coefficient is almost never exactly zero, even when the two variables are unrelated. To decide whether an observed correlation reflects a real relationship in the population, we test the population correlation <span class="math inline">\(\rho\)</span>:</p>
+<p>Recall from Regression I that the correlation coefficient <span class="math inline">\(r_{xy}\)</span> measures the strength and direction of the linear relationship between two variables. The correlation we calculate comes from a sample, so it carries sampling error just like the sample mean. If we drew a different sample, we would get a slightly different <span class="math inline">\(r_{xy}\)</span>. This means that a sample correlation is almost never exactly zero, even when the two variables are unrelated in the population. A correlation of <span class="math inline">\(0.2\)</span> might reflect a real relationship, or it might be the result of chance.</p>
+<p>To decide, we test the <strong>population correlation</strong> <span class="math inline">\(\rho\)</span> (the Greek letter “rho”). The null hypothesis states that there is no relationship (or a relationship in the direction we are not interested in). The hypotheses take one of three forms:</p>
 <ul>
 <li><span class="math inline">\(H_0: \rho \geq 0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \rho &lt; 0\)</span>: left-tailed</li>
 <li><span class="math inline">\(H_0: \rho \leq 0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \rho &gt; 0\)</span>: right-tailed</li>
 <li><span class="math inline">\(H_0: \rho = 0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \rho \ne 0\)</span>: two-tailed</li>
 </ul>
+<p>Use a one-tailed test when you have a reason to expect a particular direction (for example, that price and quantity demanded are negatively related), and a two-tailed test when you only want to know whether a relationship exists.</p>
 <div class="callout-formula">
 <p><strong>CORRELATION TEST STATISTIC</strong> <span class="math display">\[t = \frac{r_{xy}\sqrt{n-2}}{\sqrt{1-r_{xy}^2}}\]</span> with degrees of freedom <span class="math inline">\(df = n - 2\)</span>, where <span class="math inline">\(r_{xy}\)</span> is the sample correlation coefficient and <span class="math inline">\(n\)</span> is the sample size.</p>
 </div>
+<p>The formula is easier to read than it looks. The numerator grows with <span class="math inline">\(r_{xy}\)</span>, so stronger correlations produce larger test statistics. It also grows with the sample size, so the same correlation is more convincing when it comes from <span class="math inline">\(300\)</span> observations than when it comes from <span class="math inline">\(10\)</span>. The denominator, <span class="math inline">\(\sqrt{1-r_{xy}^2}\)</span>, shrinks as the correlation gets closer to <span class="math inline">\(1\)</span> or <span class="math inline">\(-1\)</span>, which makes the test statistic even larger for very strong correlations. We lose two degrees of freedom because the correlation is closely tied to a regression line, which requires estimating two values from the data (an intercept and a slope). We will return to this connection later in the chapter.</p>
 <div class="callout-example">
-<p><strong>Example:</strong> A sample of <span class="math inline">\(n = 30\)</span> shows a correlation of <span class="math inline">\(r = 0.5\)</span> between advertising and sales. Testing <span class="math inline">\(H_0: \rho = 0\)</span> against <span class="math inline">\(H_a: \rho \ne 0\)</span>: <span class="math display">\[t = \frac{0.5\sqrt{30-2}}{\sqrt{1-0.5^2}} = \frac{0.5 \times 5.29}{0.866} = 3.06\]</span> With <span class="math inline">\(df = 28\)</span>, the two-tailed p-value is about <span class="math inline">\(0.005\)</span>. Because <span class="math inline">\(0.005 &lt; 0.05\)</span>, we reject the null and conclude the correlation is statistically significant.</p>
+<p><strong>Example:</strong> A sample of <span class="math inline">\(n = 30\)</span> shows a correlation of <span class="math inline">\(r = 0.5\)</span> between advertising and sales. Testing <span class="math inline">\(H_0: \rho = 0\)</span> against <span class="math inline">\(H_a: \rho \ne 0\)</span>: <span class="math display">\[t = \frac{0.5\sqrt{30-2}}{\sqrt{1-0.5^2}} = \frac{0.5 \times 5.29}{0.866} = 3.06\]</span> With <span class="math inline">\(df = 28\)</span>, the two-tailed p-value is about <span class="math inline">\(0.005\)</span>. Because <span class="math inline">\(0.005 &lt; 0.05\)</span>, we reject the null and conclude the correlation is statistically significant. If advertising and sales were unrelated, a sample of <span class="math inline">\(30\)</span> would produce a correlation this far from zero only about <span class="math inline">\(5\)</span> times in <span class="math inline">\(1{,}000\)</span>.</p>
 </div>
+<p>Note that statistically significant does not mean strong or important. With a very large sample, even a correlation of <span class="math inline">\(0.05\)</span> can be statistically significant. The test only tells us that the correlation is unlikely to be exactly zero. Always look at the size of <span class="math inline">\(r_{xy}\)</span> as well as the p-value.</p>
 </section>
 <section id="difference-of-means-tests" class="level2" data-number="14.2">
 <h2 data-number="14.2" class="anchored" data-anchor-id="difference-of-means-tests"><span class="header-section-number">14.2</span> Difference of Means Tests</h2>
-<p>We often want to know whether two populations have different means, for example whether two divisions post different sales, or whether a treatment changes an outcome. The test statistic depends on how the two samples relate.</p>
+<p>Many business questions compare two groups. Does a new store layout raise average sales? Do customers in two regions spend different amounts? Do employees who took a training program perform better than those who did not? In each case there are two populations with means <span class="math inline">\(\mu_1\)</span> and <span class="math inline">\(\mu_2\)</span>, and we want to know whether the difference <span class="math inline">\(\mu_1-\mu_2\)</span> is different from zero (or from some other value <span class="math inline">\(d_0\)</span>).</p>
+<p>We estimate the population difference with the sample difference <span class="math inline">\(\bar{x}_1-\bar{x}_2\)</span>. Once again, this difference carries sampling error. Even if the two populations had exactly the same mean, two samples would almost never produce the same sample mean. The question is whether the gap we observe is larger than what sampling error alone would produce. The hypotheses take the familiar three forms:</p>
+<ul>
+<li><span class="math inline">\(H_0: \mu_1-\mu_2 \geq d_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu_1-\mu_2 &lt; d_0\)</span>: left-tailed</li>
+<li><span class="math inline">\(H_0: \mu_1-\mu_2 \leq d_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu_1-\mu_2 &gt; d_0\)</span>: right-tailed</li>
+<li><span class="math inline">\(H_0: \mu_1-\mu_2 = d_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu_1-\mu_2 \ne d_0\)</span>: two-tailed</li>
+</ul>
+<p>In most applications <span class="math inline">\(d_0=0\)</span>, so the null hypothesis states that the two means are equal (or that the difference points in the direction we are not interested in).</p>
+<p>Before choosing a test, ask how the two samples were collected. If each observation in one sample is matched to one observation in the other (the same people measured twice, or the same stores before and after a promotion), the samples are <strong>paired</strong>. If the two samples come from separate groups with no link between them, the samples are <strong>unpaired</strong> (or independent). We begin with the unpaired case.</p>
+<section id="unpaired-samples" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="unpaired-samples">Unpaired Samples</h3>
+<p>Following the general test statistic, we divide the observed gap by its standard error. So what is the standard error of a difference of two means? From Inference I we know that the variance of a single sample mean is <span class="math inline">\(\sigma^2/n\)</span>. Each sample mean wobbles around its own population mean, independently of the other. When we take the difference, these wobbles do not cancel out. They add up. For independent samples, the variance of the difference is the sum of the two variances:</p>
+<p><span class="math display">\[Var(\bar{x}_1-\bar{x}_2)=\frac{\sigma_1^2}{n_1}+\frac{\sigma_2^2}{n_2}\]</span></p>
+<p>It may seem strange that we add variances when we subtract means. Think of two noisy measurements. Each one can be off by a little in either direction, so the gap between them can be off because of the first measurement, the second one, or both. Two sources of uncertainty make the difference less certain than either mean on its own.</p>
+<p>In practice we do not know <span class="math inline">\(\sigma_1\)</span> and <span class="math inline">\(\sigma_2\)</span>, so we replace them with the sample standard deviations <span class="math inline">\(s_1\)</span> and <span class="math inline">\(s_2\)</span>. This leads to two versions of the test, depending on whether we believe the two populations have the same variance.</p>
+<p><strong>Unequal variances (Welch’s test).</strong> If we have no reason to believe the population variances are equal, each sample keeps its own variance:</p>
 <div class="callout-formula">
-<p><strong>DIFFERENCE OF MEANS TEST STATISTICS</strong> <span class="math display">\[\text{Unpaired, unequal variances:} \quad t = \frac{(\bar{x}_1 - \bar{x}_2) - d_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}}\]</span> <span class="math display">\[\text{Unpaired, equal variances:} \quad t = \frac{(\bar{x}_1 - \bar{x}_2) - d_0}{\sqrt{s_p^2\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}\]</span> <span class="math display">\[\text{Paired:} \quad t = \frac{\bar{d} - d_0}{s / \sqrt{n}}\]</span> where <span class="math inline">\(d_0\)</span> is the hypothesized difference, <span class="math inline">\(s_p^2\)</span> is the pooled variance, and <span class="math inline">\(\bar{d}\)</span> and <span class="math inline">\(s\)</span> are the mean and standard deviation of the paired differences.</p>
-<p>The degrees of freedom differ across the three tests:</p>
+<p><strong>UNPAIRED TEST, UNEQUAL VARIANCES (WELCH)</strong> <span class="math display">\[t = \frac{(\bar{x}_1 - \bar{x}_2) - d_0}{\sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}} \qquad df=\frac{(a+b)^2}{\frac{a^2}{n_1-1}+\frac{b^2}{n_2-1}}\]</span> where <span class="math inline">\(a=s_1^2/n_1\)</span> and <span class="math inline">\(b=s_2^2/n_2\)</span> are the two pieces of the variance of the difference. Round the degrees of freedom down to a whole number.</p>
+</div>
+<p>The degrees of freedom formula, due to the statistician Bernard Welch, looks intimidating, but its job is simple. Because we use <span class="math inline">\(s_1\)</span> and <span class="math inline">\(s_2\)</span> in place of <span class="math inline">\(\sigma_1\)</span> and <span class="math inline">\(\sigma_2\)</span>, the test statistic does not follow a <span class="math inline">\(t\)</span>-distribution exactly. Welch’s formula finds the <span class="math inline">\(t\)</span>-distribution that best approximates it. The result always falls between the smaller of <span class="math inline">\(n_1-1\)</span> and <span class="math inline">\(n_2-1\)</span> and the total <span class="math inline">\(n_1+n_2-2\)</span>:</p>
+<ul>
+<li>If one sample is much noisier (or much smaller) than the other, its piece of the variance dominates, and the degrees of freedom move toward that sample’s <span class="math inline">\(n-1\)</span>. The test is only as reliable as its weakest sample.</li>
+<li>If both samples contribute equally to the variance, the degrees of freedom move toward <span class="math inline">\(n_1+n_2-2\)</span>.</li>
+</ul>
+<p>Since the result is usually not a whole number, we round it down. This is the cautious choice: fewer degrees of freedom mean fatter tails and a slightly larger p-value.</p>
+<p><strong>Equal variances (pooled test).</strong> If we believe the two populations are equally spread out, there is a single variance to estimate, and we can combine both samples to estimate it. The <strong>pooled variance</strong> is a weighted average of the two sample variances, where each sample is weighted by its degrees of freedom:</p>
+<div class="callout-formula">
+<p><strong>UNPAIRED TEST, EQUAL VARIANCES (POOLED)</strong> <span class="math display">\[s_p^2=\frac{(n_1-1)s_1^2+(n_2-1)s_2^2}{n_1+n_2-2} \qquad t = \frac{(\bar{x}_1 - \bar{x}_2) - d_0}{\sqrt{s_p^2\left(\frac{1}{n_1} + \frac{1}{n_2}\right)}}\]</span> with degrees of freedom <span class="math inline">\(df = n_1 + n_2 - 2\)</span>.</p>
+</div>
+<p>Pooling uses all <span class="math inline">\(n_1+n_2\)</span> observations to estimate one variance, which gives a more precise estimate and more degrees of freedom. The cost is that if the variances are in fact different, the pooled test can be misleading.</p>
+<p><strong>Which one should you use?</strong> Use the pooled test when there is a good reason to believe the two populations are equally spread out (for example, when both groups are drawn from the same pool) and the sample standard deviations are similar. A common rule of thumb is that the larger sample standard deviation should be no more than twice the smaller one. When in doubt, use Welch’s test. It works well whether or not the variances are equal, which makes it the safer choice.</p>
+<div class="callout-example">
+<p><strong>Example (unpaired).</strong> A company evaluates a training program by recording a productivity score for six employees who took the program and six <em>different</em> employees who did not:</p>
 <table class="caption-top table">
-<colgroup>
-<col style="width: 23%">
-<col style="width: 76%">
-</colgroup>
 <thead>
 <tr class="header">
-<th style="text-align: center;">Test</th>
-<th style="text-align: center;">Degrees of freedom</th>
+<th style="text-align: center;">Took the program</th>
+<th style="text-align: center;">Did not take the program</th>
 </tr>
 </thead>
 <tbody>
 <tr class="odd">
-<td style="text-align: center;">Unpaired, unequal variances</td>
-<td style="text-align: center;"><span class="math inline">\(df = \dfrac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}{\frac{(s_1^2/n_1)^2}{n_1-1} + \frac{(s_2^2/n_2)^2}{n_2-1}}\)</span> (rounded down)</td>
+<td style="text-align: center;">23</td>
+<td style="text-align: center;">20</td>
 </tr>
 <tr class="even">
-<td style="text-align: center;">Unpaired, equal variances</td>
-<td style="text-align: center;"><span class="math inline">\(df = n_1 + n_2 - 2\)</span></td>
+<td style="text-align: center;">36</td>
+<td style="text-align: center;">32</td>
 </tr>
 <tr class="odd">
-<td style="text-align: center;">Paired</td>
-<td style="text-align: center;"><span class="math inline">\(df = n - 1\)</span>, where <span class="math inline">\(n\)</span> is the number of <strong>pairs</strong>, not the number of observations</td>
+<td style="text-align: center;">27</td>
+<td style="text-align: center;">25</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">43</td>
+<td style="text-align: center;">40</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">31</td>
+<td style="text-align: center;">28</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">39</td>
+<td style="text-align: center;">35</td>
 </tr>
 </tbody>
 </table>
+<p><strong>Step 1: State the hypotheses.</strong> We want to know whether the two group means differ, so we test <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span> against <span class="math inline">\(H_a: \mu_1 - \mu_2 \ne 0\)</span>. We have no strong reason to assume equal variances, so we use Welch’s test.</p>
+<p><strong>Step 2: Summarize each sample.</strong> The group that took the program has <span class="math inline">\(\bar{x}_1 = 33.17\)</span> and <span class="math inline">\(s_1^2 = 56.97\)</span>. The group that did not has <span class="math inline">\(\bar{x}_2 = 30.00\)</span> and <span class="math inline">\(s_2^2 = 51.60\)</span>.</p>
+<p><strong>Step 3: Calculate the standard error and the test statistic.</strong> The two pieces of the variance are <span class="math inline">\(a = 56.97/6 = 9.49\)</span> and <span class="math inline">\(b = 51.60/6 = 8.60\)</span>, so: <span class="math display">\[t = \frac{(33.17 - 30.00) - 0}{\sqrt{9.49 + 8.60}} = \frac{3.17}{4.25} = 0.74\]</span></p>
+<p><strong>Step 4: Calculate the degrees of freedom.</strong> <span class="math display">\[df=\frac{(9.49+8.60)^2}{\frac{9.49^2}{5}+\frac{8.60^2}{5}}=\frac{327.4}{18.03+14.79}=9.98\]</span> which we round down to <span class="math inline">\(9\)</span>. Since both samples contribute about equally, the result is close to the maximum of <span class="math inline">\(n_1+n_2-2=10\)</span>.</p>
+<p><strong>Step 5: Find the p-value and decide.</strong> With <span class="math inline">\(t = 0.74\)</span> and <span class="math inline">\(df = 9\)</span>, the two-tailed p-value is roughly <span class="math inline">\(0.48\)</span>. Because <span class="math inline">\(0.48 &gt; 0.05\)</span>, we fail to reject the null. The gap of <span class="math inline">\(3.17\)</span> points is small compared with the large variation <em>between</em> employees (scores range from <span class="math inline">\(20\)</span> to <span class="math inline">\(43\)</span>), so we cannot conclude that the program helped.</p>
+<p>Since both groups have six employees and similar standard deviations, the pooled test is also reasonable here. The pooled variance is <span class="math inline">\(s_p^2 = \frac{5(56.97) + 5(51.60)}{10} = 54.28\)</span>, which gives a standard error of <span class="math inline">\(\sqrt{54.28\left(\frac{1}{6}+\frac{1}{6}\right)} = 4.25\)</span>, the same <span class="math inline">\(t = 0.74\)</span>, and <span class="math inline">\(df = 10\)</span>. The p-value is about <span class="math inline">\(0.47\)</span>, so the conclusion does not change. When the two samples have the same size, the two versions always produce the same test statistic and differ only in their degrees of freedom.</p>
 </div>
-<p>A <strong>paired</strong> test is used when the two samples are naturally linked, such as the same subjects measured twice (before and after), for instance. An <strong>unpaired</strong> (independent) test is used when the two samples come from separate groups.</p>
-<div class="callout-example">
-<p><strong>Example (unpaired).</strong> A company evaluates a training program. Six employees who took the program score a mean of <span class="math inline">\(\bar{x}_1 = 33.17\)</span> on a productivity assessment (with <span class="math inline">\(s_1 = 7.55\)</span>), while six <em>different</em> employees who did not take it score a mean of <span class="math inline">\(\bar{x}_2 = 30.00\)</span> (with <span class="math inline">\(s_2 = 7.18\)</span>). Testing <span class="math inline">\(H_0: \mu_1 - \mu_2 = 0\)</span> against <span class="math inline">\(H_a: \mu_1 - \mu_2 \ne 0\)</span> with unequal variances: <span class="math display">\[t = \frac{(33.17 - 30.00) - 0}{\sqrt{\frac{7.55^2}{6} + \frac{7.18^2}{6}}} = \frac{3.17}{4.25} = 0.74\]</span> The Welch formula gives <span class="math inline">\(df \approx 9.98\)</span>, which we round down to <span class="math inline">\(9\)</span>, and the two-tailed p-value is roughly <span class="math inline">\(0.48\)</span>. Because <span class="math inline">\(0.48 &gt; 0.05\)</span>, we fail to reject the null: the <span class="math inline">\(3.17\)</span>-point gap is swamped by the large variation <em>between</em> employees, so we cannot conclude the program helped.</p>
+</section>
+<section id="paired-samples" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="paired-samples">Paired Samples</h3>
+<p>When the samples are paired, we can take a shortcut. For each pair, we calculate the difference <span class="math inline">\(d_i\)</span> (for example, the “after” score minus the “before” score). Once we have the differences, the two samples become a single sample of differences, and we can apply the one-sample <span class="math inline">\(t\)</span>-test from Inference III to them. The null hypothesis states that the population mean difference <span class="math inline">\(\mu_d\)</span> equals <span class="math inline">\(d_0\)</span> (usually zero, meaning no change).</p>
+<div class="callout-formula">
+<p><strong>PAIRED TEST</strong> <span class="math display">\[t=\frac{\bar{d} - d_0}{s_d / \sqrt{n}}\]</span> where <span class="math inline">\(\bar{d}\)</span> and <span class="math inline">\(s_d\)</span> are the mean and standard deviation of the differences, and <span class="math inline">\(n\)</span> is the number of <strong>pairs</strong>. The degrees of freedom are <span class="math inline">\(df = n - 1\)</span>.</p>
 </div>
 <div class="callout-example">
-<p><strong>Example (paired).</strong> Now suppose those same six employees were each measured <em>before and after</em> the program, so every “after” score is matched to that person’s own “before” score:</p>
+<p><strong>Example (paired).</strong> Now suppose the company measured the same six employees <em>before and after</em> the program, so every “after” score is matched to that person’s own “before” score:</p>
 <table class="caption-top table">
 <thead>
 <tr class="header">
@@ -483,29 +545,157 @@ details summary {
 </tr>
 </tbody>
 </table>
-<p>The group means are identical to the unpaired case (<span class="math inline">\(30.00\)</span> before, <span class="math inline">\(33.17\)</span> after), but now we work with each person’s change. The individual gains are remarkably consistent: <span class="math inline">\(\bar{d} = 3.17\)</span> with <span class="math inline">\(s = 0.75\)</span>. Testing <span class="math inline">\(H_0: \mu_d = 0\)</span> against <span class="math inline">\(H_a: \mu_d \ne 0\)</span>: <span class="math display">\[t = \frac{\bar{d} - 0}{s / \sqrt{n}} = \frac{3.17}{0.75 / \sqrt{6}} = 10.30\]</span> With <span class="math inline">\(df = n - 1 = 6 - 1 = 5\)</span> (six <em>pairs</em>, not twelve observations) the two-tailed p-value is about <span class="math inline">\(0.0001\)</span>. Because <span class="math inline">\(0.0001 &lt; 0.05\)</span>, we strongly reject the null: the program clearly raised productivity.</p>
+<p>These are the same numbers as in the unpaired example, so the group means are identical (<span class="math inline">\(30.00\)</span> before, <span class="math inline">\(33.17\)</span> after). The difference is that we now work with each person’s change. The individual gains are remarkably consistent: <span class="math inline">\(\bar{d} = 3.17\)</span> with <span class="math inline">\(s_d = 0.75\)</span>. Testing <span class="math inline">\(H_0: \mu_d = 0\)</span> against <span class="math inline">\(H_a: \mu_d \ne 0\)</span>: <span class="math display">\[t = \frac{\bar{d} - 0}{s_d / \sqrt{n}} = \frac{3.17}{0.75 / \sqrt{6}} = 10.30\]</span> With <span class="math inline">\(df = 6 - 1 = 5\)</span> (six <em>pairs</em>, not twelve observations), the two-tailed p-value is about <span class="math inline">\(0.0001\)</span>. Because <span class="math inline">\(0.0001 &lt; 0.05\)</span>, we reject the null: the program raised productivity.</p>
 </div>
-<p>The two examples use the <strong>same numbers</strong> yet reach opposite conclusions, and the reason is the design. The unpaired test must carry the large variation <em>between</em> employees (scores range from <span class="math inline">\(20\)</span> to <span class="math inline">\(40\)</span>), and that noise hides the modest improvement. The paired test cancels that person-to-person variation by looking only at each individual’s change, leaving a small, consistent difference that stands out sharply (<span class="math inline">\(s\)</span> drops from about <span class="math inline">\(7.5\)</span> to <span class="math inline">\(0.75\)</span>). Whenever the data are naturally matched, pairing is the more powerful choice.</p>
+<p>The two examples use the <strong>same numbers</strong> yet reach opposite conclusions, and the reason is the design. The unpaired test must carry the large variation <em>between</em> employees, and that noise hides the modest improvement. Some employees simply score higher than others, with or without training. The paired test removes this person-to-person variation by comparing each employee with themselves. What is left is a small, consistent gain that stands out sharply (the standard deviation drops from about <span class="math inline">\(7.5\)</span> to <span class="math inline">\(0.75\)</span>). Whenever the data are naturally matched, pairing is the more powerful choice. Keep in mind, however, that you cannot choose the test after seeing the results. The test must match how the data were collected.</p>
+</section>
 </section>
 <section id="regression-inference" class="level2" data-number="14.3">
 <h2 data-number="14.3" class="anchored" data-anchor-id="regression-inference"><span class="header-section-number">14.3</span> Regression Inference</h2>
-<p>After fitting a regression, two kinds of tests tell us whether the model has explanatory power.</p>
-<p><strong>Testing a single coefficient.</strong> Each coefficient is tested against zero: is this predictor related to <span class="math inline">\(y\)</span>, holding the others fixed?</p>
+<p>In Regression II we estimated regression lines and measured how well they fit. Those lines were calculated from a sample. If we collected a different sample, we would get a different intercept and different slopes. In other words, regression coefficients carry sampling error, just like the sample mean and the correlation. In this section we write the estimated coefficients as <span class="math inline">\(b_j\)</span> (the <span class="math inline">\(\hat{\beta}_j\)</span> of Regression II) and use <span class="math inline">\(\beta_j\)</span> for the unknown population coefficients that we are trying to learn about.</p>
+<section id="why-test-whether-a-coefficient-equals-zero" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="why-test-whether-a-coefficient-equals-zero">Why Test Whether a Coefficient Equals Zero?</h3>
+<p>Consider the simple regression model in the population, <span class="math inline">\(y = \beta_0 + \beta_1 x + \varepsilon\)</span>. Ask yourself what would happen if <span class="math inline">\(\beta_1 = 0\)</span>. The model would become <span class="math inline">\(y = \beta_0 + \varepsilon\)</span>. The line would be flat. Changing <span class="math inline">\(x\)</span> would not change <span class="math inline">\(y\)</span> at all, and knowing <span class="math inline">\(x\)</span> would not help us predict <span class="math inline">\(y\)</span>. Our best prediction would be the same for every value of <span class="math inline">\(x\)</span>. In other words, a slope of zero means that <span class="math inline">\(x\)</span> has no linear relationship with <span class="math inline">\(y\)</span>.</p>
+<p>That is why zero is the natural null hypothesis. <span class="math inline">\(H_0: \beta_1 = 0\)</span> states that “this variable has no effect on <span class="math inline">\(y\)</span>”, and <span class="math inline">\(H_a: \beta_1 \ne 0\)</span> states that it does. Even when the true slope is zero, the slope we estimate from a sample will not be exactly zero, because of sampling error. The test asks whether our estimate <span class="math inline">\(b_1\)</span> is far enough from zero, measured in standard errors, that sampling error alone is an unlikely explanation.</p>
+<p>The conclusion of the test has practical consequences:</p>
+<ul>
+<li><strong>If we reject</strong> <span class="math inline">\(H_0\)</span>, we have evidence that <span class="math inline">\(x\)</span> is related to <span class="math inline">\(y\)</span>. The variable belongs in the model, and we can interpret the sign and the size of its slope with some confidence.</li>
+<li><strong>If we fail to reject</strong> <span class="math inline">\(H_0\)</span>, the data cannot tell the slope apart from zero. The sign and size of the estimate are not reliable, and we may consider dropping the variable. This is <em>not</em> proof that <span class="math inline">\(x\)</span> has no effect. As always, a small sample may simply lack the evidence.</li>
+</ul>
+<p>In a multiple regression, the test for <span class="math inline">\(\beta_j\)</span> asks a more specific question: does <span class="math inline">\(x_j\)</span> help explain <span class="math inline">\(y\)</span> <em>after the other variables in the model have done their part</em>? We will see why this distinction matters in the next section.</p>
 <div class="callout-formula">
-<p><strong>TEST FOR A SINGLE COEFFICIENT</strong> <span class="math display">\[H_0: \beta_j = 0 \quad\text{vs.}\quad H_a: \beta_j \ne 0, \qquad t = \frac{b_j}{se(b_j)}\]</span> where <span class="math inline">\(b_j\)</span> is the estimated coefficient and <span class="math inline">\(se(b_j)\)</span> is its standard error, with <span class="math inline">\(df = n - k - 1\)</span>.</p>
+<p><strong>TEST FOR A SINGLE COEFFICIENT</strong> <span class="math display">\[H_0: \beta_j = 0 \quad\text{vs.}\quad H_a: \beta_j \ne 0, \qquad t = \frac{b_j - 0}{se(b_j)}\]</span> where <span class="math inline">\(b_j\)</span> is the estimated coefficient and <span class="math inline">\(se(b_j)\)</span> is its standard error, with <span class="math inline">\(df = n - k - 1\)</span>.</p>
 </div>
-<p><strong>Testing joint significance.</strong> The <span class="math inline">\(F\)</span>-test asks whether <em>all</em> the slope coefficients are zero at once: is the model, as a whole, better than no predictors?</p>
+<p>The standard error of a coefficient measures how much the estimate would vary from sample to sample. For a simple regression it has a short formula that shows what drives it:</p>
+<p><span class="math display">\[se(b_1)=\frac{s_e}{\sqrt{\sum (x_i-\bar{x})^2}}\]</span></p>
+<p>Three things make the slope more precise (a smaller standard error):</p>
+<ul>
+<li><strong>Less noise around the line.</strong> The residual standard error <span class="math inline">\(s_e\)</span> from Regression II is in the numerator. When the points sit close to the line, the slope is well determined.</li>
+<li><strong>More spread in</strong> <span class="math inline">\(x\)</span>. Think of resting a ruler on two points. If the points are far apart, the angle of the ruler is stable. If they are close together, a small bump changes the angle a lot. A wide range of <span class="math inline">\(x\)</span> values pins down the slope.</li>
+<li><strong>More observations.</strong> Each additional observation adds to <span class="math inline">\(\sum (x_i-\bar{x})^2\)</span>, which shrinks the standard error.</li>
+</ul>
+<p>In multiple regression the formula is more involved, so we let Excel calculate the standard errors for us.</p>
+<div class="callout-example">
+<p><strong>Example:</strong> In Regression II we regressed Weight on minutes of Exercise for five people and obtained <span class="math inline">\(\hat{y} = 171.00 - 0.153x\)</span>. Is the slope significantly different from zero? We test <span class="math inline">\(H_0: \beta_1 = 0\)</span> against <span class="math inline">\(H_a: \beta_1 \ne 0\)</span> at the <span class="math inline">\(5\%\)</span> level.</p>
+<p>The residual standard error is <span class="math inline">\(s_e = 1.59\)</span>. The mean of Exercise is <span class="math inline">\(\bar{x}=30\)</span>, and the squared deviations are <span class="math inline">\(15^2 + (-20)^2 + (-5)^2 + 0^2 + 10^2 = 750\)</span>. Hence: <span class="math display">\[se(b_1) = \frac{1.59}{\sqrt{750}} = 0.058 \qquad t = \frac{-0.153 - 0}{0.058} = -2.64\]</span></p>
+<p>With <span class="math inline">\(df = 5 - 1 - 1 = 3\)</span>, the two-tailed p-value is about <span class="math inline">\(0.077\)</span>. Because <span class="math inline">\(0.077 &gt; 0.05\)</span>, we fail to reject the null at the <span class="math inline">\(5\%\)</span> level (although we would reject it at the <span class="math inline">\(10\%\)</span> level). The sample shows a clear negative pattern, but with only five people, a slope this steep would appear in about <span class="math inline">\(7.7\%\)</span> of samples even if exercise had no effect on weight. A larger sample would give a more definitive answer.</p>
+<p>This test is closely connected to the correlation test. The correlation between Weight and Exercise is <span class="math inline">\(r=-0.8365\)</span>, and the correlation test statistic is <span class="math inline">\(t=\frac{-0.8365\sqrt{3}}{\sqrt{1-0.8365^2}}=-2.64\)</span>, the same value. In a simple regression, testing whether the slope is zero and testing whether the correlation is zero are the same test. This is also why the correlation test uses <span class="math inline">\(n-2\)</span> degrees of freedom.</p>
+</div>
+</section>
+<section id="joint-significance-the-f-test" class="level3 unnumbered">
+<h3 class="unnumbered anchored" data-anchor-id="joint-significance-the-f-test">Joint Significance: The F-Test</h3>
+<p>In Regression II we built the <span class="math inline">\(F\)</span>-statistic, <span class="math inline">\(F = MSR/MSE\)</span>, which compares the variation the model explains per variable with the variation it leaves unexplained per observation. We argued that a model of useless variables would produce an <span class="math inline">\(F\)</span> close to <span class="math inline">\(1\)</span>, and that a large <span class="math inline">\(F\)</span> signals a real pattern. Now we can make “large” precise.</p>
+<p>The <span class="math inline">\(F\)</span>-test asks a single question about the whole model: do the variables, taken together, help explain <span class="math inline">\(y\)</span>?</p>
+<ul>
+<li><span class="math inline">\(H_0: \beta_1 = \beta_2 = \dots = \beta_k = 0\)</span>. None of the variables helps. The model is no better than predicting <span class="math inline">\(\bar{y}\)</span> for everyone.</li>
+<li><span class="math inline">\(H_a\)</span>: at least one <span class="math inline">\(\beta_j \ne 0\)</span>. At least one variable helps explain <span class="math inline">\(y\)</span>.</li>
+</ul>
+<p>Note that the alternative does not say that <em>all</em> the coefficients are different from zero. Rejecting the null tells us that the model as a whole has explanatory power, not which variables are responsible.</p>
 <div class="callout-formula">
-<p><strong>JOINT SIGNIFICANCE (F-TEST)</strong> <span class="math display">\[H_0: \beta_1 = \beta_2 = \dots = \beta_k = 0, \qquad F = \frac{SSR/k}{SSE/(n-k-1)} = \frac{MSR}{MSE}\]</span> where <span class="math inline">\(k\)</span> is the number of predictors and <span class="math inline">\(n\)</span> is the sample size.</p>
+<p><strong>JOINT SIGNIFICANCE (F-TEST)</strong> <span class="math display">\[H_0: \beta_1 = \beta_2 = \dots = \beta_k = 0, \qquad F = \frac{SSR/k}{SSE/(n-k-1)} = \frac{MSR}{MSE}\]</span> where <span class="math inline">\(k\)</span> is the number of independent variables and <span class="math inline">\(n\)</span> is the sample size. If <span class="math inline">\(H_0\)</span> is true, <span class="math inline">\(F\)</span> follows an <span class="math inline">\(F\)</span>-distribution with <span class="math inline">\(k\)</span> and <span class="math inline">\(n-k-1\)</span> degrees of freedom.</p>
 </div>
-<p>The ANOVA table organizes these pieces:</p>
+<p>The <strong>F-distribution</strong> describes the values of <span class="math inline">\(F\)</span> we would see across many samples if the null were true. Because <span class="math inline">\(F\)</span> is a ratio of two averages of squared numbers, it can never be negative. The distribution is skewed to the right, and when the null is true most of its values fall near <span class="math inline">\(1\)</span>. Only large values of <span class="math inline">\(F\)</span> are evidence against the null, so the <span class="math inline">\(F\)</span>-test is always right-tailed: the p-value is the area to the right of the observed <span class="math inline">\(F\)</span>. The figure below shows an <span class="math inline">\(F\)</span>-distribution with <span class="math inline">\(3\)</span> and <span class="math inline">\(20\)</span> degrees of freedom. The shaded area is the <span class="math inline">\(5\%\)</span> rejection region, which starts at <span class="math inline">\(3.10\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="InfReg_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="576"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>You may wonder why we need the <span class="math inline">\(F\)</span>-test when we can already test each coefficient with a <span class="math inline">\(t\)</span>-test. There are two reasons:</p>
+<ul>
+<li><strong>Many tests, many chances for a false positive.</strong> Each <span class="math inline">\(t\)</span>-test at the <span class="math inline">\(5\%\)</span> level has a <span class="math inline">\(5\%\)</span> chance of a Type I error. With <span class="math inline">\(10\)</span> useless variables, the chance that at least one of them looks significant by luck is about <span class="math inline">\(1-0.95^{10} \approx 40\%\)</span>. The <span class="math inline">\(F\)</span>-test asks one question about the whole model, so its error rate stays at <span class="math inline">\(5\%\)</span>.</li>
+<li><strong>Variables that overlap.</strong> When two variables move together, each one can look unimportant on its own even though together they clearly explain <span class="math inline">\(y\)</span>. The example below shows this.</li>
+</ul>
+<div class="callout-example">
+<p><strong>Example:</strong> In Regression II we added Calories to the Weight and Exercise model and obtained <span class="math inline">\(\hat{y} = 83.96 - 0.025x + 0.069z\)</span> with <span class="math inline">\(SSR = 24.19\)</span> and <span class="math inline">\(SSE = 1.01\)</span>. With <span class="math inline">\(k = 2\)</span> and <span class="math inline">\(n = 5\)</span>, the ANOVA table is:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Source</th>
+<th style="text-align: center;">df</th>
+<th style="text-align: center;">SS</th>
+<th style="text-align: center;">MS</th>
+<th style="text-align: center;">F</th>
+<th style="text-align: center;">Significance F</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Regression</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">24.19</td>
+<td style="text-align: center;">12.09</td>
+<td style="text-align: center;">23.89</td>
+<td style="text-align: center;">0.040</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Residual</td>
+<td style="text-align: center;">2</td>
+<td style="text-align: center;">1.01</td>
+<td style="text-align: center;">0.506</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Total</td>
+<td style="text-align: center;">4</td>
+<td style="text-align: center;">25.20</td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p>The p-value of the <span class="math inline">\(F\)</span>-test (Excel calls it <strong>Significance F</strong>) is <span class="math inline">\(0.040\)</span>. Because <span class="math inline">\(0.040 &lt; 0.05\)</span>, we reject the null: Exercise and Calories, taken together, help explain Weight.</p>
+<p>Now look at the individual coefficient tests:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th style="text-align: center;">Variable</th>
+<th style="text-align: center;">Coefficient</th>
+<th style="text-align: center;">Standard Error</th>
+<th style="text-align: center;">t Stat</th>
+<th style="text-align: center;">p-value</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: center;">Intercept</td>
+<td style="text-align: center;">83.96</td>
+<td style="text-align: center;">24.20</td>
+<td style="text-align: center;">3.47</td>
+<td style="text-align: center;">0.074</td>
+</tr>
+<tr class="even">
+<td style="text-align: center;">Exercise</td>
+<td style="text-align: center;">-0.025</td>
+<td style="text-align: center;">0.044</td>
+<td style="text-align: center;">-0.57</td>
+<td style="text-align: center;">0.628</td>
+</tr>
+<tr class="odd">
+<td style="text-align: center;">Calories</td>
+<td style="text-align: center;">0.069</td>
+<td style="text-align: center;">0.019</td>
+<td style="text-align: center;">3.60</td>
+<td style="text-align: center;">0.069</td>
+</tr>
+</tbody>
+</table>
+<p>Neither slope is significant at the <span class="math inline">\(5\%\)</span> level, even though the model as a whole is. How can this be? In this data, Exercise and Calories are strongly related (their correlation is <span class="math inline">\(-0.81\)</span>): the people who exercise more also eat fewer calories. Together the two variables explain <span class="math inline">\(96\%\)</span> of the variation in Weight. But because they move together, the regression has a hard time telling how much of the effect belongs to each one. Each <span class="math inline">\(t\)</span>-test asks whether a variable adds anything <em>once the other is already in the model</em>, and with this much overlap neither adds much on its own. The <span class="math inline">\(F\)</span>-test looks at their combined contribution and detects it.</p>
+</div>
+<p>When the model has a single independent variable, the <span class="math inline">\(F\)</span>-test and the <span class="math inline">\(t\)</span>-test for the slope ask the same question, and they always agree. In fact, <span class="math inline">\(F = t^2\)</span>. For the Weight and Exercise model, <span class="math inline">\(F = 6.99 = (-2.64)^2\)</span>, and both tests give the same p-value of <span class="math inline">\(0.077\)</span>.</p>
+<p>The ANOVA table organizes all the pieces of the <span class="math inline">\(F\)</span>-test:</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 17%">
-<col style="width: 25%">
-<col style="width: 21%">
+<col style="width: 15%">
+<col style="width: 11%">
+<col style="width: 8%">
+<col style="width: 34%">
+<col style="width: 29%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -541,13 +731,19 @@ details summary {
 </tbody>
 </table>
 </section>
+</section>
 <section id="regression-and-inference-in-excel" class="level2" data-number="14.4">
 <h2 data-number="14.4" class="anchored" data-anchor-id="regression-and-inference-in-excel"><span class="header-section-number">14.4</span> Regression and Inference in Excel</h2>
 <p><strong>Correlation significance.</strong> Compute the correlation with <code>=CORREL(x_range, y_range)</code>, then turn it into a test statistic and p-value:</p>
 <pre class="excel"><code>=(r*SQRT(n-2)) / SQRT(1 - r^2)</code></pre>
 <p>followed by <code>=T.DIST.2T(ABS(t), n-2)</code> for a two-tailed test (or <code>=T.DIST</code> / <code>=T.DIST.RT</code> for one tail).</p>
-<p><strong>Difference of means.</strong> The <code>=T.TEST(array1, array2, tails, type)</code> function returns the p-value directly. The <code>tails</code> argument is <code>1</code> (one-tailed) or <code>2</code> (two-tailed); the <code>type</code> argument is <code>1</code> (paired), <code>2</code> (two-sample, equal variances), or <code>3</code> (two-sample, unequal variances). For full output (the test statistic, critical values, and both one- and two-tailed p-values), use the <strong>Data Analysis ToolPak</strong>, which offers <code>t-Test: Paired Two Sample for Means</code>, <code>t-Test: Two-Sample Assuming Equal Variances</code>, and <code>t-Test: Two-Sample Assuming Unequal Variances</code>.</p>
-<p><strong>Regression inference.</strong> Run <code>Data → Data Analysis → Regression</code>. The output reports each coefficient with its standard error, <span class="math inline">\(t\)</span>-statistic, and p-value (the individual coefficient tests), the <span class="math inline">\(F\)</span>-statistic with its <strong>Significance F</strong> (the joint test), and the ANOVA table: everything in this chapter in a single step.</p>
+<p><strong>Difference of means.</strong> The <code>=T.TEST(array1, array2, tails, type)</code> function returns the p-value directly. The <code>tails</code> argument is <code>1</code> (one-tailed) or <code>2</code> (two-tailed); the <code>type</code> argument is <code>1</code> (paired), <code>2</code> (two-sample, equal variances), or <code>3</code> (two-sample, unequal variances). For the training examples, with the “took the program” scores in <code>A2:A7</code> and the other scores in <code>B2:B7</code>:</p>
+<pre class="excel"><code>=T.TEST(A2:A7, B2:B7, 2, 3)   /* Unpaired, unequal variances */
+=T.TEST(A2:A7, B2:B7, 2, 1)   /* Paired */</code></pre>
+<p>The first formula returns a p-value of about <span class="math inline">\(0.47\)</span> to <span class="math inline">\(0.48\)</span> and the second about <span class="math inline">\(0.0001\)</span>, matching our hand calculations. For full output (the test statistic, degrees of freedom, critical values, and both one- and two-tailed p-values), use the <strong>Data Analysis ToolPak</strong>, which offers <code>t-Test: Paired Two Sample for Means</code>, <code>t-Test: Two-Sample Assuming Equal Variances</code>, and <code>t-Test: Two-Sample Assuming Unequal Variances</code>.</p>
+<p><strong>Regression inference.</strong> Run <code>Data → Data Analysis → Regression</code>. The output reports each coefficient with its standard error, <span class="math inline">\(t\)</span>-statistic, and p-value (the individual coefficient tests), the <span class="math inline">\(F\)</span>-statistic with its <strong>Significance F</strong> (the joint test), and the ANOVA table. Everything in this section is produced in a single step. If you already have an <span class="math inline">\(F\)</span>-statistic, you can find its p-value and critical value directly:</p>
+<pre class="excel"><code>=F.DIST.RT(23.89, 2, 2)   /* p-value: 0.040 */
+=F.INV.RT(0.05, 2, 2)     /* critical value: 19.00 */</code></pre>
 </section>
 <section id="excel-function-summary" class="level2" data-number="14.5">
 <h2 data-number="14.5" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">14.5</span> Excel Function Summary</h2>
@@ -556,6 +752,7 @@ details summary {
 <li><p><code>=CORREL(x_range, y_range)</code> returns the correlation coefficient, the starting point for a correlation test.</p></li>
 <li><p><code>=T.TEST(array1, array2, tails, type)</code> returns the p-value of a difference-of-means test. <code>type</code> is <code>1</code> (paired), <code>2</code> (equal variances), or <code>3</code> (unequal variances).</p></li>
 <li><p><code>=T.DIST.2T(x, deg_freedom)</code>, <code>=T.DIST(x, df, TRUE)</code>, and <code>=T.DIST.RT(x, df)</code> convert a test statistic to a p-value.</p></li>
+<li><p><code>=F.DIST.RT(F, k, n-k-1)</code> returns the p-value of the <span class="math inline">\(F\)</span>-test, and <code>=F.INV.RT(alpha, k, n-k-1)</code> returns its critical value.</p></li>
 <li><p><strong>Data Analysis ToolPak → t-Test</strong> performs the three difference-of-means tests with full output.</p></li>
 <li><p><strong>Data Analysis ToolPak → Regression</strong> returns coefficients, standard errors, <span class="math inline">\(t\)</span>-statistics, p-values, the <span class="math inline">\(F\)</span>-statistic, <span class="math inline">\(R^2\)</span>, and the ANOVA table.</p></li>
 </ul>
@@ -569,7 +766,7 @@ details summary {
     <article class="bs-cs-card"><div class="bs-cs-label">02 · Two Groups</div><div class="bs-cs-card-title">Difference of Means</div><div class="bs-cs-formula">t = [(x̄₁ − x̄₂) − d₀] / SE</div><p class="bs-cs-desc">Compares two population means. SE depends on the design: unequal variances, equal (pooled) variances, or paired.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=T.TEST(arr1, arr2, tails, type)</span></div></article>
     <article class="bs-cs-card"><div class="bs-cs-label">03 · Same Subjects</div><div class="bs-cs-card-title">Paired Test</div><div class="bs-cs-formula">t = (d̄ − d₀) / (s / √n)</div><p class="bs-cs-desc">Use when each observation is matched, such as before and after. df = number of pairs − 1. Removes person-to-person noise.</p><div class="bs-excel"><span class="lbl">Excel</span><span>type: 1 paired · 2 equal · 3 unequal</span></div></article>
     <article class="bs-cs-card"><div class="bs-cs-label">04 · One Coefficient</div><div class="bs-cs-card-title">Coefficient t-Test</div><div class="bs-cs-formula">t = b<sub>j</sub> / se(b<sub>j</sub>)</div><p class="bs-cs-desc">Tests H₀: β<sub>j</sub> = 0, whether one predictor matters holding the others fixed. df = n − k − 1.</p><div class="bs-excel"><span class="lbl">Excel</span><span>Data → Data Analysis → Regression</span></div></article>
-    <article class="bs-cs-card"><div class="bs-cs-label">05 · Whole Model</div><div class="bs-cs-card-title">Joint F-Test</div><div class="bs-cs-formula">F = (SSR / k) / (SSE / (n − k − 1))</div><p class="bs-cs-desc">Tests whether all slopes are zero at once. A small Significance F rejects that null.</p><div class="bs-excel"><span class="lbl">Excel</span><span>Regression output → Significance F</span></div></article>
+    <article class="bs-cs-card"><div class="bs-cs-label">05 · Whole Model</div><div class="bs-cs-card-title">Joint F-Test</div><div class="bs-cs-formula">F = (SSR / k) / (SSE / (n − k − 1))</div><p class="bs-cs-desc">Tests whether all slopes are zero at once. A small Significance F rejects that null.</p><div class="bs-excel"><span class="lbl">Excel</span><span>=F.DIST.RT(F, k, n − k − 1)</span></div></article>
     <article class="bs-cs-card"><div class="bs-cs-label">06 · Organize</div><div class="bs-cs-card-title">ANOVA Table</div><div class="bs-cs-formula">MS = SS / df &nbsp;·&nbsp; F = MSR / MSE</div><p class="bs-cs-desc">Regression has k df, residual n − k − 1, and total n − 1. SST = SSR + SSE.</p><div class="bs-excel"><span class="lbl">Excel</span><span>Regression output → ANOVA</span></div></article>
   </div>
   <div class="bs-cs-panels">
