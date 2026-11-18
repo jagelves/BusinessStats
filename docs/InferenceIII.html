@@ -421,13 +421,13 @@ details summary {
 <p>Business decisions are often framed as claims to be tested: a new supplier promises fewer defects, a marketing team believes a campaign lifted sales, an analyst suspects average spending has changed. <strong>Hypothesis testing</strong> is the formal procedure for deciding whether the evidence in a sample is strong enough to support such a claim, or whether the difference we see could just be sampling error. In this chapter you will learn to state null and alternative hypotheses, compute a test statistic, weigh it against a chosen level of risk, and reach a defensible conclusion, all in Excel. This is where the cycle closes: we began by wanting to learn something about the world, and hypothesis testing is the formal step of asking whether the data we collected actually support the idea we started with.</p>
 <section id="hypothesis-testing-intuition" class="level2" data-number="13.1">
 <h2 data-number="13.1" class="anchored" data-anchor-id="hypothesis-testing-intuition"><span class="header-section-number">13.1</span> Hypothesis Testing Intuition</h2>
-<p>The <strong>null hypothesis</strong> (<span class="math inline">\(H_0\)</span>) is a statement about a population parameter, usually the status quo, or “no effect.” It always contains some form of the equality sign (<span class="math inline">\(=\)</span>, <span class="math inline">\(\geq\)</span>, or <span class="math inline">\(\leq\)</span>). The <strong>alternative hypothesis</strong> (<span class="math inline">\(H_a\)</span>) directly contradicts the null and states the effect we are looking for, using a strict inequality (<span class="math inline">\(\ne\)</span>, <span class="math inline">\(&gt;\)</span>, or <span class="math inline">\(&lt;\)</span>).</p>
-<p>Suppose we hypothesize that the average annual income in the U.S. is $50,000. When we take a large sample, the sample mean behaves like a normal random variable (by the Central Limit Theorem) centered at the hypothesized value. Our job is to decide whether the observed sample mean is “close enough” to $50,000 to have plausibly come from that distribution, or “far enough” that we should doubt the null and favor the alternative.</p>
+<p>Let’s start with two definitions. A <strong>hypothesis</strong> is a claim about a population parameter, such as “the average U.S. income is $50,000” or “more than <span class="math inline">\(10\%\)</span> of people are left-handed.” <strong>Hypothesis testing</strong> is a method for deciding whether the evidence in a sample supports rejecting the default claim, called the null hypothesis, in favor of an alternative claim that contradicts it.</p>
+<p>Suppose we hypothesize that the average annual income in the U.S. is $50,000. When we take a large sample, the sample mean behaves like a normal random variable (by the Central Limit Theorem) centered at the hypothesized value. Our job is to decide whether the observed sample mean is “close enough” to $50,000 to have plausibly come from that distribution, or “far enough” that we should doubt the claim.</p>
 <div class="callout-example">
 <p><strong>Example:</strong> We test whether the average income is $50,000. A sample of <span class="math inline">\(100\)</span> people has a mean of $48,000. Is $48,000 close to $50,000, or far? It depends entirely on the <strong>standard error</strong> of the sampling distribution:</p>
 <ul>
-<li>If the standard error were small (say $1,000), then $48,000 is two standard errors below $50,000: strong evidence <em>against</em> the null.</li>
-<li>If the standard error were large (say $15,000), then $48,000 is only a fraction of a standard error away, perfectly <em>consistent</em> with the null.</li>
+<li>If the standard error were small (say $1,000), then $48,000 is two standard errors below $50,000: strong evidence <em>against</em> the claim.</li>
+<li>If the standard error were large (say $15,000), then $48,000 is only a fraction of a standard error away, perfectly <em>consistent</em> with the claim.</li>
 </ul>
 <p>Distance alone tells us nothing; distance measured in standard errors is what matters.</p>
 </div>
@@ -435,29 +435,83 @@ details summary {
 <div class="callout-formula">
 <p><strong>TEST STATISTIC FOR A MEAN</strong> <span class="math display">\[t = \frac{\bar{x} - \mu_0}{s / \sqrt{n}}\]</span> with degrees of freedom <span class="math inline">\(df = n - 1\)</span>, where <span class="math inline">\(\bar{x}\)</span> is the sample mean, <span class="math inline">\(\mu_0\)</span> is the hypothesized mean, <span class="math inline">\(s\)</span> is the sample standard deviation, and <span class="math inline">\(n\)</span> is the sample size.</p>
 </div>
-<p>The larger the test statistic in absolute value, the stronger the evidence against the null hypothesis.</p>
+<p>We use a <span class="math inline">\(t\)</span> statistic because the population standard deviation <span class="math inline">\(\sigma\)</span> is unknown and we replace it with <span class="math inline">\(s\)</span>, just as we did for confidence intervals in Inference II. The larger the test statistic in absolute value, the stronger the evidence against the null hypothesis.</p>
 </section>
 <section id="the-null-and-alternative-hypotheses" class="level2" data-number="13.2">
 <h2 data-number="13.2" class="anchored" data-anchor-id="the-null-and-alternative-hypotheses"><span class="header-section-number">13.2</span> The Null and Alternative Hypotheses</h2>
-<p>Every test starts by writing the two competing hypotheses. The direction of the alternative determines whether the test is one-tailed or two-tailed.</p>
+<p>Every test starts by writing two competing hypotheses:</p>
+<ul>
+<li>The <strong>null hypothesis</strong> (<span class="math inline">\(H_0\)</span>) is the default or status quo assumption. It is the claim we keep unless the data give us a strong reason to abandon it. The null always contains some form of equality (<span class="math inline">\(=\)</span>, <span class="math inline">\(\geq\)</span>, or <span class="math inline">\(\leq\)</span>).</li>
+<li>The <strong>alternative hypothesis</strong> (<span class="math inline">\(H_a\)</span>) contradicts the null. It uses a strict inequality (<span class="math inline">\(\ne\)</span>, <span class="math inline">\(&gt;\)</span>, or <span class="math inline">\(&lt;\)</span>), and its form sets the tail of the test: <span class="math inline">\(\ne\)</span> gives a two-tailed test, <span class="math inline">\(&gt;\)</span> a right-tailed test, and <span class="math inline">\(&lt;\)</span> a left-tailed test.</li>
+</ul>
 <p><strong>For a mean:</strong></p>
 <ul>
+<li><span class="math inline">\(H_0: \mu = \mu_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu \ne \mu_0\)</span>: two-tailed test</li>
 <li><span class="math inline">\(H_0: \mu \leq \mu_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu &gt; \mu_0\)</span>: right-tailed test</li>
 <li><span class="math inline">\(H_0: \mu \geq \mu_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu &lt; \mu_0\)</span>: left-tailed test</li>
-<li><span class="math inline">\(H_0: \mu = \mu_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu \ne \mu_0\)</span>: two-tailed test</li>
 </ul>
 <p><strong>For a proportion:</strong></p>
 <ul>
+<li><span class="math inline">\(H_0: p = p_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: p \ne p_0\)</span>: two-tailed test</li>
 <li><span class="math inline">\(H_0: p \leq p_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: p &gt; p_0\)</span>: right-tailed test</li>
 <li><span class="math inline">\(H_0: p \geq p_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: p &lt; p_0\)</span>: left-tailed test</li>
-<li><span class="math inline">\(H_0: p = p_0\)</span> vs.&nbsp;<span class="math inline">\(H_a: p \ne p_0\)</span>: two-tailed test</li>
 </ul>
+<p>A useful rule is that the claim we want to find evidence <em>for</em> goes in the alternative. If a researcher claims that more than <span class="math inline">\(10\%\)</span> of people are left-handed, the alternative is <span class="math inline">\(H_a: p &gt; 0.10\)</span>, and the null is everything else, <span class="math inline">\(H_0: p \leq 0.10\)</span>.</p>
 </section>
 <section id="two-approaches-to-a-decision" class="level2" data-number="13.3">
 <h2 data-number="13.3" class="anchored" data-anchor-id="two-approaches-to-a-decision"><span class="header-section-number">13.3</span> Two Approaches to a Decision</h2>
-<p>There are two equivalent ways to decide whether the observed difference is too large to be explained by sampling error. Both always reach the same conclusion at the same significance level <span class="math inline">\(\alpha\)</span>.</p>
-<p><strong>The critical value (rejection region) approach.</strong> Choose a significance level <span class="math inline">\(\alpha\)</span>, look up the <strong>critical value</strong> from the <span class="math inline">\(t\)</span> or <span class="math inline">\(z\)</span> distribution for that <span class="math inline">\(\alpha\)</span> and the direction of the test, and reject <span class="math inline">\(H_0\)</span> if the test statistic falls beyond it. For a two-tailed test at <span class="math inline">\(\alpha = 0.05\)</span> with <span class="math inline">\(df = 99\)</span>, the critical values are approximately <span class="math inline">\(\pm 1.984\)</span>; a test statistic more extreme than these lands in the outer <span class="math inline">\(5\%\)</span> of the distribution.</p>
-<p><strong>The p-value approach.</strong> Compute the <strong>p-value</strong>: the probability, assuming the null is true, of observing a test statistic at least as extreme as the one obtained. Then apply the decision rule: reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\text{p-value} \leq \alpha\)</span>, and fail to reject it otherwise. A small p-value (say <span class="math inline">\(0.003\)</span>) means the data would be very unlikely if the null were true, so it is evidence <em>against</em> <span class="math inline">\(H_0\)</span>; a large p-value (say <span class="math inline">\(0.42\)</span>) means the data are consistent with <span class="math inline">\(H_0\)</span>.</p>
+<p>Once we have a test statistic, we need a rule that tells us when it is “far enough” from the null. There are two equivalent ways to set that rule. Both always reach the same conclusion at the same significance level <span class="math inline">\(\alpha\)</span>.</p>
+<p><strong>The critical value (rejection region) approach.</strong> Choose a significance level <span class="math inline">\(\alpha\)</span> and find the <strong>critical value</strong> from the <span class="math inline">\(t\)</span> or <span class="math inline">\(z\)</span> distribution. The critical value marks the start of the <strong>rejection region</strong>, the area in the tail (or tails) that holds a probability of <span class="math inline">\(\alpha\)</span>. Reject <span class="math inline">\(H_0\)</span> if the test statistic falls in the rejection region.</p>
+<p>How <span class="math inline">\(\alpha\)</span> is placed depends on the alternative. In a two-tailed test we split <span class="math inline">\(\alpha\)</span> in half and put <span class="math inline">\(\alpha/2\)</span> in each tail, since a statistic that is either too large or too small is evidence against the null. In a one-tailed test all of <span class="math inline">\(\alpha\)</span> goes in the single tail that the alternative points to. The figure below shows both cases for a <span class="math inline">\(t\)</span>-distribution with <span class="math inline">\(99\)</span> degrees of freedom and <span class="math inline">\(\alpha=0.05\)</span>. For the two-tailed test, the critical values are <span class="math inline">\(\pm 1.98\)</span>. For the right-tailed test, the critical value is <span class="math inline">\(1.66\)</span>. A left-tailed test is the mirror image of the right-tailed test, with the rejection region on the left.</p>
+<div class="cell" data-layout-align="center">
+<div class="cell-output-display">
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="InferenceIII_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid quarto-figure quarto-figure-center figure-img" width="768"></p>
+</figure>
+</div>
+</div>
+</div>
+<p><strong>The p-value approach.</strong> Compute the <strong>p-value</strong>: the probability, assuming the null is true, of observing a test statistic at least as extreme as the one obtained. Then apply the decision rule: reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\text{p-value} \leq \alpha\)</span>, and fail to reject it otherwise. A small p-value (say <span class="math inline">\(0.003\)</span>) means the data would be very unlikely if the null were true, so it is evidence <em>against</em> <span class="math inline">\(H_0\)</span>. A large p-value (say <span class="math inline">\(0.42\)</span>) means the data are consistent with <span class="math inline">\(H_0\)</span>. Like the critical value, the p-value depends on the tail of the test. For a one-tailed test it is the area in the single tail beyond the test statistic. For a two-tailed test it is twice that area, because a result just as extreme in the other direction would count as evidence too.</p>
+<p>The table below summarizes how each approach works for two-tailed and one-tailed tests:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 23%">
+<col style="width: 32%">
+<col style="width: 43%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;"></th>
+<th style="text-align: left;">Two-tailed (<span class="math inline">\(H_a\)</span> uses <span class="math inline">\(\ne\)</span>)</th>
+<th style="text-align: left;">One-tailed (<span class="math inline">\(H_a\)</span> uses <span class="math inline">\(&gt;\)</span> or <span class="math inline">\(&lt;\)</span>)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><strong>Critical value</strong></td>
+<td style="text-align: left;">Split <span class="math inline">\(\alpha\)</span> into <span class="math inline">\(\alpha/2\)</span> per tail</td>
+<td style="text-align: left;">All of <span class="math inline">\(\alpha\)</span> in one tail</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Reject</strong> <span class="math inline">\(H_0\)</span> if</td>
+<td style="text-align: left;"><span class="math inline">\(\lvert\text{statistic}\rvert &gt;\)</span> critical value</td>
+<td style="text-align: left;">Statistic is past the critical value, in the direction of <span class="math inline">\(H_a\)</span></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;"><strong>p-value</strong></td>
+<td style="text-align: left;"><span class="math inline">\(2 \times\)</span> (tail area)</td>
+<td style="text-align: left;">Tail area in the direction of <span class="math inline">\(H_a\)</span></td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><strong>Compare the p-value to</strong></td>
+<td style="text-align: left;"><span class="math inline">\(\alpha\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(\alpha\)</span></td>
+</tr>
+</tbody>
+</table>
+<p>Note that in both cases the p-value is compared to the full <span class="math inline">\(\alpha\)</span>. The splitting of <span class="math inline">\(\alpha\)</span> only happens with critical values, because the doubling of the tail area already accounts for both tails in the p-value.</p>
+<p>Whatever the approach, keep in mind what each decision means. Rejecting <span class="math inline">\(H_0\)</span> means the sample provides strong evidence against it. <strong>Failing to reject</strong> <span class="math inline">\(H_0\)</span> does not mean that the null is true. It only means that there is not enough evidence against it. This is why we say “fail to reject” rather than “accept.”</p>
 <div class="bs-widget">
 <div class="bs-widget-head">
 <p><span class="bs-widget-tag">Try it</span> <span class="bs-widget-title">Rejection region vs.&nbsp;p-value</span></p>
@@ -715,7 +769,7 @@ details summary {
 <table class="caption-top table">
 <colgroup>
 <col style="width: 33%">
-<col style="width: 32%">
+<col style="width: 33%">
 <col style="width: 33%">
 </colgroup>
 <thead>
@@ -738,7 +792,7 @@ details summary {
 </tr>
 </tbody>
 </table>
-<p>A <strong>Type I error</strong> is rejecting a true null hypothesis (a false positive); its probability is the significance level <span class="math inline">\(\alpha\)</span>. A <strong>Type II error</strong> is failing to reject a false null hypothesis (a false negative); its probability is <span class="math inline">\(\beta\)</span>. The <strong>power</strong> of a test, <span class="math inline">\(1 - \beta\)</span>, is the chance of correctly detecting a real effect. Lowering <span class="math inline">\(\alpha\)</span> guards against false positives but makes false negatives more likely, so the choice of <span class="math inline">\(\alpha\)</span> balances the two risks.</p>
+<p>A <strong>Type I error</strong> is rejecting a true null hypothesis (a false positive). Its probability is the significance level <span class="math inline">\(\alpha\)</span>, which is why <span class="math inline">\(\alpha\)</span> is also called the Type I error rate. A <strong>Type II error</strong> is failing to reject a false null hypothesis (a false negative). Its probability is <span class="math inline">\(\beta\)</span>. The <strong>power</strong> of a test, <span class="math inline">\(1 - \beta\)</span>, is the chance of correctly detecting a real effect. Lowering <span class="math inline">\(\alpha\)</span> guards against false positives but makes false negatives more likely, so the choice of <span class="math inline">\(\alpha\)</span> balances the two risks.</p>
 <div class="bs-widget">
 <div class="bs-widget-head">
 <p><span class="bs-widget-tag">Try it</span> <span class="bs-widget-title">The Type I / Type II tradeoff</span></p>
@@ -983,29 +1037,55 @@ details summary {
 </section>
 <section id="steps-to-perform-a-hypothesis-test" class="level2" data-number="13.5">
 <h2 data-number="13.5" class="anchored" data-anchor-id="steps-to-perform-a-hypothesis-test"><span class="header-section-number">13.5</span> Steps to Perform a Hypothesis Test</h2>
+<p>Every hypothesis test in this book follows the same five steps:</p>
 <ol type="1">
-<li><p><strong>State the hypotheses.</strong> Write <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_a\)</span> using the forms above.</p></li>
-<li><p><strong>Choose the significance level</strong> <span class="math inline">\(\alpha\)</span>. Common choices are <span class="math inline">\(0.10\)</span>, <span class="math inline">\(0.05\)</span>, and <span class="math inline">\(0.01\)</span>, corresponding to confidence levels of <span class="math inline">\(90\%\)</span>, <span class="math inline">\(95\%\)</span>, and <span class="math inline">\(99\%\)</span>.</p></li>
-<li><p><strong>Compute the test statistic.</strong> For a mean, use the <span class="math inline">\(t\)</span> statistic given above. For a proportion, use:</p>
+<li><p><strong>State the hypotheses.</strong> Write <span class="math inline">\(H_0\)</span> and <span class="math inline">\(H_a\)</span> using the forms above. The form of <span class="math inline">\(H_a\)</span> tells you whether the test is two-tailed, right-tailed, or left-tailed.</p></li>
+<li><p><strong>Choose the significance level</strong> <span class="math inline">\(\alpha\)</span>. This is the Type I error rate, the chance of rejecting the null when it is true. Common choices are <span class="math inline">\(0.01\)</span>, <span class="math inline">\(0.05\)</span>, and <span class="math inline">\(0.10\)</span>.</p></li>
+<li><p><strong>Compute the test statistic.</strong> For a mean, use the <span class="math inline">\(t\)</span> statistic above. For a proportion, use the <span class="math inline">\(z\)</span> statistic below. Later chapters introduce other statistics (such as the <span class="math inline">\(F\)</span> statistic), but they are used in the same way.</p>
 <div class="callout-formula">
-<p><strong>TEST STATISTIC FOR A PROPORTION</strong> <span class="math display">\[z = \frac{\hat{p} - p_0}{\sqrt{p_0(1 - p_0)/n}}\]</span> where <span class="math inline">\(\hat{p}\)</span> is the sample proportion, <span class="math inline">\(p_0\)</span> is the hypothesized proportion, and <span class="math inline">\(n\)</span> is the sample size. Note that the hypothesized <span class="math inline">\(p_0\)</span> is used in the standard error.</p>
+<p><strong>TEST STATISTIC FOR A PROPORTION</strong> <span class="math display">\[z = \frac{\hat{p} - p_0}{\sqrt{p_0(1 - p_0)/n}}\]</span> where <span class="math inline">\(\hat{p}\)</span> is the sample proportion, <span class="math inline">\(p_0\)</span> is the hypothesized proportion, and <span class="math inline">\(n\)</span> is the sample size. Note that the standard error is built from the hypothesized <span class="math inline">\(p_0\)</span>, since we assume the null is true. The test requires <span class="math inline">\(np_0 \geq 5\)</span> and <span class="math inline">\(n(1-p_0) \geq 5\)</span>.</p>
 </div></li>
-<li><p><strong>Find the p-value</strong> (replacing <span class="math inline">\(t\)</span> with <span class="math inline">\(z\)</span> for proportions):</p>
+<li><p><strong>Find the p-value (or the critical value).</strong> Replace <span class="math inline">\(t\)</span> with <span class="math inline">\(z\)</span> for proportions:</p>
 <ul>
 <li>Right-tailed test: <span class="math inline">\(\text{p-value} = P(T \geq t)\)</span></li>
 <li>Left-tailed test: <span class="math inline">\(\text{p-value} = P(T \leq t)\)</span></li>
 <li>Two-tailed test: <span class="math inline">\(\text{p-value} = 2 \times P(T \geq |t|)\)</span></li>
 </ul></li>
-<li><p><strong>Decide.</strong> Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\text{p-value} \leq \alpha\)</span>; otherwise fail to reject it. Remember that failing to reject <span class="math inline">\(H_0\)</span> is <em>not</em> proof that <span class="math inline">\(H_0\)</span> is true. It only means the sample did not provide enough evidence against it.</p></li>
+<li><p><strong>Decide.</strong> Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(\text{p-value} \leq \alpha\)</span>, or equivalently if the test statistic falls beyond the critical value. Otherwise, fail to reject <span class="math inline">\(H_0\)</span>. Finish by stating the conclusion in the words of the problem.</p></li>
 </ol>
+<p>Let’s apply the five steps to two examples, one for a mean and one for a proportion.</p>
+<div class="callout-example">
+<p><strong>Example 1 (mean income, two-tailed</strong> <span class="math inline">\(t\)</span>-test): A claim states that the average U.S. income is $50,000. A sample of <span class="math inline">\(n=100\)</span> people has a standard deviation of <span class="math inline">\(s=\$3{,}000\)</span>. Test the claim in two scenarios: (a) the sample mean is <span class="math inline">\(\bar{x}=\$80{,}000\)</span>, and (b) the sample mean is <span class="math inline">\(\bar{x}=\$50{,}300\)</span>. We use a <span class="math inline">\(t\)</span>-test since <span class="math inline">\(\sigma\)</span> is unknown.</p>
+<p><strong>Step 1: State the hypotheses.</strong> <span class="math inline">\(H_0: \mu = 50{,}000\)</span> vs.&nbsp;<span class="math inline">\(H_a: \mu \ne 50{,}000\)</span> (two-tailed).</p>
+<p><strong>Step 2: Choose the significance level.</strong> <span class="math inline">\(\alpha = 0.05\)</span>.</p>
+<p><strong>Step 3: Compute the test statistic.</strong> The standard error is <span class="math inline">\(s/\sqrt{n}=3{,}000/\sqrt{100}=300\)</span>.</p>
+<ul>
+<li>Scenario (a): <span class="math inline">\(t=\frac{80{,}000-50{,}000}{300}=\frac{30{,}000}{300}=100\)</span></li>
+<li>Scenario (b): <span class="math inline">\(t=\frac{50{,}300-50{,}000}{300}=\frac{300}{300}=1\)</span></li>
+</ul>
+<p><strong>Step 4: Find the critical value and the p-value.</strong> The test is two-tailed, so <span class="math inline">\(\alpha\)</span> splits into <span class="math inline">\(0.025\)</span> per tail. With <span class="math inline">\(df=99\)</span>, the critical value is <span class="math inline">\(t_{0.975,\,99}=1.98\)</span> (in Excel, <code>=T.INV(0.975, 99)</code>). The two-tailed p-value is twice the tail area (in Excel, <code>=T.DIST.2T(ABS(t), 99)</code>).</p>
+<p><strong>Step 5: Decide.</strong></p>
+<ul>
+<li>Scenario (a): <span class="math inline">\(|100|&gt;1.98\)</span>, and the p-value is essentially <span class="math inline">\(0\)</span>, which is below <span class="math inline">\(0.05\)</span>. We reject <span class="math inline">\(H_0\)</span>. The sample mean sits <span class="math inline">\(100\)</span> standard errors above $50,000, which would be practically impossible if the true mean were $50,000. There is strong evidence that the average income differs from $50,000 (in fact, it exceeds it).</li>
+<li>Scenario (b): <span class="math inline">\(|1|&lt;1.98\)</span>, and the p-value is <span class="math inline">\(2 \times 0.16 = 0.32\)</span>, which is above <span class="math inline">\(0.05\)</span>. We fail to reject <span class="math inline">\(H_0\)</span>. A sample mean one standard error away from $50,000 is very common when the null is true, so there is not enough evidence that the average income differs from $50,000.</li>
+</ul>
+</div>
+<div class="callout-example">
+<p><strong>Example 2 (left-handers, right-tailed</strong> <span class="math inline">\(z\)</span>-test): A researcher claims that more than <span class="math inline">\(10\%\)</span> of people are left-handed. In a sample of <span class="math inline">\(n=100\)</span> people, <span class="math inline">\(12\%\)</span> are left-handed (<span class="math inline">\(\hat{p}=0.12\)</span>). We use a <span class="math inline">\(z\)</span>-test for a proportion, with the standard error built from the null proportion <span class="math inline">\(p_0=0.10\)</span>. The conditions hold, since <span class="math inline">\(np_0=10 \geq 5\)</span> and <span class="math inline">\(n(1-p_0)=90 \geq 5\)</span>.</p>
+<p><strong>Step 1: State the hypotheses.</strong> The claim goes in the alternative: <span class="math inline">\(H_0: p \leq 0.10\)</span> vs.&nbsp;<span class="math inline">\(H_a: p &gt; 0.10\)</span> (right-tailed).</p>
+<p><strong>Step 2: Choose the significance level.</strong> <span class="math inline">\(\alpha = 0.01\)</span>.</p>
+<p><strong>Step 3: Compute the test statistic.</strong> <span class="math display">\[z=\frac{0.12-0.10}{\sqrt{0.10(0.90)/100}}=\frac{0.02}{0.03}=0.67\]</span></p>
+<p><strong>Step 4: Find the critical value and the p-value.</strong> The test is right-tailed, so all of <span class="math inline">\(\alpha\)</span> goes in the right tail. The critical value is <span class="math inline">\(z_{0.99}=2.33\)</span> (in Excel, <code>=NORM.S.INV(0.99)</code>). The p-value is the area to the right of the test statistic, <span class="math inline">\(P(Z&gt;0.67)=1-0.749=0.25\)</span> (in Excel, <code>=1 - NORM.S.DIST(0.67, TRUE)</code>).</p>
+<p><strong>Step 5: Decide.</strong> Since <span class="math inline">\(0.67&lt;2.33\)</span> and the p-value of <span class="math inline">\(0.25\)</span> is greater than <span class="math inline">\(\alpha=0.01\)</span>, we fail to reject <span class="math inline">\(H_0\)</span>. The sample proportion of <span class="math inline">\(12\%\)</span> is above <span class="math inline">\(10\%\)</span>, but not by enough to rule out chance. There is insufficient evidence that more than <span class="math inline">\(10\%\)</span> of people are left-handed.</p>
+</div>
 </section>
 <section id="hypothesis-testing-in-excel" class="level2" data-number="13.6">
 <h2 data-number="13.6" class="anchored" data-anchor-id="hypothesis-testing-in-excel"><span class="header-section-number">13.6</span> Hypothesis Testing in Excel</h2>
-<p>Excel does not have a one-click one-sample test, but every piece is a single formula. First build the test statistic from the sample, then convert it to a p-value.</p>
+<p>Excel does not have a one-click one-sample test, but every piece is a single formula. First build the test statistic from the sample, then convert it to a p-value or compare it to a critical value.</p>
 <p><strong>The test statistic.</strong> With the data in a range, the <span class="math inline">\(t\)</span> statistic for a mean is:</p>
 <pre class="excel"><code>=(AVERAGE(A2:A21) - 100) / (STDEV.S(A2:A21) / SQRT(COUNT(A2:A21)))</code></pre>
-<p><strong>p-values from the</strong> <span class="math inline">\(t\)</span>-distribution. Use <code>=T.DIST(t, df, TRUE)</code> for a left-tailed test, <code>=T.DIST.RT(t, df)</code> for a right-tailed test, and <code>=T.DIST.2T(ABS(t), df)</code> for a two-tailed test. For the critical value use <code>=T.INV.2T(alpha, df)</code> (two-tailed) or <code>=T.INV(alpha, df)</code> (left-tailed; use <code>=T.INV(1 - alpha, df)</code> for a right-tailed test).</p>
-<p><strong>p-values for a proportion.</strong> The proportion test statistic is a <span class="math inline">\(z\)</span> value, so use the standard normal: <code>=NORM.S.DIST(z, TRUE)</code> for a left-tailed test, <code>=1 - NORM.S.DIST(z, TRUE)</code> for a right-tailed test, and <code>=2*(1 - NORM.S.DIST(ABS(z), TRUE))</code> for a two-tailed test.</p>
+<p><strong>p-values from the</strong> <span class="math inline">\(t\)</span>-distribution. Use <code>=T.DIST(t, df, TRUE)</code> for a left-tailed test, <code>=T.DIST.RT(t, df)</code> for a right-tailed test, and <code>=T.DIST.2T(ABS(t), df)</code> for a two-tailed test. For the critical value use <code>=T.INV.2T(alpha, df)</code> (two-tailed, which gives the same value as <code>=T.INV(1 - alpha/2, df)</code>) or <code>=T.INV(alpha, df)</code> (left-tailed; use <code>=T.INV(1 - alpha, df)</code> for a right-tailed test).</p>
+<p><strong>p-values for a proportion.</strong> The proportion test statistic is a <span class="math inline">\(z\)</span> value, so use the standard normal: <code>=NORM.S.DIST(z, TRUE)</code> for a left-tailed test, <code>=1 - NORM.S.DIST(z, TRUE)</code> for a right-tailed test, and <code>=2*(1 - NORM.S.DIST(ABS(z), TRUE))</code> for a two-tailed test. For the critical value use <code>=NORM.S.INV(1 - alpha)</code> (right-tailed), <code>=NORM.S.INV(alpha)</code> (left-tailed), or <code>=NORM.S.INV(1 - alpha/2)</code> (two-tailed).</p>
 </section>
 <section id="excel-function-summary" class="level2" data-number="13.7">
 <h2 data-number="13.7" class="anchored" data-anchor-id="excel-function-summary"><span class="header-section-number">13.7</span> Excel Function Summary</h2>
@@ -1014,7 +1094,9 @@ details summary {
 <li><p><code>=T.DIST(x, deg_freedom, TRUE)</code> returns the left-tail probability of the <span class="math inline">\(t\)</span>-distribution.</p></li>
 <li><p><code>=T.DIST.RT(x, deg_freedom)</code> returns the right-tail probability, and <code>=T.DIST.2T(x, deg_freedom)</code> returns the two-tailed probability (with a positive <code>x</code>).</p></li>
 <li><p><code>=T.INV.2T(probability, deg_freedom)</code> returns the two-tailed <span class="math inline">\(t\)</span> critical value.</p></li>
+<li><p><code>=T.INV(probability, deg_freedom)</code> returns the <span class="math inline">\(t\)</span> value with the given left-tail probability, used for one-tailed critical values.</p></li>
 <li><p><code>=NORM.S.DIST(z, TRUE)</code> returns the standard normal cumulative probability, used for proportion tests.</p></li>
+<li><p><code>=NORM.S.INV(probability)</code> returns the <span class="math inline">\(z\)</span> value with the given left-tail probability, used for <span class="math inline">\(z\)</span> critical values.</p></li>
 <li><p><code>=AVERAGE</code>, <code>=STDEV.S</code>, <code>=COUNT</code>, and <code>=COUNTIF</code> build the sample mean, standard deviation, size, and counts that go into the test statistic.</p></li>
 </ul>
 </section>
